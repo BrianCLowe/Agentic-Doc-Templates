@@ -65,7 +65,7 @@ Auto-installing without asking causes wrong-path installs and clobbered instruct
 
 ## Before proposing an install
 
-1. Check whether `docs/Master_Index.md` exists (if not, offer doc bootstrap first — see README bootstrap steps).
+1. Check whether `docs/Master_Index.md` exists (if not, follow [`BOOTSTRAP.md`](BOOTSTRAP.md) first — doc structure before rules).
 2. Read **`docs/rule-install-status.yaml`** and apply the rules above.
 3. Scan for **existing** modular-docs rule installs on disk. Reconcile with the status file (fix stale `installed` if file was deleted).
 4. State which tool you **think** the user is on and why — only if evidence is clear. If uncertain, say so.
@@ -126,6 +126,6 @@ A user who switches tools later may need an install for a **different** tool key
 ## Related
 
 - Status file example: [`rule-install-status.example.yaml`](rule-install-status.example.yaml)
-- Doc structure bootstrap: project [README](../../README.md#bootstrap-a-new-project)
+- Doc structure bootstrap: [`BOOTSTRAP.md`](BOOTSTRAP.md)
 - Updating live docs from templates: [`TEMPLATE_SYNC.md`](TEMPLATE_SYNC.md)
 - Tool-specific details: [Using With AI Agents](../USING_WITH_AGENTS.md)

@@ -11,6 +11,8 @@
 
 This file captures **what the agent believes the user wants** — scope, behavior, UI, and ties to existing work. The user reads and corrects it **before implementation**, not after.
 
+**Not sure what to write?** See [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md) — plain-language questions about UI, flows, and scope (no coding knowledge required).
+
 **Do not start implementation** while status is `draft` and assumptions remain unchecked, unless the user explicitly says to proceed.
 
 ---
@@ -57,7 +59,19 @@ This file captures **what the agent believes the user wants** — scope, behavio
 
 - Reuse: [existing panel, toolbar, editor chrome, etc.]
 - Differs from default: [only these elements]
-- Reference: [link to screenshot, Figma, or `OtherFeature.md` section if similar]
+
+---
+
+## Visual references
+
+Store screenshots in `docs/features/assets/` (or `docs/reference/visuals/`). Link here so vision-capable agents can reuse them in later sessions. Always note **similar** vs **different** — a reference is not a spec to copy blindly.
+
+| File | Similar (borrow) | Different (our idea) |
+|------|------------------|----------------------|
+| [assets/FeatureName-reference-label.png](assets/FeatureName-reference-label.png) | [e.g. full-width text, minimal chrome] | [e.g. our Save top-left; no slash menu] |
+| [assets/FeatureName-our-existing-panel.png](assets/FeatureName-our-existing-panel.png) | [match this panel from our app] | [new feature hides sidebar] |
+
+*Example row:* `[assets/RoleEditor-notion-focus.png](assets/RoleEditor-notion-focus.png)` — similar: focus layout; different: reuse our editor toolbar.
 
 ---
 
@@ -82,6 +96,8 @@ When the user confirms or corrects an item, move it to **Confirmed with user** a
 - After updating, set status to `draft` and surface it to the user for review.
 - When planning: include this file (or its path) in the plan so the user can correct misunderstandings early.
 - If the user corrects you, update this file immediately — especially **What this is NOT** and **Relationship to existing work**.
+- If the user's description is vague, ask targeted questions from [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md) before filling this file.
+- When the user provides reference screenshots, persist under `docs/features/assets/`: copy from disk when a path exists; if only pasted in chat, ask the user to save the file into `assets/` or record similar/different from vision and note re-attach if needed. Link in **Visual references**.
 - Set status to `confirmed` only after the user explicitly approves (or approves a plan that references this file).
 - Read this file before implementation alongside the spec and TODO.
 
@@ -89,3 +105,5 @@ When the user confirms or corrects an item, move it to **Confirmed with user** a
 
 - Skim this before approving a plan or agent work session.
 - Fix wrong assumptions in **What this is NOT** — that section prevents the "completely new feature" mistake.
+- Use [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md) if you are stuck — it lists the kinds of details that reduce drift.
+- Add reference screenshots to `docs/features/assets/` and link them in **Visual references** with what to copy vs what to change.

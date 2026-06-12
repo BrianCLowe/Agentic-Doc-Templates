@@ -25,6 +25,8 @@ This project uses a lean modular documentation system. `docs/Master_Index.md` is
 - Do not treat a feature as greenfield if Understanding says it extends or reuses existing work.
 - Do not start coding while Understanding status is `draft` unless the user explicitly waives review.
 - When producing a plan, include the Understanding file path so the user can correct scope and UI intent first.
+- If the user's idea is vague, ask brief questions from `docs/templates/IDEA_CAPTURE_TIPS.md` (or project copy) before writing `-Understanding.md`.
+- When the user provides UI reference screenshots, persist to `docs/features/assets/` (copy from path when available; if paste-only chat image, ask user to save file or document from vision). Link from `-Understanding.md` **Visual references** with similar vs different.
 
 **While working:**
 - Treat the active TODO (`_shared/*-TODO.md` or feature `*-TODO.md`) as the living task list.

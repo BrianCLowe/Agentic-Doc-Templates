@@ -1,4 +1,4 @@
-<!-- template-version: 1.2 -->
+<!-- template-version: 1.3 -->
 
 > **Template reference.** Do not put project-specific content in this file. Copy to `docs/Master_Index.md` for initial setup, or diff against it when syncing template improvements into the live index. Never edit this template unless the user asks you to.
 
@@ -6,7 +6,7 @@
 
 **Purpose**: Single entry point for all documentation. Read only the files relevant to the current task.
 
-**Template version**: 1.2 *(update this line in `docs/Master_Index.md` when syncing from `templates/Master_Index_Template.md`)*
+**Template version**: 1.3 *(update this line in `docs/Master_Index.md` when syncing from `templates/Master_Index_Template.md`)*
 
 ## 1. Project Overview
 
@@ -21,6 +21,8 @@
 | `docs/`           | All specs, architecture, and tracking |
 | `docs/_shared/`   | Reusable components, patterns, and **their foundation TODOs** |
 | `docs/features/`  | Feature-specific specs + TODOs (+ optional sub-indexes) |
+| `docs/features/assets/` | Reference **screenshots** for features (linked from `-Understanding.md`) |
+| `docs/reference/visuals/` | Optional inspiration screenshots not tied to one feature yet |
 | `docs/templates/` | Canonical templates — reference for structure and sync |
 | `src/` / `backend/` / `frontend/` | Actual code (reference only) |
 
@@ -180,6 +182,8 @@ Each feature should have `FeatureName-Understanding.md` — the agent's model of
 **When planning**: Include the Understanding file (or path) in the plan output so the user can correct it before implementation starts.
 
 See `templates/Feature_Understanding_Template.md`.
+
+**Visual references (screenshots):** If the user provides screenshots of similar sites or apps, save under `docs/features/assets/` (or `docs/reference/visuals/` if not feature-specific). Link from `-Understanding.md` with **similar vs different** notes so vision-capable agents can reuse them in later sessions. See [`IDEA_CAPTURE_TIPS.md`](templates/IDEA_CAPTURE_TIPS.md#visual-references-screenshots).
 
 ## 6. TODO Management
 

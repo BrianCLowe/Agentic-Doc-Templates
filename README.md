@@ -1,94 +1,62 @@
 # Agentic Doc Templates
 
-Documentation templates for working with agentic AI coding tools. Copy them into your projects, adapt them to your workflow, and keep a single source of truth here for updates and sharing.
+Documentation templates for working with agentic AI coding tools — a central place to update and share templates that work well with AI-assisted development.
+
+**GitHub:** [BrianCLowe/Agentic-Doc-Templates](https://github.com/BrianCLowe/Agentic-Doc-Templates)
+
+## Adding to your project
+
+**Recommended:** copy only **`docs/templates/`** into your project as `your-project/docs/templates/`. You do not need this repo's root `README.md` or `LICENSE.md` in your project root.
+
+| Method | What to do |
+|--------|------------|
+| **Copy templates folder** (best) | Copy `docs/templates/` → your `docs/templates/` |
+| **Whole repo copied/cloned** | Ask your agent to follow [`docs/templates/BOOTSTRAP.md`](docs/templates/BOOTSTRAP.md) — it moves upstream README/LICENSE to `docs/templates/upstream/` and creates live docs |
+| **Agent bootstrap** | *"Bootstrap modular docs"* + [`BOOTSTRAP.md`](docs/templates/BOOTSTRAP.md) |
+
+Human guide in your project after copy: [`docs/templates/SETUP.md`](docs/templates/SETUP.md).
+
+## How to use (versatile workflows)
+
+Templates are not only for one-time setup. Use them whenever you turn **conversations**, **ideas**, or **design docs** into structured project documentation — in the IDE or in chat (Grok, Claude, etc.), with uploads or a **repo connector**.
+
+**Full guide:** [`docs/templates/USAGE.md`](docs/templates/USAGE.md) — chat → docs, mid-dev ideas, design-doc conversion, bootstrap, template sync, example prompts.
+
+**Describing an idea (especially if you are new to dev):** [`docs/templates/IDEA_CAPTURE_TIPS.md`](docs/templates/IDEA_CAPTURE_TIPS.md) — UI, interactions, flows, and scope in plain language; helps agents propose a stack when you do not know what you need technically.
+
+Quick examples:
+
+- *"Create modular docs from our conversation using the templates in `docs/templates/`."*
+- *"Add this idea to the docs — Understanding + TODO + update Master_Index."*
+- *"Convert `docs/reference/Design.md` to modular docs per Master_Index_Template."*
+- *"Save this screenshot to `docs/features/assets/`, link it in Understanding — similar: X, different: Y."*
+
+> **This repo only:** `README.md` and `LICENSE.md` stay at the **repository root** so GitHub displays them. Consumer projects keep those under `docs/templates/upstream/` instead.
+
+## What's in `docs/templates/`
+
+| File | Purpose |
+|------|---------|
+| [Master_Index_Template.md](docs/templates/Master_Index_Template.md) | Canonical `docs/Master_Index.md` structure |
+| [Feature_Understanding_Template.md](docs/templates/Feature_Understanding_Template.md) | Agent model of user intent before implementation |
+| [TODO_Template.md](docs/templates/TODO_Template.md) | Per-feature task lists |
+| [BOOTSTRAP.md](docs/templates/BOOTSTRAP.md) | Agent: initialize docs + relocate upstream root files |
+| [SETUP.md](docs/templates/SETUP.md) | Human: add templates to a project |
+| [USAGE.md](docs/templates/USAGE.md) | Human: workflows — chat → docs, ideas, design-doc conversion |
+| [IDEA_CAPTURE_TIPS.md](docs/templates/IDEA_CAPTURE_TIPS.md) | Human: describe your idea — UI, flows, scope; reduces agent drift |
+| [TEMPLATE_SYNC.md](docs/templates/TEMPLATE_SYNC.md) | Agent: merge template updates into live docs |
+| [RULE_INSTALL.md](docs/templates/RULE_INSTALL.md) | Agent: install rules per tool (asks once) |
+| [USING_WITH_AGENTS.md](docs/templates/USING_WITH_AGENTS.md) | Copilot, Cursor, Claude Code, etc. |
+| Rule `.mdc` / `.instructions.md` | Drop-in agent rules |
 
 ## Core idea
 
-Large documentation sets are split into a lightweight index plus many small, purpose-built files. That keeps agent context windows manageable and makes navigation trivial. Each feature gets a spec, a **Understanding** file (agent model of user intent — scope, UI, what it is *not*), and focused `-TODO.md` task lists.
-
-## Templates
-
-| Template | Description |
-|----------|-------------|
-| [Master Index Template](docs/templates/Master_Index_Template.md) | Canonical structure for `docs/Master_Index.md` — agent-focused reference |
-| [Feature Understanding Template](docs/templates/Feature_Understanding_Template.md) | Agent model of user intent — scope, UI, relationships; review before implementation |
-| [Template Sync](docs/templates/TEMPLATE_SYNC.md) | Agent instructions for migrating live docs when templates improve |
-| [Rule Install](docs/templates/RULE_INSTALL.md) | Agent instructions for installing the rule — asks user first, supports multiple tools |
-| [TODO Template](docs/templates/TODO_Template.md) | Per-feature task lists for agent-driven development |
-| [Modular Documentation Rule](docs/templates/Modular_Documentation_Rule.mdc) | Cursor rule — copy to `.cursor/rules/` |
-| [Modular Documentation Rule (Copilot)](docs/templates/Modular_Documentation_Rule.instructions.md) | GitHub Copilot instructions — copy to `.github/instructions/` |
-
-## Recommended folder structure
-
-Copy the `docs/templates/` folder into your project (or symlink / submodule this repo). Keep templates pristine — project content lives elsewhere.
-
-```
-docs/
-├── Master_Index.md            ← Live index (customized from Master_Index_Template.md)
-├── rule-install-status.yaml   ← Per-tool rule install decisions (created by agent; optional until first ask)
-├── _shared/                   ← Reusable components + foundation TODOs (`Component-TODO.md`)
-│   ├── BlockEditor.md
-│   ├── BlockEditor-TODO.md
-│   └── ...
-├── features/                  ← One folder or flat files per feature/module
-│   ├── FeatureName.md
-│   ├── FeatureName-Understanding.md
-│   ├── FeatureName-TODO.md
-│   └── ...
-├── reference/                 ← Legacy specs, deep-dives, external links
-└── templates/                 ← Canonical templates — do not fill with project content
-    ├── Master_Index_Template.md
-    ├── Feature_Understanding_Template.md
-    ├── TEMPLATE_SYNC.md
-    ├── RULE_INSTALL.md
-    ├── rule-install-status.example.yaml
-    ├── TODO_Template.md
-    ├── Modular_Documentation_Rule.mdc
-    └── Modular_Documentation_Rule.instructions.md
-```
-
-### Naming conventions
-
-- Kebab-case for files and folders
-- Feature spec: `FeatureName.md`
-- Understanding (intent / scope / UI): `FeatureName-Understanding.md`
-- TODO files: `FeatureName-TODO.md`, `FeatureName-InEditor-TODO.md`, `FeatureName-Asset-TODO.md`
-- Shared components: `docs/_shared/ComponentName.md` + `_shared/ComponentName-TODO.md` for **foundation work** (not in consumer feature TODOs)
-- Project-level: `Project-InEditor-TODO.md`, `Project-Asset-TODO.md`
-- Game projects: rename In-Editor TODOs to engine-specific names (`FeatureName-UE-TODO.md`, etc.) — see the template Section 6
-
-## Bootstrap a new project
-
-1. Create the `docs/` folder structure above.
-2. Copy [`Master_Index_Template.md`](docs/templates/Master_Index_Template.md) → `docs/Master_Index.md`. Replace bracketed placeholders and fill in the Document Map.
-3. Copy [`TODO_Template.md`](docs/templates/TODO_Template.md) into `docs/templates/` (if not already there).
-4. Copy the full `docs/templates/` folder from this repo so templates stay available for future syncs.
-5. **Rule (optional, ask first):** When ready, ask your agent to follow [`RULE_INSTALL.md`](docs/templates/RULE_INSTALL.md). It records your answer per tool in `docs/rule-install-status.yaml` so you are not asked again for tools you installed or declined. See [Using With AI Agents](docs/USING_WITH_AGENTS.md).
-6. Create your first feature spec + **Understanding** + TODO file(s) and add rows to the Document Map.
-7. Skip a central `STATUS.md` — TODO files are the status tracker.
-
-## Updating when templates improve
-
-Templates are the **schema**; `Master_Index.md` and feature docs are the **instance**.
-
-When this repo (or your copy of `docs/templates/`) gets improvements:
-
-1. Pull or copy the updated template files into your project's `docs/templates/`.
-2. Point your agent at [`TEMPLATE_SYNC.md`](docs/templates/TEMPLATE_SYNC.md) and ask it to merge structural changes into your live `docs/Master_Index.md`.
-3. The agent should preserve your overview, Document Map, and custom sections while adopting new workflow rules and sections from the template.
-
-Check `<!-- template-version: X.Y -->` in the template against the **Template version** line in your live Master Index to see if you're behind.
-
-## Using with AI agents
-
-The workflow is the same across tools; only the **file location** for rules changes. See **[Using With AI Agents](docs/USING_WITH_AGENTS.md)** for Copilot, Cursor, Claude Code, Continue, Cline, Grok Build, and others.
+Modular docs: lightweight `Master_Index.md` + small feature files + `-Understanding.md` (scope, UI intent, **visual references**) + `-TODO.md` task lists. Shared foundation work lives in `_shared/Component-TODO.md`, not in consumer feature TODOs. Reference screenshots go in `docs/features/assets/` and stay linked for vision-capable agents across sessions.
 
 ## License
 
-These templates are released under the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0).
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — see [LICENSE.md](LICENSE.md).
 
-You are free to share and adapt the material for any purpose, including commercially, as long as you give appropriate credit. When you reuse or modify these templates, include attribution such as:
+Attribution when reusing:
 
 > Based on [Agentic Doc Templates](https://github.com/BrianCLowe/Agentic-Doc-Templates) by Brian Lowe, licensed under CC BY 4.0.
-
-See [LICENSE.md](LICENSE.md) for the full license text.

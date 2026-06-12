@@ -4,14 +4,14 @@ The modular documentation **workflow is tool-agnostic**. The rule content is the
 
 What differs is **where each tool expects instructions** and how reliably it follows them. No agent treats project rules like a linter — they are guidance loaded into context, not hard enforcement.
 
-**Installing the rule:** Agents should follow [`RULE_INSTALL.md`](templates/RULE_INSTALL.md) — ask which tool(s) you use, record the answer in `docs/rule-install-status.yaml` (so each tool is only asked once), never overwrite existing instructions without confirmation, and support multiple tools on the same repo without conflict.
+**Installing the rule:** Agents should follow [`RULE_INSTALL.md`](RULE_INSTALL.md) — ask which tool(s) you use, record the answer in `docs/rule-install-status.yaml` (so each tool is only asked once), never overwrite existing instructions without confirmation, and support multiple tools on the same repo without conflict.
 
 ## Quick reference
 
-| Tool | Where to put the rule | Template in this repo |
-|------|------------------------|------------------------|
-| [Cursor](https://cursor.com) | `.cursor/rules/` | [`Modular_Documentation_Rule.mdc`](templates/Modular_Documentation_Rule.mdc) |
-| [GitHub Copilot](https://github.com/features/copilot) (VS Code) | `.github/copilot-instructions.md` or `.github/instructions/` | [`Modular_Documentation_Rule.instructions.md`](templates/Modular_Documentation_Rule.instructions.md) |
+| Tool | Where to put the rule | Template file |
+|------|------------------------|---------------|
+| [Cursor](https://cursor.com) | `.cursor/rules/` | [`Modular_Documentation_Rule.mdc`](Modular_Documentation_Rule.mdc) |
+| [GitHub Copilot](https://github.com/features/copilot) (VS Code) | `.github/copilot-instructions.md` or `.github/instructions/` | [`Modular_Documentation_Rule.instructions.md`](Modular_Documentation_Rule.instructions.md) |
 | [Claude Code](https://code.claude.com) | `CLAUDE.md` or `.claude/rules/` | Copy rule body into a new `.md` file |
 | [Continue](https://continue.dev) | `.continue/rules/` | Copy rule body; use Cursor-style frontmatter |
 | [Cline](https://cline.bot) | `.clinerules/` or `.cline/rules/` | Copy rule body into a new `.md` file |
@@ -38,7 +38,7 @@ Copilot uses **custom instructions**, not Cursor-style rules. They apply to **Ch
 Paste the rule into `.github/copilot-instructions.md` at the repo root.
 
 **Option B — scoped file:**  
-Copy [`Modular_Documentation_Rule.instructions.md`](templates/Modular_Documentation_Rule.instructions.md) to `.github/instructions/modular-documentation.instructions.md`.
+Copy [`Modular_Documentation_Rule.instructions.md`](Modular_Documentation_Rule.instructions.md) to `.github/instructions/modular-documentation.instructions.md`.
 
 Ensure `.github/instructions` is enabled in workspace settings if needed:
 
@@ -59,7 +59,7 @@ Docs: [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/c
 
 ## Cursor
 
-Copy [`Modular_Documentation_Rule.mdc`](templates/Modular_Documentation_Rule.mdc) to `.cursor/rules/`.
+Copy [`Modular_Documentation_Rule.mdc`](Modular_Documentation_Rule.mdc) to `.cursor/rules/`.
 
 The file uses `alwaysApply: true` so the rule is included every session. To scope it to documentation work only, set `alwaysApply: false` and add `globs: docs/**` — but for this workflow, always-on is usually better because the rule applies *before* you open a doc file.
 
@@ -174,7 +174,7 @@ Treat the rule as **institutional memory for the agent**, not a substitute for g
 
 When you improve templates here, copy updated files into your project's `docs/templates/`, then run a template sync:
 
-1. **Structure** — Follow [`TEMPLATE_SYNC.md`](templates/TEMPLATE_SYNC.md): diff `Master_Index_Template.md` against live `docs/Master_Index.md` and merge improvements without losing project content.
+1. **Structure** — Follow [`TEMPLATE_SYNC.md`](TEMPLATE_SYNC.md): diff `Master_Index_Template.md` against live `docs/Master_Index.md` and merge improvements without losing project content.
 2. **Rules** — Update `.cursor/rules/`, `.github/instructions/`, `AGENTS.md`, etc.
 3. **TODO format** — If `TODO_Template.md` changed, update feature TODOs only where format differs.
 
