@@ -15,6 +15,6 @@ These templates are released under the [Creative Commons Attribution 4.0 Interna
 
 You are free to share and adapt the material for any purpose, including commercially, as long as you give appropriate credit. When you reuse or modify these templates, include attribution such as:
 
-> Based on Agentic Doc Templates by Brian Lowe, licensed under CC BY 4.0.
+> Based on [Agentic Doc Templates](https://github.com/BrianCLowe/Agentic-Doc-Templates) by Brian Lowe, licensed under CC BY 4.0.
 
 See [LICENSE.md](LICENSE.md) for the full license text.
