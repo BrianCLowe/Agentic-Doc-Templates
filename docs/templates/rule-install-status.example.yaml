@@ -1,0 +1,39 @@
+# Example — copy to docs/rule-install-status.yaml when the first install decision is recorded.
+# Live file: docs/rule-install-status.yaml (project-specific; commit to share with team)
+
+version: 1
+
+# One entry per tool. Status: installed | declined
+# Do not ask again for a tool when status is installed or declined
+# unless the user explicitly requests install/reinstall for that tool.
+
+tools:
+  cursor:
+    status: installed
+    recorded: 2026-06-12
+    path: .cursor/rules/modular-documentation.mdc
+
+  github-copilot:
+    status: declined
+    recorded: 2026-06-12
+    note: User installs manually on work machine
+
+  # claude-code:
+  #   status: installed
+  #   recorded: 2026-06-12
+  #   path: .claude/rules/modular-documentation.md
+
+  # continue:
+  #   status: declined
+  #   recorded: 2026-06-12
+
+  # cline:
+  #   status: installed
+  #   recorded: 2026-06-12
+  #   path: .clinerules/modular-documentation.md
+
+  # agents-md:
+  #   status: installed
+  #   recorded: 2026-06-12
+  #   path: AGENTS.md
+  #   note: Documentation workflow section only
