@@ -1,62 +1,81 @@
 # Agentic Doc Templates
 
-Documentation templates for working with agentic AI coding tools — a central place to update and share templates that work well with AI-assisted development.
+> **Documentation templates for agentic AI coding tools.**
+> Keep AI agents aligned with your intent across conversations, features, and long-running projects.
 
-**GitHub:** [BrianCLowe/Agentic-Doc-Templates](https://github.com/BrianCLowe/Agentic-Doc-Templates)
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
+![Template](https://img.shields.io/badge/Template-Ready-blue)
+![Built for](https://img.shields.io/badge/Built%20for-Claude%20Code%20%7C%20Cursor%20%7C%20AI%20Agents-5865F2)
 
-## Adding to your project
+**Quick start:** Click the green **"Use this template"** button at the top of this page to instantly create a new repository with the full `docs/templates/` structure.
 
-**Recommended:** copy only **`docs/templates/`** into your project as `your-project/docs/templates/`. You do not need this repo's root `README.md` or `LICENSE.md` in your project root.
+---
 
-| Method | What to do |
-|--------|------------|
-| **Copy templates folder** (best) | Copy `docs/templates/` → your `docs/templates/` |
-| **Whole repo copied/cloned** | Ask your agent to follow [`docs/templates/BOOTSTRAP.md`](docs/templates/BOOTSTRAP.md) — it moves upstream README/LICENSE to `docs/templates/upstream/` and creates live docs |
-| **Agent bootstrap** | *"Bootstrap modular docs"* + [`BOOTSTRAP.md`](docs/templates/BOOTSTRAP.md) |
+## Why these templates exist
 
-Human guide in your project after copy: [`docs/templates/SETUP.md`](docs/templates/SETUP.md).
+AI coding agents are powerful but can drift from your original intent over long sessions. These templates give agents (and humans) a consistent, modular structure for capturing understanding, decisions, tasks, and visual references.
 
-## How to use (versatile workflows)
+The goal: lightweight documentation that stays in sync with the code and is easy for both people and vision-capable agents to use.
 
-Templates are not only for one-time setup. Use them whenever you turn **conversations**, **ideas**, or **design docs** into structured project documentation — in the IDE or in chat (Grok, Claude, etc.), with uploads or a **repo connector**.
+## Quick Start
 
-**Full guide:** [`docs/templates/USAGE.md`](docs/templates/USAGE.md) — chat → docs, mid-dev ideas, design-doc conversion, bootstrap, template sync, example prompts.
+### Option 1: Use as Template (Recommended)
+1. Click **"Use this template"** (green button at the top)
+2. Create a new repository in your account
+3. Copy or move `docs/templates/` into your project's `docs/` folder
 
-**Describing an idea (especially if you are new to dev):** [`docs/templates/IDEA_CAPTURE_TIPS.md`](docs/templates/IDEA_CAPTURE_TIPS.md) — UI, interactions, flows, and scope in plain language; helps agents propose a stack when you do not know what you need technically.
+### Option 2: Copy into existing project
+Copy the `docs/templates/` folder into your project as `your-project/docs/templates/`.
 
-Quick examples:
+Then run the bootstrap with your agent:
 
-- *"Create modular docs from our conversation using the templates in `docs/templates/`."*
-- *"Add this idea to the docs — Understanding + TODO + update Master_Index."*
-- *"Convert `docs/reference/Design.md` to modular docs per Master_Index_Template."*
-- *"Save this screenshot to `docs/features/assets/`, link it in Understanding — similar: X, different: Y."*
+> "Bootstrap the modular documentation system using the templates in `docs/templates/BOOTSTRAP.md`"
 
-> **This repo only:** `README.md` and `LICENSE.md` stay at the **repository root** so GitHub displays them. Consumer projects keep those under `docs/templates/upstream/` instead.
+See [`docs/templates/SETUP.md`](docs/templates/SETUP.md) for the human guide.
 
-## What's in `docs/templates/`
+## What's Included
 
 | File | Purpose |
 |------|---------|
-| [Master_Index_Template.md](docs/templates/Master_Index_Template.md) | Canonical `docs/Master_Index.md` structure |
-| [Feature_Understanding_Template.md](docs/templates/Feature_Understanding_Template.md) | Agent model of user intent before implementation |
-| [TODO_Template.md](docs/templates/TODO_Template.md) | Per-feature task lists |
-| [BOOTSTRAP.md](docs/templates/BOOTSTRAP.md) | Agent: initialize docs + relocate upstream root files |
-| [SETUP.md](docs/templates/SETUP.md) | Human: add templates to a project |
-| [USAGE.md](docs/templates/USAGE.md) | Human: workflows — chat → docs, ideas, design-doc conversion |
-| [IDEA_CAPTURE_TIPS.md](docs/templates/IDEA_CAPTURE_TIPS.md) | Human: describe your idea — UI, flows, scope; reduces agent drift |
-| [TEMPLATE_SYNC.md](docs/templates/TEMPLATE_SYNC.md) | Agent: merge template updates into live docs |
-| [RULE_INSTALL.md](docs/templates/RULE_INSTALL.md) | Agent: install rules per tool (asks once) |
-| [USING_WITH_AGENTS.md](docs/templates/USING_WITH_AGENTS.md) | Copilot, Cursor, Claude Code, etc. |
-| Rule `.mdc` / `.instructions.md` | Drop-in agent rules |
+| [Master_Index_Template.md](docs/templates/Master_Index_Template.md) | Core index that ties everything together |
+| [Feature_Understanding_Template.md](docs/templates/Feature_Understanding_Template.md) | Captures user intent, UI/UX goals, and visual references before coding |
+| [TODO_Template.md](docs/templates/TODO_Template.md) | Focused task lists per feature |
+| [BOOTSTRAP.md](docs/templates/BOOTSTRAP.md) | Agent instructions to initialize the system in a new project |
+| [SETUP.md](docs/templates/SETUP.md) | Human instructions for adding templates to a project |
+| [USAGE.md](docs/templates/USAGE.md) | Workflows for turning conversations, ideas, and design docs into structured documentation |
+| [IDEA_CAPTURE_TIPS.md](docs/templates/IDEA_CAPTURE_TIPS.md) | How to describe ideas clearly so agents propose better solutions |
+| [TEMPLATE_SYNC.md](docs/templates/TEMPLATE_SYNC.md) | Keep your live docs updated when these templates improve |
+| [RULE_INSTALL.md](docs/templates/RULE_INSTALL.md) | Install agent rules for your specific tool |
+| [USING_WITH_AGENTS.md](docs/templates/USING_WITH_AGENTS.md) | Guidance for Claude Code, Cursor, Copilot, etc. |
+| `.mdc` / `.instructions.md` files | Ready-to-drop agent rule files |
 
-## Core idea
+## Core Philosophy
 
-Modular docs: lightweight `Master_Index.md` + small feature files + `-Understanding.md` (scope, UI intent, **visual references**) + `-TODO.md` task lists. Shared foundation work lives in `_shared/Component-TODO.md`, not in consumer feature TODOs. Reference screenshots go in `docs/features/assets/` and stay linked for vision-capable agents across sessions.
+- **Modular over monolithic** — Small, focused files instead of one giant spec.
+- **Understanding before implementation** — Agents read intent before writing code.
+- **Visual references matter** — Screenshots and diagrams stay linked for vision models.
+- **Shared components live once** — Common work goes in `_shared/` folders, not duplicated.
+- **Easy for both humans and agents** — Clear structure that works in chat and in the IDE.
+
+## Common Agent Prompts
+
+- "Create modular docs from our conversation using the templates in `docs/templates/`."
+- "Add this idea to the docs — create Understanding + TODO and update Master_Index."
+- "Convert this design document into modular docs following Master_Index_Template."
+- "Bootstrap the documentation system in this project."
+
+Full workflows and more example prompts are in [`docs/templates/USAGE.md`](docs/templates/USAGE.md).
+
+## Contributing
+
+PRs that improve the templates, add new ones, or refine the workflows are very welcome.
+
+If you're using these successfully with a particular agent/tool, feel free to share your experience in Discussions.
 
 ## License
 
 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — see [LICENSE.md](LICENSE.md).
 
-Attribution when reusing:
+When reusing or adapting:
 
 > Based on [Agentic Doc Templates](https://github.com/BrianCLowe/Agentic-Doc-Templates) by Brian Lowe, licensed under CC BY 4.0.
