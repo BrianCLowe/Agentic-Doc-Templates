@@ -6,16 +6,17 @@ Thanks for your interest in contributing! I use these templates daily in my own 
 
 Here are the most helpful ways to contribute:
 
+- **Share how you're using the templates** and what workflows work well for you
 - **Suggest improvements** to existing templates (clarity, structure, agent instructions)
-- **Share workflows** or prompts that work particularly well with these templates
-- **Report issues** when something doesn't work well with a specific tool (Cursor, Claude Code, Copilot, etc.)
-- **Propose new templates** that fill a genuine gap (please check existing ones first)
+- **Propose new templates** that fill a genuine gap
+- **Report issues** when something doesn't work well with a specific tool (Cursor, Claude Code, etc.)
 
 ## How to Contribute
 
-- **Ideas and suggestions** — Open an Issue. This is the best place to discuss before putting in work.
-- **Pull Requests** — Great for small, focused improvements. Please keep changes aligned with the existing modular style.
-- **Discussions** — Feel free to start a discussion for broader workflow ideas or agent-specific tips.
+Since Issues are turned off, please use **Discussions** for most things:
+
+- **Ideas, suggestions, and questions** — Start a new Discussion. This is the best place to talk about improvements, new template ideas, or how you're using the templates with different agents.
+- **Pull Requests** — Welcome for small, focused improvements to existing templates. Please keep changes aligned with the current lightweight, modular style.
 
 ## What I'm Looking For
 
@@ -27,7 +28,7 @@ I'm more likely to merge contributions that:
 
 I'm more cautious about changes that significantly increase complexity or shift the overall direction of the project. I want to avoid ending up maintaining two versions (one public, one private that actually works for me).
 
-If you're unsure whether something fits, just open an Issue first — I'm happy to discuss.
+If you're unsure whether something fits, just start a Discussion first — I'm happy to talk about it.
 
 ## Attribution
 
