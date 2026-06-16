@@ -5,7 +5,7 @@
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 ![Template](https://img.shields.io/badge/Template-Ready-blue)
-![Built for](https://img.shields.io/badge/Built%20for-Claude%20Code%20%7C%20Cursor%20%7C%20AI%20Agents-5865F2)
+![Built for](https://img.shields.io/badge/Built%20for-Cursor%20%7C%20Grok%20Build%20%7C%20Claude%20Code-5865F2)
 
 **Quick start:** Click the green **"Use this template"** button at the top of this page to instantly create a new repository with the full `docs/templates/` structure.
 
@@ -13,7 +13,7 @@
 
 ## Why these templates exist
 
-AI coding agents are powerful but can drift from your original intent over long sessions. These templates give agents (and humans) a consistent, modular structure for capturing understanding, decisions, tasks, and visual references.
+AI coding agents are powerful but can drift from your original intent over long sessions. These templates give agents a consistent structure: the **agent writes** Understanding and TODO files from your conversation; **you review and correct** them before implementation — you do not need to author those files yourself.
 
 The goal: lightweight documentation that stays in sync with the code and is easy for both people and vision-capable agents to use.
 
@@ -38,7 +38,7 @@ See [`docs/templates/SETUP.md`](docs/templates/SETUP.md) for the human guide.
 | File | Purpose |
 |------|---------|
 | [Master_Index_Template.md](docs/templates/Master_Index_Template.md) | Core index that ties everything together |
-| [Feature_Understanding_Template.md](docs/templates/Feature_Understanding_Template.md) | Captures user intent, UI/UX goals, and visual references before coding |
+| [Feature_Understanding_Template.md](docs/templates/Feature_Understanding_Template.md) | Agent drafts its interpretation of your request; you review and correct before coding |
 | [TODO_Template.md](docs/templates/TODO_Template.md) | Focused task lists per feature |
 | [BOOTSTRAP.md](docs/templates/BOOTSTRAP.md) | Agent instructions to initialize the system in a new project |
 | [SETUP.md](docs/templates/SETUP.md) | Human instructions for adding templates to a project |
@@ -52,15 +52,16 @@ See [`docs/templates/SETUP.md`](docs/templates/SETUP.md) for the human guide.
 ## Core Philosophy
 
 - **Modular over monolithic** — Small, focused files instead of one giant spec.
-- **Understanding before implementation** — Agents read intent before writing code.
+- **Understanding before implementation** — The agent drafts `-Understanding.md` first so you can see how it interpreted your request; you review and correct, then implementation starts.
 - **Visual references matter** — Screenshots and diagrams stay linked for vision models.
-- **Shared components live once** — Common work goes in `_shared/` folders, not duplicated.
+- **Shared components live once** — Common work goes in `_shared/` with the same note types as features (Understanding, TODOs, etc.) unless you explicitly except specific files.
 - **Easy for both humans and agents** — Clear structure that works in chat and in the IDE.
 
 ## Common Agent Prompts
 
 - "Create modular docs from our conversation using the templates in `docs/templates/`."
-- "Add this idea to the docs — create Understanding + TODO and update Master_Index."
+- "Add this idea to the docs — draft Understanding + TODO from what I said, then I'll review."
+- "Add shared component [Name] to `_shared/` — full note set (spec, Understanding, TODOs) unless I say otherwise."
 - "Convert this design document into modular docs following Master_Index_Template."
 - "Bootstrap the documentation system in this project."
 

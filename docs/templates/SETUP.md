@@ -22,7 +22,7 @@ Also copy [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md) — it lives inside `do
 
 1. Ask your agent to follow **`BOOTSTRAP.md`** — creates `docs/Master_Index.md`, folders, and relocates upstream root files if needed.
 2. Fill in project overview and Document Map in `Master_Index.md`.
-3. Add first feature under `docs/features/` (spec + Understanding + TODO).
+3. Add first feature under `docs/features/` (agent drafts spec + Understanding + TODO; you review). Shared components under `docs/_shared/` get the **same note types** unless you explicitly except specific files.
 4. Optionally run **`RULE_INSTALL.md`** for your agent tool(s).
 
 **Day-to-day use** (chat → docs, ideas mid-dev, converting design docs): see **[`USAGE.md`](USAGE.md)**.

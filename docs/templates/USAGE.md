@@ -10,7 +10,7 @@ Setup first (if you have not already): [`SETUP.md`](SETUP.md) + agent [`BOOTSTRA
 
 ## The basic idea
 
-You give an agent **structure** (`Master_Index_Template.md`, `Feature_Understanding_Template.md`, `TODO_Template.md`, etc.). The agent turns **your input** (chat, design doc, half-formed idea) into small linked files under `docs/` instead of one giant doc or nothing at all.
+You give an agent **structure** (`Master_Index_Template.md`, `Feature_Understanding_Template.md`, `TODO_Template.md`, etc.). You describe the idea in chat (or point at a design doc). The **agent drafts** `-Understanding.md` and TODO files so you can see how it interpreted you — then you **review and correct** before implementation. You do not need to write those files yourself.
 
 Same templates, many entry points.
 
@@ -27,13 +27,13 @@ Same templates, many entry points.
 
 **Example prompts:**
 
-> Using the Agentic Doc Templates structure, create project documentation from our conversation so far. Follow `Master_Index_Template.md`, add a `-Understanding.md` per feature, and initial `-TODO.md` files. Put shared concepts in `_shared/` where appropriate.
+> Using the Agentic Doc Templates structure, create project documentation from our conversation so far. Follow `Master_Index_Template.md`. **Draft** a `-Understanding.md` per feature and shared component (I'll review), plus initial `-TODO.md` files. Put shared concepts in `_shared/` with the full note set unless I except specific files.
 
 > Read `docs/templates/Master_Index_Template.md` and the other templates in this repo. Generate `docs/Master_Index.md` and feature docs that capture what we discussed about [app name]. Do not invent features we did not talk about.
 
-**What you get:** `Master_Index.md`, feature specs, Understanding files (scope / UI / what it is *not*), TODOs, and `_shared/` entries for reusable pieces — ready to refine in the repo.
+**What you get:** `Master_Index.md`, feature specs, **agent-drafted** Understanding files (scope / UI / what it is *not*) for you to review, TODOs, and `_shared/` entries with the **same note types as features** unless you except specific files.
 
-**Tip:** Ask for Understanding files explicitly. They catch “you meant a variant UI, not a new subsystem” before anyone codes. Point new collaborators at [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md) if they are unsure what details to provide.
+**Tip:** Ask the agent to **draft Understanding first** and show you the file. That catches “you meant a variant UI, not a new subsystem” before anyone codes. Your job is to correct wrong assumptions — especially in **What this is NOT** — not to write the file from scratch.
 
 ---
 
@@ -45,9 +45,9 @@ Same templates, many entry points.
 
 **Example prompts:**
 
-> New idea: [describe briefly]. Add it to the docs — new feature or extend [ExistingFeature]. Update Master_Index Document Map, create Understanding + TODO, link any `_shared/` foundation work.
+> New idea: [describe briefly]. Add it to the docs — **draft** Understanding + TODO from what I said; I'll review. Update Master_Index Document Map. For new shared components, full note set unless I say otherwise.
 
-> We decided the role editor is a separate UI on the existing text editor, not a new editor. Update `RoleEditor-Understanding.md` — fix "What this is NOT" and link to `_shared/BlockEditor.md`.
+> We decided the role editor is a separate UI on the existing text editor, not a new editor. Update `RoleEditor-Understanding.md` — fix "What this is NOT" and link to `_shared/BlockEditor.md`. *(User correction → agent revises the file.)*
 
 **What you get:** Docs stay the living record; the next session (or another tool) reads the same structure instead of re-deriving from chat history.
 
@@ -64,7 +64,7 @@ Same templates, many entry points.
 
 **Example prompts:**
 
-> Read `docs/reference/Original_Design.md`. Convert it into modular documentation per `docs/templates/Master_Index_Template.md`. Preserve detail by splitting into feature files; do not leave one huge file. Add Understanding + TODO per feature. Put reusable architecture in `_shared/`.
+> Read `docs/reference/Original_Design.md`. Convert it into modular documentation per `docs/templates/Master_Index_Template.md`. Preserve detail by splitting into feature files; do not leave one huge file. Add Understanding + TODO per feature **and per shared component** (full note set unless I except specific types). Put reusable architecture in `_shared/`.
 
 > Turn this design doc into modular docs. Keep the original in `reference/`; link to it from Master_Index Section 3.4.
 
@@ -116,10 +116,10 @@ Tool-specific rule install paths: [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md)
 | Goal | Say something like |
 |------|-------------------|
 | Chat → docs | *Create modular docs from our conversation using the templates in `docs/templates/`.* |
-| New idea | *Add [idea] to the docs — Understanding + TODO + Master_Index map.* |
-| Fix agent misunderstanding | *Update [Feature]-Understanding.md — especially What this is NOT.* |
+| New idea | *Add [idea] to the docs — draft Understanding + TODO; I'll review.* |
+| Fix agent misunderstanding | *Update [Feature]-Understanding.md from my correction — especially What this is NOT.* |
 | UI reference screenshot | *Save to `docs/features/assets/`, add Visual references in Understanding with similar vs different.* |
-| Vague idea | *Interview me using IDEA_CAPTURE_TIPS.md, then fill [Feature]-Understanding.md.* |
+| Vague idea | *Interview me using IDEA_CAPTURE_TIPS.md, then **draft** [Feature]-Understanding.md for my review.* |
 | Design doc → modular | *Convert `[path]` to modular docs per Master_Index_Template; keep original in reference.* |
 | First-time setup | *Bootstrap modular docs using BOOTSTRAP.md.* |
 | Install agent rule | *Follow RULE_INSTALL.md for [Cursor / Copilot / …].* |
@@ -130,9 +130,12 @@ Tool-specific rule install paths: [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md)
 ## What good output looks like
 
 - **`docs/Master_Index.md`** — entry point + Document Map (not a dump of everything).
-- **`docs/features/FeatureName-Understanding.md`** — your intent in agent-readable form; you skim and correct.
+- **`docs/features/FeatureName-Understanding.md`** — **agent's draft** of how it interpreted your request; you skim, correct wrong bits, confirm when right.
 - **`docs/features/FeatureName-TODO.md`** — next actions (feature work).
-- **`docs/_shared/Component-TODO.md`** — foundation work shared by multiple features (not duplicated in feature TODOs).
+- **`docs/_shared/Component.md`** — shared spec / contract
+- **`docs/_shared/Component-Understanding.md`** — same review loop as feature Understanding (agent drafts, you correct)
+- **`docs/_shared/Component-TODO.md`** — foundation work shared by multiple features (not duplicated in feature TODOs)
+- **`docs/_shared/Component-InEditor-TODO.md`** / **`Component-Asset-TODO.md`** — when applicable; omit only if you explicitly except them.
 - **`docs/templates/`** — unchanged canonical copies for future syncs.
 
 You do not need every file on day one. Start with Master_Index + one feature; grow as ideas arrive — from chat, design docs, or the middle of a dev session.

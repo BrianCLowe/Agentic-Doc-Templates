@@ -70,7 +70,7 @@ If `Master_Index.md` already exists → do not overwrite; offer [`TEMPLATE_SYNC.
 ## Step 4 — Tell the user what's next
 
 1. Fill in Section 1 (Project Overview) and Document Map.
-2. First feature: spec + Understanding + TODO (see [`SETUP.md`](SETUP.md)).
+2. First feature: agent drafts spec + Understanding + TODO; you review (see [`SETUP.md`](SETUP.md)). Shared components: same full note set under `_shared/` unless the user excepts specific files.
 3. Optional: run [`RULE_INSTALL.md`](RULE_INSTALL.md) for agent rules (asks per tool, records in `rule-install-status.yaml`).
 
 ## Do not

@@ -4,7 +4,7 @@
 **Last Updated**: [YYYY-MM-DD]  
 **Feature Owner**: [Name or "Team"] (optional omit if not specified) 
 **Related Spec**: [Link to FeatureName.md](../features/FeatureName.md) *(update path as needed)*  
-**Related Understanding**: [Link to FeatureName-Understanding.md](../features/FeatureName-Understanding.md) *(create before implementation)*
+**Related Understanding**: [Link to FeatureName-Understanding.md](../features/FeatureName-Understanding.md) *(agent drafts before implementation; user reviews)*
 
 ---
 
@@ -40,8 +40,8 @@ Use the right pattern:
 
 **Instructions for AI Agents**:
 
-- **If this TODO is in `_shared/`** — tracks foundation work on the shared component. Consumer features link here; do not duplicate these tasks in feature TODOs.
-- **If this TODO is for a feature** — read `FeatureName-Understanding.md` first; do not implement until Understanding is `confirmed` or the user waives review.
+- **If this TODO is in `_shared/`** — tracks foundation work on the shared component (same note-type set as features unless the user excepted files). Consumer features link here; do not duplicate these tasks in feature TODOs.
+- **If this TODO is for a feature or shared component** — read `FeatureName-Understanding.md` or `_shared/ComponentName-Understanding.md` first; do not implement until Understanding is `confirmed` or the user waives review.
 - Add new items as you discover them; end each session by updating this file (`[x]` + date on completed items).
 - Foundation tasks belong in `_shared/Component-TODO.md`, not in a feature TODO — see Master Index Section 2.4.
 - In-Editor feature TODOs: rename to engine-specific version per Master Index Section 7.

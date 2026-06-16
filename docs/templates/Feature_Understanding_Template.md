@@ -1,6 +1,6 @@
-# [Feature Name] — Understanding
+# [Feature or Shared Component Name] — Understanding
 
-> Never edit this template unless the user asks you to.
+> Never edit this template unless the user asks you to. Use under `docs/features/` for features or `docs/_shared/` for shared components (adjust Related Spec/TODO paths). Shared components get this file by default unless the user excepted it.
 
 **Status**: draft | reviewed | confirmed  
 **Last Updated**: [YYYY-MM-DD]  
@@ -9,9 +9,9 @@
 
 ---
 
-This file captures **what the agent believes the user wants** — scope, behavior, UI, and ties to existing work. The user reads and corrects it **before implementation**, not after.
+This file captures **what the agent believes the user wants** — scope, behavior, UI, and ties to existing work. **The agent writes this file first** (status `draft`). The user **reviews and corrects** it before implementation — they do not need to author it from scratch.
 
-**Not sure what to write?** See [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md) — plain-language questions about UI, flows, and scope (no coding knowledge required).
+**Not sure what to ask the user?** See [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md) — plain-language interview questions about UI, flows, and scope (no coding knowledge required on the user's part).
 
 **Do not start implementation** while status is `draft` and assumptions remain unchecked, unless the user explicitly says to proceed.
 
@@ -92,18 +92,19 @@ When the user confirms or corrects an item, move it to **Confirmed with user** a
 
 ## Instructions for AI Agents
 
-- Create or update this file when the user **discusses**, **plans**, or **scopes** a feature — before writing implementation code.
-- After updating, set status to `draft` and surface it to the user for review.
-- When planning: include this file (or its path) in the plan so the user can correct misunderstandings early.
-- If the user corrects you, update this file immediately — especially **What this is NOT** and **Relationship to existing work**.
-- If the user's description is vague, ask targeted questions from [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md) before filling this file.
+- **Write this file first** when the user discusses, plans, or scopes a feature or shared component — before writing implementation code.
+- Draft from the conversation (or a short interview using [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md) if vague). Set status to `draft` and **show the user the file** for review.
+- After updating, surface it to the user — the goal is to reveal *your* interpretation so they can correct misunderstandings early.
+- When planning: include this file (or its path) in the plan **before** implementation steps.
+- When the user corrects you (in chat or by editing the file), update this file immediately — especially **What this is NOT** and **Relationship to existing work**.
 - When the user provides reference screenshots, persist under `docs/features/assets/`: copy from disk when a path exists; if only pasted in chat, ask the user to save the file into `assets/` or record similar/different from vision and note re-attach if needed. Link in **Visual references**.
 - Set status to `confirmed` only after the user explicitly approves (or approves a plan that references this file).
 - Read this file before implementation alongside the spec and TODO.
 
 **Instructions for Humans**
 
-- Skim this before approving a plan or agent work session.
-- Fix wrong assumptions in **What this is NOT** — that section prevents the "completely new feature" mistake.
-- Use [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md) if you are stuck — it lists the kinds of details that reduce drift.
-- Add reference screenshots to `docs/features/assets/` and link them in **Visual references** with what to copy vs what to change.
+- **You do not write this file from scratch** — the agent drafts it; you review.
+- Skim the draft before approving a plan or agent work session.
+- Correct wrong assumptions in **What this is NOT** — that section prevents the "completely new feature" mistake. Edit the file directly or tell the agent what to fix; either way, the agent should update the file.
+- Use [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md) if you are stuck describing the idea — answer in chat; the agent translates into this file.
+- Add reference screenshots to `docs/features/assets/` (or ask the agent to) and ensure **Visual references** notes what to copy vs what to change.

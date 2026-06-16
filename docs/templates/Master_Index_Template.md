@@ -1,4 +1,4 @@
-<!-- template-version: 1.3 -->
+<!-- template-version: 1.5 -->
 
 > **Template reference.** Do not put project-specific content in this file. Copy to `docs/Master_Index.md` for initial setup, or diff against it when syncing template improvements into the live index. Never edit this template unless the user asks you to.
 
@@ -6,7 +6,7 @@
 
 **Purpose**: Single entry point for all documentation. Read only the files relevant to the current task.
 
-**Template version**: 1.3 *(update this line in `docs/Master_Index.md` when syncing from `templates/Master_Index_Template.md`)*
+**Template version**: 1.5 *(update this line in `docs/Master_Index.md` when syncing from `templates/Master_Index_Template.md`)*
 
 ## 1. Project Overview
 
@@ -29,7 +29,7 @@
 ### 2.2 Modular Rules
 
 - No file should exceed ~800–1000 lines.
-- Shared concepts → `_shared/` — each substantial shared component gets `ComponentName.md` + `ComponentName-TODO.md` for **foundation work** (see Section 2.4)
+- Shared concepts → `_shared/` — each substantial shared component gets the **same note types as a feature** (spec, Understanding, and focused TODOs — see Sections 2.4 and 5) unless the user **explicitly excepts** specific files for that component
 - Every major feature gets its own `.md`, a `FeatureName-Understanding.md` (agent model of user intent — see Section 5), plus up to three focused TODO files: `FeatureName-TODO.md` (gameplay/systems), `FeatureName-InEditor-TODO.md` (engine editor work), and `FeatureName-Asset-TODO.md` (assets & content)
 - Large docs are split on first sign of bloat (see Section 8)
 
@@ -74,10 +74,15 @@ When a single feature grows large or has many distinct sub-components, you **may
 
 `_shared/` is not only documentation for features to read. Shared pieces often need **foundation work first** — code, APIs, or patterns that multiple features will consume later.
 
-**Each substantial shared component** should have:
+**Each substantial shared component** gets the **full set of note types** — same as a feature — unless the user explicitly says otherwise for that component:
 
 - `_shared/ComponentName.md` — spec / contract / architecture
-- `_shared/ComponentName-TODO.md` — tasks to **build or change the shared foundation**
+- `_shared/ComponentName-Understanding.md` — agent model of user intent for this shared piece (see Section 5)
+- `_shared/ComponentName-TODO.md` — core / systems / foundation tasks
+- `_shared/ComponentName-InEditor-TODO.md` — engine editor work *(when applicable)*
+- `_shared/ComponentName-Asset-TODO.md` — assets & content *(when applicable)*
+
+**Exceptions:** If the user says a shared component does not need a particular note type (e.g. "BlockEditor has no asset work"), omit that file and record the exception in the Document Map (Section 3.1) or in the component spec. Do **not** skip Understanding or TODO by default — only when the user explicitly excepts them.
 
 **Where tasks go** (agents often get this wrong):
 
@@ -95,11 +100,13 @@ Optional: `_shared/_Foundation-TODO.md` for cross-cutting shared work that does 
 
 ### 3.1 Shared / Core Components
 
-| Document | TODO | Description |
-|----------|------|-------------|
-| [_shared/CoreConcept1.md](_shared/CoreConcept1.md) | [_shared/CoreConcept1-TODO.md](_shared/CoreConcept1-TODO.md) | Foundation work for this shared piece |
-| [_shared/CoreConcept2.md](_shared/CoreConcept2.md) | [_shared/CoreConcept2-TODO.md](_shared/CoreConcept2-TODO.md) | ... |
-| [_shared/_Foundation-TODO.md](_shared/_Foundation-TODO.md) | *(this file)* | Optional umbrella for shared work not tied to one spec |
+| Component | Spec | Understanding | Gameplay TODO | InEditor TODO | Asset TODO |
+|-----------|------|---------------|---------------|---------------|------------|
+| Core Concept 1 | [_shared/CoreConcept1.md](_shared/CoreConcept1.md) | [_shared/CoreConcept1-Understanding.md](_shared/CoreConcept1-Understanding.md) | [_shared/CoreConcept1-TODO.md](_shared/CoreConcept1-TODO.md) | [_shared/CoreConcept1-InEditor-TODO.md](_shared/CoreConcept1-InEditor-TODO.md) | [_shared/CoreConcept1-Asset-TODO.md](_shared/CoreConcept1-Asset-TODO.md) |
+| Core Concept 2 | [_shared/CoreConcept2.md](_shared/CoreConcept2.md) | [_shared/CoreConcept2-Understanding.md](_shared/CoreConcept2-Understanding.md) | [_shared/CoreConcept2-TODO.md](_shared/CoreConcept2-TODO.md) | ... | ... |
+| *(optional)* | [_shared/_Foundation-TODO.md](_shared/_Foundation-TODO.md) | — | *(this file)* | — | — |
+
+Omit columns only when the user explicitly excepted that note type for the component. Optional: `_shared/_Foundation-TODO.md` for cross-cutting shared work not tied to one spec.
 
 ### 3.2 Features & Modules
 
@@ -135,15 +142,20 @@ Optional: `_shared/_Foundation-TODO.md` for cross-cutting shared work that does 
 Use when building or changing a reusable component, API, or pattern in `_shared/`.
 
 1. Open `_shared/[ComponentName].md`
-2. Open `_shared/[ComponentName]-TODO.md` (create from `templates/TODO_Template.md` if missing)
-3. Do the work; update **`_shared/[ComponentName]-TODO.md`**
-4. If consumer features are blocked, ensure their TODOs link here — do not copy foundation tasks into feature TODOs
+2. Open `_shared/[ComponentName]-Understanding.md` — **draft or update first** from the conversation when discussing, planning, or scoping; show the user for review (same rules as features — Section 5)
+3. Open the relevant shared TODO file(s) (create from `templates/TODO_Template.md` if missing):
+   - Core / foundation → `_shared/[ComponentName]-TODO.md`
+   - In-Editor work → `_shared/[ComponentName]-InEditor-TODO.md` *(unless user excepted)*
+   - Assets & content → `_shared/[ComponentName]-Asset-TODO.md` *(unless user excepted)*
+4. Do the work (only after Understanding is `confirmed` or the user explicitly waives review)
+5. **Update the shared TODO file(s)** before ending the session
+6. If consumer features are blocked, ensure their TODOs link here — do not copy foundation tasks into feature TODOs
 
 ### Path B — Feature work
 
 1. Read any `_shared/` documents listed as relevant in Section 3.1 (read-only context unless Path A)
 2. Open `features/[FeatureName].md`
-3. Open `features/[FeatureName]-Understanding.md` — create or update when discussing, planning, or scoping
+3. Open `features/[FeatureName]-Understanding.md` — **draft or update first** from the conversation when discussing, planning, or scoping; show the user for review
 4. Open the relevant feature TODO file(s):
    - Core gameplay/systems → `features/[FeatureName]-TODO.md`
    - In-Editor work → `features/[FeatureName]-InEditor-TODO.md` (or engine-specific version)
@@ -155,14 +167,21 @@ If the work is really shared foundation, **stop** — use Path A instead.
 
 **Golden Rule**: If you find yourself scrolling through a long file, stop and split it.
 
-## 5. Feature Understanding
+## 5. Understanding (Features & Shared)
 
-Each feature should have `FeatureName-Understanding.md` — the agent's model of **what the user wants**: scope, behavior, UI intent, and how the feature relates to existing work.
+Each **feature** and each substantial **shared component** should have a `-Understanding.md` file — the agent's model of **what the user wants**: scope, behavior, UI intent, and how the work relates to existing pieces.
+
+- Features: `features/FeatureName-Understanding.md`
+- Shared: `_shared/ComponentName-Understanding.md`
+
+**Who writes it:** The **agent writes first** (status `draft`) from the conversation, design doc, or interview. The **user reviews and corrects** — they do not need to author this file from scratch. The point is to show the user how the agent interpreted the request *before* anyone codes.
+
+**Default:** Agent drafts Understanding for shared components the same way as for features. **Only skip** when the user explicitly excepts it for that component.
 
 **Purpose**:
 
 - Catch misread scope early (e.g. "alternate UI for existing editor" vs "brand-new editor")
-- Give the user a short, readable artifact to correct before code is written
+- Give the user a short, readable artifact to **review and correct** before code is written — not a form for them to fill out
 - Attach to plans and discussions so corrections happen at planning time
 
 **Status**:
@@ -173,11 +192,12 @@ Each feature should have `FeatureName-Understanding.md` — the agent's model of
 | `reviewed` | User skimmed; minor edits may remain |
 | `confirmed` | User approved — OK to implement per this understanding |
 
-**When to create or update**:
+**When to create or update** *(agent responsibility unless user edits directly)*:
 
-- User describes a new feature or change
-- User asks for a plan, spec review, or "how should we build this"
+- User describes a new feature or change → agent drafts or updates Understanding
+- User asks for a plan, spec review, or "how should we build this" → agent drafts Understanding first, then plan
 - Agent discovers a scope assumption that should be explicit (especially **What this is NOT**)
+- User corrects the agent → agent updates Understanding immediately (especially **What this is NOT**)
 
 **When planning**: Include the Understanding file (or path) in the plan output so the user can correct it before implementation starts.
 
@@ -189,14 +209,14 @@ See `templates/Feature_Understanding_Template.md`.
 
 Every feature **must** have at least one companion `-TODO.md` file. Most game features will have three.
 
-Every substantial `_shared/` component **must** have its own `-TODO.md` for foundation work (Section 2.4).
+Every substantial `_shared/` component gets the **same TODO file set as a feature** (Section 2.4) unless the user explicitly excepts specific files.
 
 **File naming**:
 
-- Core gameplay/systems: `FeatureName-TODO.md`
-- In-Editor work: `FeatureName-InEditor-TODO.md` (rename to engine-specific — see Section 7)
-- Assets & content: `FeatureName-Asset-TODO.md`
-- Shared foundation: `_shared/ComponentName-TODO.md`
+- Core gameplay/systems: `FeatureName-TODO.md` or `_shared/ComponentName-TODO.md`
+- In-Editor work: `FeatureName-InEditor-TODO.md` or `_shared/ComponentName-InEditor-TODO.md` (rename to engine-specific — see Section 7)
+- Assets & content: `FeatureName-Asset-TODO.md` or `_shared/ComponentName-Asset-TODO.md`
+- Understanding: `FeatureName-Understanding.md` or `_shared/ComponentName-Understanding.md`
 
 **Shared vs feature — cross-links**:
 
@@ -245,12 +265,12 @@ When a file starts feeling unwieldy:
 3. In the original file, replace the section with a short link:
    > **See [NewFile.md](NewFile.md) for full details.**
 4. Add the new file to the Document Map in `Master_Index.md`.
-5. Create matching files as needed: feature `-Understanding.md` / `-TODO.md`; shared `_shared/Component-TODO.md`
+5. Create matching files as needed: full note set for features and shared components (spec, `-Understanding.md`, `-TODO.md`, and InEditor/Asset TODOs when applicable) unless the user excepted specific types
 6. Update cross-references in other files.
 
 ## 9. Status Tracking (Lean Approach)
 
-**Primary mechanism**: Each feature's `-TODO.md` (and `-InEditor-TODO.md` / `-Asset-TODO.md`) files.
+**Primary mechanism**: Each feature's and shared component's `-TODO.md` (and `-InEditor-TODO.md` / `-Asset-TODO.md`) files.
 
 - High Priority = in progress / planned
 - Completed section = done

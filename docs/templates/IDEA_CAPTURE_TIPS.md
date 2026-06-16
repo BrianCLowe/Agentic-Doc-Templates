@@ -2,7 +2,7 @@
 
 You do not need to be a software developer to use these templates well. Agents guess when details are missing — and guesses drift from what you actually want. The fix is not “learn to code first”; it is **describing the idea in plain language** using the kinds of details below.
 
-Your answers feed [`Feature_Understanding_Template.md`](Feature_Understanding_Template.md) — the file you (and the agent) review **before** building.
+Your answers in chat feed the agent's draft of [`Feature_Understanding_Template.md`](Feature_Understanding_Template.md) — the file **the agent writes first** and **you review** before building. You describe the idea; you do not need to write this file yourself.
 
 ---
 
@@ -58,7 +58,7 @@ If your agent supports **images** (Cursor, ChatGPT, Claude, Grok, etc.), screens
 **What to do:**
 
 1. Capture a **similar** site or app — not necessarily identical, just “in the ballpark.”
-2. Tell the agent (or write in Understanding) **two lists**:
+2. Tell the agent **two lists** (in chat is fine — the agent puts them in Understanding):
    - **Similar:** what you want to borrow (layout, density, where the button lives, …)
    - **Different:** what your idea must not copy or must change
 3. Get the image **into the repo** under `docs/features/assets/` and link it from your feature’s `-Understanding.md` so future sessions can open the same file.
@@ -167,10 +167,10 @@ Clearer does not mean longer — it means **boundaries** and **concrete screens/
 
 ## How this maps to your docs
 
-When you or the agent write `FeatureName-Understanding.md`:
+The **agent** drafts `FeatureName-Understanding.md` (or `_shared/ComponentName-Understanding.md`) from your conversation. You **review and correct** — you do not need to write the file yourself.
 
-| Your thinking | Understanding section |
-|---------------|------------------------|
+| Your thinking (in chat) | Understanding section (agent writes) |
+|-------------------------|--------------------------------------|
 | Problem and purpose | **What this is** |
 | What it is not | **What this is NOT** |
 | Existing app pieces | **Relationship to existing work** |
@@ -180,19 +180,19 @@ When you or the agent write `FeatureName-Understanding.md`:
 
 Prompt the agent:
 
-> Read `IDEA_CAPTURE_TIPS.md` and interview me briefly, then fill `[Feature]-Understanding.md`. Mark unknowns as assumptions.
+> Read `IDEA_CAPTURE_TIPS.md`, interview me briefly if needed, then **draft** `[Feature]-Understanding.md` for my review. Mark unknowns as assumptions.
 
-Or answer the buckets yourself in chat, then:
+If you already answered the buckets in chat:
 
-> Turn my answers into `[Feature]-Understanding.md` using the template.
+> Turn my answers into a **draft** `[Feature]-Understanding.md` using the template — I'll review.
 
 ---
 
 ## “Good enough” is enough
 
-- Rough answers beat silence.
-- “I’m not sure about X” is useful — put it under **Assumptions**.
-- You can confirm Understanding in five minutes and save days of wrong implementation.
+- Rough answers in chat beat silence — the agent turns them into a draft Understanding.
+- “I’m not sure about X” is useful — the agent puts it under **Assumptions** for you to confirm.
+- You can review a draft Understanding in five minutes and save days of wrong implementation.
 
 ---
 

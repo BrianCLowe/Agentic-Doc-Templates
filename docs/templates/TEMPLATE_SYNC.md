@@ -9,7 +9,7 @@
 | `docs/templates/Master_Index_Template.md` | Canonical structure (schema) |
 | `docs/Master_Index.md` | Live project index (instance) |
 | `docs/templates/TODO_Template.md` | Canonical TODO format |
-| Feature `*-Understanding.md` files | Live intent docs — create from template when scoping a feature |
+| Feature `*-Understanding.md` files | Agent-drafted intent docs — agent writes first when scoping; user reviews and corrects |
 | Feature `*-TODO.md` files | Live task lists — update only if template format changed |
 
 Check `<!-- template-version: X.Y -->` at the top of `Master_Index_Template.md` and the **Template version** line in live `Master_Index.md` to see if the project is behind.
@@ -29,7 +29,7 @@ Check `<!-- template-version: X.Y -->` at the top of `Master_Index_Template.md` 
    - Improved agent workflow instructions
    - Renumbered sections (update internal references)
 5. Update the **Template version** line in `docs/Master_Index.md` to match the template.
-6. If `Feature_Understanding_Template.md` is new or changed, add `-Understanding.md` files for active features from the template — do not overwrite existing Understanding content; merge new sections only.
+6. If `Feature_Understanding_Template.md` is new or changed, ensure active features **and shared components** have agent-drafted `-Understanding.md` files — do not overwrite existing content; merge new sections only. Skip only where the user previously excepted Understanding for a specific shared component.
 7. If `TODO_Template.md` changed, update existing feature TODO files only where format differs — do not rewrite task content.
 8. Summarize what changed and ask the user to confirm before large structural edits.
 
