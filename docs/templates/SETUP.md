@@ -36,6 +36,8 @@ docs/
 ├── Master_Index.md
 ├── rule-install-status.yaml     ← created when installing agent rules
 ├── _shared/
+│   └── assets/
+├── decisions/                 ← optional cross-cutting decisions
 ├── features/
 │   └── assets/                  ← reference screenshots (linked from Understanding)
 ├── reference/

@@ -82,6 +82,7 @@ In Cursor and similar IDE agents, the workspace **is** your repo — there is no
 | Location | Use for |
 |----------|---------|
 | `docs/features/assets/FeatureName-short-label.png` | Reference for a specific feature |
+| `docs/_shared/assets/ComponentName-short-label.png` | Reference for a shared component UI |
 | `docs/reference/visuals/` | General inspiration before a feature exists |
 
 **Naming:** `FeatureName-what-it-is.png` (e.g. `RoleEditor-notion-focus-mode.png`).
@@ -176,6 +177,7 @@ The **agent** drafts `FeatureName-Understanding.md` (or `_shared/ComponentName-U
 | Existing app pieces | **Relationship to existing work** |
 | Steps and behavior | **How it should work** |
 | Look, layout, references | **UI / UX intent** + **Visual references** |
+| How you'll know it's done | **Done when** *(agent drafts checkboxes)* |
 | Things the agent guessed | **Assumptions** (you check boxes) |
 
 Prompt the agent:
@@ -202,10 +204,12 @@ When the user describes a feature vaguely:
 
 1. Read this file and [`Feature_Understanding_Template.md`](Feature_Understanding_Template.md).
 2. Ask **short, plain-language questions** from the buckets above — not a twenty-question form. Prioritize: scope (is/is not), UI, happy-path flow, relationship to existing work.
-3. Write or update `-Understanding.md` with status `draft`. List gaps in **Assumptions**.
-4. If the user provides screenshots, persist under `docs/features/assets/` (or `docs/reference/visuals/`): **copy/move from a workspace path** when the file is attached or `@`-mentioned; if only a pasted chat image (vision-only), ask the user to save into `assets/` or document similar/different from what you saw and note that a file copy was not available. Link in **Visual references** — see [Saving chat attachments](#saving-chat-attachments-to-the-repo).
-5. If the user does not know stack or architecture, propose options **after** Understanding sections 1–4 are drafted, with a one-line rationale each.
-6. Do not start implementation until the user confirms Understanding or explicitly waives review.
+3. Write or update `-Understanding.md` with status `draft`. Include **Done when** acceptance checkboxes. List gaps in **Assumptions**.
+4. After user confirms, **graduate** durable content to the spec (`Feature_Spec_Template.md`) — Decisions, architecture, shared Maturity.
+5. If the user provides screenshots, persist under `docs/features/assets/` or `docs/_shared/assets/` (or `docs/reference/visuals/`): **copy/move from a workspace path** when the file is attached or `@`-mentioned; if only a pasted chat image (vision-only), ask the user to save into `assets/` or document similar/different from what you saw and note that a file copy was not available. Link in **Visual references** — see [Saving chat attachments](#saving-chat-attachments-to-the-repo).
+6. If the user does not know stack or architecture, propose options **after** Understanding sections 1–4 are drafted, with a one-line rationale each.
+7. Do not start implementation until the user confirms Understanding or explicitly waives review.
+8. End sessions by updating TODO **Current focus** (Master Index Section 6.1).
 
 When the user **is** experienced, do not over-interview — still fill **What this is NOT** and **Relationship to existing work**; skip obvious questions.
 

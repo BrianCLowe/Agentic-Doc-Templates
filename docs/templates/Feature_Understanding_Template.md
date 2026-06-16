@@ -2,8 +2,9 @@
 
 > Never edit this template unless the user asks you to. Use under `docs/features/` for features or `docs/_shared/` for shared components (adjust Related Spec/TODO paths). Shared components get this file by default unless the user excepted it.
 
-**Status**: draft | reviewed | confirmed  
+**Status**: draft | reviewed | confirmed | superseded  
 **Last Updated**: [YYYY-MM-DD]  
+**Last reconciled with code**: [YYYY-MM-DD or "—"]  
 **Related Spec**: [FeatureName.md](FeatureName.md)  
 **Related TODO**: [FeatureName-TODO.md](FeatureName-TODO.md)
 
@@ -64,7 +65,7 @@ This file captures **what the agent believes the user wants** — scope, behavio
 
 ## Visual references
 
-Store screenshots in `docs/features/assets/` (or `docs/reference/visuals/`). Link here so vision-capable agents can reuse them in later sessions. Always note **similar** vs **different** — a reference is not a spec to copy blindly.
+Store screenshots in `docs/features/assets/`, `docs/_shared/assets/`, or `docs/reference/visuals/`. Link here so vision-capable agents can reuse them in later sessions. Always note **similar** vs **different** — a reference is not a spec to copy blindly.
 
 | File | Similar (borrow) | Different (our idea) |
 |------|------------------|----------------------|
@@ -72,6 +73,18 @@ Store screenshots in `docs/features/assets/` (or `docs/reference/visuals/`). Lin
 | [assets/FeatureName-our-existing-panel.png](assets/FeatureName-our-existing-panel.png) | [match this panel from our app] | [new feature hides sidebar] |
 
 *Example row:* `[assets/RoleEditor-notion-focus.png](assets/RoleEditor-notion-focus.png)` — similar: focus layout; different: reuse our editor toolbar.
+
+---
+
+## Done when *(acceptance — agent drafts, user confirms)*
+
+The user should be able to judge "is this feature/component done?" without reading every TODO.
+
+- [ ] [Observable outcome, e.g. "User can enter focus mode from document list and return with Esc"]
+- [ ] [Another acceptance criterion]
+- [ ] [Edge case that must work, e.g. "Save failure shows toast; text is not lost"]
+
+Move checked items to **Confirmed with user** when verified in a build; update spec **Last reconciled with code** when shipped.
 
 ---
 
@@ -98,7 +111,8 @@ When the user confirms or corrects an item, move it to **Confirmed with user** a
 - When planning: include this file (or its path) in the plan **before** implementation steps.
 - When the user corrects you (in chat or by editing the file), update this file immediately — especially **What this is NOT** and **Relationship to existing work**.
 - When the user provides reference screenshots, persist under `docs/features/assets/`: copy from disk when a path exists; if only pasted in chat, ask the user to save the file into `assets/` or record similar/different from vision and note re-attach if needed. Link in **Visual references**.
-- Set status to `confirmed` only after the user explicitly approves (or approves a plan that references this file).
+- Set status to `confirmed` only after the user explicitly approves (or approves a plan that references this file). Then **graduate** durable content to the spec (Master Index Section 2.5) — Decisions, architecture, maturity (shared).
+- If code or plan diverges from this file, set `superseded` or update **Last reconciled with code** after aligning spec and Understanding — do not leave both stale.
 - Read this file before implementation alongside the spec and TODO.
 
 **Instructions for Humans**

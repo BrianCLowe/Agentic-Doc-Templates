@@ -130,12 +130,14 @@ Tool-specific rule install paths: [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md)
 ## What good output looks like
 
 - **`docs/Master_Index.md`** — entry point + Document Map (not a dump of everything).
-- **`docs/features/FeatureName-Understanding.md`** — **agent's draft** of how it interpreted your request; you skim, correct wrong bits, confirm when right.
-- **`docs/features/FeatureName-TODO.md`** — next actions (feature work).
-- **`docs/_shared/Component.md`** — shared spec / contract
-- **`docs/_shared/Component-Understanding.md`** — same review loop as feature Understanding (agent drafts, you correct)
-- **`docs/_shared/Component-TODO.md`** — foundation work shared by multiple features (not duplicated in feature TODOs)
-- **`docs/_shared/Component-InEditor-TODO.md`** / **`Component-Asset-TODO.md`** — when applicable; omit only if you explicitly except them.
+- **`docs/features/FeatureName-Understanding.md`** — agent's draft of how it interpreted your request; you skim, correct, confirm.
+- **`docs/features/FeatureName.md`** — durable spec after confirm (Decisions, architecture).
+- **`docs/features/FeatureName-TODO.md`** — next actions + **Current focus** for session handoff.
+- **`docs/_shared/Component.md`** — shared spec with **Maturity** (`draft` | `usable` | `stable`)
+- **`docs/_shared/Component-Understanding.md`** — same review loop as feature Understanding
+- **`docs/_shared/Component-TODO.md`** — foundation work (not duplicated in feature TODOs)
+- **`docs/_shared/Component-InEditor-TODO.md`** / **`Component-Asset-TODO.md`** — when applicable; record omissions in Master_Index Section 3.0
+- **`docs/decisions/`** — optional cross-cutting decision files
 - **`docs/templates/`** — unchanged canonical copies for future syncs.
 
 You do not need every file on day one. Start with Master_Index + one feature; grow as ideas arrive — from chat, design docs, or the middle of a dev session.

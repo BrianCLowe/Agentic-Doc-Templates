@@ -38,8 +38,10 @@ See [`docs/templates/SETUP.md`](docs/templates/SETUP.md) for the human guide.
 | File | Purpose |
 |------|---------|
 | [Master_Index_Template.md](docs/templates/Master_Index_Template.md) | Core index that ties everything together |
+| [Feature_Spec_Template.md](docs/templates/Feature_Spec_Template.md) | Durable spec / contract after Understanding is confirmed |
 | [Feature_Understanding_Template.md](docs/templates/Feature_Understanding_Template.md) | Agent drafts its interpretation of your request; you review and correct before coding |
-| [TODO_Template.md](docs/templates/TODO_Template.md) | Focused task lists per feature |
+| [TODO_Template.md](docs/templates/TODO_Template.md) | Focused task lists with **Current focus** session handoff |
+| [Decision_Template.md](docs/templates/Decision_Template.md) | Optional cross-cutting decision records |
 | [BOOTSTRAP.md](docs/templates/BOOTSTRAP.md) | Agent instructions to initialize the system in a new project |
 | [SETUP.md](docs/templates/SETUP.md) | Human instructions for adding templates to a project |
 | [USAGE.md](docs/templates/USAGE.md) | Workflows for turning conversations, ideas, and design docs into structured documentation |
@@ -53,6 +55,8 @@ See [`docs/templates/SETUP.md`](docs/templates/SETUP.md) for the human guide.
 
 - **Modular over monolithic** — Small, focused files instead of one giant spec.
 - **Understanding before implementation** — The agent drafts `-Understanding.md` first so you can see how it interpreted your request; you review and correct, then implementation starts.
+- **Spec after confirm** — Durable architecture and **Decisions** graduate into the spec; Understanding keeps intent and acceptance criteria.
+- **Shared maturity** — `draft` / `usable` / `stable` on shared components so features know when integration is safe.
 - **Visual references matter** — Screenshots and diagrams stay linked for vision models.
 - **Shared components live once** — Common work goes in `_shared/` with the same note types as features (Understanding, TODOs, etc.) unless you explicitly except specific files.
 - **Easy for both humans and agents** — Clear structure that works in chat and in the IDE.
@@ -61,6 +65,7 @@ See [`docs/templates/SETUP.md`](docs/templates/SETUP.md) for the human guide.
 
 - "Create modular docs from our conversation using the templates in `docs/templates/`."
 - "Add this idea to the docs — draft Understanding + TODO from what I said, then I'll review."
+- "Using https://github.com/BrianCLowe/Agentic-Doc-Templates please create modular documentation for the app we've been discussing in this chat" Works in chat interfaces like grok.com
 - "Add shared component [Name] to `_shared/` — full note set (spec, Understanding, TODOs) unless I say otherwise."
 - "Convert this design document into modular docs following Master_Index_Template."
 - "Bootstrap the documentation system in this project."

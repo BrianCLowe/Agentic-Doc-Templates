@@ -8,6 +8,16 @@
 
 ---
 
+## Current focus *(session handoff — update every session)*
+
+**Active task:** [One sentence — what to do next, or "blocked"]  
+**Blocked by:** [Link to TODO item, shared maturity, or "—"]  
+**Last session:** [YYYY-MM-DD — optional tool/note]
+
+*Next agent: read this block first, then High Priority.*
+
+---
+
 ## High Priority / Next Actions
 - [ ] **Task title** — short description of what needs to be done and why it matters
 - [ ] Another high-priority item
@@ -42,13 +52,14 @@ Use the right pattern:
 
 - **If this TODO is in `_shared/`** — tracks foundation work on the shared component (same note-type set as features unless the user excepted files). Consumer features link here; do not duplicate these tasks in feature TODOs.
 - **If this TODO is for a feature or shared component** — read `FeatureName-Understanding.md` or `_shared/ComponentName-Understanding.md` first; do not implement until Understanding is `confirmed` or the user waives review.
-- Add new items as you discover them; end each session by updating this file (`[x]` + date on completed items).
+- Add new items as you discover them; **update Current focus** at session end (`[x]` + date on completed items).
 - Foundation tasks belong in `_shared/Component-TODO.md`, not in a feature TODO — see Master Index Section 2.4.
 - In-Editor feature TODOs: rename to engine-specific version per Master Index Section 7.
 
 **Instructions for Humans**:
-- Shared TODO: what’s left to build the reusable piece.
-- Feature TODO: what’s left for this feature (including dependency links to shared work).
+- **Current focus** is your "where we left off" — skim it when resuming or switching agents.
+- Shared TODO: what's left to build the reusable piece.
+- Feature TODO: what's left for this feature (including dependency links to shared work).
 
 ---
 
