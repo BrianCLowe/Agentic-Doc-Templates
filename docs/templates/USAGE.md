@@ -138,6 +138,7 @@ Tool-specific rule install paths: [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md)
 - **`docs/_shared/Component-TODO.md`** — foundation work (not duplicated in feature TODOs)
 - **`docs/_shared/Component-InEditor-TODO.md`** / **`Component-Asset-TODO.md`** — when applicable; record omissions in Master_Index Section 3.0
 - **`docs/decisions/`** — optional cross-cutting decision files
-- **`docs/templates/`** — unchanged canonical copies for future syncs.
+- **`docs/templates/Modular_Docs_Workflow.md`** — agent procedure (Path A/B); lives in templates, linked from Master_Index §4
+- **`docs/templates/`** — canonical copies for future syncs (index template, workflow, feature templates, …)
 
 You do not need every file on day one. Start with Master_Index + one feature; grow as ideas arrive — from chat, design docs, or the middle of a dev session.

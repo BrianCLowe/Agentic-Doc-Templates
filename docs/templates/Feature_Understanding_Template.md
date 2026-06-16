@@ -111,7 +111,7 @@ When the user confirms or corrects an item, move it to **Confirmed with user** a
 - When planning: include this file (or its path) in the plan **before** implementation steps.
 - When the user corrects you (in chat or by editing the file), update this file immediately — especially **What this is NOT** and **Relationship to existing work**.
 - When the user provides reference screenshots, persist under `docs/features/assets/`: copy from disk when a path exists; if only pasted in chat, ask the user to save the file into `assets/` or record similar/different from vision and note re-attach if needed. Link in **Visual references**.
-- Set status to `confirmed` only after the user explicitly approves (or approves a plan that references this file). Then **graduate** durable content to the spec (Master Index Section 2.5) — Decisions, architecture, maturity (shared).
+- Set status to `confirmed` only after the user explicitly approves (or approves a plan that references this file). Then **graduate** durable content to the spec ([`Modular_Docs_Workflow.md`](Modular_Docs_Workflow.md) §2) — Decisions, architecture, maturity (shared).
 - If code or plan diverges from this file, set `superseded` or update **Last reconciled with code** after aligning spec and Understanding — do not leave both stale.
 - Read this file before implementation alongside the spec and TODO.
 

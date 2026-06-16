@@ -1,6 +1,6 @@
 # Using These Templates With AI Coding Agents
 
-The modular documentation **workflow is tool-agnostic**. The rule content is the same everywhere: read `docs/Master_Index.md`, open the relevant feature TODO, update TODOs after changes.
+The modular documentation **workflow is tool-agnostic**. The rule content is the same everywhere: read `docs/Master_Index.md` (Sections 1–3), follow `docs/templates/Modular_Docs_Workflow.md` for procedure, update TODOs after changes.
 
 What differs is **where each tool expects instructions** and how reliably it follows them. No agent treats project rules like a linter — they are guidance loaded into context, not hard enforcement.
 

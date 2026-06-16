@@ -6,7 +6,8 @@
 
 | File | Role |
 |------|------|
-| `docs/templates/Master_Index_Template.md` | Canonical structure (schema) |
+| `docs/templates/Master_Index_Template.md` | Lean index schema (overview + map — **not** full workflow) |
+| `docs/templates/Modular_Docs_Workflow.md` | Canonical agent procedure — replace from template when workflow version bumps |
 | `docs/Master_Index.md` | Live project index (instance) |
 | `docs/templates/Feature_Spec_Template.md` | Durable spec / contract after Understanding is confirmed |
 | `docs/templates/TODO_Template.md` | Canonical TODO format (+ Current focus handoff) |
@@ -15,37 +16,45 @@
 | Feature `*.md` specs | Graduate from Understanding; add Decisions + Maturity (shared) |
 | Feature `*-TODO.md` files | Live task lists — update only if template format changed |
 
-Check `<!-- template-version: X.Y -->` at the top of `Master_Index_Template.md` and the **Template version** line in live `Master_Index.md` to see if the project is behind.
+Check versions:
+
+- `<!-- template-version: X.Y -->` in `Master_Index_Template.md` → **Template version** in live `Master_Index.md`
+- `<!-- workflow-version: X.Y -->` in `Modular_Docs_Workflow.md` → **Workflow version** in live `Master_Index.md`
 
 ## Sync workflow
 
-1. Read `docs/templates/Master_Index_Template.md` and `docs/Master_Index.md`.
-2. Compare structure: section headings, new/removed sections, workflow rules, naming conventions.
-3. **Preserve** all project-specific content:
-   - Section 1 overview text
+1. Read `docs/templates/Master_Index_Template.md`, `docs/templates/Modular_Docs_Workflow.md`, and `docs/Master_Index.md`.
+2. Compare structure: section headings, Document Map layout, workflow version, naming conventions.
+3. **Preserve** all project-specific content in `Master_Index.md`:
+   - Section 1 overview text and Project Profile
    - Document Map rows and links (Sections 3.0–3.4)
+   - Section 3.0 exception registry rows
    - Custom sections the project added
-   - Any project-specific paths or conventions documented in the live file
-4. **Adopt** from the template:
-   - New or revised sections
-   - Updated modular rules and quick-start order
-   - Improved agent workflow instructions
+4. **Adopt** from `Master_Index_Template.md`:
+   - New or revised index sections (Key Locations, At a Glance, Quick Start pointer)
    - Renumbered sections (update internal references)
-5. Update the **Template version** line in `docs/Master_Index.md` to match the template.
-6. If `Feature_Understanding_Template.md` is new or changed, merge new sections into active `-Understanding.md` files (features and shared) — do not overwrite. Add **Done when** and reconciliation fields if missing.
-7. If `Feature_Spec_Template.md` is new or changed, merge **Decisions**, **Maturity**, and **Last reconciled** sections into live specs where placeholders exist.
-8. If `TODO_Template.md` changed, add **Current focus** blocks to active TODOs if missing — do not rewrite task content.
-9. If Section 3.0 (exceptions registry) is new, migrate any scattered "user excepted" notes into the registry.
-10. Summarize what changed and ask the user to confirm before large structural edits.
+   - **Do not** merge old workflow sections (4–10) from legacy Master_Index — they now live in `Modular_Docs_Workflow.md`
+5. **Adopt** from `Modular_Docs_Workflow.md`:
+   - Replace `docs/templates/Modular_Docs_Workflow.md` in the project when workflow version is behind (whole file from upstream template)
+   - Update agent rule copies if workflow changed materially (see [`RULE_INSTALL.md`](RULE_INSTALL.md))
+6. Update **Template version** and **Workflow version** lines in `docs/Master_Index.md`.
+7. If migrating from pre-1.7 Master_Index: **remove** duplicated workflow sections (old §4 Quick Start through §10 Decisions) from live `Master_Index.md` after confirming content exists in `Modular_Docs_Workflow.md`; replace with lean §4 Quick Start from template.
+8. If `Feature_Understanding_Template.md` is new or changed, merge new sections into active `-Understanding.md` files — do not overwrite.
+9. If `Feature_Spec_Template.md` is new or changed, merge **Decisions**, **Maturity**, and **Last reconciled** into live specs where placeholders exist.
+10. If `TODO_Template.md` changed, add **Current focus** blocks to active TODOs if missing.
+11. If Section 3.0 is new, migrate scattered "user excepted" notes into the registry.
+12. Summarize what changed and ask the user to confirm before large structural edits.
 
 ## Do not
 
 - Blindly replace `Master_Index.md` with the template (you will lose the Document Map and overview).
+- Copy workflow prose into live `Master_Index.md` (keep it in `Modular_Docs_Workflow.md` only).
 - Edit `docs/templates/*` with project-specific content.
-- Remove project-only Document Map entries or custom sections unless the user asks.
+- Remove project-only Document Map entries unless the user asks.
 
 ## Example user prompts
 
 - "Sync our Master_Index to the latest template."
 - "Compare `Master_Index.md` to `Master_Index_Template.md` and apply structural improvements."
 - "We updated the templates from Agentic Doc Templates — migrate our docs."
+- "Sync workflow to latest Modular_Docs_Workflow.md."

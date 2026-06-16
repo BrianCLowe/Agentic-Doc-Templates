@@ -55,7 +55,7 @@ docs/
 
 ## Naming and workflow
 
-See the repo [README](https://github.com/BrianCLowe/Agentic-Doc-Templates#recommended-folder-structure) on GitHub for naming conventions, shared foundation TODOs, Understanding files, and template sync.
+See the repo [README](https://github.com/BrianCLowe/Agentic-Doc-Templates#recommended-folder-structure) on GitHub for naming conventions, `Modular_Docs_Workflow.md`, shared foundation TODOs, Understanding files, and template sync.
 
 ## License
 

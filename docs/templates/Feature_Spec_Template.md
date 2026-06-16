@@ -1,6 +1,6 @@
 # [Feature or Shared Component Name]
 
-> Never edit this template unless the user asks you to. Use under `docs/features/` for features or `docs/_shared/` for shared components (adjust paths). Create from [`Feature_Understanding_Template.md`](Feature_Understanding_Template.md) after Understanding is `confirmed` — see Master Index Section 2.5.
+> Never edit this template unless the user asks you to. Use under `docs/features/` for features or `docs/_shared/` for shared components (adjust paths). Create from [`Feature_Understanding_Template.md`](Feature_Understanding_Template.md) after Understanding is `confirmed` — see [`Modular_Docs_Workflow.md`](Modular_Docs_Workflow.md) §2.
 
 **Last Updated**: [YYYY-MM-DD]  
 **Related Understanding**: [FeatureName-Understanding.md](FeatureName-Understanding.md)  
@@ -69,7 +69,7 @@ Record **why** — especially choices made during Understanding review. Cross-cu
 ## Instructions for AI Agents
 
 - **Do not** treat this as a substitute for `-Understanding.md` during scoping — draft Understanding first; populate or update this spec after `confirmed`.
-- After Understanding is confirmed, **graduate** durable architecture, contracts, and decisions from Understanding into this file (Section 2.5).
+- After Understanding is confirmed, **graduate** durable architecture, contracts, and decisions from Understanding into this file ([`Modular_Docs_Workflow.md`](Modular_Docs_Workflow.md) §2).
 - When implementation diverges from the spec, update this file **or** flag Understanding as needing reconciliation — do not silently drift.
 - **Shared components**: keep **Maturity** accurate (`draft` → foundation incomplete; `usable` → features may integrate; `stable` → breaking changes need explicit discussion).
 - Record non-obvious **Decisions** when the user chooses between options — not every TODO item, only choices with lasting impact.

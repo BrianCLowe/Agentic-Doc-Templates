@@ -55,7 +55,7 @@ docs/
     └── upstream/            ← after Step 1, if applicable
 ```
 
-Ensure `docs/templates/` contains at least: `Master_Index_Template.md`, `Feature_Spec_Template.md`, `Feature_Understanding_Template.md`, `TODO_Template.md`, `Decision_Template.md`, `IDEA_CAPTURE_TIPS.md`, `TEMPLATE_SYNC.md`, `BOOTSTRAP.md`, `SETUP.md`, `RULE_INSTALL.md`, `USING_WITH_AGENTS.md`, rule templates, `rule-install-status.example.yaml`.
+Ensure `docs/templates/` contains at least: `Master_Index_Template.md`, `Modular_Docs_Workflow.md`, `Feature_Spec_Template.md`, `Feature_Understanding_Template.md`, `TODO_Template.md`, `Decision_Template.md`, `IDEA_CAPTURE_TIPS.md`, `TEMPLATE_SYNC.md`, `BOOTSTRAP.md`, `SETUP.md`, `RULE_INSTALL.md`, `USING_WITH_AGENTS.md`, rule templates, `rule-install-status.example.yaml`.
 
 If `docs/USING_WITH_AGENTS.md` exists at `docs/` root (older layout), move it into `docs/templates/` and fix links.
 
@@ -64,7 +64,7 @@ If `docs/USING_WITH_AGENTS.md` exists at `docs/` root (older layout), move it in
 If `docs/Master_Index.md` does not exist:
 
 1. Copy content from `docs/templates/Master_Index_Template.md`.
-2. Replace bracketed placeholders; set **Template version** to match the template.
+2. Replace bracketed placeholders; set **Template version** and **Workflow version** to match the templates.
 3. Add at least placeholder rows in Document Map — do not leave Section 3 empty if user named features.
 
 If `Master_Index.md` already exists → do not overwrite; offer [`TEMPLATE_SYNC.md`](TEMPLATE_SYNC.md) instead.

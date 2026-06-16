@@ -37,7 +37,8 @@ See [`docs/templates/SETUP.md`](docs/templates/SETUP.md) for the human guide.
 
 | File | Purpose |
 |------|---------|
-| [Master_Index_Template.md](docs/templates/Master_Index_Template.md) | Core index that ties everything together |
+| [Master_Index_Template.md](docs/templates/Master_Index_Template.md) | Lean project index — overview, locations, Document Map |
+| [Modular_Docs_Workflow.md](docs/templates/Modular_Docs_Workflow.md) | Full agent procedure (Path A/B, Understanding, TODOs) — synced, not copied into Master_Index |
 | [Feature_Spec_Template.md](docs/templates/Feature_Spec_Template.md) | Durable spec / contract after Understanding is confirmed |
 | [Feature_Understanding_Template.md](docs/templates/Feature_Understanding_Template.md) | Agent drafts its interpretation of your request; you review and correct before coding |
 | [TODO_Template.md](docs/templates/TODO_Template.md) | Focused task lists with **Current focus** session handoff |
@@ -59,7 +60,7 @@ See [`docs/templates/SETUP.md`](docs/templates/SETUP.md) for the human guide.
 - **Shared maturity** — `draft` / `usable` / `stable` on shared components so features know when integration is safe.
 - **Visual references matter** — Screenshots and diagrams stay linked for vision models.
 - **Shared components live once** — Common work goes in `_shared/` with the same note types as features (Understanding, TODOs, etc.) unless you explicitly except specific files.
-- **Easy for both humans and agents** — Clear structure that works in chat and in the IDE.
+- **Index vs workflow split** — `Master_Index.md` is your project map; `Modular_Docs_Workflow.md` is how agents work the system.
 
 ## Common Agent Prompts
 
