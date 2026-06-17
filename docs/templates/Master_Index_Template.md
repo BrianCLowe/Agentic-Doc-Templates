@@ -1,4 +1,4 @@
-<!-- template-version: 1.7 -->
+<!-- template-version: 1.8 -->
 
 > **Template reference.** Do not put project-specific content in this file. Copy to `docs/Master_Index.md` for initial setup, or diff against it when syncing template improvements into the live index. Never edit this template unless the user asks you to.
 >
@@ -8,8 +8,8 @@
 
 **Purpose**: Single entry point for **this project's** documentation — overview, locations, and Document Map. Read only the files relevant to the current task.
 
-**Template version**: 1.7 *(update when syncing from `templates/Master_Index_Template.md`)*  
-**Workflow version**: 1.7 *(must match `templates/Modular_Docs_Workflow.md` — update both on sync)*
+**Template version**: 1.8 *(update when syncing from `templates/Master_Index_Template.md`)*  
+**Workflow version**: 1.8 *(must match `templates/Modular_Docs_Workflow.md` — update both on sync)*
 
 ## 1. Project Overview
 
@@ -39,7 +39,9 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 | `docs/features/assets/` | Screenshots for features (linked from `-Understanding.md`) |
 | `docs/reference/visuals/` | Optional inspiration before a feature exists |
 | `docs/decisions/` | Optional cross-cutting decisions ([`Decision_Template.md`](templates/Decision_Template.md)) |
-| `docs/templates/` | Canonical templates — sync from upstream; includes [`Modular_Docs_Workflow.md`](templates/Modular_Docs_Workflow.md) |
+| `docs/help/` | Human guides — setup, usage, idea capture ([`SETUP.md`](../help/SETUP.md), [`USAGE.md`](../help/USAGE.md), …) |
+| `docs/agent/` | Agent setup — bootstrap, rule install, template sync ([`BOOTSTRAP.md`](../agent/BOOTSTRAP.md), …) |
+| `docs/templates/` | Workflow + scaffolds — sync from upstream; includes [`Modular_Docs_Workflow.md`](templates/Modular_Docs_Workflow.md) |
 | `src/` / `backend/` / `frontend/` | Actual code (reference only) |
 
 ### 2.2 At a Glance *(policy summary — full rules in Workflow)*

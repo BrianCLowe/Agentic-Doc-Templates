@@ -4,7 +4,7 @@ The modular documentation **workflow is tool-agnostic**. The rule content is the
 
 What differs is **where each tool expects instructions** and how reliably it follows them. No agent treats project rules like a linter — they are guidance loaded into context, not hard enforcement.
 
-**Installing the rule:** Agents should follow [`RULE_INSTALL.md`](RULE_INSTALL.md) — ask which tool(s) you use, record the answer in `docs/rule-install-status.yaml` (so each tool is only asked once), never overwrite existing instructions without confirmation, and support multiple tools on the same repo without conflict.
+**Installing the rule:** Agents should follow [`../agent/RULE_INSTALL.md`](../agent/RULE_INSTALL.md) — ask which tool(s) you use, record the answer in `docs/rule-install-status.yaml` (so each tool is only asked once), never overwrite existing instructions without confirmation, and support multiple tools on the same repo without conflict.
 
 ## Quick reference
 
@@ -172,9 +172,9 @@ Treat the rule as **institutional memory for the agent**, not a substitute for g
 
 ## Updating from this repo
 
-When you improve templates here, copy updated files into your project's `docs/templates/`, then run a template sync:
+When you improve templates here, copy updated files into your project's `docs/help/`, `docs/agent/`, and `docs/templates/`, then run a template sync:
 
-1. **Structure** — Follow [`TEMPLATE_SYNC.md`](TEMPLATE_SYNC.md): diff `Master_Index_Template.md` against live `docs/Master_Index.md` and merge improvements without losing project content.
+1. **Structure** — Follow [`../agent/TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md): diff `Master_Index_Template.md` against live `docs/Master_Index.md` and merge improvements without losing project content.
 2. **Rules** — Update `.cursor/rules/`, `.github/instructions/`, `AGENTS.md`, etc.
 3. **TODO format** — If `TODO_Template.md` changed, update feature TODOs only where format differs.
 

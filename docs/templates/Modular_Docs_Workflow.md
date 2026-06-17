@@ -1,10 +1,10 @@
-<!-- workflow-version: 1.7 -->
+<!-- workflow-version: 1.8 -->
 
 > **Agent workflow reference.** Canonical instructions for how to work the modular doc system. Lives in `docs/templates/` — sync from upstream; do **not** copy wholesale into `docs/Master_Index.md`. The live index links here; agent rules summarize and point here for full procedure.
 
 # Modular Documentation — Agent Workflow
 
-**Workflow version**: 1.7 *(sync with `Master_Index.md` **Workflow version** line when updating)*
+**Workflow version**: 1.8 *(sync with `Master_Index.md` **Workflow version** line when updating)*
 
 **Read order:**
 
@@ -143,7 +143,7 @@ See [`Feature_Understanding_Template.md`](Feature_Understanding_Template.md).
 
 **Acceptance criteria:** The agent drafts **Done when** checkboxes in Understanding so the user can confirm completeness without reading every TODO.
 
-**Visual references (screenshots):** Save under `docs/features/assets/`, `docs/_shared/assets/`, or `docs/reference/visuals/`. Link from `-Understanding.md` with **similar vs different** notes. See [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md#visual-references-screenshots).
+**Visual references (screenshots):** Save under `docs/features/assets/`, `docs/_shared/assets/`, or `docs/reference/visuals/`. Link from `-Understanding.md` with **similar vs different** notes. See [`../help/IDEA_CAPTURE_TIPS.md`](../help/IDEA_CAPTURE_TIPS.md#visual-references-screenshots).
 
 ---
 
