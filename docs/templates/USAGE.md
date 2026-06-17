@@ -27,7 +27,7 @@ Same templates, many entry points.
 
 **Example prompts:**
 
-> Using the Agentic Doc Templates structure, create project documentation from our conversation so far. Follow `Master_Index_Template.md`. **Draft** a `-Understanding.md` per feature and shared component (I'll review), plus initial `-TODO.md` files. Put shared concepts in `_shared/` with the full note set unless I except specific files.
+> Using the Templates structure in docs/templates, create project documentation from our conversation so far.
 
 > Read `docs/templates/Master_Index_Template.md` and the other templates in this repo. Generate `docs/Master_Index.md` and feature docs that capture what we discussed about [app name]. Do not invent features we did not talk about.
 
@@ -45,9 +45,9 @@ Same templates, many entry points.
 
 **Example prompts:**
 
-> New idea: [describe briefly]. Add it to the docs — **draft** Understanding + TODO from what I said; I'll review. Update Master_Index Document Map. For new shared components, full note set unless I say otherwise.
+> New idea: [describe briefly]. Add it to the docs.
 
-> We decided the role editor is a separate UI on the existing text editor, not a new editor. Update `RoleEditor-Understanding.md` — fix "What this is NOT" and link to `_shared/BlockEditor.md`. *(User correction → agent revises the file.)*
+> We decided the role editor is a separate UI on the existing text editor, not a new editor. Update `RoleEditor-Understanding.md` — fix "What this is NOT". *(User correction → agent revises the file.)*
 
 **What you get:** Docs stay the living record; the next session (or another tool) reads the same structure instead of re-deriving from chat history.
 
@@ -64,9 +64,9 @@ Same templates, many entry points.
 
 **Example prompts:**
 
-> Read `docs/reference/Original_Design.md`. Convert it into modular documentation per `docs/templates/Master_Index_Template.md`. Preserve detail by splitting into feature files; do not leave one huge file. Add Understanding + TODO per feature **and per shared component** (full note set unless I except specific types). Put reusable architecture in `_shared/`.
+> Read `docs/reference/Original_Design.md`. Convert it into modular documentation per `docs/templates/bootstrap.md`.
 
-> Turn this design doc into modular docs. Keep the original in `reference/`; link to it from Master_Index Section 3.4.
+> Turn this design doc into modular docs. Keep the original in `reference/`.
 
 **What you get:** Navigable docs sized for agents, with the legacy doc kept for traceability.
 
@@ -94,7 +94,7 @@ See [`SETUP.md`](SETUP.md) for copy-only vs whole-repo details.
 
 **Example prompt:**
 
-> Sync our `docs/Master_Index.md` to the latest `Master_Index_Template.md` using TEMPLATE_SYNC.md. Preserve our Document Map and overview.
+> The modular doc templates have been updated, match the current documentation to the updates.
 
 ---
 

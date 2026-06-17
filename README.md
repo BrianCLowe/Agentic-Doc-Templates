@@ -13,23 +13,24 @@
 
 ## Why these templates exist
 
-AI coding agents are powerful but can drift from your original intent over long sessions. These templates give agents a consistent structure: the **agent writes** Understanding and TODO files from your conversation; **you review and correct** them before implementation — you do not need to author those files yourself.
+AI coding agents are powerful but can drift from your original intent over long sessions. These templates give agents a consistent structure: the **agent writes** Understanding and TODO files from your conversation; **you review and correct** them before implementation.
 
-The goal: lightweight documentation that stays in sync with the code and is easy for both people and vision-capable agents to use.
+The goal: lightweight documentation that stays in sync with the code and is easy for both people and vision-capable agents to use. No complex instructions needed just point your agent at the templates directory and it will understand how to use them.
 
 ## Quick Start
 
 ### Option 1: Use as Template (Recommended)
 1. Click **"Use this template"** (green button at the top)
 2. Create a new repository in your account
-3. Copy or move `docs/templates/` into your project's `docs/` folder
+3. Discuss your app idea with your agent or drop in your current docs and ask it to turn it into modular documentation with an appropriate .gitignore
+4. Start building.
 
 ### Option 2: Copy into existing project
 Copy the `docs/templates/` folder into your project as `your-project/docs/templates/`.
 
 Then run the bootstrap with your agent:
 
-> "Bootstrap the modular documentation system using the templates in `docs/templates/BOOTSTRAP.md`"
+> "Bootstrap the modular documentation system using the templates in `docs/templates/BOOTSTRAP.md` with the current code and documentation"
 
 See [`docs/templates/SETUP.md`](docs/templates/SETUP.md) for the human guide.
 
