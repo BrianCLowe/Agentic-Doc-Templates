@@ -68,8 +68,8 @@ See [`docs/templates/SETUP.md`](docs/templates/SETUP.md) for the human guide.
 - "Create modular docs from our conversation using the templates in `docs/templates/`."
 - "Add this idea to the docs — draft Understanding + TODO from what I said, then I'll review."
 - "Using https://github.com/BrianCLowe/Agentic-Doc-Templates please create modular documentation for the app we've been discussing in this chat" Works in chat interfaces like grok.com
-- "Add shared component [Name] to `_shared/` — full note set (spec, Understanding, TODOs) unless I say otherwise."
-- "Convert this design document into modular docs following Master_Index_Template."
+- "Add shared component [Name] as we discussed to the documentation.
+- "Convert this design document into modular docs (without the rule installed reference docs/templates)"
 - "Bootstrap the documentation system in this project."
 
 Full workflows and more example prompts are in [`docs/templates/USAGE.md`](docs/templates/USAGE.md).
