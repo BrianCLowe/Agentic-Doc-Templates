@@ -1,15 +1,44 @@
-<!-- workflow-version: 1.7 -->
+<!-- workflow-version: 1.9 -->
 
 > **Agent workflow reference.** Canonical instructions for how to work the modular doc system. Lives in `docs/templates/` — sync from upstream; do **not** copy wholesale into `docs/Master_Index.md`. The live index links here; agent rules summarize and point here for full procedure.
 
 # Modular Documentation — Agent Workflow
 
-**Workflow version**: 1.7 *(sync with `Master_Index.md` **Workflow version** line when updating)*
+**Workflow version**: 1.9 *(sync with `Master_Index.md` **Workflow version** line when updating)*
 
 **Read order:**
 
 1. [`Master_Index.md`](../Master_Index.md) — project context + Document Map (Sections 1–3)
 2. This file — how to work Path A / Path B and manage Understanding, specs, TODOs
+
+---
+
+## 0. Naming & file layout *(read before creating files)*
+
+**Layout:** **Flat sibling files** in `docs/features/` and `docs/_shared/` — one **file set** per feature or shared component. Match the **Document Map** paths in `Master_Index.md` §3.
+
+| Kind | Create this path |
+|------|------------------|
+| Feature spec | `docs/features/FeatureName.md` |
+| Feature Understanding | `docs/features/FeatureName-Understanding.md` |
+| Feature TODO | `docs/features/FeatureName-TODO.md` |
+| Shared spec | `docs/_shared/ComponentName.md` |
+| Shared Understanding | `docs/_shared/ComponentName-Understanding.md` |
+| Shared TODO | `docs/_shared/ComponentName-TODO.md` |
+| Sub-index *(large feature only)* | `docs/features/FeatureName-Index.md` |
+| Screenshots | `docs/features/assets/…` or `docs/_shared/assets/…` |
+
+**Use the same name stem** across the set (`MainWorkspace`, `BlockEditor`, …). Copy spelling from the Document Map when adding to an existing project.
+
+**Case:** Pick one convention per project (PascalCase or kebab-case) in Project Profile (Master Index §1.1) and stay consistent.
+
+**When adding a new feature or shared component:**
+
+1. Add a row to Master Index §3.1 or §3.2 with the exact paths.
+2. Create those three (or more) **flat files** at those paths — from [`Feature_Spec_Template.md`](Feature_Spec_Template.md), [`Feature_Understanding_Template.md`](Feature_Understanding_Template.md), [`TODO_Template.md`](TODO_Template.md).
+3. All files for one feature live **directly** in `features/` (or `_shared/`), not in a subfolder named after the feature.
+
+**Chat UI (no repo write access):** use [`chat-ui/AGENT.md`](chat-ui/AGENT.md) — shorter instructions and required save-as output format.
 
 ---
 

@@ -27,6 +27,8 @@ Also copy [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md) — it lives inside `do
 
 **Day-to-day use** (chat → docs, ideas mid-dev, converting design docs): see **[`USAGE.md`](USAGE.md)**.
 
+**Brainstorming in Grok/ChatGPT before you have a repo?** Attach only [`chat-ui/AGENT.md`](chat-ui/AGENT.md) — see [`chat-ui/README.md`](chat-ui/README.md). Copy full templates when you create the project.
+
 **Describing ideas** (UI, flows, scope — especially if you are new to software): see **[`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md)**.
 
 ## Folder layout in your project
@@ -55,7 +57,7 @@ docs/
 
 ## Naming and workflow
 
-See the repo [README](https://github.com/BrianCLowe/Agentic-Doc-Templates#recommended-folder-structure) on GitHub for naming conventions, `Modular_Docs_Workflow.md`, shared foundation TODOs, Understanding files, and template sync.
+See [Recommended folder structure](#recommended-folder-structure) above and [`Modular_Docs_Workflow.md` §0](Modular_Docs_Workflow.md#0-naming--file-layout-read-before-creating-files) for file layout, Understanding workflow, shared foundation TODOs, and template sync.
 
 ## License
 

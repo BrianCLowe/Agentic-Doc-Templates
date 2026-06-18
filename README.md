@@ -51,7 +51,8 @@ See [`docs/templates/SETUP.md`](docs/templates/SETUP.md) for the human guide.
 | [TEMPLATE_SYNC.md](docs/templates/TEMPLATE_SYNC.md) | Keep your live docs updated when these templates improve |
 | [RULE_INSTALL.md](docs/templates/RULE_INSTALL.md) | Install agent rules for your specific tool |
 | [USING_WITH_AGENTS.md](docs/templates/USING_WITH_AGENTS.md) | Guidance for Claude Code, Cursor, Copilot, etc. |
-| `.mdc` / `.instructions.md` files | Ready-to-drop agent rule files |
+| [chat-ui/](docs/templates/chat-ui/) | **Short instructions for Grok/ChatGPT** — no repo workspace; output files to download |
+| `.mdc` / `.instructions.md` files | Ready-to-drop agent rule files (IDE / repo) |
 
 ## Core Philosophy
 
@@ -63,12 +64,34 @@ See [`docs/templates/SETUP.md`](docs/templates/SETUP.md) for the human guide.
 - **Shared components live once** — Common work goes in `_shared/` with the same note types as features (Understanding, TODOs, etc.) unless you explicitly except specific files.
 - **Index vs workflow split** — `Master_Index.md` is your project map; `Modular_Docs_Workflow.md` is how agents work the system.
 
+## Recommended folder structure
+
+Flat **sibling files** per feature in `docs/features/` and `docs/_shared/`:
+
+```
+docs/
+├── Master_Index.md
+├── _shared/
+│   ├── BlockEditor.md
+│   ├── BlockEditor-Understanding.md
+│   └── BlockEditor-TODO.md
+├── features/
+│   ├── MainWorkspace.md
+│   ├── MainWorkspace-Understanding.md
+│   └── MainWorkspace-TODO.md
+└── templates/
+    ├── Modular_Docs_Workflow.md   ← IDE agents (sync, do not copy into Master_Index)
+    └── chat-ui/AGENT.md           ← Grok / ChatGPT (attach this only)
+```
+
+Full path table: [`Modular_Docs_Workflow.md` §0](docs/templates/Modular_Docs_Workflow.md#0-naming--file-layout-read-before-creating-files). **Chat without a repo:** [`chat-ui/README.md`](docs/templates/chat-ui/README.md).
+
 ## Common Agent Prompts
 
 - "Create modular docs from our conversation using the templates in `docs/templates/`."
 - "Add this idea to the docs — draft Understanding + TODO from what I said, then I'll review."
-- "Using https://github.com/BrianCLowe/Agentic-Doc-Templates please create modular documentation for the app we've been discussing in this chat" Works in chat interfaces like grok.com
-- "Add shared component [Name] as we discussed to the documentation.
+- "Using https://github.com/BrianCLowe/Agentic-Doc-Templates follow chat-ui/AGENT.md — create modular docs from our conversation with save-as paths for each file."
+- "Add shared component [Name] as we discussed to the documentation."
 - "Convert this design document into modular docs (without the rule installed reference docs/templates)"
 - "Bootstrap the documentation system in this project."
 

@@ -8,6 +8,7 @@
 |------|------|
 | `docs/templates/Master_Index_Template.md` | Lean index schema (overview + map — **not** full workflow) |
 | `docs/templates/Modular_Docs_Workflow.md` | Canonical agent procedure — replace from template when workflow version bumps |
+| `docs/templates/chat-ui/AGENT.md` | Chat-only instructions (Grok.com, etc.) — replace when chat pack version bumps |
 | `docs/Master_Index.md` | Live project index (instance) |
 | `docs/templates/Feature_Spec_Template.md` | Durable spec / contract after Understanding is confirmed |
 | `docs/templates/TODO_Template.md` | Canonical TODO format (+ Current focus handoff) |
@@ -36,7 +37,8 @@ Check versions:
    - **Do not** merge old workflow sections (4–10) from legacy Master_Index — they now live in `Modular_Docs_Workflow.md`
 5. **Adopt** from `Modular_Docs_Workflow.md`:
    - Replace `docs/templates/Modular_Docs_Workflow.md` in the project when workflow version is behind (whole file from upstream template)
-   - Update agent rule copies if workflow changed materially (see [`RULE_INSTALL.md`](RULE_INSTALL.md))
+   - Replace `docs/templates/chat-ui/AGENT.md` when the chat pack version is behind (whole file from upstream)
+   - Update agent rule copies if workflow changed materially (especially **§0 Naming** — see [`RULE_INSTALL.md`](RULE_INSTALL.md))
 6. Update **Template version** and **Workflow version** lines in `docs/Master_Index.md`.
 7. If migrating from pre-1.7 Master_Index: **remove** duplicated workflow sections (old §4 Quick Start through §10 Decisions) from live `Master_Index.md` after confirming content exists in `Modular_Docs_Workflow.md`; replace with lean §4 Quick Start from template.
 8. If `Feature_Understanding_Template.md` is new or changed, merge new sections into active `-Understanding.md` files — do not overwrite.

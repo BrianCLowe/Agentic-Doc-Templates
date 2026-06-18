@@ -1,4 +1,4 @@
-<!-- template-version: 1.7 -->
+<!-- template-version: 1.9 -->
 
 > **Template reference.** Do not put project-specific content in this file. Copy to `docs/Master_Index.md` for initial setup, or diff against it when syncing template improvements into the live index. Never edit this template unless the user asks you to.
 >
@@ -8,8 +8,8 @@
 
 **Purpose**: Single entry point for **this project's** documentation — overview, locations, and Document Map. Read only the files relevant to the current task.
 
-**Template version**: 1.7 *(update when syncing from `templates/Master_Index_Template.md`)*  
-**Workflow version**: 1.7 *(must match `templates/Modular_Docs_Workflow.md` — update both on sync)*
+**Template version**: 1.9 *(update when syncing from `templates/Master_Index_Template.md`)*  
+**Workflow version**: 1.9 *(must match `templates/Modular_Docs_Workflow.md` — update both on sync)*
 
 ## 1. Project Overview
 
@@ -44,6 +44,7 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 
 ### 2.2 At a Glance *(policy summary — full rules in Workflow)*
 
+- **File layout:** flat sibling files — `features/FeatureName.md`, `FeatureName-Understanding.md`, `FeatureName-TODO.md` (same for `_shared/`) — see [Workflow §0](templates/Modular_Docs_Workflow.md#0-naming--file-layout-read-before-creating-files).
 - No file should exceed ~800–1000 lines; split when bloated ([Workflow §8](templates/Modular_Docs_Workflow.md#8-how-to-split-a-large-document)).
 - **Shared** components get the **same note types as features** unless excepted — record omissions in **§3.0** ([Workflow §1](templates/Modular_Docs_Workflow.md#1-shared-components--foundation-vs-consumption)).
 - **Understanding**: agent drafts first; user reviews before build ([Workflow §4](templates/Modular_Docs_Workflow.md#4-understanding-features--shared)).

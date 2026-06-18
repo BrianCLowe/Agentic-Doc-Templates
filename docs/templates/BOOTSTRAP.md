@@ -55,7 +55,7 @@ docs/
     └── upstream/            ← after Step 1, if applicable
 ```
 
-Ensure `docs/templates/` contains at least: `Master_Index_Template.md`, `Modular_Docs_Workflow.md`, `Feature_Spec_Template.md`, `Feature_Understanding_Template.md`, `TODO_Template.md`, `Decision_Template.md`, `IDEA_CAPTURE_TIPS.md`, `TEMPLATE_SYNC.md`, `BOOTSTRAP.md`, `SETUP.md`, `RULE_INSTALL.md`, `USING_WITH_AGENTS.md`, rule templates, `rule-install-status.example.yaml`.
+Ensure `docs/templates/` contains at least: `Master_Index_Template.md`, `Modular_Docs_Workflow.md`, `chat-ui/AGENT.md`, `Feature_Spec_Template.md`, `Feature_Understanding_Template.md`, `TODO_Template.md`, `Decision_Template.md`, `IDEA_CAPTURE_TIPS.md`, `TEMPLATE_SYNC.md`, `BOOTSTRAP.md`, `SETUP.md`, `RULE_INSTALL.md`, `USING_WITH_AGENTS.md`, rule templates, `rule-install-status.example.yaml`.
 
 If `docs/USING_WITH_AGENTS.md` exists at `docs/` root (older layout), move it into `docs/templates/` and fix links.
 

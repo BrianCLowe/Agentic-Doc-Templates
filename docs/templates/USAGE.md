@@ -18,18 +18,26 @@ Same templates, many entry points.
 
 ## Pattern 1 — Long chat → documentation
 
-**When:** You have been brainstorming in Grok, Claude, Cursor, or similar — app ideas, features, architecture — and the conversation is the source of truth.
+**When:** You have been brainstorming in **Grok.com**, ChatGPT, Claude web, or similar — no repo workspace, or you want files to download first.
 
 **What you do:**
 
-1. Make sure the agent can see the templates — upload them, copy into the project, or **connect the repo** (e.g. Grok connectors pointing at [Agentic-Doc-Templates](https://github.com/BrianCLowe/Agentic-Doc-Templates) or your project’s `docs/templates/`).
-2. Ask the agent to **turn the conversation into modular docs** that follow the templates.
+1. Attach **`docs/templates/chat-ui/AGENT.md`** only (see [`chat-ui/README.md`](chat-ui/README.md)). Optional: `Master_Index_Template.md`, `Feature_Understanding_Template.md`.
+2. Ask the agent to output each file with a **Save as:** path — see AGENT.md format.
 
 **Example prompts:**
 
-> Using the Templates structure in docs/templates, create project documentation from our conversation so far.
+> Follow `AGENT.md`. Turn our conversation into modular docs for [app name]. Each file must start with **Save as:** `docs/...` so I can download them.
 
-> Read `docs/templates/Master_Index_Template.md` and the other templates in this repo. Generate `docs/Master_Index.md` and feature docs that capture what we discussed about [app name]. Do not invent features we did not talk about.
+> Read `docs/templates/chat-ui/AGENT.md` from Agentic Doc Templates. Draft `-Understanding.md` files first; I'll review before specs and TODOs.
+
+**When you have a repo connector** (Grok → GitHub, Cursor, etc.): use full [`Modular_Docs_Workflow.md`](Modular_Docs_Workflow.md) or install the agent rule — see [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md).
+
+**Example prompts (repo / IDE):**
+
+> Using the templates in `docs/templates/`, create project documentation from our conversation so far.
+
+> Read `docs/templates/Master_Index_Template.md`. Generate `docs/Master_Index.md` and feature docs for [app name]. Do not invent features we did not talk about.
 
 **What you get:** `Master_Index.md`, feature specs, **agent-drafted** Understanding files (scope / UI / what it is *not*) for you to review, TODOs, and `_shared/` entries with the **same note types as features** unless you except specific files.
 

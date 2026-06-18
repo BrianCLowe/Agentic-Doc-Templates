@@ -15,6 +15,7 @@ What differs is **where each tool expects instructions** and how reliably it fol
 | [Claude Code](https://code.claude.com) | `CLAUDE.md` or `.claude/rules/` | Copy rule body into a new `.md` file |
 | [Continue](https://continue.dev) | `.continue/rules/` | Copy rule body; use Cursor-style frontmatter |
 | [Cline](https://cline.bot) | `.clinerules/` or `.cline/rules/` | Copy rule body into a new `.md` file |
+| [Grok.com / ChatGPT / Claude web](chat-ui/README.md) | Attach [`chat-ui/AGENT.md`](chat-ui/AGENT.md) only | Short chat-only instructions — save-as output |
 | [Grok Build](https://x.ai/news/grok-build-cli) | `AGENTS.md` (also reads `CLAUDE.md`) | Copy rule body into `AGENTS.md` |
 | [OpenAI Codex](https://developers.openai.com/codex) | `AGENTS.md` | Copy rule body into `AGENTS.md` |
 | Cross-tool (recommended) | Root `AGENTS.md` | Copy rule body — see below |
@@ -114,6 +115,27 @@ paths:
 Rules without frontmatter are always active. Cline also reads root `AGENTS.md` for cross-tool compatibility.
 
 Docs: [Cline rules](https://docs.cline.bot/customization/cline-rules)
+
+---
+
+## Grok.com / chat UI (no workspace)
+
+When brainstorming in **Grok.com**, ChatGPT, Claude web, or similar — **before you have a repo** or when the agent cannot write files — do **not** attach the whole `docs/templates/` folder. Too many files dilute focus; use the short chat pack instead.
+
+**Use instead:**
+
+| Priority | File |
+|----------|------|
+| **Required** | [`chat-ui/AGENT.md`](chat-ui/AGENT.md) — flat paths, file set table, save-as output format |
+| Optional | `Master_Index_Template.md`, `Feature_Understanding_Template.md` |
+
+Human guide: [`chat-ui/README.md`](chat-ui/README.md). Workflows: [`USAGE.md`](USAGE.md) Pattern 1.
+
+**Example prompt:**
+
+> Follow `AGENT.md`. Turn our conversation into modular docs for [app name]. Each file must start with **Save as:** `docs/...` so I can download them. Draft `-Understanding.md` first.
+
+After you paste files into your project, copy full `docs/templates/` and use IDE rules or Grok Build below for ongoing work.
 
 ---
 

@@ -12,7 +12,7 @@ This project uses a lean modular documentation system. `docs/Master_Index.md` is
 
 **Always follow this order when starting work:**
 1. Read `docs/Master_Index.md` first (Sections 1–3).
-2. Follow **`docs/templates/Modular_Docs_Workflow.md`** — Path A for `_shared/` foundation work, Path B for feature work (Workflow §3).
+2. Follow **`docs/templates/Modular_Docs_Workflow.md`** — read **§0 Naming** before creating files; then Path A or Path B (§3).
 3. Open the relevant `-Understanding.md` when discussing, planning, or implementing a **feature or shared component**. **If missing, draft it first** (status `draft`) and show the user for review — shared components get Understanding by default (Workflow §1, §4).
 4. Open the correct TODO before making changes — read **Current focus** first (Workflow §5.1):
    - Shared foundation → `_shared/ComponentName-TODO.md` (and InEditor/Asset TODOs as needed, unless recorded in Master Index §3.0)
@@ -20,6 +20,7 @@ This project uses a lean modular documentation system. `docs/Master_Index.md` is
 5. Before integrating a **shared** piece, check its **Maturity** on the spec or Document Map (`draft` | `usable` | `stable`).
 
 **Shared foundation (critical):**
+- **File layout:** create only paths from Workflow **§0** / Document Map — flat files in `features/` and `_shared/`.
 - Shared components get the **same note types as features** unless the user explicitly excepted specific files — record exceptions in Master Index **§3.0** (Workflow §1).
 - Tasks that **build or refactor** a shared component go in `_shared/ComponentName-TODO.md` (and related shared TODOs) — **not** in a consumer feature's TODO.
 - Feature TODOs only **link** to shared TODOs when blocked or integrating (dependency note), they do not duplicate foundation tasks.
