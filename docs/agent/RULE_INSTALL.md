@@ -89,7 +89,7 @@ Copy from `docs/templates/`. Use the **same rule body** everywhere; only format 
 | `cline` | Rule body | `.clinerules/modular-documentation.md` or `.cline/rules/modular-documentation.md` |
 | `agents-md` | Rule body | Section in root `AGENTS.md` titled `## Documentation workflow` |
 
-Full tool notes: [Using With AI Agents](../USING_WITH_AGENTS.md).
+Full tool notes: [Using With AI Agents](../help/USING_WITH_AGENTS.md).
 
 ## Multi-tool setups (no conflict)
 
@@ -128,4 +128,4 @@ A user who switches tools later may need an install for a **different** tool key
 - Status file example: [`rule-install-status.example.yaml`](rule-install-status.example.yaml)
 - Doc structure bootstrap: [`BOOTSTRAP.md`](BOOTSTRAP.md)
 - Updating live docs from templates: [`TEMPLATE_SYNC.md`](TEMPLATE_SYNC.md)
-- Tool-specific details: [Using With AI Agents](../USING_WITH_AGENTS.md)
+- Tool-specific details: [Using With AI Agents](../help/USING_WITH_AGENTS.md)

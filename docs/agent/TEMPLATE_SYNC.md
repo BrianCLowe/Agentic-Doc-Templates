@@ -13,6 +13,7 @@
 | `docs/templates/Feature_Spec_Template.md` | Durable spec / contract after Understanding is confirmed |
 | `docs/templates/TODO_Template.md` | Canonical TODO format (+ Current focus handoff) |
 | `docs/templates/Decision_Template.md` | Optional cross-cutting decisions in `docs/decisions/` |
+| `docs/help/`, `docs/agent/` | Human guides and agent setup docs — refresh from upstream when those folders change |
 | Feature `*-Understanding.md` files | Agent-drafted intent — agent writes first; user reviews |
 | Feature `*.md` specs | Graduate from Understanding; add Decisions + Maturity (shared) |
 | Feature `*-TODO.md` files | Live task lists — update only if template format changed |
@@ -41,11 +42,12 @@ Check versions:
    - Update agent rule copies if workflow changed materially (especially **§0 Naming** — see [`RULE_INSTALL.md`](RULE_INSTALL.md))
 6. Update **Template version** and **Workflow version** lines in `docs/Master_Index.md`.
 7. If migrating from pre-1.7 Master_Index: **remove** duplicated workflow sections (old §4 Quick Start through §10 Decisions) from live `Master_Index.md` after confirming content exists in `Modular_Docs_Workflow.md`; replace with lean §4 Quick Start from template.
-8. If `Feature_Understanding_Template.md` is new or changed, merge new sections into active `-Understanding.md` files — do not overwrite.
-9. If `Feature_Spec_Template.md` is new or changed, merge **Decisions**, **Maturity**, and **Last reconciled** into live specs where placeholders exist.
-10. If `TODO_Template.md` changed, add **Current focus** blocks to active TODOs if missing.
-11. If Section 3.0 is new, migrate scattered "user excepted" notes into the registry.
-12. Summarize what changed and ask the user to confirm before large structural edits.
+8. If migrating from pre-1.8 flat `docs/templates/` pack: run layout migration per [`BOOTSTRAP.md`](BOOTSTRAP.md) Step 0b (`help/`, `agent/`, lean `templates/`); refresh `docs/help/` and `docs/agent/` from upstream.
+9. If `Feature_Understanding_Template.md` is new or changed, merge new sections into active `-Understanding.md` files — do not overwrite.
+10. If `Feature_Spec_Template.md` is new or changed, merge **Decisions**, **Maturity**, and **Last reconciled** into live specs where placeholders exist.
+11. If `TODO_Template.md` changed, add **Current focus** blocks to active TODOs if missing.
+12. If Section 3.0 is new, migrate scattered "user excepted" notes into the registry.
+13. Summarize what changed and ask the user to confirm before large structural edits.
 
 ## Do not
 

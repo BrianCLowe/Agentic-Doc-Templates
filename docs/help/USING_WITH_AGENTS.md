@@ -4,7 +4,7 @@ The modular documentation **workflow is tool-agnostic**. The rule content is the
 
 What differs is **where each tool expects instructions** and how reliably it follows them. No agent treats project rules like a linter — they are guidance loaded into context, not hard enforcement.
 
-**Installing the rule:** Agents should follow [`RULE_INSTALL.md`](RULE_INSTALL.md) — ask which tool(s) you use, record the answer in `docs/rule-install-status.yaml` (so each tool is only asked once), never overwrite existing instructions without confirmation, and support multiple tools on the same repo without conflict.
+**Installing the rule:** Agents should follow [`../agent/RULE_INSTALL.md`](../agent/RULE_INSTALL.md) — ask which tool(s) you use, record the answer in `docs/rule-install-status.yaml` (so each tool is only asked once), never overwrite existing instructions without confirmation, and support multiple tools on the same repo without conflict.
 
 ## Quick reference
 
@@ -15,7 +15,7 @@ What differs is **where each tool expects instructions** and how reliably it fol
 | [Claude Code](https://code.claude.com) | `CLAUDE.md` or `.claude/rules/` | Copy rule body into a new `.md` file |
 | [Continue](https://continue.dev) | `.continue/rules/` | Copy rule body; use Cursor-style frontmatter |
 | [Cline](https://cline.bot) | `.clinerules/` or `.cline/rules/` | Copy rule body into a new `.md` file |
-| [Grok.com / ChatGPT / Claude web](chat-ui/README.md) | Attach [`chat-ui/AGENT.md`](chat-ui/AGENT.md) only | Short chat-only instructions — save-as output |
+| [Grok.com / ChatGPT / Claude web](../templates/chat-ui/README.md) | Attach [`../templates/chat-ui/AGENT.md`](../templates/chat-ui/AGENT.md) only | Short chat-only instructions — save-as output |
 | [Grok Build](https://x.ai/news/grok-build-cli) | `AGENTS.md` (also reads `CLAUDE.md`) | Copy rule body into `AGENTS.md` |
 | [OpenAI Codex](https://developers.openai.com/codex) | `AGENTS.md` | Copy rule body into `AGENTS.md` |
 | Cross-tool (recommended) | Root `AGENTS.md` | Copy rule body — see below |
@@ -126,16 +126,16 @@ When brainstorming in **Grok.com**, ChatGPT, Claude web, or similar — **before
 
 | Priority | File |
 |----------|------|
-| **Required** | [`chat-ui/AGENT.md`](chat-ui/AGENT.md) — flat paths, file set table, save-as output format |
-| Optional | `Master_Index_Template.md`, `Feature_Understanding_Template.md` |
+| **Required** | [`../templates/chat-ui/AGENT.md`](../templates/chat-ui/AGENT.md) — flat paths, file set table, save-as output format |
+| Optional | `../templates/Master_Index_Template.md`, `../templates/Feature_Understanding_Template.md` |
 
-Human guide: [`chat-ui/README.md`](chat-ui/README.md). Workflows: [`USAGE.md`](USAGE.md) Pattern 1.
+Human guide: [`../templates/chat-ui/README.md`](../templates/chat-ui/README.md). Workflows: [`USAGE.md`](USAGE.md) Pattern 1.
 
 **Example prompt:**
 
 > Follow `AGENT.md`. Turn our conversation into modular docs for [app name]. Each file must start with **Save as:** `docs/...` so I can download them. Draft `-Understanding.md` first.
 
-After you paste files into your project, copy full `docs/templates/` and use IDE rules or Grok Build below for ongoing work.
+After you paste files into your project, copy `docs/help/`, `docs/agent/`, and `docs/templates/` and use IDE rules or Grok Build below for ongoing work.
 
 ---
 
@@ -194,9 +194,9 @@ Treat the rule as **institutional memory for the agent**, not a substitute for g
 
 ## Updating from this repo
 
-When you improve templates here, copy updated files into your project's `docs/templates/`, then run a template sync:
+When you improve templates here, copy updated files into your project's `docs/help/`, `docs/agent/`, and `docs/templates/`, then run a template sync:
 
-1. **Structure** — Follow [`TEMPLATE_SYNC.md`](TEMPLATE_SYNC.md): diff `Master_Index_Template.md` against live `docs/Master_Index.md` and merge improvements without losing project content.
+1. **Structure** — Follow [`../agent/TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md): diff `Master_Index_Template.md` against live `docs/Master_Index.md` and merge improvements without losing project content.
 2. **Rules** — Update `.cursor/rules/`, `.github/instructions/`, `AGENTS.md`, etc.
 3. **TODO format** — If `TODO_Template.md` changed, update feature TODOs only where format differs.
 

@@ -218,5 +218,5 @@ When the user **is** experienced, do not over-interview — still fill **What th
 ## Related
 
 - Workflows (chat → docs, etc.): [`USAGE.md`](USAGE.md)
-- Understanding template: [`Feature_Understanding_Template.md`](Feature_Understanding_Template.md)
+- Understanding template: [`../templates/Feature_Understanding_Template.md`](../templates/Feature_Understanding_Template.md)
 - Setup: [`SETUP.md`](SETUP.md)

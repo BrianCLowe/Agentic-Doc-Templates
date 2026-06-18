@@ -2,7 +2,7 @@
 
 The templates are not just a folder layout to copy once. They are a **workflow** agents can follow whenever you have ideas, conversations, or existing docs — in the IDE, in chat, or connected to your repo.
 
-Setup first (if you have not already): [`SETUP.md`](SETUP.md) + agent [`BOOTSTRAP.md`](BOOTSTRAP.md).
+Setup first (if you have not already): [`SETUP.md`](SETUP.md) + agent [`../agent/BOOTSTRAP.md`](../agent/BOOTSTRAP.md).
 
 **New to software or describing ideas?** [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md) — what to think about (UI, flows, scope) so agents build what you mean; you do not need to choose a tech stack yourself.
 
@@ -22,16 +22,16 @@ Same templates, many entry points.
 
 **What you do:**
 
-1. Attach **`docs/templates/chat-ui/AGENT.md`** only (see [`chat-ui/README.md`](chat-ui/README.md)). Optional: `Master_Index_Template.md`, `Feature_Understanding_Template.md`.
+1. Attach **`docs/templates/chat-ui/AGENT.md`** only (see [`../templates/chat-ui/README.md`](../templates/chat-ui/README.md)). Optional: `Master_Index_Template.md`, `Feature_Understanding_Template.md`.
 2. Ask the agent to output each file with a **Save as:** path — see AGENT.md format.
 
-**Example prompts:**
+**Example prompts (chat-only):**
 
 > Follow `AGENT.md`. Turn our conversation into modular docs for [app name]. Each file must start with **Save as:** `docs/...` so I can download them.
 
 > Read `docs/templates/chat-ui/AGENT.md` from Agentic Doc Templates. Draft `-Understanding.md` files first; I'll review before specs and TODOs.
 
-**When you have a repo connector** (Grok → GitHub, Cursor, etc.): use full [`Modular_Docs_Workflow.md`](Modular_Docs_Workflow.md) or install the agent rule — see [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md).
+**When you have a repo connector** (Grok → GitHub, Cursor, etc.): connect or upload `docs/help/`, `docs/agent/`, and `docs/templates/`, then use full [`Modular_Docs_Workflow.md`](../templates/Modular_Docs_Workflow.md) or install the agent rule — see [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md).
 
 **Example prompts (repo / IDE):**
 
@@ -72,7 +72,7 @@ Same templates, many entry points.
 
 **Example prompts:**
 
-> Read `docs/reference/Original_Design.md`. Convert it into modular documentation per `docs/templates/bootstrap.md`.
+> Read `docs/reference/Original_Design.md`. Convert it into modular documentation per `docs/templates/Master_Index_Template.md`.
 
 > Turn this design doc into modular docs. Keep the original in `reference/`.
 
@@ -84,11 +84,11 @@ Same templates, many entry points.
 
 **When:** New project or an codebase with no modular docs yet.
 
-**What you do:** Copy `docs/templates/`, then agent follows [`BOOTSTRAP.md`](BOOTSTRAP.md). Optionally [`RULE_INSTALL.md`](RULE_INSTALL.md) for Cursor / Copilot / etc.
+**What you do:** Copy `docs/help/`, `docs/agent/`, and `docs/templates/`, then agent follows [`../agent/BOOTSTRAP.md`](../agent/BOOTSTRAP.md). Optionally [`../agent/RULE_INSTALL.md`](../agent/RULE_INSTALL.md) for Cursor / Copilot / etc.
 
 **Example prompt:**
 
-> Bootstrap modular docs in this project using `docs/templates/BOOTSTRAP.md`.
+> Bootstrap modular docs in this project using `docs/agent/BOOTSTRAP.md`.
 
 See [`SETUP.md`](SETUP.md) for copy-only vs whole-repo details.
 
@@ -98,7 +98,7 @@ See [`SETUP.md`](SETUP.md) for copy-only vs whole-repo details.
 
 **When:** This template repo improved (new Understanding workflow, `_shared/` TODO rules, etc.).
 
-**What you do:** Refresh files in `docs/templates/`, then agent follows [`TEMPLATE_SYNC.md`](TEMPLATE_SYNC.md).
+**What you do:** Refresh files in `docs/help/`, `docs/agent/`, and `docs/templates/` from upstream, then agent follows [`../agent/TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md).
 
 **Example prompt:**
 
@@ -110,7 +110,7 @@ See [`SETUP.md`](SETUP.md) for copy-only vs whole-repo details.
 
 | How the agent sees templates | Works for |
 |------------------------------|-----------|
-| Files in your project `docs/templates/` | Cursor, Copilot, Claude Code, Cline, Continue, etc. |
+| Files in your project `docs/help/`, `docs/agent/`, `docs/templates/` | Cursor, Copilot, Claude Code, Cline, Continue, etc. |
 | Uploaded files in chat | Grok, ChatGPT, Claude web, … |
 | **Repo / folder connector** | Grok connectors, GitHub in IDE, clone/submodule |
 | This repo URL | Any agent that can fetch or browse the repo |
@@ -129,9 +129,9 @@ Tool-specific rule install paths: [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md)
 | UI reference screenshot | *Save to `docs/features/assets/`, add Visual references in Understanding with similar vs different.* |
 | Vague idea | *Interview me using IDEA_CAPTURE_TIPS.md, then **draft** [Feature]-Understanding.md for my review.* |
 | Design doc → modular | *Convert `[path]` to modular docs per Master_Index_Template; keep original in reference.* |
-| First-time setup | *Bootstrap modular docs using BOOTSTRAP.md.* |
-| Install agent rule | *Follow RULE_INSTALL.md for [Cursor / Copilot / …].* |
-| Pull template improvements | *Sync Master_Index using TEMPLATE_SYNC.md.* |
+| First-time setup | *Bootstrap modular docs using `docs/agent/BOOTSTRAP.md`.* |
+| Install agent rule | *Follow `docs/agent/RULE_INSTALL.md` for [Cursor / Copilot / …].* |
+| Pull template improvements | *Sync Master_Index using `docs/agent/TEMPLATE_SYNC.md`.* |
 
 ---
 
@@ -146,7 +146,9 @@ Tool-specific rule install paths: [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md)
 - **`docs/_shared/Component-TODO.md`** — foundation work (not duplicated in feature TODOs)
 - **`docs/_shared/Component-InEditor-TODO.md`** / **`Component-Asset-TODO.md`** — when applicable; record omissions in Master_Index Section 3.0
 - **`docs/decisions/`** — optional cross-cutting decision files
-- **`docs/templates/Modular_Docs_Workflow.md`** — agent procedure (Path A/B); lives in templates, linked from Master_Index §4
-- **`docs/templates/`** — canonical copies for future syncs (index template, workflow, feature templates, …)
+- **`docs/templates/Modular_Docs_Workflow.md`** — agent procedure (Path A/B); linked from Master_Index §4
+- **`docs/help/`** — human guides (setup, usage, idea capture, tool notes)
+- **`docs/agent/`** — agent bootstrap, rule install, template sync
+- **`docs/templates/`** — workflow + scaffolds for sync (index template, feature templates, rule sources)
 
 You do not need every file on day one. Start with Master_Index + one feature; grow as ideas arrive — from chat, design docs, or the middle of a dev session.

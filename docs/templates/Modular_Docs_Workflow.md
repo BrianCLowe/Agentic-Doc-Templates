@@ -172,7 +172,7 @@ See [`Feature_Understanding_Template.md`](Feature_Understanding_Template.md).
 
 **Acceptance criteria:** The agent drafts **Done when** checkboxes in Understanding so the user can confirm completeness without reading every TODO.
 
-**Visual references (screenshots):** Save under `docs/features/assets/`, `docs/_shared/assets/`, or `docs/reference/visuals/`. Link from `-Understanding.md` with **similar vs different** notes. See [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md#visual-references-screenshots).
+**Visual references (screenshots):** Save under `docs/features/assets/`, `docs/_shared/assets/`, or `docs/reference/visuals/`. Link from `-Understanding.md` with **similar vs different** notes. See [`../help/IDEA_CAPTURE_TIPS.md`](../help/IDEA_CAPTURE_TIPS.md#visual-references-screenshots).
 
 ---
 

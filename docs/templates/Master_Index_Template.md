@@ -39,7 +39,9 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 | `docs/features/assets/` | Screenshots for features (linked from `-Understanding.md`) |
 | `docs/reference/visuals/` | Optional inspiration before a feature exists |
 | `docs/decisions/` | Optional cross-cutting decisions ([`Decision_Template.md`](templates/Decision_Template.md)) |
-| `docs/templates/` | Canonical templates — sync from upstream; includes [`Modular_Docs_Workflow.md`](templates/Modular_Docs_Workflow.md) |
+| `docs/help/` | Human guides — setup, usage, idea capture ([`SETUP.md`](../help/SETUP.md), [`USAGE.md`](../help/USAGE.md), …) |
+| `docs/agent/` | Agent setup — bootstrap, rule install, template sync ([`BOOTSTRAP.md`](../agent/BOOTSTRAP.md), …) |
+| `docs/templates/` | Workflow + scaffolds — sync from upstream; includes [`Modular_Docs_Workflow.md`](templates/Modular_Docs_Workflow.md) |
 | `src/` / `backend/` / `frontend/` | Actual code (reference only) |
 
 ### 2.2 At a Glance *(policy summary — full rules in Workflow)*
