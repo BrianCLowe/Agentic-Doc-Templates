@@ -26,19 +26,19 @@ The goal: lightweight documentation that stays in sync with the code and is easy
 4. Start building.
 
 ### Option 2: Copy into existing project
-Copy **`docs/help/`**, **`docs/agent/`**, and **`docs/templates/`** into your project (same paths under `docs/`).
+Copy **`docs/templates/`** into your project as **`your-project/docs/templates/`** — one folder, everything included.
 
 Then run the bootstrap with your agent:
 
-> "Bootstrap the modular documentation system using `docs/agent/BOOTSTRAP.md` with the current code and documentation"
+> "Bootstrap the modular documentation system using `docs/templates/agent/BOOTSTRAP.md` with the current code and documentation"
 
-See [`docs/help/SETUP.md`](docs/help/SETUP.md) for the human guide.
+See [`docs/templates/help/SETUP.md`](docs/templates/help/SETUP.md) for the human guide.
 
 ## What's Included
 
-### `docs/templates/` — workflow + scaffolds
+Everything lives under **`docs/templates/`** — workflow scaffolds, human guides, agent setup, and chat-ui pack. Your live project docs (`Master_Index`, `features/`, `_shared/`) stay separate at `docs/` root.
 
-| File | Purpose |
+| Path | Purpose |
 |------|---------|
 | [Master_Index_Template.md](docs/templates/Master_Index_Template.md) | Lean project index — overview, locations, Document Map |
 | [Modular_Docs_Workflow.md](docs/templates/Modular_Docs_Workflow.md) | Full agent procedure (Path A/B, Understanding, TODOs) |
@@ -48,24 +48,8 @@ See [`docs/help/SETUP.md`](docs/help/SETUP.md) for the human guide.
 | [Decision_Template.md](docs/templates/Decision_Template.md) | Optional cross-cutting decision records |
 | [chat-ui/](docs/templates/chat-ui/) | **Short instructions for Grok/ChatGPT** — no repo workspace; output files to download |
 | `.mdc` / `.instructions.md` files | Ready-to-drop agent rule files (IDE / repo) |
-
-### `docs/help/` — human guides
-
-| File | Purpose |
-|------|---------|
-| [SETUP.md](docs/help/SETUP.md) | Adding templates to a project |
-| [USAGE.md](docs/help/USAGE.md) | Chat → docs, ideas mid-dev, design doc conversion |
-| [IDEA_CAPTURE_TIPS.md](docs/help/IDEA_CAPTURE_TIPS.md) | Describe ideas clearly so agents propose better solutions |
-| [USING_WITH_AGENTS.md](docs/help/USING_WITH_AGENTS.md) | Cursor, Copilot, Claude Code, Continue, etc. |
-
-### `docs/agent/` — agent setup & maintenance
-
-| File | Purpose |
-|------|---------|
-| [BOOTSTRAP.md](docs/agent/BOOTSTRAP.md) | Initialize the system in a new project |
-| [RULE_INSTALL.md](docs/agent/RULE_INSTALL.md) | Install agent rules for your tool |
-| [TEMPLATE_SYNC.md](docs/agent/TEMPLATE_SYNC.md) | Sync live docs when templates improve |
-| `rule-install-status.example.yaml` | Schema for per-tool install decisions |
+| [help/](docs/templates/help/) | Human guides — [SETUP](docs/templates/help/SETUP.md), [USAGE](docs/templates/help/USAGE.md), [IDEA_CAPTURE_TIPS](docs/templates/help/IDEA_CAPTURE_TIPS.md), [USING_WITH_AGENTS](docs/templates/help/USING_WITH_AGENTS.md) |
+| [agent/](docs/templates/agent/) | Agent setup — [BOOTSTRAP](docs/templates/agent/BOOTSTRAP.md), [RULE_INSTALL](docs/templates/agent/RULE_INSTALL.md), [TEMPLATE_SYNC](docs/templates/agent/TEMPLATE_SYNC.md) |
 
 ## Core Philosophy
 
@@ -76,7 +60,7 @@ See [`docs/help/SETUP.md`](docs/help/SETUP.md) for the human guide.
 - **Visual references matter** — Screenshots and diagrams stay linked for vision models.
 - **Shared components live once** — Common work goes in `_shared/` with the same note types as features unless you explicitly except specific files.
 - **Index vs workflow split** — `Master_Index.md` is your project map; `Modular_Docs_Workflow.md` is how agents work the system.
-- **Three-folder pack** — `help/` for humans, `agent/` for setup/sync, `templates/` for workflow and scaffolds.
+- **One folder to copy** — Setup and usage instructions live inside `docs/templates/` (`help/`, `agent/`) so they do not clutter your project's `docs/` root.
 
 ## Recommended folder structure
 
@@ -93,9 +77,11 @@ docs/
 │   ├── MainWorkspace.md
 │   ├── MainWorkspace-Understanding.md
 │   └── MainWorkspace-TODO.md
-└── templates/
-    ├── Modular_Docs_Workflow.md   ← IDE agents (sync, do not copy into Master_Index)
-    └── chat-ui/AGENT.md           ← Grok / ChatGPT (attach this only)
+└── templates/                   ← copy this entire folder from Agentic Doc Templates
+    ├── help/                    ← human guides (not live project docs)
+    ├── agent/                   ← bootstrap, rule install, sync
+    ├── chat-ui/AGENT.md         ← Grok / ChatGPT (attach this only)
+    └── Modular_Docs_Workflow.md ← IDE agents (sync, do not copy into Master_Index)
 ```
 
 Full path table: [`Modular_Docs_Workflow.md` §0](docs/templates/Modular_Docs_Workflow.md#0-naming--file-layout-read-before-creating-files). **Chat without a repo:** [`chat-ui/README.md`](docs/templates/chat-ui/README.md).
@@ -107,9 +93,9 @@ Full path table: [`Modular_Docs_Workflow.md` §0](docs/templates/Modular_Docs_Wo
 - "Using https://github.com/BrianCLowe/Agentic-Doc-Templates follow chat-ui/AGENT.md — create modular docs from our conversation with save-as paths for each file."
 - "Add shared component [Name] as we discussed to the documentation."
 - "Convert this design document into modular docs (without the rule installed reference docs/templates)"
-- "Bootstrap the documentation system in this project using `docs/agent/BOOTSTRAP.md`."
+- "Bootstrap the documentation system in this project using `docs/templates/agent/BOOTSTRAP.md`."
 
-Full workflows and more example prompts are in [`docs/help/USAGE.md`](docs/help/USAGE.md).
+Full workflows and more example prompts are in [`docs/templates/help/USAGE.md`](docs/templates/help/USAGE.md).
 
 ## Contributing
 

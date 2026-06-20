@@ -1,10 +1,10 @@
-<!-- workflow-version: 1.9 -->
+<!-- workflow-version: 2.0 -->
 
 > **Agent workflow reference.** Canonical instructions for how to work the modular doc system. Lives in `docs/templates/` — sync from upstream; do **not** copy wholesale into `docs/Master_Index.md`. The live index links here; agent rules summarize and point here for full procedure.
 
 # Modular Documentation — Agent Workflow
 
-**Workflow version**: 1.9 *(sync with `Master_Index.md` **Workflow version** line when updating)*
+**Workflow version**: 2.0 *(sync with `Master_Index.md` **Workflow version** line when updating)*
 
 **Read order:**
 

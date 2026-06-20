@@ -79,7 +79,7 @@ Include:
 |-----------|------|---------------|------|
 | Block Editor | _shared/BlockEditor.md | _shared/BlockEditor-Understanding.md | _shared/BlockEditor-TODO.md |
 
-3. **Template version:** 1.9 · **Workflow version:** 1.9 *(for later sync with Agentic Doc Templates)*
+3. **Template version:** 2.0 · **Workflow version:** 2.0 *(for later sync with Agentic Doc Templates)*
 
 Use [`Master_Index_Template.md`](../Master_Index_Template.md) for full section layout if available.
 

@@ -22,7 +22,7 @@ Same templates, many entry points.
 
 **What you do:**
 
-1. Attach **`docs/templates/chat-ui/AGENT.md`** only (see [`../templates/chat-ui/README.md`](../templates/chat-ui/README.md)). Optional: `Master_Index_Template.md`, `Feature_Understanding_Template.md`.
+1. Attach **`docs/templates/chat-ui/AGENT.md`** only (see [`../chat-ui/README.md`](../chat-ui/README.md)). Optional: `Master_Index_Template.md`, `Feature_Understanding_Template.md`.
 2. Ask the agent to output each file with a **Save as:** path — see AGENT.md format.
 
 **Example prompts (chat-only):**
@@ -31,7 +31,7 @@ Same templates, many entry points.
 
 > Read `docs/templates/chat-ui/AGENT.md` from Agentic Doc Templates. Draft `-Understanding.md` files first; I'll review before specs and TODOs.
 
-**When you have a repo connector** (Grok → GitHub, Cursor, etc.): connect or upload `docs/help/`, `docs/agent/`, and `docs/templates/`, then use full [`Modular_Docs_Workflow.md`](../templates/Modular_Docs_Workflow.md) or install the agent rule — see [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md).
+**When you have a repo connector** (Grok → GitHub, Cursor, etc.): connect or upload `docs/templates/`, then use full [`Modular_Docs_Workflow.md`](../Modular_Docs_Workflow.md) or install the agent rule — see [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md).
 
 **Example prompts (repo / IDE):**
 
@@ -84,11 +84,11 @@ Same templates, many entry points.
 
 **When:** New project or an codebase with no modular docs yet.
 
-**What you do:** Copy `docs/help/`, `docs/agent/`, and `docs/templates/`, then agent follows [`../agent/BOOTSTRAP.md`](../agent/BOOTSTRAP.md). Optionally [`../agent/RULE_INSTALL.md`](../agent/RULE_INSTALL.md) for Cursor / Copilot / etc.
+**What you do:** Copy `docs/templates/`, then agent follows [`../agent/BOOTSTRAP.md`](../agent/BOOTSTRAP.md). Optionally [`../agent/RULE_INSTALL.md`](../agent/RULE_INSTALL.md) for Cursor / Copilot / etc.
 
 **Example prompt:**
 
-> Bootstrap modular docs in this project using `docs/agent/BOOTSTRAP.md`.
+> Bootstrap modular docs in this project using `docs/templates/agent/BOOTSTRAP.md`.
 
 See [`SETUP.md`](SETUP.md) for copy-only vs whole-repo details.
 
@@ -98,7 +98,7 @@ See [`SETUP.md`](SETUP.md) for copy-only vs whole-repo details.
 
 **When:** This template repo improved (new Understanding workflow, `_shared/` TODO rules, etc.).
 
-**What you do:** Refresh files in `docs/help/`, `docs/agent/`, and `docs/templates/` from upstream, then agent follows [`../agent/TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md).
+**What you do:** Refresh `docs/templates/` from upstream (including `help/` and `agent/` subfolders), then agent follows [`../agent/TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md).
 
 **Example prompt:**
 
@@ -110,7 +110,7 @@ See [`SETUP.md`](SETUP.md) for copy-only vs whole-repo details.
 
 | How the agent sees templates | Works for |
 |------------------------------|-----------|
-| Files in your project `docs/help/`, `docs/agent/`, `docs/templates/` | Cursor, Copilot, Claude Code, Cline, Continue, etc. |
+| `docs/templates/` in your project | Cursor, Copilot, Claude Code, Cline, Continue, etc. |
 | Uploaded files in chat | Grok, ChatGPT, Claude web, … |
 | **Repo / folder connector** | Grok connectors, GitHub in IDE, clone/submodule |
 | This repo URL | Any agent that can fetch or browse the repo |
@@ -129,9 +129,9 @@ Tool-specific rule install paths: [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md)
 | UI reference screenshot | *Save to `docs/features/assets/`, add Visual references in Understanding with similar vs different.* |
 | Vague idea | *Interview me using IDEA_CAPTURE_TIPS.md, then **draft** [Feature]-Understanding.md for my review.* |
 | Design doc → modular | *Convert `[path]` to modular docs per Master_Index_Template; keep original in reference.* |
-| First-time setup | *Bootstrap modular docs using `docs/agent/BOOTSTRAP.md`.* |
-| Install agent rule | *Follow `docs/agent/RULE_INSTALL.md` for [Cursor / Copilot / …].* |
-| Pull template improvements | *Sync Master_Index using `docs/agent/TEMPLATE_SYNC.md`.* |
+| First-time setup | *Bootstrap modular docs using `docs/templates/agent/BOOTSTRAP.md`.* |
+| Install agent rule | *Follow `docs/templates/agent/RULE_INSTALL.md` for [Cursor / Copilot / …].* |
+| Pull template improvements | *Sync Master_Index using `docs/templates/agent/TEMPLATE_SYNC.md`.* |
 
 ---
 
@@ -146,9 +146,6 @@ Tool-specific rule install paths: [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md)
 - **`docs/_shared/Component-TODO.md`** — foundation work (not duplicated in feature TODOs)
 - **`docs/_shared/Component-InEditor-TODO.md`** / **`Component-Asset-TODO.md`** — when applicable; record omissions in Master_Index Section 3.0
 - **`docs/decisions/`** — optional cross-cutting decision files
-- **`docs/templates/Modular_Docs_Workflow.md`** — agent procedure (Path A/B); linked from Master_Index §4
-- **`docs/help/`** — human guides (setup, usage, idea capture, tool notes)
-- **`docs/agent/`** — agent bootstrap, rule install, template sync
-- **`docs/templates/`** — workflow + scaffolds for sync (index template, feature templates, rule sources)
+- **`docs/templates/`** — upstream template pack (workflow, scaffolds, `help/`, `agent/`, `chat-ui/`) — not live project content
 
 You do not need every file on day one. Start with Master_Index + one feature; grow as ideas arrive — from chat, design docs, or the middle of a dev session.

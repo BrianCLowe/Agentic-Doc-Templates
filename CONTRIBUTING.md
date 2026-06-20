@@ -35,3 +35,25 @@ If you're unsure whether something fits, just start a Discussion first — I'm h
 All contributions are accepted under the same [CC BY 4.0](LICENSE.md) license as the rest of the project.
 
 Thanks again for helping make these templates better. I genuinely appreciate it.
+
+---
+
+## If you use this repo inside your project
+
+**Recommended:** Copy only **`docs/templates/`** into your project. You do not need this repo's root files — your project keeps its own README and docs layout.
+
+**If you cloned or copied the whole repository** into your project (or used "Use this template" and then merged into an existing app), three root files belong to the **template pack**, not your app:
+
+| Root file | Relocate to |
+|-----------|-------------|
+| `README.md` | `docs/templates/agent/upstream/README.md` |
+| `LICENSE.md` | `docs/templates/agent/upstream/LICENSE.md` |
+| `CONTRIBUTING.md` | `docs/templates/agent/upstream/CONTRIBUTING.md` |
+
+That keeps your project root for **your** README and metadata. Attribution and upstream license text stay in `upstream/` inside the template pack.
+
+**Agent bootstrap:** Point your agent at [`docs/templates/agent/BOOTSTRAP.md`](docs/templates/agent/BOOTSTRAP.md) — Step 1 detects upstream root files and asks before moving them (including this file).
+
+**Manual move:** Create `docs/templates/agent/upstream/` if needed, move the three files above, then write your own project `README.md` at the repo root.
+
+Do **not** put `CONTRIBUTING.md`, `LICENSE.md`, or the template pack README at `docs/` root — only under `docs/templates/agent/upstream/` when you need them for attribution.
