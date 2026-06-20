@@ -10,8 +10,8 @@ What differs is **where each tool expects instructions** and how reliably it fol
 
 | Tool | Where to put the rule | Template file |
 |------|------------------------|---------------|
-| [Cursor](https://cursor.com) | `.cursor/rules/` | [`../Modular_Documentation_Rule.mdc`](../Modular_Documentation_Rule.mdc) |
-| [GitHub Copilot](https://github.com/features/copilot) (VS Code) | `.github/copilot-instructions.md` or `.github/instructions/` | [`../Modular_Documentation_Rule.instructions.md`](../Modular_Documentation_Rule.instructions.md) |
+| [Cursor](https://cursor.com) | `.cursor/rules/` | [`../agent/Modular_Documentation_Rule.mdc`](../agent/Modular_Documentation_Rule.mdc) |
+| [GitHub Copilot](https://github.com/features/copilot) (VS Code) | `.github/copilot-instructions.md` or `.github/instructions/` | [`../agent/Modular_Documentation_Rule.instructions.md`](../agent/Modular_Documentation_Rule.instructions.md) |
 | [Claude Code](https://code.claude.com) | `CLAUDE.md` or `.claude/rules/` | Copy rule body into a new `.md` file |
 | [Continue](https://continue.dev) | `.continue/rules/` | Copy rule body; use Cursor-style frontmatter |
 | [Cline](https://cline.bot) | `.clinerules/` or `.cline/rules/` | Copy rule body into a new `.md` file |
@@ -39,7 +39,7 @@ Copilot uses **custom instructions**, not Cursor-style rules. They apply to **Ch
 Paste the rule into `.github/copilot-instructions.md` at the repo root.
 
 **Option B — scoped file:**  
-Copy [`../Modular_Documentation_Rule.instructions.md`](../Modular_Documentation_Rule.instructions.md) to `.github/instructions/modular-documentation.instructions.md`.
+Copy [`../agent/Modular_Documentation_Rule.instructions.md`](../agent/Modular_Documentation_Rule.instructions.md) to `.github/instructions/modular-documentation.instructions.md`.
 
 Ensure `.github/instructions` is enabled in workspace settings if needed:
 
@@ -60,7 +60,7 @@ Docs: [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/c
 
 ## Cursor
 
-Copy [`../Modular_Documentation_Rule.mdc`](../Modular_Documentation_Rule.mdc) to `.cursor/rules/`.
+Copy [`../agent/Modular_Documentation_Rule.mdc`](../agent/Modular_Documentation_Rule.mdc) to `.cursor/rules/`.
 
 The file uses `alwaysApply: true` so the rule is included every session. To scope it to documentation work only, set `alwaysApply: false` and add `globs: docs/**` — but for this workflow, always-on is usually better because the rule applies *before* you open a doc file.
 

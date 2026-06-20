@@ -15,9 +15,9 @@ You do **not** need the repo root `README.md`, `LICENSE.md`, or `CONTRIBUTING.md
 | Subfolder / file | Contents |
 |------------------|----------|
 | `help/` | This file, [`USAGE.md`](USAGE.md), [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md), [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md) |
-| `agent/` | [`BOOTSTRAP.md`](../agent/BOOTSTRAP.md), [`RULE_INSTALL.md`](../agent/RULE_INSTALL.md), [`TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md), `rule-install-status.example.yaml` |
+| `agent/` | [`BOOTSTRAP.md`](../agent/BOOTSTRAP.md), [`RULE_INSTALL.md`](../agent/RULE_INSTALL.md), [`TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md), [`Modular_Documentation_Rule.mdc`](../agent/Modular_Documentation_Rule.mdc), [`Modular_Documentation_Rule.instructions.md`](../agent/Modular_Documentation_Rule.instructions.md), `rule-install-status.example.yaml` |
 | `chat-ui/` | Short Grok/ChatGPT instructions — attach [`AGENT.md`](../chat-ui/AGENT.md) only |
-| Root of `templates/` | `Master_Index_Template.md`, `Modular_Docs_Workflow.md`, feature templates, rule files to install |
+| Root of `templates/` | `Master_Index_Template.md`, `Modular_Docs_Workflow.md`, feature templates |
 
 ## Other ways to add templates
 
@@ -32,7 +32,19 @@ You do **not** need the repo root `README.md`, `LICENSE.md`, or `CONTRIBUTING.md
 1. Ask your agent to follow **`docs/templates/agent/BOOTSTRAP.md`** — creates `docs/Master_Index.md`, folders, and relocates upstream root files if needed.
 2. Fill in project overview and Document Map in `Master_Index.md`.
 3. Add first feature under `docs/features/` (agent drafts spec + Understanding + TODO; you review). Shared components under `docs/_shared/` get the **same note types** unless you explicitly except specific files.
-4. Optionally run **`docs/templates/agent/RULE_INSTALL.md`** for your agent tool(s).
+4. Optionally install the modular doc rule — ask your agent to follow **`docs/templates/agent/RULE_INSTALL.md`**, or install manually (see below).
+
+## Install the agent rule yourself (optional)
+
+If you prefer not to ask an agent to run rule install, copy the rule templates from **`docs/templates/agent/`**:
+
+| Tool | Source (in your project) | Typical install path |
+|------|--------------------------|----------------------|
+| **Cursor** | [`Modular_Documentation_Rule.mdc`](../agent/Modular_Documentation_Rule.mdc) | `.cursor/rules/modular-documentation.mdc` |
+| **GitHub Copilot** | [`Modular_Documentation_Rule.instructions.md`](../agent/Modular_Documentation_Rule.instructions.md) | `.github/instructions/modular-documentation.instructions.md` or `.github/copilot-instructions.md` |
+| **Claude Code, Cline, Continue, AGENTS.md** | Rule body from the `.mdc` file (drop Cursor frontmatter) | See [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md) or [`RULE_INSTALL.md`](../agent/RULE_INSTALL.md) |
+
+Do not edit the copies under `docs/templates/agent/` — they stay the upstream reference; install **copies** into your tool's config paths.
 
 **Day-to-day use** (chat → docs, ideas mid-dev, converting design docs): see **[`USAGE.md`](USAGE.md)**.
 
@@ -55,7 +67,9 @@ docs/
 │   └── visuals/
 └── templates/                   ← entire pack from Agentic Doc Templates
     ├── help/                    ← setup, usage, idea capture (this folder)
-    ├── agent/                   ← bootstrap, rule install, template sync
+    ├── agent/                   ← bootstrap, rule install, template sync, rule templates
+    │   ├── Modular_Documentation_Rule.mdc
+    │   ├── Modular_Documentation_Rule.instructions.md
     │   └── upstream/            ← README, LICENSE, CONTRIBUTING moved here if whole repo was copied
     ├── chat-ui/
     ├── Master_Index_Template.md

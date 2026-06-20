@@ -47,9 +47,10 @@ Everything lives under **`docs/templates/`** — workflow scaffolds, human guide
 | [TODO_Template.md](docs/templates/TODO_Template.md) | Focused task lists with **Current focus** session handoff |
 | [Decision_Template.md](docs/templates/Decision_Template.md) | Optional cross-cutting decision records |
 | [chat-ui/](docs/templates/chat-ui/) | **Short instructions for Grok/ChatGPT** — no repo workspace; output files to download |
-| `.mdc` / `.instructions.md` files | Ready-to-drop agent rule files (IDE / repo) |
+| [agent/Modular_Documentation_Rule.mdc](docs/templates/agent/Modular_Documentation_Rule.mdc) | Cursor rule template — copy to `.cursor/rules/` |
+| [agent/Modular_Documentation_Rule.instructions.md](docs/templates/agent/Modular_Documentation_Rule.instructions.md) | Copilot rule template — copy to `.github/instructions/` |
 | [help/](docs/templates/help/) | Human guides — [SETUP](docs/templates/help/SETUP.md), [USAGE](docs/templates/help/USAGE.md), [IDEA_CAPTURE_TIPS](docs/templates/help/IDEA_CAPTURE_TIPS.md), [USING_WITH_AGENTS](docs/templates/help/USING_WITH_AGENTS.md) |
-| [agent/](docs/templates/agent/) | Agent setup — [BOOTSTRAP](docs/templates/agent/BOOTSTRAP.md), [RULE_INSTALL](docs/templates/agent/RULE_INSTALL.md), [TEMPLATE_SYNC](docs/templates/agent/TEMPLATE_SYNC.md) |
+| [agent/](docs/templates/agent/) | Agent setup — [BOOTSTRAP](docs/templates/agent/BOOTSTRAP.md), [RULE_INSTALL](docs/templates/agent/RULE_INSTALL.md), [TEMPLATE_SYNC](docs/templates/agent/TEMPLATE_SYNC.md), rule templates (`.mdc`, `.instructions.md`) |
 
 ## Core Philosophy
 

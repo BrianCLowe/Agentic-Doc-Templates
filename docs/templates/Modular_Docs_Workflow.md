@@ -306,4 +306,4 @@ When the user confirms a tradeoff during Understanding review, the agent adds a 
 
 - **Master_Index.md** = *what this project is* and *where files live*.
 - **This file** = *how to work* the system. Follow Path A or B (§3) on every task.
-- The installed agent rule ([`Modular_Documentation_Rule.mdc`](Modular_Documentation_Rule.mdc)) is a short checklist — read this file when doing non-trivial doc or implementation work.
+- The installed agent rule ([`agent/Modular_Documentation_Rule.mdc`](agent/Modular_Documentation_Rule.mdc)) is a short checklist — read this file when doing non-trivial doc or implementation work.

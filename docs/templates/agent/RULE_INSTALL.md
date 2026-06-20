@@ -78,13 +78,13 @@ Do not proceed until they confirm for each tool you are installing.
 
 ## Install map (source → destination)
 
-Copy from `docs/templates/`. Use the **same rule body** everywhere; only format and path differ.
+Copy from `docs/templates/agent/`. Use the **same rule body** everywhere; only format and path differ.
 
 | Tool key | Source template | Install to |
 |----------|-----------------|------------|
-| `cursor` | `Modular_Documentation_Rule.mdc` | `.cursor/rules/modular-documentation.mdc` |
-| `github-copilot` | `Modular_Documentation_Rule.instructions.md` | `.github/instructions/modular-documentation.instructions.md` |
-| `claude-code` | Rule body from `.mdc` (no Cursor frontmatter) | `.claude/rules/modular-documentation.md` or section in `CLAUDE.md` |
+| `cursor` | `agent/Modular_Documentation_Rule.mdc` | `.cursor/rules/modular-documentation.mdc` |
+| `github-copilot` | `agent/Modular_Documentation_Rule.instructions.md` | `.github/instructions/modular-documentation.instructions.md` |
+| `claude-code` | Rule body from `agent/Modular_Documentation_Rule.mdc` (no Cursor frontmatter) | `.claude/rules/modular-documentation.md` or section in `CLAUDE.md` |
 | `continue` | Rule body + frontmatter | `.continue/rules/modular-documentation.md` |
 | `cline` | Rule body | `.clinerules/modular-documentation.md` or `.cline/rules/modular-documentation.md` |
 | `agents-md` | Rule body | Section in root `AGENTS.md` titled `## Documentation workflow` |
@@ -109,7 +109,7 @@ A user who switches tools later may need an install for a **different** tool key
 
 ## Suggested prompt to the user
 
-> I found `docs/templates/` with the modular documentation rule templates. You're likely using **[tool]**.
+> I found `docs/templates/agent/` with the modular documentation rule templates. You're likely using **[tool]**.
 >
 > On disk: [existing install paths or none].  
 > Status file: [Cursor: installed | Copilot: not asked yet | …].
