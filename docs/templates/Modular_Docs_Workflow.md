@@ -154,15 +154,17 @@ Each **feature** and each substantial **shared component** should have a `-Under
 |--------|---------|
 | `draft` | Agent wrote or updated; user has not approved — **do not implement** unless user waives |
 | `reviewed` | User skimmed; minor edits may remain |
-| `confirmed` | User approved — OK to implement; **graduate to spec** (§2) |
+| `confirmed` | User approved scope — **safe to implement and continue** without asking them to review this Understanding again; **graduate to spec** (§2) |
 | `superseded` | No longer accurate — code or plan changed; draft a revision or reconcile explicitly |
+
+**When status is `confirmed`:** Read the Understanding for context, then proceed from the TODO/spec. **Do not** re-surface it for review or ask "does this match your intent?" unless the user changes scope, you discover a conflict with code, or you set status back to `draft` / `superseded`. Unchecked **Assumptions** after `confirmed` means ask about those specific items only — not a full re-review.
 
 **Reconciliation:** If shipped code diverges from a `confirmed` Understanding, either update the spec to match reality and note **Last reconciled with code** on both files, or set status to `superseded` and draft a new Understanding. Do not treat stale `confirmed` as current without checking.
 
 **When to create or update** *(agent responsibility unless user edits directly)*:
 
-- User describes a new feature or change → agent drafts or updates Understanding
-- User asks for a plan, spec review, or "how should we build this" → agent drafts Understanding first, then plan
+- User describes a new feature or change → agent drafts or updates Understanding (set `draft` if scope changed materially)
+- User asks for a plan, spec review, or "how should we build this" → if Understanding is `confirmed`, use it; if `draft` or missing, draft or update first
 - Agent discovers a scope assumption that should be explicit (especially **What this is NOT**)
 - User corrects the agent → agent updates Understanding immediately
 

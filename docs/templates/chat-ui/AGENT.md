@@ -92,7 +92,7 @@ Follow [`Feature_Understanding_Template.md`](../Feature_Understanding_Template.m
 - **Done when** — checkboxes so the user knows when the feature is complete
 - **Assumptions** — unchecked until the user confirms
 
-Set status `draft`. Do not treat the user as author — they **review and correct** your draft.
+Set status `draft`. Do not treat the user as author — they **review and correct** your draft. After they approve, set **`confirmed`** — then later agents can continue without re-asking for review.
 
 ## Spec and TODO
 

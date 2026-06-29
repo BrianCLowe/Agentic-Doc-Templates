@@ -47,7 +47,7 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 - **File layout:** flat sibling files — `features/FeatureName.md`, `FeatureName-Understanding.md`, `FeatureName-TODO.md` (same for `_shared/`) — see [Workflow §0](templates/Modular_Docs_Workflow.md#0-naming--file-layout-read-before-creating-files).
 - No file should exceed ~800–1000 lines; split when bloated ([Workflow §8](templates/Modular_Docs_Workflow.md#8-how-to-split-a-large-document)).
 - **Shared** components get the **same note types as features** unless excepted — record omissions in **§3.0** ([Workflow §1](templates/Modular_Docs_Workflow.md#1-shared-components--foundation-vs-consumption)).
-- **Understanding**: agent drafts first; user reviews before build ([Workflow §4](templates/Modular_Docs_Workflow.md#4-understanding-features--shared)).
+- **Understanding**: agent drafts first (`draft`); user reviews before build; **`confirmed`** = approved — agents continue without re-asking ([Workflow §4](templates/Modular_Docs_Workflow.md#4-understanding-features--shared)).
 - **Spec**: durable contract after Understanding is `confirmed` ([Workflow §2](templates/Modular_Docs_Workflow.md#2-understanding--spec-graduation)).
 - **Shared maturity** on spec + Document Map: `draft` \| `usable` \| `stable`.
 

@@ -2,7 +2,7 @@
 
 > Never edit this template unless the user asks you to. Use under `docs/features/` for features or `docs/_shared/` for shared components (adjust Related Spec/TODO paths). Shared components get this file by default unless the user excepted it.
 
-**Status**: draft | reviewed | confirmed | superseded  
+**Status**: draft | reviewed | confirmed | superseded — **`confirmed`** means the user approved scope; agents may continue without re-asking for review.
 **Last Updated**: [YYYY-MM-DD]  
 **Last reconciled with code**: [YYYY-MM-DD or "—"]  
 **Related Spec**: [FeatureName.md](FeatureName.md)  
@@ -112,6 +112,7 @@ When the user confirms or corrects an item, move it to **Confirmed with user** a
 - When the user corrects you (in chat or by editing the file), update this file immediately — especially **What this is NOT** and **Relationship to existing work**.
 - When the user provides reference screenshots, persist under `docs/features/assets/`: copy from disk when a path exists; if only pasted in chat, ask the user to save the file into `assets/` or record similar/different from vision and note re-attach if needed. Link in **Visual references**.
 - Set status to `confirmed` only after the user explicitly approves (or approves a plan that references this file). Then **graduate** durable content to the spec ([`Modular_Docs_Workflow.md`](Modular_Docs_Workflow.md) §2) — Decisions, architecture, maturity (shared).
+- **When status is `confirmed`:** read for context and implement from the TODO — **do not** ask the user to review this Understanding again unless scope changes or you set `superseded` / back to `draft`.
 - If code or plan diverges from this file, set `superseded` or update **Last reconciled with code** after aligning spec and Understanding — do not leave both stale.
 - Read this file before implementation alongside the spec and TODO.
 
@@ -120,5 +121,6 @@ When the user confirms or corrects an item, move it to **Confirmed with user** a
 - **You do not write this file from scratch** — the agent drafts it; you review.
 - Skim the draft before approving a plan or agent work session.
 - Correct wrong assumptions in **What this is NOT** — that section prevents the "completely new feature" mistake. Edit the file directly or tell the agent what to fix; either way, the agent should update the file.
+- When scope looks right, set **Status** to `confirmed` (or tell the agent to) — that signals agents can continue without asking you to review this file again.
 - Use [`../help/IDEA_CAPTURE_TIPS.md`](../help/IDEA_CAPTURE_TIPS.md) if you are stuck describing the idea — answer in chat; the agent translates into this file.
 - Add reference screenshots to `docs/features/assets/` (or ask the agent to) and ensure **Visual references** notes what to copy vs what to change.
