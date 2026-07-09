@@ -41,7 +41,7 @@ Same templates, many entry points.
 
 **What you get:** `Master_Index.md`, feature specs, **agent-drafted** Understanding files (scope / UI / what it is *not*) for you to review, TODOs, and `_shared/` entries with the **same note types as features** unless you except specific files.
 
-**Tip:** Ask the agent to **draft Understanding first** and show you the file. That catches “you meant a variant UI, not a new subsystem” before anyone codes. Your job is to correct wrong assumptions — especially in **What this is NOT** — not to write the file from scratch.
+**Tip:** Ask the agent to **draft Understanding first** and show you the file. That catches “you meant a variant UI, not a new subsystem” before anyone codes. Your job is to correct wrong **identity** assumptions — especially in **What this is NOT** (what the finished feature is not, not a list of unfinished work) — not to write the file from scratch.
 
 ---
 

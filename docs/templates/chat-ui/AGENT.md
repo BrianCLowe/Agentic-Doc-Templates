@@ -87,7 +87,7 @@ Use [`Master_Index_Template.md`](../Master_Index_Template.md) for full section l
 
 Follow [`Feature_Understanding_Template.md`](../Feature_Understanding_Template.md) when attached. Always include:
 
-- **What this is** / **What this is NOT**
+- **What this is** / **What this is NOT** — identity of the **finished** feature; NOT is category boundaries, not “not implemented yet”
 - **Relationship to existing work** (reuse vs greenfield)
 - **Done when** — checkboxes so the user knows when the feature is complete
 - **Assumptions** — unchecked until the user confirms

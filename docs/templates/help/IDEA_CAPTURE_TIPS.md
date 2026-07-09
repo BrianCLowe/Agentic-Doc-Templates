@@ -31,14 +31,16 @@ Think in these buckets. You do not need every answer on day one — fill gaps ov
 
 *Example:* “Writers need a distraction-free mode that hides everything except the text and a save button.”
 
-### 2. Scope — what it is and is **not**
+### 2. Scope — what it is and is **not** *(when complete)*
 
-This prevents the “brand-new feature” mistake when you meant a **variant** or **add-on**.
+This prevents the “brand-new feature” mistake when you meant a **variant** or **add-on**. Describe the **finished** feature’s identity — not what you are skipping in the current sprint.
 
 - Is this **new from scratch**, or a **new screen/mode** on something that already exists?
-- What should we **explicitly not** build in this pass?
+- What **kind of thing** is it *not* (wrong category), even after it is fully built?
+- Phased / later work for the *same* feature → tell the agent for the **TODO** or **spec**, not for **What this is NOT**.
 
-*Example:* “A separate UI layout for the existing text editor — **not** a second editor engine.”
+*Example:* “A separate UI layout for the existing text editor — **not** a second editor engine.”  
+*Not for Understanding NOT:* “Desktop Mode comes later” — that is a TODO / roadmap item if it is still part of this feature’s destination.
 
 ### 3. UI appearance
 
@@ -172,8 +174,8 @@ The **agent** drafts `FeatureName-Understanding.md` (or `_shared/ComponentName-U
 
 | Your thinking (in chat) | Understanding section (agent writes) |
 |-------------------------|--------------------------------------|
-| Problem and purpose | **What this is** |
-| What it is not | **What this is NOT** |
+| Problem and purpose (when complete) | **What this is** |
+| Wrong category / identity (not “not built yet”) | **What this is NOT** |
 | Existing app pieces | **Relationship to existing work** |
 | Steps and behavior | **How it should work** |
 | Look, layout, references | **UI / UX intent** + **Visual references** |
@@ -203,7 +205,7 @@ If you already answered the buckets in chat:
 When the user describes a feature vaguely:
 
 1. Read this file and [`Feature_Understanding_Template.md`](Feature_Understanding_Template.md).
-2. Ask **short, plain-language questions** from the buckets above — not a twenty-question form. Prioritize: scope (is/is not), UI, happy-path flow, relationship to existing work.
+2. Ask **short, plain-language questions** from the buckets above — not a twenty-question form. Prioritize: identity (is / is not *as a finished feature*), UI, happy-path flow, relationship to existing work. Do not put phased or deferred work under **What this is NOT**.
 3. Write or update `-Understanding.md` with status `draft`. Include **Done when** acceptance checkboxes. List gaps in **Assumptions**.
 4. After user confirms, **graduate** durable content to the spec (`Feature_Spec_Template.md`) — Decisions, architecture, shared Maturity.
 5. If the user provides screenshots, persist under `docs/features/assets/` or `docs/_shared/assets/` (or `docs/reference/visuals/`): **copy/move from a workspace path** when the file is attached or `@`-mentioned; if only a pasted chat image (vision-only), ask the user to save into `assets/` or document similar/different from what you saw and note that a file copy was not available. Link in **Visual references** — see [Saving chat attachments](#saving-chat-attachments-to-the-repo).

@@ -144,9 +144,12 @@ Each **feature** and each substantial **shared component** should have a `-Under
 
 **Purpose**:
 
-- Catch misread scope early (e.g. "alternate UI for existing editor" vs "brand-new editor")
+- Capture what the feature **is meant to be when complete** (destination), not a snapshot of what is unfinished today
+- Catch misread **identity** early (e.g. "alternate UI for existing editor" vs "brand-new editor")
 - Give the user a short, readable artifact to **review and correct** before code is written
 - Attach to plans and discussions so corrections happen at planning time
+
+**What this is NOT** (critical): List **category / identity** boundaries for the finished feature — wrong product type, wrong architecture, wrong ownership. **Do not** list deferred phases, “not implemented yet,” or long-term goals that still belong to this feature; those go in the TODO, Current focus, or the spec roadmap.
 
 **Status**:
 
@@ -165,7 +168,7 @@ Each **feature** and each substantial **shared component** should have a `-Under
 
 - User describes a new feature or change → agent drafts or updates Understanding (set `draft` if scope changed materially)
 - User asks for a plan, spec review, or "how should we build this" → if Understanding is `confirmed`, use it; if `draft` or missing, draft or update first
-- Agent discovers a scope assumption that should be explicit (especially **What this is NOT**)
+- Agent discovers an **identity** assumption that should be explicit (especially **What this is NOT** — not a backlog of unfinished work)
 - User corrects the agent → agent updates Understanding immediately
 
 **When planning**: Include the Understanding file (or path) in the plan output so the user can correct it before implementation starts.

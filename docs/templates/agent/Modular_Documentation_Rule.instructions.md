@@ -45,7 +45,7 @@ This project uses a lean modular documentation system. `docs/Master_Index.md` is
 
 **After changes (mandatory):**
 - Update **Current focus** and the relevant `-TODO.md` — mark completed items with `[x]` + date.
-- Update `-Understanding.md` when the user corrects scope, UI intent, or assumptions — especially **What this is NOT**.
+- Update `-Understanding.md` when the user corrects scope, UI intent, or assumptions — especially **What this is NOT** (finished-feature identity, not deferred work).
 - If code diverges from confirmed Understanding, reconcile spec + Understanding or set Understanding to `superseded` (Workflow §4).
 - Move finished items to Completed when the list gets long.
 - Only read other files when they are explicitly linked from Master_Index or the current TODO/spec.
