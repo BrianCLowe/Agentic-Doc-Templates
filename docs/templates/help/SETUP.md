@@ -48,6 +48,8 @@ Do not edit the copies under `docs/templates/agent/` — they stay the upstream 
 
 **Day-to-day use** (chat → docs, ideas mid-dev, converting design docs): see **[`USAGE.md`](USAGE.md)**.
 
+**Updating templates later:** You do not need to re-copy the folder by hand. Ask your agent to update the doc templates — it downloads the latest `docs/templates/` from [Agentic-Doc-Templates](https://github.com/BrianCLowe/Agentic-Doc-Templates) and then updates your live docs (`Master_Index`, Understanding, TODOs) to match. Full procedure: [`../agent/TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md).
+
 **Brainstorming in Grok/ChatGPT before you have a repo?** Attach only [`../chat-ui/AGENT.md`](../chat-ui/AGENT.md) — see [`../chat-ui/README.md`](../chat-ui/README.md). Copy `docs/templates/` when you create the project.
 
 **Describing ideas** (UI, flows, scope — especially if you are new to software): see **[`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md)**.

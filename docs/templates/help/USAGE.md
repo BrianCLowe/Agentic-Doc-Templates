@@ -96,13 +96,20 @@ See [`SETUP.md`](SETUP.md) for copy-only vs whole-repo details.
 
 ## Pattern 5 — Template updates from upstream
 
-**When:** This template repo improved (new Understanding workflow, `_shared/` TODO rules, etc.).
+**When:** This template repo improved (new Understanding rules, layout, workflow, etc.).
 
-**What you do:** Refresh `docs/templates/` from upstream (including `help/` and `agent/` subfolders), then agent follows [`../agent/TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md).
+**What you do:** Just ask the agent — no manual download required. Point it at [`../agent/TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md). The agent will:
 
-**Example prompt:**
+1. **Download** the latest `docs/templates/` pack from [Agentic-Doc-Templates](https://github.com/BrianCLowe/Agentic-Doc-Templates) and replace your project's template folder.
+2. **Update live docs** based on what changed — merge new Master_Index structure, Understanding / spec / TODO template sections, version lines — without wiping your Document Map or feature content.
 
-> The modular doc templates have been updated, match the current documentation to the updates.
+**Example prompts:**
+
+> Update the doc templates from Agentic Doc Templates and sync our live docs.
+
+> Pull the latest templates from https://github.com/BrianCLowe/Agentic-Doc-Templates into `docs/templates/` and sync our Master_Index.
+
+> The modular doc templates have been updated — download the pack and match our documentation to the updates.
 
 ---
 
@@ -131,7 +138,7 @@ Tool-specific rule install paths: [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md)
 | Design doc → modular | *Convert `[path]` to modular docs per Master_Index_Template; keep original in reference.* |
 | First-time setup | *Bootstrap modular docs using `docs/templates/agent/BOOTSTRAP.md`.* |
 | Install agent rule | *Follow `docs/templates/agent/RULE_INSTALL.md` for [Cursor / Copilot / …].* |
-| Pull template improvements | *Sync Master_Index using `docs/templates/agent/TEMPLATE_SYNC.md`.* |
+| Pull template improvements | *Update the doc templates from Agentic Doc Templates and sync our live docs.* |
 
 ---
 

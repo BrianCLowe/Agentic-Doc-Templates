@@ -54,7 +54,9 @@
 - `_shared/ComponentName-InEditor-TODO.md` — engine editor work *(when applicable)*
 - `_shared/ComponentName-Asset-TODO.md` — assets & content *(when applicable)*
 
-**Exceptions:** If the user says a shared component does not need a particular note type (e.g. "BlockEditor has no asset work"), omit that file and record the exception in Master Index **§3.0**. Do **not** skip Understanding or TODO by default — only when the user explicitly excepts them.
+**Exceptions:** If the user **explicitly** says a component or feature does not need a particular note type (e.g. "BlockEditor has no asset work"), omit that file and record the exception in Master Index **§3.0** with who said it and when.
+
+**Do not invent exceptions.** Missing files, a thin Document Map, or “we’ll add Understanding later” are **not** exceptions — create the default set (spec + Understanding + core TODO). Do **not** skip Understanding or the core TODO unless the user explicitly excepted them. Do **not** write a §3.0 row that excuses the whole project from Understanding.
 
 **Maturity** *(shared components only)*: Set on the shared **spec** (`draft` | `usable` | `stable`) so consumer features know whether integration is safe. Update when foundation work progresses — see [`Feature_Spec_Template.md`](Feature_Spec_Template.md).
 
@@ -140,7 +142,7 @@ Each **feature** and each substantial **shared component** should have a `-Under
 
 **Who writes it:** The **agent writes first** (status `draft`) from the conversation, design doc, or interview. The **user reviews and corrects** — they do not need to author this file from scratch.
 
-**Default:** Agent drafts Understanding for shared components the same way as for features. **Only skip** when the user explicitly excepts it (record in Master Index §3.0 if omitting a note type).
+**Default:** Agent drafts Understanding for shared components the same way as for features. **Only skip** when the user **explicitly** excepts it (record in Master Index §3.0). Incomplete docs or agent convenience are not exceptions — draft the missing Understanding.
 
 **Purpose**:
 
@@ -276,7 +278,7 @@ When a file starts feeling unwieldy:
 2. Create a new focused file in the correct folder (`_shared/`, `features/`, etc.).
 3. In the original file, replace the section with a short link to the new file.
 4. Add the new file to the Document Map in `Master_Index.md`.
-5. Create matching files as needed (spec, Understanding, TODOs) unless recorded in Master Index §3.0.
+5. Create matching files as needed (spec, Understanding, TODOs) unless the **user** recorded an omission in Master Index §3.0 — do not invent a §3.0 row to skip them.
 6. Update cross-references in other files.
 
 ---

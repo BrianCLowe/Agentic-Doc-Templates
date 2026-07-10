@@ -20,9 +20,9 @@ This project uses a lean modular documentation system. `docs/Master_Index.md` is
 5. Before integrating a **shared** piece, check its **Maturity** on the spec or Document Map (`draft` | `usable` | `stable`).
 
 **Shared foundation (critical):**
-- Shared components get **Understanding by default** (Workflow §1, §4) unless excepted in Master Index §3.0.
+- Shared components get **Understanding by default** (Workflow §1, §4). §3.0 exceptions are **user-requested only** — never invent them because files are missing or to “leave for later.”
 - **File layout:** create only paths from Workflow **§0** / Document Map — flat files in `features/` and `_shared/`.
-- Shared components get the **same note types as features** unless the user explicitly excepted specific files — record exceptions in Master Index **§3.0** (Workflow §1).
+- Shared components get the **same note types as features** unless the user explicitly excepted specific files — record those in Master Index **§3.0** (Workflow §1). If Understanding or core TODO is missing and there is no user exception, **create them**.
 - Tasks that **build or refactor** a shared component go in `_shared/ComponentName-TODO.md` (and related shared TODOs) — **not** in a consumer feature's TODO.
 - Feature TODOs only **link** to shared TODOs when blocked or integrating (dependency note), they do not duplicate foundation tasks.
 

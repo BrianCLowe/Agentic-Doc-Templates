@@ -52,7 +52,7 @@ docs/
 
 Optional later (not required in chat): `-InEditor-TODO.md`, `-Asset-TODO.md`, `docs/decisions/`. Skip unless the user asks.
 
-**Shared components** get the same three file types as features unless the user says to omit something — record omissions in Master_Index §3.0.
+**Shared components** get the same three file types as features unless the user **says** to omit something — record omissions in Master_Index §3.0. Do not invent exceptions.
 
 ## Naming
 

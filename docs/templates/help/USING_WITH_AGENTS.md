@@ -194,10 +194,13 @@ Treat the rule as **institutional memory for the agent**, not a substitute for g
 
 ## Updating from this repo
 
-When you improve templates here, copy updated `docs/templates/` into your project, then run a template sync:
+You can just ask the agent to update the doc templates. It follows [`../agent/TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md):
 
-1. **Structure** — Follow [`../agent/TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md): diff `Master_Index_Template.md` against live `docs/Master_Index.md` and merge improvements without losing project content.
-2. **Rules** — Update `.cursor/rules/`, `.github/instructions/`, `AGENTS.md`, etc.
-3. **TODO format** — If `TODO_Template.md` changed, update feature TODOs only where format differs.
+1. **Download the pack** — Replace project `docs/templates/` from [Agentic-Doc-Templates](https://github.com/BrianCLowe/Agentic-Doc-Templates) (Step 0).
+2. **Update live docs** — Merge what changed into `Master_Index.md`, Understanding, specs, and TODOs without losing project content.
+3. **Rules** — Update installed copies (`.cursor/rules/`, `.github/instructions/`, `AGENTS.md`, etc.) if the rule body changed.
+4. **TODO / Understanding format** — Add new sections (e.g. Current focus, What this is NOT guidance) only where the live files are missing them.
+
+**Example:** *Update the doc templates from Agentic Doc Templates and sync our live docs.*
 
 Keep tool-specific rule copies in sync, or maintain a single `AGENTS.md` section and copy to tool paths if your team uses multiple agents.

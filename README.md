@@ -34,6 +34,14 @@ Then run the bootstrap with your agent:
 
 See [`docs/templates/help/SETUP.md`](docs/templates/help/SETUP.md) for the human guide.
 
+### Keeping templates up to date
+
+You do **not** need to copy files by hand when this repo improves. In a project that already has `docs/templates/`, ask your agent something like:
+
+> Update the doc templates from Agentic Doc Templates and sync our live docs.
+
+The agent follows [`docs/templates/agent/TEMPLATE_SYNC.md`](docs/templates/agent/TEMPLATE_SYNC.md): it **downloads** the latest `docs/templates/` pack from this GitHub repo, replaces your project's template folder, then **updates your live docs** (`Master_Index.md`, Understanding, specs, TODOs) to match what changed — without wiping your Document Map or feature content.
+
 ## What's Included
 
 Everything lives under **`docs/templates/`** — workflow scaffolds, human guides, agent setup, and chat-ui pack. Your live project docs (`Master_Index`, `features/`, `_shared/`) stay separate at `docs/` root.
@@ -95,6 +103,7 @@ Full path table: [`Modular_Docs_Workflow.md` §0](docs/templates/Modular_Docs_Wo
 - "Add shared component [Name] as we discussed to the documentation."
 - "Convert this design document into modular docs (without the rule installed reference docs/templates)"
 - "Bootstrap the documentation system in this project using `docs/templates/agent/BOOTSTRAP.md`."
+- "Update the doc templates from Agentic Doc Templates and sync our live docs."
 
 Full workflows and more example prompts are in [`docs/templates/help/USAGE.md`](docs/templates/help/USAGE.md).
 

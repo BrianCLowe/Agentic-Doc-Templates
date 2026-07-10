@@ -46,7 +46,7 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 
 - **File layout:** flat sibling files — `features/FeatureName.md`, `FeatureName-Understanding.md`, `FeatureName-TODO.md` (same for `_shared/`) — see [Workflow §0](templates/Modular_Docs_Workflow.md#0-naming--file-layout-read-before-creating-files).
 - No file should exceed ~800–1000 lines; split when bloated ([Workflow §8](templates/Modular_Docs_Workflow.md#8-how-to-split-a-large-document)).
-- **Shared** components get the **same note types as features** unless excepted — record omissions in **§3.0** ([Workflow §1](templates/Modular_Docs_Workflow.md#1-shared-components--foundation-vs-consumption)).
+- **Shared** components get the **same note types as features** unless the **user** excepted them — record omissions in **§3.0** only after an explicit user request ([Workflow §1](templates/Modular_Docs_Workflow.md#1-shared-components--foundation-vs-consumption)). Agents must not invent §3.0 rows.
 - **Understanding**: agent drafts first (`draft`); user reviews before build; **`confirmed`** = approved — agents continue without re-asking ([Workflow §4](templates/Modular_Docs_Workflow.md#4-understanding-features--shared)).
 - **Spec**: durable contract after Understanding is `confirmed` ([Workflow §2](templates/Modular_Docs_Workflow.md#2-understanding--spec-graduation)).
 - **Shared maturity** on spec + Document Map: `draft` \| `usable` \| `stable`.
@@ -55,12 +55,14 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 
 ### 3.0 Note-type exceptions *(registry)*
 
-Record every user exception here so agents do not recreate omitted files.
+Record **only** omissions the **user explicitly requested**. Agents must **not** invent exceptions to match incomplete docs, save time, or “leave for later.”
 
 | Component / Feature | Omitted note types | Recorded |
 |---------------------|-------------------|----------|
-| *(example)* BlockEditor | InEditor-TODO, Asset-TODO | 2026-06-15 — user |
-| [Add rows as needed] | | |
+| *(example)* BlockEditor | InEditor-TODO, Asset-TODO | 2026-06-15 — **user said** “no asset or in-editor work for BlockEditor” |
+| [Add rows only after user excepts] | | |
+
+**Default file set** (create unless a row above says otherwise): Spec + Understanding + core TODO. InEditor / Asset TODOs when that work applies. **Never omit Understanding or the core TODO** unless the user explicitly excepted them for that item.
 
 ### 3.1 Shared / Core Components
 
