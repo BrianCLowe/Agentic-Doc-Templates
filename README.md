@@ -40,7 +40,7 @@ You do **not** need to copy files by hand when this repo improves. In a project 
 
 > Update the doc templates from Agentic Doc Templates and sync our live docs.
 
-The agent follows [`docs/templates/agent/TEMPLATE_SYNC.md`](docs/templates/agent/TEMPLATE_SYNC.md): it **downloads** the latest `docs/templates/` pack from this GitHub repo, replaces your project's template folder, then **updates your live docs** (`Master_Index.md`, Understanding, specs, TODOs) to match what changed — without wiping your Document Map or feature content.
+The agent follows [`docs/templates/agent/TEMPLATE_SYNC.md`](docs/templates/agent/TEMPLATE_SYNC.md): it **downloads** the latest pack into your project's `docs/templates/` (ZIP/copy — not a git update of your live docs), then **updates your live docs as needed** from those **local** template files (`Master_Index.md`, Understanding, specs, TODOs) — without wiping your Document Map or feature content.
 
 ## What's Included
 

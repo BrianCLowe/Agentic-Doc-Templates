@@ -100,8 +100,8 @@ See [`SETUP.md`](SETUP.md) for copy-only vs whole-repo details.
 
 **What you do:** Just ask the agent — no manual download required. Point it at [`../agent/TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md). The agent will:
 
-1. **Download** the latest `docs/templates/` pack from [Agentic-Doc-Templates](https://github.com/BrianCLowe/Agentic-Doc-Templates) and replace your project's template folder.
-2. **Update live docs** based on what changed — merge new Master_Index structure, Understanding / spec / TODO template sections, version lines — without wiping your Document Map or feature content.
+1. **Download** the latest pack into your project's `docs/templates/` only (ZIP or copy from a temp clone — **not** `git pull` into your live docs).
+2. **Update live docs from those local files as needed** — read `docs/templates/Master_Index_Template.md` (and other local templates) and update `Master_Index.md` / Understanding / TODOs accordingly. Do not use git to rewrite live documentation.
 
 **Example prompts:**
 
