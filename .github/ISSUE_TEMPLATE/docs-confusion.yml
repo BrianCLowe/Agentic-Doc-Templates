@@ -1,0 +1,50 @@
+name: Docs or setup confusion
+description: SETUP, USAGE, README, or bootstrap instructions were unclear or led you astray
+title: "[Docs] "
+labels: ["documentation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Help us fix the human-facing guides. Point at the file and what you thought it meant.
+
+  - type: dropdown
+    id: doc
+    attributes:
+      label: Which doc
+      options:
+        - README
+        - docs/templates/help/SETUP.md
+        - docs/templates/help/USAGE.md
+        - docs/templates/help/IDEA_CAPTURE_TIPS.md
+        - docs/templates/help/USING_WITH_AGENTS.md
+        - docs/templates/agent/BOOTSTRAP.md
+        - docs/templates/agent/TEMPLATE_SYNC.md
+        - docs/templates/agent/RULE_INSTALL.md
+        - chat-ui/README.md or AGENT.md
+        - CONTRIBUTING.md
+        - Other / not sure
+    validations:
+      required: true
+
+  - type: textarea
+    id: confusion
+    attributes:
+      label: What was confusing
+      description: Quote or paraphrase the part that misled you
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-you-did
+    attributes:
+      label: What you tried
+      description: Copy whole repo vs docs/templates only, chat UI, bootstrap prompt, etc.
+    validations:
+      required: true
+
+  - type: textarea
+    id: clearer
+    attributes:
+      label: What would have been clearer
+      description: Optional — how you would rewrite the instruction

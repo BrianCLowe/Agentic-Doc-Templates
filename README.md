@@ -111,7 +111,9 @@ Full workflows and more example prompts are in [`docs/templates/help/USAGE.md`](
 
 PRs that improve the templates, add new ones, or refine the workflows are very welcome.
 
-If you're using these successfully with a particular agent/tool, feel free to share your experience in Discussions.
+**Feedback:** [Open an issue](https://github.com/BrianCLowe/Agentic-Doc-Templates/issues/new/choose) (agent/tool problems, template ideas, docs confusion, or what worked). Discussions are fine for open-ended questions.
+
+If you're using these successfully with a particular agent/tool, feel free to share your experience in Discussions or via the Feedback issue form.
 
 ## License
 

@@ -1,0 +1,47 @@
+name: Success story or usage note
+description: Share what worked well with a specific agent or workflow (helps prioritize)
+title: "[Feedback] "
+labels: ["feedback"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Positive and “this finally clicked” notes are useful too — they show which paths to keep simple.
+
+  - type: dropdown
+    id: tool
+    attributes:
+      label: Primary agent / tool
+      options:
+        - Cursor
+        - Claude Code
+        - Grok Build / Grok.com
+        - GitHub Copilot
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-worked
+    attributes:
+      label: What worked
+      description: e.g. Understanding-first review, chat-ui save-as paths, template sync download, shared foundation TODOs
+    validations:
+      required: true
+
+  - type: textarea
+    id: still-rough
+    attributes:
+      label: Still rough (optional)
+      description: One thing that almost worked but needs a tweak
+
+  - type: dropdown
+    id: project_type
+    attributes:
+      label: Project type (optional)
+      options:
+        - Web / app
+        - Game / Unreal / Unity / Godot
+        - API / backend
+        - Mixed / other
+        - Prefer not to say

@@ -13,10 +13,11 @@ Here are the most helpful ways to contribute:
 
 ## How to Contribute
 
-Since Issues are turned off, please use **Discussions** for most things:
-
-- **Ideas, suggestions, and questions** — Start a new Discussion. This is the best place to talk about improvements, new template ideas, or how you're using the templates with different agents.
+- **Issues** — Use the issue forms for agent/tool problems, template improvements, docs confusion, or success notes. They keep feedback concrete.
+- **Discussions** — Open-ended ideas and “how do I…?” questions are still welcome.
 - **Pull Requests** — Welcome for small, focused improvements to existing templates. Please keep changes aligned with the current lightweight, modular style.
+
+**Note for people who copy this repo into an app:** `.github/ISSUE_TEMPLATE/` belongs to *this* template project only. If those files appear in your app after a whole-repo copy, delete that folder (bootstrap Step 1b does this). Prefer copying only `docs/templates/`.
 
 ## What I'm Looking For
 
@@ -57,3 +58,5 @@ That keeps your project root for **your** README and metadata. Attribution and u
 **Manual move:** Create `docs/templates/agent/upstream/` if needed, move the three files above, then write your own project `README.md` at the repo root.
 
 Do **not** put `CONTRIBUTING.md`, `LICENSE.md`, or the template pack README at `docs/` root — only under `docs/templates/agent/upstream/` when you need them for attribution.
+
+If a whole-repo copy left **`.github/ISSUE_TEMPLATE/`** in your app, delete it — those forms are for contributing to Agentic Doc Templates, not for your product. Bootstrap Step 1b removes them automatically.

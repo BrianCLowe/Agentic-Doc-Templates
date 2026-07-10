@@ -25,7 +25,7 @@ You do **not** need the repo root `README.md`, `LICENSE.md`, or `CONTRIBUTING.md
 |--------|------|--------|
 | **Copy `docs/templates/` only** | Clean project `docs/` root | Recommended |
 | **Git submodule** | Easy upstream updates | Submodule path is often awkward; copy or sparse-checkout `docs/templates/` |
-| **Clone whole repo into project** | Simple first copy | Root README, LICENSE, and CONTRIBUTING collide with yours — use agent [`BOOTSTRAP.md`](../agent/BOOTSTRAP.md) to move them to `docs/templates/agent/upstream/` |
+| **Clone whole repo into project** | Simple first copy | Root README, LICENSE, and CONTRIBUTING collide with yours — use agent [`BOOTSTRAP.md`](../agent/BOOTSTRAP.md) to move them to `docs/templates/agent/upstream/` and **delete** `.github/ISSUE_TEMPLATE/` (those forms are for the template repo only) |
 
 ## After templates are in place
 

@@ -1,0 +1,56 @@
+name: Template or workflow improvement
+description: Suggest a change to templates, naming, Understanding, sync, bootstrap, or agent instructions
+title: "[Template] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Prefer small, practical improvements that keep the pack lightweight. If you are unsure whether it fits, a Discussion is fine too — Issues are great when you have a concrete proposal.
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Understanding / What this is NOT
+        - Spec / Decisions / Maturity
+        - TODO / Current focus
+        - Master_Index / Document Map
+        - Modular_Docs_Workflow
+        - chat-ui (Grok / ChatGPT)
+        - Bootstrap / Rule install / Template sync
+        - SETUP / USAGE / IDEA_CAPTURE_TIPS
+        - Folder layout / naming
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or friction
+      description: What is unclear, easy to misuse, or missing for agents or humans?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: What should the templates or instructions say or do instead?
+    validations:
+      required: true
+
+  - type: textarea
+    id: why
+    attributes:
+      label: Why this helps
+      description: Real project situation if you have one (optional but valuable)
+
+  - type: checkboxes
+    id: willing
+    attributes:
+      label: Contribution
+      options:
+        - label: I am willing to open a PR for this if the direction is accepted

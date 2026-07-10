@@ -56,6 +56,18 @@ Fix internal links after moving. **Keep at `docs/templates/` root:** `Master_Ind
 
 If root `README.md` is upstream but user already has a project README they want to keep, offer to move only `LICENSE.md` and/or `CONTRIBUTING.md`, or merge upstream readme into `upstream/` without touching their README.
 
+## Step 1b — Remove upstream GitHub issue templates (user projects)
+
+**This pack’s** `.github/ISSUE_TEMPLATE/` is for feedback on [Agentic-Doc-Templates](https://github.com/BrianCLowe/Agentic-Doc-Templates) only. It must **not** stay in a user’s app repo.
+
+When the whole template repo was cloned/copied into a project (or “Use this template” left `.github/ISSUE_TEMPLATE/` behind):
+
+1. If `.github/ISSUE_TEMPLATE/` exists **and** contains Agentic Doc Templates forms (e.g. `agent-tool-problem.yml`, `template-improvement.yml`, `docs-confusion.yml`, `feedback.yml`, or bodies that mention Agentic Doc Templates / modular docs templates) → **delete that directory** (and remove `.github/` if it is empty afterward).
+2. If `.github/ISSUE_TEMPLATE/` looks like the **user’s own** issue forms → **do not delete**.
+3. Prefer copying only `docs/templates/` next time so `.github/` never lands in the project.
+
+Also delete root-level Agentic-only GitHub noise if present from a whole-repo copy and clearly not the user’s: e.g. leftover `ISSUE_TEMPLATE` paths under `.github/` that match the upstream pack. Do **not** delete the user’s `.github/workflows/`, Copilot instructions, or other project GitHub config.
+
 ## Step 2 — Create docs layout
 
 Create if missing:
@@ -107,6 +119,7 @@ If `Master_Index.md` already exists → do not overwrite; offer [`TEMPLATE_SYNC.
 - Overwrite an existing project `README.md` that is not the upstream template readme.
 - Put project feature content into `docs/templates/` (templates stay canonical reference only).
 - Create `docs/help/` or `docs/agent/` at docs root — those belong inside `docs/templates/`.
+- Leave Agentic Doc Templates `.github/ISSUE_TEMPLATE/` in a user project — delete it (Step 1b).
 - Skip asking before moving root files.
 
 ## Example user prompts
