@@ -25,9 +25,10 @@ I'm more likely to merge contributions that:
 
 - Improve clarity or reduce friction for both humans and agents
 - Stay consistent with the current lightweight, modular approach
+- Preserve **simplicity** — users should keep saying short action requests (“update the templates”, “draft Understanding for X”); agents figure out the rest from the pack
 - Solve a real problem I've also run into
 
-I'm more cautious about changes that significantly increase complexity or shift the overall direction of the project. I want to avoid ending up maintaining two versions (one public, one private that actually works for me).
+I'm more cautious about changes that significantly increase complexity, require long user-facing instruction dumps, or shift the overall direction of the project. I want to avoid ending up maintaining two versions (one public, one private that actually works for me).
 
 If you're unsure whether something fits, just start a Discussion first — I'm happy to talk about it.
 

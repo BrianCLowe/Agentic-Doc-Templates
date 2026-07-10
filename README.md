@@ -15,7 +15,7 @@
 
 AI coding agents are powerful but can drift from your original intent over long sessions. These templates give agents a consistent structure: the **agent writes** Understanding and TODO files from your conversation; **you review and correct** them before implementation.
 
-The goal: lightweight documentation that stays in sync with the code and is easy for both people and vision-capable agents to use. No complex instructions needed — point your agent at the templates and it will understand how to use them.
+The goal: lightweight documentation that stays in sync with the code. **Simplicity first** — you should not need complex prompts or long instruction dumps. Tell the agent what you want done with the docs (bootstrap, draft Understanding, update templates, add a feature) and it should figure out the rest from the pack.
 
 ## Quick Start
 
@@ -62,6 +62,7 @@ Everything lives under **`docs/templates/`** — workflow scaffolds, human guide
 
 ## Core Philosophy
 
+- **Simplicity** — No complex prompts or detailed user instructions required. Say what you want done with the docs; the agent should read the templates and figure out how. If a workflow needs a paragraph of ceremony from you, the pack is too heavy.
 - **Modular over monolithic** — Small, focused files instead of one giant spec.
 - **Understanding before implementation** — The agent drafts `-Understanding.md` first so you can see how it interpreted your request; you review and correct, then implementation starts.
 - **Spec after confirm** — Durable architecture and **Decisions** graduate into the spec; Understanding keeps intent and acceptance criteria.

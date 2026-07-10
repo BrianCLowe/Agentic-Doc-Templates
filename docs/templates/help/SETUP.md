@@ -2,6 +2,8 @@
 
 Human guide for adding [Agentic Doc Templates](https://github.com/BrianCLowe/Agentic-Doc-Templates) to an existing codebase. For agent-driven setup, point your agent at [`../agent/BOOTSTRAP.md`](../agent/BOOTSTRAP.md).
 
+**Philosophy:** Keep asks simple — “bootstrap modular docs”, “update the doc templates”, “draft Understanding for this feature.” The agent should figure out the rest from `docs/templates/`. You should not need long custom prompts.
+
 ## Recommended: copy one folder
 
 Copy **`docs/templates/`** from this repo into your project as **`your-project/docs/templates/`**.

@@ -10,7 +10,9 @@ Setup first (if you have not already): [`SETUP.md`](SETUP.md) + agent [`../agent
 
 ## The basic idea
 
-You give an agent **structure** (`Master_Index_Template.md`, `Feature_Understanding_Template.md`, `TODO_Template.md`, etc.). You describe the idea in chat (or point at a design doc). The **agent drafts** `-Understanding.md` and TODO files so you can see how it interpreted you — then you **review and correct** before implementation. You do not need to write those files yourself.
+**Keep it simple.** You do not need elaborate prompts. Tell the agent what you want done with the docs — bootstrap, turn this chat into docs, draft Understanding for X, update the templates — and it should follow the pack on its own.
+
+You give the agent **structure** (`docs/templates/`). You describe the idea in chat (or point at a design doc). The **agent drafts** `-Understanding.md` and TODO files so you can see how it interpreted you — then you **review and correct** before implementation. You do not need to write those files yourself.
 
 Same templates, many entry points.
 

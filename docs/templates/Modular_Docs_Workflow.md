@@ -6,6 +6,8 @@
 
 **Workflow version**: 2.0 *(sync with `Master_Index.md` **Workflow version** line when updating)*
 
+**Design intent:** Users give short requests about the docs (“bootstrap”, “draft Understanding for X”, “update the templates”). You read this pack and act — they should not need complex prompts or step-by-step instructions.
+
 **Read order:**
 
 1. [`Master_Index.md`](../Master_Index.md) — project context + Document Map (Sections 1–3)
