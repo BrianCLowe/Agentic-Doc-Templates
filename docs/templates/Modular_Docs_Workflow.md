@@ -315,9 +315,18 @@ When the user confirms a tradeoff during Understanding review, the agent adds a 
 
 Live file: **`docs/Tooling.md`** (from [`Tooling_Template.md`](Tooling_Template.md)).
 
-Lists **machine / workflow tools** (CLIs, SDKs, runtimes, engines) — **not** package-manager dependencies.
+Lists **machine / workflow tools** (CLIs, SDKs, runtimes, engines, profile-installed agent skills) — **not** package-manager dependencies.
 
-When the user asks to install tooling / set up this machine / get the project working on a new PC: read `docs/Tooling.md`, install **Required** for the current OS, run verify commands, then follow **After tools are installed**. Do not invent tools; update the file when the stack changes.
+When the user asks to install tooling / set up this machine / get the project working on a new PC:
+
+1. Read `docs/Tooling.md`.
+2. Install **Required** for the current OS (prefer user-level / non-interactive package managers).
+3. Refresh PATH or use a new shell if needed; run every **Verify** command.
+4. Install **Agent skills** rows if that section exists; new session may be required for skills to load.
+5. Run **After tools are installed** (env files, package restore, start commands).
+6. Report pass/fail. Install **Optional** only if asked (or “everything”). Ask before admin / large SDK installs.
+
+Do not invent tools; update the file when the stack changes. No secrets in `Tooling.md`.
 
 ---
 
