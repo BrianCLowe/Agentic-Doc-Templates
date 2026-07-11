@@ -38,6 +38,7 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 | `docs/features/`  | Feature-specific specs + TODOs (+ optional sub-indexes) |
 | `docs/features/assets/` | Screenshots for features (linked from `-Understanding.md`) |
 | `docs/reference/visuals/` | Optional inspiration before a feature exists |
+| `docs/Tooling.md` | Machine / workflow tools (not package deps) — install on a new machine ([`Tooling_Template.md`](templates/Tooling_Template.md)) |
 | `docs/decisions/` | Optional cross-cutting decisions ([`Decision_Template.md`](templates/Decision_Template.md)) |
 | `docs/templates/` | Upstream template pack — workflow, scaffolds, setup guides (`help/`, `agent/`, `chat-ui/`); includes [`Modular_Docs_Workflow.md`](templates/Modular_Docs_Workflow.md) |
 | `src/` / `backend/` / `frontend/` | Actual code (reference only) |
@@ -45,6 +46,7 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 ### 2.2 At a Glance *(policy summary — full rules in Workflow)*
 
 - **Simplicity:** users give short doc actions; agents follow this pack — no complex prompts required.
+- **Tooling:** `docs/Tooling.md` lists machine tools (not package deps); on a new machine, user can ask to install them ([`Tooling_Template.md`](templates/Tooling_Template.md)).
 - **File layout:** flat sibling files — `features/FeatureName.md`, `FeatureName-Understanding.md`, `FeatureName-TODO.md` (same for `_shared/`) — see [Workflow §0](templates/Modular_Docs_Workflow.md#0-naming--file-layout-read-before-creating-files).
 - No file should exceed ~800–1000 lines; split when bloated ([Workflow §8](templates/Modular_Docs_Workflow.md#8-how-to-split-a-large-document)).
 - **Shared** components get the **same note types as features** unless the **user** excepted them — record omissions in **§3.0** only after an explicit user request ([Workflow §1](templates/Modular_Docs_Workflow.md#1-shared-components--foundation-vs-consumption)). Agents must not invent §3.0 rows.
@@ -91,10 +93,11 @@ Record **only** omissions the **user explicitly requested**. Agents must **not**
 | Project-wide In-Editor work (DataAssets, Blueprints, custom inspectors, etc.) | [Project-InEditor-TODO.md](Project-InEditor-TODO.md) |
 | Project-wide Assets & Content | [Project-Asset-TODO.md](Project-Asset-TODO.md) |
 
-### 3.4 Reference, Decisions & Legacy
+### 3.4 Reference, Decisions, Tooling & Legacy
 
 | Document | Description |
 |----------|-------------|
+| [Tooling.md](Tooling.md) | Machine / workflow tools — install on a new machine ([`Tooling_Template.md`](templates/Tooling_Template.md)) |
 | [decisions/](decisions/) | Optional cross-cutting decision files ([`Decision_Template.md`](templates/Decision_Template.md)) |
 | [reference/LegacySpec.md](reference/LegacySpec.md) | Older detailed spec (read only when needed) |
 

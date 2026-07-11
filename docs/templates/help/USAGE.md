@@ -115,6 +115,18 @@ See [`SETUP.md`](SETUP.md) for copy-only vs whole-repo details.
 
 ---
 
+## Pattern 6 — New machine / install tooling
+
+**When:** You cloned the project onto another computer and need CLIs, SDKs, or engines — not `npm install` alone.
+
+**What you do:** Keep `docs/Tooling.md` accurate (agent can draft it from the stack). On the new machine, ask:
+
+> Install the project tooling for this machine.
+
+The agent reads [`Tooling.md`](../Tooling.md) (template: [`Tooling_Template.md`](../Tooling_Template.md)), installs **Required** tools, verifies them, then runs package restore / env steps listed there.
+
+---
+
 ## Works with many agents
 
 | How the agent sees templates | Works for |
@@ -141,6 +153,7 @@ Tool-specific rule install paths: [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md)
 | First-time setup | *Bootstrap modular docs using `docs/templates/agent/BOOTSTRAP.md`.* |
 | Install agent rule | *Follow `docs/templates/agent/RULE_INSTALL.md` for [Cursor / Copilot / …].* |
 | Pull template improvements | *Update the doc templates from Agentic Doc Templates and sync our live docs.* |
+| New machine / tooling | *Install the project tooling for this machine.* |
 
 ---
 
@@ -154,6 +167,7 @@ Tool-specific rule install paths: [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md)
 - **`docs/_shared/Component-Understanding.md`** — same review loop as feature Understanding
 - **`docs/_shared/Component-TODO.md`** — foundation work (not duplicated in feature TODOs)
 - **`docs/_shared/Component-InEditor-TODO.md`** / **`Component-Asset-TODO.md`** — when applicable; record omissions in Master_Index Section 3.0
+- **`docs/Tooling.md`** — machine / workflow tools (not package deps); *Install the project tooling for this machine.*
 - **`docs/decisions/`** — optional cross-cutting decision files
 - **`docs/templates/`** — upstream template pack (workflow, scaffolds, `help/`, `agent/`, `chat-ui/`) — not live project content
 

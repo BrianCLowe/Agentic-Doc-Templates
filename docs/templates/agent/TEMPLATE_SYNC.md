@@ -81,6 +81,7 @@ Source of truth for structure is now **on disk** under `docs/templates/`. Compar
 | `docs/templates/Feature_Understanding_Template.md` | Each `*-Understanding.md` — add new sections where missing |
 | `docs/templates/Feature_Spec_Template.md` | Each feature/shared `.md` spec — add new sections where missing |
 | `docs/templates/TODO_Template.md` | Each `*-TODO.md` — add missing blocks (e.g. Current focus) |
+| `docs/templates/Tooling_Template.md` | `docs/Tooling.md` — create if missing; add new sections only, do not wipe tool rows |
 | `docs/templates/agent/Modular_Documentation_Rule.*` | Installed rule paths — ask before overwriting custom installs |
 
 Versions:
@@ -98,8 +99,9 @@ Versions:
 6. Bump **Template version** / **Workflow version** in live `Master_Index.md`.
 7. Layout migrations (pre-1.7 / pre-1.8 / pre-2.0): follow [`BOOTSTRAP.md`](BOOTSTRAP.md) Step 0b using the **local** pack layout.
 8. Update live Understanding / Spec / TODO files from the local templates as needed — do not overwrite project content.
-9. §3.0: record only **user-stated** exceptions — never invent rows.
-10. Summarize pack refresh + live-doc updates; ask before large live-doc rewrites.
+9. If `Tooling_Template.md` is new: create `docs/Tooling.md` from it when missing; link from Master Index. Do not wipe existing tool rows.
+10. §3.0: record only **user-stated** exceptions — never invent rows.
+11. Summarize pack refresh + live-doc updates; ask before large live-doc rewrites.
 
 ---
 

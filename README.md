@@ -54,6 +54,7 @@ Everything lives under **`docs/templates/`** — workflow scaffolds, human guide
 | [Feature_Understanding_Template.md](docs/templates/Feature_Understanding_Template.md) | Agent drafts its interpretation; you review before coding |
 | [TODO_Template.md](docs/templates/TODO_Template.md) | Focused task lists with **Current focus** session handoff |
 | [Decision_Template.md](docs/templates/Decision_Template.md) | Optional cross-cutting decision records |
+| [Tooling_Template.md](docs/templates/Tooling_Template.md) | Machine / workflow tools (`docs/Tooling.md`) — install on a new machine |
 | [chat-ui/](docs/templates/chat-ui/) | **Short instructions for Grok/ChatGPT** — no repo workspace; output files to download |
 | [agent/Modular_Documentation_Rule.mdc](docs/templates/agent/Modular_Documentation_Rule.mdc) | Cursor rule template — copy to `.cursor/rules/` |
 | [agent/Modular_Documentation_Rule.instructions.md](docs/templates/agent/Modular_Documentation_Rule.instructions.md) | Copilot rule template — copy to `.github/instructions/` |
@@ -79,6 +80,7 @@ Flat **sibling files** per feature in `docs/features/` and `docs/_shared/`:
 ```
 docs/
 ├── Master_Index.md
+├── Tooling.md                   ← machine tools (not package deps)
 ├── _shared/
 │   ├── BlockEditor.md
 │   ├── BlockEditor-Understanding.md
@@ -105,6 +107,7 @@ Full path table: [`Modular_Docs_Workflow.md` §0](docs/templates/Modular_Docs_Wo
 - "Convert this design document into modular docs (without the rule installed reference docs/templates)"
 - "Bootstrap the documentation system in this project using `docs/templates/agent/BOOTSTRAP.md`."
 - "Update the doc templates from Agentic Doc Templates and sync our live docs."
+- "Install the project tooling for this machine."
 
 Full workflows and more example prompts are in [`docs/templates/help/USAGE.md`](docs/templates/help/USAGE.md).
 

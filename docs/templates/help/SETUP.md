@@ -19,7 +19,7 @@ You do **not** need the repo root `README.md`, `LICENSE.md`, or `CONTRIBUTING.md
 | `help/` | This file, [`USAGE.md`](USAGE.md), [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md), [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md) |
 | `agent/` | [`BOOTSTRAP.md`](../agent/BOOTSTRAP.md), [`RULE_INSTALL.md`](../agent/RULE_INSTALL.md), [`TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md), [`Modular_Documentation_Rule.mdc`](../agent/Modular_Documentation_Rule.mdc), [`Modular_Documentation_Rule.instructions.md`](../agent/Modular_Documentation_Rule.instructions.md), `rule-install-status.example.yaml` |
 | `chat-ui/` | Short Grok/ChatGPT instructions — attach [`AGENT.md`](../chat-ui/AGENT.md) only |
-| Root of `templates/` | `Master_Index_Template.md`, `Modular_Docs_Workflow.md`, feature templates |
+| Root of `templates/` | `Master_Index_Template.md`, `Modular_Docs_Workflow.md`, `Tooling_Template.md`, feature templates |
 
 ## Other ways to add templates
 
@@ -61,6 +61,7 @@ Do not edit the copies under `docs/templates/agent/` — they stay the upstream 
 ```
 docs/
 ├── Master_Index.md              ← live project docs (you maintain)
+├── Tooling.md                   ← machine / workflow tools (not package deps)
 ├── rule-install-status.yaml     ← created when installing agent rules
 ├── _shared/
 │   └── assets/
@@ -77,6 +78,7 @@ docs/
     │   └── upstream/            ← README, LICENSE, CONTRIBUTING moved here if whole repo was copied
     ├── chat-ui/
     ├── Master_Index_Template.md
+    ├── Tooling_Template.md
     ├── Modular_Docs_Workflow.md
     └── …
 ```

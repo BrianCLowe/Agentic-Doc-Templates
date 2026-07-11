@@ -75,6 +75,7 @@ Create if missing:
 ```
 docs/
 ├── Master_Index.md          ← from Master_Index_Template.md (Step 3)
+├── Tooling.md               ← from Tooling_Template.md (Step 3b — machine tools)
 ├── rule-install-status.yaml ← only when RULE_INSTALL runs later
 ├── _shared/
 │   └── assets/
@@ -92,7 +93,7 @@ docs/
 
 Ensure **`docs/templates/`** contains at least:
 
-- **Root:** `Master_Index_Template.md`, `Modular_Docs_Workflow.md`, `chat-ui/AGENT.md`, `Feature_Spec_Template.md`, `Feature_Understanding_Template.md`, `TODO_Template.md`, `Decision_Template.md`
+- **Root:** `Master_Index_Template.md`, `Modular_Docs_Workflow.md`, `chat-ui/AGENT.md`, `Feature_Spec_Template.md`, `Feature_Understanding_Template.md`, `TODO_Template.md`, `Decision_Template.md`, `Tooling_Template.md`
 - **`help/`:** `SETUP.md`, `USAGE.md`, `IDEA_CAPTURE_TIPS.md`, `USING_WITH_AGENTS.md`
 - **`agent/`:** `BOOTSTRAP.md`, `RULE_INSTALL.md`, `TEMPLATE_SYNC.md`, `Modular_Documentation_Rule.mdc`, `Modular_Documentation_Rule.instructions.md`, `rule-install-status.example.yaml`
 
@@ -108,11 +109,22 @@ If `docs/Master_Index.md` does not exist:
 
 If `Master_Index.md` already exists → do not overwrite; offer [`TEMPLATE_SYNC.md`](TEMPLATE_SYNC.md) instead.
 
+## Step 3b — Create live Tooling.md
+
+If `docs/Tooling.md` does not exist:
+
+1. Copy from `docs/templates/Tooling_Template.md`.
+2. Fill **Required** (and optional) tools from Project Profile, README, and known stack — mark guesses for the user to confirm.
+3. Ensure Master Index Key Locations / §3.4 link to `Tooling.md`.
+
+If it already exists → do not overwrite; offer to update rows when the stack changes.
+
 ## Step 4 — Tell the user what's next
 
 1. Fill in Section 1 (Project Overview) and Document Map.
-2. First feature: agent drafts spec + Understanding + TODO; you review (see [`../help/SETUP.md`](../help/SETUP.md)). Shared components: same full note set under `_shared/` unless the user excepts specific files.
-3. Optional: run [`RULE_INSTALL.md`](RULE_INSTALL.md) for agent rules (asks per tool, records in `rule-install-status.yaml`).
+2. Confirm or correct `docs/Tooling.md` so a new machine can be set up with: *Install the project tooling for this machine.*
+3. First feature: agent drafts spec + Understanding + TODO; you review (see [`../help/SETUP.md`](../help/SETUP.md)). Shared components: same full note set under `_shared/` unless the user excepts specific files.
+4. Optional: run [`RULE_INSTALL.md`](RULE_INSTALL.md) for agent rules (asks per tool, records in `rule-install-status.yaml`).
 
 ## Do not
 

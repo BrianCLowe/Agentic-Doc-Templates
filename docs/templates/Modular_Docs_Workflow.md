@@ -311,8 +311,19 @@ When the user confirms a tradeoff during Understanding review, the agent adds a 
 
 ---
 
+## 11. Tooling *(new machine setup)*
+
+Live file: **`docs/Tooling.md`** (from [`Tooling_Template.md`](Tooling_Template.md)).
+
+Lists **machine / workflow tools** (CLIs, SDKs, runtimes, engines) — **not** package-manager dependencies.
+
+When the user asks to install tooling / set up this machine / get the project working on a new PC: read `docs/Tooling.md`, install **Required** for the current OS, run verify commands, then follow **After tools are installed**. Do not invent tools; update the file when the stack changes.
+
+---
+
 ## Instructions for AI Agents
 
 - **Master_Index.md** = *what this project is* and *where files live*.
 - **This file** = *how to work* the system. Follow Path A or B (§3) on every task.
+- **Tooling.md** = *what to install on a new machine* (not package deps).
 - The installed agent rule ([`agent/Modular_Documentation_Rule.mdc`](agent/Modular_Documentation_Rule.mdc)) is a short checklist — read this file when doing non-trivial doc or implementation work.
