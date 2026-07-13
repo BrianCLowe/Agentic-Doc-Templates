@@ -28,6 +28,8 @@
 - **Does not own**: [explicit non-responsibilities]
 - **Public API / entry points**: [functions, routes, classes, events — or link to code]
 
+*(Optional — only if clearer than bullets.)* A small **Mermaid** diagram for module boundaries or data flow is fine. Agent decides; one chart max here unless the user asks for more. Not required.
+
 ---
 
 ## Behavior (stable)
@@ -73,6 +75,7 @@ Record **why** — especially choices made during Understanding review. Cross-cu
 - When implementation diverges from the spec, update this file **or** flag Understanding as needing reconciliation — do not silently drift.
 - **Shared components**: keep **Maturity** accurate (`draft` → foundation incomplete; `usable` → features may integrate; `stable` → breaking changes need explicit discussion).
 - Record non-obvious **Decisions** when the user chooses between options — not every TODO item, only choices with lasting impact.
+- **Mermaid:** add only when a diagram communicates architecture/flow better than a short paragraph. Prefer one small chart; skip if prose is enough. Never add decorative diagrams.
 
 **Instructions for Humans**
 

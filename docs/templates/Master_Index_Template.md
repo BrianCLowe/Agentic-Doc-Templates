@@ -46,6 +46,7 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 ### 2.2 At a Glance *(policy summary — full rules in Workflow)*
 
 - **Simplicity:** users give short doc actions; agents follow this pack — no complex prompts required.
+- **Mermaid:** optional — agent may add a small diagram when it beats prose for structure/flow; do not splash charts everywhere.
 - **Tooling:** `docs/Tooling.md` lists machine tools (not package deps); on a new machine, user can ask to install them ([`Tooling_Template.md`](templates/Tooling_Template.md)).
 - **File layout:** flat sibling files — `features/FeatureName.md`, `FeatureName-Understanding.md`, `FeatureName-TODO.md` (same for `_shared/`) — see [Workflow §0](templates/Modular_Docs_Workflow.md#0-naming--file-layout-read-before-creating-files).
 - No file should exceed ~800–1000 lines; split when bloated ([Workflow §8](templates/Modular_Docs_Workflow.md#8-how-to-split-a-large-document)).

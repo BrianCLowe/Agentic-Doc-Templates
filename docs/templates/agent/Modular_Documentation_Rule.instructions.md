@@ -58,4 +58,4 @@ If the user says "review spec", "check for gaps", "ask questions", or "confidenc
 - Ask targeted clarifying questions instead of assuming
 - Only proceed after user confirmation
 
-**Philosophy:** Keep documentation small and accurate. Prefer short user asks — figure out bootstrap, Understanding, TODOs, and sync from this pack yourself. TODO **Current focus** + checklists are your primary memory across sessions.
+**Philosophy:** Keep documentation small and accurate. Prefer short user asks — figure out bootstrap, Understanding, TODOs, and sync from this pack yourself. Use Mermaid only when a small diagram beats prose (Workflow §12). TODO **Current focus** + checklists are your primary memory across sessions.

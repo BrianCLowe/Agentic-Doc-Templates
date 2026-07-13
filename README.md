@@ -64,6 +64,7 @@ Everything lives under **`docs/templates/`** — workflow scaffolds, human guide
 ## Core Philosophy
 
 - **Simplicity** — No complex prompts or detailed user instructions required. Say what you want done with the docs; the agent should read the templates and figure out how.
+- **Mermaid when it helps** — Agents may add a small Mermaid diagram when structure or flow is clearer that way. Optional, agent judgment — not required in every file, not decoration.
 - **Modular over monolithic** — Small, focused files instead of one giant spec.
 - **Understanding before implementation** — The agent drafts `-Understanding.md` first so you can see how it interpreted your request; you review and correct, then implementation starts.
 - **Spec after confirm** — Durable architecture and **Decisions** graduate into the spec; Understanding keeps intent and acceptance criteria.

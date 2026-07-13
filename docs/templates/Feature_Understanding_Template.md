@@ -60,6 +60,8 @@ This file captures **what the agent believes the user wants the feature to be wh
 1. User does X → system does Y
 2. …
 
+*(Optional — only if clearer than the list.)* A small **Mermaid** flowchart for the happy path (or feature ↔ shared relationships) is fine. Agent decides whether it helps; do not add charts by default. Screenshots for UI look stay under **Visual references**.
+
 ---
 
 ## UI / UX intent
@@ -124,6 +126,7 @@ When the user confirms or corrects an item, move it to **Confirmed with user** a
 - **When status is `confirmed`:** read for context and implement from the TODO — **do not** ask the user to review this Understanding again unless scope changes or you set `superseded` / back to `draft`.
 - If code or plan diverges from this file, set `superseded` or update **Last reconciled with code** after aligning spec and Understanding — do not leave both stale.
 - Read this file before implementation alongside the spec and TODO.
+- **Mermaid:** optional. Add a small diagram only when flow or relationships are clearer that way than prose/steps. Your judgment — do not add charts to every Understanding “because we can.”
 
 **Instructions for Humans**
 

@@ -330,9 +330,24 @@ Do not invent tools; update the file when the stack changes. No secrets in `Tool
 
 ---
 
+## 12. Mermaid diagrams *(optional, agent judgment)*
+
+Use Mermaid in Understanding, specs, or Master Index overview when a **small** diagram explains structure or flow better than prose — e.g. happy-path flow, feature ↔ `_shared/` ownership, module boundaries.
+
+| Do | Do not |
+|----|--------|
+| One focused chart when it clarifies | Diagrams in every file by default |
+| Prefer Mermaid for structure/flow | Replace UI screenshots with Mermaid |
+| Leave it out when bullets are enough | Decorative or huge multi-subgraph charts |
+
+**Agent decides.** Users should not need to ask for Mermaid. Do not splash charts everywhere just because the format is available.
+
+---
+
 ## Instructions for AI Agents
 
 - **Master_Index.md** = *what this project is* and *where files live*.
 - **This file** = *how to work* the system. Follow Path A or B (§3) on every task.
 - **Tooling.md** = *what to install on a new machine* (not package deps).
+- **Mermaid** = optional (§12) — use when clearer than prose; never required.
 - The installed agent rule ([`agent/Modular_Documentation_Rule.mdc`](agent/Modular_Documentation_Rule.mdc)) is a short checklist — read this file when doing non-trivial doc or implementation work.
