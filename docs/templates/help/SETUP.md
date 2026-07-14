@@ -48,6 +48,8 @@ If you prefer not to ask an agent to run rule install, copy the rule templates f
 
 Do not edit the copies under `docs/templates/agent/` — they stay the upstream reference; install **copies** into your tool's config paths.
 
+**Cursor + plugins:** If you use **Compound Engineering** or **Superpowers**, disable them for this workspace. Their skills often override the modular docs Cursor rule so agents skip `Master_Index.md` and the Understanding/TODO flow. See [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md#cursor).
+
 **Day-to-day use** (chat → docs, ideas mid-dev, converting design docs): see **[`USAGE.md`](USAGE.md)**.
 
 **Updating templates later:** Ask your agent to update the doc templates. It downloads into `docs/templates/` only, then updates live docs as needed from those **local** template files (not via git on `Master_Index` / features). Full procedure: [`../agent/TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md).

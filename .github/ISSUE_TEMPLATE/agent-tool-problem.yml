@@ -75,6 +75,21 @@ body:
       description: Rough prompt text, or whether Modular_Documentation_Rule / chat-ui AGENT.md was loaded
       render: markdown
 
+  - type: dropdown
+    id: competing_plugins
+    attributes:
+      label: Competing Cursor plugins / skills (if Cursor)
+      description: Compound Engineering and Superpowers often override the modular docs rule
+      options:
+        - None / not using Cursor
+        - Compound Engineering enabled
+        - Superpowers enabled
+        - Both Compound Engineering and Superpowers
+        - Other skill pack (describe below)
+        - Not sure
+    validations:
+      required: false
+
   - type: textarea
     id: extra
     attributes:

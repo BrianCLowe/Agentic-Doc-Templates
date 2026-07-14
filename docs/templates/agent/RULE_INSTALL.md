@@ -106,6 +106,7 @@ A user who switches tools later may need an install for a **different** tool key
 - If the modular rule is **already present** at the target path, set status to `installed` if missing from yaml — do not re-install.
 - Do not edit files under `docs/templates/` except when copying **from** them.
 - After install, update the status file and tell the user which file(s) were created or updated.
+- **After installing for Cursor:** Warn that **Compound Engineering** and **Superpowers** plugins/skills often override this rule so agents skip `Master_Index.md` and the Understanding/TODO flow. Recommend disabling them for this workspace. Point to [`../help/USING_WITH_AGENTS.md`](../help/USING_WITH_AGENTS.md#cursor).
 
 ## Suggested prompt to the user
 
@@ -116,6 +117,8 @@ A user who switches tools later may need an install for a **different** tool key
 >
 > Install the modular docs rule for **[tool]**? (I won't ask again for that tool after you answer.)  
 > If you also use other agents on this repo, say which — each gets its own file and status entry.
+>
+> *(Cursor only)* Compound Engineering / Superpowers can override this rule — consider disabling them for this workspace.
 
 ## Example user prompts
 

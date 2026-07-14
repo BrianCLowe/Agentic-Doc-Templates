@@ -34,6 +34,12 @@ Then run the bootstrap with your agent:
 
 See [`docs/templates/help/SETUP.md`](docs/templates/help/SETUP.md) for the human guide.
 
+### Compatibility warning (Cursor plugins)
+
+**Compound Engineering** and **Superpowers** (Cursor plugins / skill packs) often **override or sidestep** the modular documentation Cursor rule. With them enabled, agents may ignore `Master_Index.md`, invent their own planning flow, or skip Understanding/TODO updates.
+
+If you rely on this pack, **disable those plugins** (or turn off their always-on skills) for this workspace — or expect the agent not to follow the docs correctly. Details: [`docs/templates/help/USING_WITH_AGENTS.md`](docs/templates/help/USING_WITH_AGENTS.md#cursor).
+
 ### Keeping templates up to date
 
 You do **not** need to copy files by hand when this repo improves. In a project that already has `docs/templates/`, ask your agent something like:

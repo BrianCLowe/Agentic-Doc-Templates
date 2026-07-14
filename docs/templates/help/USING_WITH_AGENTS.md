@@ -64,6 +64,12 @@ Copy [`../agent/Modular_Documentation_Rule.mdc`](../agent/Modular_Documentation_
 
 The file uses `alwaysApply: true` so the rule is included every session. To scope it to documentation work only, set `alwaysApply: false` and add `globs: docs/**` — but for this workflow, always-on is usually better because the rule applies *before* you open a doc file.
 
+### Known conflict: Compound Engineering & Superpowers
+
+Cursor plugins **Compound Engineering** and **Superpowers** ship always-on / aggressively invoked skills that often **misdirect** the agent away from this pack’s Cursor rule. Typical symptoms: the agent never opens `Master_Index.md`, follows a different plan/brainstorm workflow, or skips Understanding and TODO updates.
+
+**Recommendation:** For workspaces that use Agentic Doc Templates, disable those plugins (or their auto-invoked skills). The modular docs rule alone is enough; competing skill packs fight it for control of the session.
+
 ---
 
 ## Claude Code
