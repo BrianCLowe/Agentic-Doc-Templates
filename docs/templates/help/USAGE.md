@@ -104,7 +104,7 @@ See [`SETUP.md`](SETUP.md) for copy-only vs whole-repo details.
 
 **What you do:** Just ask the agent — no manual download required. Point it at [`../agent/TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md). The agent will:
 
-1. **Download** the latest pack into your project's `docs/templates/` only (ZIP or copy from a temp clone — **not** `git pull` into your live docs).
+1. **Overwrite** the whole `docs/templates/` folder from upstream (ZIP or temp clone — **not** `git pull` into live docs; **not** a per-file diff).
 2. **Update live docs from those local files as needed** — read `docs/templates/Master_Index_Template.md` (and other local templates) and update `Master_Index.md` / Understanding / TODOs accordingly. Do not use git to rewrite live documentation.
 
 **Example prompts:**

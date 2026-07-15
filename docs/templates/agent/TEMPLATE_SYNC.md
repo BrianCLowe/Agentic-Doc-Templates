@@ -6,7 +6,7 @@
 
 | Step | What | How |
 |------|------|-----|
-| **A — Refresh pack** | Replace **only** `docs/templates/` | Download files from GitHub into that folder (ZIP / copy). Network fetch only. |
+| **A — Refresh pack** | Replace **entire** `docs/templates/` | ZIP/copy — **full overwrite**, no per-file diffs |
 | **B — Update live docs** | Edit `Master_Index.md`, Understanding, specs, TODOs | Read the **downloaded local copies** in `docs/templates/` and **update live docs as needed**. |
 
 **Git is not how you update live docs.** Do **not** `git pull`, `git merge`, `git checkout`, submodule update, or otherwise use the user's project git history to “sync” `Master_Index.md` / `features/` / `_shared/`. Those files are project-owned. After Step A, Step B is ordinary file edits guided by the **local** templates.
@@ -18,9 +18,11 @@
 
 ---
 
-## Step A — Download / replace `docs/templates/`
+## Step A — Download / replace `docs/templates/` *(full overwrite — no diffs)*
 
-Overwrite the project's `docs/templates/` with the upstream tree. That folder is the canonical pack — not live project content.
+**Always replace the entire folder.** Do **not** inventory, diff, or selectively update files under `docs/templates/`. That wastes tokens. Delete the project's `docs/templates/` (or overwrite it wholesale) and copy the upstream `docs/templates/` tree in one shot.
+
+That folder is the canonical pack — not live project content. Treat Step A as a dumb replace.
 
 **Never overwrite from the download:**
 
@@ -51,20 +53,22 @@ rm -rf docs/templates
 cp -R "$tmp/Agentic-Doc-Templates-main/docs/templates" docs/templates
 ```
 
-**Allowed alternatives** (still only to refresh `docs/templates/`):
+**Allowed alternatives** (still **full** folder replace only):
 
-- Clone or sparse-checkout **into a temp directory**, then **copy** `docs/templates/` into the project — never clone over the user project root
-- `gh` / raw URLs for individual files under `docs/templates/`
+- Clone or sparse-checkout **into a temp directory**, then **copy** the whole `docs/templates/` tree over the project’s `docs/templates/` — never clone over the user project root
 
-**Do not:**
+**Do not (Step A):**
 
+- Diff old vs new template files and update only what changed
+- Fetch individual files with `gh` / raw URLs one-by-one
+- Read every file under the existing `docs/templates/` before replacing
 - Add Agentic-Doc-Templates as a git remote of the user project and pull into it
 - `git checkout` / `git restore` live docs from any remote
 - Treat “sync” as updating the user repo via git
 
 If the user already refreshed `docs/templates/` themselves, skip Step A.
 
-After Step A: confirm versions in the **local** `docs/templates/Master_Index_Template.md` and `docs/templates/Modular_Docs_Workflow.md`.
+After Step A: read version markers from the **new** local `docs/templates/Master_Index_Template.md` and `docs/templates/Modular_Docs_Workflow.md` only — then go to Step B.
 
 ---
 
@@ -114,6 +118,7 @@ Versions:
 - Remove project-only Document Map entries unless the user asks.
 - Invent §3.0 exceptions for missing Understanding / TODO files.
 - Keep pulling from GitHub during Step B — work from the **local** `docs/templates/` copy.
+- Diff or cherry-pick inside `docs/templates/` on Step A — **always overwrite the whole folder**.
 
 ## Example user prompts
 

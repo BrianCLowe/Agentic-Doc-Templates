@@ -202,7 +202,7 @@ Treat the rule as **institutional memory for the agent**, not a substitute for g
 
 You can just ask the agent to update the doc templates. It follows [`../agent/TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md):
 
-1. **Download the pack** — Replace project `docs/templates/` only (ZIP/copy). Do **not** use git to update live docs from upstream.
+1. **Overwrite the pack** — Replace the **entire** project `docs/templates/` from upstream (ZIP/copy). No per-file diffs. Do **not** use git to update live docs from upstream.
 2. **Update live docs from the local pack as needed** — use files under `docs/templates/` to update `Master_Index.md`, Understanding, specs, and TODOs.
 3. **Rules** — Update installed copies if the rule body in the local pack changed.
 4. **TODO / Understanding format** — Add missing sections from the local templates only.
