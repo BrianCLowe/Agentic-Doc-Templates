@@ -19,7 +19,7 @@ You do **not** need the repo root `README.md`, `LICENSE.md`, or `CONTRIBUTING.md
 | `help/` | This file, [`USAGE.md`](USAGE.md), [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md), [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md) |
 | `agent/` | [`BOOTSTRAP.md`](../agent/BOOTSTRAP.md), [`RULE_INSTALL.md`](../agent/RULE_INSTALL.md), [`TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md), [`Modular_Documentation_Rule.mdc`](../agent/Modular_Documentation_Rule.mdc), [`Modular_Documentation_Rule.instructions.md`](../agent/Modular_Documentation_Rule.instructions.md), `rule-install-status.example.yaml` |
 | `chat-ui/` | Short Grok/ChatGPT instructions — attach [`AGENT.md`](../chat-ui/AGENT.md) only |
-| Root of `templates/` | `Master_Index_Template.md`, `Modular_Docs_Workflow.md`, `Tooling_Template.md`, feature templates |
+| Root of `templates/` | `Master_Index_Template.md`, `Modular_Docs_Workflow.md`, `Tooling_Template.md`, `Human_TODO_Template.md`, feature templates |
 
 ## Other ways to add templates
 
@@ -31,8 +31,8 @@ You do **not** need the repo root `README.md`, `LICENSE.md`, or `CONTRIBUTING.md
 
 ## After templates are in place
 
-1. Ask your agent to follow **`docs/templates/agent/BOOTSTRAP.md`** — creates `docs/Master_Index.md`, folders, and **feature/shared files for every Document Map row** (draft Understanding + stub spec + TODO), plus relocates upstream root files if needed.
-2. Confirm or correct project overview, Document Map, and `docs/Tooling.md`.
+1. Ask your agent to follow **`docs/templates/agent/BOOTSTRAP.md`** — creates `docs/Master_Index.md`, `Tooling.md`, `Human-TODO.md`, folders, and **feature/shared files for every Document Map row** (draft Understanding + stub spec + TODO), plus relocates upstream root files if needed.
+2. Confirm or correct project overview, Document Map, `docs/Tooling.md`, and `docs/Human-TODO.md` (your procurement checklist).
 3. Review the draft `-Understanding.md` files the agent created; confirm before implementation. Shared components under `docs/_shared/` get the **same note types** unless you explicitly except specific files.
 4. Optionally install the modular doc rule — ask your agent to follow **`docs/templates/agent/RULE_INSTALL.md`**, or install manually (see below).
 
@@ -54,6 +54,8 @@ Do not edit the copies under `docs/templates/agent/` — they stay the upstream 
 
 **Updating templates later:** Ask your agent to update the doc templates. It **overwrites the entire** `docs/templates/` folder from upstream (no per-file diffs), then updates live docs as needed from those **local** template files (not via git on `Master_Index` / features). Full procedure: [`../agent/TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md).
 
+**Human procurement:** After bootstrap, check `docs/Human-TODO.md` for API keys, cloud bots, accounts — things only you can complete. Agents add rows; you check them off.
+
 **Brainstorming in Grok/ChatGPT before you have a repo?** Attach only [`../chat-ui/AGENT.md`](../chat-ui/AGENT.md) — see [`../chat-ui/README.md`](../chat-ui/README.md). Copy `docs/templates/` when you create the project.
 
 **Describing ideas** (UI, flows, scope — especially if you are new to software): see **[`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md)**.
@@ -64,6 +66,7 @@ Do not edit the copies under `docs/templates/agent/` — they stay the upstream 
 docs/
 ├── Master_Index.md              ← live project docs (you maintain)
 ├── Tooling.md                   ← machine / workflow tools (not package deps)
+├── Human-TODO.md                ← human procurement (API keys, cloud bots, accounts)
 ├── rule-install-status.yaml     ← created when installing agent rules
 ├── _shared/
 │   └── assets/
@@ -81,6 +84,7 @@ docs/
     ├── chat-ui/
     ├── Master_Index_Template.md
     ├── Tooling_Template.md
+    ├── Human_TODO_Template.md   ← human procurement checklist
     ├── Modular_Docs_Workflow.md
     └── …
 ```

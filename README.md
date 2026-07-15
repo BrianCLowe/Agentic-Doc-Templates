@@ -61,6 +61,7 @@ Everything lives under **`docs/templates/`** — workflow scaffolds, human guide
 | [TODO_Template.md](docs/templates/TODO_Template.md) | Focused task lists with **Current focus** session handoff |
 | [Decision_Template.md](docs/templates/Decision_Template.md) | Optional cross-cutting decision records |
 | [Tooling_Template.md](docs/templates/Tooling_Template.md) | Machine / workflow tools (`docs/Tooling.md`) — install on a new machine |
+| [Human_TODO_Template.md](docs/templates/Human_TODO_Template.md) | Human procurement checklist (`docs/Human-TODO.md`) — API keys, cloud bots, accounts |
 | [chat-ui/](docs/templates/chat-ui/) | **Short instructions for Grok/ChatGPT** — no repo workspace; output files to download |
 | [agent/Modular_Documentation_Rule.mdc](docs/templates/agent/Modular_Documentation_Rule.mdc) | Cursor rule template — copy to `.cursor/rules/` |
 | [agent/Modular_Documentation_Rule.instructions.md](docs/templates/agent/Modular_Documentation_Rule.instructions.md) | Copilot rule template — copy to `.github/instructions/` |
@@ -78,6 +79,7 @@ Everything lives under **`docs/templates/`** — workflow scaffolds, human guide
 - **Visual references matter** — Screenshots and diagrams stay linked for vision models.
 - **Shared components live once** — Common work goes in `_shared/` with the same note types as features unless you explicitly except specific files.
 - **Index vs workflow split** — `Master_Index.md` is your project map; `Modular_Docs_Workflow.md` is how agents work the system.
+- **Human / procurement** — `docs/Human-TODO.md` for keys, portals, accounts the agent cannot get.
 - **One folder to copy** — Setup and usage instructions live inside `docs/templates/` (`help/`, `agent/`) so they do not clutter your project's `docs/` root.
 
 ## Recommended folder structure
@@ -88,6 +90,7 @@ Flat **sibling files** per feature in `docs/features/` and `docs/_shared/`:
 docs/
 ├── Master_Index.md
 ├── Tooling.md                   ← machine tools (not package deps)
+├── Human-TODO.md                ← human procurement (keys, portals, accounts)
 ├── _shared/
 │   ├── BlockEditor.md
 │   ├── BlockEditor-Understanding.md
@@ -115,6 +118,7 @@ Full path table: [`Modular_Docs_Workflow.md` §0](docs/templates/Modular_Docs_Wo
 - "Bootstrap the documentation system in this project using `docs/templates/agent/BOOTSTRAP.md`."
 - "Update the doc templates from Agentic Doc Templates and sync our live docs."
 - "Install the project tooling for this machine."
+- "What’s left on the human TODO?"
 
 Full workflows and more example prompts are in [`docs/templates/help/USAGE.md`](docs/templates/help/USAGE.md).
 

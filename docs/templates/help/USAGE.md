@@ -88,7 +88,7 @@ Same templates, many entry points.
 
 **What you do:** Copy `docs/templates/`, then agent follows [`../agent/BOOTSTRAP.md`](../agent/BOOTSTRAP.md). Optionally [`../agent/RULE_INSTALL.md`](../agent/RULE_INSTALL.md) for Cursor / Copilot / etc.
 
-**What you get:** Layout + `Master_Index.md` + `Tooling.md` **and** (for every named feature/shared in the Document Map) draft `-Understanding.md` + stub spec + core TODO. Map-only “planned” rows without files are not allowed — see BOOTSTRAP Step 3c.
+**What you get:** Layout + `Master_Index.md` + `Tooling.md` + `Human-TODO.md` **and** (for every named feature/shared in the Document Map) draft `-Understanding.md` + stub spec + core TODO. Map-only “planned” rows without files are not allowed — see BOOTSTRAP Step 3d.
 
 **Example prompt:**
 
@@ -129,6 +129,20 @@ The agent reads [`Tooling.md`](../Tooling.md) (template: [`Tooling_Template.md`]
 
 ---
 
+## Pattern 7 — Human procurement checklist
+
+**When:** Features need API keys, Azure/Teams bots, vendor accounts, or other things only a human can get.
+
+**What you do:** Keep [`Human-TODO.md`](../Human-TODO.md) (template: [`Human_TODO_Template.md`](../Human_TODO_Template.md)) up to date. Agent drafts rows; you complete them.
+
+**Example prompts:**
+
+> What’s left on the human TODO?
+
+> Add Azure Bot / Teams registration to Human-TODO — we’re blocked on the bot feature.
+
+---
+
 ## Works with many agents
 
 | How the agent sees templates | Works for |
@@ -156,6 +170,7 @@ Tool-specific rule install paths: [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md)
 | Install agent rule | *Follow `docs/templates/agent/RULE_INSTALL.md` for [Cursor / Copilot / …].* |
 | Pull template improvements | *Update the doc templates from Agentic Doc Templates and sync our live docs.* |
 | New machine / tooling | *Install the project tooling for this machine.* |
+| Human procurement | *What’s left on the human TODO?* / *Add [Azure Bot / API key] to Human-TODO.* |
 
 ---
 
@@ -170,6 +185,7 @@ Tool-specific rule install paths: [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md)
 - **`docs/_shared/Component-TODO.md`** — foundation work (not duplicated in feature TODOs)
 - **`docs/_shared/Component-InEditor-TODO.md`** / **`Component-Asset-TODO.md`** — when applicable; record omissions in Master_Index Section 3.0
 - **`docs/Tooling.md`** — machine / workflow tools (not package deps); *Install the project tooling for this machine.*
+- **`docs/Human-TODO.md`** — human procurement (API keys, cloud bots, accounts); agent drafts, you complete
 - **`docs/decisions/`** — optional cross-cutting decision files
 - **`docs/templates/`** — upstream template pack (workflow, scaffolds, `help/`, `agent/`, `chat-ui/`) — not live project content
 

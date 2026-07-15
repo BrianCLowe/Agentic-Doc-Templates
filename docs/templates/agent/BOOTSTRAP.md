@@ -76,6 +76,7 @@ Create if missing:
 docs/
 ├── Master_Index.md          ← from Master_Index_Template.md (Step 3)
 ├── Tooling.md               ← from Tooling_Template.md (Step 3b — machine tools)
+├── Human-TODO.md            ← from Human_TODO_Template.md (Step 3d — human procurement)
 ├── rule-install-status.yaml ← only when RULE_INSTALL runs later
 ├── _shared/
 │   └── assets/
@@ -93,7 +94,7 @@ docs/
 
 Ensure **`docs/templates/`** contains at least:
 
-- **Root:** `Master_Index_Template.md`, `Modular_Docs_Workflow.md`, `chat-ui/AGENT.md`, `Feature_Spec_Template.md`, `Feature_Understanding_Template.md`, `TODO_Template.md`, `Decision_Template.md`, `Tooling_Template.md`
+- **Root:** `Master_Index_Template.md`, `Modular_Docs_Workflow.md`, `chat-ui/AGENT.md`, `Feature_Spec_Template.md`, `Feature_Understanding_Template.md`, `TODO_Template.md`, `Decision_Template.md`, `Tooling_Template.md`, `Human_TODO_Template.md`
 - **`help/`:** `SETUP.md`, `USAGE.md`, `IDEA_CAPTURE_TIPS.md`, `USING_WITH_AGENTS.md`
 - **`agent/`:** `BOOTSTRAP.md`, `RULE_INSTALL.md`, `TEMPLATE_SYNC.md`, `Modular_Documentation_Rule.mdc`, `Modular_Documentation_Rule.instructions.md`, `rule-install-status.example.yaml`
 
@@ -119,7 +120,17 @@ If `docs/Tooling.md` does not exist:
 
 If it already exists → do not overwrite; offer to update rows when the stack changes.
 
-## Step 3c — Create files for every Document Map row *(mandatory)*
+## Step 3c — Create live Human-TODO.md
+
+If `docs/Human-TODO.md` does not exist:
+
+1. Copy from `docs/templates/Human_TODO_Template.md`.
+2. Add rows for any accounts, API keys, portal registrations, or purchases implied by the conversation / Document Map (e.g. Azure Bot, Teams app, Graph credentials). Leave empty Open table if none yet.
+3. Ensure Master Index §3.3 / §3.4 link to `Human-TODO.md`.
+
+If it already exists → add newly discovered procurement needs; do not wipe user-completed rows.
+
+## Step 3d — Create files for every Document Map row *(mandatory)*
 
 **A Document Map row is not documentation.** If you put a feature or shared component in §3.1 / §3.2, you **must** create the default file set in the same session (see [`Modular_Docs_Workflow.md`](../Modular_Docs_Workflow.md) §0):
 
@@ -141,14 +152,15 @@ If it already exists → do not overwrite; offer to update rows when the stack c
 2. Tell the user which Understandings to review first (suggest Path A foundation or the feature they care about most).
 3. Optionally ask once: “Review all draft Understandings, or start with [X]?” — do **not** wait for that ask before creating the files.
 
-If the user named **no** features yet, skip Step 3c and say so in Step 4.
+If the user named **no** features yet, skip Step 3d and say so in Step 4.
 
 ## Step 4 — Tell the user what's next
 
-1. Confirm or correct Section 1 (Project Overview), Document Map, and `docs/Tooling.md`.
-2. Point at the **draft** `-Understanding.md` files created in Step 3c — user reviews / corrects before implementation.
-3. After they confirm an Understanding, graduate durable content into the spec and continue from TODOs ([`../help/SETUP.md`](../help/SETUP.md)).
-4. Optional: run [`RULE_INSTALL.md`](RULE_INSTALL.md) for agent rules (asks per tool, records in `rule-install-status.yaml`).
+1. Confirm or correct Section 1 (Project Overview), Document Map, `docs/Tooling.md`, and `docs/Human-TODO.md`.
+2. Point at the **draft** `-Understanding.md` files created in Step 3d — user reviews / corrects before implementation.
+3. Point at **Open** items on `Human-TODO.md` — things only the human can procure before those features unblock.
+4. After they confirm an Understanding, graduate durable content into the spec and continue from TODOs ([`../help/SETUP.md`](../help/SETUP.md)).
+5. Optional: run [`RULE_INSTALL.md`](RULE_INSTALL.md) for agent rules (asks per tool, records in `rule-install-status.yaml`).
 
 ## Do not
 
@@ -158,6 +170,7 @@ If the user named **no** features yet, skip Step 3c and say so in Step 4.
 - Leave Agentic Doc Templates `.github/ISSUE_TEMPLATE/` in a user project — delete it (Step 1b).
 - Skip asking before moving root files.
 - Finish bootstrap with a filled Document Map but **no** feature/shared files on disk.
+- Put human procurement items only in feature TODOs — use `docs/Human-TODO.md` and link from features.
 
 ## Example user prompts
 

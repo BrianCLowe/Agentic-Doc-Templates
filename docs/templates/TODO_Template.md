@@ -11,7 +11,7 @@
 ## Current focus *(session handoff — update every session)*
 
 **Active task:** [One sentence — what to do next, or "blocked"]  
-**Blocked by:** [Link to TODO item, shared maturity, or "—"]  
+**Blocked by:** [Link to TODO item, shared maturity, `Human-TODO.md` row, or "—"]  
 **Last session:** [YYYY-MM-DD — optional tool/note]
 
 *Next agent: read this block first, then High Priority.*
@@ -35,6 +35,9 @@ Use the right pattern:
 **Feature depends on another feature or shared work (not doing the foundation yourself):**
 - Blocked until shared editor API exists (see [_shared/BlockEditor-TODO.md](../_shared/BlockEditor-TODO.md) — "Expose shared editing API")
 - Requires `DiffWorkflow` first (see [DiffWorkflow-TODO.md](../features/DiffWorkflow-TODO.md))
+
+**Feature depends on human procurement (API key, cloud bot, account):**
+- Blocked until [need] exists (see [Human-TODO.md](../Human-TODO.md) — "[row name]") — do not put the full procurement checklist here
 
 **You are building the shared foundation itself** — do not list those tasks here. Add them to `_shared/ComponentName-TODO.md` and link from here only if a feature is waiting.
 

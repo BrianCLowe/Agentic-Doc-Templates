@@ -49,8 +49,9 @@ docs/
 | | `docs/_shared/ComponentName-Understanding.md` *(draft first)* |
 | | `docs/_shared/ComponentName-TODO.md` |
 | **Project entry** | `docs/Master_Index.md` *(overview + Document Map listing every path above)* |
+| **Human procurement** *(if keys/portals/accounts needed)* | `docs/Human-TODO.md` |
 
-Optional later (not required in chat): `-InEditor-TODO.md`, `-Asset-TODO.md`, `docs/decisions/`. Skip unless the user asks.
+Optional later (not required in chat): `-InEditor-TODO.md`, `-Asset-TODO.md`, `docs/Tooling.md`, `docs/decisions/`. Skip unless the user asks or the conversation clearly needs them.
 
 **Shared components** get the same three file types as features unless the user **says** to omit something — record omissions in Master_Index §3.0. Do not invent exceptions.
 
@@ -79,7 +80,7 @@ Include:
 |-----------|------|---------------|------|
 | Block Editor | _shared/BlockEditor.md | _shared/BlockEditor-Understanding.md | _shared/BlockEditor-TODO.md |
 
-3. **Template version:** 2.1 · **Workflow version:** 2.1 *(for later sync with Agentic Doc Templates)*
+3. **Template version:** 2.2 · **Workflow version:** 2.2 *(for later sync with Agentic Doc Templates)*
 
 Use [`Master_Index_Template.md`](../Master_Index_Template.md) for full section layout if available.
 

@@ -19,11 +19,12 @@ This project uses a lean modular documentation system. `docs/Master_Index.md` is
    - Feature work → `features/FeatureName-TODO.md` (and InEditor/Asset TODOs as needed)
 5. Before integrating a **shared** piece, check its **Maturity** on the spec or Document Map (`draft` | `usable` | `stable`).
 6. If the user asks to install tooling / set up this machine: follow **`docs/Tooling.md`** (Workflow §11) — Required (+ skills if listed); Optional only if asked; verify all; ask before admin/large SDKs.
+7. If work needs an account, API key, cloud portal registration, or purchase: add/update **`docs/Human-TODO.md`** (Workflow §13) and link from the feature TODO — never store secrets in docs.
 
 **Shared foundation (critical):**
 - Shared components get **Understanding by default** (Workflow §1, §4). §3.0 exceptions are **user-requested only** — never invent them because files are missing or to “leave for later.”
 - **File layout:** create only paths from Workflow **§0** / Document Map — flat files in `features/` and `_shared/`.
-- **Document Map = files on disk.** Adding a §3.1/§3.2 row requires creating Understanding (`draft` OK) + spec stub + core TODO in the same turn. Never leave map-only “planned” rows. Bootstrap Step 3c.
+- **Document Map = files on disk.** Adding a §3.1/§3.2 row requires creating Understanding (`draft` OK) + spec stub + core TODO in the same turn. Never leave map-only “planned” rows. Bootstrap Step 3d.
 - Shared components get the **same note types as features** unless the user explicitly excepted specific files — record those in Master Index **§3.0** (Workflow §1). If Understanding or core TODO is missing and there is no user exception, **create them**.
 - Tasks that **build or refactor** a shared component go in `_shared/ComponentName-TODO.md` (and related shared TODOs) — **not** in a consumer feature's TODO.
 - Feature TODOs only **link** to shared TODOs when blocked or integrating (dependency note), they do not duplicate foundation tasks.

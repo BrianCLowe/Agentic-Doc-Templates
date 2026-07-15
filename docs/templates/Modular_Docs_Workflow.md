@@ -1,10 +1,10 @@
-<!-- workflow-version: 2.1 -->
+<!-- workflow-version: 2.2 -->
 
 > **Agent workflow reference.** Canonical instructions for how to work the modular doc system. Lives in `docs/templates/` — sync from upstream; do **not** copy wholesale into `docs/Master_Index.md`. The live index links here; agent rules summarize and point here for full procedure.
 
 # Modular Documentation — Agent Workflow
 
-**Workflow version**: 2.1 *(sync with `Master_Index.md` **Workflow version** line when updating)*
+**Workflow version**: 2.2 *(sync with `Master_Index.md` **Workflow version** line when updating)*
 
 **Design intent:** Users give short requests about the docs (“bootstrap”, “draft Understanding for X”, “update the templates”). You read this pack and act — they should not need complex prompts or step-by-step instructions.
 
@@ -40,7 +40,7 @@
 2. Create those three (or more) **flat files** at those paths **in the same turn** — from [`Feature_Spec_Template.md`](Feature_Spec_Template.md), [`Feature_Understanding_Template.md`](Feature_Understanding_Template.md), [`TODO_Template.md`](TODO_Template.md).
 3. All files for one feature live **directly** in `features/` (or `_shared/`), not in a subfolder named after the feature.
 
-**Map without files = incomplete work.** Do not add Document Map rows and defer file creation “until the user picks where to start.” Bootstrap Step 3c and this section require the default file set on disk. Understanding status `draft` means **do not implement code** yet — it does **not** mean skip creating `-Understanding.md`.
+**Map without files = incomplete work.** Do not add Document Map rows and defer file creation “until the user picks where to start.” Bootstrap Step 3d and this section require the default file set on disk. Understanding status `draft` means **do not implement code** yet — it does **not** mean skip creating `-Understanding.md`.
 
 **Chat UI (no repo write access):** use [`chat-ui/AGENT.md`](chat-ui/AGENT.md) — shorter instructions and required save-as output format.
 
@@ -346,10 +346,32 @@ Use Mermaid in Understanding, specs, or Master Index overview when a **small** d
 
 ---
 
+## 13. Human TODO *(procurement / external blockers)*
+
+Live file: **`docs/Human-TODO.md`** (from [`Human_TODO_Template.md`](Human_TODO_Template.md)).
+
+**One project-level list for humans** — accounts, API keys, cloud portal registrations (e.g. Azure Bot / Teams), purchases, org approvals, certificates. Coding agents **cannot** complete these.
+
+| Put here | Put elsewhere |
+|----------|---------------|
+| Portal / account / key / purchase / approval the **human** must do | Installable CLIs/SDKs → [`Tooling.md`](Tooling.md) |
+| | Code tasks → feature or `_shared/` `*-TODO.md` |
+
+**Agent behavior:**
+
+1. When Understanding, planning, or implementation needs something only a human can procure → add (or update) a row in `Human-TODO.md`.
+2. In the feature/shared TODO **Blocked by** / Cross-Feature notes: link to `Human-TODO.md` and the row name — do not duplicate the full procurement checklist into every feature file.
+3. Never store secrets in docs. Instruct: create credential → put in `.env` / vault (names only in `.env.example`).
+4. Do not mark rows **done** unless the user confirms. If the user asks what’s left for them, summarize **Open** from this file.
+5. Create the file at bootstrap (may start empty). Fill as soon as the conversation or Document Map implies external dependencies.
+
+---
+
 ## Instructions for AI Agents
 
 - **Master_Index.md** = *what this project is* and *where files live*.
 - **This file** = *how to work* the system. Follow Path A or B (§3) on every task.
 - **Tooling.md** = *what to install on a new machine* (not package deps).
+- **Human-TODO.md** = *what only a human can procure* (keys, portals, accounts) — §13.
 - **Mermaid** = optional (§12) — use when clearer than prose; never required.
 - The installed agent rule ([`agent/Modular_Documentation_Rule.mdc`](agent/Modular_Documentation_Rule.mdc)) is a short checklist — read this file when doing non-trivial doc or implementation work.
