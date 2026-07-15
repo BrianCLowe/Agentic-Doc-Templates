@@ -1,10 +1,10 @@
-<!-- workflow-version: 2.0 -->
+<!-- workflow-version: 2.1 -->
 
 > **Agent workflow reference.** Canonical instructions for how to work the modular doc system. Lives in `docs/templates/` — sync from upstream; do **not** copy wholesale into `docs/Master_Index.md`. The live index links here; agent rules summarize and point here for full procedure.
 
 # Modular Documentation — Agent Workflow
 
-**Workflow version**: 2.0 *(sync with `Master_Index.md` **Workflow version** line when updating)*
+**Workflow version**: 2.1 *(sync with `Master_Index.md` **Workflow version** line when updating)*
 
 **Design intent:** Users give short requests about the docs (“bootstrap”, “draft Understanding for X”, “update the templates”). You read this pack and act — they should not need complex prompts or step-by-step instructions.
 
@@ -36,9 +36,11 @@
 
 **When adding a new feature or shared component:**
 
-1. Add a row to Master Index §3.1 or §3.2 with the exact paths.
-2. Create those three (or more) **flat files** at those paths — from [`Feature_Spec_Template.md`](Feature_Spec_Template.md), [`Feature_Understanding_Template.md`](Feature_Understanding_Template.md), [`TODO_Template.md`](TODO_Template.md).
+1. Add a row to Master Index §3.1 or §3.2 with the exact paths (**working markdown links** — not “planned” placeholders with nowhere to click).
+2. Create those three (or more) **flat files** at those paths **in the same turn** — from [`Feature_Spec_Template.md`](Feature_Spec_Template.md), [`Feature_Understanding_Template.md`](Feature_Understanding_Template.md), [`TODO_Template.md`](TODO_Template.md).
 3. All files for one feature live **directly** in `features/` (or `_shared/`), not in a subfolder named after the feature.
+
+**Map without files = incomplete work.** Do not add Document Map rows and defer file creation “until the user picks where to start.” Bootstrap Step 3c and this section require the default file set on disk. Understanding status `draft` means **do not implement code** yet — it does **not** mean skip creating `-Understanding.md`.
 
 **Chat UI (no repo write access):** use [`chat-ui/AGENT.md`](chat-ui/AGENT.md) — shorter instructions and required save-as output format.
 
@@ -159,7 +161,7 @@ Each **feature** and each substantial **shared component** should have a `-Under
 
 | Status | Meaning |
 |--------|---------|
-| `draft` | Agent wrote or updated; user has not approved — **do not implement** unless user waives |
+| `draft` | Agent wrote or updated; user has not approved — **do not implement code** unless user waives. The file **must still exist** — `draft` is not a reason to skip creating Understanding |
 | `reviewed` | User skimmed; minor edits may remain |
 | `confirmed` | User approved scope — **safe to implement and continue** without asking them to review this Understanding again; **graduate to spec** (§2) |
 | `superseded` | No longer accurate — code or plan changed; draft a revision or reconcile explicitly |

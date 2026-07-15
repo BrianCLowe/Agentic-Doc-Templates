@@ -105,7 +105,7 @@ If `docs/Master_Index.md` does not exist:
 
 1. Copy content from `docs/templates/Master_Index_Template.md`.
 2. Replace bracketed placeholders; set **Template version** and **Workflow version** to match the templates.
-3. Add at least placeholder rows in Document Map — do not leave Section 3 empty if user named features.
+3. Fill Document Map (§3) from the conversation, README, or known scope — do not leave Section 3 empty if the user named features or shared components.
 
 If `Master_Index.md` already exists → do not overwrite; offer [`TEMPLATE_SYNC.md`](TEMPLATE_SYNC.md) instead.
 
@@ -119,11 +119,35 @@ If `docs/Tooling.md` does not exist:
 
 If it already exists → do not overwrite; offer to update rows when the stack changes.
 
+## Step 3c — Create files for every Document Map row *(mandatory)*
+
+**A Document Map row is not documentation.** If you put a feature or shared component in §3.1 / §3.2, you **must** create the default file set in the same session (see [`Modular_Docs_Workflow.md`](../Modular_Docs_Workflow.md) §0):
+
+| Always create | Status / notes |
+|---------------|----------------|
+| `*-Understanding.md` | status `draft` — agent interpretation for user review |
+| `*.md` spec | stub/placeholder OK until Understanding is `confirmed` |
+| `*-TODO.md` | core TODO; add InEditor/Asset TODOs when Project Profile / game extensions apply |
+
+**Do not:**
+
+- Leave map-only “planned” rows with broken or missing links “until the user picks one”
+- Treat the Understanding `draft` gate as a reason to **skip creating** Understanding files — `draft` blocks **coding**, not **writing docs**
+- Create nine fully graduated specs before the user confirms — stubs + draft Understandings are correct
+
+**When many features were named** (e.g. 5+):
+
+1. Create the default file set for **every** map row (Understanding as `draft`, thin spec stub, core TODO).
+2. Tell the user which Understandings to review first (suggest Path A foundation or the feature they care about most).
+3. Optionally ask once: “Review all draft Understandings, or start with [X]?” — do **not** wait for that ask before creating the files.
+
+If the user named **no** features yet, skip Step 3c and say so in Step 4.
+
 ## Step 4 — Tell the user what's next
 
-1. Fill in Section 1 (Project Overview) and Document Map.
-2. Confirm or correct `docs/Tooling.md` so a new machine can be set up with: *Install the project tooling for this machine.*
-3. First feature: agent drafts spec + Understanding + TODO; you review (see [`../help/SETUP.md`](../help/SETUP.md)). Shared components: same full note set under `_shared/` unless the user excepts specific files.
+1. Confirm or correct Section 1 (Project Overview), Document Map, and `docs/Tooling.md`.
+2. Point at the **draft** `-Understanding.md` files created in Step 3c — user reviews / corrects before implementation.
+3. After they confirm an Understanding, graduate durable content into the spec and continue from TODOs ([`../help/SETUP.md`](../help/SETUP.md)).
 4. Optional: run [`RULE_INSTALL.md`](RULE_INSTALL.md) for agent rules (asks per tool, records in `rule-install-status.yaml`).
 
 ## Do not
@@ -133,6 +157,7 @@ If it already exists → do not overwrite; offer to update rows when the stack c
 - Create `docs/help/` or `docs/agent/` at docs root — those belong inside `docs/templates/`.
 - Leave Agentic Doc Templates `.github/ISSUE_TEMPLATE/` in a user project — delete it (Step 1b).
 - Skip asking before moving root files.
+- Finish bootstrap with a filled Document Map but **no** feature/shared files on disk.
 
 ## Example user prompts
 

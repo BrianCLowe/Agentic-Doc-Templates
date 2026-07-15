@@ -88,6 +88,8 @@ Same templates, many entry points.
 
 **What you do:** Copy `docs/templates/`, then agent follows [`../agent/BOOTSTRAP.md`](../agent/BOOTSTRAP.md). Optionally [`../agent/RULE_INSTALL.md`](../agent/RULE_INSTALL.md) for Cursor / Copilot / etc.
 
+**What you get:** Layout + `Master_Index.md` + `Tooling.md` **and** (for every named feature/shared in the Document Map) draft `-Understanding.md` + stub spec + core TODO. Map-only “planned” rows without files are not allowed — see BOOTSTRAP Step 3c.
+
 **Example prompt:**
 
 > Bootstrap modular docs in this project using `docs/templates/agent/BOOTSTRAP.md`.

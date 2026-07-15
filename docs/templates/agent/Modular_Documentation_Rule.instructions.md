@@ -23,12 +23,13 @@ This project uses a lean modular documentation system. `docs/Master_Index.md` is
 **Shared foundation (critical):**
 - Shared components get **Understanding by default** (Workflow §1, §4). §3.0 exceptions are **user-requested only** — never invent them because files are missing or to “leave for later.”
 - **File layout:** create only paths from Workflow **§0** / Document Map — flat files in `features/` and `_shared/`.
+- **Document Map = files on disk.** Adding a §3.1/§3.2 row requires creating Understanding (`draft` OK) + spec stub + core TODO in the same turn. Never leave map-only “planned” rows. Bootstrap Step 3c.
 - Shared components get the **same note types as features** unless the user explicitly excepted specific files — record those in Master Index **§3.0** (Workflow §1). If Understanding or core TODO is missing and there is no user exception, **create them**.
 - Tasks that **build or refactor** a shared component go in `_shared/ComponentName-TODO.md` (and related shared TODOs) — **not** in a consumer feature's TODO.
 - Feature TODOs only **link** to shared TODOs when blocked or integrating (dependency note), they do not duplicate foundation tasks.
 
 **Before implementation:**
-- **Draft `-Understanding.md` first** when scoping new work — show the user how you interpreted their request; do not expect them to write it.
+- **Draft `-Understanding.md` first** when scoping new work — show the user how you interpreted their request; do not expect them to write it. Creating draft Understanding files is required; the `draft` status only blocks **coding**, not writing those files.
 - Do not treat a feature as greenfield if Understanding says it extends or reuses existing work.
 - Do not start coding while Understanding status is `draft` unless the user explicitly waives review.
 - **When Understanding status is `confirmed`**, treat scope as approved — continue from TODO/spec without re-surfacing the Understanding for review.

@@ -1,4 +1,4 @@
-<!-- template-version: 2.0 -->
+<!-- template-version: 2.1 -->
 
 > **Template reference.** Do not put project-specific content in this file. Copy to `docs/Master_Index.md` for initial setup, or diff against it when syncing template improvements into the live index. Never edit this template unless the user asks you to.
 >
@@ -8,8 +8,8 @@
 
 **Purpose**: Single entry point for **this project's** documentation — overview, locations, and Document Map. Read only the files relevant to the current task.
 
-**Template version**: 2.0 *(update when syncing from `templates/Master_Index_Template.md`)*  
-**Workflow version**: 2.0 *(must match `templates/Modular_Docs_Workflow.md` — update both on sync)*
+**Template version**: 2.1 *(update when syncing from `templates/Master_Index_Template.md`)*  
+**Workflow version**: 2.1 *(must match `templates/Modular_Docs_Workflow.md` — update both on sync)*
 
 ## 1. Project Overview
 
@@ -66,7 +66,7 @@ Record **only** omissions the **user explicitly requested**. Agents must **not**
 | *(example)* BlockEditor | InEditor-TODO, Asset-TODO | 2026-06-15 — **user said** “no asset or in-editor work for BlockEditor” |
 | [Add rows only after user excepts] | | |
 
-**Default file set** (create unless a row above says otherwise): Spec + Understanding + core TODO. InEditor / Asset TODOs when that work applies. **Never omit Understanding or the core TODO** unless the user explicitly excepted them for that item.
+**Default file set** (create on disk when you add a row — map-only “planned” rows are not allowed): Spec + Understanding + core TODO. InEditor / Asset TODOs when that work applies. **Never omit Understanding or the core TODO** unless the user explicitly excepted them for that item. Understanding may be `draft`; that still requires the file to exist.
 
 ### 3.1 Shared / Core Components
 

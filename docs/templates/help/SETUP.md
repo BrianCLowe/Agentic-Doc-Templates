@@ -31,9 +31,9 @@ You do **not** need the repo root `README.md`, `LICENSE.md`, or `CONTRIBUTING.md
 
 ## After templates are in place
 
-1. Ask your agent to follow **`docs/templates/agent/BOOTSTRAP.md`** — creates `docs/Master_Index.md`, folders, and relocates upstream root files if needed.
-2. Fill in project overview and Document Map in `Master_Index.md`.
-3. Add first feature under `docs/features/` (agent drafts spec + Understanding + TODO; you review). Shared components under `docs/_shared/` get the **same note types** unless you explicitly except specific files.
+1. Ask your agent to follow **`docs/templates/agent/BOOTSTRAP.md`** — creates `docs/Master_Index.md`, folders, and **feature/shared files for every Document Map row** (draft Understanding + stub spec + TODO), plus relocates upstream root files if needed.
+2. Confirm or correct project overview, Document Map, and `docs/Tooling.md`.
+3. Review the draft `-Understanding.md` files the agent created; confirm before implementation. Shared components under `docs/_shared/` get the **same note types** unless you explicitly except specific files.
 4. Optionally install the modular doc rule — ask your agent to follow **`docs/templates/agent/RULE_INSTALL.md`**, or install manually (see below).
 
 ## Install the agent rule yourself (optional)
