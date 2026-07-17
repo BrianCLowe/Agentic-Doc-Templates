@@ -1,4 +1,4 @@
-<!-- template-version: 2.2 -->
+<!-- template-version: 2.3 -->
 
 > **Template reference.** Do not put project-specific content in this file. Copy to `docs/Master_Index.md` for initial setup, or diff against it when syncing template improvements into the live index. Never edit this template unless the user asks you to.
 >
@@ -8,8 +8,8 @@
 
 **Purpose**: Single entry point for **this project's** documentation — overview, locations, and Document Map. Read only the files relevant to the current task.
 
-**Template version**: 2.2 *(update when syncing from `templates/Master_Index_Template.md`)*  
-**Workflow version**: 2.2 *(must match `templates/Modular_Docs_Workflow.md` — update both on sync)*
+**Template version**: 2.3 *(update when syncing from `templates/Master_Index_Template.md`)*  
+**Workflow version**: 2.3 *(must match `templates/Modular_Docs_Workflow.md` — update both on sync)*
 
 ## 1. Project Overview
 
@@ -41,7 +41,8 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 | `docs/Tooling.md` | Machine / workflow tools (not package deps) — install on a new machine ([`Tooling_Template.md`](templates/Tooling_Template.md)) |
 | `docs/Human-TODO.md` | Human procurement / external blockers (API keys, cloud bots, accounts) — agent cannot do these ([`Human_TODO_Template.md`](templates/Human_TODO_Template.md)) |
 | `docs/decisions/` | Optional cross-cutting decisions ([`Decision_Template.md`](templates/Decision_Template.md)) |
-| `docs/templates/` | Upstream template pack — workflow, scaffolds, setup guides (`help/`, `agent/`, `chat-ui/`); includes [`Modular_Docs_Workflow.md`](templates/Modular_Docs_Workflow.md) |
+| `docs/templates/` | Upstream template pack — workflow, scaffolds, setup guides (`help/`, `agent/`, `chat-ui/`); includes [`Modular_Docs_Workflow.md`](templates/Modular_Docs_Workflow.md) and [`VERSION`](templates/VERSION) |
+| `docs/upstream-status.yaml` | Optional — weekly template update check stamp ([`TEMPLATE_UPDATE_CHECK.md`](templates/agent/TEMPLATE_UPDATE_CHECK.md)) |
 | `src/` / `backend/` / `frontend/` | Actual code (reference only) |
 
 ### 2.2 At a Glance *(policy summary — full rules in Workflow)*

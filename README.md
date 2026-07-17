@@ -48,6 +48,8 @@ You do **not** need to copy files by hand when this repo improves. In a project 
 
 The agent follows [`docs/templates/agent/TEMPLATE_SYNC.md`](docs/templates/agent/TEMPLATE_SYNC.md): it **downloads** the latest pack into your project's `docs/templates/` (ZIP/copy — not a git update of your live docs), then **updates your live docs as needed** from those **local** template files (`Master_Index.md`, Understanding, specs, TODOs) — without wiping your Document Map or feature content.
 
+**Optional weekly ping:** Bootstrap can enable a tiny `docs/upstream-status.yaml` plus an optional agent rule so the agent notices newer pack versions about once a week (or when you ask *"Check for template updates"*). Token cost is negligible — details in [`docs/templates/agent/TEMPLATE_UPDATE_CHECK.md`](docs/templates/agent/TEMPLATE_UPDATE_CHECK.md).
+
 ## What's Included
 
 Everything lives under **`docs/templates/`** — workflow scaffolds, human guides, agent setup, and chat-ui pack. Your live project docs (`Master_Index`, `features/`, `_shared/`) stay separate at `docs/` root.
@@ -63,10 +65,12 @@ Everything lives under **`docs/templates/`** — workflow scaffolds, human guide
 | [Tooling_Template.md](docs/templates/Tooling_Template.md) | Machine / workflow tools (`docs/Tooling.md`) — install on a new machine |
 | [Human_TODO_Template.md](docs/templates/Human_TODO_Template.md) | Human procurement checklist (`docs/Human-TODO.md`) — API keys, cloud bots, accounts |
 | [chat-ui/](docs/templates/chat-ui/) | **Short instructions for Grok/ChatGPT** — no repo workspace; output files to download |
+| [VERSION](docs/templates/VERSION) | Pack version markers for cheap upstream checks |
 | [agent/Modular_Documentation_Rule.mdc](docs/templates/agent/Modular_Documentation_Rule.mdc) | Cursor rule template — copy to `.cursor/rules/` |
 | [agent/Modular_Documentation_Rule.instructions.md](docs/templates/agent/Modular_Documentation_Rule.instructions.md) | Copilot rule template — copy to `.github/instructions/` |
+| [agent/Template_Update_Check_Rule.mdc](docs/templates/agent/Template_Update_Check_Rule.mdc) | Optional Cursor rule — weekly pack update ping |
 | [help/](docs/templates/help/) | Human guides — [SETUP](docs/templates/help/SETUP.md), [USAGE](docs/templates/help/USAGE.md), [IDEA_CAPTURE_TIPS](docs/templates/help/IDEA_CAPTURE_TIPS.md), [USING_WITH_AGENTS](docs/templates/help/USING_WITH_AGENTS.md) |
-| [agent/](docs/templates/agent/) | Agent setup — [BOOTSTRAP](docs/templates/agent/BOOTSTRAP.md), [RULE_INSTALL](docs/templates/agent/RULE_INSTALL.md), [TEMPLATE_SYNC](docs/templates/agent/TEMPLATE_SYNC.md), rule templates (`.mdc`, `.instructions.md`) |
+| [agent/](docs/templates/agent/) | Agent setup — [BOOTSTRAP](docs/templates/agent/BOOTSTRAP.md), [RULE_INSTALL](docs/templates/agent/RULE_INSTALL.md), [TEMPLATE_SYNC](docs/templates/agent/TEMPLATE_SYNC.md), [TEMPLATE_UPDATE_CHECK](docs/templates/agent/TEMPLATE_UPDATE_CHECK.md), rule templates |
 
 ## Core Philosophy
 
@@ -100,8 +104,9 @@ docs/
 │   ├── MainWorkspace-Understanding.md
 │   └── MainWorkspace-TODO.md
 └── templates/                   ← copy this entire folder from Agentic Doc Templates
+    ├── VERSION                  ← pack version (cheap upstream compare)
     ├── help/                    ← human guides (not live project docs)
-    ├── agent/                   ← bootstrap, rule install, sync
+    ├── agent/                   ← bootstrap, rule install, sync, update check
     ├── chat-ui/AGENT.md         ← Grok / ChatGPT (attach this only)
     └── Modular_Docs_Workflow.md ← IDE agents (sync, do not copy into Master_Index)
 ```
@@ -117,6 +122,7 @@ Full path table: [`Modular_Docs_Workflow.md` §0](docs/templates/Modular_Docs_Wo
 - "Convert this design document into modular docs (without the rule installed reference docs/templates)"
 - "Bootstrap the documentation system in this project using `docs/templates/agent/BOOTSTRAP.md`."
 - "Update the doc templates from Agentic Doc Templates and sync our live docs."
+- "Check for template updates."
 - "Install the project tooling for this machine."
 - "What’s left on the human TODO?"
 

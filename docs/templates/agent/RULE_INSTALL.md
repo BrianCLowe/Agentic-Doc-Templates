@@ -29,6 +29,19 @@ After the user answers for a **specific tool**, create or update `docs/rule-inst
 
 Optional fields: `recorded` (YYYY-MM-DD), `path`, `note`.
 
+### Optional rules (`optional_rules` in the same file)
+
+| Key | Meaning |
+|-----|---------|
+| `template-update-check` | Weekly (or on-request) ping for newer Agentic Doc Templates — see [`TEMPLATE_UPDATE_CHECK.md`](TEMPLATE_UPDATE_CHECK.md) |
+
+| Status | Meaning |
+|--------|---------|
+| `enabled` | User opted in (bootstrap Step 4b or explicit ask). Install the optional rule for each tool with `tools.*.status: installed`. |
+| `declined` | User opted out — do not install; do not re-ask unless they request it. |
+
+If `optional_rules.template-update-check` is missing, bootstrap should have asked — if you are mid–rule-install and bootstrap Step 4b was skipped, ask once using the Step 4b prompt, then record `enabled` or `declined`.
+
 ### Before asking
 
 1. Read `docs/rule-install-status.yaml` if it exists.
@@ -89,6 +102,21 @@ Copy from `docs/templates/agent/`. Use the **same rule body** everywhere; only f
 | `cline` | Rule body | `.clinerules/modular-documentation.md` or `.cline/rules/modular-documentation.md` |
 | `agents-md` | Rule body | Section in root `AGENTS.md` titled `## Documentation workflow` |
 
+### Optional — Template Update Check
+
+Only when `optional_rules.template-update-check.status` is `enabled`. Install **alongside** the modular docs rule for each tool you install (or already have `installed`). Requires live `docs/upstream-status.yaml` (create from [`upstream-status.example.yaml`](upstream-status.example.yaml) if missing).
+
+| Tool key | Source template | Install to |
+|----------|-----------------|------------|
+| `cursor` | `agent/Template_Update_Check_Rule.mdc` | `.cursor/rules/template-update-check.mdc` |
+| `github-copilot` | `agent/Template_Update_Check_Rule.instructions.md` | `.github/instructions/template-update-check.instructions.md` |
+| `claude-code` | Rule body from `agent/Template_Update_Check_Rule.mdc` (no Cursor frontmatter) | `.claude/rules/template-update-check.md` or a clearly labeled section in `CLAUDE.md` |
+| `continue` | Rule body + frontmatter | `.continue/rules/template-update-check.md` |
+| `cline` | Rule body | `.clinerules/template-update-check.md` or `.cline/rules/template-update-check.md` |
+| `agents-md` | Rule body | Section in root `AGENTS.md` titled `## Template update check` |
+
+Record install paths under `optional_rules.template-update-check.paths` when useful. Procedure the rule points at: [`TEMPLATE_UPDATE_CHECK.md`](TEMPLATE_UPDATE_CHECK.md).
+
 Full tool notes: [Using With AI Agents](../help/USING_WITH_AGENTS.md).
 
 ## Multi-tool setups (no conflict)
@@ -107,13 +135,15 @@ A user who switches tools later may need an install for a **different** tool key
 - Do not edit files under `docs/templates/` except when copying **from** them.
 - After install, update the status file and tell the user which file(s) were created or updated.
 - **After installing for Cursor:** Warn that **Compound Engineering** and **Superpowers** plugins/skills often override this rule so agents skip `Master_Index.md` and the Understanding/TODO flow. Recommend disabling them for this workspace. Point to [`../help/USING_WITH_AGENTS.md`](../help/USING_WITH_AGENTS.md#cursor).
+- If `optional_rules.template-update-check` is `enabled`, install the Template Update Check rule for every tool you install in this pass (and offer to add it for tools already `installed` that lack the optional file).
 
 ## Suggested prompt to the user
 
 > I found `docs/templates/agent/` with the modular documentation rule templates. You're likely using **[tool]**.
 >
 > On disk: [existing install paths or none].  
-> Status file: [Cursor: installed | Copilot: not asked yet | …].
+> Status file: [Cursor: installed | Copilot: not asked yet | …].  
+> Template update checks: [enabled | declined | not asked — see bootstrap Step 4b].
 >
 > Install the modular docs rule for **[tool]**? (I won't ask again for that tool after you answer.)  
 > If you also use other agents on this repo, say which — each gets its own file and status entry.
@@ -129,6 +159,8 @@ A user who switches tools later may need an install for a **different** tool key
 ## Related
 
 - Status file example: [`rule-install-status.example.yaml`](rule-install-status.example.yaml)
+- Upstream check status example: [`upstream-status.example.yaml`](upstream-status.example.yaml)
 - Doc structure bootstrap: [`BOOTSTRAP.md`](BOOTSTRAP.md)
 - Updating live docs from templates: [`TEMPLATE_SYNC.md`](TEMPLATE_SYNC.md)
+- Cheap update ping: [`TEMPLATE_UPDATE_CHECK.md`](TEMPLATE_UPDATE_CHECK.md)
 - Tool-specific details: [Using With AI Agents](../help/USING_WITH_AGENTS.md)

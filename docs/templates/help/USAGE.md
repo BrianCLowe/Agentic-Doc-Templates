@@ -107,6 +107,12 @@ See [`SETUP.md`](SETUP.md) for copy-only vs whole-repo details.
 1. **Overwrite** the whole `docs/templates/` folder from upstream (ZIP or temp clone — **not** `git pull` into live docs; **not** a per-file diff).
 2. **Update live docs from those local files as needed** — read `docs/templates/Master_Index_Template.md` (and other local templates) and update `Master_Index.md` / Understanding / TODOs accordingly. Do not use git to rewrite live documentation.
 
+**Optional — hear about updates without syncing yet:** During bootstrap you can enable a weekly version ping (`docs/upstream-status.yaml` + optional rule). Or anytime:
+
+> Check for template updates.
+
+That only fetches the tiny upstream `VERSION` file ([`TEMPLATE_UPDATE_CHECK.md`](../agent/TEMPLATE_UPDATE_CHECK.md)). Sync with the prompts below when you want the pack refreshed.
+
 **Example prompts:**
 
 > Update the doc templates from Agentic Doc Templates and sync our live docs.
@@ -114,6 +120,8 @@ See [`SETUP.md`](SETUP.md) for copy-only vs whole-repo details.
 > Pull the latest templates from https://github.com/BrianCLowe/Agentic-Doc-Templates into `docs/templates/` and sync our Master_Index.
 
 > The modular doc templates have been updated — download the pack and match our documentation to the updates.
+
+> Check for template updates every week.
 
 ---
 

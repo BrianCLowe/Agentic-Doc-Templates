@@ -1,0 +1,18 @@
+---
+name: Template Update Check
+description: Optional weekly check for Agentic Doc Templates pack updates
+applyTo: "**"
+---
+
+# Template Update Check (optional)
+
+If `docs/upstream-status.yaml` does not exist, ignore this entire rule.
+
+**Token cost:** Reading that status file is negligible (tens of tokens). Only fetch upstream when the check is due or the user asks.
+
+**When to act:**
+1. Once per session at start of work on this project (or when the user asks to check for template updates): read **only** `docs/upstream-status.yaml`.
+2. If `last_checked` is still within `check_interval_days` (default 7) and the user did not ask → stop. Do not fetch the network.
+3. If due or requested → follow **`docs/templates/agent/TEMPLATE_UPDATE_CHECK.md`**: fetch the tiny upstream `VERSION` file only; tell the user if an update exists; run `docs/templates/agent/TEMPLATE_SYNC.md` only if they want the pack refreshed.
+
+Do not download the full template ZIP for a version check.

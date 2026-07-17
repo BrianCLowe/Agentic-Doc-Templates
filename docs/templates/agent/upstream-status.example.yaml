@@ -1,0 +1,20 @@
+# Example — copy to docs/upstream-status.yaml when weekly template update checks are enabled.
+# Live file: docs/upstream-status.yaml (project-specific; survives pack overwrite on TEMPLATE_SYNC)
+#
+# Used by the optional Template Update Check rule. Tiny on purpose — safe to read often.
+
+version: 1
+
+# Days between automatic upstream version pings (user can still ask anytime)
+check_interval_days: 7
+
+# YYYY-MM-DD — set on every check (even when already up to date)
+last_checked: 2026-07-16
+
+# From local pack after bootstrap / TEMPLATE_SYNC (docs/templates/VERSION)
+local_template_version: "2.3"
+local_workflow_version: "2.3"
+
+# Optional — filled after a check finds a newer upstream
+# upstream_template_version: "2.4"
+# update_available: true

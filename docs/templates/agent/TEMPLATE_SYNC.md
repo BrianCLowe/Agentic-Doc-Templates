@@ -29,6 +29,7 @@ That folder is the canonical pack — not live project content. Treat Step A as 
 - `docs/Master_Index.md`
 - `docs/features/`, `docs/_shared/`, `docs/decisions/`, `docs/reference/`
 - `docs/rule-install-status.yaml`
+- `docs/upstream-status.yaml` (weekly check stamp — update versions after sync; see below)
 - Installed rules outside templates (`.cursor/rules/`, `AGENTS.md`, …) — update later via [`RULE_INSTALL.md`](RULE_INSTALL.md) if needed
 
 **Preferred fetch: ZIP** (no git required in the user project):
@@ -68,7 +69,7 @@ cp -R "$tmp/Agentic-Doc-Templates-main/docs/templates" docs/templates
 
 If the user already refreshed `docs/templates/` themselves, skip Step A.
 
-After Step A: read version markers from the **new** local `docs/templates/Master_Index_Template.md` and `docs/templates/Modular_Docs_Workflow.md` only — then go to Step B.
+After Step A: read versions from the **new** local `docs/templates/VERSION` (preferred) or markers in `Master_Index_Template.md` / `Modular_Docs_Workflow.md` — then go to Step B.
 
 ---
 
@@ -88,11 +89,12 @@ Source of truth for structure is now **on disk** under `docs/templates/`. Compar
 | `docs/templates/Tooling_Template.md` | `docs/Tooling.md` — create if missing; add new sections only, do not wipe tool rows |
 | `docs/templates/Human_TODO_Template.md` | `docs/Human-TODO.md` — create if missing; add new columns/sections only, do not wipe Open/Done rows |
 | `docs/templates/agent/Modular_Documentation_Rule.*` | Installed rule paths — ask before overwriting custom installs |
+| `docs/templates/agent/Template_Update_Check_Rule.*` | Optional update-check rule installs — ask before overwriting |
 
 Versions:
 
-- `<!-- template-version: X.Y -->` in local `Master_Index_Template.md` → **Template version** in live `Master_Index.md`
-- `<!-- workflow-version: X.Y -->` in local `Modular_Docs_Workflow.md` → **Workflow version** in live `Master_Index.md`
+- `docs/templates/VERSION` (preferred) or `<!-- template-version: X.Y -->` in local `Master_Index_Template.md` → **Template version** in live `Master_Index.md`
+- `docs/templates/VERSION` or `<!-- workflow-version: X.Y -->` in local `Modular_Docs_Workflow.md` → **Workflow version** in live `Master_Index.md`
 
 ### Update checklist
 
@@ -102,12 +104,13 @@ Versions:
 4. **Adopt** from the **local** Master_Index template: new index sections, renumbers, Quick Start pointer — not old workflow §4–10 (those live in `Modular_Docs_Workflow.md`).
 5. Update installed agent rules from **local** `docs/templates/agent/` if the rule body changed (ask first if customized).
 6. Bump **Template version** / **Workflow version** in live `Master_Index.md`.
-7. Layout migrations (pre-1.7 / pre-1.8 / pre-2.0): follow [`BOOTSTRAP.md`](BOOTSTRAP.md) Step 0b using the **local** pack layout.
-8. Update live Understanding / Spec / TODO files from the local templates as needed — do not overwrite project content.
-9. If `Tooling_Template.md` is new: create `docs/Tooling.md` from it when missing; link from Master Index. Do not wipe existing tool rows.
-10. If `Human_TODO_Template.md` is new: create `docs/Human-TODO.md` from it when missing; link from Master Index §3.3/§3.4. Do not wipe Open/Done rows.
-11. §3.0: record only **user-stated** exceptions — never invent rows.
-12. Summarize pack refresh + live-doc updates; ask before large live-doc rewrites.
+7. If `docs/upstream-status.yaml` exists: set `local_template_version` / `local_workflow_version` from local `VERSION`, `last_checked` today, clear `update_available` — do **not** delete the file. Refresh installed optional update-check rules from local templates if the rule body changed (ask first if customized).
+8. Layout migrations (pre-1.7 / pre-1.8 / pre-2.0): follow [`BOOTSTRAP.md`](BOOTSTRAP.md) Step 0b using the **local** pack layout.
+9. Update live Understanding / Spec / TODO files from the local templates as needed — do not overwrite project content.
+10. If `Tooling_Template.md` is new: create `docs/Tooling.md` from it when missing; link from Master Index. Do not wipe existing tool rows.
+11. If `Human_TODO_Template.md` is new: create `docs/Human-TODO.md` from it when missing; link from Master Index §3.3/§3.4. Do not wipe Open/Done rows.
+12. §3.0: record only **user-stated** exceptions — never invent rows.
+13. Summarize pack refresh + live-doc updates; ask before large live-doc rewrites.
 
 ---
 
@@ -128,3 +131,4 @@ Versions:
 - "Download the latest templates into `docs/templates/`, then update Master_Index from the local templates."
 - "We already refreshed `docs/templates/` — update our live docs from the local pack." (skip Step A)
 - "Compare `Master_Index.md` to `docs/templates/Master_Index_Template.md` and apply structural improvements."
+- "Check for template updates." *(version-only — [`TEMPLATE_UPDATE_CHECK.md`](TEMPLATE_UPDATE_CHECK.md); run this sync only if newer and user agrees)*

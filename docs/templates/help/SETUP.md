@@ -17,9 +17,9 @@ You do **not** need the repo root `README.md`, `LICENSE.md`, or `CONTRIBUTING.md
 | Subfolder / file | Contents |
 |------------------|----------|
 | `help/` | This file, [`USAGE.md`](USAGE.md), [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md), [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md) |
-| `agent/` | [`BOOTSTRAP.md`](../agent/BOOTSTRAP.md), [`RULE_INSTALL.md`](../agent/RULE_INSTALL.md), [`TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md), [`Modular_Documentation_Rule.mdc`](../agent/Modular_Documentation_Rule.mdc), [`Modular_Documentation_Rule.instructions.md`](../agent/Modular_Documentation_Rule.instructions.md), `rule-install-status.example.yaml` |
+| `agent/` | [`BOOTSTRAP.md`](../agent/BOOTSTRAP.md), [`RULE_INSTALL.md`](../agent/RULE_INSTALL.md), [`TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md), [`TEMPLATE_UPDATE_CHECK.md`](../agent/TEMPLATE_UPDATE_CHECK.md), modular + optional update-check rules, status examples |
 | `chat-ui/` | Short Grok/ChatGPT instructions — attach [`AGENT.md`](../chat-ui/AGENT.md) only |
-| Root of `templates/` | `Master_Index_Template.md`, `Modular_Docs_Workflow.md`, `Tooling_Template.md`, `Human_TODO_Template.md`, feature templates |
+| Root of `templates/` | `VERSION`, `Master_Index_Template.md`, `Modular_Docs_Workflow.md`, `Tooling_Template.md`, `Human_TODO_Template.md`, feature templates |
 
 ## Other ways to add templates
 
@@ -46,13 +46,15 @@ If you prefer not to ask an agent to run rule install, copy the rule templates f
 | **GitHub Copilot** | [`Modular_Documentation_Rule.instructions.md`](../agent/Modular_Documentation_Rule.instructions.md) | `.github/instructions/modular-documentation.instructions.md` or `.github/copilot-instructions.md` |
 | **Claude Code, Cline, Continue, AGENTS.md** | Rule body from the `.mdc` file (drop Cursor frontmatter) | See [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md) or [`RULE_INSTALL.md`](../agent/RULE_INSTALL.md) |
 
+**Optional — weekly update checks:** Bootstrap asks whether the agent should ping upstream about once a week. If you opt in, it creates `docs/upstream-status.yaml` and installs [`Template_Update_Check_Rule.mdc`](../agent/Template_Update_Check_Rule.mdc) (or the `.instructions.md` variant) beside the modular docs rule. Token cost is negligible; details: [`TEMPLATE_UPDATE_CHECK.md`](../agent/TEMPLATE_UPDATE_CHECK.md).
+
 Do not edit the copies under `docs/templates/agent/` — they stay the upstream reference; install **copies** into your tool's config paths.
 
 **Cursor + plugins:** If you use **Compound Engineering** or **Superpowers**, disable them for this workspace. Their skills often override the modular docs Cursor rule so agents skip `Master_Index.md` and the Understanding/TODO flow. See [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md#cursor).
 
 **Day-to-day use** (chat → docs, ideas mid-dev, converting design docs): see **[`USAGE.md`](USAGE.md)**.
 
-**Updating templates later:** Ask your agent to update the doc templates. It **overwrites the entire** `docs/templates/` folder from upstream (no per-file diffs), then updates live docs as needed from those **local** template files (not via git on `Master_Index` / features). Full procedure: [`../agent/TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md).
+**Updating templates later:** Ask your agent to update the doc templates. It **overwrites the entire** `docs/templates/` folder from upstream (no per-file diffs), then updates live docs as needed from those **local** template files (not via git on `Master_Index` / features). Full procedure: [`../agent/TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md). To only see if a newer pack exists: *"Check for template updates"* ([`TEMPLATE_UPDATE_CHECK.md`](../agent/TEMPLATE_UPDATE_CHECK.md)).
 
 **Human procurement:** After bootstrap, check `docs/Human-TODO.md` for API keys, cloud bots, accounts — things only you can complete. Agents add rows; you check them off.
 
@@ -68,6 +70,7 @@ docs/
 ├── Tooling.md                   ← machine / workflow tools (not package deps)
 ├── Human-TODO.md                ← human procurement (API keys, cloud bots, accounts)
 ├── rule-install-status.yaml     ← created when installing agent rules
+├── upstream-status.yaml         ← optional weekly template update check stamp
 ├── _shared/
 │   └── assets/
 ├── decisions/
@@ -76,10 +79,12 @@ docs/
 ├── reference/
 │   └── visuals/
 └── templates/                   ← entire pack from Agentic Doc Templates
+    ├── VERSION                  ← pack version (cheap upstream compare)
     ├── help/                    ← setup, usage, idea capture (this folder)
-    ├── agent/                   ← bootstrap, rule install, template sync, rule templates
+    ├── agent/                   ← bootstrap, rule install, sync, update check, rule templates
     │   ├── Modular_Documentation_Rule.mdc
     │   ├── Modular_Documentation_Rule.instructions.md
+    │   ├── Template_Update_Check_Rule.mdc
     │   └── upstream/            ← README, LICENSE, CONTRIBUTING moved here if whole repo was copied
     ├── chat-ui/
     ├── Master_Index_Template.md

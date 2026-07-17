@@ -6,6 +6,8 @@ What differs is **where each tool expects instructions** and how reliably it fol
 
 **Installing the rule:** Agents should follow [`../agent/RULE_INSTALL.md`](../agent/RULE_INSTALL.md) — ask which tool(s) you use, record the answer in `docs/rule-install-status.yaml` (so each tool is only asked once), never overwrite existing instructions without confirmation, and support multiple tools on the same repo without conflict.
 
+**Optional — template update checks:** Bootstrap asks whether to enable a weekly upstream version ping (tiny `docs/upstream-status.yaml` + optional rule). Negligible token cost; procedure: [`../agent/TEMPLATE_UPDATE_CHECK.md`](../agent/TEMPLATE_UPDATE_CHECK.md).
+
 ## Quick reference
 
 | Tool | Where to put the rule | Template file |
@@ -204,9 +206,11 @@ You can just ask the agent to update the doc templates. It follows [`../agent/TE
 
 1. **Overwrite the pack** — Replace the **entire** project `docs/templates/` from upstream (ZIP/copy). No per-file diffs. Do **not** use git to update live docs from upstream.
 2. **Update live docs from the local pack as needed** — use files under `docs/templates/` to update `Master_Index.md`, Understanding, specs, and TODOs.
-3. **Rules** — Update installed copies if the rule body in the local pack changed.
+3. **Rules** — Update installed copies if the rule body in the local pack changed (including the optional Template Update Check rule if enabled).
 4. **TODO / Understanding format** — Add missing sections from the local templates only.
 
 **Example:** *Update the doc templates from Agentic Doc Templates and sync our live docs.*
+
+To only see if a newer pack exists (no ZIP): *Check for template updates.* — [`../agent/TEMPLATE_UPDATE_CHECK.md`](../agent/TEMPLATE_UPDATE_CHECK.md).
 
 Keep tool-specific rule copies in sync, or maintain a single `AGENTS.md` section and copy to tool paths if your team uses multiple agents.

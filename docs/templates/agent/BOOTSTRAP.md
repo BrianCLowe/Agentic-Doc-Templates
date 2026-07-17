@@ -78,6 +78,7 @@ docs/
 ├── Tooling.md               ← from Tooling_Template.md (Step 3b — machine tools)
 ├── Human-TODO.md            ← from Human_TODO_Template.md (Step 3d — human procurement)
 ├── rule-install-status.yaml ← only when RULE_INSTALL runs later
+├── upstream-status.yaml     ← only when weekly template update checks are enabled (Step 4b)
 ├── _shared/
 │   └── assets/
 ├── decisions/
@@ -94,9 +95,9 @@ docs/
 
 Ensure **`docs/templates/`** contains at least:
 
-- **Root:** `Master_Index_Template.md`, `Modular_Docs_Workflow.md`, `chat-ui/AGENT.md`, `Feature_Spec_Template.md`, `Feature_Understanding_Template.md`, `TODO_Template.md`, `Decision_Template.md`, `Tooling_Template.md`, `Human_TODO_Template.md`
+- **Root:** `VERSION`, `Master_Index_Template.md`, `Modular_Docs_Workflow.md`, `chat-ui/AGENT.md`, `Feature_Spec_Template.md`, `Feature_Understanding_Template.md`, `TODO_Template.md`, `Decision_Template.md`, `Tooling_Template.md`, `Human_TODO_Template.md`
 - **`help/`:** `SETUP.md`, `USAGE.md`, `IDEA_CAPTURE_TIPS.md`, `USING_WITH_AGENTS.md`
-- **`agent/`:** `BOOTSTRAP.md`, `RULE_INSTALL.md`, `TEMPLATE_SYNC.md`, `Modular_Documentation_Rule.mdc`, `Modular_Documentation_Rule.instructions.md`, `rule-install-status.example.yaml`
+- **`agent/`:** `BOOTSTRAP.md`, `RULE_INSTALL.md`, `TEMPLATE_SYNC.md`, `TEMPLATE_UPDATE_CHECK.md`, `Modular_Documentation_Rule.mdc`, `Modular_Documentation_Rule.instructions.md`, `Template_Update_Check_Rule.mdc`, `Template_Update_Check_Rule.instructions.md`, `rule-install-status.example.yaml`, `upstream-status.example.yaml`
 
 Run Step 0b if any setup files are still at `docs/` root or flat in `docs/templates/`.
 
@@ -160,7 +161,38 @@ If the user named **no** features yet, skip Step 3d and say so in Step 4.
 2. Point at the **draft** `-Understanding.md` files created in Step 3d — user reviews / corrects before implementation.
 3. Point at **Open** items on `Human-TODO.md` — things only the human can procure before those features unblock.
 4. After they confirm an Understanding, graduate durable content into the spec and continue from TODOs ([`../help/SETUP.md`](../help/SETUP.md)).
-5. Optional: run [`RULE_INSTALL.md`](RULE_INSTALL.md) for agent rules (asks per tool, records in `rule-install-status.yaml`).
+5. Run **Step 4b** (weekly template update checks) before finishing.
+6. Optional: run [`RULE_INSTALL.md`](RULE_INSTALL.md) for agent rules (asks per tool, records in `rule-install-status.yaml`). If Step 4b was **yes**, RULE_INSTALL also installs the optional update-check rule.
+
+## Step 4b — Weekly template update checks (ask first)
+
+Projects that copied or templated this pack do **not** share the upstream git remote. Offer an **optional** agent rule that pings upstream about once a week (or whenever the user asks).
+
+**Ask** (do not enable silently):
+
+> Want the agent to check weekly for Agentic Doc Templates updates?
+>
+> How it works: a tiny `docs/upstream-status.yaml` stores `last_checked` and your local template version. When a week has passed (or you ask), the agent fetches only the upstream `VERSION` file and tells you if a newer pack exists — then you can sync with TEMPLATE_SYNC.
+>
+> Token cost is negligible (tens of tokens to read the status file; a small network fetch only when due). Decline if you prefer to ask manually: *"Update the doc templates from Agentic Doc Templates and sync our live docs."*
+
+### On **yes**
+
+1. Create `docs/upstream-status.yaml` from [`upstream-status.example.yaml`](upstream-status.example.yaml).
+2. Set `last_checked` to today, and `local_template_version` / `local_workflow_version` from local `docs/templates/VERSION` (or the markers in `Master_Index_Template.md` / `Modular_Docs_Workflow.md` if `VERSION` is missing).
+3. Record in `docs/rule-install-status.yaml` under `optional_rules.template-update-check` with `status: enabled` and `recorded` (create the file if needed — see [`rule-install-status.example.yaml`](rule-install-status.example.yaml)).
+4. Install the optional rule when installing tool rules — follow [`RULE_INSTALL.md`](RULE_INSTALL.md) **Optional rules**. If the user skips RULE_INSTALL for now, note that checks need the optional rule installed for their tool(s).
+
+### On **no**
+
+1. Do **not** create `docs/upstream-status.yaml`.
+2. Record `optional_rules.template-update-check` with `status: declined` and `recorded` in `docs/rule-install-status.yaml` so future sessions do not re-ask unless the user requests it.
+3. Mention they can still sync anytime via [`TEMPLATE_SYNC.md`](TEMPLATE_SYNC.md) or enable checks later (*"Check for template updates every week"*).
+
+### Explicit overrides later
+
+- "Check for template updates every week" / "Enable template update checks" → treat as **yes** even if previously declined.
+- "Stop checking for template updates" → remove or leave `docs/upstream-status.yaml`; set optional rule status to `declined`; remove installed `template-update-check` rule files if present (ask before deleting).
 
 ## Do not
 
@@ -171,6 +203,7 @@ If the user named **no** features yet, skip Step 3d and say so in Step 4.
 - Skip asking before moving root files.
 - Finish bootstrap with a filled Document Map but **no** feature/shared files on disk.
 - Put human procurement items only in feature TODOs — use `docs/Human-TODO.md` and link from features.
+- Enable weekly template update checks without asking (Step 4b).
 
 ## Example user prompts
 
@@ -184,3 +217,4 @@ If the user named **no** features yet, skip Step 3d and say so in Step 4.
 - **How to use** (chat → docs, ideas, design docs): [`../help/USAGE.md`](../help/USAGE.md)
 - Rule install (after bootstrap): [`RULE_INSTALL.md`](RULE_INSTALL.md)
 - Template sync (updates): [`TEMPLATE_SYNC.md`](TEMPLATE_SYNC.md)
+- Cheap update ping: [`TEMPLATE_UPDATE_CHECK.md`](TEMPLATE_UPDATE_CHECK.md)
