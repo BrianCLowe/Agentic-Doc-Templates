@@ -33,8 +33,10 @@
   - `agent/RULE_INSTALL.md` — bounded install-path checks
   - `agent/upstream-status.example.yaml` — example versions 2.4
   - `chat-ui/AGENT.md` — Master Index template only when asked; version markers
-  - `help/SETUP.md`, `help/USAGE.md`, `help/USING_WITH_AGENTS.md` — sync wording + CHANGELOG in inventories; `reference/` in recommended layout
-  - `help/IDEA_CAPTURE_TIPS.md`, `help/USAGE.md`, `chat-ui/README.md` — full chat history tip; save under `docs/reference/`
+  - `help/SETUP.md` — tightened install flow (copy → bootstrap → layout → next links); less post-setup bullet pile
+  - `help/USAGE.md` — deduped tips; patterns kept; bootstrap/sync shortened to point at SETUP/CHANGELOG
+  - `help/USING_WITH_AGENTS.md` — sync wording (inventory links unchanged in role)
+  - `help/IDEA_CAPTURE_TIPS.md`, `chat-ui/README.md` — full chat history tip; save under `docs/reference/`
   - Root `README.md` — rewritten landing page (how it works → get started → stay current; less inventory dump)
   - Root `CONTRIBUTING.md` — changelog maintenance; maintainer note: write agent instructions for off-road / thorough models
 - **Unchanged content templates:** Feature_Understanding, Feature_Spec, TODO, Tooling, Human_TODO, Decision

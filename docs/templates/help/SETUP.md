@@ -1,109 +1,88 @@
 # Setting Up Modular Docs in Your Project
 
-Human guide for adding [Agentic Doc Templates](https://github.com/BrianCLowe/Agentic-Doc-Templates) to an existing codebase. For agent-driven setup, point your agent at [`../agent/BOOTSTRAP.md`](../agent/BOOTSTRAP.md).
+Add [Agentic Doc Templates](https://github.com/BrianCLowe/Agentic-Doc-Templates) to a codebase, then let the agent create the live `docs/` layout.
 
-**Philosophy:** Keep asks simple — “bootstrap modular docs”, “update the doc templates”, “draft Understanding for this feature.” The agent routes to the matching playbook under `docs/templates/agent/` (or the workflow for feature work). You should not need long custom prompts.
+Short asks are enough — *bootstrap modular docs*, *draft Understanding for X*, *update the doc templates*. The agent routes to the matching playbook under `docs/templates/agent/`.
 
-## Recommended: copy one folder
+---
 
-Copy **`docs/templates/`** from this repo into your project as **`your-project/docs/templates/`**.
+## 1. Copy the pack
 
-That single folder includes workflow scaffolds, human guides (`help/`), agent setup (`agent/`), and the chat-ui pack. Your live project docs stay at `docs/` root — `Master_Index.md`, `features/`, `_shared/` — without extra instruction folders beside them.
+Copy **`docs/templates/`** into your project as **`your-project/docs/templates/`**.
 
-You do **not** need the repo root `README.md`, `LICENSE.md`, or `CONTRIBUTING.md` in your project root. Keep attribution via `docs/templates/agent/upstream/` (see below) or a line in your own README.
+That one folder includes scaffolds, [`help/`](.), [`agent/`](../agent/), and [`chat-ui/`](../chat-ui/). Live project docs stay at `docs/` root — not inside `templates/`.
 
-**What's inside `docs/templates/`:**
+You do **not** need this repo’s root `README.md`, `LICENSE.md`, or `CONTRIBUTING.md` in your project. Prefer copy-only so they never land there. If a whole-repo copy left them at the root, bootstrap auto-moves clearly upstream files into `docs/templates/agent/upstream/` (you may delete those copies later; sync does not require them).
 
-| Subfolder / file | Contents |
-|------------------|----------|
-| `help/` | This file, [`USAGE.md`](USAGE.md), [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md), [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md) |
-| `agent/` | [`BOOTSTRAP.md`](../agent/BOOTSTRAP.md), [`RULE_INSTALL.md`](../agent/RULE_INSTALL.md), [`TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md), [`TEMPLATE_UPDATE_CHECK.md`](../agent/TEMPLATE_UPDATE_CHECK.md), modular + optional update-check rules, status examples |
-| `chat-ui/` | Short Grok/ChatGPT instructions — attach [`AGENT.md`](../chat-ui/AGENT.md) only |
-| Root of `templates/` | `VERSION`, `CHANGELOG.md`, `Master_Index_Template.md`, `Modular_Docs_Workflow.md`, `Tooling_Template.md`, `Human_TODO_Template.md`, feature templates |
+| Method | Notes |
+|--------|--------|
+| **Copy `docs/templates/` only** | Recommended |
+| Git submodule | Awkward path; still prefer copying or sparse-checkout of `docs/templates/` |
+| Whole-repo clone / “Use this template” into an app | Bootstrap cleans root pack files + deletes Agentic-only `.github/ISSUE_TEMPLATE/` |
 
-## Other ways to add templates
+**Inside the pack:** `help/` (this guide), `agent/` (bootstrap, rules, sync), `chat-ui/` (attach [`AGENT.md`](../chat-ui/AGENT.md) only), plus `VERSION`, `CHANGELOG.md`, and the scaffold templates at the pack root.
 
-| Method | Pros | Notes |
-|--------|------|--------|
-| **Copy `docs/templates/` only** | Clean project `docs/` root | Recommended |
-| **Git submodule** | Easy upstream updates | Submodule path is often awkward; copy or sparse-checkout `docs/templates/` |
-| **Clone whole repo into project** | Simple first copy | Root README, LICENSE, and CONTRIBUTING collide with yours — use agent [`BOOTSTRAP.md`](../agent/BOOTSTRAP.md) to move them to `docs/templates/agent/upstream/` and **delete** `.github/ISSUE_TEMPLATE/` (those forms are for the template repo only) |
+---
 
-## After templates are in place
+## 2. Bootstrap
 
-1. Ask your agent to follow **`docs/templates/agent/BOOTSTRAP.md`** — creates `docs/Master_Index.md`, `Tooling.md`, `Human-TODO.md`, folders, and **feature/shared files for every Document Map row** (draft Understanding + stub spec + TODO). Clearly upstream root README/LICENSE/CONTRIBUTING (pack name / Brian Lowe) are moved to `docs/templates/agent/upstream/` automatically.
-2. Confirm or correct project overview, Document Map, `docs/Tooling.md`, and `docs/Human-TODO.md` (your procurement checklist).
-3. Review the draft `-Understanding.md` files the agent created; confirm before implementation. Shared components under `docs/_shared/` get the **same note types** unless you explicitly except specific files.
-4. Optionally install the modular doc rule — ask your agent to follow **`docs/templates/agent/RULE_INSTALL.md`**, or install manually (see below).
+Ask your agent:
 
-## Install the agent rule yourself (optional)
+> Bootstrap modular docs using `docs/templates/agent/BOOTSTRAP.md`.
 
-If you prefer not to ask an agent to run rule install, copy the rule templates from **`docs/templates/agent/`**:
+That creates `Master_Index.md`, `Tooling.md`, `Human-TODO.md`, `reference/` (for design docs / chat exports), feature/shared folders, and **draft Understanding + stub spec + core TODO for every Document Map row**.
 
-| Tool | Source (in your project) | Typical install path |
-|------|--------------------------|----------------------|
-| **Cursor** | [`Modular_Documentation_Rule.mdc`](../agent/Modular_Documentation_Rule.mdc) | `.cursor/rules/modular-documentation.mdc` |
-| **GitHub Copilot** | [`Modular_Documentation_Rule.instructions.md`](../agent/Modular_Documentation_Rule.instructions.md) | `.github/instructions/modular-documentation.instructions.md` or `.github/copilot-instructions.md` |
-| **Claude Code, Cline, Continue, AGENTS.md** | Rule body from the `.mdc` file (drop Cursor frontmatter) | See [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md) or [`RULE_INSTALL.md`](../agent/RULE_INSTALL.md) |
+Then you:
 
-**Optional — weekly update checks:** Bootstrap asks whether the agent should ping upstream about once a week. If you opt in, it creates `docs/upstream-status.yaml` and installs [`Template_Update_Check_Rule.mdc`](../agent/Template_Update_Check_Rule.mdc) (or the `.instructions.md` variant) beside the modular docs rule. Token cost is negligible; details: [`TEMPLATE_UPDATE_CHECK.md`](../agent/TEMPLATE_UPDATE_CHECK.md).
+1. Correct overview, Document Map, Tooling, and Human-TODO.
+2. Review draft `-Understanding.md` files before implementation.
+3. Optionally install the modular doc rule — *Follow `docs/templates/agent/RULE_INSTALL.md`* — or copy paths from [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md).
 
-Do not edit the copies under `docs/templates/agent/` — they stay the upstream reference; install **copies** into your tool's config paths.
+**Cursor:** If you use **Compound Engineering** or **Superpowers**, disable them for this workspace — they often override the modular docs rule. Details: [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md#cursor).
 
-**Cursor + plugins:** If you use **Compound Engineering** or **Superpowers**, disable them for this workspace. Their skills often override the modular docs Cursor rule so agents skip `Master_Index.md` and the Understanding/TODO flow. See [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md#cursor).
+---
 
-**Day-to-day use** (chat → docs, ideas mid-dev, converting design docs): see **[`USAGE.md`](USAGE.md)**.
-
-**Updating templates later:** Ask your agent to update the doc templates. It **overwrites the entire** `docs/templates/` folder from upstream (no per-file diffs), then follows the top entry in [`CHANGELOG.md`](../CHANGELOG.md) to update live docs (versions / Master Index structure; feature docs only when content templates changed). Full procedure: [`../agent/TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md). To only see if a newer pack exists: *"Check for template updates"* ([`TEMPLATE_UPDATE_CHECK.md`](../agent/TEMPLATE_UPDATE_CHECK.md)).
-
-**Human procurement:** After bootstrap, check `docs/Human-TODO.md` for API keys, cloud bots, accounts — things only you can complete. Agents add rows; you check them off.
-
-**Brainstorming in Grok/ChatGPT before you have a repo?** Attach only [`../chat-ui/AGENT.md`](../chat-ui/AGENT.md) — see [`../chat-ui/README.md`](../chat-ui/README.md). Copy `docs/templates/` when you create the project.
-
-**Describing ideas** (UI, flows, scope — especially if you are new to software): see **[`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md)**.
-
-## Folder layout in your project
+## 3. Folder layout after bootstrap
 
 ```
 docs/
-├── Master_Index.md              ← live project docs (you maintain)
-├── Tooling.md                   ← machine / workflow tools (not package deps)
-├── Human-TODO.md                ← human procurement (API keys, cloud bots, accounts)
-├── rule-install-status.yaml     ← created when installing agent rules
-├── upstream-status.yaml         ← optional weekly template update check stamp
-├── _shared/
-│   └── assets/
-├── decisions/
-├── features/
-│   └── assets/
-├── reference/                   ← drop design docs, chat exports, PRDs, legacy specs here
-│   ├── README.md                ← what this folder is for (created at bootstrap)
+├── Master_Index.md              ← project map (you maintain)
+├── Tooling.md                   ← machine tools (not package deps)
+├── Human-TODO.md                ← keys, portals, accounts (human only)
+├── rule-install-status.yaml     ← when agent rules are installed
+├── upstream-status.yaml         ← optional weekly template update ping
+├── reference/                   ← design docs, chat exports, PRDs, legacy specs
 │   └── visuals/                 ← optional inspiration screenshots
-└── templates/                   ← entire pack from Agentic Doc Templates
-    ├── VERSION                  ← pack version (cheap upstream compare)
-    ├── CHANGELOG.md             ← what changed — drives live-doc sync scope
-    ├── help/                    ← setup, usage, idea capture (this folder)
-    ├── agent/                   ← bootstrap, rule install, sync, update check, rule templates
-    │   ├── Modular_Documentation_Rule.mdc
-    │   ├── Modular_Documentation_Rule.instructions.md
-    │   ├── Template_Update_Check_Rule.mdc
-    │   └── upstream/            ← README, LICENSE, CONTRIBUTING moved here if whole repo was copied
-    ├── chat-ui/
-    ├── Master_Index_Template.md
-    ├── Tooling_Template.md
-    ├── Human_TODO_Template.md   ← human procurement checklist
-    ├── Modular_Docs_Workflow.md
-    └── …
+├── _shared/ + assets/
+├── features/ + assets/
+├── decisions/                   ← optional
+└── templates/                   ← this pack (overwrite on sync; not live content)
+    ├── VERSION / CHANGELOG.md
+    ├── help/ · agent/ · chat-ui/
+    └── … scaffolds + Modular_Docs_Workflow.md
 ```
 
-## Naming and workflow
+Naming and Path A/B: [`../Modular_Docs_Workflow.md`](../Modular_Docs_Workflow.md) §0.
 
-See the repo [README](https://github.com/BrianCLowe/Agentic-Doc-Templates) on GitHub for naming conventions, `Modular_Docs_Workflow.md`, shared foundation TODOs, Understanding files, and template sync.
+---
+
+## 4. Next
+
+| Goal | Go here |
+|------|---------|
+| Day-to-day (chat → docs, mid-build ideas, design docs) | [`USAGE.md`](USAGE.md) |
+| Describing UI / scope (esp. if new to software) | [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md) |
+| Rule paths per tool | [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md) |
+| Brainstorm in Grok/ChatGPT before a repo | [`../chat-ui/README.md`](../chat-ui/README.md) |
+| Later: refresh the pack | *Update the doc templates…* — [`TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md) / [`CHANGELOG.md`](../CHANGELOG.md) |
+| Version-only ping | *Check for template updates* — [`TEMPLATE_UPDATE_CHECK.md`](../agent/TEMPLATE_UPDATE_CHECK.md) |
+
+After bootstrap, skim `docs/Human-TODO.md` for API keys / accounts only you can complete.
+
+---
 
 ## License
 
-Templates are [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Full text: [`../agent/upstream/LICENSE.md`](../agent/upstream/LICENSE.md) after bootstrap, or [LICENSE.md](https://github.com/BrianCLowe/Agentic-Doc-Templates/blob/main/LICENSE.md) in the GitHub repo.
-
-Attribution example:
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Full text: [LICENSE.md on GitHub](https://github.com/BrianCLowe/Agentic-Doc-Templates/blob/main/LICENSE.md) (or under `docs/templates/agent/upstream/` if you kept a copy).
 
 > Based on [Agentic Doc Templates](https://github.com/BrianCLowe/Agentic-Doc-Templates) by Brian Lowe, licensed under CC BY 4.0.

@@ -1,205 +1,126 @@
 # How to Use These Templates
 
-The templates are not just a folder layout to copy once. They are a **workflow** agents can follow whenever you have ideas, conversations, or existing docs — in the IDE, in chat, or connected to your repo.
-
-Setup first (if you have not already): [`SETUP.md`](SETUP.md) + agent [`../agent/BOOTSTRAP.md`](../agent/BOOTSTRAP.md).
-
-**New to software or describing ideas?** [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md) — what to think about (UI, flows, scope) so agents build what you mean; you do not need to choose a tech stack yourself.
+Day-to-day workflows after setup. First-time install: [`SETUP.md`](SETUP.md). Describing ideas in plain language: [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md).
 
 ---
 
-## The basic idea
+## The loop
 
-**Keep it simple.** You do not need elaborate prompts. Tell the agent what you want done with the docs — bootstrap, turn this chat into docs, draft Understanding for X, update the templates — and it should follow the pack on its own.
+1. You describe the idea (chat, `docs/reference/` design doc, or a mid-build correction).
+2. The **agent drafts** `-Understanding.md`.
+3. **You review and correct** — especially what it is / is *not*.
+4. After confirm, work continues from TODOs and specs (**Current focus** for session handoff).
 
-You give the agent **structure** (`docs/templates/`). You describe the idea in chat (or point at a design doc). The **agent drafts** `-Understanding.md` and TODO files so you can see how it interpreted you — then you **review and correct** before implementation. You do not need to write those files yourself.
-
-**Tip — prefer the messy full chat over a polished summary:** If you talked an idea through in Grok, ChatGPT, Claude, or similar, give the agent the **whole conversation** (export, share link if the tool supports it, or copy-paste). A refined design doc is tidy; a real back-and-forth usually carries more of what you meant — hesitations, “not that,” examples, and course corrections. See Pattern 1 and [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md#bring-the-whole-conversation).
-
-Same templates, many entry points.
+Short asks are enough. Prefer the **full messy chat** over a polished summary when you have it — export or paste the whole thread; save lasting copies under `docs/reference/`. Details: [Bring the whole conversation](IDEA_CAPTURE_TIPS.md#bring-the-whole-conversation).
 
 ---
 
 ## Pattern 1 — Long chat → documentation
 
-**When:** You have been brainstorming in **Grok.com**, ChatGPT, Claude web, or similar — no repo workspace, or you want files to download first.
+**When:** Brainstorming in Grok, ChatGPT, Claude web, etc. — no repo, or files to download first.
 
-**What you do:**
+1. Attach **`docs/templates/chat-ui/AGENT.md`** only ([`chat-ui/README.md`](../chat-ui/README.md)).
+2. Ask for **Save as:** paths per file; draft `-Understanding.md` first.
 
-1. Attach **`docs/templates/chat-ui/AGENT.md`** only (see [`../chat-ui/README.md`](../chat-ui/README.md)). Optional: `Master_Index_Template.md`, `Feature_Understanding_Template.md`.
-2. Ask the agent to output each file with a **Save as:** path — see AGENT.md format.
+> Follow `AGENT.md`. Turn our conversation into modular docs for [app name]. Each file must start with **Save as:** `docs/...`.
 
-**Example prompts (chat-only):**
+With a repo/IDE: put `docs/templates/` in the project (or connect the repo), then:
 
-> Follow `AGENT.md`. Turn our conversation into modular docs for [app name]. Each file must start with **Save as:** `docs/...` so I can download them.
+> Using `docs/templates/`, create project documentation from our conversation so far. Do not invent features we did not talk about.
 
-> Read `docs/templates/chat-ui/AGENT.md` from Agentic Doc Templates. Draft `-Understanding.md` files first; I'll review before specs and TODOs.
-
-**When you have a repo connector** (Grok → GitHub, Cursor, etc.): connect or upload `docs/templates/`, then use full [`Modular_Docs_Workflow.md`](../Modular_Docs_Workflow.md) or install the agent rule — see [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md).
-
-**Example prompts (repo / IDE):**
-
-> Using the templates in `docs/templates/`, create project documentation from our conversation so far.
-
-> Read `docs/templates/Master_Index_Template.md`. Generate `docs/Master_Index.md` and feature docs for [app name]. Do not invent features we did not talk about.
-
-**What you get:** `Master_Index.md`, feature specs, **agent-drafted** Understanding files (scope / UI / what it is *not*) for you to review, TODOs, and `_shared/` entries with the **same note types as features** unless you except specific files.
-
-**Tip:** Ask the agent to **draft Understanding first** and show you the file. That catches “you meant a variant UI, not a new subsystem” before anyone codes. Your job is to correct wrong **identity** assumptions — especially in **What this is NOT** (what the finished feature is not, not a list of unfinished work) — not to write the file from scratch.
-
-**Tip — full history beats a clean rewrite:** When moving from a chat UI into the IDE (or a second agent), paste or attach the **entire** brainstorm thread — not only your final bullet list. Messy turns are useful signal. Same idea applies later: if you refine a design doc, keep the source chat when you still have it.
+Your job is to correct wrong **identity** assumptions — not to write Understanding from scratch. When moving into the IDE, bring the **entire** brainstorm thread (see tip above).
 
 ---
 
-## Pattern 2 — Idea mid-development → add to docs
+## Pattern 2 — Idea mid-development
 
-**When:** You are already building; a new idea or change comes up in a dev session.
+**When:** Already building; a new idea or scope change appears.
 
-**What you do:** Tell the agent to **update the modular docs**, not only write code.
+> New idea: [brief]. Add it to the docs — draft Understanding + TODO; I'll review.
 
-**Example prompts:**
+> Update `RoleEditor-Understanding.md` — fix What this is NOT: separate UI on the existing editor, not a new editor engine.
 
-> New idea: [describe briefly]. Add it to the docs.
-
-> We decided the role editor is a separate UI on the existing text editor, not a new editor. Update `RoleEditor-Understanding.md` — fix "What this is NOT". *(User correction → agent revises the file.)*
-
-**What you get:** Docs stay the living record; the next session (or another tool) reads the same structure instead of re-deriving from chat history.
+Docs stay the living record so the next session does not re-derive from chat alone.
 
 ---
 
-## Pattern 3 — Existing design doc → modular documentation
+## Pattern 3 — Design doc / PRD → modular docs
 
-**When:** You already have a PRD, design doc, Notion export, or long markdown spec.
+Drop sources into **`docs/reference/`** (and the chat that produced them, if you still have it). Then:
 
-**What you do:**
-
-1. Drop the source into **`docs/reference/`** (e.g. `docs/reference/Original_Design.md`, `docs/reference/brainstorm-chat.md`). That folder is the recommended place for design docs, PRDs, and conversation exports. If you still have the **chat that produced a polished doc**, save that too — often better for Understanding than the summary alone.
-2. Ask the agent to **split and map** it into the template structure.
-
-**Example prompts:**
-
-> Read `docs/reference/Original_Design.md`. Convert it into modular documentation per `docs/templates/Master_Index_Template.md`.
-
-> Turn this design doc into modular docs. Keep the original in `reference/`.
-
-**What you get:** Navigable docs sized for agents, with the legacy doc kept for traceability.
+> Read `docs/reference/Original_Design.md`. Convert into modular docs per `Master_Index_Template.md`. Keep the original in `reference/`.
 
 ---
 
-## Pattern 4 — Greenfield bootstrap in a repo
+## Pattern 4 — Bootstrap (first time in a repo)
 
-**When:** New project or an codebase with no modular docs yet.
+Copy `docs/templates/`, then:
 
-**What you do:** Copy `docs/templates/`, then agent follows [`../agent/BOOTSTRAP.md`](../agent/BOOTSTRAP.md). Optionally [`../agent/RULE_INSTALL.md`](../agent/RULE_INSTALL.md) for Cursor / Copilot / etc.
+> Bootstrap modular docs using `docs/templates/agent/BOOTSTRAP.md`.
 
-**What you get:** Layout + `Master_Index.md` + `Tooling.md` + `Human-TODO.md` **and** (for every named feature/shared in the Document Map) draft `-Understanding.md` + stub spec + core TODO. Map-only “planned” rows without files are not allowed — see BOOTSTRAP Step 3d.
-
-**Example prompt:**
-
-> Bootstrap modular docs in this project using `docs/templates/agent/BOOTSTRAP.md`.
-
-See [`SETUP.md`](SETUP.md) for copy-only vs whole-repo details.
+Full copy-vs-whole-repo notes and layout: [`SETUP.md`](SETUP.md). Optional rules: [`RULE_INSTALL.md`](../agent/RULE_INSTALL.md).
 
 ---
 
-## Pattern 5 — Template updates from upstream
-
-**When:** This template repo improved (new Understanding rules, layout, workflow, etc.).
-
-**What you do:** Just ask the agent — no manual download required. Point it at [`../agent/TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md). The agent will:
-
-1. **Overwrite** the whole `docs/templates/` folder from upstream (ZIP or temp clone — **not** `git pull` into live docs; **not** a per-file diff).
-2. **Follow the top entry in** [`CHANGELOG.md`](../CHANGELOG.md) — bump versions and adopt Master Index structure when listed; update Understanding / Spec / TODO files only when that entry tags `content-templates`. Do not use git to rewrite live documentation.
-
-**Optional — hear about updates without syncing yet:** During bootstrap you can enable a weekly version ping (`docs/upstream-status.yaml` + optional rule). Or anytime:
-
-> Check for template updates.
-
-That only fetches the tiny upstream `VERSION` file ([`TEMPLATE_UPDATE_CHECK.md`](../agent/TEMPLATE_UPDATE_CHECK.md)). Sync with the prompts below when you want the pack refreshed.
-
-**Example prompts:**
+## Pattern 5 — Update templates from upstream
 
 > Update the doc templates from Agentic Doc Templates and sync our live docs.
 
-> Pull the latest templates from https://github.com/BrianCLowe/Agentic-Doc-Templates into `docs/templates/` and sync our Master_Index.
+Agent overwrites `docs/templates/`, then follows the top [`CHANGELOG.md`](../CHANGELOG.md) entry (usually versions + Master Index — not every feature file). Procedure: [`TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md).
 
-> The modular doc templates have been updated — download the pack and match our documentation to the updates.
-
-> Check for template updates every week.
+Version check only: *Check for template updates.* — [`TEMPLATE_UPDATE_CHECK.md`](../agent/TEMPLATE_UPDATE_CHECK.md).
 
 ---
 
-## Pattern 6 — New machine / install tooling
+## Pattern 6 — New machine / tooling
 
-**When:** You cloned the project onto another computer and need CLIs, SDKs, or engines — not `npm install` alone.
-
-**What you do:** Keep `docs/Tooling.md` accurate (agent can draft it from the stack). On the new machine, ask:
+Keep `docs/Tooling.md` accurate. On a new machine:
 
 > Install the project tooling for this machine.
 
-The agent reads [`Tooling.md`](../Tooling.md) (template: [`Tooling_Template.md`](../Tooling_Template.md)), installs **Required** tools, verifies them, then runs package restore / env steps listed there.
-
 ---
 
-## Pattern 7 — Human procurement checklist
+## Pattern 7 — Human procurement
 
-**When:** Features need API keys, Azure/Teams bots, vendor accounts, or other things only a human can get.
-
-**What you do:** Keep [`Human-TODO.md`](../Human-TODO.md) (template: [`Human_TODO_Template.md`](../Human_TODO_Template.md)) up to date. Agent drafts rows; you complete them.
-
-**Example prompts:**
+API keys, cloud bots, vendor accounts → `docs/Human-TODO.md`. Agent drafts rows; you complete them.
 
 > What’s left on the human TODO?
 
-> Add Azure Bot / Teams registration to Human-TODO — we’re blocked on the bot feature.
+> Add Azure Bot registration to Human-TODO — we’re blocked.
 
 ---
 
-## Works with many agents
-
-| How the agent sees templates | Works for |
-|------------------------------|-----------|
-| `docs/templates/` in your project | Cursor, Copilot, Claude Code, Cline, Continue, etc. |
-| Uploaded files in chat | Grok, ChatGPT, Claude web, … |
-| **Repo / folder connector** | Grok connectors, GitHub in IDE, clone/submodule |
-| This repo URL | Any agent that can fetch or browse the repo |
-
-Tool-specific rule install paths: [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md).
-
----
-
-## Short prompt cheat sheet
+## Prompt cheat sheet
 
 | Goal | Say something like |
 |------|-------------------|
-| Chat → docs | *Create modular docs from our conversation using the templates in `docs/templates/`.* |
+| Chat → docs | *Create modular docs from our conversation using `docs/templates/`.* |
 | New idea | *Add [idea] to the docs — draft Understanding + TODO; I'll review.* |
-| Fix agent misunderstanding | *Update [Feature]-Understanding.md from my correction — especially What this is NOT.* |
-| UI reference screenshot | *Save to `docs/features/assets/`, add Visual references in Understanding with similar vs different.* |
-| Vague idea | *Interview me using IDEA_CAPTURE_TIPS.md, then **draft** [Feature]-Understanding.md for my review.* |
-| Design doc → modular | *Convert `[path]` to modular docs per Master_Index_Template; keep original in reference.* |
-| First-time setup | *Bootstrap modular docs using `docs/templates/agent/BOOTSTRAP.md`.* |
-| Install agent rule | *Follow `docs/templates/agent/RULE_INSTALL.md` for [Cursor / Copilot / …].* |
-| Pull template improvements | *Update the doc templates from Agentic Doc Templates and sync our live docs.* |
-| New machine / tooling | *Install the project tooling for this machine.* |
-| Human procurement | *What’s left on the human TODO?* / *Add [Azure Bot / API key] to Human-TODO.* |
+| Fix misunderstanding | *Update [Feature]-Understanding.md — especially What this is NOT.* |
+| UI screenshot | *Save to `docs/features/assets/`, add Visual references (similar vs different).* |
+| Vague idea | *Interview me using IDEA_CAPTURE_TIPS.md, then draft [Feature]-Understanding.md.* |
+| Design doc | *Convert `docs/reference/[file]` to modular docs; keep original in reference/.* |
+| Bootstrap | *Bootstrap modular docs using `docs/templates/agent/BOOTSTRAP.md`.* |
+| Install rule | *Follow `docs/templates/agent/RULE_INSTALL.md` for [tool].* |
+| Sync pack | *Update the doc templates from Agentic Doc Templates and sync our live docs.* |
+| Tooling | *Install the project tooling for this machine.* |
+| Human TODO | *What’s left on the human TODO?* |
+
+Tool install paths: [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md).
 
 ---
 
 ## What good output looks like
 
-- **`docs/Master_Index.md`** — entry point + Document Map (not a dump of everything).
-- **`docs/features/FeatureName-Understanding.md`** — agent's draft of how it interpreted your request; you skim, correct, confirm.
-- **`docs/features/FeatureName.md`** — durable spec after confirm (Decisions, architecture).
-- **`docs/features/FeatureName-TODO.md`** — next actions + **Current focus** for session handoff.
-- **`docs/_shared/Component.md`** — shared spec with **Maturity** (`draft` | `usable` | `stable`)
-- **`docs/_shared/Component-Understanding.md`** — same review loop as feature Understanding
-- **`docs/_shared/Component-TODO.md`** — foundation work (not duplicated in feature TODOs)
-- **`docs/_shared/Component-InEditor-TODO.md`** / **`Component-Asset-TODO.md`** — when applicable; record omissions in Master_Index Section 3.0
-- **`docs/Tooling.md`** — machine / workflow tools (not package deps); *Install the project tooling for this machine.*
-- **`docs/Human-TODO.md`** — human procurement (API keys, cloud bots, accounts); agent drafts, you complete
-- **`docs/decisions/`** — optional cross-cutting decision files
-- **`docs/reference/`** — design docs, chat exports, PRDs, legacy specs (source materials; not the living Document Map)
-- **`docs/templates/`** — upstream template pack (workflow, scaffolds, `help/`, `agent/`, `chat-ui/`) — not live project content
+| Path | Role |
+|------|------|
+| `docs/Master_Index.md` | Entry point + Document Map |
+| `docs/features/FeatureName-Understanding.md` | Agent draft of intent — you confirm |
+| `docs/features/FeatureName.md` | Durable spec after confirm |
+| `docs/features/FeatureName-TODO.md` | Tasks + **Current focus** |
+| `docs/_shared/…` | Same note types as features (shared foundation) |
+| `docs/Tooling.md` / `docs/Human-TODO.md` | Machine tools / human procurement |
+| `docs/reference/` | Source materials (not the living map) |
+| `docs/templates/` | Upstream pack — not live feature content |
 
-You do not need every file on day one. Start with Master_Index + one feature; grow as ideas arrive — from chat, design docs, or the middle of a dev session.
+Start with Master Index + one feature; grow as ideas arrive.
