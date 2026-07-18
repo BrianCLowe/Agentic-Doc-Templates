@@ -6,6 +6,18 @@ Your answers in chat feed the agent's draft of [`Feature_Understanding_Template.
 
 ---
 
+## Bring the whole conversation
+
+If you brainstormed in a **chat interface** (Grok, ChatGPT, Claude web, etc.) and later move into Cursor or another coding agent, give it the **full conversation history** — export, download, or copy-paste the whole thread. Do not feel you must first rewrite it into a clean design doc.
+
+**Save lasting copies under `docs/reference/`** (e.g. `docs/reference/my-feature-chat.md` or a `.txt` export). That folder is for design docs, PRDs, and conversation dumps — not for living Understanding/spec/TODO files.
+
+A messy conversation often conveys Understanding better than a refined summary: it includes what you rejected, half-formed constraints, examples, and the path you took to the idea. The agent can distill that into `-Understanding.md`; you still review the draft.
+
+When both exist, pass **chat + design doc** (both can live in `docs/reference/`) — prefer not to throw away the chat just because you cleaned something up later.
+
+---
+
 ## You do not need to pick a tech stack
 
 If you do not know React, Python, databases, or “the cloud,” that is fine. Describe:
@@ -195,6 +207,7 @@ If you already answered the buckets in chat:
 ## “Good enough” is enough
 
 - Rough answers in chat beat silence — the agent turns them into a draft Understanding.
+- The **whole** messy thread beats a polished one-page rewrite when you have it ([Bring the whole conversation](#bring-the-whole-conversation)).
 - “I’m not sure about X” is useful — the agent puts it under **Assumptions** for you to confirm.
 - You can review a draft Understanding in five minutes and save days of wrong implementation.
 

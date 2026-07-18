@@ -1,17 +1,18 @@
-<!-- workflow-version: 2.3 -->
+<!-- workflow-version: 2.4 -->
 
 > **Agent workflow reference.** Canonical instructions for how to work the modular doc system. Lives in `docs/templates/` — sync from upstream; do **not** copy wholesale into `docs/Master_Index.md`. The live index links here; agent rules summarize and point here for full procedure.
 
 # Modular Documentation — Agent Workflow
 
-**Workflow version**: 2.3 *(sync with `Master_Index.md` **Workflow version** line when updating)*
+**Workflow version**: 2.4 *(sync with `Master_Index.md` **Workflow version** line when updating)*
 
-**Design intent:** Users give short requests about the docs (“bootstrap”, “draft Understanding for X”, “update the templates”). You read this pack and act — they should not need complex prompts or step-by-step instructions.
+**Design intent:** Users give short requests about the docs (“bootstrap”, “draft Understanding for X”, “update the templates”). Route to **one** playbook (`BOOTSTRAP`, `TEMPLATE_SYNC`, `TEMPLATE_UPDATE_CHECK`, `RULE_INSTALL`, or this file for feature work) — do not scan the whole pack catalog. **Tight scope:** act on the paved path; do not pre-audit every alternate interpretation before doing the work.
 
-**Read order:**
+**Read order (feature / shared work):**
 
 1. [`Master_Index.md`](../Master_Index.md) — project context + Document Map (Sections 1–3)
-2. This file — how to work Path A / Path B and manage Understanding, specs, TODOs
+2. Active TODO **Current focus** + that item’s Understanding / spec
+3. This file — only when creating files, choosing Path A/B, graduating Understanding, or the user asks about procedure
 
 ---
 
@@ -44,6 +45,8 @@
 
 **Chat UI (no repo write access):** use [`chat-ui/AGENT.md`](chat-ui/AGENT.md) — shorter instructions and required save-as output format.
 
+**`docs/reference/`:** Drop zone for **source** materials (design docs, PRDs, chat exports, legacy specs). Not Document Map rows. Read when the user points at a file or asks to convert into modular docs. Optional `docs/reference/visuals/` for inspiration screenshots.
+
 ---
 
 ## 1. Shared Components — Foundation vs Consumption
@@ -55,8 +58,8 @@
 - `_shared/ComponentName.md` — spec / contract / architecture
 - `_shared/ComponentName-Understanding.md` — agent model of user intent (see §4)
 - `_shared/ComponentName-TODO.md` — core / systems / foundation tasks
-- `_shared/ComponentName-InEditor-TODO.md` — engine editor work *(when applicable)*
-- `_shared/ComponentName-Asset-TODO.md` — assets & content *(when applicable)*
+- `_shared/ComponentName-InEditor-TODO.md` — engine editor work *(game extensions / user asked)*
+- `_shared/ComponentName-Asset-TODO.md` — assets & content *(game extensions / user asked)*
 
 **Exceptions:** If the user **explicitly** says a component or feature does not need a particular note type (e.g. "BlockEditor has no asset work"), omit that file and record the exception in Master Index **§3.0** with who said it and when.
 
@@ -89,7 +92,7 @@ Optional: `_shared/_Foundation-TODO.md` for cross-cutting shared work that does 
 
 1. Agent drafts `-Understanding.md` → user confirms (`confirmed`).
 2. Agent **graduates** stable content into the spec: overview, architecture/contract, **Decisions**, dependencies, maturity (shared).
-3. Understanding keeps intent, boundaries, acceptance criteria, and correction history; spec holds what implementers and future agents should treat as truth.
+3. Understanding keeps intent, boundaries, acceptance criteria, and short **correction notes from this session** when the user corrects you — do not mine past chats or git history for a history section. Spec holds what implementers and future agents should treat as truth.
 4. If implementation diverges, update the spec **or** set Understanding to `superseded` and draft a revision (§4) — do not leave both stale.
 
 See [`Feature_Spec_Template.md`](Feature_Spec_Template.md) and [`Feature_Understanding_Template.md`](Feature_Understanding_Template.md).
@@ -98,7 +101,13 @@ See [`Feature_Spec_Template.md`](Feature_Spec_Template.md) and [`Feature_Underst
 
 ## 3. Quick Start — Working on Any Task
 
-**Always follow this order:**
+**Minimal implement path** *(Understanding is `confirmed` and scope unchanged — prefer this)*:
+
+1. Read `Master_Index.md` — Sections 1–3
+2. Active TODO **Current focus** → that TODO → Understanding (read-only) → spec → code
+3. Skip drafting, graduation, and InEditor/Asset TODOs unless status is `draft`, the user changed scope, or Project Profile says game extensions apply
+
+**Full Path A / Path B** when scoping new work, Understanding is missing/`draft`, or graduating to spec:
 
 1. Read `Master_Index.md` — Sections 1–3 (overview, locations, Document Map)
 2. Decide: **shared foundation work** (Path A) or **feature work** (Path B) — §1
@@ -108,11 +117,11 @@ See [`Feature_Spec_Template.md`](Feature_Spec_Template.md) and [`Feature_Underst
 Use when building or changing a reusable component, API, or pattern in `_shared/`.
 
 1. Open `_shared/[ComponentName].md`
-2. Open `_shared/[ComponentName]-Understanding.md` — **draft or update first** from the conversation; show the user for review (§4)
+2. Open `_shared/[ComponentName]-Understanding.md` — **draft or update first** from the conversation; show the user for review (§4). If already `confirmed` and scope unchanged, read only — do not re-draft.
 3. Open the relevant shared TODO file(s) (create from [`TODO_Template.md`](TODO_Template.md) if missing):
    - Core / foundation → `_shared/[ComponentName]-TODO.md`
-   - In-Editor work → `_shared/[ComponentName]-InEditor-TODO.md` *(unless excepted in Master Index §3.0)*
-   - Assets & content → `_shared/[ComponentName]-Asset-TODO.md` *(unless excepted)*
+   - In-Editor work → `_shared/[ComponentName]-InEditor-TODO.md` *(only if Project Profile game extensions apply, or user asked — unless excepted in Master Index §3.0)*
+   - Assets & content → `_shared/[ComponentName]-Asset-TODO.md` *(same gate)*
 4. Do the work (only after Understanding is `confirmed` or the user explicitly waives review)
 5. **Graduate** confirmed content into `_shared/[ComponentName].md` if the spec is still placeholder (§2)
 6. **Update the shared TODO file(s)** before ending the session — refresh **Current focus** (§5.1)
@@ -120,13 +129,13 @@ Use when building or changing a reusable component, API, or pattern in `_shared/
 
 ### Path B — Feature work
 
-1. Read any `_shared/` documents listed as relevant in Master Index §3.1 (read-only context unless Path A)
+1. Open shared docs **only** when linked from this feature’s Understanding, spec, or TODO dependency notes — or the one shared component you are integrating now. Do **not** open every §3.1 “relevant” row.
 2. Open `features/[FeatureName].md`
-3. Open `features/[FeatureName]-Understanding.md` — **draft or update first**; show the user for review (§4)
+3. Open `features/[FeatureName]-Understanding.md` — **draft or update first** if missing/`draft` or scope changed; if `confirmed` and scope unchanged, read only (§4)
 4. Open the relevant feature TODO file(s):
    - Core gameplay/systems → `features/[FeatureName]-TODO.md`
-   - In-Editor work → `features/[FeatureName]-InEditor-TODO.md` (or engine-specific version — §7)
-   - Assets & content → `features/[FeatureName]-Asset-TODO.md`
+   - In-Editor work → `features/[FeatureName]-InEditor-TODO.md` *(Project Profile game extensions or user asked — §7)*
+   - Assets & content → `features/[FeatureName]-Asset-TODO.md` *(same gate)*
 5. Do the work (only after Understanding is `confirmed` or the user explicitly waives review)
 6. **Graduate** confirmed content into `features/[FeatureName].md` if the spec is still placeholder (§2)
 7. **Update the feature TODO file(s)** before ending the session — refresh **Current focus** (§5.1)
@@ -168,7 +177,7 @@ Each **feature** and each substantial **shared component** should have a `-Under
 
 **When status is `confirmed`:** Read the Understanding for context, then proceed from the TODO/spec. **Do not** re-surface it for review or ask "does this match your intent?" unless the user changes scope, you discover a conflict with code, or you set status back to `draft` / `superseded`. Unchecked **Assumptions** after `confirmed` means ask about those specific items only — not a full re-review.
 
-**Reconciliation:** If shipped code diverges from a `confirmed` Understanding, either update the spec to match reality and note **Last reconciled with code** on both files, or set status to `superseded` and draft a new Understanding. Do not treat stale `confirmed` as current without checking.
+**Reconciliation:** If shipped code diverges from a `confirmed` Understanding, either update the spec to match reality and note **Last reconciled with code** on both files, or set status to `superseded` and draft a new Understanding. Run reconciliation **only when** the user reports a mismatch, implementation clearly contradicts Understanding, or this session changes that feature’s behavior — **not** as a session-start code-vs-docs audit.
 
 **When to create or update** *(agent responsibility unless user edits directly)*:
 
@@ -189,7 +198,7 @@ See [`Feature_Understanding_Template.md`](Feature_Understanding_Template.md).
 
 ## 5. TODO Management
 
-Every feature **must** have at least one companion `-TODO.md` file. Most game features will have three.
+Every feature **must** have at least one companion `-TODO.md` file (core). InEditor / Asset TODOs only when Project Profile game extensions apply or the user asks — most non-game features need the core TODO only.
 
 Every substantial `_shared/` component gets the **same TODO file set as a feature** (§1) unless the user explicitly excepted specific files (Master Index §3.0).
 

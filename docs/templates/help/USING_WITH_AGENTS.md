@@ -205,9 +205,9 @@ Treat the rule as **institutional memory for the agent**, not a substitute for g
 You can just ask the agent to update the doc templates. It follows [`../agent/TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md):
 
 1. **Overwrite the pack** — Replace the **entire** project `docs/templates/` from upstream (ZIP/copy). No per-file diffs. Do **not** use git to update live docs from upstream.
-2. **Update live docs from the local pack as needed** — use files under `docs/templates/` to update `Master_Index.md`, Understanding, specs, and TODOs.
-3. **Rules** — Update installed copies if the rule body in the local pack changed (including the optional Template Update Check rule if enabled).
-4. **TODO / Understanding format** — Add missing sections from the local templates only.
+2. **Read the top** [`CHANGELOG.md`](../CHANGELOG.md) **entry** — do only what its Live impact tags / Step B line say (usually versions + Master Index; not every live feature file).
+3. **Rules** — Update installed copies if the changelog tags `rules` and the rule body changed (including the optional Template Update Check rule if enabled).
+4. **TODO / Understanding format** — Add missing sections from the local templates **only** when the changelog tags `content-templates`.
 
 **Example:** *Update the doc templates from Agentic Doc Templates and sync our live docs.*
 

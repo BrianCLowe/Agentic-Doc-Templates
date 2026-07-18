@@ -2,7 +2,7 @@
 
 Human guide for adding [Agentic Doc Templates](https://github.com/BrianCLowe/Agentic-Doc-Templates) to an existing codebase. For agent-driven setup, point your agent at [`../agent/BOOTSTRAP.md`](../agent/BOOTSTRAP.md).
 
-**Philosophy:** Keep asks simple — “bootstrap modular docs”, “update the doc templates”, “draft Understanding for this feature.” The agent should figure out the rest from `docs/templates/`. You should not need long custom prompts.
+**Philosophy:** Keep asks simple — “bootstrap modular docs”, “update the doc templates”, “draft Understanding for this feature.” The agent routes to the matching playbook under `docs/templates/agent/` (or the workflow for feature work). You should not need long custom prompts.
 
 ## Recommended: copy one folder
 
@@ -19,7 +19,7 @@ You do **not** need the repo root `README.md`, `LICENSE.md`, or `CONTRIBUTING.md
 | `help/` | This file, [`USAGE.md`](USAGE.md), [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md), [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md) |
 | `agent/` | [`BOOTSTRAP.md`](../agent/BOOTSTRAP.md), [`RULE_INSTALL.md`](../agent/RULE_INSTALL.md), [`TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md), [`TEMPLATE_UPDATE_CHECK.md`](../agent/TEMPLATE_UPDATE_CHECK.md), modular + optional update-check rules, status examples |
 | `chat-ui/` | Short Grok/ChatGPT instructions — attach [`AGENT.md`](../chat-ui/AGENT.md) only |
-| Root of `templates/` | `VERSION`, `Master_Index_Template.md`, `Modular_Docs_Workflow.md`, `Tooling_Template.md`, `Human_TODO_Template.md`, feature templates |
+| Root of `templates/` | `VERSION`, `CHANGELOG.md`, `Master_Index_Template.md`, `Modular_Docs_Workflow.md`, `Tooling_Template.md`, `Human_TODO_Template.md`, feature templates |
 
 ## Other ways to add templates
 
@@ -31,7 +31,7 @@ You do **not** need the repo root `README.md`, `LICENSE.md`, or `CONTRIBUTING.md
 
 ## After templates are in place
 
-1. Ask your agent to follow **`docs/templates/agent/BOOTSTRAP.md`** — creates `docs/Master_Index.md`, `Tooling.md`, `Human-TODO.md`, folders, and **feature/shared files for every Document Map row** (draft Understanding + stub spec + TODO), plus relocates upstream root files if needed.
+1. Ask your agent to follow **`docs/templates/agent/BOOTSTRAP.md`** — creates `docs/Master_Index.md`, `Tooling.md`, `Human-TODO.md`, folders, and **feature/shared files for every Document Map row** (draft Understanding + stub spec + TODO). Clearly upstream root README/LICENSE/CONTRIBUTING (pack name / Brian Lowe) are moved to `docs/templates/agent/upstream/` automatically.
 2. Confirm or correct project overview, Document Map, `docs/Tooling.md`, and `docs/Human-TODO.md` (your procurement checklist).
 3. Review the draft `-Understanding.md` files the agent created; confirm before implementation. Shared components under `docs/_shared/` get the **same note types** unless you explicitly except specific files.
 4. Optionally install the modular doc rule — ask your agent to follow **`docs/templates/agent/RULE_INSTALL.md`**, or install manually (see below).
@@ -54,7 +54,7 @@ Do not edit the copies under `docs/templates/agent/` — they stay the upstream 
 
 **Day-to-day use** (chat → docs, ideas mid-dev, converting design docs): see **[`USAGE.md`](USAGE.md)**.
 
-**Updating templates later:** Ask your agent to update the doc templates. It **overwrites the entire** `docs/templates/` folder from upstream (no per-file diffs), then updates live docs as needed from those **local** template files (not via git on `Master_Index` / features). Full procedure: [`../agent/TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md). To only see if a newer pack exists: *"Check for template updates"* ([`TEMPLATE_UPDATE_CHECK.md`](../agent/TEMPLATE_UPDATE_CHECK.md)).
+**Updating templates later:** Ask your agent to update the doc templates. It **overwrites the entire** `docs/templates/` folder from upstream (no per-file diffs), then follows the top entry in [`CHANGELOG.md`](../CHANGELOG.md) to update live docs (versions / Master Index structure; feature docs only when content templates changed). Full procedure: [`../agent/TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md). To only see if a newer pack exists: *"Check for template updates"* ([`TEMPLATE_UPDATE_CHECK.md`](../agent/TEMPLATE_UPDATE_CHECK.md)).
 
 **Human procurement:** After bootstrap, check `docs/Human-TODO.md` for API keys, cloud bots, accounts — things only you can complete. Agents add rows; you check them off.
 
@@ -76,10 +76,12 @@ docs/
 ├── decisions/
 ├── features/
 │   └── assets/
-├── reference/
-│   └── visuals/
+├── reference/                   ← drop design docs, chat exports, PRDs, legacy specs here
+│   ├── README.md                ← what this folder is for (created at bootstrap)
+│   └── visuals/                 ← optional inspiration screenshots
 └── templates/                   ← entire pack from Agentic Doc Templates
     ├── VERSION                  ← pack version (cheap upstream compare)
+    ├── CHANGELOG.md             ← what changed — drives live-doc sync scope
     ├── help/                    ← setup, usage, idea capture (this folder)
     ├── agent/                   ← bootstrap, rule install, sync, update check, rule templates
     │   ├── Modular_Documentation_Rule.mdc

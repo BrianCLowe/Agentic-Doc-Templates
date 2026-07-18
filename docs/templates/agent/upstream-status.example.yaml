@@ -12,8 +12,8 @@ check_interval_days: 7
 last_checked: 2026-07-16
 
 # From local pack after bootstrap / TEMPLATE_SYNC (docs/templates/VERSION)
-local_template_version: "2.3"
-local_workflow_version: "2.3"
+local_template_version: "2.4"
+local_workflow_version: "2.4"
 
 # Optional — filled after a check finds a newer upstream
 # upstream_template_version: "2.4"

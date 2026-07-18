@@ -8,4 +8,4 @@ This folder holds **Agentic Doc Templates** repo root files when the user copied
 | `LICENSE.md` | Repo root — CC BY 4.0 |
 | `CONTRIBUTING.md` | Repo root — how to contribute to the template repo |
 
-If this folder is empty, you likely copied only `docs/templates/` — that is the recommended approach. License text: [GitHub LICENSE.md](https://github.com/BrianCLowe/Agentic-Doc-Templates/blob/main/LICENSE.md).
+If this folder is empty or the moved files were **deleted**, that is fine — users often remove them after bootstrap (or never had them when copying only `docs/templates/`). Do **not** re-download or restore them during template sync. License text if needed: [GitHub LICENSE.md](https://github.com/BrianCLowe/Agentic-Doc-Templates/blob/main/LICENSE.md).

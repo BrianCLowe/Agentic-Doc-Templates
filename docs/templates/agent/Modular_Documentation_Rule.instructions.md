@@ -8,18 +8,30 @@ applyTo: "**"
 
 First, check if `docs/Master_Index.md` exists. If it does not exist, ignore this entire rule and work normally.
 
-This project uses a lean modular documentation system. `docs/Master_Index.md` is the single entry point for **project context and the Document Map**. Full procedure: **`docs/templates/Modular_Docs_Workflow.md`**.
+This project uses a lean modular documentation system. `docs/Master_Index.md` is the single entry point for **project context and the Document Map**. Full procedure: **`docs/templates/Modular_Docs_Workflow.md`** — open it only when the gates below say so.
 
-**Always follow this order when starting work:**
-1. Read `docs/Master_Index.md` first (Sections 1–3).
-2. Follow **`docs/templates/Modular_Docs_Workflow.md`** — read **§0 Naming** before creating files; then Path A or Path B (§3).
-3. Open the relevant `-Understanding.md` when discussing, planning, or implementing a **feature or shared component**. **If missing, draft it first** (status `draft`) and show the user for review. **If status is `confirmed`**, read for context and proceed — do not re-ask for review unless scope changes (Workflow §4).
-4. Open the correct TODO before making changes — read **Current focus** first (Workflow §5.1):
-   - Shared foundation → `_shared/ComponentName-TODO.md` (and InEditor/Asset TODOs as needed, unless recorded in Master Index §3.0)
-   - Feature work → `features/FeatureName-TODO.md` (and InEditor/Asset TODOs as needed)
-5. Before integrating a **shared** piece, check its **Maturity** on the spec or Document Map (`draft` | `usable` | `stable`).
-6. If the user asks to install tooling / set up this machine: follow **`docs/Tooling.md`** (Workflow §11) — Required (+ skills if listed); Optional only if asked; verify all; ask before admin/large SDKs.
-7. If work needs an account, API key, cloud portal registration, or purchase: add/update **`docs/Human-TODO.md`** (Workflow §13) and link from the feature TODO — never store secrets in docs.
+**Route by ask** *(open only that playbook — do not scan the pack catalog)*:
+
+| User ask | Open only |
+|----------|-----------|
+| bootstrap / init modular docs | `docs/templates/agent/BOOTSTRAP.md` |
+| update / sync doc templates | `docs/templates/agent/TEMPLATE_SYNC.md` |
+| check for template updates | `docs/templates/agent/TEMPLATE_UPDATE_CHECK.md` |
+| install agent rules | `docs/templates/agent/RULE_INSTALL.md` |
+| feature / shared work | `docs/Master_Index.md` + that feature’s or component’s files |
+
+**Session default** *(implement / continue when Understanding is `confirmed` and scope unchanged)*:
+1. Read `docs/Master_Index.md` Sections 1–3.
+2. Open the active TODO — read **Current focus** first (Workflow §5.1):
+   - Shared foundation → `_shared/ComponentName-TODO.md`
+   - Feature work → `features/FeatureName-TODO.md`
+   - InEditor / Asset TODOs: only when Project Profile **Game extensions** / user indicates game-style work — default is **core TODO only**
+3. Read that item’s `-Understanding.md` (context) and spec as linked — do not re-ask for review unless scope changes (Workflow §4).
+4. Before integrating a **shared** piece, check its **Maturity** on the spec or Document Map (`draft` | `usable` | `stable`).
+5. If the user asks to install tooling: follow **`docs/Tooling.md`** (Workflow §11) — Required (+ skills if listed); Optional only if asked; verify all; ask before admin/large SDKs.
+6. If work needs an account, API key, cloud portal registration, or purchase: add/update **`docs/Human-TODO.md`** (Workflow §13) and link from the feature TODO — never store secrets in docs.
+
+**Open `Modular_Docs_Workflow.md` only when:** creating files (§0 Naming), choosing Path A vs Path B, graduating Understanding → spec, or the user asks about procedure. Do **not** re-read the full Workflow every turn.
 
 **Shared foundation (critical):**
 - Shared components get **Understanding by default** (Workflow §1, §4). §3.0 exceptions are **user-requested only** — never invent them because files are missing or to “leave for later.”
@@ -48,16 +60,17 @@ This project uses a lean modular documentation system. `docs/Master_Index.md` is
 
 **After changes (mandatory):**
 - Update **Current focus** and the relevant `-TODO.md` — mark completed items with `[x]` + date.
-- Update `-Understanding.md` when the user corrects scope, UI intent, or assumptions — especially **What this is NOT** (finished-feature identity, not deferred work).
-- If code diverges from confirmed Understanding, reconcile spec + Understanding or set Understanding to `superseded` (Workflow §4).
+- Update `-Understanding.md` / spec **only if this session** changed scope, UI intent, contract, or the user corrected assumptions — especially **What this is NOT** (finished-feature identity, not deferred work).
+- Reconcile Understanding vs code **only when** the user reports a mismatch, implementation clearly contradicts Understanding, or this session changes that feature’s behavior — not as a session-start audit (Workflow §4).
 - Move finished items to Completed when the list gets long.
 - Only read other files when they are explicitly linked from Master_Index or the current TODO/spec.
 
 **Clarification Protocol:**
-If the user says "review spec", "check for gaps", "ask questions", or "confidence check":
-- Re-read the feature or shared spec, Understanding, and TODO
-- Identify areas that are vague, missing, or open to interpretation
+If the user says "review spec", "check for gaps", "ask questions", or "confidence check" for a **named** feature or Document Map row:
+- Re-read **that** feature’s (or shared component’s) spec, Understanding, and TODO only
+- Identify the top gaps (cap clarifying questions at **5**)
 - Ask targeted clarifying questions instead of assuming
 - Only proceed after user confirmation
+- Do not re-read unrelated features
 
-**Philosophy:** Keep documentation small and accurate. Prefer short user asks — figure out bootstrap, Understanding, TODOs, and sync from this pack yourself. Use Mermaid only when a small diagram beats prose (Workflow §12). TODO **Current focus** + checklists are your primary memory across sessions.
+**Philosophy:** Keep documentation small and accurate. Prefer short user asks — route to the one matching playbook above. **Tight scope:** do the paved path for the current ask; do not pre-audit alternate interpretations, unrelated files, or “just in case” repo scans before acting. Use Mermaid only when a small diagram beats prose (Workflow §12). TODO **Current focus** + checklists are your primary memory across sessions.

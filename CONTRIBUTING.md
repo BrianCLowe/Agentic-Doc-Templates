@@ -25,10 +25,25 @@ I'm more likely to merge contributions that:
 
 - Improve clarity or reduce friction for both humans and agents
 - Stay consistent with the current lightweight, modular approach
-- Preserve **simplicity** — users should keep saying short action requests (“update the templates”, “draft Understanding for X”); agents figure out the rest from the pack
+- Preserve **simplicity** — users should keep saying short action requests (“update the templates”, “draft Understanding for X”); agents route to one playbook
 - Solve a real problem I've also run into
 
 I'm more cautious about changes that significantly increase complexity, require long user-facing instruction dumps, or shift the overall direction of the project. I want to avoid ending up maintaining two versions (one public, one private that actually works for me).
+
+**Pack version bumps:** When you change `docs/templates/VERSION`, update the top entry of [`docs/templates/CHANGELOG.md`](docs/templates/CHANGELOG.md) in the same commit (files touched + Live impact tags + Step B line).
+
+### Writing agent instructions *(for anyone editing this pack — including coding agents)*
+
+Write for **off-road enthusiasts**, not for a careful model that already stays on the paved path.
+
+Thorough agents (and long “thinking” traces) will treat open phrases like “as needed,” “relevant,” “verify,” or “compare” as a license to audit every file and every alternate interpretation before acting. If you mean a short path, **say the short path** — scope gates, ordered steps, explicit **Do not**, and changelog Live impact tags. Do not assume the reader will infer restraint the way you would.
+
+Checklist when changing `docs/templates/agent/` or workflow rules:
+
+- Prefer “do X, then stop” over “update as needed”
+- Name which files to open; name which not to open
+- Put the common case first (minimal path); park rare migrations behind a clear trigger
+- If Step B / sync behavior changes, update [`CHANGELOG.md`](docs/templates/CHANGELOG.md) so consumers do not reverse-engineer the pack
 
 If you're unsure whether something fits, just start a Discussion first — I'm happy to talk about it.
 
@@ -54,7 +69,7 @@ Thanks again for helping make these templates better. I genuinely appreciate it.
 
 That keeps your project root for **your** README and metadata. Attribution and upstream license text stay in `upstream/` inside the template pack.
 
-**Agent bootstrap:** Point your agent at [`docs/templates/agent/BOOTSTRAP.md`](docs/templates/agent/BOOTSTRAP.md) — Step 1 detects upstream root files and asks before moving them (including this file).
+**Agent bootstrap:** Point your agent at [`docs/templates/agent/BOOTSTRAP.md`](docs/templates/agent/BOOTSTRAP.md) — Step 1 auto-moves clearly upstream root files (Agentic Doc Templates / Brian Lowe markers) to `docs/templates/agent/upstream/` without asking; asks only if ambiguous.
 
 **Manual move:** Create `docs/templates/agent/upstream/` if needed, move the three files above, then write your own project `README.md` at the repo root.
 

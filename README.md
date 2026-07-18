@@ -1,140 +1,135 @@
 # Agentic Doc Templates
 
-> **Documentation templates for agentic AI coding tools.**
-> Keep AI agents aligned with your intent across conversations, features, and long-running projects.
+> **Documentation templates for agentic AI coding tools.**  
+> Keep agents aligned with your intent across conversations, features, and long-running projects.
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-![Template](https://img.shields.io/badge/Template-Ready-blue)
-![Built for](https://img.shields.io/badge/Built%20for-Cursor%20%7C%20Grok%20Build%20%7C%20Claude%20Code-5865F2)
-
-**Quick start:** Click the green **"Use this template"** button at the top of this page to instantly create a new repository with the full `docs/` structure.
+![Pack](https://img.shields.io/badge/Pack-2.4-blue)
+![Built for](https://img.shields.io/badge/Built%20for-Cursor%20%7C%20Copilot%20%7C%20Claude%20Code%20%7C%20Grok-5865F2)
 
 ---
 
-## Why these templates exist
+## How it works
 
-AI coding agents are powerful but can drift from your original intent over long sessions. These templates give agents a consistent structure: the **agent writes** Understanding and TODO files from your conversation; **you review and correct** them before implementation.
+AI coding agents drift when intent lives only in chat. This pack gives them a small, consistent `docs/` layout:
 
-The goal: lightweight documentation that stays in sync with the code. **Simplicity first** — you should not need complex prompts or long instruction dumps. Tell the agent what you want done with the docs (bootstrap, draft Understanding, update templates, add a feature) and it should figure out the rest from the pack.
+1. You describe the idea (chat, design doc, or mid-build correction).
+2. The **agent drafts** `-Understanding.md` — how it interpreted you.
+3. **You review and correct** (especially identity: what it is / is *not*).
+4. After you confirm, work continues from TODOs and specs; session handoff uses **Current focus**.
 
-## Quick Start
+Short asks are enough: *bootstrap*, *draft Understanding for X*, *update the doc templates*. The agent routes to the matching playbook inside `docs/templates/`.
 
-### Option 1: Use as Template (Recommended)
-1. Click **"Use this template"** (green button at the top)
-2. Create a new repository in your account
-3. Discuss your app idea with your agent or drop in your current docs and ask it to turn it into modular documentation with an appropriate .gitignore
-4. Start building.
+---
 
-### Option 2: Copy into existing project
-Copy **`docs/templates/`** into your project as **`your-project/docs/templates/`** — one folder, everything included.
+## Get started
 
-Then run the bootstrap with your agent:
+### Existing project *(recommended)*
 
-> "Bootstrap the modular documentation system using `docs/templates/agent/BOOTSTRAP.md` with the current code and documentation"
+Copy **`docs/templates/`** into your repo as **`your-project/docs/templates/`**, then ask your agent:
 
-See [`docs/templates/help/SETUP.md`](docs/templates/help/SETUP.md) for the human guide.
+> Bootstrap modular docs using `docs/templates/agent/BOOTSTRAP.md`.
 
-### Compatibility warning (Cursor plugins)
+Human guide: [`docs/templates/help/SETUP.md`](docs/templates/help/SETUP.md).
 
-**Compound Engineering** and **Superpowers** (Cursor plugins / skill packs) often **override or sidestep** the modular documentation Cursor rule. With them enabled, agents may ignore `Master_Index.md`, invent their own planning flow, or skip Understanding/TODO updates.
+### New repository from this template
 
-If you rely on this pack, **disable those plugins** (or turn off their always-on skills) for this workspace — or expect the agent not to follow the docs correctly. Details: [`docs/templates/help/USING_WITH_AGENTS.md`](docs/templates/help/USING_WITH_AGENTS.md#cursor).
+1. Click **Use this template** (green button).
+2. Ask your agent to bootstrap (it will create the live `docs/` layout and auto-move this pack’s root README/LICENSE/CONTRIBUTING into `docs/templates/agent/upstream/` when those files are clearly from Agentic Doc Templates).
+3. Discuss the app (or drop design docs / chat exports into `docs/reference/`) and review draft Understandings before coding.
 
-### Keeping templates up to date
+Prefer **copy `docs/templates/` only** into an existing app so this repo’s root files never collide with yours.
 
-You do **not** need to copy files by hand when this repo improves. In a project that already has `docs/templates/`, ask your agent something like:
+### Chat UI first *(no repo yet)*
+
+Attach only [`docs/templates/chat-ui/AGENT.md`](docs/templates/chat-ui/AGENT.md). Save the exported files into your project later; keep the full brainstorm thread (ideally under `docs/reference/`). See [`docs/templates/chat-ui/README.md`](docs/templates/chat-ui/README.md).
+
+### Cursor plugin note
+
+**Compound Engineering** and **Superpowers** often override the modular-docs Cursor rule. Disable them (or their always-on skills) for this workspace if you rely on this pack. Details: [`USING_WITH_AGENTS.md`](docs/templates/help/USING_WITH_AGENTS.md#cursor).
+
+---
+
+## Stay current
+
+You do not need to copy files by hand when this repo improves. In a project that already has `docs/templates/`:
 
 > Update the doc templates from Agentic Doc Templates and sync our live docs.
 
-The agent follows [`docs/templates/agent/TEMPLATE_SYNC.md`](docs/templates/agent/TEMPLATE_SYNC.md): it **downloads** the latest pack into your project's `docs/templates/` (ZIP/copy — not a git update of your live docs), then **updates your live docs as needed** from those **local** template files (`Master_Index.md`, Understanding, specs, TODOs) — without wiping your Document Map or feature content.
+The agent overwrites the pack (ZIP/copy), then follows [`docs/templates/CHANGELOG.md`](docs/templates/CHANGELOG.md) for what to change in live docs — usually versions and Master Index, not a rewrite of every feature file. Procedure: [`TEMPLATE_SYNC.md`](docs/templates/agent/TEMPLATE_SYNC.md).
 
-**Optional weekly ping:** Bootstrap can enable a tiny `docs/upstream-status.yaml` plus an optional agent rule so the agent notices newer pack versions about once a week (or when you ask *"Check for template updates"*). Token cost is negligible — details in [`docs/templates/agent/TEMPLATE_UPDATE_CHECK.md`](docs/templates/agent/TEMPLATE_UPDATE_CHECK.md).
+Version-only ping (optional weekly rule): *Check for template updates.* — [`TEMPLATE_UPDATE_CHECK.md`](docs/templates/agent/TEMPLATE_UPDATE_CHECK.md).
 
-## What's Included
+---
 
-Everything lives under **`docs/templates/`** — workflow scaffolds, human guides, agent setup, and chat-ui pack. Your live project docs (`Master_Index`, `features/`, `_shared/`) stay separate at `docs/` root.
+## What’s in the pack
 
-| Path | Purpose |
-|------|---------|
-| [Master_Index_Template.md](docs/templates/Master_Index_Template.md) | Lean project index — overview, locations, Document Map |
-| [Modular_Docs_Workflow.md](docs/templates/Modular_Docs_Workflow.md) | Full agent procedure (Path A/B, Understanding, TODOs) |
-| [Feature_Spec_Template.md](docs/templates/Feature_Spec_Template.md) | Durable spec / contract after Understanding is confirmed |
-| [Feature_Understanding_Template.md](docs/templates/Feature_Understanding_Template.md) | Agent drafts its interpretation; you review before coding |
-| [TODO_Template.md](docs/templates/TODO_Template.md) | Focused task lists with **Current focus** session handoff |
-| [Decision_Template.md](docs/templates/Decision_Template.md) | Optional cross-cutting decision records |
-| [Tooling_Template.md](docs/templates/Tooling_Template.md) | Machine / workflow tools (`docs/Tooling.md`) — install on a new machine |
-| [Human_TODO_Template.md](docs/templates/Human_TODO_Template.md) | Human procurement checklist (`docs/Human-TODO.md`) — API keys, cloud bots, accounts |
-| [chat-ui/](docs/templates/chat-ui/) | **Short instructions for Grok/ChatGPT** — no repo workspace; output files to download |
-| [VERSION](docs/templates/VERSION) | Pack version markers for cheap upstream checks |
-| [agent/Modular_Documentation_Rule.mdc](docs/templates/agent/Modular_Documentation_Rule.mdc) | Cursor rule template — copy to `.cursor/rules/` |
-| [agent/Modular_Documentation_Rule.instructions.md](docs/templates/agent/Modular_Documentation_Rule.instructions.md) | Copilot rule template — copy to `.github/instructions/` |
-| [agent/Template_Update_Check_Rule.mdc](docs/templates/agent/Template_Update_Check_Rule.mdc) | Optional Cursor rule — weekly pack update ping |
-| [help/](docs/templates/help/) | Human guides — [SETUP](docs/templates/help/SETUP.md), [USAGE](docs/templates/help/USAGE.md), [IDEA_CAPTURE_TIPS](docs/templates/help/IDEA_CAPTURE_TIPS.md), [USING_WITH_AGENTS](docs/templates/help/USING_WITH_AGENTS.md) |
-| [agent/](docs/templates/agent/) | Agent setup — [BOOTSTRAP](docs/templates/agent/BOOTSTRAP.md), [RULE_INSTALL](docs/templates/agent/RULE_INSTALL.md), [TEMPLATE_SYNC](docs/templates/agent/TEMPLATE_SYNC.md), [TEMPLATE_UPDATE_CHECK](docs/templates/agent/TEMPLATE_UPDATE_CHECK.md), rule templates |
+Everything ships under **`docs/templates/`**. Live project docs stay at `docs/` root.
 
-## Core Philosophy
+| Area | Role |
+|------|------|
+| **Scaffolds** | Master Index, Understanding, Spec, TODO, Tooling, Human-TODO, Decision templates + [`Modular_Docs_Workflow.md`](docs/templates/Modular_Docs_Workflow.md) |
+| **[`help/`](docs/templates/help/)** | Human guides — [SETUP](docs/templates/help/SETUP.md), [USAGE](docs/templates/help/USAGE.md), [IDEA_CAPTURE_TIPS](docs/templates/help/IDEA_CAPTURE_TIPS.md), [USING_WITH_AGENTS](docs/templates/help/USING_WITH_AGENTS.md) |
+| **[`agent/`](docs/templates/agent/)** | Bootstrap, rule install, template sync, update check, Cursor/Copilot rule templates |
+| **[`chat-ui/`](docs/templates/chat-ui/)** | Short instructions for Grok/ChatGPT (no workspace) |
+| **[`VERSION`](docs/templates/VERSION)** / **[`CHANGELOG.md`](docs/templates/CHANGELOG.md)** | Cheap upstream compare + sync scope after a pack refresh |
 
-- **Simplicity** — No complex prompts or detailed user instructions required. Say what you want done with the docs; the agent should read the templates and figure out how.
-- **Mermaid when it helps** — Agents may add a small Mermaid diagram when structure or flow is clearer that way. Optional, agent judgment — not required in every file, not decoration.
-- **Modular over monolithic** — Small, focused files instead of one giant spec.
-- **Understanding before implementation** — The agent drafts `-Understanding.md` first so you can see how it interpreted your request; you review and correct, then implementation starts.
-- **Spec after confirm** — Durable architecture and **Decisions** graduate into the spec; Understanding keeps intent and acceptance criteria.
-- **Shared maturity** — `draft` / `usable` / `stable` on shared components so features know when integration is safe.
-- **Visual references matter** — Screenshots and diagrams stay linked for vision models.
-- **Shared components live once** — Common work goes in `_shared/` with the same note types as features unless you explicitly except specific files.
-- **Index vs workflow split** — `Master_Index.md` is your project map; `Modular_Docs_Workflow.md` is how agents work the system.
-- **Human / procurement** — `docs/Human-TODO.md` for keys, portals, accounts the agent cannot get.
-- **One folder to copy** — Setup and usage instructions live inside `docs/templates/` (`help/`, `agent/`) so they do not clutter your project's `docs/` root.
+---
 
-## Recommended folder structure
+## Live docs layout
 
-Flat **sibling files** per feature in `docs/features/` and `docs/_shared/`:
+After bootstrap, a typical project looks like:
 
 ```
 docs/
-├── Master_Index.md
+├── Master_Index.md              ← project map (you maintain)
 ├── Tooling.md                   ← machine tools (not package deps)
-├── Human-TODO.md                ← human procurement (keys, portals, accounts)
-├── _shared/
-│   ├── BlockEditor.md
-│   ├── BlockEditor-Understanding.md
-│   └── BlockEditor-TODO.md
+├── Human-TODO.md                ← keys, portals, accounts (human only)
+├── reference/                   ← design docs, chat exports, PRDs, legacy specs
+│   └── visuals/                 ← optional inspiration screenshots
+├── _shared/                     ← reusable components (same note types as features)
+│   └── ComponentName.md (+ Understanding, TODO)
 ├── features/
-│   ├── MainWorkspace.md
-│   ├── MainWorkspace-Understanding.md
-│   └── MainWorkspace-TODO.md
-└── templates/                   ← copy this entire folder from Agentic Doc Templates
-    ├── VERSION                  ← pack version (cheap upstream compare)
-    ├── help/                    ← human guides (not live project docs)
-    ├── agent/                   ← bootstrap, rule install, sync, update check
-    ├── chat-ui/AGENT.md         ← Grok / ChatGPT (attach this only)
-    └── Modular_Docs_Workflow.md ← IDE agents (sync, do not copy into Master_Index)
+│   └── FeatureName.md (+ Understanding, TODO)
+├── decisions/                   ← optional cross-cutting decisions
+└── templates/                   ← this pack (overwrite on sync; not live content)
 ```
 
-Full path table: [`Modular_Docs_Workflow.md` §0](docs/templates/Modular_Docs_Workflow.md#0-naming--file-layout-read-before-creating-files). **Chat without a repo:** [`chat-ui/README.md`](docs/templates/chat-ui/README.md).
+Flat sibling files per feature/shared component. Naming: [`Modular_Docs_Workflow.md` §0](docs/templates/Modular_Docs_Workflow.md#0-naming--file-layout-read-before-creating-files).
 
-## Common Agent Prompts
+---
 
-- "Create modular docs from our conversation using the templates in `docs/templates/`."
-- "Add this idea to the docs — draft Understanding + TODO from what I said, then I'll review."
-- "Using https://github.com/BrianCLowe/Agentic-Doc-Templates follow chat-ui/AGENT.md — create modular docs from our conversation with save-as paths for each file."
-- "Add shared component [Name] as we discussed to the documentation."
-- "Convert this design document into modular docs (without the rule installed reference docs/templates)"
-- "Bootstrap the documentation system in this project using `docs/templates/agent/BOOTSTRAP.md`."
-- "Update the doc templates from Agentic Doc Templates and sync our live docs."
-- "Check for template updates."
-- "Install the project tooling for this machine."
-- "What’s left on the human TODO?"
+## Ideas that guide the pack
 
-Full workflows and more example prompts are in [`docs/templates/help/USAGE.md`](docs/templates/help/USAGE.md).
+- **Simplicity** — Short user asks; agents follow one playbook.
+- **Understanding before code** — Agent drafts; you confirm identity and scope.
+- **Modular map** — Small files + Document Map; not one giant spec.
+- **Tight scope** — Paved path for the current ask; no “just in case” audits.
+- **One folder to copy** — `docs/templates/` holds setup, workflow, and rules so your `docs/` root stays yours.
+
+Deeper day-to-day patterns: [`docs/templates/help/USAGE.md`](docs/templates/help/USAGE.md).
+
+---
+
+## Example prompts
+
+- *Bootstrap modular docs using `docs/templates/agent/BOOTSTRAP.md`.*
+- *Draft Understanding for [feature] from what I said — I’ll review.*
+- *Update the doc templates from Agentic Doc Templates and sync our live docs.*
+- *Check for template updates.*
+- *Follow `chat-ui/AGENT.md` — turn our conversation into modular docs with Save-as paths.*
+
+More: [`USAGE.md`](docs/templates/help/USAGE.md).
+
+---
 
 ## Contributing
 
-PRs that improve the templates, add new ones, or refine the workflows are very welcome.
+PRs that improve the templates or workflows are welcome. Prefer focused changes; when bumping [`VERSION`](docs/templates/VERSION), update [`CHANGELOG.md`](docs/templates/CHANGELOG.md) in the same commit.
 
-**Feedback:** [Open an issue](https://github.com/BrianCLowe/Agentic-Doc-Templates/issues/new/choose) (agent/tool problems, template ideas, docs confusion, or what worked). Discussions are fine for open-ended questions.
+**Feedback:** [Open an issue](https://github.com/BrianCLowe/Agentic-Doc-Templates/issues/new/choose). Discussions for open-ended questions. See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
-If you're using these successfully with a particular agent/tool, feel free to share your experience in Discussions or via the Feedback issue form.
+---
 
 ## License
 

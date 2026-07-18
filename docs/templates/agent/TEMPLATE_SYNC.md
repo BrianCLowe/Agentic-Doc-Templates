@@ -7,9 +7,9 @@
 | Step | What | How |
 |------|------|-----|
 | **A — Refresh pack** | Replace **entire** `docs/templates/` | ZIP/copy — **full overwrite**, no per-file diffs |
-| **B — Update live docs** | Edit `Master_Index.md`, Understanding, specs, TODOs | Read the **downloaded local copies** in `docs/templates/` and **update live docs as needed**. |
+| **B — Update live docs** | Edit live docs per pack changelog | Read `VERSION` + top [`CHANGELOG.md`](../CHANGELOG.md) entry — do **only** what that entry lists |
 
-**Git is not how you update live docs.** Do **not** `git pull`, `git merge`, `git checkout`, submodule update, or otherwise use the user's project git history to “sync” `Master_Index.md` / `features/` / `_shared/`. Those files are project-owned. After Step A, Step B is ordinary file edits guided by the **local** templates.
+**Git is not how you update live docs.** Do **not** `git pull`, `git merge`, `git checkout`, submodule update, or otherwise use the user's project git history to “sync” `Master_Index.md` / `features/` / `_shared/`. Those files are project-owned. After Step A, Step B is ordinary file edits guided by the **local** templates and changelog.
 
 **Upstream is only a download source** for the template pack — not a remote to apply to this repo’s live documentation.
 
@@ -63,54 +63,76 @@ cp -R "$tmp/Agentic-Doc-Templates-main/docs/templates" docs/templates
 - Diff old vs new template files and update only what changed
 - Fetch individual files with `gh` / raw URLs one-by-one
 - Read every file under the existing `docs/templates/` before replacing
+- Capture Template / Workflow versions *before* overwrite (read `VERSION` after Step A)
 - Add Agentic-Doc-Templates as a git remote of the user project and pull into it
 - `git checkout` / `git restore` live docs from any remote
 - Treat “sync” as updating the user repo via git
 
 If the user already refreshed `docs/templates/` themselves, skip Step A.
 
-After Step A: read versions from the **new** local `docs/templates/VERSION` (preferred) or markers in `Master_Index_Template.md` / `Modular_Docs_Workflow.md` — then go to Step B.
+After Step A → go to Step B (start with `VERSION` + `CHANGELOG.md`).
 
 ---
 
-## Step B — Update live docs from the downloaded local copies
+## Step B — Update live docs *(changelog-gated)*
 
-Source of truth for structure is now **on disk** under `docs/templates/`. Compare those files to the live docs and **update the live docs as needed**. Do not re-fetch from GitHub for each live file.
+Source of truth is **on disk** under `docs/templates/`. Do **not** re-fetch from GitHub for each live file.
 
-### Files
+### B0 — Scope gate *(do this first — every sync)*
 
-| Local template (read) | Live file (edit carefully) |
-|-----------------------|----------------------------|
-| `docs/templates/Master_Index_Template.md` | `docs/Master_Index.md` — update structure as needed; never blind-replace |
-| `docs/templates/Modular_Docs_Workflow.md` | Already replaced in Step A — do not copy into Master_Index |
-| `docs/templates/Feature_Understanding_Template.md` | Each `*-Understanding.md` — add new sections where missing |
-| `docs/templates/Feature_Spec_Template.md` | Each feature/shared `.md` spec — add new sections where missing |
-| `docs/templates/TODO_Template.md` | Each `*-TODO.md` — add missing blocks (e.g. Current focus) |
-| `docs/templates/Tooling_Template.md` | `docs/Tooling.md` — create if missing; add new sections only, do not wipe tool rows |
-| `docs/templates/Human_TODO_Template.md` | `docs/Human-TODO.md` — create if missing; add new columns/sections only, do not wipe Open/Done rows |
-| `docs/templates/agent/Modular_Documentation_Rule.*` | Installed rule paths — ask before overwriting custom installs |
-| `docs/templates/agent/Template_Update_Check_Rule.*` | Optional update-check rule installs — ask before overwriting |
+1. Read **local** `docs/templates/VERSION`.
+2. Read **only the top entry** of `docs/templates/CHANGELOG.md` (Live impact, Files, Unchanged content templates, Step B).
+3. Do **only** the actions implied by that entry’s tags and Step B line.
+4. If `CHANGELOG.md` is missing: fall back to comparing **content-template paths only** (`Feature_*_Template.md`, `TODO_Template.md`, `Tooling_Template.md`, `Human_TODO_Template.md`, `Decision_Template.md`) via `git diff` against HEAD or a prior pack copy. Never open all live feature docs “just in case.”
+
+| Live impact tag | Do in Step B |
+|-----------------|--------------|
+| `versions-only` | Bump Template / Workflow version in live `Master_Index.md` |
+| `master-index` | Adopt structural deltas from `Master_Index_Template.md` into live index (see below) |
+| `content-templates` | Add *new* sections to live Understanding / Spec / TODO / Tooling / Human-TODO where missing |
+| `rules` | Offer refresh of installed rules from local `agent/` (ask if customized) |
+| `optional-upstream-check` | Update `docs/upstream-status.yaml` if present; offer enable if missing |
+| `process-docs-only` | No live feature/shared content scan (versions / Master Index / rules only as other tags say) |
+
+**Default when `content-templates` is absent:** bump versions + Master Index structure if tagged → summarize → ask about optional items. **Do not** open live `features/` or `_shared/` docs.
+
+### Reference — local template → live file *(only when tagged)*
+
+| Local template (read) | Live file (edit carefully) | When |
+|-----------------------|----------------------------|------|
+| `Master_Index_Template.md` | `docs/Master_Index.md` — never blind-replace | `master-index` or always for version lines |
+| `Modular_Docs_Workflow.md` | Already replaced in Step A — do not copy into Master_Index | — |
+| `Feature_Understanding_Template.md` | Each `*-Understanding.md` — add new sections only | `content-templates` |
+| `Feature_Spec_Template.md` | Each feature/shared `.md` spec — add new sections only | `content-templates` |
+| `TODO_Template.md` | Each `*-TODO.md` — add missing blocks only | `content-templates` |
+| `Tooling_Template.md` | `docs/Tooling.md` — create if missing; add sections only | `content-templates` |
+| `Human_TODO_Template.md` | `docs/Human-TODO.md` — create if missing; add columns/sections only | `content-templates` |
+| `agent/Modular_Documentation_Rule.*` | Installed rule paths — ask before overwriting custom installs | `rules` |
+| `agent/Template_Update_Check_Rule.*` | Optional update-check installs — ask first | `rules` or `optional-upstream-check` |
 
 Versions:
 
 - `docs/templates/VERSION` (preferred) or `<!-- template-version: X.Y -->` in local `Master_Index_Template.md` → **Template version** in live `Master_Index.md`
 - `docs/templates/VERSION` or `<!-- workflow-version: X.Y -->` in local `Modular_Docs_Workflow.md` → **Workflow version** in live `Master_Index.md`
 
-### Update checklist
+### Gated checklist
 
-1. Read **local** `docs/templates/Master_Index_Template.md`, `Modular_Docs_Workflow.md`, and live `docs/Master_Index.md`.
-2. Compare structure: headings, Document Map, versions, naming.
-3. **Preserve** in `Master_Index.md`: overview, Project Profile, Document Map rows (§3.0–3.4), user §3.0 exceptions only, custom sections.
-4. **Adopt** from the **local** Master_Index template: new index sections, renumbers, Quick Start pointer — not old workflow §4–10 (those live in `Modular_Docs_Workflow.md`).
-5. Update installed agent rules from **local** `docs/templates/agent/` if the rule body changed (ask first if customized).
-6. Bump **Template version** / **Workflow version** in live `Master_Index.md`.
-7. If `docs/upstream-status.yaml` exists: set `local_template_version` / `local_workflow_version` from local `VERSION`, `last_checked` today, clear `update_available` — do **not** delete the file. Refresh installed optional update-check rules from local templates if the rule body changed (ask first if customized).
-8. Layout migrations (pre-1.7 / pre-1.8 / pre-2.0): follow [`BOOTSTRAP.md`](BOOTSTRAP.md) Step 0b using the **local** pack layout.
-9. Update live Understanding / Spec / TODO files from the local templates as needed — do not overwrite project content.
-10. If `Tooling_Template.md` is new: create `docs/Tooling.md` from it when missing; link from Master Index. Do not wipe existing tool rows.
-11. If `Human_TODO_Template.md` is new: create `docs/Human-TODO.md` from it when missing; link from Master Index §3.3/§3.4. Do not wipe Open/Done rows.
-12. §3.0: record only **user-stated** exceptions — never invent rows.
-13. Summarize pack refresh + live-doc updates; ask before large live-doc rewrites.
+1. **Versions** — Bump **Template version** / **Workflow version** (and `<!-- template-version -->` if present) in live `Master_Index.md` from local `VERSION`.
+2. **Master Index** *(if `master-index`)* — Read local `Master_Index_Template.md` + live `Master_Index.md`. Compare **headings / Key Locations / Document Map columns** only — not project prose. **Preserve** overview, Project Profile, Document Map rows (§3.0–3.4), user §3.0 exceptions, custom sections. **Adopt** new index sections, renumbers, Quick Start pointer. §3.0: record only **user-stated** exceptions.
+3. **Content templates** *(if `content-templates` only)* — Add missing sections from local templates into live Understanding / Spec / TODO / Tooling / Human-TODO. Do not overwrite project content. Create `Tooling.md` / `Human-TODO.md` from templates when missing and link from Master Index. Ask before large rewrites across many files.
+4. **Rules** *(if `rules`)* — Update installed agent rules from local `docs/templates/agent/` if the rule body changed (ask first if customized).
+5. **Upstream stamp** *(if `optional-upstream-check` or file exists)* — If `docs/upstream-status.yaml` exists: set `local_template_version` / `local_workflow_version` from local `VERSION`, `last_checked` today, clear `update_available` — do **not** delete the file. Refresh optional update-check rules if tagged `rules` / body changed (ask first if customized).
+6. **Layout migration** — Run [`BOOTSTRAP.md`](BOOTSTRAP.md) Step 0b **only** if layout markers show older layout (`docs/help/` or `docs/agent/` at docs root, or flat setup files in `templates/`). Skip on a normal modern pack refresh.
+7. **Summarize** pack refresh + live-doc updates; ask before large live-doc rewrites.
+
+### Do not (Step B)
+
+- Capture versions before Step A overwrite
+- Scan every live Understanding / Spec / TODO unless `content-templates` is listed
+- Reconstruct whether a missing section is “new in this version” vs “never adopted” when content templates are unchanged — the changelog already answered
+- Treat a missing or empty `docs/templates/agent/upstream/` (deleted README / LICENSE / CONTRIBUTING) as an error or reason to re-download attribution files — users often remove those on purpose after bootstrap
+- Open Workflow, help guides, or the whole pack catalog during sync
+- Keep pulling from GitHub — work from the **local** `docs/templates/` copy
 
 ---
 
@@ -122,7 +144,6 @@ Versions:
 - Put project feature content into `docs/templates/`.
 - Remove project-only Document Map entries unless the user asks.
 - Invent §3.0 exceptions for missing Understanding / TODO files.
-- Keep pulling from GitHub during Step B — work from the **local** `docs/templates/` copy.
 - Diff or cherry-pick inside `docs/templates/` on Step A — **always overwrite the whole folder**.
 
 ## Example user prompts
@@ -130,5 +151,5 @@ Versions:
 - "Update the doc templates from Agentic Doc Templates and sync our live docs."
 - "Download the latest templates into `docs/templates/`, then update Master_Index from the local templates."
 - "We already refreshed `docs/templates/` — update our live docs from the local pack." (skip Step A)
-- "Compare `Master_Index.md` to `docs/templates/Master_Index_Template.md` and apply structural improvements."
+- "Apply new template sections to Master_Index; preserve Document Map content."
 - "Check for template updates." *(version-only — [`TEMPLATE_UPDATE_CHECK.md`](TEMPLATE_UPDATE_CHECK.md); run this sync only if newer and user agrees)*

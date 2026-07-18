@@ -10,10 +10,10 @@ Create the live `docs/` layout (Master_Index, feature folders, template pack in 
 
 | Situation | Action |
 |-----------|--------|
-| `docs/templates/` copied (full pack with `help/`, `agent/`, scaffolds) | Skip Step 1 (relocate) unless whole repo. Verify subfolders are complete. |
+| `docs/templates/` copied (full pack with `help/`, `agent/`, scaffolds) | Skip Step 1 (relocate) unless whole repo. **Spot-check** pack (below) — do not walk the whole tree. |
 | `docs/help/` and/or `docs/agent/` at `docs/` root (older layout) | Run **Step 0b — migrate layout**, then continue. |
 | Flat files only in `docs/templates/` (oldest layout) | Run **Step 0b — migrate layout**, then continue. |
-| Whole repo cloned/copied into the project | Do Step 1 after user confirms. |
+| Whole repo cloned/copied into the project | Do Step 1 (auto-move clearly upstream root files; ask only if ambiguous). |
 | Submodule of [Agentic-Doc-Templates](https://github.com/BrianCLowe/Agentic-Doc-Templates) | Prefer copy of `docs/templates/`; optional Step 1 for root files if submodule is at repo root. |
 
 ## Step 0b — Migrate older layouts (if needed)
@@ -30,31 +30,36 @@ Reorganize without losing content. Target: **everything meta** lives under `docs
 | `docs/templates/Modular_Documentation_Rule.mdc`, `Modular_Documentation_Rule.instructions.md` (flat in templates) | `docs/templates/agent/` |
 | `docs/USING_WITH_AGENTS.md` (at `docs/` root) | `docs/templates/help/USING_WITH_AGENTS.md` |
 
-Fix internal links after moving. **Keep at `docs/templates/` root:** `Master_Index_Template.md`, `Modular_Docs_Workflow.md`, `chat-ui/`, `Feature_*_Template.md`, `TODO_Template.md`, `Decision_Template.md`. **Keep in `docs/templates/agent/`:** rule templates (`.mdc`, `.instructions.md`), bootstrap, rule install, template sync.
+Fix internal links after moving. **Keep at `docs/templates/` root:** `VERSION`, `CHANGELOG.md`, `Master_Index_Template.md`, `Modular_Docs_Workflow.md`, `chat-ui/`, `Feature_*_Template.md`, `TODO_Template.md`, `Decision_Template.md`. **Keep in `docs/templates/agent/`:** rule templates (`.mdc`, `.instructions.md`), bootstrap, rule install, template sync.
 
-## Step 1 — Relocate upstream README, LICENSE, and CONTRIBUTING (ask first)
-
-**Do not move** project-owned root files without confirmation.
+## Step 1 — Relocate upstream README, LICENSE, and CONTRIBUTING *(auto-move when clearly this pack)*
 
 1. Check project root for `README.md`, `LICENSE.md`, and `CONTRIBUTING.md`.
-2. Detect **upstream template repo files** (safe to relocate):
-   - `README.md` first heading is `# Agentic Doc Templates`, or body clearly describes this template pack (not the user's app).
-   - `LICENSE.md` contains `Creative Commons Attribution 4.0` and `Brian Lowe` (this pack's license).
-   - `CONTRIBUTING.md` first heading is `# Contributing to Agentic Doc Templates`, or body clearly describes contributing to this template repo (not the user's project).
-3. If **any** detected file looks like the user's own project docs → **stop** moving that file. Tell them to copy only `docs/templates/` next time (see [`../help/SETUP.md`](../help/SETUP.md)).
-4. If upstream files detected → **ask**:
+2. Per file, decide **clearly upstream** vs **project-owned** vs **ambiguous**:
 
-   > These look like Agentic Doc Templates repo files at your project root (README, LICENSE, and/or CONTRIBUTING). Move them to `docs/templates/agent/upstream/` so your project root stays yours?
+   **Clearly upstream — move immediately, do not ask** (any strong marker is enough):
 
-5. On **yes**:
+   | File | Clear upstream markers |
+   |------|------------------------|
+   | `README.md` | Heading `# Agentic Doc Templates`, or body names **Agentic Doc Templates** / **Agentic-Doc-Templates** as *this* pack (not merely linking to it) |
+   | `LICENSE.md` | **Creative Commons Attribution 4.0** plus **Brian Lowe** / **BrianCLowe** |
+   | `CONTRIBUTING.md` | Heading `# Contributing to Agentic Doc Templates`, or body is about contributing to this template pack |
+
+   Also treat as clearly upstream if the file repeatedly names **Brian Lowe**, **BrianCLowe**, or **Agentic Doc Templates** as the author/product of *these* root docs (not the user’s app).
+
+   **Project-owned — do not move:** File describes the user’s app/product with no pack markers above.
+
+   **Ambiguous — ask once** (only this case): Markers conflict or you cannot tell. Do not re-ask every session.
+
+3. For each **clearly upstream** file:
    - Create `docs/templates/agent/upstream/` if needed.
-   - Move `README.md` → `docs/templates/agent/upstream/README.md` *(when detected as upstream)*
-   - Move `LICENSE.md` → `docs/templates/agent/upstream/LICENSE.md` *(when detected as upstream)*
-   - Move `CONTRIBUTING.md` → `docs/templates/agent/upstream/CONTRIBUTING.md` *(when detected as upstream)*
-   - Do **not** delete — attribution and upstream docs stay in the project.
-6. On **no** → leave in place; note in your summary that they may want to remove or merge manually.
+   - Move → `docs/templates/agent/upstream/README.md` (or `LICENSE.md` / `CONTRIBUTING.md`).
+   - Do **not** delete — attribution stays in the project.
+   - Mention the move briefly in the bootstrap summary — **no confirmation prompt**.
 
-If root `README.md` is upstream but user already has a project README they want to keep, offer to move only `LICENSE.md` and/or `CONTRIBUTING.md`, or merge upstream readme into `upstream/` without touching their README.
+4. Leave project-owned files alone. Suggest copying only `docs/templates/` next time (see [`../help/SETUP.md`](../help/SETUP.md)).
+
+Do **not** overwrite a project-owned root `README.md`. If an upstream README is already under `agent/upstream/`, leave the user’s root README alone.
 
 ## Step 1b — Remove upstream GitHub issue templates (user projects)
 
@@ -84,8 +89,9 @@ docs/
 ├── decisions/
 ├── features/
 │   └── assets/
-├── reference/
-│   └── visuals/
+├── reference/               ← design docs, chat exports, PRDs, legacy specs (not living modular docs)
+│   ├── README.md            ← short “what goes here” (create if missing — see below)
+│   └── visuals/             ← optional inspiration screenshots
 └── templates/               ← full template pack (not live project content)
     ├── help/
     ├── agent/
@@ -93,9 +99,27 @@ docs/
     └── … scaffolds + workflow
 ```
 
-Ensure **`docs/templates/`** contains at least:
+If `docs/reference/README.md` is missing, create it with:
 
-- **Root:** `VERSION`, `Master_Index_Template.md`, `Modular_Docs_Workflow.md`, `chat-ui/AGENT.md`, `Feature_Spec_Template.md`, `Feature_Understanding_Template.md`, `TODO_Template.md`, `Decision_Template.md`, `Tooling_Template.md`, `Human_TODO_Template.md`
+```markdown
+# Reference materials
+
+Drop **source** materials here — design docs, PRDs, Notion/export dumps, full chat transcripts, legacy specs.
+
+Living modular docs stay in `features/`, `_shared/`, and `Master_Index.md`. Agents read files here when you point at them (or when converting to modular docs); they do not treat this folder as the Document Map.
+
+Optional: `visuals/` for inspiration screenshots before a feature folder exists.
+```
+
+**Pack spot-check** (enough to proceed — do not inventory every file):
+
+- `VERSION`, `CHANGELOG.md`, `Modular_Docs_Workflow.md`, `agent/BOOTSTRAP.md`, `help/SETUP.md`
+
+If any of those are missing, expand the inventory below and run Step 0b if layout looks old. Otherwise continue.
+
+**Full inventory** *(only if spot-check fails):*
+
+- **Root:** `VERSION`, `CHANGELOG.md`, `Master_Index_Template.md`, `Modular_Docs_Workflow.md`, `chat-ui/AGENT.md`, `Feature_Spec_Template.md`, `Feature_Understanding_Template.md`, `TODO_Template.md`, `Decision_Template.md`, `Tooling_Template.md`, `Human_TODO_Template.md`
 - **`help/`:** `SETUP.md`, `USAGE.md`, `IDEA_CAPTURE_TIPS.md`, `USING_WITH_AGENTS.md`
 - **`agent/`:** `BOOTSTRAP.md`, `RULE_INSTALL.md`, `TEMPLATE_SYNC.md`, `TEMPLATE_UPDATE_CHECK.md`, `Modular_Documentation_Rule.mdc`, `Modular_Documentation_Rule.instructions.md`, `Template_Update_Check_Rule.mdc`, `Template_Update_Check_Rule.instructions.md`, `rule-install-status.example.yaml`, `upstream-status.example.yaml`
 
@@ -107,7 +131,7 @@ If `docs/Master_Index.md` does not exist:
 
 1. Copy content from `docs/templates/Master_Index_Template.md`.
 2. Replace bracketed placeholders; set **Template version** and **Workflow version** to match the templates.
-3. Fill Document Map (§3) from the conversation, README, or known scope — do not leave Section 3 empty if the user named features or shared components.
+3. Fill Document Map (§3) from **this conversation and Project Profile** — do not leave Section 3 empty if the user named features or shared components. Open README only if overview/map are empty. Do **not** invent features from a codebase scan.
 
 If `Master_Index.md` already exists → do not overwrite; offer [`TEMPLATE_SYNC.md`](TEMPLATE_SYNC.md) instead.
 
@@ -116,7 +140,7 @@ If `Master_Index.md` already exists → do not overwrite; offer [`TEMPLATE_SYNC.
 If `docs/Tooling.md` does not exist:
 
 1. Copy from `docs/templates/Tooling_Template.md`.
-2. Fill **Required** (and optional) tools from Project Profile, README, and known stack — mark guesses for the user to confirm.
+2. Fill **Required** (and optional) tools from Project Profile and this conversation — mark guesses for the user to confirm. Open README only if the stack is unknown.
 3. Ensure Master Index Key Locations / §3.4 link to `Tooling.md`.
 
 If it already exists → do not overwrite; offer to update rows when the stack changes.
@@ -200,7 +224,7 @@ Projects that copied or templated this pack do **not** share the upstream git re
 - Put project feature content into `docs/templates/` (templates stay canonical reference only).
 - Create `docs/help/` or `docs/agent/` at docs root — those belong inside `docs/templates/`.
 - Leave Agentic Doc Templates `.github/ISSUE_TEMPLATE/` in a user project — delete it (Step 1b).
-- Skip asking before moving root files.
+- Ask before moving root files that are **clearly** upstream (Agentic Doc Templates / Brian Lowe / BrianCLowe markers) — just move them.
 - Finish bootstrap with a filled Document Map but **no** feature/shared files on disk.
 - Put human procurement items only in feature TODOs — use `docs/Human-TODO.md` and link from features.
 - Enable weekly template update checks without asking (Step 4b).

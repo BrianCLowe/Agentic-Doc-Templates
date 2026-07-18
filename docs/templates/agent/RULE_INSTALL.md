@@ -80,7 +80,7 @@ Auto-installing without asking causes wrong-path installs and clobbered instruct
 
 1. Check whether `docs/Master_Index.md` exists (if not, follow [`BOOTSTRAP.md`](BOOTSTRAP.md) first — doc structure before rules).
 2. Read **`docs/rule-install-status.yaml`** and apply the rules above.
-3. Scan for **existing** modular-docs rule installs on disk. Reconcile with the status file (fix stale `installed` if file was deleted).
+3. Check **only** Install-map destinations for tools without a settled status (plus `AGENTS.md` / `CLAUDE.md` if present). Reconcile with the status file (fix stale `installed` if that path is missing). Do **not** glob the repo for rule-like files.
 4. State which tool you **think** the user is on and why — only if evidence is clear. If uncertain, say so.
 5. **Ask the user** only for tools without a settled status:
    - Install the modular documentation rule for **[tool]**?

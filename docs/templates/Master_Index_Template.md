@@ -1,4 +1,4 @@
-<!-- template-version: 2.3 -->
+<!-- template-version: 2.4 -->
 
 > **Template reference.** Do not put project-specific content in this file. Copy to `docs/Master_Index.md` for initial setup, or diff against it when syncing template improvements into the live index. Never edit this template unless the user asks you to.
 >
@@ -8,8 +8,8 @@
 
 **Purpose**: Single entry point for **this project's** documentation — overview, locations, and Document Map. Read only the files relevant to the current task.
 
-**Template version**: 2.3 *(update when syncing from `templates/Master_Index_Template.md`)*  
-**Workflow version**: 2.3 *(must match `templates/Modular_Docs_Workflow.md` — update both on sync)*
+**Template version**: 2.4 *(update when syncing from `templates/Master_Index_Template.md`)*  
+**Workflow version**: 2.4 *(must match `templates/Modular_Docs_Workflow.md` — update both on sync)*
 
 ## 1. Project Overview
 
@@ -37,17 +37,19 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 | `docs/_shared/assets/` | Screenshots for shared components (linked from `-Understanding.md`) |
 | `docs/features/`  | Feature-specific specs + TODOs (+ optional sub-indexes) |
 | `docs/features/assets/` | Screenshots for features (linked from `-Understanding.md`) |
-| `docs/reference/visuals/` | Optional inspiration before a feature exists |
+| `docs/reference/` | Drop zone for design docs, PRDs, chat exports, legacy specs — not the living modular docs ([Workflow](templates/Modular_Docs_Workflow.md)) |
+| `docs/reference/visuals/` | Optional inspiration screenshots before a feature exists |
 | `docs/Tooling.md` | Machine / workflow tools (not package deps) — install on a new machine ([`Tooling_Template.md`](templates/Tooling_Template.md)) |
 | `docs/Human-TODO.md` | Human procurement / external blockers (API keys, cloud bots, accounts) — agent cannot do these ([`Human_TODO_Template.md`](templates/Human_TODO_Template.md)) |
 | `docs/decisions/` | Optional cross-cutting decisions ([`Decision_Template.md`](templates/Decision_Template.md)) |
-| `docs/templates/` | Upstream template pack — workflow, scaffolds, setup guides (`help/`, `agent/`, `chat-ui/`); includes [`Modular_Docs_Workflow.md`](templates/Modular_Docs_Workflow.md) and [`VERSION`](templates/VERSION) |
+| `docs/templates/` | Upstream template pack — workflow, scaffolds, setup guides (`help/`, `agent/`, `chat-ui/`); includes [`Modular_Docs_Workflow.md`](templates/Modular_Docs_Workflow.md), [`VERSION`](templates/VERSION), and [`CHANGELOG.md`](templates/CHANGELOG.md) (Step B scope after sync) |
 | `docs/upstream-status.yaml` | Optional — weekly template update check stamp ([`TEMPLATE_UPDATE_CHECK.md`](templates/agent/TEMPLATE_UPDATE_CHECK.md)) |
 | `src/` / `backend/` / `frontend/` | Actual code (reference only) |
 
 ### 2.2 At a Glance *(policy summary — full rules in Workflow)*
 
 - **Simplicity:** users give short doc actions; agents follow this pack — no complex prompts required.
+- **Tight scope:** paved path for the current ask only — no “just in case” audits of unrelated files or alternate interpretations before acting.
 - **Mermaid:** optional — agent may add a small diagram when it beats prose for structure/flow; do not splash charts everywhere.
 - **Tooling:** `docs/Tooling.md` lists machine tools (not package deps); on a new machine, user can ask to install them ([`Tooling_Template.md`](templates/Tooling_Template.md)).
 - **Human TODO:** `docs/Human-TODO.md` — accounts, keys, portal registrations the agent cannot complete ([`Human_TODO_Template.md`](templates/Human_TODO_Template.md); [Workflow §13](templates/Modular_Docs_Workflow.md#13-human-todo-procurement--external-blockers)).

@@ -14,6 +14,8 @@ Setup first (if you have not already): [`SETUP.md`](SETUP.md) + agent [`../agent
 
 You give the agent **structure** (`docs/templates/`). You describe the idea in chat (or point at a design doc). The **agent drafts** `-Understanding.md` and TODO files so you can see how it interpreted you — then you **review and correct** before implementation. You do not need to write those files yourself.
 
+**Tip — prefer the messy full chat over a polished summary:** If you talked an idea through in Grok, ChatGPT, Claude, or similar, give the agent the **whole conversation** (export, share link if the tool supports it, or copy-paste). A refined design doc is tidy; a real back-and-forth usually carries more of what you meant — hesitations, “not that,” examples, and course corrections. See Pattern 1 and [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md#bring-the-whole-conversation).
+
 Same templates, many entry points.
 
 ---
@@ -45,6 +47,8 @@ Same templates, many entry points.
 
 **Tip:** Ask the agent to **draft Understanding first** and show you the file. That catches “you meant a variant UI, not a new subsystem” before anyone codes. Your job is to correct wrong **identity** assumptions — especially in **What this is NOT** (what the finished feature is not, not a list of unfinished work) — not to write the file from scratch.
 
+**Tip — full history beats a clean rewrite:** When moving from a chat UI into the IDE (or a second agent), paste or attach the **entire** brainstorm thread — not only your final bullet list. Messy turns are useful signal. Same idea applies later: if you refine a design doc, keep the source chat when you still have it.
+
 ---
 
 ## Pattern 2 — Idea mid-development → add to docs
@@ -69,7 +73,7 @@ Same templates, many entry points.
 
 **What you do:**
 
-1. Put the source doc in the repo (e.g. `docs/reference/Original_Design.md` or a one-off path the agent can read).
+1. Drop the source into **`docs/reference/`** (e.g. `docs/reference/Original_Design.md`, `docs/reference/brainstorm-chat.md`). That folder is the recommended place for design docs, PRDs, and conversation exports. If you still have the **chat that produced a polished doc**, save that too — often better for Understanding than the summary alone.
 2. Ask the agent to **split and map** it into the template structure.
 
 **Example prompts:**
@@ -105,7 +109,7 @@ See [`SETUP.md`](SETUP.md) for copy-only vs whole-repo details.
 **What you do:** Just ask the agent — no manual download required. Point it at [`../agent/TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md). The agent will:
 
 1. **Overwrite** the whole `docs/templates/` folder from upstream (ZIP or temp clone — **not** `git pull` into live docs; **not** a per-file diff).
-2. **Update live docs from those local files as needed** — read `docs/templates/Master_Index_Template.md` (and other local templates) and update `Master_Index.md` / Understanding / TODOs accordingly. Do not use git to rewrite live documentation.
+2. **Follow the top entry in** [`CHANGELOG.md`](../CHANGELOG.md) — bump versions and adopt Master Index structure when listed; update Understanding / Spec / TODO files only when that entry tags `content-templates`. Do not use git to rewrite live documentation.
 
 **Optional — hear about updates without syncing yet:** During bootstrap you can enable a weekly version ping (`docs/upstream-status.yaml` + optional rule). Or anytime:
 
@@ -195,6 +199,7 @@ Tool-specific rule install paths: [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md)
 - **`docs/Tooling.md`** — machine / workflow tools (not package deps); *Install the project tooling for this machine.*
 - **`docs/Human-TODO.md`** — human procurement (API keys, cloud bots, accounts); agent drafts, you complete
 - **`docs/decisions/`** — optional cross-cutting decision files
+- **`docs/reference/`** — design docs, chat exports, PRDs, legacy specs (source materials; not the living Document Map)
 - **`docs/templates/`** — upstream template pack (workflow, scaffolds, `help/`, `agent/`, `chat-ui/`) — not live project content
 
 You do not need every file on day one. Start with Master_Index + one feature; grow as ideas arrive — from chat, design docs, or the middle of a dev session.
