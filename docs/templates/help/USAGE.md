@@ -118,7 +118,7 @@ Tool install paths: [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md).
 | `docs/features/FeatureName-Understanding.md` | Agent draft of intent — you confirm |
 | `docs/features/FeatureName.md` | Durable spec after confirm |
 | `docs/features/FeatureName-TODO.md` | Tasks + **Current focus** |
-| `docs/_shared/…` | Same note types as features (shared foundation) |
+| `docs/_shared/…` | Only for truly shared project pieces (may be empty) |
 | `docs/Tooling.md` / `docs/Human-TODO.md` | Machine tools / human procurement |
 | `docs/reference/` | Source materials (not the living map) |
 | `docs/templates/` | Upstream pack — not live feature content |

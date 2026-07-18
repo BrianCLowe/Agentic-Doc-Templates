@@ -33,7 +33,7 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 | Path              | Purpose |
 |-------------------|---------|
 | `docs/`           | All specs, architecture, and tracking |
-| `docs/_shared/`   | Reusable components, patterns, and foundation TODOs |
+| `docs/_shared/`   | Reusable **project** components used by multiple features (may be empty — do not invent filler) |
 | `docs/_shared/assets/` | Screenshots for shared components (linked from `-Understanding.md`) |
 | `docs/features/`  | Feature-specific specs + TODOs (+ optional sub-indexes) |
 | `docs/features/assets/` | Screenshots for features (linked from `-Understanding.md`) |
@@ -55,7 +55,7 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 - **Human TODO:** `docs/Human-TODO.md` — accounts, keys, portal registrations the agent cannot complete ([`Human_TODO_Template.md`](templates/Human_TODO_Template.md); [Workflow §13](templates/Modular_Docs_Workflow.md#13-human-todo-procurement--external-blockers)).
 - **File layout:** flat sibling files — `features/FeatureName.md`, `FeatureName-Understanding.md`, `FeatureName-TODO.md` (same for `_shared/`) — see [Workflow §0](templates/Modular_Docs_Workflow.md#0-naming--file-layout-read-before-creating-files).
 - No file should exceed ~800–1000 lines; split when bloated ([Workflow §8](templates/Modular_Docs_Workflow.md#8-how-to-split-a-large-document)).
-- **Shared** components get the **same note types as features** unless the **user** excepted them — record omissions in **§3.0** only after an explicit user request ([Workflow §1](templates/Modular_Docs_Workflow.md#1-shared-components--foundation-vs-consumption)). Agents must not invent §3.0 rows.
+- **Shared** only when something is actually shared across features — empty §3.1 / `_shared/` is fine. Do **not** invent shared rows or park engine/framework primers there ([Workflow §1](templates/Modular_Docs_Workflow.md#1-shared-components--foundation-vs-consumption)). Real shared components get the **same note types as features** unless the **user** excepted them — record omissions in **§3.0** only after an explicit user request. Agents must not invent §3.0 or filler §3.1 rows.
 - **Understanding**: agent drafts first (`draft`); user reviews before build; **`confirmed`** = approved — agents continue without re-asking ([Workflow §4](templates/Modular_Docs_Workflow.md#4-understanding-features--shared)).
 - **Spec**: durable contract after Understanding is `confirmed` ([Workflow §2](templates/Modular_Docs_Workflow.md#2-understanding--spec-graduation)).
 - **Shared maturity** on spec + Document Map: `draft` \| `usable` \| `stable`.
@@ -75,10 +75,11 @@ Record **only** omissions the **user explicitly requested**. Agents must **not**
 
 ### 3.1 Shared / Core Components
 
+Leave this table **empty** (or with a single “*(none yet)*” note) unless a piece is truly shared across features. Do not invent rows or park engine/framework overviews here.
+
 | Component | Maturity | Spec | Understanding | Gameplay TODO | InEditor TODO | Asset TODO |
 |-----------|----------|------|---------------|---------------|---------------|------------|
-| Core Concept 1 | draft | [_shared/CoreConcept1.md](_shared/CoreConcept1.md) | [_shared/CoreConcept1-Understanding.md](_shared/CoreConcept1-Understanding.md) | [_shared/CoreConcept1-TODO.md](_shared/CoreConcept1-TODO.md) | [_shared/CoreConcept1-InEditor-TODO.md](_shared/CoreConcept1-InEditor-TODO.md) | [_shared/CoreConcept1-Asset-TODO.md](_shared/CoreConcept1-Asset-TODO.md) |
-| Core Concept 2 | usable | [_shared/CoreConcept2.md](_shared/CoreConcept2.md) | [_shared/CoreConcept2-Understanding.md](_shared/CoreConcept2-Understanding.md) | [_shared/CoreConcept2-TODO.md](_shared/CoreConcept2-TODO.md) | ... | ... |
+| *(example — only if actually shared)* BlockEditor | draft | [_shared/BlockEditor.md](_shared/BlockEditor.md) | [_shared/BlockEditor-Understanding.md](_shared/BlockEditor-Understanding.md) | [_shared/BlockEditor-TODO.md](_shared/BlockEditor-TODO.md) | … | … |
 | *(optional)* | — | [_shared/_Foundation-TODO.md](_shared/_Foundation-TODO.md) | — | *(this file)* | — | — |
 
 **Maturity** (shared only): `draft` · `usable` · `stable`. Omit TODO columns only when recorded in §3.0.

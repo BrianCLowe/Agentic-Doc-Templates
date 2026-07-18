@@ -24,12 +24,12 @@
   - `CHANGELOG.md` — (new) pack release map for Step B scope
   - `VERSION` — 2.3 → 2.4
   - `Master_Index_Template.md` — Key Locations: CHANGELOG + `docs/reference/` drop zone; At a Glance tight-scope; version markers
-  - `Modular_Docs_Workflow.md` — session/Path B/reconciliation scope gates; tight-scope design intent; `docs/reference/` note; version markers
+  - `Modular_Docs_Workflow.md` — session/Path B/reconciliation scope gates; tight-scope design intent; `docs/reference/` note; **do not invent `_shared/`** when nothing is shared; version markers
   - `agent/TEMPLATE_SYNC.md` — changelog-first Step B + Do-not list; do not restore deleted `agent/upstream/` attribution files
   - `agent/upstream/README.md` — empty/deleted upstream copies are OK; sync must not re-fetch them
-  - `agent/Modular_Documentation_Rule.mdc` — session default, route-by-ask, after-changes gates; tight-scope philosophy
+  - `agent/Modular_Documentation_Rule.mdc` — session default, route-by-ask, after-changes gates; tight-scope philosophy; no invented `_shared/`
   - `agent/Modular_Documentation_Rule.instructions.md` — same as `.mdc` body
-  - `agent/BOOTSTRAP.md` — pack spot-check; map fill from conversation; auto-move clearly upstream README/LICENSE/CONTRIBUTING (no ask); create `docs/reference/README.md`
+  - `agent/BOOTSTRAP.md` — pack spot-check; map fill from conversation; auto-move clearly upstream README/LICENSE/CONTRIBUTING (no ask); create `docs/reference/README.md`; leave §3.1 empty unless truly shared
   - `agent/RULE_INSTALL.md` — bounded install-path checks
   - `agent/upstream-status.example.yaml` — example versions 2.4
   - `chat-ui/AGENT.md` — Master Index template only when asked; version markers
@@ -40,7 +40,7 @@
   - Root `README.md` — rewritten landing page (how it works → get started → stay current; less inventory dump)
   - Root `CONTRIBUTING.md` — changelog maintenance; maintainer note: write agent instructions for off-road / thorough models
 - **Unchanged content templates:** Feature_Understanding, Feature_Spec, TODO, Tooling, Human_TODO, Decision
-- **Step B:** Bump Master Index versions to 2.4; adopt Key Locations row mentioning CHANGELOG if missing; refresh installed modular rules if user wants (bodies changed); do **not** scan live feature/shared docs. **`docs/templates/agent/upstream/`** attribution copies (README / LICENSE / CONTRIBUTING) may be **intentionally deleted** by the user (common after Claude/bootstrap cleanup) — do **not** treat that as a broken pack or re-download / restore those files; sync does not require them
+- **Step B:** Bump Master Index versions to 2.4; adopt Key Locations / At a Glance deltas (CHANGELOG, `reference/`, tight scope, **empty `_shared/` OK**); refresh installed modular rules if user wants (bodies changed); do **not** scan live feature/shared docs; do **not** invent new `_shared/` rows during sync. **`docs/templates/agent/upstream/`** attribution copies (README / LICENSE / CONTRIBUTING) may be **intentionally deleted** by the user (common after Claude/bootstrap cleanup) — do **not** treat that as a broken pack or re-download / restore those files; sync does not require them
 
 ## 2.3
 

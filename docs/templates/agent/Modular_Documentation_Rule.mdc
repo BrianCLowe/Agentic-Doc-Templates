@@ -33,10 +33,11 @@ This project uses a lean modular documentation system. `docs/Master_Index.md` is
 **Open `Modular_Docs_Workflow.md` only when:** creating files (§0 Naming), choosing Path A vs Path B, graduating Understanding → spec, or the user asks about procedure. Do **not** re-read the full Workflow every turn.
 
 **Shared foundation (critical):**
-- Shared components get **Understanding by default** (Workflow §1, §4). §3.0 exceptions are **user-requested only** — never invent them because files are missing or to “leave for later.”
+- **Do not invent `_shared/` docs.** Only add §3.1 / `_shared/` when a **project-owned** piece is (or will be) used by **two or more features**, or the user named it as shared. Empty `_shared/` / empty §3.1 is fine. Never park engine/framework primers (e.g. generic Unreal notes) in `_shared/` because nothing else fit — use `features/` or `docs/reference/` (Workflow §1).
+- When a real shared component exists: it gets **Understanding by default** (Workflow §1, §4). §3.0 exceptions are **user-requested only** — never invent them because files are missing or to “leave for later.”
 - **File layout:** create only paths from Workflow **§0** / Document Map — flat files in `features/` and `_shared/`.
-- **Document Map = files on disk.** Adding a §3.1/§3.2 row requires creating Understanding (`draft` OK) + spec stub + core TODO in the same turn. Never leave map-only “planned” rows. Bootstrap Step 3d.
-- Shared components get the **same note types as features** unless the user explicitly excepted specific files — record those in Master Index **§3.0** (Workflow §1). If Understanding or core TODO is missing and there is no user exception, **create them**.
+- **Document Map = files on disk.** Adding a §3.1/§3.2 row requires creating Understanding (`draft` OK) + spec stub + core TODO in the same turn. Never leave map-only “planned” rows. Bootstrap Step 3d. **Do not add filler §3.1 rows.**
+- Real shared components get the **same note types as features** unless the user explicitly excepted specific files — record those in Master Index **§3.0** (Workflow §1). If Understanding or core TODO is missing for a mapped row and there is no user exception, **create them**.
 - Tasks that **build or refactor** a shared component go in `_shared/ComponentName-TODO.md` (and related shared TODOs) — **not** in a consumer feature's TODO.
 - Feature TODOs only **link** to shared TODOs when blocked or integrating (dependency note), they do not duplicate foundation tasks.
 

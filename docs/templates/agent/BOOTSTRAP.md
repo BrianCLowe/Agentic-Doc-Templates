@@ -131,7 +131,7 @@ If `docs/Master_Index.md` does not exist:
 
 1. Copy content from `docs/templates/Master_Index_Template.md`.
 2. Replace bracketed placeholders; set **Template version** and **Workflow version** to match the templates.
-3. Fill Document Map (§3) from **this conversation and Project Profile** — do not leave Section 3 empty if the user named features or shared components. Open README only if overview/map are empty. Do **not** invent features from a codebase scan.
+3. Fill Document Map (§3) from **this conversation and Project Profile** — do not leave §3.2 empty if the user named **features**. Leave **§3.1 Shared empty** unless the user named a truly shared, project-owned piece used by multiple features — do **not** invent `_shared/` rows or dump engine/framework overview (e.g. generic Unreal notes) there. Open README only if overview/map are empty. Do **not** invent features from a codebase scan.
 
 If `Master_Index.md` already exists → do not overwrite; offer [`TEMPLATE_SYNC.md`](TEMPLATE_SYNC.md) instead.
 

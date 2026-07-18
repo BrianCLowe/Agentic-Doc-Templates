@@ -103,7 +103,7 @@ Set status `draft`. Do not treat the user as author — they **review and correc
 ## Rules
 
 - Only document what was discussed — do not invent features.
-- Reusable pieces → `_shared/` with full file set; feature-specific → `features/`.
+- Reusable pieces used by **multiple** features → `_shared/` with full file set; feature-specific → `features/`. **Skip `_shared/` entirely** if nothing is truly shared — do not invent shared docs or dump engine/framework primers there (use `docs/reference/` if needed).
 - When adding a row to Document Map, create all three paths for that row in the same response batch.
 
 ## After the user has a repo
