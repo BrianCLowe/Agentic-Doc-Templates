@@ -59,10 +59,10 @@ docs/
 └── templates/                   ← this pack (overwrite on sync; not live content)
     ├── VERSION / CHANGELOG.md
     ├── help/ · agent/ · chat-ui/
-    └── … scaffolds + Modular_Docs_Workflow.md
+    └── … scaffolds + agent/Modular_Docs_Workflow.md
 ```
 
-Naming and Path A/B: [`../Modular_Docs_Workflow.md`](../Modular_Docs_Workflow.md) §0.
+Naming and Path A/B: [`../agent/Modular_Docs_Workflow.md`](../agent/Modular_Docs_Workflow.md) §0.
 
 ---
 

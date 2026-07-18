@@ -24,7 +24,7 @@
   - `CHANGELOG.md` — (new) pack release map for Step B scope
   - `VERSION` — 2.3 → 2.4
   - `Master_Index_Template.md` — Key Locations: CHANGELOG + `docs/reference/` drop zone; At a Glance tight-scope; version markers
-  - `Modular_Docs_Workflow.md` — session/Path B/reconciliation scope gates; tight-scope design intent; `docs/reference/` note; **do not invent `_shared/`** when nothing is shared; version markers
+  - `agent/Modular_Docs_Workflow.md` — **moved from pack root** into `agent/` (agent playbook, not a content template); session/Path B/reconciliation scope gates; tight-scope; `reference/`; no invented `_shared/`; version markers
   - `agent/TEMPLATE_SYNC.md` — changelog-first Step B + Do-not list; do not restore deleted `agent/upstream/` attribution files
   - `agent/upstream/README.md` — empty/deleted upstream copies are OK; sync must not re-fetch them
   - `agent/Modular_Documentation_Rule.mdc` — session default, route-by-ask, after-changes gates; tight-scope philosophy; no invented `_shared/`
@@ -40,7 +40,7 @@
   - Root `README.md` — rewritten landing page (how it works → get started → stay current; less inventory dump); Stay current caveat for packs before TEMPLATE_SYNC (pre-1.2)
   - Root `CONTRIBUTING.md` — changelog maintenance; maintainer note: write agent instructions for off-road / thorough models
 - **Unchanged content templates:** Feature_Understanding, Feature_Spec, TODO, Tooling, Human_TODO, Decision
-- **Step B:** Bump Master Index versions to 2.4; adopt Key Locations / At a Glance deltas (CHANGELOG, `reference/`, tight scope, **empty `_shared/` OK**); refresh installed modular rules if user wants (bodies changed); do **not** scan live feature/shared docs; do **not** invent new `_shared/` rows during sync. **`docs/templates/agent/upstream/`** attribution copies (README / LICENSE / CONTRIBUTING) may be **intentionally deleted** by the user (common after Claude/bootstrap cleanup) — do **not** treat that as a broken pack or re-download / restore those files; sync does not require them
+- **Step B:** Bump Master Index versions to 2.4; adopt Key Locations / At a Glance deltas (CHANGELOG, `reference/`, tight scope, **empty `_shared/` OK**); **retarget workflow links** to `docs/templates/agent/Modular_Docs_Workflow.md` (file moved out of pack root); if a stale copy remains at `docs/templates/Modular_Docs_Workflow.md`, remove it after the pack overwrite (Step A should already replace the whole folder). Refresh installed modular rules if user wants (bodies changed); do **not** scan live feature/shared docs; do **not** invent new `_shared/` rows during sync. **`docs/templates/agent/upstream/`** attribution copies may be **intentionally deleted** — do **not** re-download / restore them
 
 ## 2.3
 

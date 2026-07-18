@@ -1,6 +1,6 @@
 <!-- workflow-version: 2.4 -->
 
-> **Agent workflow reference.** Canonical instructions for how to work the modular doc system. Lives in `docs/templates/` — sync from upstream; do **not** copy wholesale into `docs/Master_Index.md`. The live index links here; agent rules summarize and point here for full procedure.
+> **Agent workflow reference.** Canonical instructions for how to work the modular doc system. Lives in `docs/templates/agent/` with the other agent playbooks — sync from upstream; do **not** copy wholesale into `docs/Master_Index.md`. The live index links here; agent rules summarize and point here for full procedure.
 
 # Modular Documentation — Agent Workflow
 
@@ -10,7 +10,7 @@
 
 **Read order (feature / shared work):**
 
-1. [`Master_Index.md`](../Master_Index.md) — project context + Document Map (Sections 1–3)
+1. [`Master_Index.md`](../../Master_Index.md) — project context + Document Map (Sections 1–3)
 2. Active TODO **Current focus** + that item’s Understanding / spec
 3. This file — only when creating files, choosing Path A/B, graduating Understanding, or the user asks about procedure
 
@@ -38,12 +38,12 @@
 **When adding a new feature or shared component:**
 
 1. Add a row to Master Index §3.1 or §3.2 with the exact paths (**working markdown links** — not “planned” placeholders with nowhere to click).
-2. Create those three (or more) **flat files** at those paths **in the same turn** — from [`Feature_Spec_Template.md`](Feature_Spec_Template.md), [`Feature_Understanding_Template.md`](Feature_Understanding_Template.md), [`TODO_Template.md`](TODO_Template.md).
+2. Create those three (or more) **flat files** at those paths **in the same turn** — from [`Feature_Spec_Template.md`](../Feature_Spec_Template.md), [`Feature_Understanding_Template.md`](../Feature_Understanding_Template.md), [`TODO_Template.md`](../TODO_Template.md).
 3. All files for one feature live **directly** in `features/` (or `_shared/`), not in a subfolder named after the feature.
 
 **Map without files = incomplete work.** Do not add Document Map rows and defer file creation “until the user picks where to start.” Bootstrap Step 3d and this section require the default file set on disk. Understanding status `draft` means **do not implement code** yet — it does **not** mean skip creating `-Understanding.md`.
 
-**Chat UI (no repo write access):** use [`chat-ui/AGENT.md`](chat-ui/AGENT.md) — shorter instructions and required save-as output format.
+**Chat UI (no repo write access):** use [`chat-ui/AGENT.md`](../chat-ui/AGENT.md) — shorter instructions and required save-as output format.
 
 **`docs/reference/`:** Drop zone for **source** materials (design docs, PRDs, chat exports, legacy specs). Not Document Map rows. Read when the user points at a file or asks to convert into modular docs. Optional `docs/reference/visuals/` for inspiration screenshots.
 
@@ -75,7 +75,7 @@ Only when a real shared piece exists: `_shared/` often needs **foundation work f
 
 **Do not invent exceptions** for rows that *should* exist. Missing files, a thin Document Map, or “we’ll add Understanding later” are **not** reasons to skip Understanding on a real feature/shared row — create the default set. Do **not** invent §3.1 shared rows (or §3.0 excuses) to fill empty space. Do **not** write a §3.0 row that excuses the whole project from Understanding.
 
-**Maturity** *(shared components only)*: Set on the shared **spec** (`draft` | `usable` | `stable`) so consumer features know whether integration is safe. Update when foundation work progresses — see [`Feature_Spec_Template.md`](Feature_Spec_Template.md).
+**Maturity** *(shared components only)*: Set on the shared **spec** (`draft` | `usable` | `stable`) so consumer features know whether integration is safe. Update when foundation work progresses — see [`Feature_Spec_Template.md`](../Feature_Spec_Template.md).
 
 **Where tasks go** (agents often get this wrong):
 
@@ -105,7 +105,7 @@ Optional: `_shared/_Foundation-TODO.md` for cross-cutting shared work that does 
 3. Understanding keeps intent, boundaries, acceptance criteria, and short **correction notes from this session** when the user corrects you — do not mine past chats or git history for a history section. Spec holds what implementers and future agents should treat as truth.
 4. If implementation diverges, update the spec **or** set Understanding to `superseded` and draft a revision (§4) — do not leave both stale.
 
-See [`Feature_Spec_Template.md`](Feature_Spec_Template.md) and [`Feature_Understanding_Template.md`](Feature_Understanding_Template.md).
+See [`Feature_Spec_Template.md`](../Feature_Spec_Template.md) and [`Feature_Understanding_Template.md`](../Feature_Understanding_Template.md).
 
 ---
 
@@ -128,7 +128,7 @@ Use when building or changing a reusable component, API, or pattern in `_shared/
 
 1. Open `_shared/[ComponentName].md`
 2. Open `_shared/[ComponentName]-Understanding.md` — **draft or update first** from the conversation; show the user for review (§4). If already `confirmed` and scope unchanged, read only — do not re-draft.
-3. Open the relevant shared TODO file(s) (create from [`TODO_Template.md`](TODO_Template.md) if missing):
+3. Open the relevant shared TODO file(s) (create from [`TODO_Template.md`](../TODO_Template.md) if missing):
    - Core / foundation → `_shared/[ComponentName]-TODO.md`
    - In-Editor work → `_shared/[ComponentName]-InEditor-TODO.md` *(only if Project Profile game extensions apply, or user asked — unless excepted in Master Index §3.0)*
    - Assets & content → `_shared/[ComponentName]-Asset-TODO.md` *(same gate)*
@@ -198,7 +198,7 @@ Each **feature** and each substantial **shared component** should have a `-Under
 
 **When planning**: Include the Understanding file (or path) in the plan output so the user can correct it before implementation starts.
 
-See [`Feature_Understanding_Template.md`](Feature_Understanding_Template.md).
+See [`Feature_Understanding_Template.md`](../Feature_Understanding_Template.md).
 
 **Acceptance criteria:** The agent drafts **Done when** checkboxes in Understanding so the user can confirm completeness without reading every TODO.
 
@@ -226,7 +226,7 @@ When a feature depends on shared foundation work, the feature TODO gets a **depe
 
 **Cross-feature interactions**: Add a note in the TODO with a direct link when work depends on or affects another feature.
 
-**Dynamic TODO creation**: Add new items as you work. See [`TODO_Template.md`](TODO_Template.md) for format.
+**Dynamic TODO creation**: Add new items as you work. See [`TODO_Template.md`](../TODO_Template.md) for format.
 
 **Workflow**:
 
@@ -238,7 +238,7 @@ When a feature depends on shared foundation work, the feature TODO gets a **depe
 
 ### 5.1 Session handoff — Current focus
 
-Each active `-TODO.md` should keep a short **Current focus** block at the top (see [`TODO_Template.md`](TODO_Template.md)):
+Each active `-TODO.md` should keep a short **Current focus** block at the top (see [`TODO_Template.md`](../TODO_Template.md)):
 
 - One active task (or "blocked by …")
 - Blockers with links
@@ -325,8 +325,8 @@ Record **why** something was chosen — not every task, only choices with lastin
 
 | Where | Use for |
 |-------|---------|
-| **Decisions** section in feature or shared **spec** | Choices local to that piece ([`Feature_Spec_Template.md`](Feature_Spec_Template.md)) |
-| `docs/decisions/YYYY-MM-DD-short-title.md` | Cross-cutting choices ([`Decision_Template.md`](Decision_Template.md)) |
+| **Decisions** section in feature or shared **spec** | Choices local to that piece ([`Feature_Spec_Template.md`](../Feature_Spec_Template.md)) |
+| `docs/decisions/YYYY-MM-DD-short-title.md` | Cross-cutting choices ([`Decision_Template.md`](../Decision_Template.md)) |
 
 When the user confirms a tradeoff during Understanding review, the agent adds a row to the spec **Decisions** table. Link standalone decision files from Master Index §3.4.
 
@@ -334,7 +334,7 @@ When the user confirms a tradeoff during Understanding review, the agent adds a 
 
 ## 11. Tooling *(new machine setup)*
 
-Live file: **`docs/Tooling.md`** (from [`Tooling_Template.md`](Tooling_Template.md)).
+Live file: **`docs/Tooling.md`** (from [`Tooling_Template.md`](../Tooling_Template.md)).
 
 Lists **machine / workflow tools** (CLIs, SDKs, runtimes, engines, profile-installed agent skills) — **not** package-manager dependencies.
 
@@ -367,13 +367,13 @@ Use Mermaid in Understanding, specs, or Master Index overview when a **small** d
 
 ## 13. Human TODO *(procurement / external blockers)*
 
-Live file: **`docs/Human-TODO.md`** (from [`Human_TODO_Template.md`](Human_TODO_Template.md)).
+Live file: **`docs/Human-TODO.md`** (from [`Human_TODO_Template.md`](../Human_TODO_Template.md)).
 
 **One project-level list for humans** — accounts, API keys, cloud portal registrations (e.g. Azure Bot / Teams), purchases, org approvals, certificates. Coding agents **cannot** complete these.
 
 | Put here | Put elsewhere |
 |----------|---------------|
-| Portal / account / key / purchase / approval the **human** must do | Installable CLIs/SDKs → [`Tooling.md`](Tooling.md) |
+| Portal / account / key / purchase / approval the **human** must do | Installable CLIs/SDKs → [`Tooling.md`](../../Tooling.md) |
 | | Code tasks → feature or `_shared/` `*-TODO.md` |
 
 **Agent behavior:**
@@ -393,4 +393,4 @@ Live file: **`docs/Human-TODO.md`** (from [`Human_TODO_Template.md`](Human_TODO_
 - **Tooling.md** = *what to install on a new machine* (not package deps).
 - **Human-TODO.md** = *what only a human can procure* (keys, portals, accounts) — §13.
 - **Mermaid** = optional (§12) — use when clearer than prose; never required.
-- The installed agent rule ([`agent/Modular_Documentation_Rule.mdc`](agent/Modular_Documentation_Rule.mdc)) is a short checklist — read this file when doing non-trivial doc or implementation work.
+- The installed agent rule ([`Modular_Documentation_Rule.mdc`](Modular_Documentation_Rule.mdc)) is a short checklist — read this file when doing non-trivial doc or implementation work.

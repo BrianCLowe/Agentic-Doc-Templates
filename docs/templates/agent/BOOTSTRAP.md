@@ -26,11 +26,12 @@ Reorganize without losing content. Target: **everything meta** lives under `docs
 | `docs/agent/` (entire folder at docs root) | `docs/templates/agent/` |
 | `docs/templates/SETUP.md`, `USAGE.md`, `IDEA_CAPTURE_TIPS.md`, `USING_WITH_AGENTS.md` (flat in templates) | `docs/templates/help/` |
 | `docs/templates/BOOTSTRAP.md`, `RULE_INSTALL.md`, `TEMPLATE_SYNC.md`, `rule-install-status.example.yaml` (flat in templates) | `docs/templates/agent/` |
+| `docs/templates/Modular_Docs_Workflow.md` (at templates root) | `docs/templates/agent/Modular_Docs_Workflow.md` |
 | `docs/templates/upstream/` | `docs/templates/agent/upstream/` |
 | `docs/templates/Modular_Documentation_Rule.mdc`, `Modular_Documentation_Rule.instructions.md` (flat in templates) | `docs/templates/agent/` |
 | `docs/USING_WITH_AGENTS.md` (at `docs/` root) | `docs/templates/help/USING_WITH_AGENTS.md` |
 
-Fix internal links after moving. **Keep at `docs/templates/` root:** `VERSION`, `CHANGELOG.md`, `Master_Index_Template.md`, `Modular_Docs_Workflow.md`, `chat-ui/`, `Feature_*_Template.md`, `TODO_Template.md`, `Decision_Template.md`. **Keep in `docs/templates/agent/`:** rule templates (`.mdc`, `.instructions.md`), bootstrap, rule install, template sync.
+Fix internal links after moving (including Master Index links to the workflow). **Keep at `docs/templates/` root:** `VERSION`, `CHANGELOG.md`, `Master_Index_Template.md`, `chat-ui/`, `Feature_*_Template.md`, `TODO_Template.md`, `Decision_Template.md`, Tooling/Human_TODO templates. **Keep in `docs/templates/agent/`:** `Modular_Docs_Workflow.md`, rule templates (`.mdc`, `.instructions.md`), bootstrap, rule install, template sync.
 
 ## Step 1 — Relocate upstream README, LICENSE, and CONTRIBUTING *(auto-move when clearly this pack)*
 
@@ -113,15 +114,15 @@ Optional: `visuals/` for inspiration screenshots before a feature folder exists.
 
 **Pack spot-check** (enough to proceed — do not inventory every file):
 
-- `VERSION`, `CHANGELOG.md`, `Modular_Docs_Workflow.md`, `agent/BOOTSTRAP.md`, `help/SETUP.md`
+- `VERSION`, `CHANGELOG.md`, `agent/Modular_Docs_Workflow.md`, `agent/BOOTSTRAP.md`, `help/SETUP.md`
 
 If any of those are missing, expand the inventory below and run Step 0b if layout looks old. Otherwise continue.
 
 **Full inventory** *(only if spot-check fails):*
 
-- **Root:** `VERSION`, `CHANGELOG.md`, `Master_Index_Template.md`, `Modular_Docs_Workflow.md`, `chat-ui/AGENT.md`, `Feature_Spec_Template.md`, `Feature_Understanding_Template.md`, `TODO_Template.md`, `Decision_Template.md`, `Tooling_Template.md`, `Human_TODO_Template.md`
+- **Root:** `VERSION`, `CHANGELOG.md`, `Master_Index_Template.md`, `chat-ui/AGENT.md`, `Feature_Spec_Template.md`, `Feature_Understanding_Template.md`, `TODO_Template.md`, `Decision_Template.md`, `Tooling_Template.md`, `Human_TODO_Template.md`
 - **`help/`:** `SETUP.md`, `USAGE.md`, `IDEA_CAPTURE_TIPS.md`, `USING_WITH_AGENTS.md`
-- **`agent/`:** `BOOTSTRAP.md`, `RULE_INSTALL.md`, `TEMPLATE_SYNC.md`, `TEMPLATE_UPDATE_CHECK.md`, `Modular_Documentation_Rule.mdc`, `Modular_Documentation_Rule.instructions.md`, `Template_Update_Check_Rule.mdc`, `Template_Update_Check_Rule.instructions.md`, `rule-install-status.example.yaml`, `upstream-status.example.yaml`
+- **`agent/`:** `Modular_Docs_Workflow.md`, `BOOTSTRAP.md`, `RULE_INSTALL.md`, `TEMPLATE_SYNC.md`, `TEMPLATE_UPDATE_CHECK.md`, `Modular_Documentation_Rule.mdc`, `Modular_Documentation_Rule.instructions.md`, `Template_Update_Check_Rule.mdc`, `Template_Update_Check_Rule.instructions.md`, `rule-install-status.example.yaml`, `upstream-status.example.yaml`
 
 Run Step 0b if any setup files are still at `docs/` root or flat in `docs/templates/`.
 
@@ -157,7 +158,7 @@ If it already exists → add newly discovered procurement needs; do not wipe use
 
 ## Step 3d — Create files for every Document Map row *(mandatory)*
 
-**A Document Map row is not documentation.** If you put a feature or shared component in §3.1 / §3.2, you **must** create the default file set in the same session (see [`Modular_Docs_Workflow.md`](../Modular_Docs_Workflow.md) §0):
+**A Document Map row is not documentation.** If you put a feature or shared component in §3.1 / §3.2, you **must** create the default file set in the same session (see [`Modular_Docs_Workflow.md`](Modular_Docs_Workflow.md) §0):
 
 | Always create | Status / notes |
 |---------------|----------------|
@@ -203,7 +204,7 @@ Projects that copied or templated this pack do **not** share the upstream git re
 ### On **yes**
 
 1. Create `docs/upstream-status.yaml` from [`upstream-status.example.yaml`](upstream-status.example.yaml).
-2. Set `last_checked` to today, and `local_template_version` / `local_workflow_version` from local `docs/templates/VERSION` (or the markers in `Master_Index_Template.md` / `Modular_Docs_Workflow.md` if `VERSION` is missing).
+2. Set `last_checked` to today, and `local_template_version` / `local_workflow_version` from local `docs/templates/VERSION` (or the markers in `Master_Index_Template.md` / `agent/Modular_Docs_Workflow.md` if `VERSION` is missing).
 3. Record in `docs/rule-install-status.yaml` under `optional_rules.template-update-check` with `status: enabled` and `recorded` (create the file if needed — see [`rule-install-status.example.yaml`](rule-install-status.example.yaml)).
 4. Install the optional rule when installing tool rules — follow [`RULE_INSTALL.md`](RULE_INSTALL.md) **Optional rules**. If the user skips RULE_INSTALL for now, note that checks need the optional rule installed for their tool(s).
 

@@ -101,7 +101,7 @@ Source of truth is **on disk** under `docs/templates/`. Do **not** re-fetch from
 | Local template (read) | Live file (edit carefully) | When |
 |-----------------------|----------------------------|------|
 | `Master_Index_Template.md` | `docs/Master_Index.md` — never blind-replace | `master-index` or always for version lines |
-| `Modular_Docs_Workflow.md` | Already replaced in Step A — do not copy into Master_Index | — |
+| `agent/Modular_Docs_Workflow.md` | Already replaced in Step A — do not copy into Master_Index | — |
 | `Feature_Understanding_Template.md` | Each `*-Understanding.md` — add new sections only | `content-templates` |
 | `Feature_Spec_Template.md` | Each feature/shared `.md` spec — add new sections only | `content-templates` |
 | `TODO_Template.md` | Each `*-TODO.md` — add missing blocks only | `content-templates` |
@@ -113,12 +113,12 @@ Source of truth is **on disk** under `docs/templates/`. Do **not** re-fetch from
 Versions:
 
 - `docs/templates/VERSION` (preferred) or `<!-- template-version: X.Y -->` in local `Master_Index_Template.md` → **Template version** in live `Master_Index.md`
-- `docs/templates/VERSION` or `<!-- workflow-version: X.Y -->` in local `Modular_Docs_Workflow.md` → **Workflow version** in live `Master_Index.md`
+- `docs/templates/VERSION` or `<!-- workflow-version: X.Y -->` in local `agent/Modular_Docs_Workflow.md` → **Workflow version** in live `Master_Index.md`
 
 ### Gated checklist
 
 1. **Versions** — Bump **Template version** / **Workflow version** (and `<!-- template-version -->` if present) in live `Master_Index.md` from local `VERSION`.
-2. **Master Index** *(if `master-index`)* — Read local `Master_Index_Template.md` + live `Master_Index.md`. Compare **headings / Key Locations / Document Map columns** only — not project prose. **Preserve** overview, Project Profile, Document Map rows (§3.0–3.4), user §3.0 exceptions, custom sections. **Adopt** new index sections, renumbers, Quick Start pointer. §3.0: record only **user-stated** exceptions.
+2. **Master Index** *(if `master-index`)* — Read local `Master_Index_Template.md` + live `Master_Index.md`. Compare **headings / Key Locations / Document Map columns** only — not project prose. **Preserve** overview, Project Profile, Document Map rows (§3.0–3.4), user §3.0 exceptions, custom sections. **Adopt** new index sections, renumbers, Quick Start pointer. Update links from `templates/Modular_Docs_Workflow.md` → `templates/agent/Modular_Docs_Workflow.md` if still on the old path. §3.0: record only **user-stated** exceptions.
 3. **Content templates** *(if `content-templates` only)* — Add missing sections from local templates into live Understanding / Spec / TODO / Tooling / Human-TODO. Do not overwrite project content. Create `Tooling.md` / `Human-TODO.md` from templates when missing and link from Master Index. Ask before large rewrites across many files.
 4. **Rules** *(if `rules`)* — Update installed agent rules from local `docs/templates/agent/` if the rule body changed (ask first if customized).
 5. **Upstream stamp** *(if `optional-upstream-check` or file exists)* — If `docs/upstream-status.yaml` exists: set `local_template_version` / `local_workflow_version` from local `VERSION`, `last_checked` today, clear `update_available` — do **not** delete the file. Refresh optional update-check rules if tagged `rules` / body changed (ask first if customized).

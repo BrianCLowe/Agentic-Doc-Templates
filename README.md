@@ -70,9 +70,9 @@ Everything ships under **`docs/templates/`**. Live project docs stay at `docs/` 
 
 | Area | Role |
 |------|------|
-| **Scaffolds** | Master Index, Understanding, Spec, TODO, Tooling, Human-TODO, Decision templates + [`Modular_Docs_Workflow.md`](docs/templates/Modular_Docs_Workflow.md) |
+| **Scaffolds** | Master Index, Understanding, Spec, TODO, Tooling, Human-TODO, Decision templates |
 | **[`help/`](docs/templates/help/)** | Human guides — [SETUP](docs/templates/help/SETUP.md), [USAGE](docs/templates/help/USAGE.md), [IDEA_CAPTURE_TIPS](docs/templates/help/IDEA_CAPTURE_TIPS.md), [USING_WITH_AGENTS](docs/templates/help/USING_WITH_AGENTS.md) |
-| **[`agent/`](docs/templates/agent/)** | Bootstrap, rule install, template sync, update check, Cursor/Copilot rule templates |
+| **[`agent/`](docs/templates/agent/)** | [`Modular_Docs_Workflow.md`](docs/templates/agent/Modular_Docs_Workflow.md), bootstrap, rule install, template sync, update check, Cursor/Copilot rule templates |
 | **[`chat-ui/`](docs/templates/chat-ui/)** | Short instructions for Grok/ChatGPT (no workspace) |
 | **[`VERSION`](docs/templates/VERSION)** / **[`CHANGELOG.md`](docs/templates/CHANGELOG.md)** | Cheap upstream compare + sync scope after a pack refresh |
 
@@ -97,7 +97,7 @@ docs/
 └── templates/                   ← this pack (overwrite on sync; not live content)
 ```
 
-Flat sibling files per feature/shared component. Naming: [`Modular_Docs_Workflow.md` §0](docs/templates/Modular_Docs_Workflow.md#0-naming--file-layout-read-before-creating-files).
+Flat sibling files per feature/shared component. Naming: [`Modular_Docs_Workflow.md` §0](docs/templates/agent/Modular_Docs_Workflow.md#0-naming--file-layout-read-before-creating-files).
 
 ---
 

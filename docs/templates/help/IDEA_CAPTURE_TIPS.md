@@ -224,7 +224,7 @@ When the user describes a feature vaguely:
 5. If the user provides screenshots, persist under `docs/features/assets/` or `docs/_shared/assets/` (or `docs/reference/visuals/`): **copy/move from a workspace path** when the file is attached or `@`-mentioned; if only a pasted chat image (vision-only), ask the user to save into `assets/` or document similar/different from what you saw and note that a file copy was not available. Link in **Visual references** — see [Saving chat attachments](#saving-chat-attachments-to-the-repo).
 6. If the user does not know stack or architecture, propose options **after** Understanding sections 1–4 are drafted, with a one-line rationale each.
 7. Do not start implementation until the user confirms Understanding or explicitly waives review.
-8. End sessions by updating TODO **Current focus** ([`Modular_Docs_Workflow.md`](Modular_Docs_Workflow.md) §5.1).
+8. End sessions by updating TODO **Current focus** ([`Modular_Docs_Workflow.md`](../agent/Modular_Docs_Workflow.md) §5.1).
 
 When the user **is** experienced, do not over-interview — still fill **What this is NOT** and **Relationship to existing work**; skip obvious questions.
 

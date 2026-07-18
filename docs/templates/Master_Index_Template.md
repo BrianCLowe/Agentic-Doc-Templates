@@ -2,14 +2,14 @@
 
 > **Template reference.** Do not put project-specific content in this file. Copy to `docs/Master_Index.md` for initial setup, or diff against it when syncing template improvements into the live index. Never edit this template unless the user asks you to.
 >
-> **Agent workflow** (Path A/B, Understanding, TODO rules) lives in [`Modular_Docs_Workflow.md`](templates/Modular_Docs_Workflow.md) — do not duplicate it here.
+> **Agent workflow** (Path A/B, Understanding, TODO rules) lives in [`Modular_Docs_Workflow.md`](templates/agent/Modular_Docs_Workflow.md) — do not duplicate it here.
 
 # [Project Name] — Master Index
 
 **Purpose**: Single entry point for **this project's** documentation — overview, locations, and Document Map. Read only the files relevant to the current task.
 
 **Template version**: 2.4 *(update when syncing from `templates/Master_Index_Template.md`)*  
-**Workflow version**: 2.4 *(must match `templates/Modular_Docs_Workflow.md` — update both on sync)*
+**Workflow version**: 2.4 *(must match `templates/agent/Modular_Docs_Workflow.md` — update both on sync)*
 
 ## 1. Project Overview
 
@@ -37,12 +37,12 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 | `docs/_shared/assets/` | Screenshots for shared components (linked from `-Understanding.md`) |
 | `docs/features/`  | Feature-specific specs + TODOs (+ optional sub-indexes) |
 | `docs/features/assets/` | Screenshots for features (linked from `-Understanding.md`) |
-| `docs/reference/` | Drop zone for design docs, PRDs, chat exports, legacy specs — not the living modular docs ([Workflow](templates/Modular_Docs_Workflow.md)) |
+| `docs/reference/` | Drop zone for design docs, PRDs, chat exports, legacy specs — not the living modular docs ([Workflow](templates/agent/Modular_Docs_Workflow.md)) |
 | `docs/reference/visuals/` | Optional inspiration screenshots before a feature exists |
 | `docs/Tooling.md` | Machine / workflow tools (not package deps) — install on a new machine ([`Tooling_Template.md`](templates/Tooling_Template.md)) |
 | `docs/Human-TODO.md` | Human procurement / external blockers (API keys, cloud bots, accounts) — agent cannot do these ([`Human_TODO_Template.md`](templates/Human_TODO_Template.md)) |
 | `docs/decisions/` | Optional cross-cutting decisions ([`Decision_Template.md`](templates/Decision_Template.md)) |
-| `docs/templates/` | Upstream template pack — workflow, scaffolds, setup guides (`help/`, `agent/`, `chat-ui/`); includes [`Modular_Docs_Workflow.md`](templates/Modular_Docs_Workflow.md), [`VERSION`](templates/VERSION), and [`CHANGELOG.md`](templates/CHANGELOG.md) (Step B scope after sync) |
+| `docs/templates/` | Upstream template pack — scaffolds, `help/`, `agent/` (incl. [`Modular_Docs_Workflow.md`](templates/agent/Modular_Docs_Workflow.md)), `chat-ui/`; also [`VERSION`](templates/VERSION) and [`CHANGELOG.md`](templates/CHANGELOG.md) (Step B scope after sync) |
 | `docs/upstream-status.yaml` | Optional — weekly template update check stamp ([`TEMPLATE_UPDATE_CHECK.md`](templates/agent/TEMPLATE_UPDATE_CHECK.md)) |
 | `src/` / `backend/` / `frontend/` | Actual code (reference only) |
 
@@ -52,12 +52,12 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 - **Tight scope:** paved path for the current ask only — no “just in case” audits of unrelated files or alternate interpretations before acting.
 - **Mermaid:** optional — agent may add a small diagram when it beats prose for structure/flow; do not splash charts everywhere.
 - **Tooling:** `docs/Tooling.md` lists machine tools (not package deps); on a new machine, user can ask to install them ([`Tooling_Template.md`](templates/Tooling_Template.md)).
-- **Human TODO:** `docs/Human-TODO.md` — accounts, keys, portal registrations the agent cannot complete ([`Human_TODO_Template.md`](templates/Human_TODO_Template.md); [Workflow §13](templates/Modular_Docs_Workflow.md#13-human-todo-procurement--external-blockers)).
-- **File layout:** flat sibling files — `features/FeatureName.md`, `FeatureName-Understanding.md`, `FeatureName-TODO.md` (same for `_shared/`) — see [Workflow §0](templates/Modular_Docs_Workflow.md#0-naming--file-layout-read-before-creating-files).
-- No file should exceed ~800–1000 lines; split when bloated ([Workflow §8](templates/Modular_Docs_Workflow.md#8-how-to-split-a-large-document)).
-- **Shared** only when something is actually shared across features — empty §3.1 / `_shared/` is fine. Do **not** invent shared rows or park engine/framework primers there ([Workflow §1](templates/Modular_Docs_Workflow.md#1-shared-components--foundation-vs-consumption)). Real shared components get the **same note types as features** unless the **user** excepted them — record omissions in **§3.0** only after an explicit user request. Agents must not invent §3.0 or filler §3.1 rows.
-- **Understanding**: agent drafts first (`draft`); user reviews before build; **`confirmed`** = approved — agents continue without re-asking ([Workflow §4](templates/Modular_Docs_Workflow.md#4-understanding-features--shared)).
-- **Spec**: durable contract after Understanding is `confirmed` ([Workflow §2](templates/Modular_Docs_Workflow.md#2-understanding--spec-graduation)).
+- **Human TODO:** `docs/Human-TODO.md` — accounts, keys, portal registrations the agent cannot complete ([`Human_TODO_Template.md`](templates/Human_TODO_Template.md); [Workflow §13](templates/agent/Modular_Docs_Workflow.md#13-human-todo-procurement--external-blockers)).
+- **File layout:** flat sibling files — `features/FeatureName.md`, `FeatureName-Understanding.md`, `FeatureName-TODO.md` (same for `_shared/`) — see [Workflow §0](templates/agent/Modular_Docs_Workflow.md#0-naming--file-layout-read-before-creating-files).
+- No file should exceed ~800–1000 lines; split when bloated ([Workflow §8](templates/agent/Modular_Docs_Workflow.md#8-how-to-split-a-large-document)).
+- **Shared** only when something is actually shared across features — empty §3.1 / `_shared/` is fine. Do **not** invent shared rows or park engine/framework primers there ([Workflow §1](templates/agent/Modular_Docs_Workflow.md#1-shared-components--foundation-vs-consumption)). Real shared components get the **same note types as features** unless the **user** excepted them — record omissions in **§3.0** only after an explicit user request. Agents must not invent §3.0 or filler §3.1 rows.
+- **Understanding**: agent drafts first (`draft`); user reviews before build; **`confirmed`** = approved — agents continue without re-asking ([Workflow §4](templates/agent/Modular_Docs_Workflow.md#4-understanding-features--shared)).
+- **Spec**: durable contract after Understanding is `confirmed` ([Workflow §2](templates/agent/Modular_Docs_Workflow.md#2-understanding--spec-graduation)).
 - **Shared maturity** on spec + Document Map: `draft` \| `usable` \| `stable`.
 
 ## 3. Document Map
@@ -113,7 +113,7 @@ Leave this table **empty** (or with a single “*(none yet)*” note) unless a p
 ## 4. Quick Start
 
 1. Read this file — find the feature or shared component in **§3 Document Map**.
-2. Follow **[`templates/Modular_Docs_Workflow.md`](templates/Modular_Docs_Workflow.md)** — Path A (`_shared/` foundation) or Path B (feature work).
-3. End the session by updating the active TODO **Current focus** ([Workflow §5.1](templates/Modular_Docs_Workflow.md#51-session-handoff--current-focus)).
+2. Follow **[`templates/agent/Modular_Docs_Workflow.md`](templates/agent/Modular_Docs_Workflow.md)** — Path A (`_shared/` foundation) or Path B (feature work).
+3. End the session by updating the active TODO **Current focus** ([Workflow §5.1](templates/agent/Modular_Docs_Workflow.md#51-session-handoff--current-focus)).
 
 **Agents:** The installed modular documentation rule is a short checklist; full procedure is in `Modular_Docs_Workflow.md`.

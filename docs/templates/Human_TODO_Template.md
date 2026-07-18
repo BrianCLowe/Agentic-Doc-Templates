@@ -3,7 +3,7 @@
 > Never edit this template unless the user asks you to. Live file: `docs/Human-TODO.md` (copy from this template at bootstrap).
 
 **Last Updated**: [YYYY-MM-DD]  
-**Related**: [Master_Index.md](Master_Index.md) · [Tooling.md](Tooling.md) · [Modular_Docs_Workflow.md](Modular_Docs_Workflow.md) §13
+**Related**: [Master_Index.md](Master_Index.md) · [Tooling.md](Tooling.md) · [Modular_Docs_Workflow.md](agent/Modular_Docs_Workflow.md) §13
 
 ---
 

@@ -5,7 +5,7 @@
 > Never edit this template unless the user asks you to. Live file: `docs/Tooling.md` (copy from this template at bootstrap or when first needed).
 
 **Last Updated**: [YYYY-MM-DD]  
-**Related**: [Master_Index.md](Master_Index.md) · [Modular_Docs_Workflow.md](Modular_Docs_Workflow.md) §11
+**Related**: [Master_Index.md](Master_Index.md) · [Modular_Docs_Workflow.md](agent/Modular_Docs_Workflow.md) §11
 
 ---
 

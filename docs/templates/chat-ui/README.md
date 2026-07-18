@@ -31,4 +31,4 @@ Keep this chat (export or copy). When you open the project in Cursor or similar,
 2. Copy `docs/templates/` from this repo (or bootstrap) for IDE work later.
 3. Install the modular doc rule in Cursor/Grok Build when you have a workspace — see [`../agent/RULE_INSTALL.md`](../agent/RULE_INSTALL.md).
 
-Full procedure (Path A/B, graduation, session handoff): [`../Modular_Docs_Workflow.md`](../Modular_Docs_Workflow.md) — for IDE agents, not chat-only sessions.
+Full procedure (Path A/B, graduation, session handoff): [`../agent/Modular_Docs_Workflow.md`](../agent/Modular_Docs_Workflow.md) — for IDE agents, not chat-only sessions.

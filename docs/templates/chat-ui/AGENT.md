@@ -108,4 +108,4 @@ Set status `draft`. Do not treat the user as author — they **review and correc
 
 ## After the user has a repo
 
-They copy `docs/templates/` from [Agentic Doc Templates](https://github.com/BrianCLowe/Agentic-Doc-Templates) and use [`Modular_Docs_Workflow.md`](../Modular_Docs_Workflow.md) + IDE agent rules for ongoing work.
+They copy `docs/templates/` from [Agentic Doc Templates](https://github.com/BrianCLowe/Agentic-Doc-Templates) and use [`Modular_Docs_Workflow.md`](../agent/Modular_Docs_Workflow.md) + IDE agent rules for ongoing work.

@@ -7,7 +7,7 @@ alwaysApply: true
 
 First, check if `docs/Master_Index.md` exists. If it does not exist, ignore this entire rule and work normally.
 
-This project uses a lean modular documentation system. `docs/Master_Index.md` is the single entry point for **project context and the Document Map**. Full procedure: **`docs/templates/Modular_Docs_Workflow.md`** — open it only when the gates below say so.
+This project uses a lean modular documentation system. `docs/Master_Index.md` is the single entry point for **project context and the Document Map**. Full procedure: **`docs/templates/agent/Modular_Docs_Workflow.md`** — open it only when the gates below say so.
 
 **Route by ask** *(open only that playbook — do not scan the pack catalog)*:
 
