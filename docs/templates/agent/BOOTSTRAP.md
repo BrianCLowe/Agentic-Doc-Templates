@@ -187,7 +187,8 @@ If the user named **no** features yet, skip Step 3d and say so in Step 4.
 3. Point at **Open** items on `Human-TODO.md` — things only the human can procure before those features unblock.
 4. After they confirm an Understanding, graduate durable content into the spec and continue from TODOs ([`../help/SETUP.md`](../help/SETUP.md)).
 5. Run **Step 4b** (weekly template update checks) before finishing.
-6. Optional: run [`RULE_INSTALL.md`](RULE_INSTALL.md) for agent rules (asks per tool, records in `rule-install-status.yaml`). If Step 4b was **yes**, RULE_INSTALL also installs the optional update-check rule.
+6. Run **Step 4c** (optional doc roles) before finishing.
+7. Optional: run [`RULE_INSTALL.md`](RULE_INSTALL.md) for agent rules (asks per tool, records in `rule-install-status.yaml`). If Step 4b / 4c were **yes**, RULE_INSTALL also installs those optional artifacts.
 
 ## Step 4b — Weekly template update checks (ask first)
 
@@ -218,6 +219,35 @@ Projects that copied or templated this pack do **not** share the upstream git re
 
 - "Check for template updates every week" / "Enable template update checks" → treat as **yes** even if previously declined.
 - "Stop checking for template updates" → remove or leave `docs/upstream-status.yaml`; set optional rule status to `declined`; remove installed `template-update-check` rule files if present (ask before deleting).
+
+## Step 4c — Optional doc roles (ask first)
+
+Thin playbook roles (Understanding author, Doc graduate, Feature implementer, Bootstrap, Template sync) live under [`roles/`](roles/README.md). They are **never always-on**. Users can `@`-mention role files with no install.
+
+**Ask** (do not enable silently):
+
+> Want optional **doc roles** (Understanding author, Feature implementer, etc.)?
+>
+> How it works: short role files under `docs/templates/agent/roles/`. When we install rules for your tools ([`tools/`](tools/README.md)), matching **subagent** adapters go in that harness’s agents folder (Cursor → `.cursor/agents/`, Grok Build → `.grok/agents/`, …). The modular docs rule then has the **main agent** delegate when your ask matches — you don’t need `/` commands.
+>
+> Decline if you prefer the lean modular rule alone. You can still open a role `.md` by path later.
+
+### On **yes**
+
+1. Record in `docs/rule-install-status.yaml` under `optional_rules.doc-roles` with `status: enabled` and `recorded`.
+2. When running [`RULE_INSTALL.md`](RULE_INSTALL.md) for each installed tool, that tool’s [`tools/<key>.md`](tools/README.md) installs doc-role adapters if the tool supports them. If RULE_INSTALL is skipped for now, note which agents folders still need a later pass.
+3. Point the user at [`roles/README.md`](roles/README.md) — normal asks are enough (*Draft Understanding for X*).
+
+### On **no**
+
+1. Do **not** copy anything into `.cursor/agents/`, `.grok/agents/`, `.claude/agents/`, or `.codex/agents/`.
+2. Record `optional_rules.doc-roles` with `status: declined` and `recorded`.
+3. Mention role files still work by path: *Follow `docs/templates/agent/roles/understanding-author.md`.*
+
+### Explicit overrides later
+
+- "Enable optional doc roles" / "Install modular docs subagents" → treat as **yes**.
+- "Remove doc roles" / "Disable optional doc roles" → set `declined`; delete installed agent files under the harness folders above (ask before deleting).
 
 ## Do not
 

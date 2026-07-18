@@ -17,6 +17,30 @@
 
 ---
 
+## 2.5
+
+- **Live impact:** `process-docs-only`, `master-index`, `rules`
+- **Files:**
+  - `VERSION` — 2.4 → 2.5
+  - `agent/roles/` — **(new)** optional playbook roles: Understanding author, Doc graduate, Feature implementer, Bootstrap, Template sync + `README.md`; never always-on
+  - `agent/roles/cursor/*.md` — Cursor **subagent** adapters → `.cursor/agents/` ([subagents docs](https://cursor.com/docs/subagents)); gated “Use when …”; not Agent Skills
+  - `agent/roles/grok/*.md` — **(new)** Grok Build subagent adapters → `.grok/agents/`
+  - `agent/roles/README.md` — harness adapter table (Cursor vs Grok vs Claude)
+  - `agent/tools/` — **(new)** per-tool install/sync playbooks (`cursor`, `grok-build`, `claude-code`, `github-copilot`, `agents-md`, thin `continue`/`cline`) + `README.md`
+  - `agent/RULE_INSTALL.md` — router: ask/status yaml → open only `tools/<key>.md`; `optional_rules.doc-roles`
+  - `agent/BOOTSTRAP.md` — Step 4c doc roles; installs via tool playbooks
+  - `agent/TEMPLATE_SYNC.md` — rules refresh dispatches per installed tool; doc-roles via harness folders
+  - `agent/rule-install-status.example.yaml` — `grok-build` + `doc-roles` path examples
+  - `agent/Modular_Docs_Workflow.md` — optional roles + tools/ pointer; version 2.5
+  - `agent/Modular_Documentation_Rule.mdc` / `.instructions.md` — parent orchestrates delegation/spawn (`.cursor/agents/`, `.grok/agents/`, …); `/` optional; fallbacks if agents missing
+  - `Master_Index_Template.md` — Key Locations notes for `agent/roles/` + `agent/tools/`; versions 2.5
+  - `help/USING_WITH_AGENTS.md` — slimmed human TOC → `tools/*.md`
+  - `help/USAGE.md`, `help/SETUP.md` — roles / tools usage
+  - `chat-ui/AGENT.md`, `agent/upstream-status.example.yaml` — version markers 2.5
+  - Root `README.md` — pack 2.5; roles + tools in inventory
+- **Unchanged content templates:** Feature_Understanding, Feature_Spec, TODO, Tooling, Human_TODO, Decision
+- **Step B:** Bump Master Index versions to 2.5; adopt Key Locations deltas (`agent/roles/`, `agent/tools/`). For each `tools.*.status: installed`, open that `tools/<key>.md` only and refresh (ask if customized). If `optional_rules.doc-roles` is `enabled`, refresh harness agents folders (`.cursor/agents/` from `roles/cursor/`, `.grok/agents/` from `roles/grok/`, …). Remove any stale `.cursor/skills/modular-docs-*` leftovers. Do **not** open every tool file; do **not** scan live feature/shared docs; do **not** auto-enable doc roles if previously declined or unset.
+
 ## 2.4
 
 - **Live impact:** `process-docs-only`, `master-index`, `rules`

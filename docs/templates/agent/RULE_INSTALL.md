@@ -1,6 +1,8 @@
 # Rule Install — Agent Instructions
 
 > Use when the user asks to bootstrap modular docs, install the rule, or set up agent instructions. **Ask before writing rule files** — unless `docs/rule-install-status.yaml` already records a decision for that tool (see below).
+>
+> **Dispatcher:** After the user confirms a tool, open **only** [`tools/<key>.md`](tools/README.md) and execute that playbook. Do not keep a second copy of install paths in this file.
 
 ## Status file — remember answers per tool
 
@@ -11,14 +13,15 @@ After the user answers for a **specific tool**, create or update `docs/rule-inst
 
 ### Tool keys (use exactly)
 
-| Key | Tool |
-|-----|------|
-| `cursor` | Cursor |
-| `github-copilot` | GitHub Copilot (VS Code) |
-| `claude-code` | Claude Code |
-| `continue` | Continue.dev |
-| `cline` | Cline |
-| `agents-md` | Root `AGENTS.md` (cross-tool section) |
+| Key | Tool | Playbook |
+|-----|------|----------|
+| `cursor` | Cursor | [`tools/cursor.md`](tools/cursor.md) |
+| `grok-build` | Grok Build | [`tools/grok-build.md`](tools/grok-build.md) |
+| `github-copilot` | GitHub Copilot (VS Code) | [`tools/github-copilot.md`](tools/github-copilot.md) |
+| `claude-code` | Claude Code | [`tools/claude-code.md`](tools/claude-code.md) |
+| `agents-md` | Root `AGENTS.md` (cross-tool) | [`tools/agents-md.md`](tools/agents-md.md) |
+| `continue` | Continue.dev | [`tools/continue.md`](tools/continue.md) |
+| `cline` | Cline | [`tools/cline.md`](tools/cline.md) |
 
 ### Status values
 
@@ -34,133 +37,101 @@ Optional fields: `recorded` (YYYY-MM-DD), `path`, `note`.
 | Key | Meaning |
 |-----|---------|
 | `template-update-check` | Weekly (or on-request) ping for newer Agentic Doc Templates — see [`TEMPLATE_UPDATE_CHECK.md`](TEMPLATE_UPDATE_CHECK.md) |
+| `doc-roles` | Optional playbook roles — see [`roles/README.md`](roles/README.md). **Not always-on.** Installed per tool file (`.cursor/agents/`, `.grok/agents/`, …). |
 
 | Status | Meaning |
 |--------|---------|
-| `enabled` | User opted in (bootstrap Step 4b or explicit ask). Install the optional rule for each tool with `tools.*.status: installed`. |
+| `enabled` | User opted in (bootstrap Step 4b / 4c or explicit ask). When installing/refreshing a tool, that tool’s `tools/<key>.md` also installs matching optional artifacts. |
 | `declined` | User opted out — do not install; do not re-ask unless they request it. |
 
 If `optional_rules.template-update-check` is missing, bootstrap should have asked — if you are mid–rule-install and bootstrap Step 4b was skipped, ask once using the Step 4b prompt, then record `enabled` or `declined`.
 
-### Before asking
+If `optional_rules.doc-roles` is missing and you are installing a tool that supports agent folders (`cursor`, `grok-build`, `claude-code`), ask once using bootstrap Step 4c, then record `enabled` or `declined`.
 
-1. Read `docs/rule-install-status.yaml` if it exists.
-2. For each tool you would prompt about, check its entry:
+## Before asking
+
+1. Check whether `docs/Master_Index.md` exists (if not, follow [`BOOTSTRAP.md`](BOOTSTRAP.md) first — doc structure before rules).
+2. Read **`docs/rule-install-status.yaml`** if it exists.
+3. For each tool you would prompt about, check its entry:
    - `installed` and install file still exists → skip; mention it is already set up.
    - `installed` but file missing → tell the user and offer reinstall (do not skip silently).
    - `declined` → skip unless the user explicitly requested install for that tool.
    - No entry → eligible to ask.
-3. Only prompt for tools **without** a settled `installed` or `declined` record.
+4. Check **only** destinations named in the relevant `tools/<key>.md` for unsettled tools (plus `AGENTS.md` / `CLAUDE.md` if present). Do **not** glob the repo for rule-like files.
+5. State which tool you **think** the user is on and why — only if evidence is clear. If uncertain, say so.
+6. **Ask the user** only for tools without a settled status:
+   - Install the modular documentation rule for **[tool]**?
+   - Other tools they use on this repo? (each gets its own entry and playbook)
+   - If target file already has content: merge, append a section, or skip?
 
-### After the user answers
+Do not proceed until they confirm for each tool you are installing.
 
-Update `docs/rule-install-status.yaml` **immediately** for each tool decided in that conversation:
+## Why ask first
 
-- **Yes, install** → perform install, set `status: installed`, `path`, `recorded`.
-- **No** → set `status: declined`, `recorded`, optional `note` (e.g. "Uses Copilot only at work").
+- You may **misidentify the current tool** (Cursor vs Copilot vs Grok Build, etc.).
+- The user may **use multiple tools** on the same repo. Each tool uses a **different path** — they coexist without conflict.
+- Existing instruction files may already contain **custom content** you must not overwrite.
 
-Do not record a decision for tools you did not ask about.
+## Install / refresh (dispatch)
+
+For **each** confirmed tool (or each `tools.*.status: installed` when refreshing on sync):
+
+1. Open **`docs/templates/agent/tools/<key>.md` only**.
+2. Execute that playbook end-to-end (modular rule → optional update-check if enabled → optional doc-roles if enabled and that tool supports them).
+3. Update `docs/rule-install-status.yaml` immediately (`status: installed`, `path`, `recorded`).
+4. Stop for that tool — do not open other `tools/*.md`.
+
+### After the user answers no
+
+Set `status: declined`, `recorded`, optional `note`. Do not record tools you did not ask about.
 
 ### Explicit overrides
 
 Always honor direct requests, even when status is `declined`:
 
-- "Install the rule for Copilot" → install (or merge), update status to `installed`.
+- "Install the rule for Copilot" → open [`tools/github-copilot.md`](tools/github-copilot.md), install, set `installed`.
 - "Reset rule install status" / "Ask me again about Cursor" → remove or update that tool's entry, then ask.
-
-## Why ask first
-
-- You may **misidentify the current tool** (Cursor vs Copilot vs Claude Code, etc.).
-- The user may **use multiple tools** on the same repo (e.g. Copilot at work, Cursor at home). Each tool uses a **different file** — they coexist without conflict.
-- Existing instruction files may already contain **custom content** you must not overwrite.
-
-Auto-installing without asking causes wrong-path installs and clobbered instructions. The status file prevents **repeated** prompts, not the initial ask.
-
-## Before proposing an install
-
-1. Check whether `docs/Master_Index.md` exists (if not, follow [`BOOTSTRAP.md`](BOOTSTRAP.md) first — doc structure before rules).
-2. Read **`docs/rule-install-status.yaml`** and apply the rules above.
-3. Check **only** Install-map destinations for tools without a settled status (plus `AGENTS.md` / `CLAUDE.md` if present). Reconcile with the status file (fix stale `installed` if that path is missing). Do **not** glob the repo for rule-like files.
-4. State which tool you **think** the user is on and why — only if evidence is clear. If uncertain, say so.
-5. **Ask the user** only for tools without a settled status:
-   - Install the modular documentation rule for **[tool]**?
-   - Other tools they use on this repo? (each gets its own entry and file)
-   - If target file already has content: merge, append a section, or skip?
-
-Do not proceed until they confirm for each tool you are installing.
-
-## Install map (source → destination)
-
-Copy from `docs/templates/agent/`. Use the **same rule body** everywhere; only format and path differ.
-
-| Tool key | Source template | Install to |
-|----------|-----------------|------------|
-| `cursor` | `agent/Modular_Documentation_Rule.mdc` | `.cursor/rules/modular-documentation.mdc` |
-| `github-copilot` | `agent/Modular_Documentation_Rule.instructions.md` | `.github/instructions/modular-documentation.instructions.md` |
-| `claude-code` | Rule body from `agent/Modular_Documentation_Rule.mdc` (no Cursor frontmatter) | `.claude/rules/modular-documentation.md` or section in `CLAUDE.md` |
-| `continue` | Rule body + frontmatter | `.continue/rules/modular-documentation.md` |
-| `cline` | Rule body | `.clinerules/modular-documentation.md` or `.cline/rules/modular-documentation.md` |
-| `agents-md` | Rule body | Section in root `AGENTS.md` titled `## Documentation workflow` |
-
-### Optional — Template Update Check
-
-Only when `optional_rules.template-update-check.status` is `enabled`. Install **alongside** the modular docs rule for each tool you install (or already have `installed`). Requires live `docs/upstream-status.yaml` (create from [`upstream-status.example.yaml`](upstream-status.example.yaml) if missing).
-
-| Tool key | Source template | Install to |
-|----------|-----------------|------------|
-| `cursor` | `agent/Template_Update_Check_Rule.mdc` | `.cursor/rules/template-update-check.mdc` |
-| `github-copilot` | `agent/Template_Update_Check_Rule.instructions.md` | `.github/instructions/template-update-check.instructions.md` |
-| `claude-code` | Rule body from `agent/Template_Update_Check_Rule.mdc` (no Cursor frontmatter) | `.claude/rules/template-update-check.md` or a clearly labeled section in `CLAUDE.md` |
-| `continue` | Rule body + frontmatter | `.continue/rules/template-update-check.md` |
-| `cline` | Rule body | `.clinerules/template-update-check.md` or `.cline/rules/template-update-check.md` |
-| `agents-md` | Rule body | Section in root `AGENTS.md` titled `## Template update check` |
-
-Record install paths under `optional_rules.template-update-check.paths` when useful. Procedure the rule points at: [`TEMPLATE_UPDATE_CHECK.md`](TEMPLATE_UPDATE_CHECK.md).
-
-Full tool notes: [Using With AI Agents](../help/USING_WITH_AGENTS.md).
 
 ## Multi-tool setups (no conflict)
 
-Installing for one tool **does not remove or replace** another tool's files. Record **each tool separately** in `rule-install-status.yaml`.
+Installing for one tool **does not remove or replace** another tool's files. Record **each tool separately**.
 
-A user who switches tools later may need an install for a **different** tool key — ask only for tools with no entry yet.
+`AGENTS.md` (`agents-md`) plus tool-specific files means redundant context — acceptable when the user wants cross-tool coverage.
 
-**Optional:** `AGENTS.md` plus tool-specific files means redundant context — acceptable. Do not duplicate into `AGENTS.md` unless the user wants cross-tool coverage (`agents-md` entry).
-
-## Install rules
+## Shared install rules
 
 - **Never overwrite** an existing instructions file without showing what will change and getting confirmation.
-- If merging into `copilot-instructions.md` or `CLAUDE.md`, **append** a clearly labeled section; do not delete existing sections.
-- If the modular rule is **already present** at the target path, set status to `installed` if missing from yaml — do not re-install.
+- If merging into `copilot-instructions.md`, `CLAUDE.md`, or `AGENTS.md`, **append** a clearly labeled section; do not delete existing sections.
+- If the modular rule is **already present** at the target path, set status to `installed` if missing from yaml — do not re-install blindly.
 - Do not edit files under `docs/templates/` except when copying **from** them.
-- After install, update the status file and tell the user which file(s) were created or updated.
-- **After installing for Cursor:** Warn that **Compound Engineering** and **Superpowers** plugins/skills often override this rule so agents skip `Master_Index.md` and the Understanding/TODO flow. Recommend disabling them for this workspace. Point to [`../help/USING_WITH_AGENTS.md`](../help/USING_WITH_AGENTS.md#cursor).
-- If `optional_rules.template-update-check` is `enabled`, install the Template Update Check rule for every tool you install in this pass (and offer to add it for tools already `installed` that lack the optional file).
+- After install, tell the user which file(s) were created or updated.
+- Optional artifacts (`template-update-check`, `doc-roles`) are installed **inside** each tool playbook when those optional_rules are `enabled` — not from a second global table in this file.
 
 ## Suggested prompt to the user
 
-> I found `docs/templates/agent/` with the modular documentation rule templates. You're likely using **[tool]**.
+> I found `docs/templates/agent/tools/` with per-tool install playbooks. You're likely using **[tool]**.
 >
 > On disk: [existing install paths or none].  
-> Status file: [Cursor: installed | Copilot: not asked yet | …].  
-> Template update checks: [enabled | declined | not asked — see bootstrap Step 4b].
+> Status file: [Cursor: installed | Grok Build: not asked yet | …].  
+> Template update checks: [enabled | declined | not asked — see bootstrap Step 4b].  
+> Optional doc roles: [enabled | declined | not asked — see bootstrap Step 4c].
 >
 > Install the modular docs rule for **[tool]**? (I won't ask again for that tool after you answer.)  
-> If you also use other agents on this repo, say which — each gets its own file and status entry.
->
-> *(Cursor only)* Compound Engineering / Superpowers can override this rule — consider disabling them for this workspace.
+> If you also use other agents on this repo, say which — each gets its own `tools/<key>.md` pass.
 
 ## Example user prompts
 
 - "Bootstrap modular docs in this project."
-- "Install the modular documentation rule for Copilot."
-- "Set up the agent rule — I use Cursor here but Copilot at work." → install Cursor, record `cursor: installed`; ask separately about `github-copilot` if no entry yet.
+- "Install the modular documentation rule for Grok Build."
+- "Set up the agent rule — I use Cursor here but Copilot at work." → dispatch `cursor`, then ask about `github-copilot` if no entry yet.
 
 ## Related
 
+- Tool playbooks: [`tools/README.md`](tools/README.md)
 - Status file example: [`rule-install-status.example.yaml`](rule-install-status.example.yaml)
 - Upstream check status example: [`upstream-status.example.yaml`](upstream-status.example.yaml)
+- Optional doc roles: [`roles/README.md`](roles/README.md)
 - Doc structure bootstrap: [`BOOTSTRAP.md`](BOOTSTRAP.md)
 - Updating live docs from templates: [`TEMPLATE_SYNC.md`](TEMPLATE_SYNC.md)
 - Cheap update ping: [`TEMPLATE_UPDATE_CHECK.md`](TEMPLATE_UPDATE_CHECK.md)
-- Tool-specific details: [Using With AI Agents](../help/USING_WITH_AGENTS.md)
+- Human TOC: [Using With AI Agents](../help/USING_WITH_AGENTS.md)

@@ -36,9 +36,10 @@ Then you:
 
 1. Correct overview, Document Map, Tooling, and Human-TODO.
 2. Review draft `-Understanding.md` files before implementation.
-3. Optionally install the modular doc rule — *Follow `docs/templates/agent/RULE_INSTALL.md`* — or copy paths from [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md).
+3. Optionally install the modular doc rule — *Follow `docs/templates/agent/RULE_INSTALL.md`* (dispatches to [`../agent/tools/`](../agent/tools/README.md)).
+4. Optionally enable **doc roles** (Understanding author, etc.) — bootstrap asks; details: [`../agent/roles/README.md`](../agent/roles/README.md).
 
-**Cursor:** If you use **Compound Engineering** or **Superpowers**, disable them for this workspace — they often override the modular docs rule. Details: [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md#cursor).
+**Cursor:** Disable **Compound Engineering** / **Superpowers** if they override the modular rule — [`../agent/tools/cursor.md`](../agent/tools/cursor.md). **Grok Build:** roles go under `.grok/agents/` — [`../agent/tools/grok-build.md`](../agent/tools/grok-build.md).
 
 ---
 
@@ -71,8 +72,9 @@ Naming and Path A/B: [`../agent/Modular_Docs_Workflow.md`](../agent/Modular_Docs
 | Goal | Go here |
 |------|---------|
 | Day-to-day (chat → docs, mid-build ideas, design docs) | [`USAGE.md`](USAGE.md) |
+| Optional roles (intent-first Understanding, implement, sync) | [`../agent/roles/README.md`](../agent/roles/README.md) |
 | Describing UI / scope (esp. if new to software) | [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md) |
-| Rule paths per tool | [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md) |
+| Rule / harness install (Cursor, Grok Build, …) | [`../agent/tools/README.md`](../agent/tools/README.md) · human TOC: [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md) |
 | Brainstorm in Grok/ChatGPT before a repo | [`../chat-ui/README.md`](../chat-ui/README.md) |
 | Later: refresh the pack | *Update the doc templates…* — [`TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md) / [`CHANGELOG.md`](../CHANGELOG.md). If your pack is pre-**1.2** (no sync file), copy `docs/templates/` once first. |
 | Version-only ping | *Check for template updates* — [`TEMPLATE_UPDATE_CHECK.md`](../agent/TEMPLATE_UPDATE_CHECK.md) |

@@ -6,12 +6,19 @@ version: 1
 # One entry per tool. Status: installed | declined
 # Do not ask again for a tool when status is installed or declined
 # unless the user explicitly requests install/reinstall for that tool.
+# Install/refresh: open docs/templates/agent/tools/<key>.md only.
 
 tools:
   cursor:
     status: installed
     recorded: 2026-06-12
     path: .cursor/rules/modular-documentation.mdc
+
+  grok-build:
+    status: installed
+    recorded: 2026-07-18
+    path: AGENTS.md
+    note: Documentation workflow section; doc roles under .grok/agents/
 
   github-copilot:
     status: declined
@@ -23,6 +30,12 @@ tools:
   #   recorded: 2026-06-12
   #   path: .claude/rules/modular-documentation.md
 
+  # agents-md:
+  #   status: installed
+  #   recorded: 2026-06-12
+  #   path: AGENTS.md
+  #   note: Documentation workflow section only
+
   # continue:
   #   status: declined
   #   recorded: 2026-06-12
@@ -32,15 +45,8 @@ tools:
   #   recorded: 2026-06-12
   #   path: .clinerules/modular-documentation.md
 
-  # agents-md:
-  #   status: installed
-  #   recorded: 2026-06-12
-  #   path: AGENTS.md
-  #   note: Documentation workflow section only
-
 # Optional pack rules (not the main modular-docs rule). Status: enabled | declined
-# "enabled" means install Template_Update_Check for each tool that has tools.*.status: installed
-# Bootstrap Step 4b records this; RULE_INSTALL installs the files.
+# Bootstrap Step 4b / 4c records these; each tools/<key>.md installs matching artifacts.
 
 optional_rules:
   template-update-check:
@@ -48,4 +54,11 @@ optional_rules:
     recorded: 2026-07-16
     # paths:
     #   cursor: .cursor/rules/template-update-check.mdc
-    #   github-copilot: .github/instructions/template-update-check.instructions.md
+    #   grok-build: AGENTS.md (Template update check section)
+
+  doc-roles:
+    status: enabled
+    recorded: 2026-07-18
+    # paths:
+    #   cursor: .cursor/agents/
+    #   grok-build: .grok/agents/

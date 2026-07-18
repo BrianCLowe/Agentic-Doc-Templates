@@ -1,216 +1,56 @@
 # Using These Templates With AI Coding Agents
 
-The modular documentation **workflow is tool-agnostic**. The rule content is the same everywhere: read `docs/Master_Index.md` (Sections 1–3), follow `docs/templates/agent/Modular_Docs_Workflow.md` for procedure, update TODOs after changes.
+The modular documentation **workflow is tool-agnostic**. What differs is **where each harness expects instructions**.
 
-What differs is **where each tool expects instructions** and how reliably it follows them. No agent treats project rules like a linter — they are guidance loaded into context, not hard enforcement.
+**Agents:** Install via [`../agent/RULE_INSTALL.md`](../agent/RULE_INSTALL.md) — ask which tools, record `docs/rule-install-status.yaml`, then open **only** [`../agent/tools/<key>.md`](../agent/tools/README.md) for each confirmed tool.
 
-**Installing the rule:** Agents should follow [`../agent/RULE_INSTALL.md`](../agent/RULE_INSTALL.md) — ask which tool(s) you use, record the answer in `docs/rule-install-status.yaml` (so each tool is only asked once), never overwrite existing instructions without confirmation, and support multiple tools on the same repo without conflict.
+**Humans:** Use the table below. Detailed install/verify steps live in the tool playbooks (single source of truth — do not duplicate long essays here).
 
-**Optional — template update checks:** Bootstrap asks whether to enable a weekly upstream version ping (tiny `docs/upstream-status.yaml` + optional rule). Negligible token cost; procedure: [`../agent/TEMPLATE_UPDATE_CHECK.md`](../agent/TEMPLATE_UPDATE_CHECK.md).
+## Tool index
 
-## Quick reference
+| Tool | Status key | Agent install playbook | Rule lands in |
+|------|------------|------------------------|---------------|
+| [Cursor](https://cursor.com) | `cursor` | [`../agent/tools/cursor.md`](../agent/tools/cursor.md) | `.cursor/rules/` |
+| [Grok Build](https://docs.x.ai/build/overview) | `grok-build` | [`../agent/tools/grok-build.md`](../agent/tools/grok-build.md) | `AGENTS.md` / `.grok/rules/` · roles → `.grok/agents/` |
+| [GitHub Copilot](https://github.com/features/copilot) | `github-copilot` | [`../agent/tools/github-copilot.md`](../agent/tools/github-copilot.md) | `.github/instructions/` |
+| [Claude Code](https://code.claude.com) | `claude-code` | [`../agent/tools/claude-code.md`](../agent/tools/claude-code.md) | `.claude/rules/` or `CLAUDE.md` |
+| Cross-tool [`AGENTS.md`](https://agents.md/) | `agents-md` | [`../agent/tools/agents-md.md`](../agent/tools/agents-md.md) | root `AGENTS.md` |
+| [Continue](https://continue.dev) | `continue` | [`../agent/tools/continue.md`](../agent/tools/continue.md) | `.continue/rules/` |
+| [Cline](https://cline.bot) | `cline` | [`../agent/tools/cline.md`](../agent/tools/cline.md) | `.clinerules/` |
+| Chat UI (no repo) | — | [`../chat-ui/README.md`](../chat-ui/README.md) | Attach `chat-ui/AGENT.md` only |
 
-| Tool | Where to put the rule | Template file |
-|------|------------------------|---------------|
-| [Cursor](https://cursor.com) | `.cursor/rules/` | [`../agent/Modular_Documentation_Rule.mdc`](../agent/Modular_Documentation_Rule.mdc) |
-| [GitHub Copilot](https://github.com/features/copilot) (VS Code) | `.github/copilot-instructions.md` or `.github/instructions/` | [`../agent/Modular_Documentation_Rule.instructions.md`](../agent/Modular_Documentation_Rule.instructions.md) |
-| [Claude Code](https://code.claude.com) | `CLAUDE.md` or `.claude/rules/` | Copy rule body into a new `.md` file |
-| [Continue](https://continue.dev) | `.continue/rules/` | Copy rule body; use Cursor-style frontmatter |
-| [Cline](https://cline.bot) | `.clinerules/` or `.cline/rules/` | Copy rule body into a new `.md` file |
-| [Grok.com / ChatGPT / Claude web](../chat-ui/README.md) | Attach [`../chat-ui/AGENT.md`](../chat-ui/AGENT.md) only | Short chat-only instructions — save-as output |
-| [Grok Build](https://x.ai/news/grok-build-cli) | `AGENTS.md` (also reads `CLAUDE.md`) | Copy rule body into `AGENTS.md` |
-| [OpenAI Codex](https://developers.openai.com/codex) | `AGENTS.md` | Copy rule body into `AGENTS.md` |
-| Cross-tool (recommended) | Root `AGENTS.md` | Copy rule body — see below |
+**Recommended:** `agents-md` (shared baseline) **plus** the tool-specific playbook for your daily harness.
 
-Tools change quickly. If a path above stops working, check that tool's docs for "custom instructions", "rules", or `AGENTS.md` support.
+The modular rule guards itself: *"If `docs/Master_Index.md` does not exist, ignore this entire rule."*
 
-## Recommended approach: one rule, two layers
+## Optional extras
 
-1. **Cross-tool:** Add the rule to root [`AGENTS.md`](https://agents.md/) so Copilot, Claude Code, Grok Build, Cline, and others that read it get the same baseline.
-2. **Tool-specific:** Copy the matching template file when a tool needs its own format (Cursor `.mdc`, Copilot `.instructions.md`, etc.).
+| Extra | What | Where |
+|-------|------|--------|
+| Template update check | Weekly upstream `VERSION` ping | Bootstrap Step 4b · [`../agent/TEMPLATE_UPDATE_CHECK.md`](../agent/TEMPLATE_UPDATE_CHECK.md) |
+| Doc roles | Understanding author, implementer, … | Bootstrap Step 4c · [`../agent/roles/README.md`](../agent/roles/README.md) — Cursor → `.cursor/agents/`; Grok Build → `.grok/agents/` |
 
-The rule already guards itself: *"If `docs/Master_Index.md` does not exist, ignore this entire rule."* That makes it safe to install before a project has adopted modular docs.
+Parent agents **orchestrate** role delegation when asks match; `/` commands are optional. Role playbooks stay under `roles/*.md` — never paste them into always-on rules.
 
----
+## Cursor conflict note
 
-## GitHub Copilot (VS Code)
+**Compound Engineering** and **Superpowers** often override the modular rule. Disable them for workspaces that rely on this pack. Details: [`../agent/tools/cursor.md`](../agent/tools/cursor.md).
 
-Copilot uses **custom instructions**, not Cursor-style rules. They apply to **Chat and Agent mode**, not inline autocomplete as you type.
+## Grok Build note
 
-**Option A — project-wide (simplest at work):**  
-Paste the rule into `.github/copilot-instructions.md` at the repo root.
-
-**Option B — scoped file:**  
-Copy [`../agent/Modular_Documentation_Rule.instructions.md`](../agent/Modular_Documentation_Rule.instructions.md) to `.github/instructions/modular-documentation.instructions.md`.
-
-Ensure `.github/instructions` is enabled in workspace settings if needed:
-
-```json
-"chat.instructionsFilesLocations": {
-  ".github/instructions": true
-}
-```
-
-**Tips:**
-- Run `/init` in Copilot Chat to scaffold a starter instructions file, then add the modular docs section.
-- If you open a subfolder of a monorepo, enable `chat.useCustomizationsInParentRepositories` so root instructions are discovered.
-- Copilot may still need an occasional nudge: *"Follow the modular docs workflow — start from Master_Index."*
-
-Docs: [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
-
----
-
-## Cursor
-
-Copy [`../agent/Modular_Documentation_Rule.mdc`](../agent/Modular_Documentation_Rule.mdc) to `.cursor/rules/`.
-
-The file uses `alwaysApply: true` so the rule is included every session. To scope it to documentation work only, set `alwaysApply: false` and add `globs: docs/**` — but for this workflow, always-on is usually better because the rule applies *before* you open a doc file.
-
-### Known conflict: Compound Engineering & Superpowers
-
-Cursor plugins **Compound Engineering** and **Superpowers** ship always-on / aggressively invoked skills that often **misdirect** the agent away from this pack’s Cursor rule. Typical symptoms: the agent never opens `Master_Index.md`, follows a different plan/brainstorm workflow, or skips Understanding and TODO updates.
-
-**Recommendation:** For workspaces that use Agentic Doc Templates, disable those plugins (or their auto-invoked skills). The modular docs rule alone is enough; competing skill packs fight it for control of the session.
-
----
-
-## Claude Code
-
-Copy the rule body into either:
-
-- **`CLAUDE.md`** at the project root (team-shared, simple), or
-- **`.claude/rules/modular-documentation.md`** (modular; supports path-scoped frontmatter)
-
-Run `/init` to generate a starter `CLAUDE.md`, then add the modular docs section. Use `/memory` to verify what loaded.
-
-Keep instruction files concise — long files compete with other context. This rule is short enough to include whole.
-
-Docs: [Claude Code memory](https://code.claude.com/docs/en/memory)
-
----
-
-## Continue.dev
-
-Create `.continue/rules/modular-documentation.md` with the rule body and frontmatter:
-
-```markdown
----
-name: Modular Documentation
-description: Read Master_Index first; use feature TODOs as living task lists
-alwaysApply: true
----
-```
-
-Rules in `.continue/rules/` load automatically for that workspace.
-
-Docs: [Continue rules](https://docs.continue.dev/customize/deep-dives/rules)
-
----
-
-## Cline
-
-Copy the rule into `.clinerules/modular-documentation.md` (or `.cline/rules/` depending on your Cline version).
-
-Optional path scoping via frontmatter:
-
-```markdown
----
-paths:
-  - "docs/**"
----
-```
-
-Rules without frontmatter are always active. Cline also reads root `AGENTS.md` for cross-tool compatibility.
-
-Docs: [Cline rules](https://docs.cline.bot/customization/cline-rules)
-
----
-
-## Grok.com / chat UI (no workspace)
-
-When brainstorming in **Grok.com**, ChatGPT, Claude web, or similar — **before you have a repo** or when the agent cannot write files — do **not** attach the whole `docs/templates/` folder. Too many files dilute focus; use the short chat pack instead.
-
-**Use instead:**
-
-| Priority | File |
-|----------|------|
-| **Required** | [`../chat-ui/AGENT.md`](../chat-ui/AGENT.md) — flat paths, file set table, save-as output format |
-| Optional | `../Master_Index_Template.md`, `../Feature_Understanding_Template.md` |
-
-Human guide: [`../chat-ui/README.md`](../chat-ui/README.md). Workflows: [`USAGE.md`](USAGE.md) Pattern 1.
-
-**Example prompt:**
-
-> Follow `AGENT.md`. Turn our conversation into modular docs for [app name]. Each file must start with **Save as:** `docs/...` so I can download them. Draft `-Understanding.md` first.
-
-After you paste files into your project, copy `docs/templates/` and use IDE rules or Grok Build below for ongoing work.
-
----
-
-## Grok Build
-
-Grok Build picks up **`AGENTS.md`** and **`CLAUDE.md`** from the repo automatically. Add the rule to root `AGENTS.md` (or a section in `CLAUDE.md`).
-
-Run `grok inspect` in the project to see which instruction sources were discovered.
-
-Docs: [Grok Build overview](https://docs.x.ai/build/overview)
-
----
-
-## OpenClaw
-
-OpenClaw is a different category: a **personal agent gateway** (chat channels, cron, skills) configured mainly via `~/.openclaw/openclaw.json` and per-agent `agent.md` files — not typical repo-local coding rules.
-
-If you use OpenClaw to work on a codebase, point its agent workspace at your repo and add the modular docs workflow to that agent's identity/instructions manually. There is no standard `.openclaw/rules/` drop-in equivalent to Cursor or Copilot today.
-
-Docs: [OpenClaw configuration](https://docs.openclaw.ai/gateway/configuration)
-
----
-
-## AGENTS.md (cross-tool)
-
-[`AGENTS.md`](https://agents.md/) is plain Markdown with no required frontmatter. Many tools read it automatically. A minimal project file might look like:
-
-```markdown
-# AGENTS.md
-
-## Documentation workflow
-
-[Paste the Modular Documentation Rule section here]
-
-## Build and test
-
-[Your project commands]
-```
-
-For monorepos, nested `AGENTS.md` files in subfolders can override or extend root rules.
-
----
+`.cursor/agents/` is **not** a Grok spawn path. Use [`../agent/tools/grok-build.md`](../agent/tools/grok-build.md) so doc roles install under `.grok/agents/`.
 
 ## What to expect
 
 | Expectation | Reality |
 |-------------|---------|
 | Agent always reads Master_Index first | Usually, if the rule is loaded — not guaranteed |
-| Agent always updates TODOs | Works best when the rule is active *and* you remind it at session end |
-| Same behavior across tools | Similar, not identical — each tool merges instructions differently |
-| Rules affect inline autocomplete | Generally **no** (Copilot inline, etc.) — chat/agent sessions only |
-
-Treat the rule as **institutional memory for the agent**, not a substitute for good prompts on complex tasks.
-
----
+| Agent always updates TODOs | Best when the rule is active *and* you remind at session end |
+| Same behavior across tools | Similar, not identical |
+| Rules affect inline autocomplete | Generally **no** — chat/agent sessions only |
 
 ## Updating from this repo
 
-You can just ask the agent to update the doc templates. It follows [`../agent/TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md):
+Ask: *Update the doc templates from Agentic Doc Templates and sync our live docs.* — [`../agent/TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md).
 
-1. **Overwrite the pack** — Replace the **entire** project `docs/templates/` from upstream (ZIP/copy). No per-file diffs. Do **not** use git to update live docs from upstream.
-2. **Read the top** [`CHANGELOG.md`](../CHANGELOG.md) **entry** — do only what its Live impact tags / Step B line say (usually versions + Master Index; not every live feature file).
-3. **Rules** — Update installed copies if the changelog tags `rules` and the rule body changed (including the optional Template Update Check rule if enabled).
-4. **TODO / Understanding format** — Add missing sections from the local templates **only** when the changelog tags `content-templates`.
-
-**Example:** *Update the doc templates from Agentic Doc Templates and sync our live docs.*
-
-To only see if a newer pack exists (no ZIP): *Check for template updates.* — [`../agent/TEMPLATE_UPDATE_CHECK.md`](../agent/TEMPLATE_UPDATE_CHECK.md).
-
-Keep tool-specific rule copies in sync, or maintain a single `AGENTS.md` section and copy to tool paths if your team uses multiple agents.
+When the changelog tags `rules`, refresh **only** tools with `status: installed` by re-opening each `tools/<key>.md`. Version-only ping: *Check for template updates.* — [`../agent/TEMPLATE_UPDATE_CHECK.md`](../agent/TEMPLATE_UPDATE_CHECK.md).

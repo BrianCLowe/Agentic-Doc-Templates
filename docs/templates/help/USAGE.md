@@ -105,10 +105,14 @@ API keys, cloud bots, vendor accounts → `docs/Human-TODO.md`. Agent drafts row
 | Bootstrap | *Bootstrap modular docs using `docs/templates/agent/BOOTSTRAP.md`.* |
 | Install rule | *Follow `docs/templates/agent/RULE_INSTALL.md` for [tool].* |
 | Sync pack | *Update the doc templates from Agentic Doc Templates and sync our live docs.* |
+| Optional role — intent | *Draft Understanding for [Feature] from what I said — I’ll review.* (main agent delegates if subagents installed) |
+| Optional role — build | *Continue from Current focus.* |
+| Optional role — graduate | *Understanding confirmed — graduate to the spec.* |
+| Force a subagent | `/understanding-author` … *(optional; usually unnecessary)* |
 | Tooling | *Install the project tooling for this machine.* |
 | Human TODO | *What’s left on the human TODO?* |
 
-Tool install paths: [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md).
+Optional roles (opt-in, never always-on): [`../agent/roles/README.md`](../agent/roles/README.md). Tool install paths: [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md).
 
 ---
 

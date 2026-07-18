@@ -107,8 +107,10 @@ Source of truth is **on disk** under `docs/templates/`. Do **not** re-fetch from
 | `TODO_Template.md` | Each `*-TODO.md` — add missing blocks only | `content-templates` |
 | `Tooling_Template.md` | `docs/Tooling.md` — create if missing; add sections only | `content-templates` |
 | `Human_TODO_Template.md` | `docs/Human-TODO.md` — create if missing; add columns/sections only | `content-templates` |
-| `agent/Modular_Documentation_Rule.*` | Installed rule paths — ask before overwriting custom installs | `rules` |
-| `agent/Template_Update_Check_Rule.*` | Optional update-check installs — ask first | `rules` or `optional-upstream-check` |
+| `agent/Modular_Documentation_Rule.*` | Installed rule paths — refresh via each `tools/<key>.md` for `status: installed` tools; ask before overwriting custom installs | `rules` |
+| `agent/Template_Update_Check_Rule.*` | Optional update-check — same dispatch | `rules` or `optional-upstream-check` |
+| `agent/tools/*.md` | Install/sync adapters — open only for tools already `installed` | `rules` |
+| `agent/roles/cursor/*.md` / `agent/roles/grok/*.md` | Optional subagents — via tool playbooks (`.cursor/agents/`, `.grok/agents/`, …) | `rules` when `optional_rules.doc-roles` is `enabled` |
 
 Versions:
 
@@ -120,7 +122,7 @@ Versions:
 1. **Versions** — Bump **Template version** / **Workflow version** (and `<!-- template-version -->` if present) in live `Master_Index.md` from local `VERSION`.
 2. **Master Index** *(if `master-index`)* — Read local `Master_Index_Template.md` + live `Master_Index.md`. Compare **headings / Key Locations / Document Map columns** only — not project prose. **Preserve** overview, Project Profile, Document Map rows (§3.0–3.4), user §3.0 exceptions, custom sections. **Adopt** new index sections, renumbers, Quick Start pointer. Update links from `templates/Modular_Docs_Workflow.md` → `templates/agent/Modular_Docs_Workflow.md` if still on the old path. §3.0: record only **user-stated** exceptions.
 3. **Content templates** *(if `content-templates` only)* — Add missing sections from local templates into live Understanding / Spec / TODO / Tooling / Human-TODO. Do not overwrite project content. Create `Tooling.md` / `Human-TODO.md` from templates when missing and link from Master Index. Ask before large rewrites across many files.
-4. **Rules** *(if `rules`)* — Update installed agent rules from local `docs/templates/agent/` if the rule body changed (ask first if customized).
+4. **Rules** *(if `rules`)* — For each tool with `tools.*.status: installed` in `docs/rule-install-status.yaml`, open **only** `docs/templates/agent/tools/<key>.md` and refresh that harness (ask first if customized). Do **not** open every tool file. If `optional_rules.doc-roles` is `enabled`, each tool playbook refreshes its agents folder. Remove any stale `.cursor/skills/modular-docs-*` leftovers from older pack drafts (ask first).
 5. **Upstream stamp** *(if `optional-upstream-check` or file exists)* — If `docs/upstream-status.yaml` exists: set `local_template_version` / `local_workflow_version` from local `VERSION`, `last_checked` today, clear `update_available` — do **not** delete the file. Refresh optional update-check rules if tagged `rules` / body changed (ask first if customized).
 6. **Layout migration** — Run [`BOOTSTRAP.md`](BOOTSTRAP.md) Step 0b **only** if layout markers show older layout (`docs/help/` or `docs/agent/` at docs root, or flat setup files in `templates/`). Skip on a normal modern pack refresh.
 7. **Summarize** pack refresh + live-doc updates; ask before large live-doc rewrites.

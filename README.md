@@ -4,7 +4,7 @@
 > Keep agents aligned with your intent across conversations, features, and long-running projects.
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-![Pack](https://img.shields.io/badge/Pack-2.4-blue)
+![Pack](https://img.shields.io/badge/Pack-2.5-blue)
 ![Built for](https://img.shields.io/badge/Built%20for-Cursor%20%7C%20Copilot%20%7C%20Claude%20Code%20%7C%20Grok-5865F2)
 
 ---
@@ -72,7 +72,7 @@ Everything ships under **`docs/templates/`**. Live project docs stay at `docs/` 
 |------|------|
 | **Scaffolds** | Master Index, Understanding, Spec, TODO, Tooling, Human-TODO, Decision templates |
 | **[`help/`](docs/templates/help/)** | Human guides — [SETUP](docs/templates/help/SETUP.md), [USAGE](docs/templates/help/USAGE.md), [IDEA_CAPTURE_TIPS](docs/templates/help/IDEA_CAPTURE_TIPS.md), [USING_WITH_AGENTS](docs/templates/help/USING_WITH_AGENTS.md) |
-| **[`agent/`](docs/templates/agent/)** | [`Modular_Docs_Workflow.md`](docs/templates/agent/Modular_Docs_Workflow.md), bootstrap, rule install, template sync, update check, Cursor/Copilot rule templates |
+| **[`agent/`](docs/templates/agent/)** | [`Modular_Docs_Workflow.md`](docs/templates/agent/Modular_Docs_Workflow.md), bootstrap, [`RULE_INSTALL`](docs/templates/agent/RULE_INSTALL.md) → per-tool [`tools/`](docs/templates/agent/tools/README.md), template sync; optional [`roles/`](docs/templates/agent/roles/README.md) (Cursor/Grok subagents — never always-on) |
 | **[`chat-ui/`](docs/templates/chat-ui/)** | Short instructions for Grok/ChatGPT (no workspace) |
 | **[`VERSION`](docs/templates/VERSION)** / **[`CHANGELOG.md`](docs/templates/CHANGELOG.md)** | Cheap upstream compare + sync scope after a pack refresh |
 
@@ -117,6 +117,7 @@ Deeper day-to-day patterns: [`docs/templates/help/USAGE.md`](docs/templates/help
 
 - *Bootstrap modular docs using `docs/templates/agent/BOOTSTRAP.md`.*
 - *Draft Understanding for [feature] from what I said — I’ll review.*
+- *Draft Understanding for [feature] from what I said — I’ll review.* *(main agent delegates to Understanding author subagent if installed)*
 - *Update the doc templates from Agentic Doc Templates and sync our live docs.*
 - *Check for template updates.*
 - *Follow `chat-ui/AGENT.md` — turn our conversation into modular docs with Save-as paths.*
