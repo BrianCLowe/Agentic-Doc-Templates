@@ -37,7 +37,7 @@
   - `help/USAGE.md` — deduped tips; patterns kept; bootstrap/sync shortened to point at SETUP/CHANGELOG
   - `help/USING_WITH_AGENTS.md` — sync wording (inventory links unchanged in role)
   - `help/IDEA_CAPTURE_TIPS.md`, `chat-ui/README.md` — full chat history tip; save under `docs/reference/`
-  - Root `README.md` — rewritten landing page (how it works → get started → stay current; less inventory dump)
+  - Root `README.md` — rewritten landing page (how it works → get started → stay current; less inventory dump); Stay current caveat for packs before TEMPLATE_SYNC (pre-1.2)
   - Root `CONTRIBUTING.md` — changelog maintenance; maintainer note: write agent instructions for off-road / thorough models
 - **Unchanged content templates:** Feature_Understanding, Feature_Spec, TODO, Tooling, Human_TODO, Decision
 - **Step B:** Bump Master Index versions to 2.4; adopt Key Locations / At a Glance deltas (CHANGELOG, `reference/`, tight scope, **empty `_shared/` OK**); refresh installed modular rules if user wants (bodies changed); do **not** scan live feature/shared docs; do **not** invent new `_shared/` rows during sync. **`docs/templates/agent/upstream/`** attribution copies (README / LICENSE / CONTRIBUTING) may be **intentionally deleted** by the user (common after Claude/bootstrap cleanup) — do **not** treat that as a broken pack or re-download / restore those files; sync does not require them

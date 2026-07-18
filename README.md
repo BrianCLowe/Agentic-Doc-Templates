@@ -52,11 +52,13 @@ Attach only [`docs/templates/chat-ui/AGENT.md`](docs/templates/chat-ui/AGENT.md)
 
 ## Stay current
 
-You do not need to copy files by hand when this repo improves. In a project that already has `docs/templates/`:
+Once your project has the sync playbook (`docs/templates/agent/TEMPLATE_SYNC.md`, added in pack **1.2**), you do not need to copy files by hand when this repo improves. Ask:
 
 > Update the doc templates from Agentic Doc Templates and sync our live docs.
 
-The agent overwrites the pack (ZIP/copy), then follows [`docs/templates/CHANGELOG.md`](docs/templates/CHANGELOG.md) for what to change in live docs — usually versions and Master Index, not a rewrite of every feature file. Procedure: [`TEMPLATE_SYNC.md`](docs/templates/agent/TEMPLATE_SYNC.md).
+The agent overwrites the pack (ZIP/copy), then follows [`docs/templates/CHANGELOG.md`](docs/templates/CHANGELOG.md) for what to change in live docs — usually versions and Master Index, not a rewrite of every feature file.
+
+**One-time catch-up:** If your `docs/templates/` is from **before 1.2** (no `agent/TEMPLATE_SYNC.md`), copy or replace that folder from this repo once — or tell the agent to — so the sync instructions exist locally. After that, the ask above is enough.
 
 Version-only ping (optional weekly rule): *Check for template updates.* — [`TEMPLATE_UPDATE_CHECK.md`](docs/templates/agent/TEMPLATE_UPDATE_CHECK.md).
 

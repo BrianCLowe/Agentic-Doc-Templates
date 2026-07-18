@@ -74,7 +74,7 @@ Naming and Path A/B: [`../Modular_Docs_Workflow.md`](../Modular_Docs_Workflow.md
 | Describing UI / scope (esp. if new to software) | [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md) |
 | Rule paths per tool | [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md) |
 | Brainstorm in Grok/ChatGPT before a repo | [`../chat-ui/README.md`](../chat-ui/README.md) |
-| Later: refresh the pack | *Update the doc templates…* — [`TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md) / [`CHANGELOG.md`](../CHANGELOG.md) |
+| Later: refresh the pack | *Update the doc templates…* — [`TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md) / [`CHANGELOG.md`](../CHANGELOG.md). If your pack is pre-**1.2** (no sync file), copy `docs/templates/` once first. |
 | Version-only ping | *Check for template updates* — [`TEMPLATE_UPDATE_CHECK.md`](../agent/TEMPLATE_UPDATE_CHECK.md) |
 
 After bootstrap, skim `docs/Human-TODO.md` for API keys / accounts only you can complete.

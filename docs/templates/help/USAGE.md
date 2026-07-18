@@ -66,7 +66,9 @@ Full copy-vs-whole-repo notes and layout: [`SETUP.md`](SETUP.md). Optional rules
 
 > Update the doc templates from Agentic Doc Templates and sync our live docs.
 
-Agent overwrites `docs/templates/`, then follows the top [`CHANGELOG.md`](../CHANGELOG.md) entry (usually versions + Master Index — not every feature file). Procedure: [`TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md).
+Agent overwrites `docs/templates/`, then follows the top [`CHANGELOG.md`](../CHANGELOG.md) entry (usually versions + Master Index — not every feature file). Procedure: [`TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md) (in the pack since **1.2**).
+
+**Before 1.2:** If `docs/templates/agent/TEMPLATE_SYNC.md` is missing, copy/replace `docs/templates/` from this repo once (or ask the agent to), then use the sync ask for later updates.
 
 Version check only: *Check for template updates.* — [`TEMPLATE_UPDATE_CHECK.md`](../agent/TEMPLATE_UPDATE_CHECK.md).
 
