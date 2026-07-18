@@ -1,7 +1,8 @@
 # Tool install — Cursor
 
 > **Status key:** `cursor`  
-> Open only when installing or refreshing Cursor for this repo.
+> Open only when installing or refreshing Cursor for this repo.  
+> Docs: [Rules](https://cursor.com/docs/context/rules) · [Subagents](https://cursor.com/docs/subagents)
 
 ## Modular rule
 

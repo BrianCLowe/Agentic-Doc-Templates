@@ -13,6 +13,7 @@ Each file is an **install/sync adapter**: where the modular rule goes, optional 
 | `claude-code` | [`claude-code.md`](claude-code.md) | yes |
 | `github-copilot` | [`github-copilot.md`](github-copilot.md) | yes |
 | `agents-md` | [`agents-md.md`](agents-md.md) | yes |
+| `openclaw` | [`openclaw.md`](openclaw.md) | yes |
 | `continue` | [`continue.md`](continue.md) | thin |
 | `cline` | [`cline.md`](cline.md) | thin |
 

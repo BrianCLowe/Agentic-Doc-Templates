@@ -26,7 +26,7 @@
   - `agent/roles/cursor/*.md` — Cursor **subagent** adapters → `.cursor/agents/` ([subagents docs](https://cursor.com/docs/subagents)); gated “Use when …”; not Agent Skills
   - `agent/roles/grok/*.md` — **(new)** Grok Build subagent adapters → `.grok/agents/`
   - `agent/roles/README.md` — harness adapter table (Cursor vs Grok vs Claude)
-  - `agent/tools/` — **(new)** per-tool install/sync playbooks (`cursor`, `grok-build`, `claude-code`, `github-copilot`, `agents-md`, thin `continue`/`cline`) + `README.md`
+  - `agent/tools/` — **(new)** per-tool install/sync playbooks (`cursor`, `grok-build`, `claude-code`, `github-copilot`, `agents-md`, `openclaw`, thin `continue`/`cline`) + `README.md`; paths checked against vendor docs (Claude `AGENTS.md` caveat; Grok verify agents via `grok inspect`)
   - `agent/RULE_INSTALL.md` — router: ask/status yaml → open only `tools/<key>.md`; `optional_rules.doc-roles`
   - `agent/BOOTSTRAP.md` — Step 4c doc roles; installs via tool playbooks
   - `agent/TEMPLATE_SYNC.md` — rules refresh dispatches per installed tool; doc-roles via harness folders

@@ -1,27 +1,30 @@
 # Tool install — Cline *(thin)*
 
 > **Status key:** `cline`  
-> Open only when installing or refreshing Cline for this repo.
+> Open only when installing or refreshing Cline for this repo.  
+> Docs: [Rules](https://docs.cline.bot/customization/cline-rules)
 
 ## Modular rule
 
 | | |
 |--|--|
-| **Source** | Rule body from `docs/templates/agent/Modular_Documentation_Rule.mdc` (strip Cursor frontmatter; optional Cline `paths` frontmatter) |
-| **Install to** | `.clinerules/modular-documentation.md` or `.cline/rules/modular-documentation.md` |
+| **Source** | Rule body from `docs/templates/agent/Modular_Documentation_Rule.mdc` (strip Cursor frontmatter; optional `paths` frontmatter for conditional rules) |
+| **Install to** | `.clinerules/modular-documentation.md` *(primary — current Cline docs)* |
+| **Notes** | Cline also auto-detects `AGENTS.md` and some other tools’ rule files. Prefer `.clinerules/` for pack-owned installs. |
 
 ## Optional — Template update check
 
-If enabled: matching path under `.clinerules/` or `.cline/rules/`.
+If enabled: `.clinerules/template-update-check.md`.
 
 ## Optional — Doc roles
 
-No first-class Cline agents folder in this pack. Follow role playbooks in-session. Cline also reads root `AGENTS.md` — consider [`agents-md.md`](agents-md.md).
+No first-class Cline agents folder in this pack. Follow role playbooks in-session. Consider [`agents-md.md`](agents-md.md) for a shared baseline.
 
 ## Verify
 
-- Rule file exists at the chosen Cline path
+- File exists under `.clinerules/`
+- Visible/toggled in Cline’s Rules panel
 
 ## For humans
 
-Docs: [Cline rules](https://docs.cline.bot/customization/cline-rules).
+Conditional rules use YAML `paths:` frontmatter (see Cline docs). Global personal rules live under the OS Documents `Cline/Rules` folder — not used by this pack.

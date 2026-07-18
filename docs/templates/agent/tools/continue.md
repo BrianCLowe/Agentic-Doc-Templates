@@ -1,14 +1,16 @@
 # Tool install — Continue.dev *(thin)*
 
 > **Status key:** `continue`  
-> Open only when installing or refreshing Continue for this repo.
+> Open only when installing or refreshing Continue for this repo.  
+> Docs: [Rules](https://docs.continue.dev/customize/deep-dives/rules)
 
 ## Modular rule
 
 | | |
 |--|--|
-| **Source** | Rule body from `docs/templates/agent/Modular_Documentation_Rule.mdc` + Continue-style frontmatter (`name`, `description`, `alwaysApply: true`) |
+| **Source** | Rule body from `docs/templates/agent/Modular_Documentation_Rule.mdc` + Continue Markdown frontmatter (`name`, `description`, `alwaysApply: true`) |
 | **Install to** | `.continue/rules/modular-documentation.md` |
+| **Notes** | Rules apply to Agent/Chat/Edit — not autocomplete. Prefer Markdown over legacy YAML. |
 
 ## Optional — Template update check
 

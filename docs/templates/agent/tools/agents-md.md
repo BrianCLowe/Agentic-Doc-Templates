@@ -1,9 +1,12 @@
 # Tool install — AGENTS.md (cross-tool)
 
 > **Status key:** `agents-md`  
-> Open only when installing or refreshing a root `AGENTS.md` documentation section.
+> Open only when installing or refreshing a root `AGENTS.md` documentation section.  
+> Spec: [agents.md](https://agents.md/) · Grok: [project rules](https://docs.x.ai/build/features/project-rules)
 
-Many harnesses read [`AGENTS.md`](https://agents.md/) (Grok Build, Codex, Claude Code, Cline, others). Useful as a **shared baseline** alongside tool-specific installs.
+Many harnesses read [`AGENTS.md`](https://agents.md/) (Grok Build, Codex, Cline, Cursor, Copilot, others). Useful as a **shared baseline** alongside tool-specific installs.
+
+**Claude Code caveat:** Claude loads `CLAUDE.md` / `.claude/rules/`, **not** `AGENTS.md` by default. If this section is the shared source of truth, add `@AGENTS.md` near the top of `CLAUDE.md` (see [Claude Code memory](https://code.claude.com/docs/en/memory#agentsmd)) or install via [`claude-code.md`](claude-code.md).
 
 ## Modular rule
 

@@ -15,6 +15,7 @@ The modular documentation **workflow is tool-agnostic**. What differs is **where
 | [GitHub Copilot](https://github.com/features/copilot) | `github-copilot` | [`../agent/tools/github-copilot.md`](../agent/tools/github-copilot.md) | `.github/instructions/` |
 | [Claude Code](https://code.claude.com) | `claude-code` | [`../agent/tools/claude-code.md`](../agent/tools/claude-code.md) | `.claude/rules/` or `CLAUDE.md` |
 | Cross-tool [`AGENTS.md`](https://agents.md/) | `agents-md` | [`../agent/tools/agents-md.md`](../agent/tools/agents-md.md) | root `AGENTS.md` |
+| [OpenClaw](https://docs.openclaw.ai/concepts/agent-workspace) | `openclaw` | [`../agent/tools/openclaw.md`](../agent/tools/openclaw.md) | workspace `AGENTS.md` (prefer project as workspace) |
 | [Continue](https://continue.dev) | `continue` | [`../agent/tools/continue.md`](../agent/tools/continue.md) | `.continue/rules/` |
 | [Cline](https://cline.bot) | `cline` | [`../agent/tools/cline.md`](../agent/tools/cline.md) | `.clinerules/` |
 | Chat UI (no repo) | — | [`../chat-ui/README.md`](../chat-ui/README.md) | Attach `chat-ui/AGENT.md` only |
@@ -39,6 +40,10 @@ Parent agents **orchestrate** role delegation when asks match; `/` commands are 
 ## Grok Build note
 
 `.cursor/agents/` is **not** a Grok spawn path. Use [`../agent/tools/grok-build.md`](../agent/tools/grok-build.md) so doc roles install under `.grok/agents/`.
+
+## OpenClaw note
+
+OpenClaw loads workspace bootstrap files (especially `AGENTS.md`), not `.cursor/rules/`. Prefer pointing the agent workspace at the **project root**, then install via [`../agent/tools/openclaw.md`](../agent/tools/openclaw.md). Do not confuse OpenClaw’s workspace `TOOLS.md` with project `docs/Tooling.md`.
 
 ## What to expect
 

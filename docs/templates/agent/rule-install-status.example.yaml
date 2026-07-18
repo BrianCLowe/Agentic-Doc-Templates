@@ -36,6 +36,12 @@ tools:
   #   path: AGENTS.md
   #   note: Documentation workflow section only
 
+  # openclaw:
+  #   status: installed
+  #   recorded: 2026-07-18
+  #   path: AGENTS.md
+  #   note: Workspace = project root; Documentation workflow section
+
   # continue:
   #   status: declined
   #   recorded: 2026-06-12

@@ -1,7 +1,8 @@
 # Tool install — GitHub Copilot (VS Code)
 
 > **Status key:** `github-copilot`  
-> Open only when installing or refreshing Copilot for this repo.
+> Open only when installing or refreshing Copilot for this repo.  
+> Docs: [Custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
 
 ## Modular rule
 

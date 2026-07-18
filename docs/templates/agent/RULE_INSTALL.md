@@ -20,6 +20,7 @@ After the user answers for a **specific tool**, create or update `docs/rule-inst
 | `github-copilot` | GitHub Copilot (VS Code) | [`tools/github-copilot.md`](tools/github-copilot.md) |
 | `claude-code` | Claude Code | [`tools/claude-code.md`](tools/claude-code.md) |
 | `agents-md` | Root `AGENTS.md` (cross-tool) | [`tools/agents-md.md`](tools/agents-md.md) |
+| `openclaw` | OpenClaw | [`tools/openclaw.md`](tools/openclaw.md) |
 | `continue` | Continue.dev | [`tools/continue.md`](tools/continue.md) |
 | `cline` | Cline | [`tools/cline.md`](tools/cline.md) |
 
