@@ -49,7 +49,7 @@ docs/
 | | `docs/_shared/ComponentName-Understanding.md` *(draft first)* |
 | | `docs/_shared/ComponentName-TODO.md` |
 | **Project entry** | `docs/Master_Index.md` *(overview + Document Map listing every path above)* |
-| **Human procurement** *(if keys/portals/accounts needed)* | `docs/Human-TODO.md` |
+| **Human inbox** *(procure / playtest / decide / waiting)* | `docs/Human-TODO.md` |
 
 Optional later (not required in chat): `-InEditor-TODO.md`, `-Asset-TODO.md`, `docs/Tooling.md`, `docs/decisions/`. Skip unless the user asks or the conversation clearly needs them.
 
@@ -80,7 +80,7 @@ Include:
 |-----------|------|---------------|------|
 | Block Editor | _shared/BlockEditor.md | _shared/BlockEditor-Understanding.md | _shared/BlockEditor-TODO.md |
 
-3. **Template version:** 2.5 · **Workflow version:** 2.5 *(for later sync with Agentic Doc Templates)*
+3. **Template version:** 2.6 · **Workflow version:** 2.6 *(for later sync with Agentic Doc Templates)*
 
 Use this **minimum** by default. Open [`Master_Index_Template.md`](../Master_Index_Template.md) only if the user asked for the full index section layout.
 
@@ -98,7 +98,7 @@ Set status `draft`. Do not treat the user as author — they **review and correc
 ## Spec and TODO
 
 - **Spec** (`FeatureName.md`): durable overview after Understanding is confirmed; can start as a short placeholder in chat sessions.
-- **TODO**: initial High Priority items from the conversation; include **Current focus** block at top (one next task).
+- **TODO**: initial High Priority items from the conversation; include **Current focus** block at top (one next task). Human-gated items (playtest, decide, procure, waiting) → dual-write owner TODO + `docs/Human-TODO.md` Open row.
 
 ## Rules
 

@@ -17,6 +17,21 @@
 
 ---
 
+## 2.6
+
+- **Live impact:** `content-templates`, `master-index`, `rules`, `process-docs-only`
+- **Files:**
+  - `VERSION` — 2.5 → 2.6
+  - `Human_TODO_Template.md` — human **inbox** (not procurement-only): kinds `procure` · `playtest` · `decide` · `waiting`; checkbox Open table; **index + owner** model; human chat phrases; agent dual-write + sync-on-feedback
+  - `TODO_Template.md` — Needs-a-human dual-write patterns; humans pointed at `Human-TODO.md` as inbox
+  - `agent/Modular_Docs_Workflow.md` — §13 rewritten (inbox, dual-write, repair); version 2.6
+  - `agent/Modular_Documentation_Rule.mdc` / `.instructions.md` — dual-write human-gated work; sync Human-TODO on user feedback
+  - `agent/roles/feature-implementer.md` — dual-write language
+  - `Master_Index_Template.md` — Human-TODO Key Locations / At a Glance / §3.3–3.4; versions 2.6; §13 anchor update
+  - `agent/BOOTSTRAP.md`, `help/USAGE.md`, `help/SETUP.md`, `chat-ui/AGENT.md`, `agent/upstream-status.example.yaml`
+  - Root `README.md` — pack 2.6; Human-TODO layout blurb
+- **Step B:** Bump Master Index versions to 2.6; adopt Human-TODO Key Locations / At a Glance / Document Map wording. Add missing sections/columns from `Human_TODO_Template.md` and `TODO_Template.md` into live `Human-TODO.md` / feature TODOs (**do not** wipe Open/Done content — merge Kind/Owner columns and Instructions). Refresh installed modular rules if user wants (bodies changed). Optionally repair dual-write: human-gated items that exist only on feature TODOs → add thin Open rows on `Human-TODO.md`. Do **not** invent new procure/waiting rows; do **not** mark human items done without user confirmation.
+
 ## 2.5
 
 - **Live impact:** `process-docs-only`, `master-index`, `rules`

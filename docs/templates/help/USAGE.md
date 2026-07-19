@@ -82,11 +82,17 @@ Keep `docs/Tooling.md` accurate. On a new machine:
 
 ---
 
-## Pattern 7 — Human procurement
+## Pattern 7 — Human inbox
 
-API keys, cloud bots, vendor accounts → `docs/Human-TODO.md`. Agent drafts rows; you complete them.
+Anything only you can close → `docs/Human-TODO.md`: procure, playtest/feel, decide/sign-off, external waiting. Agent **dual-writes** (owner feature TODO + inbox row). You work the Open list; tell the agent in chat when done or with feedback.
 
 > What’s left on the human TODO?
+
+> Checked Score Target — 10k feels a bit short.
+
+> Human TODO: done Tutorial walkthrough.
+
+> Still waiting on Steam; leave it open.
 
 > Add Azure Bot registration to Human-TODO — we’re blocked.
 
@@ -110,7 +116,7 @@ API keys, cloud bots, vendor accounts → `docs/Human-TODO.md`. Agent drafts row
 | Optional role — graduate | *Understanding confirmed — graduate to the spec.* |
 | Force a subagent | `/understanding-author` … *(optional; usually unnecessary)* |
 | Tooling | *Install the project tooling for this machine.* |
-| Human TODO | *What’s left on the human TODO?* |
+| Human TODO | *What’s left on the human TODO?* / *Checked [item] — [feedback].* |
 
 Optional roles (opt-in, never always-on): [`../agent/roles/README.md`](../agent/roles/README.md). Tool install paths: [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md).
 
@@ -125,7 +131,7 @@ Optional roles (opt-in, never always-on): [`../agent/roles/README.md`](../agent/
 | `docs/features/FeatureName.md` | Durable spec after confirm |
 | `docs/features/FeatureName-TODO.md` | Tasks + **Current focus** |
 | `docs/_shared/…` | Only for truly shared project pieces (may be empty) |
-| `docs/Tooling.md` / `docs/Human-TODO.md` | Machine tools / human procurement |
+| `docs/Tooling.md` / `docs/Human-TODO.md` | Machine tools / human inbox (procure · playtest · decide · waiting) |
 | `docs/reference/` | Source materials (not the living map) |
 | `docs/templates/` | Upstream pack — not live feature content |
 

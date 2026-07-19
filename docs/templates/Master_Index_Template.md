@@ -1,4 +1,4 @@
-<!-- template-version: 2.5 -->
+<!-- template-version: 2.6 -->
 
 > **Template reference.** Do not put project-specific content in this file. Copy to `docs/Master_Index.md` for initial setup, or diff against it when syncing template improvements into the live index. Never edit this template unless the user asks you to.
 >
@@ -8,8 +8,8 @@
 
 **Purpose**: Single entry point for **this project's** documentation — overview, locations, and Document Map. Read only the files relevant to the current task.
 
-**Template version**: 2.5 *(update when syncing from `templates/Master_Index_Template.md`)*  
-**Workflow version**: 2.5 *(must match `templates/agent/Modular_Docs_Workflow.md` — update both on sync)*
+**Template version**: 2.6 *(update when syncing from `templates/Master_Index_Template.md`)*  
+**Workflow version**: 2.6 *(must match `templates/agent/Modular_Docs_Workflow.md` — update both on sync)*
 
 ## 1. Project Overview
 
@@ -40,7 +40,7 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 | `docs/reference/` | Drop zone for design docs, PRDs, chat exports, legacy specs — not the living modular docs ([Workflow](templates/agent/Modular_Docs_Workflow.md)) |
 | `docs/reference/visuals/` | Optional inspiration screenshots before a feature exists |
 | `docs/Tooling.md` | Machine / workflow tools (not package deps) — install on a new machine ([`Tooling_Template.md`](templates/Tooling_Template.md)) |
-| `docs/Human-TODO.md` | Human procurement / external blockers (API keys, cloud bots, accounts) — agent cannot do these ([`Human_TODO_Template.md`](templates/Human_TODO_Template.md)) |
+| `docs/Human-TODO.md` | Human inbox — procure, playtest, decide, waiting (agent cannot close from assumptions) ([`Human_TODO_Template.md`](templates/Human_TODO_Template.md)) |
 | `docs/decisions/` | Optional cross-cutting decisions ([`Decision_Template.md`](templates/Decision_Template.md)) |
 | `docs/templates/` | Upstream template pack — scaffolds, `help/`, `agent/` (incl. [`Modular_Docs_Workflow.md`](templates/agent/Modular_Docs_Workflow.md), optional [`roles/`](templates/agent/roles/README.md), per-tool [`tools/`](templates/agent/tools/README.md)), `chat-ui/`; also [`VERSION`](templates/VERSION) and [`CHANGELOG.md`](templates/CHANGELOG.md) (Step B scope after sync) |
 | `docs/upstream-status.yaml` | Optional — weekly template update check stamp ([`TEMPLATE_UPDATE_CHECK.md`](templates/agent/TEMPLATE_UPDATE_CHECK.md)) |
@@ -52,7 +52,7 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 - **Tight scope:** paved path for the current ask only — no “just in case” audits of unrelated files or alternate interpretations before acting.
 - **Mermaid:** optional — agent may add a small diagram when it beats prose for structure/flow; do not splash charts everywhere.
 - **Tooling:** `docs/Tooling.md` lists machine tools (not package deps); on a new machine, user can ask to install them ([`Tooling_Template.md`](templates/Tooling_Template.md)).
-- **Human TODO:** `docs/Human-TODO.md` — accounts, keys, portal registrations the agent cannot complete ([`Human_TODO_Template.md`](templates/Human_TODO_Template.md); [Workflow §13](templates/agent/Modular_Docs_Workflow.md#13-human-todo-procurement--external-blockers)).
+- **Human TODO:** `docs/Human-TODO.md` — one inbox for procure / playtest / decide / waiting; index + owner dual-write ([`Human_TODO_Template.md`](templates/Human_TODO_Template.md); [Workflow §13](templates/agent/Modular_Docs_Workflow.md#13-human-todo-inbox--needs-a-human)).
 - **File layout:** flat sibling files — `features/FeatureName.md`, `FeatureName-Understanding.md`, `FeatureName-TODO.md` (same for `_shared/`) — see [Workflow §0](templates/agent/Modular_Docs_Workflow.md#0-naming--file-layout-read-before-creating-files).
 - No file should exceed ~800–1000 lines; split when bloated ([Workflow §8](templates/agent/Modular_Docs_Workflow.md#8-how-to-split-a-large-document)).
 - **Shared** only when something is actually shared across features — empty §3.1 / `_shared/` is fine. Do **not** invent shared rows or park engine/framework primers there ([Workflow §1](templates/agent/Modular_Docs_Workflow.md#1-shared-components--foundation-vs-consumption)). Real shared components get the **same note types as features** unless the **user** excepted them — record omissions in **§3.0** only after an explicit user request. Agents must not invent §3.0 or filler §3.1 rows.
@@ -97,7 +97,7 @@ Leave this table **empty** (or with a single “*(none yet)*” note) unless a p
 
 | Area          | TODO File |
 |---------------|-----------|
-| **Human / procurement** (API keys, Azure/Teams bots, accounts, purchases) | [Human-TODO.md](Human-TODO.md) |
+| **Human inbox** (procure, playtest, decide, waiting) | [Human-TODO.md](Human-TODO.md) |
 | Project-wide In-Editor work (DataAssets, Blueprints, custom inspectors, etc.) | [Project-InEditor-TODO.md](Project-InEditor-TODO.md) |
 | Project-wide Assets & Content | [Project-Asset-TODO.md](Project-Asset-TODO.md) |
 
@@ -105,7 +105,7 @@ Leave this table **empty** (or with a single “*(none yet)*” note) unless a p
 
 | Document | Description |
 |----------|-------------|
-| [Human-TODO.md](Human-TODO.md) | Human procurement checklist — agent drafts rows; you complete ([`Human_TODO_Template.md`](templates/Human_TODO_Template.md)) |
+| [Human-TODO.md](Human-TODO.md) | Human inbox — agent dual-writes rows; you complete / give feedback in chat ([`Human_TODO_Template.md`](templates/Human_TODO_Template.md)) |
 | [Tooling.md](Tooling.md) | Machine / workflow tools — install on a new machine ([`Tooling_Template.md`](templates/Tooling_Template.md)) |
 | [decisions/](decisions/) | Optional cross-cutting decision files ([`Decision_Template.md`](templates/Decision_Template.md)) |
 | [reference/LegacySpec.md](reference/LegacySpec.md) | Older detailed spec (read only when needed) |

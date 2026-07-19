@@ -49,7 +49,7 @@ Then you:
 docs/
 ├── Master_Index.md              ← project map (you maintain)
 ├── Tooling.md                   ← machine tools (not package deps)
-├── Human-TODO.md                ← keys, portals, accounts (human only)
+├── Human-TODO.md                ← human inbox (procure, playtest, decide, waiting)
 ├── rule-install-status.yaml     ← when agent rules are installed
 ├── upstream-status.yaml         ← optional weekly template update ping
 ├── reference/                   ← design docs, chat exports, PRDs, legacy specs
@@ -79,7 +79,7 @@ Naming and Path A/B: [`../agent/Modular_Docs_Workflow.md`](../agent/Modular_Docs
 | Later: refresh the pack | *Update the doc templates…* — [`TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md) / [`CHANGELOG.md`](../CHANGELOG.md). If your pack is pre-**1.2** (no sync file), copy `docs/templates/` once first. |
 | Version-only ping | *Check for template updates* — [`TEMPLATE_UPDATE_CHECK.md`](../agent/TEMPLATE_UPDATE_CHECK.md) |
 
-After bootstrap, skim `docs/Human-TODO.md` for API keys / accounts only you can complete.
+After bootstrap, skim `docs/Human-TODO.md` — your inbox for keys, playtests, decisions, and external waiting.
 
 ---
 

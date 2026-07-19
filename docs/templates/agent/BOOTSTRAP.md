@@ -82,7 +82,7 @@ Create if missing:
 docs/
 ├── Master_Index.md          ← from Master_Index_Template.md (Step 3)
 ├── Tooling.md               ← from Tooling_Template.md (Step 3b — machine tools)
-├── Human-TODO.md            ← from Human_TODO_Template.md (Step 3d — human procurement)
+├── Human-TODO.md            ← from Human_TODO_Template.md (Step 3c — human inbox)
 ├── rule-install-status.yaml ← only when RULE_INSTALL runs later
 ├── upstream-status.yaml     ← only when weekly template update checks are enabled (Step 4b)
 ├── _shared/
@@ -151,10 +151,10 @@ If it already exists → do not overwrite; offer to update rows when the stack c
 If `docs/Human-TODO.md` does not exist:
 
 1. Copy from `docs/templates/Human_TODO_Template.md`.
-2. Add rows for any accounts, API keys, portal registrations, or purchases implied by the conversation / Document Map (e.g. Azure Bot, Teams app, Graph credentials). Leave empty Open table if none yet.
+2. Add Open rows for any human-gated needs implied by the conversation / Document Map — `procure` (keys/portals), `playtest`, `decide`, or `waiting`. Leave empty Open table if none yet.
 3. Ensure Master Index §3.3 / §3.4 link to `Human-TODO.md`.
 
-If it already exists → add newly discovered procurement needs; do not wipe user-completed rows.
+If it already exists → add newly discovered human-gated needs (procure / playtest / decide / waiting); do not wipe user-completed rows.
 
 ## Step 3d — Create files for every Document Map row *(mandatory)*
 
@@ -184,7 +184,7 @@ If the user named **no** features yet, skip Step 3d and say so in Step 4.
 
 1. Confirm or correct Section 1 (Project Overview), Document Map, `docs/Tooling.md`, and `docs/Human-TODO.md`.
 2. Point at the **draft** `-Understanding.md` files created in Step 3d — user reviews / corrects before implementation.
-3. Point at **Open** items on `Human-TODO.md` — things only the human can procure before those features unblock.
+3. Point at **Open** items on `Human-TODO.md` — things only the human can close (procure, playtest, decide, waiting).
 4. After they confirm an Understanding, graduate durable content into the spec and continue from TODOs ([`../help/SETUP.md`](../help/SETUP.md)).
 5. Run **Step 4b** (weekly template update checks) before finishing.
 6. Run **Step 4c** (optional doc roles) before finishing.
@@ -257,7 +257,7 @@ Thin playbook roles (Understanding author, Doc graduate, Feature implementer, Bo
 - Leave Agentic Doc Templates `.github/ISSUE_TEMPLATE/` in a user project — delete it (Step 1b).
 - Ask before moving root files that are **clearly** upstream (Agentic Doc Templates / Brian Lowe / BrianCLowe markers) — just move them.
 - Finish bootstrap with a filled Document Map but **no** feature/shared files on disk.
-- Put human procurement items only in feature TODOs — use `docs/Human-TODO.md` and link from features.
+- Put human-gated items only in feature TODOs — dual-write `docs/Human-TODO.md` + owner TODO (Workflow §13).
 - Enable weekly template update checks without asking (Step 4b).
 
 ## Example user prompts

@@ -1,10 +1,10 @@
-<!-- workflow-version: 2.5 -->
+<!-- workflow-version: 2.6 -->
 
 > **Agent workflow reference.** Canonical instructions for how to work the modular doc system. Lives in `docs/templates/agent/` with the other agent playbooks — sync from upstream; do **not** copy wholesale into `docs/Master_Index.md`. The live index links here; agent rules summarize and point here for full procedure.
 
 # Modular Documentation — Agent Workflow
 
-**Workflow version**: 2.5 *(sync with `Master_Index.md` **Workflow version** line when updating)*
+**Workflow version**: 2.6 *(sync with `Master_Index.md` **Workflow version** line when updating)*
 
 **Design intent:** Users give short requests about the docs (“bootstrap”, “draft Understanding for X”, “update the templates”). Route to **one** playbook (`BOOTSTRAP`, `TEMPLATE_SYNC`, `TEMPLATE_UPDATE_CHECK`, `RULE_INSTALL` → `tools/<key>.md`, or this file for feature work) — do not scan the whole pack catalog. **Tight scope:** act on the paved path; do not pre-audit every alternate interpretation before doing the work.
 
@@ -367,24 +367,34 @@ Use Mermaid in Understanding, specs, or Master Index overview when a **small** d
 
 ---
 
-## 13. Human TODO *(procurement / external blockers)*
+## 13. Human TODO *(inbox — needs a human)*
 
 Live file: **`docs/Human-TODO.md`** (from [`Human_TODO_Template.md`](../Human_TODO_Template.md)).
 
-**One project-level list for humans** — accounts, API keys, cloud portal registrations (e.g. Azure Bot / Teams), purchases, org approvals, certificates. Coding agents **cannot** complete these.
+**One project inbox for humans** — anything a coding agent must not close from assumptions: procurement, playtest/feel, decisions/sign-off, and external waiting. Format and kinds: see the Human TODO template.
 
-| Put here | Put elsewhere |
-|----------|---------------|
-| Portal / account / key / purchase / approval the **human** must do | Installable CLIs/SDKs → [`Tooling.md`](../../Tooling.md) |
-| | Code tasks → feature or `_shared/` `*-TODO.md` |
+| Put on Human-TODO | Put elsewhere |
+|-------------------|---------------|
+| `procure` — portal / account / key / purchase / approval | Installable CLIs/SDKs → [`Tooling.md`](../../Tooling.md) |
+| `playtest` — human must run, feel, or smoke-test | Agent-only code tasks → feature or `_shared/` `*-TODO.md` |
+| `decide` — human judgment or sign-off | |
+| `waiting` — blocked on someone/something outside the repo | |
+
+**Index + owner (do not “move” tasks):**
+
+| Kind | Canonical detail / outcome | Human-TODO |
+|------|----------------------------|------------|
+| `playtest` · `decide` | Owner feature/shared `*-TODO.md` item | Thin checkbox row + **Owner** link |
+| `procure` · `waiting` | Human-TODO row (how-to / status) | Features **link here** — do not copy full checklists into every TODO |
 
 **Agent behavior:**
 
-1. When Understanding, planning, or implementation needs something only a human can procure → add (or update) a row in `Human-TODO.md`.
-2. In the feature/shared TODO **Blocked by** / Cross-Feature notes: link to `Human-TODO.md` and the row name — do not duplicate the full procurement checklist into every feature file.
+1. **Dual-write (mandatory):** When Understanding, planning, Current focus, or implementation creates a task only a human can close → in the **same edit** add/update the owner `*-TODO.md` item **and** an **Open** row on `Human-TODO.md` (Kind + Owner + Blocks). If it is not on Human-TODO, it does not exist as a human ask — do not bury playtest/feel/sign-off only in feature TODOs or chat.
+2. Keep Human-TODO rows short; put steps and outcome notes on the owner TODO (`playtest` / `decide`) or on the Human-TODO row (`procure` / `waiting`).
 3. Never store secrets in docs. Instruct: create credential → put in `.env` / vault (names only in `.env.example`).
-4. Do not mark rows **done** unless the user confirms. If the user asks what’s left for them, summarize **Open** from this file.
-5. Create the file at bootstrap (may start empty). Fill as soon as the conversation or Document Map implies external dependencies.
+4. Do not mark rows **done** unless the user confirms (chat or explicit checkbox + tell-the-agent). On confirm: update owner TODO (`[x]` + date + feedback notes), move Human-TODO row to **Done**, refresh affected Current focus.
+5. If the user asks what’s left for them → summarize **Open** from `Human-TODO.md` only. If you find human-gated items on feature TODOs missing from the inbox, **repair dual-write** (add rows), then summarize.
+6. Create the file at bootstrap (may start empty). Fill as soon as conversation or Document Map implies human-gated work.
 
 ---
 
@@ -393,6 +403,6 @@ Live file: **`docs/Human-TODO.md`** (from [`Human_TODO_Template.md`](../Human_TO
 - **Master_Index.md** = *what this project is* and *where files live*.
 - **This file** = *how to work* the system. Follow Path A or B (§3) on every task.
 - **Tooling.md** = *what to install on a new machine* (not package deps).
-- **Human-TODO.md** = *what only a human can procure* (keys, portals, accounts) — §13.
+- **Human-TODO.md** = *what only a human can close* (procure, playtest, decide, waiting) — §13; dual-write with owner TODOs.
 - **Mermaid** = optional (§12) — use when clearer than prose; never required.
 - The installed agent rule ([`Modular_Documentation_Rule.mdc`](Modular_Documentation_Rule.mdc)) is a short checklist — read this file when doing non-trivial doc or implementation work.

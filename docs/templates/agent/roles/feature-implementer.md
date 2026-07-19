@@ -17,7 +17,7 @@
 2. Active TODO — read **Current focus** first (§5.1)
 3. That item’s `-Understanding.md` (**read-only** for context) and linked spec
 4. Shared docs **only** when linked from this feature’s Understanding, spec, or TODO dependency notes (or the one shared piece you are integrating now)
-5. `docs/Tooling.md` / `docs/Human-TODO.md` only if install or procurement blocks this focus item
+5. `docs/Tooling.md` / `docs/Human-TODO.md` only if install or a human-gated item (procure / playtest / decide / waiting) blocks this focus item
 
 **Do not** open Workflow unless creating files, Path A vs B is unclear, or the user asks about procedure.
 
@@ -33,7 +33,7 @@
 3. Implement that focus item only (tight scope).
 4. Update the same `-TODO.md`: check off items with `[x]` + date; refresh **Current focus**.
 5. Update Understanding / spec **only if this session** changed scope, UI intent, or contract — especially **What this is NOT**. Otherwise leave them alone.
-6. If blocked on API keys / accounts / purchases: add/update `docs/Human-TODO.md` and link from the feature TODO — never store secrets.
+6. If blocked on a human (procure / playtest / decide / waiting): **dual-write** owner TODO item + `docs/Human-TODO.md` Open row (Workflow §13) — never store secrets. Do not bury human asks only on this TODO.
 7. Stop when the focus item is done, blocked, or the user redirects.
 
 ## Stop when

@@ -36,8 +36,9 @@ Use the right pattern:
 - Blocked until shared editor API exists (see [_shared/BlockEditor-TODO.md](../_shared/BlockEditor-TODO.md) — "Expose shared editing API")
 - Requires `DiffWorkflow` first (see [DiffWorkflow-TODO.md](../features/DiffWorkflow-TODO.md))
 
-**Feature depends on human procurement (API key, cloud bot, account):**
-- Blocked until [need] exists (see [Human-TODO.md](../Human-TODO.md) — "[row name]") — do not put the full procurement checklist here
+**Needs a human** *(procure / playtest / decide / waiting — dual-write with [`Human-TODO.md`](../Human-TODO.md); Workflow §13):*
+- **Owner here** (`playtest` / `decide`): keep the full item and outcome notes on *this* TODO; add a thin checkbox row on Human-TODO with **Owner** linking to this item — e.g. Needs human playtest: tune win target (see [Human-TODO.md](../Human-TODO.md) — "Score Target feel")
+- **Owner on Human-TODO** (`procure` / `waiting`): short link only — Blocked until [need] exists (see [Human-TODO.md](../Human-TODO.md) — "[row name]") — do not put the full portal checklist here
 
 **You are building the shared foundation itself** — do not list those tasks here. Add them to `_shared/ComponentName-TODO.md` and link from here only if a feature is waiting.
 
@@ -56,11 +57,14 @@ Use the right pattern:
 - **If this TODO is in `_shared/`** — tracks foundation work on the shared component (same note-type set as features unless the user excepted files). Consumer features link here; do not duplicate these tasks in feature TODOs.
 - **If this TODO is for a feature or shared component** — read `FeatureName-Understanding.md` or `_shared/ComponentName-Understanding.md` first. Do not implement until status is `confirmed` or the user waives review. **If `confirmed`**, read for context and proceed — do not re-prompt the user to review that Understanding unless scope changes.
 - Add new items as you discover them; **update Current focus** at session end (`[x]` + date on completed items).
+- **Human-gated items:** when adding a task only a human can close (`playtest`, `decide`, `procure`, `waiting`), **dual-write** in the same edit — owner item here (or Blocked-by link for procure/waiting) **and** an Open row on [`Human-TODO.md`](../Human-TODO.md). Do not bury human asks only on this file.
+- When the user reports human-TODO progress, update this owner item (`[x]` + feedback) and have the session sync Human-TODO Done (Workflow §13).
 - Foundation tasks belong in `_shared/Component-TODO.md`, not in a feature TODO — see [`Modular_Docs_Workflow.md`](agent/Modular_Docs_Workflow.md) §1.
 - In-Editor feature TODOs: rename to engine-specific version per Workflow §7.
 
 **Instructions for Humans**:
-- **Current focus** is your "where we left off" — skim it when resuming or switching agents.
+- **Your inbox** is [`Human-TODO.md`](../Human-TODO.md) — everything waiting on you (playtest, decide, procure, waiting). Tell the agent in chat when you finish or have feedback; they sync this file.
+- **Current focus** is the agent's "where we left off" — skim it when resuming or switching agents.
 - Shared TODO: what's left to build the reusable piece.
 - Feature TODO: what's left for this feature (including dependency links to shared work).
 
