@@ -1,0 +1,92 @@
+# Build a pack-only zip and publish a GitHub Release when a v* tag is pushed.
+# Maintainer: bump docs/templates/VERSION + CHANGELOG, merge to main, then:
+#   git tag vX.Y.Z && git push origin vX.Y.Z
+
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Resolve version
+        id: ver
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          VERSION="${TAG#v}"
+          if [[ ! "$VERSION" =~ ^[0-9]+\.[0-9]+(\.[0-9]+)?$ ]]; then
+            echo "Tag must look like v1.2 or v1.2.3 (got: $TAG)"
+            exit 1
+          fi
+          FILE_VER="$(awk -F': *' '/^template-version:/ { print $2; exit }' docs/templates/VERSION | tr -d '\r')"
+          if [[ "$FILE_VER" != "$VERSION" ]]; then
+            echo "Tag version $VERSION does not match docs/templates/VERSION ($FILE_VER)"
+            exit 1
+          fi
+          {
+            echo "tag=$TAG"
+            echo "version=$VERSION"
+            echo "asset=agentic-doc-templates-${VERSION}.zip"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Build pack zip
+        run: |
+          STAGE="$(mktemp -d)"
+          mkdir -p "$STAGE/docs"
+          cp -a docs/templates "$STAGE/docs/templates"
+          (
+            cd "$STAGE"
+            zip -r "$GITHUB_WORKSPACE/${{ steps.ver.outputs.asset }}" docs
+          )
+          ls -la "${{ steps.ver.outputs.asset }}"
+
+      - name: Write release notes
+        env:
+          VERSION: ${{ steps.ver.outputs.version }}
+          ASSET: ${{ steps.ver.outputs.asset }}
+        run: |
+          awk -v ver="$VERSION" '
+            $0 == "## " ver { found=1; next }
+            found && /^## / { exit }
+            found { print }
+          ' docs/templates/CHANGELOG.md > changelog-section.md
+          if [[ ! -s changelog-section.md ]]; then
+            echo "No CHANGELOG section found for ## ${VERSION}"
+            exit 1
+          fi
+          {
+            echo "## Download"
+            echo ""
+            echo "Download **\`${ASSET}\`** below (prefer this over “Source code”)."
+            echo ""
+            echo "1. Extract into your **project root** so you get a \`docs/templates/\` folder"
+            echo "   (replace an existing \`docs/templates/\` if you already have one)."
+            echo "2. Ask your coding agent:"
+            echo ""
+            echo "> Update the doc templates from Agentic Doc Templates and sync our live docs."
+            echo ""
+            echo "If you already put the pack in place, tell the agent you refreshed \`docs/templates/\` and ask it to sync live docs from the changelog."
+            echo ""
+            echo "## Changes in ${VERSION}"
+            echo ""
+            cat changelog-section.md
+          } > release-body.md
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Agentic Doc Templates ${{ steps.ver.outputs.version }}
+          body_path: release-body.md
+          files: ${{ steps.ver.outputs.asset }}
+          fail_on_unmatched_files: true
+          generate_release_notes: false

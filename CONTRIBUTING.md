@@ -32,6 +32,15 @@ I'm more cautious about changes that significantly increase complexity, require 
 
 **Pack version bumps:** When you change `docs/templates/VERSION`, update the top entry of [`docs/templates/CHANGELOG.md`](docs/templates/CHANGELOG.md) in the same commit (files touched + Live impact tags + Step B line).
 
+**Publishing a GitHub Release:** After the bump is on `main`, tag and push (tag must match `template-version` in `VERSION`):
+
+```bash
+git tag vX.Y.Z
+git push origin vX.Y.Z
+```
+
+[`.github/workflows/release.yml`](.github/workflows/release.yml) builds `agentic-doc-templates-X.Y.Z.zip` (pack-only: `docs/templates/`) and publishes the Release with download instructions + that changelog section.
+
 ### Writing agent instructions *(for anyone editing this pack — including coding agents)*
 
 Write for **off-road enthusiasts**, not for a careful model that already stays on the paved path.

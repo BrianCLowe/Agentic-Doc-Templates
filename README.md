@@ -24,6 +24,14 @@ Short asks are enough: *bootstrap*, *draft Understanding for X*, *update the doc
 
 ## Get started
 
+### Download a release *(simple)*
+
+Prefer this if you mainly use the GitHub website:
+
+1. Open [**Releases**](https://github.com/BrianCLowe/Agentic-Doc-Templates/releases) and download **`agentic-doc-templates-X.Y.Z.zip`** (not “Source code”).
+2. Extract into your **project root** so you get `docs/templates/` (replace that folder if it already exists).
+3. Ask your agent to sync live docs (same ask as below).
+
 ### Existing project *(recommended)*
 
 Copy **`docs/templates/`** into your repo as **`your-project/docs/templates/`**, then ask your agent:
