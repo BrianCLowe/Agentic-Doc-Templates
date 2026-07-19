@@ -17,12 +17,21 @@
 
 ---
 
+## 2.6.1
+
+- **Live impact:** `content-templates`, `versions-only`, `process-docs-only`
+- **Files:**
+  - `VERSION` — 2.6 → 2.6.1
+  - `Human_TODO_Template.md` — **Open/Done use `- [ ]` list items**, not table cells (preview cannot toggle checkboxes in tables)
+  - `agent/Modular_Docs_Workflow.md` — §13: no table checkboxes; convert legacy table Open lists
+- **Step B:** Bump Master Index versions to 2.6.1. Convert live `Human-TODO.md` **Open** (and Done if tabular) from table rows to `- [ ]` / `- [x]` list items — preserve Need, Kind, Owner, Blocks, Notes content. Do **not** invent or close items.
+
 ## 2.6
 
 - **Live impact:** `content-templates`, `master-index`, `rules`, `process-docs-only`
 - **Files:**
   - `VERSION` — 2.5 → 2.6
-  - `Human_TODO_Template.md` — human **inbox** (not procurement-only): kinds `procure` · `playtest` · `decide` · `waiting`; checkbox Open table; **index + owner** model; human chat phrases; agent dual-write + sync-on-feedback
+  - `Human_TODO_Template.md` — human **inbox** (not procurement-only): kinds `procure` · `playtest` · `decide` · `waiting`; checkbox Open list; **index + owner** model; human chat phrases; agent dual-write + sync-on-feedback
   - `TODO_Template.md` — Needs-a-human dual-write patterns; humans pointed at `Human-TODO.md` as inbox
   - `agent/Modular_Docs_Workflow.md` — §13 rewritten (inbox, dual-write, repair); version 2.6
   - `agent/Modular_Documentation_Rule.mdc` / `.instructions.md` — dual-write human-gated work; sync Human-TODO on user feedback

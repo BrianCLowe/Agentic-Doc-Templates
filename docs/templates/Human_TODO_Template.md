@@ -31,7 +31,7 @@
 | `decide` | Human judgment or sign-off | Theme pick, piece colors, “ship this default” |
 | `waiting` | Blocked on someone/something outside the repo | Steam Partner App ID, vendor reply |
 
-**Agent role:** Dual-write when creating a human-gated task (owner TODO item **and** a row here). Do **not** mark done unless the user said so. Do **not** invent procure/waiting rows the project does not need.
+**Agent role:** Dual-write when creating a human-gated task (owner TODO item **and** a checkbox item here). Do **not** mark done unless the user said so. Do **not** invent procure/waiting items the project does not need.
 
 **Human role:** Work **Open**; tell the agent in chat when you finish or have feedback (phrases below). Agent syncs the owner doc and this list.
 
@@ -39,27 +39,34 @@
 
 ## Open
 
-Keep this list short — one row per real human action. Prefer checkboxes so you can scan quickly.
+Keep this list short — **one `- [ ]` list item per human action** (not a table — table cells are not clickable in preview).
 
-| Done | Need | Kind | Owner | Blocks | Notes |
-|------|------|------|-------|--------|-------|
-| - [ ] | [e.g. Score Target feel — is 10k short/right/swingy?] | playtest | [ScoreTarget-TODO.md](features/ScoreTarget-TODO.md) — "Tune win target" | ScoreTarget | Agent: capture feel notes on owner TODO |
-| - [ ] | [e.g. Entra app registration + client secret] | procure | this file | [GraphAuth-TODO.md](features/GraphAuth-TODO.md) | Secret → `.env` / Key Vault — **not** this file |
-| - [ ] | [e.g. Steam private beta — App ID] | waiting | this file | Release | Partner portal |
-| - [ ] | [Add rows as discovered] | | | | |
+**Owner:** link to the feature/shared TODO item title for `playtest` / `decide`; `this file` for `procure` / `waiting`.
 
-**Owner column:** link to the feature/shared TODO item title for `playtest` / `decide`; `this file` for `procure` / `waiting`.
+- [ ] **[e.g. Score Target feel — is 10k short/right/swingy?]** (`playtest`)  
+  Owner: [ScoreTarget-TODO.md](features/ScoreTarget-TODO.md) — "Tune win target" · Blocks: ScoreTarget  
+  Notes: Agent: capture feel notes on owner TODO
+
+- [ ] **[e.g. Entra app registration + client secret]** (`procure`)  
+  Owner: this file · Blocks: [GraphAuth-TODO.md](features/GraphAuth-TODO.md)  
+  Notes: Secret → `.env` / Key Vault — **not** this file
+
+- [ ] **[e.g. Steam private beta — App ID]** (`waiting`)  
+  Owner: this file · Blocks: Release  
+  Notes: Partner portal
+
+- [ ] **[Add items as discovered]** (`kind`)  
+  Owner: … · Blocks: …  
+  Notes: …
 
 ---
 
 ## Done
 
-Move finished rows here (or leave checked) so **Open** stays short.
+Move finished items here (as `- [x]`) so **Open** stays short.
 
-| Need | Kind | Completed | Notes |
-|------|------|-----------|-------|
-| [e.g. Tutorial PIE walkthrough] | playtest | YYYY-MM-DD | Felt fine; no doc change |
-| [e.g. Vendor API key created] | procure | YYYY-MM-DD | Stored in local `.env` |
+- [x] **[e.g. Tutorial PIE walkthrough]** (`playtest`) — YYYY-MM-DD — Felt fine; no doc change
+- [x] **[e.g. Vendor API key created]** (`procure`) — YYYY-MM-DD — Stored in local `.env`
 
 ---
 
@@ -67,18 +74,19 @@ Move finished rows here (or leave checked) so **Open** stays short.
 
 - **Dual-write (mandatory):** When Understanding, planning, Current focus, or implementation creates a task only a human can close → in the **same edit**:
   1. Add/update the item on the **owner** `*-TODO.md` (for `playtest` / `decide`: full text + outcome space; for `procure` / `waiting`: a short “Blocked by Human-TODO — [Need]” link).
-  2. Add/update a row in **Open** here with Kind, Owner link, and Blocks.
+  2. Add/update a `- [ ]` **list item** in **Open** here (never a markdown table cell — preview cannot toggle those). Include kind in backticks, Owner, Blocks, Notes on following lines under the same list item.
 - If it is not on this list, it does **not** exist as a human ask — do not bury playtest/feel/sign-off only in feature TODOs or chat.
 - Prefer **one project inbox** — do not duplicate long checklists here; link to the owner item for steps.
 - Never write API keys, passwords, connection strings, or tokens into this file (or any docs file).
 - Do **not** mark **done** from assumptions (“they probably playtested”) — only when the user confirms in chat or clearly checked the item and told you.
 - When the user reports progress or feedback:
   1. Update the **owner** TODO (`[x]` + date; capture feel/decision notes on that item).
-  2. Move the Human-TODO row to **Done** (or check it off) and refresh **Last Updated**.
+  2. Move the Human-TODO item to **Done** as `- [x]` (or check it off) and refresh **Last Updated**.
   3. Unblock / refresh Current focus on affected feature TODOs if needed.
 - Distinguish from [`Tooling.md`](Tooling.md): installable CLIs/SDKs go there; human portal/account **and** judgment work goes here.
 - If the user asks “what’s left that I need to do?” / “what’s on the human TODO?” — summarize **Open** from **this file only**. If you find human-gated items on feature TODOs missing here, **add them** (repair dual-write), then summarize.
-- On bootstrap: create this file (can start nearly empty). Add rows as soon as conversation or Document Map implies human-gated work.
+- On bootstrap: create this file (can start nearly empty). Add checklist items as soon as conversation or Document Map implies human-gated work.
+- If live `Human-TODO.md` still uses a **table** for Open: convert to `- [ ]` list items (preserve Need/Kind/Owner/Blocks/Notes content).
 
 ---
 

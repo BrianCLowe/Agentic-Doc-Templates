@@ -4,7 +4,7 @@
 > Keep agents aligned with your intent across conversations, features, and long-running projects.
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-![Pack](https://img.shields.io/badge/Pack-2.6-blue)
+![Pack](https://img.shields.io/badge/Pack-2.6.1-blue)
 ![Built for](https://img.shields.io/badge/Built%20for-Cursor%20%7C%20Grok%20Build%20%7C%20OpenClaw%20%7C%20Claude%20Code-5865F2)
 
 ---
