@@ -1,6 +1,8 @@
 # Build a pack-only zip and publish a GitHub Release when a v* tag is pushed.
-# Maintainer: bump docs/templates/VERSION + CHANGELOG, merge to main, then:
+# Maintainer: bump docs/templates/VERSION + CHANGELOG, then:
+#   git push origin main
 #   git tag vX.Y.Z && git push origin vX.Y.Z
+# If a tag exists but no Release (workflow missed): Actions → Release → Run workflow → enter tag.
 
 name: Release
 
@@ -8,6 +10,12 @@ on:
   push:
     tags:
       - "v*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Existing tag to release (e.g. v2.6.1)"
+        required: true
+        type: string
 
 permissions:
   contents: write
@@ -16,18 +24,30 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
+      - name: Resolve tag
+        id: ref
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            TAG="${{ inputs.tag }}"
+          else
+            TAG="${GITHUB_REF_NAME}"
+          fi
+          if [[ ! "$TAG" =~ ^v[0-9]+\.[0-9]+(\.[0-9]+)?$ ]]; then
+            echo "Tag must look like v1.2 or v1.2.3 (got: $TAG)"
+            exit 1
+          fi
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.ref.outputs.tag }}
 
       - name: Resolve version
         id: ver
         run: |
-          TAG="${GITHUB_REF_NAME}"
+          TAG="${{ steps.ref.outputs.tag }}"
           VERSION="${TAG#v}"
-          if [[ ! "$VERSION" =~ ^[0-9]+\.[0-9]+(\.[0-9]+)?$ ]]; then
-            echo "Tag must look like v1.2 or v1.2.3 (got: $TAG)"
-            exit 1
-          fi
           FILE_VER="$(awk -F': *' '/^template-version:/ { print $2; exit }' docs/templates/VERSION | tr -d '\r')"
           if [[ "$FILE_VER" != "$VERSION" ]]; then
             echo "Tag version $VERSION does not match docs/templates/VERSION ($FILE_VER)"
@@ -85,6 +105,7 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ steps.ver.outputs.tag }}
           name: Agentic Doc Templates ${{ steps.ver.outputs.version }}
           body_path: release-body.md
           files: ${{ steps.ver.outputs.asset }}

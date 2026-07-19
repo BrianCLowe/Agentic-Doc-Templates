@@ -32,14 +32,15 @@ I'm more cautious about changes that significantly increase complexity, require 
 
 **Pack version bumps:** When you change `docs/templates/VERSION`, update the top entry of [`docs/templates/CHANGELOG.md`](docs/templates/CHANGELOG.md) in the same commit (files touched + Live impact tags + Step B line).
 
-**Publishing a GitHub Release:** After the bump is on `main`, tag and push (tag must match `template-version` in `VERSION`):
+**Publishing a GitHub Release:** Push the bump to `main` first, then tag (tag must match `template-version` in `VERSION`). Tag-only pushes can miss the workflow if `main` does not already have it:
 
 ```bash
+git push origin main
 git tag vX.Y.Z
 git push origin vX.Y.Z
 ```
 
-[`.github/workflows/release.yml`](.github/workflows/release.yml) builds `agentic-doc-templates-X.Y.Z.zip` (pack-only: `docs/templates/`) and publishes the Release with download instructions + that changelog section.
+[`.github/workflows/release.yml`](.github/workflows/release.yml) builds `agentic-doc-templates-X.Y.Z.zip` (pack-only: `docs/templates/`) and publishes the Release with download instructions + that changelog section. If a tag exists but no Release, use **Actions → Release → Run workflow** and enter the tag.
 
 ### Writing agent instructions *(for anyone editing this pack — including coding agents)*
 
