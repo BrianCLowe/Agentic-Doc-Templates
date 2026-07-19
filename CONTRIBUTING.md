@@ -17,7 +17,7 @@ Here are the most helpful ways to contribute:
 - **Discussions** — Open-ended ideas and “how do I…?” questions are still welcome.
 - **Pull Requests** — Welcome for small, focused improvements to existing templates. Please keep changes aligned with the current lightweight, modular style.
 
-**Note for people who copy this repo into an app:** `.github/ISSUE_TEMPLATE/` belongs to *this* template project only. If those files appear in your app after a whole-repo copy, delete that folder (bootstrap Step 1b does this). Prefer copying only `docs/templates/`.
+**Note for people who copy this repo into an app:** `.github/ISSUE_TEMPLATE/` and `.github/workflows/release.yml` belong to *this* template project only. If they appear in your app after a whole-repo copy, delete them (bootstrap Step 1b does this). Prefer copying only `docs/templates/`.
 
 ## What I'm Looking For
 
@@ -85,4 +85,4 @@ That keeps your project root for **your** README and metadata. Attribution and u
 
 Do **not** put `CONTRIBUTING.md`, `LICENSE.md`, or the template pack README at `docs/` root — only under `docs/templates/agent/upstream/` when you need them for attribution.
 
-If a whole-repo copy left **`.github/ISSUE_TEMPLATE/`** in your app, delete it — those forms are for contributing to Agentic Doc Templates, not for your product. Bootstrap Step 1b removes them automatically.
+If a whole-repo copy left **`.github/ISSUE_TEMPLATE/`** or **`.github/workflows/release.yml`** in your app, delete them — those are for Agentic Doc Templates upstream, not for your product. Bootstrap Step 1b removes them automatically.

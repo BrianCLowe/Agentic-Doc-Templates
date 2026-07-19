@@ -62,17 +62,18 @@ Fix internal links after moving (including Master Index links to the workflow). 
 
 Do **not** overwrite a project-owned root `README.md`. If an upstream README is already under `agent/upstream/`, leave the user’s root README alone.
 
-## Step 1b — Remove upstream GitHub issue templates (user projects)
+## Step 1b — Remove upstream GitHub config (user projects)
 
-**This pack’s** `.github/ISSUE_TEMPLATE/` is for feedback on [Agentic-Doc-Templates](https://github.com/BrianCLowe/Agentic-Doc-Templates) only. It must **not** stay in a user’s app repo.
+**This pack’s** `.github/` files are for [Agentic-Doc-Templates](https://github.com/BrianCLowe/Agentic-Doc-Templates) only (issue forms + Release workflow). They must **not** stay in a user’s app repo.
 
-When the whole template repo was cloned/copied into a project (or “Use this template” left `.github/ISSUE_TEMPLATE/` behind):
+When the whole template repo was cloned/copied into a project (or “Use this template” left `.github/` behind):
 
-1. If `.github/ISSUE_TEMPLATE/` exists **and** contains Agentic Doc Templates forms (e.g. `agent-tool-problem.yml`, `template-improvement.yml`, `docs-confusion.yml`, `feedback.yml`, or bodies that mention Agentic Doc Templates / modular docs templates) → **delete that directory** (and remove `.github/` if it is empty afterward).
+1. If `.github/ISSUE_TEMPLATE/` exists **and** contains Agentic Doc Templates forms (e.g. `agent-tool-problem.yml`, `template-improvement.yml`, `docs-confusion.yml`, `feedback.yml`, or bodies that mention Agentic Doc Templates / modular docs templates) → **delete that directory**.
 2. If `.github/ISSUE_TEMPLATE/` looks like the **user’s own** issue forms → **do not delete**.
-3. Prefer copying only `docs/templates/` next time so `.github/` never lands in the project.
-
-Also delete root-level Agentic-only GitHub noise if present from a whole-repo copy and clearly not the user’s: e.g. leftover `ISSUE_TEMPLATE` paths under `.github/` that match the upstream pack. Do **not** delete the user’s `.github/workflows/`, Copilot instructions, or other project GitHub config.
+3. If `.github/workflows/release.yml` exists **and** is the upstream pack Release workflow (e.g. workflow `name: Release`, builds `agentic-doc-templates-*.zip`, or comments/body mention Agentic Doc Templates pack releases) → **delete that file**. Remove `.github/workflows/` if it is empty afterward.
+4. Do **not** delete the user’s other workflows, Copilot instructions, or other project GitHub config.
+5. Remove `.github/` if it is empty afterward.
+6. Prefer copying only `docs/templates/` next time so `.github/` never lands in the project.
 
 ## Step 2 — Create docs layout
 
@@ -254,7 +255,7 @@ Thin playbook roles (Understanding author, Doc graduate, Feature implementer, Bo
 - Overwrite an existing project `README.md` that is not the upstream template readme.
 - Put project feature content into `docs/templates/` (templates stay canonical reference only).
 - Create `docs/help/` or `docs/agent/` at docs root — those belong inside `docs/templates/`.
-- Leave Agentic Doc Templates `.github/ISSUE_TEMPLATE/` in a user project — delete it (Step 1b).
+- Leave Agentic Doc Templates `.github/ISSUE_TEMPLATE/` or `.github/workflows/release.yml` in a user project — delete them (Step 1b).
 - Ask before moving root files that are **clearly** upstream (Agentic Doc Templates / Brian Lowe / BrianCLowe markers) — just move them.
 - Finish bootstrap with a filled Document Map but **no** feature/shared files on disk.
 - Put human-gated items only in feature TODOs — dual-write `docs/Human-TODO.md` + owner TODO (Workflow §13).

@@ -1,4 +1,4 @@
-<!-- template-version: 2.6.1 -->
+<!-- template-version: 2.6.2 -->
 
 > **Template reference.** Do not put project-specific content in this file. Copy to `docs/Master_Index.md` for initial setup, or diff against it when syncing template improvements into the live index. Never edit this template unless the user asks you to.
 >
@@ -8,8 +8,8 @@
 
 **Purpose**: Single entry point for **this project's** documentation — overview, locations, and Document Map. Read only the files relevant to the current task.
 
-**Template version**: 2.6.1 *(update when syncing from `templates/Master_Index_Template.md`)*  
-**Workflow version**: 2.6.1 *(must match `templates/agent/Modular_Docs_Workflow.md` — update both on sync)*
+**Template version**: 2.6.2 *(update when syncing from `templates/Master_Index_Template.md`)*
+**Workflow version**: 2.6.2 *(must match `templates/agent/Modular_Docs_Workflow.md` — update both on sync)*
 
 ## 1. Project Overview
 

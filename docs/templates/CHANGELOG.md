@@ -17,6 +17,15 @@
 
 ---
 
+## 2.6.2
+
+- **Live impact:** `versions-only`, `process-docs-only`
+- **Files:**
+  - `VERSION` — 2.6.1 → 2.6.2
+  - `agent/BOOTSTRAP.md` — Step 1b also deletes upstream `.github/workflows/release.yml` after whole-repo clone / “Use this template”
+  - `help/SETUP.md` — notes Release workflow cleanup with issue templates
+- **Step B:** Bump Master Index versions to 2.6.2. If the project still has Agentic’s `.github/workflows/release.yml` from a whole-repo copy, delete it (and empty `.github/` folders). Do **not** delete the user’s other workflows.
+
 ## 2.6.1
 
 - **Live impact:** `content-templates`, `versions-only`, `process-docs-only`

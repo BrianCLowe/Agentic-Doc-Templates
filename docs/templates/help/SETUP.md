@@ -18,7 +18,7 @@ You do **not** need this repo’s root `README.md`, `LICENSE.md`, or `CONTRIBUTI
 |--------|--------|
 | **Copy `docs/templates/` only** | Recommended |
 | Git submodule | Awkward path; still prefer copying or sparse-checkout of `docs/templates/` |
-| Whole-repo clone / “Use this template” into an app | Bootstrap cleans root pack files + deletes Agentic-only `.github/ISSUE_TEMPLATE/` |
+| Whole-repo clone / “Use this template” into an app | Bootstrap cleans root pack files + deletes Agentic-only `.github/ISSUE_TEMPLATE/` and `.github/workflows/release.yml` |
 
 **Inside the pack:** `help/` (this guide), `agent/` (bootstrap, rules, sync), `chat-ui/` (attach [`AGENT.md`](../chat-ui/AGENT.md) only), plus `VERSION`, `CHANGELOG.md`, and the scaffold templates at the pack root.
 
