@@ -21,11 +21,14 @@
 
 1. Follow TEMPLATE_SYNC Step A (overwrite pack), then Step B from the top changelog entry’s tags only.
 2. If `optional_rules.doc-roles` is `enabled` and changelog tags `rules`, for each `tools.*.status: installed` tool open `docs/templates/agent/tools/<key>.md` only and refresh that harness’s agents folder — ask if customized.
-3. Summarize what changed. **Stop.**
+3. Summarize what changed.
+4. Run TEMPLATE_SYNC **Present unset options** (checklist §8) — explain + ask once for any missing `optional_rules.*` (and new optionals the top changelog names). Do **not** stay silent because status is unset or because an installed tool has no adapter install.
+5. **Stop.**
 
 ## Stop when
 
-- Step B for the top changelog entry is done (or user declined optional refreshes), and
+- Step B for the top changelog entry is done (or user declined optional refreshes),
+- Unset optionals were presented (or already `enabled` / `declined`), and
 - You have not scanned live `features/` / `_shared/` unless a Live impact tag required it
 
 ## Do not
@@ -33,5 +36,6 @@
 - Invent a broader audit than the top changelog entry
 - Re-download / restore intentionally deleted `agent/upstream/` attribution files
 - Rewrite live Understanding/spec/TODO content “to match new templates” unless tagged `content-templates`
+- Skip presenting unset optionals (“do not auto-enable” means ask — not silence)
 - Bootstrap a new project (use [`bootstrap.md`](bootstrap.md))
 - Implement application features

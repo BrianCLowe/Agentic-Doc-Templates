@@ -37,13 +37,14 @@ Skip if the user only wants OpenClaw for chat/ops and will sync templates from a
 
 ## Optional — Doc roles
 
-OpenClaw has **no** pack-supported `.openclaw/agents/` (or `.cursor/agents/`) install target.
+OpenClaw has **no** pack-supported `.openclaw/agents/` (or `.cursor/agents/`) install target. Still present `optional_rules.doc-roles` when unset (TEMPLATE_SYNC present-unset-options / bootstrap Step 4c).
 
 | | |
 |--|--|
 | **Install** | **None** for adapter files |
 | **Runtime** | Parent follows `docs/templates/agent/roles/<role>.md` in-session when the modular rule’s ask matches (same fallback as Copilot) |
-| **Optional** | If the user also uses Cursor or Grok Build on this repo, install named subagents via those tool files |
+| **On enable** | Record `optional_rules.doc-roles: enabled`; playbooks already on disk after pack sync |
+| **Also using Cursor / Grok / Claude?** | Install adapters via those tool files when those tools are `installed` |
 
 ## Conflicts / naming traps
 

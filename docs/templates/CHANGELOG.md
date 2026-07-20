@@ -17,6 +17,23 @@
 
 ---
 
+## 2.6.3
+
+- **Live impact:** `versions-only`, `process-docs-only`
+- **Files:**
+  - `VERSION` — 2.6.2 → 2.6.3
+  - `CHANGELOG.md` — 2.6 Step B dual-write wording clarified; 2.5 Step B “unset ≠ silence” fix
+  - `agent/Modular_Docs_Workflow.md` — §13 repair: owner TODO → Human-TODO only; no reverse
+  - `Human_TODO_Template.md` — same one-direction repair note
+  - `agent/TEMPLATE_SYNC.md` — **Present unset options** every sync (explain + ask; unset ≠ silent no)
+  - `agent/roles/template-sync.md` — same present-unset step
+  - `agent/RULE_INSTALL.md` — ask doc-roles when missing for any tool (incl. Copilot); unset status row
+  - `agent/tools/github-copilot.md`, `agent/tools/openclaw.md` — still offer doc-roles when Install is None
+  - `agent/roles/README.md` — “no adapters” ≠ “nothing to offer”
+  - `agent/BOOTSTRAP.md` — do not skip Steps 4b/4c by silence
+  - `Master_Index_Template.md`, `chat-ui/AGENT.md`, `agent/upstream-status.example.yaml`, root `README.md` — version stamps
+- **Step B:** Bump Master Index versions to 2.6.3. Dual-write reminder *(no new scan required)*: **optional** repair is inbox gaps only — human-gated items already on feature/shared `*-TODO.md` with no Open row on `Human-TODO.md` → add thin Open `- [ ]` on `Human-TODO.md`. Do **not** reverse-repair (Human-TODO → feature TODOs / “Needs a human” pointers “for dual-write”). Do **not** invent or close human items. **Present unset options:** if `optional_rules.doc-roles` (or `template-update-check`) is missing, briefly explain and ask once — do **not** auto-enable; do **not** stay silent because unset or because Copilot has no agents-folder install. Record `enabled` or `declined` on answer.
+
 ## 2.6.2
 
 - **Live impact:** `versions-only`, `process-docs-only`
@@ -48,7 +65,7 @@
   - `Master_Index_Template.md` — Human-TODO Key Locations / At a Glance / §3.3–3.4; versions 2.6; §13 anchor update
   - `agent/BOOTSTRAP.md`, `help/USAGE.md`, `help/SETUP.md`, `chat-ui/AGENT.md`, `agent/upstream-status.example.yaml`
   - Root `README.md` — pack 2.6; Human-TODO layout blurb
-- **Step B:** Bump Master Index versions to 2.6; adopt Human-TODO Key Locations / At a Glance / Document Map wording. Add missing sections/columns from `Human_TODO_Template.md` and `TODO_Template.md` into live `Human-TODO.md` / feature TODOs (**do not** wipe Open/Done content — merge Kind/Owner columns and Instructions). Refresh installed modular rules if user wants (bodies changed). Optionally repair dual-write: human-gated items that exist only on feature TODOs → add thin Open rows on `Human-TODO.md`. Do **not** invent new procure/waiting rows; do **not** mark human items done without user confirmation.
+- **Step B:** Bump Master Index versions to 2.6; adopt Human-TODO Key Locations / At a Glance / Document Map wording. **Required** (`content-templates`): merge missing sections/columns from `Human_TODO_Template.md` → live `Human-TODO.md`, and from `TODO_Template.md` → live `*-TODO.md` (e.g. **Needs a human** heading + Instructions) — **do not** wipe Open/Done; merge structure only. Refresh installed modular rules if user wants (bodies changed). **Optional dual-write repair** *(inbox gaps only — one direction)*: when a human-gated item (`procure` / `playtest` / `decide` / `waiting`) already exists on a feature/shared `*-TODO.md` but has **no** matching Open item on `Human-TODO.md`, add a thin Open `- [ ]` on `Human-TODO.md` that points at that owner TODO. Do **not** invent new human items; do **not** mark items done without user confirmation. Do **not** reverse-repair (copy Human-TODO → feature TODOs, or add “Needs a human” pointers onto feature TODOs “for dual-write”) — that is **not** this optional step. Do **not** skip the required structure merge by calling it dual-write repair.
 
 ## 2.5
 
@@ -72,7 +89,7 @@
   - `chat-ui/AGENT.md`, `agent/upstream-status.example.yaml` — version markers 2.5
   - Root `README.md` — pack 2.5; roles + tools in inventory
 - **Unchanged content templates:** Feature_Understanding, Feature_Spec, TODO, Tooling, Human_TODO, Decision
-- **Step B:** Bump Master Index versions to 2.5; adopt Key Locations deltas (`agent/roles/`, `agent/tools/`). For each `tools.*.status: installed`, open that `tools/<key>.md` only and refresh (ask if customized). If `optional_rules.doc-roles` is `enabled`, refresh harness agents folders (`.cursor/agents/` from `roles/cursor/`, `.grok/agents/` from `roles/grok/`, …). Remove any stale `.cursor/skills/modular-docs-*` leftovers. Do **not** open every tool file; do **not** scan live feature/shared docs; do **not** auto-enable doc roles if previously declined or unset.
+- **Step B:** Bump Master Index versions to 2.5; adopt Key Locations deltas (`agent/roles/`, `agent/tools/`). For each `tools.*.status: installed`, open that `tools/<key>.md` only and refresh (ask if customized). If `optional_rules.doc-roles` is `enabled`, refresh harness agents folders (`.cursor/agents/` from `roles/cursor/`, `.grok/agents/` from `roles/grok/`, …). Remove any stale `.cursor/skills/modular-docs-*` leftovers. Do **not** open every tool file; do **not** scan live feature/shared docs; do **not** auto-enable doc roles. If `doc-roles` is **declined**, leave it. If **missing/unset**, briefly explain (playbooks + optional harness adapters) and **ask once**, then record `enabled` or `declined` — do **not** stay silent because unset or because the installed tool has no agents-folder install.
 
 ## 2.4
 

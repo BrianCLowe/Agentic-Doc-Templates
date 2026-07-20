@@ -94,7 +94,7 @@ Source of truth is **on disk** under `docs/templates/`. Do **not** re-fetch from
 | `optional-upstream-check` | Update `docs/upstream-status.yaml` if present; offer enable if missing |
 | `process-docs-only` | No live feature/shared content scan (versions / Master Index / rules only as other tags say) |
 
-**Default when `content-templates` is absent:** bump versions + Master Index structure if tagged → summarize → ask about optional items. **Do not** open live `features/` or `_shared/` docs.
+**Default when `content-templates` is absent:** bump versions + Master Index structure if tagged → summarize → **present unset options** (below). **Do not** open live `features/` or `_shared/` docs.
 
 ### Reference — local template → live file *(only when tagged)*
 
@@ -126,6 +126,10 @@ Versions:
 5. **Upstream stamp** *(if `optional-upstream-check` or file exists)* — If `docs/upstream-status.yaml` exists: set `local_template_version` / `local_workflow_version` from local `VERSION`, `last_checked` today, clear `update_available` — do **not** delete the file. Refresh optional update-check rules if tagged `rules` / body changed (ask first if customized).
 6. **Layout migration** — Run [`BOOTSTRAP.md`](BOOTSTRAP.md) Step 0b **only** if layout markers show older layout (`docs/help/` or `docs/agent/` at docs root, or flat setup files in `templates/`). Skip on a normal modern pack refresh.
 7. **Summarize** pack refresh + live-doc updates; ask before large live-doc rewrites.
+8. **Present unset options** *(every sync — before stopping)* — Users cannot ask for what they were never told exists. Read `docs/rule-install-status.yaml` if present. For each known pack optional (`optional_rules.template-update-check`, `optional_rules.doc-roles`, plus any **new** optional named in the top changelog entry / Step B):
+   - **`declined`** → do not re-ask; a one-line “still off” note is enough.
+   - **`enabled`** → already handled by refresh steps above; no re-pitch.
+   - **missing / unset** → **briefly explain** what it is, what “yes” installs for *this* project’s `tools.*.status: installed` tools (including “no adapter files — playbooks used in-session” when that tool’s `tools/<key>.md` says Install: None), then **ask once** (yes / no / later). On yes/no, record `enabled` or `declined`. Do **not** enable silently. Do **not** treat unset as silent no. Do **not** skip the ask because an installed tool has no harness adapters (e.g. Copilot + doc-roles).
 
 ### Do not (Step B)
 
@@ -135,6 +139,8 @@ Versions:
 - Treat a missing or empty `docs/templates/agent/upstream/` (deleted README / LICENSE / CONTRIBUTING) as an error or reason to re-download attribution files — users often remove those on purpose after bootstrap
 - Open Workflow, help guides, or the whole pack catalog during sync
 - Keep pulling from GitHub — work from the **local** `docs/templates/` copy
+- Skip presenting unset optionals because “do not auto-enable” — that means ask, not stay silent
+- Equate “no install artifacts for this harness” with “nothing to offer the user”
 
 ---
 

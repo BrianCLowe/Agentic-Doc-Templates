@@ -44,10 +44,11 @@ Optional fields: `recorded` (YYYY-MM-DD), `path`, `note`.
 |--------|---------|
 | `enabled` | User opted in (bootstrap Step 4b / 4c or explicit ask). When installing/refreshing a tool, that tool’s `tools/<key>.md` also installs matching optional artifacts. |
 | `declined` | User opted out — do not install; do not re-ask unless they request it. |
+| *(missing / unset)* | **Not** a silent no. Briefly explain the option and ask once; then record `enabled` or `declined`. |
 
-If `optional_rules.template-update-check` is missing, bootstrap should have asked — if you are mid–rule-install and bootstrap Step 4b was skipped, ask once using the Step 4b prompt, then record `enabled` or `declined`.
+If `optional_rules.template-update-check` is missing, bootstrap should have asked — if you are mid–rule-install (or finishing a template sync) and it is still unset, ask once using the Step 4b prompt, then record `enabled` or `declined`.
 
-If `optional_rules.doc-roles` is missing and you are installing a tool that supports agent folders (`cursor`, `grok-build`, `claude-code`), ask once using bootstrap Step 4c, then record `enabled` or `declined`.
+If `optional_rules.doc-roles` is missing, ask once using bootstrap Step 4c for **any** rule-install or template-sync pass — not only when installing Cursor/Grok/Claude. Explain what “yes” means for each `tools.*.status: installed` tool (agents-folder adapters where supported; Copilot/OpenClaw/etc.: no adapter files — parent follows `roles/*.md` in-session). Then record `enabled` or `declined`. Do **not** skip the ask because the current tool’s Install row is None.
 
 ## Before asking
 

@@ -84,7 +84,7 @@ Move finished items here (as `- [x]`) so **Open** stays short.
   2. Move the Human-TODO item to **Done** as `- [x]` (or check it off) and refresh **Last Updated**.
   3. Unblock / refresh Current focus on affected feature TODOs if needed.
 - Distinguish from [`Tooling.md`](Tooling.md): installable CLIs/SDKs go there; human portal/account **and** judgment work goes here.
-- If the user asks “what’s left that I need to do?” / “what’s on the human TODO?” — summarize **Open** from **this file only**. If you find human-gated items on feature TODOs missing here, **add them** (repair dual-write), then summarize.
+- If the user asks “what’s left that I need to do?” / “what’s on the human TODO?” — summarize **Open** from **this file only**. If you find human-gated items on feature TODOs missing here, **add them here** (repair dual-write — owner TODO → this inbox only; never copy this inbox onto feature TODOs), then summarize.
 - On bootstrap: create this file (can start nearly empty). Add checklist items as soon as conversation or Document Map implies human-gated work.
 - If live `Human-TODO.md` still uses a **table** for Open: convert to `- [ ]` list items (preserve Need/Kind/Owner/Blocks/Notes content).
 

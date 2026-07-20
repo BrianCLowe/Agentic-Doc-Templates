@@ -23,13 +23,14 @@ Only if `optional_rules.template-update-check.status` is `enabled`.
 
 ## Optional — Doc roles
 
-Copilot does **not** use `.cursor/agents/` / `.grok/agents/` as first-class named subagents in this pack.
+Copilot does **not** use `.cursor/agents/` / `.grok/agents/` as first-class named subagents in this pack. That does **not** mean there is nothing to offer — still present `optional_rules.doc-roles` when unset (bootstrap Step 4c / TEMPLATE_SYNC present-unset-options).
 
 | | |
 |--|--|
 | **Install** | **None** for agent adapter files |
 | **Runtime** | Parent follows `docs/templates/agent/roles/<role>.md` in-session when the modular rule’s ask matches |
-| **Optional** | If the user also uses Cursor or Grok Build, install doc-roles via those tool files |
+| **On enable** | Record `optional_rules.doc-roles: enabled` so the decision is explicit; playbooks already on disk after pack sync |
+| **Also using Cursor / Grok / Claude?** | Install adapters via those tool files when those tools are `installed` |
 
 ## Verify
 
@@ -44,3 +45,4 @@ Monorepo: enable `chat.useCustomizationsInParentRepositories` when opening a sub
 
 - Expect Copilot to load `.cursor/agents/` as subagents
 - Paste role playbook bodies into always-on Copilot instructions
+- Skip offering doc-roles because Install is None — explain in-session playbooks and ask once when unset

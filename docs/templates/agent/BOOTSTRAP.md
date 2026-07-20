@@ -260,6 +260,7 @@ Thin playbook roles (Understanding author, Doc graduate, Feature implementer, Bo
 - Finish bootstrap with a filled Document Map but **no** feature/shared files on disk.
 - Put human-gated items only in feature TODOs — dual-write `docs/Human-TODO.md` + owner TODO (Workflow §13).
 - Enable weekly template update checks without asking (Step 4b).
+- Skip Steps 4b / 4c (or stay silent about them) because the user did not ask — present and explain; record `enabled` or `declined`.
 
 ## Example user prompts
 

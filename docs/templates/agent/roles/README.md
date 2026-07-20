@@ -31,7 +31,7 @@ Bootstrap Step 4c / [`../RULE_INSTALL.md`](../RULE_INSTALL.md) → each [`../too
 | Cursor | [`cursor/`](cursor/) | `.cursor/agents/` |
 | Grok Build | [`grok/`](grok/) | `.grok/agents/` |
 | Claude Code | `cursor/` copies (compatible shape) | `.claude/agents/` |
-| Copilot / OpenClaw / Continue / Cline | — | No agents folder; parent follows playbooks in-session |
+| Copilot / OpenClaw / Continue / Cline | — | No agents folder; parent follows playbooks in-session — still **ask** when `optional_rules.doc-roles` is unset (record enabled/declined); “no adapters” ≠ “nothing to offer” |
 
 **Parent orchestration** (in the modular rule / `AGENTS.md`): if `<name>.md` exists under a known agents folder, delegate/spawn; else follow the role playbook. Grok Build must use `.grok/agents/` — it does **not** load `.cursor/agents/` as spawn types.
 
