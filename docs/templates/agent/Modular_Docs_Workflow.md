@@ -1,10 +1,10 @@
-<!-- workflow-version: 2.6.3 -->
+<!-- workflow-version: 2.6.4 -->
 
 > **Agent workflow reference.** Canonical instructions for how to work the modular doc system. Lives in `docs/templates/agent/` with the other agent playbooks — sync from upstream; do **not** copy wholesale into `docs/Master_Index.md`. The live index links here; agent rules summarize and point here for full procedure.
 
 # Modular Documentation — Agent Workflow
 
-**Workflow version**: 2.6.3 *(sync with `Master_Index.md` **Workflow version** line when updating)*
+**Workflow version**: 2.6.4 *(sync with `Master_Index.md` **Workflow version** line when updating)*
 
 **Design intent:** Users give short requests about the docs (“bootstrap”, “draft Understanding for X”, “update the templates”). Route to **one** playbook (`BOOTSTRAP`, `TEMPLATE_SYNC`, `TEMPLATE_UPDATE_CHECK`, `RULE_INSTALL` → `tools/<key>.md`, or this file for feature work) — do not scan the whole pack catalog. **Tight scope:** act on the paved path; do not pre-audit every alternate interpretation before doing the work.
 
@@ -372,6 +372,8 @@ Use Mermaid in Understanding, specs, or Master Index overview when a **small** d
 Live file: **`docs/Human-TODO.md`** (from [`Human_TODO_Template.md`](../Human_TODO_Template.md)).
 
 **One project inbox for humans** — anything a coding agent must not close from assumptions: procurement, playtest/feel, decisions/sign-off, and external waiting. Format and kinds: see the Human TODO template.
+
+**Section order (human-facing):** **Open** → **Done** at the top (tasks visible immediately); short “scroll for instructions” note above Open; Instructions for Humans then ownership / dual-write / Instructions for AI Agents **below**. Do not put instructions above the task lists.
 
 | Put on Human-TODO | Put elsewhere |
 |-------------------|---------------|

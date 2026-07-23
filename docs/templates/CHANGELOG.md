@@ -17,6 +17,16 @@
 
 ---
 
+## 2.6.4
+
+- **Live impact:** `content-templates`, `versions-only`, `process-docs-only`
+- **Files:**
+  - `VERSION` — 2.6.3 → 2.6.4
+  - `Human_TODO_Template.md` — **human-facing order:** Open → Done at top (with scroll-for-instructions note); Instructions for Humans then agent dual-write / Instructions for AI Agents below
+  - `agent/Modular_Docs_Workflow.md` — §13 notes Human-TODO section order; version 2.6.4
+  - `Master_Index_Template.md`, `chat-ui/AGENT.md`, `agent/upstream-status.example.yaml`, root `README.md` — version stamps
+- **Step B:** Bump Master Index versions to 2.6.4. Reorder live `Human-TODO.md` to match the template (Open/Done first; instructions below) — preserve all Open/Done items; move sections only. Do **not** invent or close items.
+
 ## 2.6.3
 
 - **Live impact:** `versions-only`, `process-docs-only`

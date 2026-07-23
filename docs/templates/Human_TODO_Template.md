@@ -1,39 +1,15 @@
 # [Project Name] — Human TODO
 
 > Never edit this template unless the user asks you to. Live file: `docs/Human-TODO.md` (copy from this template at bootstrap).
+>
+> **Section order (human-facing doc):** **Open** → **Done** at the top; how-to for humans then agent dual-write / sync last. Do not put instructions above the task lists.
 
 **Last Updated**: [YYYY-MM-DD]  
 **Related**: [Master_Index.md](Master_Index.md) · [Tooling.md](Tooling.md) · [Modular_Docs_Workflow.md](agent/Modular_Docs_Workflow.md) §13
 
 ---
 
-**One project inbox for everything waiting on a human** — procurement, playtest/feel, decisions/sign-off, and external waiting. Coding agents **cannot** close these from assumptions.
-
-| | **Human-TODO** | **Tooling.md** | Feature / shared `*-TODO.md` |
-|--|----------------|----------------|------------------------------|
-| Who acts | **You** | Agent on a machine | Agent in the codebase *(except human-gated items)* |
-| Role | **Dashboard / index** — short rows + checkboxes | Install CLIs/SDKs | **Owner** of detail & outcome notes for playtest/decide; code tasks |
-| Secrets | **Never** paste keys here — only “create → put in `.env` / vault” | No secrets | No secrets |
-
-**Ownership (index + owner):**
-
-| Kind | Human-TODO row | Canonical detail / outcome |
-|------|----------------|----------------------------|
-| `playtest` · `decide` | Thin pointer + checkbox | Owner feature/shared `*-TODO.md` item |
-| `procure` · `waiting` | Row holds how-to / status | This file; features **link here** (do not copy portal steps into every TODO) |
-
-**Kinds:** `procure` · `playtest` · `decide` · `waiting`
-
-| Kind | Means | Examples |
-|------|--------|----------|
-| `procure` | Account, key, portal, purchase, org approval | Azure Bot, API key, App Store listing |
-| `playtest` | Human must run / feel / smoke-test | Score target timing, cascade spam, tutorial walkthrough |
-| `decide` | Human judgment or sign-off | Theme pick, piece colors, “ship this default” |
-| `waiting` | Blocked on someone/something outside the repo | Steam Partner App ID, vendor reply |
-
-**Agent role:** Dual-write when creating a human-gated task (owner TODO item **and** a checkbox item here). Do **not** mark done unless the user said so. Do **not** invent procure/waiting items the project does not need.
-
-**Human role:** Work **Open**; tell the agent in chat when you finish or have feedback (phrases below). Agent syncs the owner doc and this list.
+**Your inbox** — everything waiting on a human. New here? Scroll to [Instructions for Humans](#instructions-for-humans) (and agent notes below that).
 
 ---
 
@@ -41,7 +17,8 @@
 
 Keep this list short — **one `- [ ]` list item per human action** (not a table — table cells are not clickable in preview).
 
-**Owner:** link to the feature/shared TODO item title for `playtest` / `decide`; `this file` for `procure` / `waiting`.
+**Owner:** link to the feature/shared TODO item title for `playtest` / `decide`; `this file` for `procure` / `waiting`.  
+**Kinds:** `procure` · `playtest` · `decide` · `waiting`
 
 - [ ] **[e.g. Score Target feel — is 10k short/right/swingy?]** (`playtest`)  
   Owner: [ScoreTarget-TODO.md](features/ScoreTarget-TODO.md) — "Tune win target" · Blocks: ScoreTarget  
@@ -70,8 +47,55 @@ Move finished items here (as `- [x]`) so **Open** stays short.
 
 ---
 
+## Instructions for Humans
+
+- This is **your** inbox — everything waiting on you in one place. Feature TODOs are for the agent; skim **Open** at the top when you resume.
+- Work an item, then tell the agent in chat (you do not have to edit markdown yourself unless you want to):
+
+  - *Checked Score Target — 10k feels short / right / still too swingy.*
+  - *Human TODO: done Tutorial walkthrough.*
+  - *Decided Default theme — keep Dev for boot.*
+  - *Still waiting on Steam; leave it open.*
+  - *What’s left on the human TODO?*
+
+- Keep secrets out of git; use `.env.example` for variable *names* only.
+- Optional: check the box in **Open** yourself; still tell the agent so they sync the owner TODO and archive the row.
+
+**Kinds:**
+
+| Kind | Means | Examples |
+|------|--------|----------|
+| `procure` | Account, key, portal, purchase, org approval | Azure Bot, API key, App Store listing |
+| `playtest` | Human must run / feel / smoke-test | Score target timing, cascade spam, tutorial walkthrough |
+| `decide` | Human judgment or sign-off | Theme pick, piece colors, “ship this default” |
+| `waiting` | Blocked on someone/something outside the repo | Steam Partner App ID, vendor reply |
+
+---
+
+## How this inbox works *(agents)*
+
+| | **Human-TODO** | **Tooling.md** | Feature / shared `*-TODO.md` |
+|--|----------------|----------------|------------------------------|
+| Who acts | **You** | Agent on a machine | Agent in the codebase *(except human-gated items)* |
+| Role | **Dashboard / index** — short rows + checkboxes | Install CLIs/SDKs | **Owner** of detail & outcome notes for playtest/decide; code tasks |
+| Secrets | **Never** paste keys here — only “create → put in `.env` / vault” | No secrets | No secrets |
+
+**Ownership (index + owner):**
+
+| Kind | Human-TODO row | Canonical detail / outcome |
+|------|----------------|----------------------------|
+| `playtest` · `decide` | Thin pointer + checkbox | Owner feature/shared `*-TODO.md` item |
+| `procure` · `waiting` | Row holds how-to / status | This file; features **link here** (do not copy portal steps into every TODO) |
+
+**Agent role:** Dual-write when creating a human-gated task (owner TODO item **and** a checkbox item here). Do **not** mark done unless the user said so. Do **not** invent procure/waiting items the project does not need.
+
+**Human role:** Work **Open**; tell the agent in chat when you finish or have feedback (phrases above). Agent syncs the owner doc and this list.
+
+---
+
 ## Instructions for AI Agents
 
+- **Keep section order:** Open → Done at the top; Instructions for Humans next; agent sections last. Never put instructions above the task lists.
 - **Dual-write (mandatory):** When Understanding, planning, Current focus, or implementation creates a task only a human can close → in the **same edit**:
   1. Add/update the item on the **owner** `*-TODO.md` (for `playtest` / `decide`: full text + outcome space; for `procure` / `waiting`: a short “Blocked by Human-TODO — [Need]” link).
   2. Add/update a `- [ ]` **list item** in **Open** here (never a markdown table cell — preview cannot toggle those). Include kind in backticks, Owner, Blocks, Notes on following lines under the same list item.
@@ -87,22 +111,7 @@ Move finished items here (as `- [x]`) so **Open** stays short.
 - If the user asks “what’s left that I need to do?” / “what’s on the human TODO?” — summarize **Open** from **this file only**. If you find human-gated items on feature TODOs missing here, **add them here** (repair dual-write — owner TODO → this inbox only; never copy this inbox onto feature TODOs), then summarize.
 - On bootstrap: create this file (can start nearly empty). Add checklist items as soon as conversation or Document Map implies human-gated work.
 - If live `Human-TODO.md` still uses a **table** for Open: convert to `- [ ]` list items (preserve Need/Kind/Owner/Blocks/Notes content).
-
----
-
-## Instructions for Humans
-
-- This is **your** inbox — everything waiting on you in one place. Feature TODOs are for the agent; skim **Open** here when you resume.
-- Work an item, then tell the agent in chat (you do not have to edit markdown yourself unless you want to):
-
-  - *Checked Score Target — 10k feels short / right / still too swingy.*
-  - *Human TODO: done Tutorial walkthrough.*
-  - *Decided Default theme — keep Dev for boot.*
-  - *Still waiting on Steam; leave it open.*
-  - *What’s left on the human TODO?*
-
-- Keep secrets out of git; use `.env.example` for variable *names* only.
-- Optional: check the box in **Open** yourself; still tell the agent so they sync the owner TODO and archive the row.
+- If live `Human-TODO.md` has instructions or dual-write tables **above** Open: reorder to match this template (preserve all Open/Done items).
 
 ---
 

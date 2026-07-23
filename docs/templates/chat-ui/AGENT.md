@@ -80,7 +80,7 @@ Include:
 |-----------|------|---------------|------|
 | Block Editor | _shared/BlockEditor.md | _shared/BlockEditor-Understanding.md | _shared/BlockEditor-TODO.md |
 
-3. **Template version:** 2.6.3 · **Workflow version:** 2.6.3 *(for later sync with Agentic Doc Templates)*
+3. **Template version:** 2.6.4 · **Workflow version:** 2.6.4 *(for later sync with Agentic Doc Templates)*
 
 Use this **minimum** by default. Open [`Master_Index_Template.md`](../Master_Index_Template.md) only if the user asked for the full index section layout.
 
