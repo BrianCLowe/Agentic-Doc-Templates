@@ -18,7 +18,9 @@
 2. Named feature/shared row paths — or create the default file set per Workflow §0 if the user named a new feature
 3. Source the user pointed at: this conversation, and/or specific files under `docs/reference/`
 4. Existing `-Understanding.md` for that stem (if any)
-5. This role file + Understanding template — open Workflow §4 only if status/identity rules are unclear
+5. That stem’s `-TODO.md` and spec (for Done when / completion check on updates)
+6. Implementation for **this stem only** when re-verifying checked Done when / TODO items (read — do not code)
+7. This role file + Understanding template — open Workflow §4 only if status/identity rules are unclear
 
 **Do not** open unrelated features, the full pack catalog, or start coding.
 
@@ -27,17 +29,20 @@
 1. Identify the **one** feature or shared component stem (from the user or Document Map).
 2. If the idea is vague, ask brief questions from `IDEA_CAPTURE_TIPS.md` (cap **5**), then draft — do not interview forever.
 3. Write or update `-Understanding.md` from [`Feature_Understanding_Template.md`](../../Feature_Understanding_Template.md):
-   - Prioritize **What this is** and **What this is NOT** (finished-feature **identity**, not deferred backlog)
+   - **What this is** — completeness over compression: reflect everything the user stated about the finished feature; do not drop details for brevity; do not pad or invent
+   - **What this is NOT** — finished-feature **identity** boundaries only (tight bullets; not deferred backlog)
    - **Relationship to existing work** — extends / wraps / reuses vs greenfield
    - How it should work, UI/UX intent, Done when, Assumptions
    - Visual references only if the user provided screenshots (similar vs different)
-4. Set status to **`draft`** (or keep `draft` after a material correction).
-5. If the Document Map row is new: add the row **and** create Understanding + spec stub + core TODO in the **same turn** (Workflow §0) — leave spec/TODO as stubs; do not fill architecture as if confirmed.
-6. Show the user the Understanding path and ask them to correct identity/scope. **Stop.**
+4. **On update (existing file):** Re-check **Done when** and the stem’s `-TODO.md` against code vs the updated Understanding / spec. **Uncheck** any `[x]` that no longer matches; refresh **Current focus** if work reopened; note under **Confirmed with user**. Skip only when this is a brand-new Understanding with no prior `[x]` marks.
+5. Set status to **`draft`** (or keep `draft` after a material correction).
+6. If the Document Map row is new: add the row **and** create Understanding + spec stub + core TODO in the **same turn** (Workflow §0) — leave spec/TODO as stubs; do not fill architecture as if confirmed.
+7. Show the user the Understanding path and ask them to correct identity/scope. **Stop.**
 
 ## Stop when
 
 - `-Understanding.md` exists at status `draft` (or updated draft after corrections), and
+- On updates: Done when / TODO completion marks for this stem match code vs destination (mismatches unchecked), and
 - You have asked the user to review — especially **What this is / is NOT**
 
 ## Do not
@@ -45,7 +50,9 @@
 - Write or modify application code
 - Set status to `confirmed` (only the user does that)
 - Graduate to the spec (use [`doc-graduate.md`](doc-graduate.md) after confirm)
+- Leave premature `[x]` on Done when or TODO when code no longer matches the destination
 - Invent `_shared/` rows or §3.0 exceptions
 - Mine git history or unrelated chats for a “history” section
 - Re-open confirmed Understandings for full re-review unless the user changed scope
 - Act as Feature implementer in the same pass
+- Audit Done when / TODOs for unrelated stems

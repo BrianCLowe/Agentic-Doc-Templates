@@ -186,8 +186,8 @@ The **agent** drafts `FeatureName-Understanding.md` (or `_shared/ComponentName-U
 
 | Your thinking (in chat) | Understanding section (agent writes) |
 |-------------------------|--------------------------------------|
-| Problem and purpose (when complete) | **What this is** |
-| Wrong category / identity (not “not built yet”) | **What this is NOT** |
+| Problem, purpose, and what it is when complete (all details you care about) | **What this is** *(agent must not drop your details for brevity — and must not pad)* |
+| Wrong category / identity (not “not built yet”) | **What this is NOT** *(keep tight)* |
 | Existing app pieces | **Relationship to existing work** |
 | Steps and behavior | **How it should work** |
 | Look, layout, references | **UI / UX intent** + **Visual references** |
@@ -219,7 +219,7 @@ When the user describes a feature vaguely:
 
 1. Read this file and [`Feature_Understanding_Template.md`](Feature_Understanding_Template.md).
 2. Ask **short, plain-language questions** from the buckets above — not a twenty-question form. Prioritize: identity (is / is not *as a finished feature*), UI, happy-path flow, relationship to existing work. Do not put phased or deferred work under **What this is NOT**.
-3. Write or update `-Understanding.md` with status `draft`. Include **Done when** acceptance checkboxes. List gaps in **Assumptions**.
+3. Write or update `-Understanding.md` with status `draft`. **What this is** — completeness over compression: reflect everything the user stated; do not drop details for brevity; do not pad or invent. Include **Done when** acceptance checkboxes. List gaps in **Assumptions**. On updates: re-check Done when + that stem’s TODO vs code/spec; **uncheck** anything that no longer matches.
 4. After user confirms, **graduate** durable content to the spec (`Feature_Spec_Template.md`) — Decisions, architecture, shared Maturity.
 5. If the user provides screenshots, persist under `docs/features/assets/` or `docs/_shared/assets/` (or `docs/reference/visuals/`): **copy/move from a workspace path** when the file is attached or `@`-mentioned; if only a pasted chat image (vision-only), ask the user to save into `assets/` or document similar/different from what you saw and note that a file copy was not available. Link in **Visual references** — see [Saving chat attachments](#saving-chat-attachments-to-the-repo).
 6. If the user does not know stack or architecture, propose options **after** Understanding sections 1–4 are drafted, with a one-line rationale each.

@@ -19,4 +19,5 @@ Hard rules:
 - Read **Current focus** first; implement that item only (tight scope)
 - Treat confirmed Understanding as read-only context unless the user changed scope
 - If scope/identity changed, stop and point at the Understanding author — do not code under a stale Understanding
+- If you update Understanding, re-check Done when + TODO vs code/spec; uncheck mismatches
 - Update that feature/shared `-TODO.md` before finishing

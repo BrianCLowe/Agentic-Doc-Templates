@@ -1,10 +1,10 @@
-<!-- workflow-version: 2.6.4 -->
+<!-- workflow-version: 2.6.5 -->
 
 > **Agent workflow reference.** Canonical instructions for how to work the modular doc system. Lives in `docs/templates/agent/` with the other agent playbooks — sync from upstream; do **not** copy wholesale into `docs/Master_Index.md`. The live index links here; agent rules summarize and point here for full procedure.
 
 # Modular Documentation — Agent Workflow
 
-**Workflow version**: 2.6.4 *(sync with `Master_Index.md` **Workflow version** line when updating)*
+**Workflow version**: 2.6.5 *(sync with `Master_Index.md` **Workflow version** line when updating)*
 
 **Design intent:** Users give short requests about the docs (“bootstrap”, “draft Understanding for X”, “update the templates”). Route to **one** playbook (`BOOTSTRAP`, `TEMPLATE_SYNC`, `TEMPLATE_UPDATE_CHECK`, `RULE_INSTALL` → `tools/<key>.md`, or this file for feature work) — do not scan the whole pack catalog. **Tight scope:** act on the paved path; do not pre-audit every alternate interpretation before doing the work.
 
@@ -173,10 +173,12 @@ Each **feature** and each substantial **shared component** should have a `-Under
 
 - Capture what the feature **is meant to be when complete** (destination), not a snapshot of what is unfinished today
 - Catch misread **identity** early (e.g. "alternate UI for existing editor" vs "brand-new editor")
-- Give the user a short, readable artifact to **review and correct** before code is written
+- Give the user a readable artifact to **review and correct** before code is written
 - Attach to plans and discussions so corrections happen at planning time
 
-**What this is NOT** (critical): List **category / identity** boundaries for the finished feature — wrong product type, wrong architecture, wrong ownership. **Do not** list deferred phases, “not implemented yet,” or long-term goals that still belong to this feature; those go in the TODO, Current focus, or the spec roadmap.
+**What this is** (critical — completeness over compression): Elsewhere the pack stays lean; here do **not** drop user-stated details for brevity — that defeats Understanding. Reflect the finished feature’s identity as the user described it — metaphors, constraints that define the thing, naming, “feels like,” distinctions that matter. Prefer the user’s words. Do **not** pad, speculate, or invent. Flows belong in **How it should work**; look in **UI / UX intent**; acceptance in **Done when**.
+
+**What this is NOT** (critical — keep tight): List **category / identity** boundaries for the finished feature — wrong product type, wrong architecture, wrong ownership. **Do not** list deferred phases, “not implemented yet,” or long-term goals that still belong to this feature; those go in the TODO, Current focus, or the spec roadmap. Put the user’s detail in **What this is**, not in long NOT lists.
 
 **Status**:
 
@@ -189,7 +191,9 @@ Each **feature** and each substantial **shared component** should have a `-Under
 
 **When status is `confirmed`:** Read the Understanding for context, then proceed from the TODO/spec. **Do not** re-surface it for review or ask "does this match your intent?" unless the user changes scope, you discover a conflict with code, or you set status back to `draft` / `superseded`. Unchecked **Assumptions** after `confirmed` means ask about those specific items only — not a full re-review.
 
-**Reconciliation:** If shipped code diverges from a `confirmed` Understanding, either update the spec to match reality and note **Last reconciled with code** on both files, or set status to `superseded` and draft a new Understanding. Run reconciliation **only when** the user reports a mismatch, implementation clearly contradicts Understanding, or this session changes that feature’s behavior — **not** as a session-start code-vs-docs audit.
+**Reconciliation:** If shipped code diverges from a `confirmed` Understanding, either update the spec to match reality and note **Last reconciled with code** on both files, or set status to `superseded` and draft a new Understanding. Run reconciliation **only when** the user reports a mismatch, implementation clearly contradicts Understanding, this session changes that feature’s behavior, **or you are updating that feature’s Understanding** — **not** as a session-start code-vs-docs audit of the whole repo.
+
+**On Understanding update — Done when + TODO:** In the same pass as drafting/revising `-Understanding.md` for a stem, open that stem’s `-TODO.md` and compare checked **Done when** items and checked TODO tasks to the **destination** (updated Understanding + spec) and to implemented code for that stem. **Uncheck** any `[x]` where code no longer matches (partial ship, wrong behavior, or destination changed). Reopen or add TODO items and refresh **Current focus** when work is no longer done. Note corrections under **Confirmed with user**. Do **not** invent completion — leave boxes unchecked when unsure.
 
 **When to create or update** *(agent responsibility unless user edits directly)*:
 
@@ -197,12 +201,13 @@ Each **feature** and each substantial **shared component** should have a `-Under
 - User asks for a plan, spec review, or "how should we build this" → if Understanding is `confirmed`, use it; if `draft` or missing, draft or update first
 - Agent discovers an **identity** assumption that should be explicit (especially **What this is NOT** — not a backlog of unfinished work)
 - User corrects the agent → agent updates Understanding immediately
+- After any of the above updates → run the **Done when + TODO** check for that stem before stopping
 
 **When planning**: Include the Understanding file (or path) in the plan output so the user can correct it before implementation starts.
 
 See [`Feature_Understanding_Template.md`](../Feature_Understanding_Template.md).
 
-**Acceptance criteria:** The agent drafts **Done when** checkboxes in Understanding so the user can confirm completeness without reading every TODO.
+**Acceptance criteria:** The agent drafts **Done when** checkboxes in Understanding so the user can confirm completeness without reading every TODO. Checked means code matches the destination — premature `[x]` marks must be cleared on Understanding updates (see above).
 
 **Visual references (screenshots):** Save under `docs/features/assets/`, `docs/_shared/assets/`, or `docs/reference/visuals/`. Link from `-Understanding.md` with **similar vs different** notes. See [`../help/IDEA_CAPTURE_TIPS.md`](../help/IDEA_CAPTURE_TIPS.md#visual-references-screenshots).
 

@@ -17,6 +17,20 @@
 
 ---
 
+## 2.6.5
+
+- **Live impact:** `versions-only`, `rules`, `process-docs-only`
+- **Files:**
+  - `VERSION` — 2.6.4 → 2.6.5
+  - `Feature_Understanding_Template.md` — **What this is**: completeness over compression (keep user-stated details; do not pad); NOT stays tight; on Understanding updates re-check **Done when** + TODO and **uncheck** code/spec mismatches
+  - `agent/Modular_Docs_Workflow.md` — §4 same What this is rule + Done when/TODO uncheck-on-update; version 2.6.5
+  - `agent/Modular_Documentation_Rule.mdc` / `.instructions.md` — same Understanding update / Done when rules
+  - `agent/roles/understanding-author.md`, `roles/cursor|grok/understanding-author.md` — completeness over compression; Done when/TODO re-check on update
+  - `agent/roles/feature-implementer.md`, `roles/cursor|grok/feature-implementer.md` — if updating Understanding, run the same Done when/TODO check
+  - `help/IDEA_CAPTURE_TIPS.md`, `chat-ui/AGENT.md` — mapping / chat-UI guidance
+  - `Master_Index_Template.md`, `agent/upstream-status.example.yaml`, root `README.md` — version stamps
+- **Step B:** Bump Master Index versions to 2.6.5. Do **not** auto-rewrite live Understanding **What this is** sections during sync. New drafts and Understanding-author revisions use completeness-over-compression; expand a thin section only when the user asks (or when user-stated detail is missing). Do **not** auto-audit every live Done when/TODO during sync — that check runs when an Understanding is updated. Refresh installed modular rules if the user wants (bodies changed).
+
 ## 2.6.4
 
 - **Live impact:** `content-templates`, `versions-only`, `process-docs-only`

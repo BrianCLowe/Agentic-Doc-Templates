@@ -80,7 +80,7 @@ Include:
 |-----------|------|---------------|------|
 | Block Editor | _shared/BlockEditor.md | _shared/BlockEditor-Understanding.md | _shared/BlockEditor-TODO.md |
 
-3. **Template version:** 2.6.4 · **Workflow version:** 2.6.4 *(for later sync with Agentic Doc Templates)*
+3. **Template version:** 2.6.5 · **Workflow version:** 2.6.5 *(for later sync with Agentic Doc Templates)*
 
 Use this **minimum** by default. Open [`Master_Index_Template.md`](../Master_Index_Template.md) only if the user asked for the full index section layout.
 
@@ -88,12 +88,13 @@ Use this **minimum** by default. Open [`Master_Index_Template.md`](../Master_Ind
 
 Follow [`Feature_Understanding_Template.md`](../Feature_Understanding_Template.md) when attached. Always include:
 
-- **What this is** / **What this is NOT** — identity of the **finished** feature; NOT is category boundaries, not “not implemented yet”
+- **What this is** — identity of the **finished** feature; completeness over compression (keep user-stated details; do not pad or invent)
+- **What this is NOT** — tight category / identity boundaries, not “not implemented yet”
 - **Relationship to existing work** (reuse vs greenfield)
-- **Done when** — checkboxes so the user knows when the feature is complete
+- **Done when** — checkboxes so the user knows when the feature is complete; `[x]` only when code matches the destination
 - **Assumptions** — unchecked until the user confirms
 
-Set status `draft`. Do not treat the user as author — they **review and correct** your draft. After they approve, set **`confirmed`** — then later agents can continue without re-asking for review.
+Set status `draft`. Do not treat the user as author — they **review and correct** your draft. After they approve, set **`confirmed`** — then later agents can continue without re-asking for review. When revising an Understanding, re-check Done when + TODO and **uncheck** premature completion marks.
 
 ## Spec and TODO
 

@@ -18,6 +18,8 @@ Follow **`docs/templates/agent/roles/understanding-author.md`** exactly. Open th
 
 Hard rules:
 - Capture **user intention** before anything else — especially What this is / What this is NOT
+- **What this is** — completeness over compression: keep every user-stated detail; do not pad or invent
+- On updates: re-check Done when + that stem’s TODO vs code/spec; **uncheck** mismatches
 - Write or update `-Understanding.md` at status `draft`; ask the user to review
 - Do **not** implement application code
 - Do **not** set Understanding to `confirmed`

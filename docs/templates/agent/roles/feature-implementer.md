@@ -32,7 +32,7 @@
 2. Before integrating a **shared** piece, check Maturity on its spec or Document Map.
 3. Implement that focus item only (tight scope).
 4. Update the same `-TODO.md`: check off items with `[x]` + date; refresh **Current focus**.
-5. Update Understanding / spec **only if this session** changed scope, UI intent, or contract — especially **What this is NOT**. Otherwise leave them alone.
+5. Update Understanding / spec **only if this session** changed scope, UI intent, or contract — especially **What this is NOT**. If you update Understanding, re-check **Done when** + this TODO vs code/spec and **uncheck** mismatches (Workflow §4). Otherwise leave Understanding alone.
 6. If blocked on a human (procure / playtest / decide / waiting): **dual-write** owner TODO item + `docs/Human-TODO.md` Open row (Workflow §13) — never store secrets. Do not bury human asks only on this TODO.
 7. Stop when the focus item is done, blocked, or the user redirects.
 
