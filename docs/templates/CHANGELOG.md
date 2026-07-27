@@ -17,6 +17,21 @@
 
 ---
 
+## 2.6.6
+
+- **Live impact:** `versions-only`, `rules`, `content-templates`, `process-docs-only`
+- **Files:**
+  - `VERSION` — 2.6.5 → 2.6.6
+  - `Feature_Understanding_Template.md` — Understanding = **shape only**: What this is / is NOT, Relationship, Assumptions, Confirmed; **How it should work / UI/UX / Visual references / Done when removed**; relocate-don’t-delete into spec when trimming
+  - `Feature_Spec_Template.md` — **Contract home** banner + Behavior anti-compression; **Acceptance** + **Visual references** + Behavior hold flows/UI; graduate synthesizes conversation/decisions, not Understanding-only copy
+  - `agent/Modular_Docs_Workflow.md` — §2 / §4 shape-vs-spec + graduation anti-compression; version 2.6.6
+  - `agent/Modular_Documentation_Rule.mdc` / `.instructions.md` — same shape / guardrails messaging
+  - `agent/roles/understanding-author.md`, `roles/cursor|grok/understanding-author.md` — ask user to confirm shape, not full spec
+  - `agent/roles/doc-graduate.md`, `agent/roles/feature-implementer.md` — thin Understanding; graduate must not under-fill spec
+  - `help/IDEA_CAPTURE_TIPS.md`, `help/USAGE.md`, `chat-ui/AGENT.md` — human-facing shape confirmation
+  - `Master_Index_Template.md`, `agent/upstream-status.example.yaml`, root `README.md` — version stamps
+- **Step B:** Bump Master Index versions to 2.6.6. Do **not** auto-rewrite live Understanding or Spec bodies during sync. New drafts / Understanding-author / Doc-graduate revisions use shape-only Understanding (is / is not / Relationship / Assumptions); when revising a live Understanding, add/keep the human review banner and trim only if the user asks or that stem is being updated — **relocate** trimmed contract detail (How-it-should-work → Behavior; Visual references; Done when → Acceptance) into that stem’s spec if missing (do not delete). When graduating or updating a live spec, apply anti-compression only for that stem. Do **not** auto-audit every live TODO during sync. Refresh installed modular rules if the user wants (bodies changed). Update Key Locations asset blurbs to “linked from the **spec**” if adopting Master Index deltas.
+
 ## 2.6.5
 
 - **Live impact:** `versions-only`, `rules`, `process-docs-only`

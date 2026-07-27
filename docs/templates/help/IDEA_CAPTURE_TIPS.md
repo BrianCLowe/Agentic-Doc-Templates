@@ -2,7 +2,7 @@
 
 You do not need to be a software developer to use these templates well. Agents guess when details are missing — and guesses drift from what you actually want. The fix is not “learn to code first”; it is **describing the idea in plain language** using the kinds of details below.
 
-Your answers in chat feed the agent's draft of [`Feature_Understanding_Template.md`](Feature_Understanding_Template.md) — the file **the agent writes first** and **you review** before building. You describe the idea; you do not need to write this file yourself.
+Your answers in chat feed the agent's draft of [`Feature_Understanding_Template.md`](Feature_Understanding_Template.md) — the file **the agent writes first** and **you confirm for shape / guardrails** (is / is not + Assumptions) before building. That is **not** a full-spec review. You describe the idea; you do not need to write this file yourself.
 
 ---
 
@@ -12,7 +12,7 @@ If you brainstormed in a **chat interface** (Grok, ChatGPT, Claude web, etc.) an
 
 **Save lasting copies under `docs/reference/`** (e.g. `docs/reference/my-feature-chat.md` or a `.txt` export). That folder is for design docs, PRDs, and conversation dumps — not for living Understanding/spec/TODO files.
 
-A messy conversation often conveys Understanding better than a refined summary: it includes what you rejected, half-formed constraints, examples, and the path you took to the idea. The agent can distill that into `-Understanding.md`; you still review the draft.
+A messy conversation often conveys shape better than a refined summary: it includes what you rejected, half-formed constraints, examples, and the path you took to the idea. The agent can distill that into `-Understanding.md`; you still confirm **is / is not**, not every contract detail.
 
 When both exist, pass **chat + design doc** (both can live in `docs/reference/`) — prefer not to throw away the chat just because you cleaned something up later.
 
@@ -72,10 +72,10 @@ If your agent supports **images** (Cursor, ChatGPT, Claude, Grok, etc.), screens
 **What to do:**
 
 1. Capture a **similar** site or app — not necessarily identical, just “in the ballpark.”
-2. Tell the agent **two lists** (in chat is fine — the agent puts them in Understanding):
+2. Tell the agent **two lists** (in chat is fine — the agent puts them on the **spec**):
    - **Similar:** what you want to borrow (layout, density, where the button lives, …)
    - **Different:** what your idea must not copy or must change
-3. Get the image **into the repo** under `docs/features/assets/` and link it from your feature’s `-Understanding.md` so future sessions can open the same file.
+3. Get the image **into the repo** under `docs/features/assets/` and link it from your feature’s **spec** (`FeatureName.md` **Visual references**) so future sessions can open the same file. Understanding stays shape-only (is / is not) — no screenshot table there.
 
 #### Saving chat attachments to the repo
 
@@ -83,13 +83,13 @@ If your agent supports **images** (Cursor, ChatGPT, Claude, Grok, etc.), screens
 
 | How you provide the image | Can the agent save it? |
 |---------------------------|-------------------------|
-| **Save or drop the file** into `docs/features/assets/` yourself | Always works. Tell the agent the path; it links Understanding. **Most reliable.** |
+| **Save or drop the file** into `docs/features/assets/` yourself | Always works. Tell the agent the path; it links the **spec**. **Most reliable.** |
 | **Attach a file** from disk (or `@`-mention a path in the workspace) | Usually works. Agent copies or moves to `docs/features/assets/` with shell or file tools. |
-| **Paste screenshot in chat** (no file on disk) | Agent **sees** the image (vision) but often **does not** get the original bytes. It may not be able to reproduce an identical PNG. Ask it to try; if it cannot, save the screenshot into `docs/features/assets/` yourself, then ask it to link + describe similar/different. |
+| **Paste screenshot in chat** (no file on disk) | Agent **sees** the image (vision) but often **does not** get the original bytes. It may not be able to reproduce an identical PNG. Ask it to try; if it cannot, save the screenshot into `docs/features/assets/` yourself, then ask it to link + describe similar/different on the **spec**. |
 
 In Cursor and similar IDE agents, the workspace **is** your repo — there is no separate “workspace copy” to pull from unless the tool exposes an attachment path. Prefer **file on disk in the project** over paste-only when you need a permanent reference.
 
-**Agent should:** copy or move into `docs/features/assets/FeatureName-label.ext` when a source path exists; update **Visual references**; never leave the only copy in chat. If save is not possible, say so and ask the user to drop the file in `assets/`.
+**Agent should:** copy or move into `docs/features/assets/FeatureName-label.ext` when a source path exists; update the **spec** **Visual references**; never leave the only copy in chat. If save is not possible, say so and ask the user to drop the file in `assets/`.
 
 **Where files live:**
 
@@ -103,9 +103,9 @@ In Cursor and similar IDE agents, the workspace **is** your repo — there is no
 
 **Example prompt:**
 
-> Here’s a screenshot of Notion’s focus view. Save it under `docs/features/assets/RoleEditor-notion-focus.png`. In `RoleEditor-Understanding.md`, add a visual reference: **similar** = full-width text, minimal chrome; **different** = we keep our app’s Save button top-left, no floating slash menu.
+> Here’s a screenshot of Notion’s focus view. Save it under `docs/features/assets/RoleEditor-notion-focus.png`. In `RoleEditor.md` **Visual references**, add: **similar** = full-width text, minimal chrome; **different** = we keep our app’s Save button top-left, no floating slash menu.
 
-**Why store in docs:** Chat attachments disappear. Files in the repo stay linked from Understanding and stay available to any agent with file or vision access later.
+**Why store in docs:** Chat attachments disappear. Files in the repo stay linked from the **spec** and stay available to any agent with file or vision access later.
 
 **Your own app:** Screenshots of *your* existing UI also belong here — “make the new screen look like this panel, not like the whole app.”
 
@@ -182,25 +182,28 @@ Clearer does not mean longer — it means **boundaries** and **concrete screens/
 
 ## How this maps to your docs
 
-The **agent** drafts `FeatureName-Understanding.md` (or `_shared/ComponentName-Understanding.md`) from your conversation. You **review and correct** — you do not need to write the file yourself.
+The **agent** drafts `FeatureName-Understanding.md` (or `_shared/ComponentName-Understanding.md`) from your conversation. You **review shape / guardrails** — not a full spec. You do not need to write the file yourself.
 
-| Your thinking (in chat) | Understanding section (agent writes) |
-|-------------------------|--------------------------------------|
-| Problem, purpose, and what it is when complete (all details you care about) | **What this is** *(agent must not drop your details for brevity — and must not pad)* |
-| Wrong category / identity (not “not built yet”) | **What this is NOT** *(keep tight)* |
-| Existing app pieces | **Relationship to existing work** |
-| Steps and behavior | **How it should work** |
-| Look, layout, references | **UI / UX intent** + **Visual references** |
-| How you'll know it's done | **Done when** *(agent drafts checkboxes)* |
-| Things the agent guessed | **Assumptions** (you check boxes) |
+| Your thinking (in chat) | Where it lands |
+|-------------------------|---------------|
+| What *kind of thing* it is (identity, metaphors, defining constraints, brief “feels like”) | Understanding **What this is** |
+| Wrong category / identity (not “not built yet”) | Understanding **What this is NOT** |
+| Existing app pieces | Understanding **Relationship to existing work** |
+| Things the agent guessed | Understanding **Assumptions** |
+| Rough happy path / flows | **spec** **Behavior** *(not on Understanding)* |
+| Screenshots + similar/different | **spec** **Visual references** |
+| A few coarse “done” outcomes | **spec** **Acceptance** *(not a TODO twin)* |
+| Work breakdown | **TODO** |
+
+Architecture, APIs, full behavior, and the work backlog belong in the **spec** and **TODO** after you confirm shape.
 
 Prompt the agent:
 
-> Read `IDEA_CAPTURE_TIPS.md`, interview me briefly if needed, then **draft** `[Feature]-Understanding.md` for my review. Mark unknowns as assumptions.
+> Read `IDEA_CAPTURE_TIPS.md`, interview me briefly if needed, then **draft** `[Feature]-Understanding.md` for my review of **shape** (is / is not). Mark unknowns as assumptions.
 
 If you already answered the buckets in chat:
 
-> Turn my answers into a **draft** `[Feature]-Understanding.md` using the template — I'll review.
+> Turn my answers into a **draft** `[Feature]-Understanding.md` using the template — I'll confirm shape, not the full spec.
 
 ---
 
@@ -209,7 +212,7 @@ If you already answered the buckets in chat:
 - Rough answers in chat beat silence — the agent turns them into a draft Understanding.
 - The **whole** messy thread beats a polished one-page rewrite when you have it ([Bring the whole conversation](#bring-the-whole-conversation)).
 - “I’m not sure about X” is useful — the agent puts it under **Assumptions** for you to confirm.
-- You can review a draft Understanding in five minutes and save days of wrong implementation.
+- You can review **shape** in a few minutes — you are not signing off the full contract here.
 
 ---
 
@@ -218,12 +221,12 @@ If you already answered the buckets in chat:
 When the user describes a feature vaguely:
 
 1. Read this file and [`Feature_Understanding_Template.md`](Feature_Understanding_Template.md).
-2. Ask **short, plain-language questions** from the buckets above — not a twenty-question form. Prioritize: identity (is / is not *as a finished feature*), UI, happy-path flow, relationship to existing work. Do not put phased or deferred work under **What this is NOT**.
-3. Write or update `-Understanding.md` with status `draft`. **What this is** — completeness over compression: reflect everything the user stated; do not drop details for brevity; do not pad or invent. Include **Done when** acceptance checkboxes. List gaps in **Assumptions**. On updates: re-check Done when + that stem’s TODO vs code/spec; **uncheck** anything that no longer matches.
-4. After user confirms, **graduate** durable content to the spec (`Feature_Spec_Template.md`) — Decisions, architecture, shared Maturity.
-5. If the user provides screenshots, persist under `docs/features/assets/` or `docs/_shared/assets/` (or `docs/reference/visuals/`): **copy/move from a workspace path** when the file is attached or `@`-mentioned; if only a pasted chat image (vision-only), ask the user to save into `assets/` or document similar/different from what you saw and note that a file copy was not available. Link in **Visual references** — see [Saving chat attachments](#saving-chat-attachments-to-the-repo).
-6. If the user does not know stack or architecture, propose options **after** Understanding sections 1–4 are drafted, with a one-line rationale each.
-7. Do not start implementation until the user confirms Understanding or explicitly waives review.
+2. Ask **short, plain-language questions** from the buckets above — not a twenty-question form. Prioritize: identity (is / is not *as a finished feature*) and relationship to existing work. Do not put phased or deferred work under **What this is NOT**.
+3. Write or update `-Understanding.md` with status `draft` — **only** What this is / is NOT, Relationship, Assumptions, Confirmed notes. Keep identity-defining user detail; do not pad into a mini-spec. No How it should work, UI/UX, Visual references, or Done when on Understanding. List gaps in **Assumptions**. On updates: re-check that stem’s TODO vs code/spec; **uncheck** anything that no longer matches; relocate trim overflow into the spec.
+4. Tell the user confirmation is for **shape / guardrails**, not a full spec review. After they confirm, **graduate** durable contract content to the spec (`Feature_Spec_Template.md`) — Decisions, architecture, Acceptance, shared Maturity. Spec may hold detail that was never in Understanding.
+5. If the user provides screenshots, persist under `docs/features/assets/` or `docs/_shared/assets/` (or `docs/reference/visuals/`): **copy/move from a workspace path** when the file is attached or `@`-mentioned; if only a pasted chat image (vision-only), ask the user to save into `assets/` or document similar/different from what you saw and note that a file copy was not available. Link in the **spec** **Visual references** — see [Saving chat attachments](#saving-chat-attachments-to-the-repo).
+6. If the user does not know stack or architecture, propose options **after** Understanding shape sections are drafted, with a one-line rationale each — durable choices land in the **spec**.
+7. Do not start implementation until the user confirms Understanding **shape** or explicitly waives review.
 8. End sessions by updating TODO **Current focus** ([`Modular_Docs_Workflow.md`](../agent/Modular_Docs_Workflow.md) §5.1).
 
 When the user **is** experienced, do not over-interview — still fill **What this is NOT** and **Relationship to existing work**; skip obvious questions.

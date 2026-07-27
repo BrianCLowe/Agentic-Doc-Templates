@@ -8,8 +8,8 @@ Thin, playbook-bound roles for heavier moments (intent capture, graduation, boot
 
 | Role | File | Job | Stop when |
 |------|------|-----|-----------|
-| **Understanding author** | [`understanding-author.md`](understanding-author.md) | Capture **user intention** first; draft/revise `-Understanding.md` | Ready for human review (`draft`) — **no code** |
-| **Doc graduate** | [`doc-graduate.md`](doc-graduate.md) | Confirmed Understanding → durable spec | Spec updated — **no code** |
+| **Understanding author** | [`understanding-author.md`](understanding-author.md) | Capture **feature shape** first (is / is not); draft/revise `-Understanding.md` | Ready for human **shape** review (`draft`) — **no code** |
+| **Doc graduate** | [`doc-graduate.md`](doc-graduate.md) | Confirmed shape → durable **contract** spec | Spec updated — **no code** |
 | **Feature implementer** | [`feature-implementer.md`](feature-implementer.md) | Current focus → code; update that TODO | Focus item done or blocked |
 | **Bootstrap** | [`bootstrap.md`](bootstrap.md) | First-time modular docs layout | [`../BOOTSTRAP.md`](../BOOTSTRAP.md) complete |
 | **Template sync** | [`template-sync.md`](template-sync.md) | Pack refresh + live Master Index Step B | [`../TEMPLATE_SYNC.md`](../TEMPLATE_SYNC.md) complete |

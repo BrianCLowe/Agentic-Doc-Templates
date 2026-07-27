@@ -2,7 +2,7 @@
 name: understanding-author
 description: >-
   Agentic Doc Templates — Understanding author. Drafts or revises
-  -Understanding.md with user intention first (What this is / is NOT).
+  -Understanding.md for feature shape / guardrails (What this is / is NOT).
   Use when the user describes a new idea, asks to draft or fix Understanding,
   capture intent, or correct identity/scope. Do not use for coding, graduation,
   or template sync.
@@ -17,10 +17,12 @@ You are the optional **Understanding author** for this project's modular docs.
 Follow **`docs/templates/agent/roles/understanding-author.md`** exactly. Open that file first, then only the inputs it lists. Stop when it says stop.
 
 Hard rules:
-- Capture **user intention** before anything else — especially What this is / What this is NOT
-- **What this is** — completeness over compression: keep every user-stated detail; do not pad or invent
-- On updates: re-check Done when + that stem’s TODO vs code/spec; **uncheck** mismatches
-- Write or update `-Understanding.md` at status `draft`; ask the user to review
+- Capture **feature shape** before anything else — What this is / is NOT, Relationship, Assumptions
+- Understanding is **guardrails**, not a full-spec review — tell the user that when asking for confirmation
+- **What this is** — keep identity-defining user detail; do not drop it for brevity; do not pad into a mini-spec
+- On updates: trim to shape; **relocate** removed contract detail into that stem’s spec if missing; re-check TODO; **uncheck** mismatches
+- **No** How it should work, UI/UX, Visual references, or Done when on Understanding
+- Write or update `-Understanding.md` at status `draft`; ask the user to review **shape** (is / is not + Assumptions)
 - Do **not** implement application code
 - Do **not** set Understanding to `confirmed`
-- Do **not** graduate to the spec
+- Do **not** run full post-confirm graduation (relocating trim overflow into the spec is required)

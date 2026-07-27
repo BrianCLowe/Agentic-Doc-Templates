@@ -4,7 +4,7 @@
 > Keep agents aligned with your intent across conversations, features, and long-running projects.
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-![Pack](https://img.shields.io/badge/Pack-2.6.5-blue)
+![Pack](https://img.shields.io/badge/Pack-2.6.6-blue)
 ![Built for](https://img.shields.io/badge/Built%20for-Cursor%20%7C%20Grok%20Build%20%7C%20OpenClaw%20%7C%20Claude%20Code-5865F2)
 
 ---
@@ -14,8 +14,8 @@
 AI coding agents drift when intent lives only in chat. This pack gives them a small, consistent `docs/` layout:
 
 1. You describe the idea (chat, design doc, or mid-build correction).
-2. The **agent drafts** `-Understanding.md` — how it interpreted you.
-3. **You review and correct** (especially identity: what it is / is *not*).
+2. The **agent drafts** `-Understanding.md` — feature **shape / guardrails**, not a full spec.
+3. **You confirm shape** (especially what it is / is *not* + Assumptions) — not a full-spec sign-off.
 4. After you confirm, work continues from TODOs and specs; session handoff uses **Current focus**.
 
 Short asks are enough: *bootstrap*, *draft Understanding for X*, *update the doc templates*. The agent routes to the matching playbook inside `docs/templates/`.
@@ -112,7 +112,7 @@ Flat sibling files per feature/shared component. Naming: [`Modular_Docs_Workflow
 ## Ideas that guide the pack
 
 - **Simplicity** — Short user asks; agents follow one playbook.
-- **Understanding before code** — Agent drafts; you confirm identity and scope.
+- **Understanding before code** — Agent drafts shape/guardrails; you confirm is / is not (not the full contract).
 - **Modular map** — Small files + Document Map; not one giant spec.
 - **Tight scope** — Paved path for the current ask; no “just in case” audits.
 - **One folder to copy** — `docs/templates/` holds setup, workflow, and rules so your `docs/` root stays yours.

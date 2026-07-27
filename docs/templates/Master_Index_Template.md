@@ -1,4 +1,4 @@
-<!-- template-version: 2.6.5 -->
+<!-- template-version: 2.6.6 -->
 
 > **Template reference.** Do not put project-specific content in this file. Copy to `docs/Master_Index.md` for initial setup, or diff against it when syncing template improvements into the live index. Never edit this template unless the user asks you to.
 >
@@ -8,8 +8,8 @@
 
 **Purpose**: Single entry point for **this project's** documentation — overview, locations, and Document Map. Read only the files relevant to the current task.
 
-**Template version**: 2.6.5 *(update when syncing from `templates/Master_Index_Template.md`)*
-**Workflow version**: 2.6.5 *(must match `templates/agent/Modular_Docs_Workflow.md` — update both on sync)*
+**Template version**: 2.6.6 *(update when syncing from `templates/Master_Index_Template.md`)*
+**Workflow version**: 2.6.6 *(must match `templates/agent/Modular_Docs_Workflow.md` — update both on sync)*
 
 ## 1. Project Overview
 
@@ -34,9 +34,9 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 |-------------------|---------|
 | `docs/`           | All specs, architecture, and tracking |
 | `docs/_shared/`   | Reusable **project** components used by multiple features (may be empty — do not invent filler) |
-| `docs/_shared/assets/` | Screenshots for shared components (linked from `-Understanding.md`) |
+| `docs/_shared/assets/` | Screenshots for shared components (linked from the shared **spec** **Visual references**) |
 | `docs/features/`  | Feature-specific specs + TODOs (+ optional sub-indexes) |
-| `docs/features/assets/` | Screenshots for features (linked from `-Understanding.md`) |
+| `docs/features/assets/` | Screenshots for features (linked from the feature **spec** **Visual references**) |
 | `docs/reference/` | Drop zone for design docs, PRDs, chat exports, legacy specs — not the living modular docs ([Workflow](templates/agent/Modular_Docs_Workflow.md)) |
 | `docs/reference/visuals/` | Optional inspiration screenshots before a feature exists |
 | `docs/Tooling.md` | Machine / workflow tools (not package deps) — install on a new machine ([`Tooling_Template.md`](templates/Tooling_Template.md)) |
@@ -56,8 +56,8 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 - **File layout:** flat sibling files — `features/FeatureName.md`, `FeatureName-Understanding.md`, `FeatureName-TODO.md` (same for `_shared/`) — see [Workflow §0](templates/agent/Modular_Docs_Workflow.md#0-naming--file-layout-read-before-creating-files).
 - No file should exceed ~800–1000 lines; split when bloated ([Workflow §8](templates/agent/Modular_Docs_Workflow.md#8-how-to-split-a-large-document)).
 - **Shared** only when something is actually shared across features — empty §3.1 / `_shared/` is fine. Do **not** invent shared rows or park engine/framework primers there ([Workflow §1](templates/agent/Modular_Docs_Workflow.md#1-shared-components--foundation-vs-consumption)). Real shared components get the **same note types as features** unless the **user** excepted them — record omissions in **§3.0** only after an explicit user request. Agents must not invent §3.0 or filler §3.1 rows.
-- **Understanding**: agent drafts first (`draft`); user reviews before build; **`confirmed`** = approved — agents continue without re-asking ([Workflow §4](templates/agent/Modular_Docs_Workflow.md#4-understanding-features--shared)).
-- **Spec**: durable contract after Understanding is `confirmed` ([Workflow §2](templates/agent/Modular_Docs_Workflow.md#2-understanding--spec-graduation)).
+- **Understanding**: agent drafts **shape / guardrails** first (`draft`); user confirms is / is not + Assumptions (not a full-spec review); **`confirmed`** = shape approved — agents continue without re-asking ([Workflow §4](templates/agent/Modular_Docs_Workflow.md#4-understanding-features--shared)).
+- **Spec**: durable contract after Understanding shape is `confirmed` — may hold detail that was never in Understanding ([Workflow §2](templates/agent/Modular_Docs_Workflow.md#2-understanding--spec-graduation)).
 - **Shared maturity** on spec + Document Map: `draft` \| `usable` \| `stable`.
 
 ## 3. Document Map

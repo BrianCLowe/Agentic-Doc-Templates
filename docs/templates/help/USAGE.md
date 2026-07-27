@@ -7,9 +7,9 @@ Day-to-day workflows after setup. First-time install: [`SETUP.md`](SETUP.md). De
 ## The loop
 
 1. You describe the idea (chat, `docs/reference/` design doc, or a mid-build correction).
-2. The **agent drafts** `-Understanding.md`.
-3. **You review and correct** — especially what it is / is *not*.
-4. After confirm, work continues from TODOs and specs (**Current focus** for session handoff).
+2. The **agent drafts** `-Understanding.md` — **feature shape / guardrails**, not a full spec.
+3. **You confirm shape** — especially what it is / is *not* and **Assumptions**. Spec-level detail may be missing on purpose.
+4. After confirm, durable contract lands in the **spec**; work continues from TODOs (**Current focus** for session handoff).
 
 Short asks are enough. Prefer the **full messy chat** over a polished summary when you have it — export or paste the whole thread; save lasting copies under `docs/reference/`. Details: [Bring the whole conversation](IDEA_CAPTURE_TIPS.md#bring-the-whole-conversation).
 
@@ -105,7 +105,7 @@ Anything only you can close → `docs/Human-TODO.md`: procure, playtest/feel, de
 | Chat → docs | *Create modular docs from our conversation using `docs/templates/`.* |
 | New idea | *Add [idea] to the docs — draft Understanding + TODO; I'll review.* |
 | Fix misunderstanding | *Update [Feature]-Understanding.md — especially What this is NOT.* |
-| UI screenshot | *Save to `docs/features/assets/`, add Visual references (similar vs different).* |
+| UI screenshot | *Save to `docs/features/assets/`, add Visual references on the **spec** (similar vs different).* |
 | Vague idea | *Interview me using IDEA_CAPTURE_TIPS.md, then draft [Feature]-Understanding.md.* |
 | Design doc | *Convert `docs/reference/[file]` to modular docs; keep original in reference/.* |
 | Bootstrap | *Bootstrap modular docs using `docs/templates/agent/BOOTSTRAP.md`.* |
@@ -127,8 +127,8 @@ Optional roles (opt-in, never always-on): [`../agent/roles/README.md`](../agent/
 | Path | Role |
 |------|------|
 | `docs/Master_Index.md` | Entry point + Document Map |
-| `docs/features/FeatureName-Understanding.md` | Agent draft of intent — you confirm |
-| `docs/features/FeatureName.md` | Durable spec after confirm |
+| `docs/features/FeatureName-Understanding.md` | Shape only — is / is not, Relationship, Assumptions (not full-spec review) |
+| `docs/features/FeatureName.md` | Durable contract after shape confirm |
 | `docs/features/FeatureName-TODO.md` | Tasks + **Current focus** |
 | `docs/_shared/…` | Only for truly shared project pieces (may be empty) |
 | `docs/Tooling.md` / `docs/Human-TODO.md` | Machine tools / human inbox (procure · playtest · decide · waiting) |

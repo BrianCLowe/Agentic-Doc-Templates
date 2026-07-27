@@ -14,5 +14,7 @@ Follow **`docs/templates/agent/roles/doc-graduate.md`** exactly. Open that file 
 
 Hard rules:
 - Graduate only when Understanding status is `confirmed` (unless the user explicitly waives)
-- Update the spec with durable contract content — no application code
+- Spec is the **contract home** — synthesize Understanding + conversation/decisions; do not copy thin Understanding and stop
+- Do **not** compress Architecture/Behavior to match Understanding’s length
+- No application code
 - Do **not** re-draft Understanding unless the user corrects identity in this pass
