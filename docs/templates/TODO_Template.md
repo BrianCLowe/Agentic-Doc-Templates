@@ -55,10 +55,10 @@ Use the right pattern:
 **Instructions for AI Agents**:
 
 - **If this TODO is in `_shared/`** — tracks foundation work on the shared component (same note-type set as features unless the user excepted files). Consumer features link here; do not duplicate these tasks in feature TODOs.
-- **If this TODO is for a feature or shared component** — read `FeatureName-Understanding.md` or `_shared/ComponentName-Understanding.md` first. Do not implement until status is `confirmed` or the user waives review. **If `confirmed`**, read for context and proceed — do not re-prompt the user to review that Understanding unless scope changes.
+- **If this TODO is for a feature or shared component** — read Understanding first (shape guardrails). Do not implement until status is `confirmed` or the user waives. **If `confirmed`**, proceed — do not re-prompt Understanding review unless scope changes. Coarse **Acceptance** lives on the **spec**, not Understanding — this file is the living work checklist.
 - Add new items as you discover them; **update Current focus** at session end (`[x]` + date on completed items).
 - **Human-gated items:** when adding a task only a human can close (`playtest`, `decide`, `procure`, `waiting`), **dual-write** in the same edit — owner item here (or Blocked-by link for procure/waiting) **and** an Open row on [`Human-TODO.md`](../Human-TODO.md). Do not bury human asks only on this file.
-- When the user reports human-TODO progress, update this owner item (`[x]` + feedback) and have the session sync Human-TODO Done (Workflow §13).
+- When the user reports human-TODO progress, update this owner item (`[x]` + feedback) and sync Human-TODO Done (Workflow §13).
 - Foundation tasks belong in `_shared/Component-TODO.md`, not in a feature TODO — see [`Modular_Docs_Workflow.md`](agent/Modular_Docs_Workflow.md) §1.
 - In-Editor feature TODOs: rename to engine-specific version per Workflow §7.
 
@@ -70,4 +70,4 @@ Use the right pattern:
 
 ---
 
-*This template is part of the Lean Modular Documentation system. Keep it concise — aim for 1 screen of high-priority items.*
+*Keep High Priority to roughly one screen — archive Completed when the list gets long.*

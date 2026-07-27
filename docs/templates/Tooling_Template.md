@@ -1,5 +1,3 @@
-<!-- template-version: 2.0 -->
-
 # [Project Name] — Tooling
 
 > Never edit this template unless the user asks you to. Live file: `docs/Tooling.md` (copy from this template at bootstrap or when first needed).

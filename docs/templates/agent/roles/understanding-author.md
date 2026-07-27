@@ -2,9 +2,9 @@
 
 > **Opt-in.** Use only when the user asks for this role or names this file. Not always-on.
 
-**Job:** Capture **feature shape** first (is / is not). Draft or revise `-Understanding.md` so the user can confirm **guardrails** before any implementation — **not** a full spec review and **not** a Done-when checklist.
+**Job:** Capture **feature shape** first (is / is not). Draft or revise `-Understanding.md` so the user can confirm **guardrails** before implementation — **not** a full spec review.
 
-**Canonical procedure:** [`../Modular_Docs_Workflow.md`](../Modular_Docs_Workflow.md) §0 (naming if creating files), §2 (graduation is *not* this role), §4 (Understanding). Template: [`../../Feature_Understanding_Template.md`](../../Feature_Understanding_Template.md). Interview help: [`../../help/IDEA_CAPTURE_TIPS.md`](../../help/IDEA_CAPTURE_TIPS.md).
+**Canonical procedure:** [`../Modular_Docs_Workflow.md`](../Modular_Docs_Workflow.md) §0 (naming if creating files), §4 (Understanding). Template: [`../../Feature_Understanding_Template.md`](../../Feature_Understanding_Template.md). Interview help: [`../../help/IDEA_CAPTURE_TIPS.md`](../../help/IDEA_CAPTURE_TIPS.md). Graduation is **not** this role (§2 / [`doc-graduate.md`](doc-graduate.md)) — except relocating trim overflow into the spec while shaping.
 
 ## When to invoke
 
@@ -27,39 +27,28 @@
 ## Steps
 
 1. Identify the **one** feature or shared component stem (from the user or Document Map).
-2. If the idea is vague, ask brief questions from `IDEA_CAPTURE_TIPS.md` (cap **5**), then draft — do not interview forever. Prioritize identity (is / is not).
-3. Write or update `-Understanding.md` from [`Feature_Understanding_Template.md`](../../Feature_Understanding_Template.md):
-   - Lead with the human review banner: confirmation is **shape / guardrails**, not full-spec sign-off
-   - **What this is** — feature shape, not the spec: identity-defining user detail only; do not drop it for brevity; do not pad into a mini-spec
-   - **What this is NOT** — finished-feature **identity** boundaries only (tight bullets; not deferred backlog)
-   - **Relationship to existing work** — extends / wraps / reuses vs greenfield
-   - **Assumptions** only beyond is / is not / Relationship — no How it should work, UI/UX, Visual references, or Done when sections
-   - If the user provided screenshots: save under `assets/` and add **Visual references** on the related **spec** (similar vs different) — not on Understanding
-4. **On update (existing file):** Trim to shape. **Relocate, don’t delete:** durable contract detail removed from Understanding → write into that stem’s **spec** if missing there (same turn), then remove from Understanding — including legacy **Done when** → **Acceptance**, How-it-should-work → **Behavior**, Visual references / UI sections → spec. Re-check the stem’s `-TODO.md` against code vs the updated Understanding / spec. **Uncheck** any `[x]` that no longer matches; refresh **Current focus** if work reopened; note under **Confirmed with user** (short — not relocated prose). Skip TODO re-check only when this is a brand-new Understanding with no prior `[x]` marks.
-5. Set status to **`draft`** (or keep `draft` after a material correction).
-6. If the Document Map row is new: add the row **and** create Understanding + spec stub + core TODO in the **same turn** (Workflow §0) — leave spec/TODO as stubs unless you are relocating contract detail out of an existing verbose Understanding into the spec.
-7. Show the user the Understanding path. Ask them to correct **shape** (is / is not + Assumptions) — explicitly say this is **not** a full spec review. If you relocated content into the spec, say so in one line. **Stop.**
+2. If the idea is vague, ask brief questions from `IDEA_CAPTURE_TIPS.md` (cap **5**), then draft — prioritize identity (is / is not).
+3. Write or update `-Understanding.md` from the Understanding template + **Workflow §4** (shape sections only; human review banner; no How-it-should-work / UI / Visual references / Done when). Screenshots → spec **Visual references**.
+4. **On update:** relocate + TODO uncheck for this stem (Workflow §4). Skip TODO re-check only for a brand-new Understanding with no prior `[x]` marks.
+5. Status **`draft`**. If the Document Map row is new: add the row **and** create Understanding + spec stub + core TODO in the **same turn** (Workflow §0).
+6. Show the user the path. Ask them to correct **shape** — say this is **not** a full spec review. If you relocated into the spec, say so in one line. **Stop.**
 
 ## Stop when
 
-- `-Understanding.md` exists at status `draft` (or updated draft after corrections), and
-- Contract detail trimmed from Understanding was relocated into the spec when missing (or there was none to relocate), and
-- On updates: TODO completion marks for this stem match code vs destination (mismatches unchecked), and
-- You have asked the user to review **shape** — especially **What this is / is NOT** and **Assumptions**
+- `-Understanding.md` exists at status `draft` (or updated draft), and
+- Contract trim was relocated into the spec when missing (or there was none), and
+- On updates: TODO marks for this stem match code vs destination, and
+- You asked the user to review **shape**
 
 ## Do not
 
 - Write or modify application code
 - Set status to `confirmed` (only the user does that)
-- Run a full post-confirm graduation pass (use [`doc-graduate.md`](doc-graduate.md) after confirm) — **except** relocating contract detail out of Understanding into the spec while trimming to shape is required
-- Delete durable contract detail from Understanding without putting it in the spec when missing there
-- Add or keep **How it should work**, **UI / UX intent**, **Visual references**, or **Done when** on Understanding
-- Ask the user to approve architecture, APIs, flows, or a full behavior contract in Understanding
-- Pad Understanding into a parallel mini-spec / Core Behavior rewrite
-- Park relocated contract prose under **Confirmed with user**
-- Leave premature `[x]` on TODO when code no longer matches the destination
-- Invent `_shared/` rows or §3.0 exceptions
-- Mine git history or unrelated chats for a “history” section
-- Re-open confirmed Understandings for full re-review unless the user changed shape
+- Run a full post-confirm graduation pass (use [`doc-graduate.md`](doc-graduate.md)) — **except** relocating trim overflow into the spec while shaping
+- Delete durable contract detail without putting it in the spec when missing
+- Add or keep How it should work, UI/UX, Visual references, or Done when on Understanding
+- Ask the user to approve architecture, APIs, flows, or a full behavior contract here
+- Pad Understanding into a mini-spec; park relocated prose under **Confirmed with user**
+- Leave premature `[x]` on TODO when code no longer matches
+- Invent `_shared/` rows or §3.0 exceptions; audit unrelated stems
 - Act as Feature implementer in the same pass
-- Audit TODOs for unrelated stems

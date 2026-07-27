@@ -62,31 +62,25 @@ When an ask matches a row below, look for a **named agent file** with that filen
 - Feature TODOs only **link** to shared TODOs when blocked or integrating (dependency note), they do not duplicate foundation tasks.
 
 **Before implementation:**
-- **Draft `-Understanding.md` first** when scoping new work — show the user how you interpreted **feature shape** (is / is not); do not expect them to write it. Creating draft Understanding files is required; the `draft` status only blocks **coding**, not writing those files. Understanding is **shape / guardrails**, not a second spec (Workflow §4). **What this is** — keep identity-defining user detail; do not drop it for brevity; do not pad into a mini-spec.
-- Tell the user confirmation is for **shape** (is / is not + Assumptions), **not** a full spec review. Spec-level detail may be missing on purpose.
-- Do not treat a feature as greenfield if Understanding says it extends or reuses existing work.
-- Do not start coding while Understanding status is `draft` unless the user explicitly waives review.
-- **When Understanding status is `confirmed`**, treat **shape** as approved — continue from TODO/spec without re-surfacing the Understanding for review.
-- When producing a plan, include the Understanding file path and state that confirmation is for **shape / guardrails** — **unless** status is already `confirmed` and shape is unchanged.
-- If the user's idea is vague, ask brief questions from `docs/templates/help/IDEA_CAPTURE_TIPS.md` (or project copy), then **draft** `-Understanding.md` for their review.
-- When the user confirms Understanding, **graduate** durable **contract** content to the spec (`Feature_Spec_Template.md`) — Decisions, architecture, shared **Maturity** (Workflow §2). Spec may hold detail that was never in Understanding.
-- Record lasting tradeoffs in the spec **Decisions** table or `docs/decisions/` (Workflow §10).
-- When the user provides UI reference screenshots, persist to `docs/features/assets/` or `docs/_shared/assets/` (copy from path when available; if paste-only chat image, ask user to save file or document from vision). Link from the **spec** **Visual references** with similar vs different — not from `-Understanding.md`.
+- **Draft `-Understanding.md` first** when scoping — agent writes; user confirms **shape** only (Workflow §4). `draft` blocks **coding**, not creating the file. Shape-only sections — not a second spec.
+- Tell the user confirmation is **is / is not + Assumptions**, not a full spec review.
+- Do not treat as greenfield if Understanding says it extends/reuses existing work.
+- Do not code while status is `draft` unless the user waives review.
+- **`confirmed`** → shape approved; continue from TODO/spec without re-asking Understanding review.
+- Plans: include Understanding path + “confirm shape, not full spec” — unless already `confirmed` and unchanged.
+- Vague ideas → brief questions from `docs/templates/help/IDEA_CAPTURE_TIPS.md`, then draft Understanding.
+- After confirm → **graduate** contract to the spec (Workflow §2). Screenshots → spec **Visual references**, not Understanding. Lasting tradeoffs → spec **Decisions** or `docs/decisions/` (Workflow §10).
 
 **While working:**
 - **Session start:** Read the active TODO's **Current focus** block first.
-- Treat the active TODO as the living task list.
-- Add new items as you discover them (new steps, clarifications, cross-feature dependencies, edge cases, refactoring needs).
-- Use the "Cross-Feature Dependencies & Integration Notes" section when features interact.
+- Treat the active TODO as the living task list; add items as discovered; use Cross-Feature Dependencies when features interact.
 
 **After changes (mandatory):**
-- Update **Current focus** and the relevant `-TODO.md` — mark completed items with `[x]` + date.
-- If the user reports Human-TODO progress or feedback: sync owner TODO + `docs/Human-TODO.md` Done (Workflow §13) — never mark human rows done from assumptions.
-- Update `-Understanding.md` / spec **only if this session** changed shape, contract, or the user corrected assumptions — especially **What this is NOT** (finished-feature identity, not deferred work). Keep Understanding shape-only (is / is not / Relationship / Assumptions); put durable behavior/UI/acceptance in the spec.
-- **When updating Understanding:** Trim to shape; **relocate** removed contract detail into that stem’s spec if missing (do not delete it) — including legacy **Done when** → spec **Acceptance**. Re-check `-TODO.md` against code vs destination; **uncheck** any `[x]` that no longer matches; refresh **Current focus** if work reopened (Workflow §4). Do **not** keep Done when on Understanding.
-- Reconcile Understanding vs code **only when** the user reports a mismatch, implementation clearly contradicts Understanding shape, this session changes that feature’s shape/behavior, or you are updating that Understanding — not as a session-start audit (Workflow §4).
-- Move finished items to Completed when the list gets long.
-- Only read other files when they are explicitly linked from Master_Index or the current TODO/spec.
+- Update **Current focus** and the relevant `-TODO.md` — `[x]` + date on completed items.
+- Human-TODO feedback → sync owner TODO + `docs/Human-TODO.md` Done (Workflow §13); never mark human rows done from assumptions.
+- Update Understanding / spec **only if this session** changed shape, contract, or assumptions. Understanding stays shape-only; contract → spec.
+- **When updating Understanding:** relocate + TODO uncheck for that stem (Workflow §4). Reconcile vs code only on mismatch / shape change / Understanding update — not session-start audit (Workflow §4).
+- Move finished items to Completed when long. Read other files only when linked from Master_Index or the current TODO/spec.
 
 **Clarification Protocol:**
 If the user says "review spec", "check for gaps", "ask questions", or "confidence check" for a **named** feature or Document Map row:

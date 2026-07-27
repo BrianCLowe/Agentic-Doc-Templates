@@ -80,24 +80,13 @@ Short correction / confirmation notes only — not a parking lot for contract pr
 
 ## Instructions for AI Agents
 
-- **Write this file first** when the user discusses, plans, or scopes a feature or shared component — before writing implementation code.
-- This file is **shape / guardrails** only: **What this is / is NOT**, **Relationship**, **Assumptions**, **Confirmed with user**. Not a second spec, not flows, not UI walkthroughs, not Done when.
-- Draft from the conversation (or a short interview using [`../help/IDEA_CAPTURE_TIPS.md`](../help/IDEA_CAPTURE_TIPS.md) if vague). Set status to `draft` and **show the user the file** for review.
-- **What this is** — feature shape, not the spec. Keep identity-defining user detail (including brief “feels like” if they said it); do not drop it for brevity; do not pad into a mini-spec.
-- Do **not** add **How it should work**, **UI / UX intent**, **Visual references**, or **Done when** sections — those belong on the **spec** (Behavior / Visual references / Acceptance) or **TODO**.
-- After updating, surface it to the user — reveal *your* interpretation of **shape** so they can correct category mistakes early.
-- When planning: include this file (or its path) in the plan **before** implementation steps, and state that confirmation is for **shape**, not the full contract.
-- When the user corrects you (in chat or by editing the file), update this file immediately — especially **What this is** / **What this is NOT** and **Relationship to existing work**.
-- **What this is NOT** = finished-feature identity only. Never list “not built yet,” “phase 2,” or “long-term in the spec” here — put those in TODO / Current focus / spec roadmap. Keep NOT bullets tight; put the user’s shape detail in **What this is**.
-- **Relocate, don’t delete:** When trimming this file to shape, any durable contract detail that does **not** belong here (flows, How-it-should-work, UI/UX sections, APIs, Visual references, Done when / acceptance lists) must be **moved into the related spec** if missing there — then remove it from Understanding. Do not drop user-stated or already-documented contract detail on the floor. Do not invent new contract content while trimming.
-- **Confirmed with user** notes stay short (what was corrected). Do not park relocated contract prose there — put it in the spec.
-- **When updating this file:** Also open the related `-TODO.md` and re-verify TODO `[x]` items against code vs the updated Understanding / spec destination. **Uncheck** anything that no longer matches; refresh **Current focus** if work reopened. Do not leave premature “done” marks. This is scoped to *this* stem — not a repo-wide audit.
-- When the user provides reference screenshots, persist under `docs/features/assets/` (or `_shared/assets/`) and link in the related **spec** **Visual references**. Optionally one short “feels like” clause under **What this is** if it defines shape.
-- Set status to `confirmed` only after the user explicitly approves **shape** (or approves a plan that references this file for shape). Then **graduate** durable contract content to the spec ([`Modular_Docs_Workflow.md`](agent/Modular_Docs_Workflow.md) §2).
-- **When status is `confirmed`:** read for guardrails and implement from the TODO/spec — **do not** ask the user to review this Understanding again unless scope/shape changes or you set `superseded` / back to `draft`.
-- If code or plan diverges from this file’s **shape**, set `superseded` or update **Last reconciled with code** after aligning spec and Understanding — do not leave both stale. Uncheck mismatched TODO items in the same pass.
-- Read this file before implementation alongside the spec and TODO — Understanding for guardrails; spec for contract + visuals + acceptance; TODO for work.
-- **Mermaid:** do not add flowcharts to Understanding — put durable flow diagrams on the **spec** if needed.
+Full procedure: [`Modular_Docs_Workflow.md`](agent/Modular_Docs_Workflow.md) §4 (shape) and §2 (graduation). Optional role: [`agent/roles/understanding-author.md`](agent/roles/understanding-author.md).
+
+1. **Write this file first** when scoping — before implementation code. Shape sections only (above); not a second spec.
+2. Draft from the conversation (or a short [`IDEA_CAPTURE_TIPS.md`](../help/IDEA_CAPTURE_TIPS.md) interview if vague). Status `draft`. **Show the user** and ask them to confirm **shape** (is / is not + Assumptions) — not the full contract.
+3. **On update:** relocate trimmed contract detail into the related **spec** if missing, then remove it here; re-check this stem’s `-TODO.md` and **uncheck** mismatches (Workflow §4). Screenshots → spec **Visual references**.
+4. Set `confirmed` only after the user approves **shape**. Then graduate contract to the spec (Workflow §2). When `confirmed`, do **not** re-ask for Understanding review unless shape/scope changes.
+5. **Mermaid / flows:** never on Understanding — put on the **spec** if needed.
 
 **Instructions for Humans**
 

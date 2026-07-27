@@ -1,10 +1,10 @@
-<!-- workflow-version: 2.6.6 -->
+<!-- workflow-version: 2.6.7 -->
 
 > **Agent workflow reference.** Canonical instructions for how to work the modular doc system. Lives in `docs/templates/agent/` with the other agent playbooks — sync from upstream; do **not** copy wholesale into `docs/Master_Index.md`. The live index links here; agent rules summarize and point here for full procedure.
 
 # Modular Documentation — Agent Workflow
 
-**Workflow version**: 2.6.6 *(sync with `Master_Index.md` **Workflow version** line when updating)*
+**Workflow version**: 2.6.7 *(sync with `Master_Index.md` **Workflow version** line when updating)*
 
 **Design intent:** Users give short requests about the docs (“bootstrap”, “draft Understanding for X”, “update the templates”). Route to **one** playbook (`BOOTSTRAP`, `TEMPLATE_SYNC`, `TEMPLATE_UPDATE_CHECK`, `RULE_INSTALL` → `tools/<key>.md`, or this file for feature work) — do not scan the whole pack catalog. **Tight scope:** act on the paved path; do not pre-audit every alternate interpretation before doing the work.
 
@@ -95,17 +95,19 @@ Optional: `_shared/_Foundation-TODO.md` for cross-cutting shared work that does 
 
 ## 2. Understanding → Spec graduation
 
+**Source of truth:** This section and §4 are the canonical shape-vs-contract procedure. Rules, roles, and template Instruction blocks summarize; **this file wins on conflict**.
+
 | File | Role | When to update |
 |------|------|----------------|
 | `-Understanding.md` | **Feature shape / guardrails** — is / is not, Assumptions; user confirms **shape** (not the full contract) | Scoping, planning, corrections |
-| `.md` spec (feature or `_shared/`) | **Durable contract** — architecture, API, decisions, stable behavior | After Understanding is `confirmed`; when code and docs must match |
+| `.md` spec (feature or `_shared/`) | **Durable contract** — architecture, API, decisions, stable behavior, Acceptance, Visual references | After Understanding is `confirmed`; when code and docs must match |
 
 **Workflow:**
 
-1. Agent drafts `-Understanding.md` → user confirms **shape** (`confirmed`) — is / is not + Assumptions. This is **not** a full spec sign-off.
-2. Agent **graduates** durable contract content into the spec: overview, architecture/contract, stable behavior, **Acceptance**, **Visual references**, **Decisions**, dependencies, maturity (shared). Synthesize from Understanding **plus** conversation / decisions — do **not** only copy the thin Understanding. Spec may (and should) hold detail that was never in Understanding. A short Understanding is **not** permission to write a short spec.
-3. Understanding stays thin: **What this is / is NOT**, **Relationship**, **Assumptions**, and short **Confirmed with user** notes — do not mine past chats or git history for a history section. Do **not** keep How it should work, UI/UX sections, Core Behavior, **Done when**, or Visual references on Understanding after graduation. Spec holds what implementers and future agents should treat as contract truth; **TODO** is the only living work checklist.
-4. If implementation diverges, update the spec **or** set Understanding to `superseded` and draft a revision (§4) — do not leave both stale.
+1. Agent drafts `-Understanding.md` → user confirms **shape** (`confirmed`) — is / is not + Assumptions. **Not** a full spec sign-off.
+2. Agent **graduates** durable contract into the spec: overview, architecture/contract, Behavior, **Acceptance**, **Visual references**, **Decisions**, dependencies, maturity (shared). Synthesize from Understanding **plus** conversation / decisions — do **not** only copy thin Understanding. A short Understanding is **not** permission to write a short spec.
+3. After graduation, Understanding keeps only shape sections (§4). Spec = contract truth; **TODO** = living work checklist.
+4. If implementation diverges, update the spec **or** set Understanding to `superseded` and revise (§4) — do not leave both stale.
 
 See [`Feature_Spec_Template.md`](../Feature_Spec_Template.md) and [`Feature_Understanding_Template.md`](../Feature_Understanding_Template.md).
 
@@ -160,60 +162,60 @@ If the work is really shared foundation, **stop** — use Path A instead.
 
 ## 4. Understanding (Features & Shared)
 
-Each **feature** and each substantial **shared component** should have a `-Understanding.md` file — the agent's model of **feature shape** (guardrails): what it is / isn’t, Assumptions, and light intent. It is **not** a second copy of the durable spec.
+**Source of truth** with §2 — other pack files summarize; this section wins on conflict. Drafting examples: [`Feature_Understanding_Template.md`](../Feature_Understanding_Template.md).
+
+Each **feature** and substantial **shared component** gets a `-Understanding.md` — the agent’s model of **feature shape** (guardrails). **Not** a second durable spec.
 
 - Features: `features/FeatureName-Understanding.md`
 - Shared: `_shared/ComponentName-Understanding.md`
 
-**Who writes it:** The **agent writes first** (status `draft`) from the conversation, design doc, or interview. The **user reviews and corrects shape** — they do not need to author it from scratch, and they should **not** be asked to approve the full contract here.
+**Who writes it:** Agent drafts first (`draft`) from conversation, design doc, or interview. User **reviews and corrects shape** — they do not author from scratch and are **not** approving the full contract here.
 
-**Default:** Agent drafts Understanding for shared components the same way as for features. **Only skip** when the user **explicitly** excepts it (record in Master Index §3.0). Incomplete docs or agent convenience are not exceptions — draft the missing Understanding.
+**Default:** Same Understanding for shared components as features. **Only skip** when the user **explicitly** excepts it (Master Index §3.0). Missing files or convenience are not exceptions.
 
-**Purpose**:
+**Shape sections only** (keep these; nothing else):
 
-- Capture **feature shape** — identity and boundaries for the finished thing — not a snapshot of unfinished work and **not** the full architecture/behavior contract
-- Catch misread **identity** early (e.g. "alternate UI for existing editor" vs "brand-new editor")
-- Give the user a short artifact to **confirm guardrails** before code is written
-- Attach to plans so shape corrections happen at planning time; durable detail **graduates** to the spec (§2)
+| Section | Put here | Do not put here |
+|---------|----------|-----------------|
+| **What this is** | Identity-defining user detail: category, metaphors, naming, “feels like,” ownership, product-defining constraints. Prefer user’s words. Brief feel/layout only if it defines the product. | Flows, APIs, edge matrices, acceptance lists, How-it-should-work, Core Behavior rewrite, padding/speculation |
+| **What this is NOT** | Finished-feature **identity** boundaries (wrong category, architecture, ownership) | Deferred phases, “not built yet,” backlog — those → TODO / Current focus / spec roadmap |
+| **Relationship** | Extends / wraps / reuses vs greenfield | Foundation task lists |
+| **Assumptions** | Unchecked items needing shape confirmation | Full-spec open questions |
+| **Confirmed with user** | Short correction notes + date | Relocated contract prose |
 
-**Tell the user clearly:** Confirming Understanding = confirming **is / is not** + **Assumptions** (shape). Spec-level detail may be missing here on purpose.
+Work queue → **TODO**. Durable contract (Behavior, **Acceptance**, Visual references, architecture) → **spec** (§2).
 
-**What this is** (critical — shape, not the spec): Capture identity-defining detail the user stated — category, metaphors, naming, “feels like,” ownership, constraints that decide *what kind of thing* this is. Prefer the user’s words. Brief feel/layout only when it defines the product — not a UI walkthrough. Do **not** drop that shape detail for brevity — and do **not** expand into flows, APIs, edge-case matrices, acceptance checklists, How-it-should-work, or a parallel Core Behavior. Work queue → **TODO**; durable contract + Behavior + **Acceptance** + Visual references → **spec**. Do **not** put **How it should work**, **UI / UX intent**, **Done when**, or **Visual references** sections on Understanding. Do **not** pad, speculate, or invent.
-
-**What this is NOT** (critical — keep tight): List **category / identity** boundaries for the finished feature — wrong product type, wrong architecture, wrong ownership. **Do not** list deferred phases, “not implemented yet,” or long-term goals that still belong to this feature; those go in the TODO, Current focus, or the spec roadmap. Put the user’s shape detail in **What this is**, not in long NOT lists.
+**Tell the user:** Confirming Understanding = **is / is not** + **Assumptions** (shape). Spec-level detail may be missing on purpose.
 
 **Status**:
 
 | Status | Meaning |
 |--------|---------|
-| `draft` | Agent wrote or updated; user has not approved **shape** — **do not implement code** unless user waives. The file **must still exist** — `draft` is not a reason to skip creating Understanding |
+| `draft` | Agent wrote/updated; shape not approved — **do not implement code** unless user waives. File **must exist** — `draft` ≠ skip creating Understanding |
 | `reviewed` | User skimmed; minor edits may remain |
-| `confirmed` | User approved **feature shape** (is / is not + Assumptions) — **safe to implement and continue** without re-asking for Understanding review; **graduate** durable contract to spec (§2). Not a sign-off on every spec detail |
-| `superseded` | No longer accurate — code or plan changed; draft a revision or reconcile explicitly |
+| `confirmed` | User approved **shape** — safe to implement without re-asking Understanding review; **graduate** contract to spec (§2). Not sign-off on every spec detail |
+| `superseded` | No longer accurate — revise or reconcile |
 
-**When status is `confirmed`:** Read the Understanding for **guardrails**, then proceed from the TODO/spec. **Do not** re-surface it for review or ask "does this match your intent?" unless the user changes shape/scope, you discover a conflict with code, or you set status back to `draft` / `superseded`. Unchecked **Assumptions** after `confirmed` means ask about those specific items only — not a full re-review or a full-spec review.
+**When `confirmed`:** Read for guardrails; proceed from TODO/spec. **Do not** re-surface for review unless shape/scope changes, conflict with code, or status returns to `draft` / `superseded`. Unchecked **Assumptions** after confirm → ask those items only.
 
-**Reconciliation:** If shipped code diverges from a `confirmed` Understanding’s **shape**, either update the spec to match reality and note **Last reconciled with code** on both files, or set status to `superseded` and draft a new Understanding. Run reconciliation **only when** the user reports a mismatch, implementation clearly contradicts Understanding, this session changes that feature’s shape/behavior, **or you are updating that feature’s Understanding** — **not** as a session-start code-vs-docs audit of the whole repo.
+**Reconciliation:** If code diverges from confirmed **shape**, update the spec + **Last reconciled with code**, or set `superseded` and draft a new Understanding. Run **only when** the user reports a mismatch, implementation contradicts Understanding, this session changes that feature’s shape/behavior, **or** you are updating that Understanding — **not** as a session-start repo-wide audit.
 
-**On Understanding update — shape trim + relocate:** In the same pass as drafting/revising `-Understanding.md` for a stem, if you remove content that is **contract** (not shape), **move it into that stem’s spec** when missing there, then delete it from Understanding (legacy **Done when** → **Acceptance**; How-it-should-work / flows → **Behavior**; UI sections / screenshot tables → **Visual references** / Behavior as appropriate). Do not discard durable detail. Do not invent. Short **Confirmed with user** notes only — not a dumping ground for relocated prose.
+**On Understanding update — relocate + TODO** *(same turn, this stem only)*:
 
-**On Understanding update — TODO:** Also open that stem’s `-TODO.md` and compare checked TODO tasks to the **destination** (updated Understanding + spec) and to implemented code for that stem. **Uncheck** any `[x]` where code no longer matches (partial ship, wrong behavior, or destination changed). Reopen or add TODO items and refresh **Current focus** when work is no longer done. Note corrections under **Confirmed with user**. Do **not** invent completion — leave boxes unchecked when unsure. Optionally align spec **Acceptance** checkboxes the same way — do not recreate a Done when section on Understanding.
+1. Trim to shape. Contract content removed from Understanding → **move into that stem’s spec** if missing, then delete from Understanding: legacy **Done when** → **Acceptance**; How-it-should-work / flows → **Behavior**; UI / screenshot tables → **Visual references** / Behavior. Do not discard; do not invent; do not park prose under **Confirmed with user**.
+2. Open that stem’s `-TODO.md`; compare `[x]` items to destination (Understanding + spec) and code. **Uncheck** mismatches; reopen items / refresh **Current focus** when work reopened. Optionally align spec **Acceptance** the same way — never recreate Done when on Understanding.
 
-**When to create or update** *(agent responsibility unless user edits directly)*:
+**When to create or update:**
 
-- User describes a new feature or change → agent drafts or updates Understanding (set `draft` if shape/scope changed materially)
-- User asks for a plan, spec review, or "how should we build this" → if Understanding is `confirmed`, use it as guardrails + read the spec; if `draft` or missing, draft or update Understanding first (shape only)
-- Agent discovers an **identity** assumption that should be explicit (especially **What this is NOT** — not a backlog of unfinished work)
-- User corrects the agent → agent updates Understanding immediately
-- After any of the above updates → run the **TODO** check for that stem before stopping
+- New feature/change → draft or update Understanding (`draft` if shape changed)
+- Plan / “how should we build this” → if `confirmed`, use as guardrails + read spec; if `draft`/missing, draft shape first
+- Identity assumption becomes clear → update **What this is NOT** (identity, not backlog)
+- User corrects you → update immediately
+- After any update → run relocate + TODO check for that stem
 
-**When planning**: Include the Understanding file (or path) in the plan output and state that user confirmation is for **shape / guardrails**, not the full spec.
+**When planning:** Include the Understanding path; state confirmation is for **shape / guardrails**, not the full spec.
 
-See [`Feature_Understanding_Template.md`](../Feature_Understanding_Template.md).
-
-**Acceptance (on the spec):** Usually **3–7** coarse outcomes — not a twin of the TODO checklist. Work breakdown stays in `-TODO.md` only. Do **not** put Done when / Acceptance on `-Understanding.md`.
-
-**Visual references (screenshots):** Save under `docs/features/assets/`, `docs/_shared/assets/`, or `docs/reference/visuals/`. Link from the **spec** (`FeatureName.md` / `_shared/ComponentName.md`) **Visual references** with **similar vs different** notes — not from `-Understanding.md`. See [`../help/IDEA_CAPTURE_TIPS.md`](../help/IDEA_CAPTURE_TIPS.md#visual-references-screenshots).
+**Acceptance** lives on the **spec** (usually 3–7 coarse outcomes) — not on Understanding. **Visual references:** save under `docs/features/assets/`, `docs/_shared/assets/`, or `docs/reference/visuals/`; link from the **spec** with similar vs different — not from `-Understanding.md`. See [`../help/IDEA_CAPTURE_TIPS.md`](../help/IDEA_CAPTURE_TIPS.md#visual-references-screenshots).
 
 ---
 

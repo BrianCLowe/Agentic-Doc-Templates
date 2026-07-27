@@ -5,7 +5,7 @@
 ## Your job
 
 1. Turn the conversation into modular docs under `docs/`.
-2. **Draft `-Understanding.md` first** (status `draft`) — show the user how you interpreted them; they review before specs/TODOs are final.
+2. **Draft `-Understanding.md` first** (status `draft`) — show how you interpreted **feature shape**; they confirm **is / is not + Assumptions** (not a full-spec review). Spec/TODO stubs in the same batch are fine.
 3. Output **one file per message block** with the full path as a heading so the user can save or download each file.
 
 ## Output format *(required)*
@@ -80,7 +80,7 @@ Include:
 |-----------|------|---------------|------|
 | Block Editor | _shared/BlockEditor.md | _shared/BlockEditor-Understanding.md | _shared/BlockEditor-TODO.md |
 
-3. **Template version:** 2.6.6 · **Workflow version:** 2.6.6 *(for later sync with Agentic Doc Templates)*
+3. **Template version:** 2.6.7 · **Workflow version:** 2.6.7 *(for later sync with Agentic Doc Templates)*
 
 Use this **minimum** by default. Open [`Master_Index_Template.md`](../Master_Index_Template.md) only if the user asked for the full index section layout.
 

@@ -29,6 +29,6 @@
 
 ## Instructions for AI Agents
 
-- Create only for **cross-cutting** choices (stack, auth model, repo layout). Feature-local choices → spec **Decisions** table.
+- Create only for **cross-cutting** choices (stack, auth model, repo layout). Feature-local choices → that stem’s **spec** Decisions table (often after Understanding **shape** confirmation — Workflow §2 / §10).
 - Link from affected specs and Master_Index Section 3.4 when added.
 - If superseded, set status and link to the replacing decision — do not delete history.

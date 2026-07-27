@@ -101,15 +101,13 @@ Omit this section only when there are no visual references yet — add it when t
 
 ## Instructions for AI Agents
 
-- **Do not** treat this as a substitute for `-Understanding.md` during scoping — draft Understanding first (shape only); populate or update this spec after `confirmed`.
-- After Understanding is confirmed, **graduate** the durable **contract** into this file ([`Modular_Docs_Workflow.md`](agent/Modular_Docs_Workflow.md) §2). Synthesize from confirmed Understanding **plus** conversation / decisions / already-agreed behavior — **do not** only copy the thin Understanding and stop. Spec may (and should) hold detail that was never in Understanding. Move any old Understanding **Done when** lists into **Acceptance** here.
-- **Anti-compression:** Understanding’s brevity is intentional. Do not thin Architecture / Behavior / Acceptance to match it. Omit speculation and filler; keep confirmed contract detail.
-- When implementation diverges from the spec, update this file **or** flag Understanding as needing reconciliation — do not silently drift.
-- **Shared components**: keep **Maturity** accurate (`draft` → foundation incomplete; `usable` → features may integrate; `stable` → breaking changes need explicit discussion).
-- Record non-obvious **Decisions** when the user chooses between options — not every TODO item, only choices with lasting impact.
-- When the user provides UI screenshots, persist under `assets/` and maintain **Visual references** here (similar vs different). Do not put the screenshot table on `-Understanding.md`.
-- Do **not** put a **Done when** section on `-Understanding.md` — acceptance lives here; work queue in `-TODO.md`.
-- **Mermaid:** add only when a diagram communicates architecture/flow better than a short paragraph. Prefer one small chart; skip if prose is enough. Never add decorative diagrams.
+Graduation / anti-compression: [`Modular_Docs_Workflow.md`](agent/Modular_Docs_Workflow.md) §2. Optional role: [`agent/roles/doc-graduate.md`](agent/roles/doc-graduate.md).
+
+- **Do not** use this as a substitute for `-Understanding.md` during scoping — draft Understanding first (shape only); populate this file after `confirmed`.
+- **Graduate** the durable contract here (Workflow §2): synthesize Understanding **plus** conversation / decisions — do not only copy thin Understanding. Do not thin Architecture / Behavior / Acceptance to match Understanding’s length.
+- Acceptance + Visual references live **here**; work queue in `-TODO.md`. Screenshots → this file’s **Visual references**, not Understanding.
+- On drift: update this file **or** reconcile Understanding — do not silently diverge. Shared **Maturity** stays accurate. Lasting choices → **Decisions** (or `docs/decisions/` if cross-cutting).
+- **Mermaid:** only when clearer than prose; one small chart max; never decorative.
 
 **Instructions for Humans**
 

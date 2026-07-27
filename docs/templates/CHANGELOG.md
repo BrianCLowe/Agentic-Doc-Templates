@@ -17,6 +17,21 @@
 
 ---
 
+## 2.6.7
+
+- **Live impact:** `versions-only`, `rules`, `content-templates`, `process-docs-only`
+- **Files:**
+  - `VERSION` — 2.6.6 → 2.6.7
+  - `agent/Modular_Docs_Workflow.md` — §2 / §4 as **source of truth** for shape vs contract; tightened overlapping prose; version 2.6.7
+  - `agent/Modular_Documentation_Rule.mdc` / `.instructions.md` — Understanding essays compressed to gates + §2/§4 pointers
+  - `Feature_Understanding_Template.md` — short **Instructions for AI Agents** checklist (section examples kept)
+  - `Feature_Spec_Template.md` — shorter agent Instructions; point to Workflow §2
+  - `agent/roles/understanding-author.md`, `doc-graduate.md`, `feature-implementer.md` + cursor/grok adapters — pointer trim
+  - `TODO_Template.md`, `Decision_Template.md`, `Tooling_Template.md` — light consistency polish
+  - `chat-ui/AGENT.md` — shape-confirm job blurb; version stamps
+  - `Master_Index_Template.md`, `agent/upstream-status.example.yaml`, root `README.md` — version stamps
+- **Step B:** Bump Master Index versions to 2.6.7. Refresh installed modular rules if the user wants (bodies changed). Do **not** auto-rewrite live Understanding / Spec / TODO bodies during sync — instruction-block changes apply to new drafts and when that stem is next edited. Optional: if adopting `content-templates`, only offer to refresh **Instructions for AI Agents** blocks on live files when the user asks for that stem — default is no body rewrite.
+
 ## 2.6.6
 
 - **Live impact:** `versions-only`, `rules`, `content-templates`, `process-docs-only`
