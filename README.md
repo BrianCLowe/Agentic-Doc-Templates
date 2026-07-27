@@ -4,7 +4,7 @@
 > Keep agents aligned with your intent across conversations, features, and long-running projects.
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-![Pack](https://img.shields.io/badge/Pack-2.6.7-blue)
+![Pack](https://img.shields.io/badge/Pack-2.6.8-blue)
 ![Built for](https://img.shields.io/badge/Built%20for-Cursor%20%7C%20Grok%20Build%20%7C%20OpenClaw%20%7C%20Claude%20Code-5865F2)
 
 ---
@@ -60,7 +60,7 @@ Attach only [`docs/templates/chat-ui/AGENT.md`](docs/templates/chat-ui/AGENT.md)
 
 ## Stay current
 
-Once your project has the sync playbook (`docs/templates/agent/TEMPLATE_SYNC.md`, added in pack **1.2**), you do not need to copy files by hand when this repo improves. Ask:
+Once your project has the sync playbooks (`docs/templates/agent/TEMPLATE_SYNC.md` → `_A` / `_B`, added in pack **1.2**; A/B split in **2.6.8**), you do not need to copy files by hand when this repo improves. Ask:
 
 > Update the doc templates from Agentic Doc Templates and sync our live docs.
 

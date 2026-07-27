@@ -1,6 +1,6 @@
 # Template pack changelog
 
-> **Agents:** After Step A of [`agent/TEMPLATE_SYNC.md`](agent/TEMPLATE_SYNC.md), read **only the top entry** below. Follow its **Live impact** tags and **Step B** line — do not invent a broader audit.
+> **Agents:** After [`agent/TEMPLATE_SYNC_A.md`](agent/TEMPLATE_SYNC_A.md), open [`agent/TEMPLATE_SYNC_B.md`](agent/TEMPLATE_SYNC_B.md) and read **only the top entry** below. Follow its **Live impact** tags and **Step B** line — do not invent a broader audit.
 >
 > **Maintainers:** Every `VERSION` bump must update this file in the same commit (newest entry on top). Keep bullets brief. When editing agent playbooks, write for thorough “off-road” models — explicit scope gates and Do-not lists, not open “as needed” language (see root [`CONTRIBUTING.md`](../../CONTRIBUTING.md)).
 
@@ -10,12 +10,24 @@
 |-----|--------------------|
 | `versions-only` | Bump Template / Workflow version in live Master Index; stop |
 | `master-index` | Adopt structural deltas in live `Master_Index.md` (headings, Key Locations, Document Map columns) |
-| `content-templates` | Scan live Understanding / Spec / TODO / Tooling / Human-TODO for *new* sections from those templates |
+| `content-templates` | Add *missing* sections/structure from content templates into live Understanding / Spec / TODO / Tooling / Human-TODO — **not** trim/remove (see `optional-live-reshape`) |
+| `optional-live-reshape` | **Present** (explain + ask once) — **highly recommended** live Understanding → shape trim + relocate into specs (Workflow §4). Default ask toward yes (all stems). Do **not** silent-skip. On yes only: trim/remove + relocate — not add-sections-only. Suggest committing pack sync first so reshape is its own commit |
 | `rules` | Offer to refresh installed agent rules from local pack (ask if customized) |
 | `optional-upstream-check` | Update or offer `docs/upstream-status.yaml` / update-check rule |
 | `process-docs-only` | Pack process/help/agent docs only — no live feature/shared content scan |
 
 ---
+
+## 2.6.8
+
+- **Live impact:** `versions-only`, `rules`, `content-templates`, `optional-live-reshape`, `process-docs-only`
+- **Files:**
+  - `VERSION` — 2.6.7 → 2.6.8
+  - `CHANGELOG.md` — new Live impact tag `optional-live-reshape` (highly recommended; suggest separate commit); `content-templates` clarified (add missing only)
+  - `agent/TEMPLATE_SYNC.md` — thin entry (A then B); **`TEMPLATE_SYNC_A.md`** / **`TEMPLATE_SYNC_B.md`** split so Step B is not loaded before pack overwrite
+  - `agent/roles/template-sync.md`, `roles/cursor|grok/docs-template-sync.md` — A-then-B; reshape ask; commit-pack-first suggestion
+  - `Master_Index_Template.md`, `agent/upstream-status.example.yaml`, `chat-ui/AGENT.md`, root `README.md` — version stamps
+- **Step B:** After pack refresh, open local **`agent/TEMPLATE_SYNC_B.md`** from disk (not a pre-overwrite sync playbook). Bump Master Index versions to 2.6.8. Refresh installed modular rules if the user wants. `content-templates`: add any *missing* structure only (do not treat as reshape). **`optional-live-reshape` (required ask — highly recommended):** Explain that leaving pre-shape Understanding sections (How-it-should-work, Done when, UI/Visuals, long contract prose) drifts from the workflow and causes agent inefficiency / wrong reviews. **Recommend yes** (default: all Document Map stems; or named stems / no). **Yes** = trim + **relocate** into that stem’s spec (Workflow §4) — not add headings only. Do **not** silent-skip or bury as “skipped by design.” **Commit hygiene:** after pack refresh + version/rules stamps, **suggest** the user commit that sync first (ask them — do not auto-commit) so live Understanding/spec reshape can be a **separate** follow-up commit. On **no/later**: do not rewrite bodies; note the drift risk briefly. On **yes**: for each chosen stem, remove non-shape sections after relocate; refresh banner + Instructions from the Understanding template; spec anti-compression for relocated content. Do not invent contract detail.
 
 ## 2.6.7
 
@@ -30,7 +42,7 @@
   - `TODO_Template.md`, `Decision_Template.md`, `Tooling_Template.md` — light consistency polish
   - `chat-ui/AGENT.md` — shape-confirm job blurb; version stamps
   - `Master_Index_Template.md`, `agent/upstream-status.example.yaml`, root `README.md` — version stamps
-- **Step B:** Bump Master Index versions to 2.6.7. Refresh installed modular rules if the user wants (bodies changed). Do **not** auto-rewrite live Understanding / Spec / TODO bodies during sync — instruction-block changes apply to new drafts and when that stem is next edited. Optional: if adopting `content-templates`, only offer to refresh **Instructions for AI Agents** blocks on live files when the user asks for that stem — default is no body rewrite.
+- **Step B:** Bump Master Index versions to 2.6.7. Refresh installed modular rules if the user wants (bodies changed). Do **not** auto-rewrite live Understanding / Spec / TODO bodies during sync — instruction-block changes apply to new drafts and when that stem is next edited. *(Superseded presentation: 2.6.8 adds `optional-live-reshape` — sync to 2.6.8+ and present the reshape ask.)*
 
 ## 2.6.6
 

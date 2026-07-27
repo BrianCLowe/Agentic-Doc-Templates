@@ -12,7 +12,7 @@ Thin, playbook-bound roles for heavier moments (intent capture, graduation, boot
 | **Doc graduate** | [`doc-graduate.md`](doc-graduate.md) | Confirmed shape → durable **contract** spec | Spec updated — **no code** |
 | **Feature implementer** | [`feature-implementer.md`](feature-implementer.md) | Current focus → code; update that TODO | Focus item done or blocked |
 | **Bootstrap** | [`bootstrap.md`](bootstrap.md) | First-time modular docs layout | [`../BOOTSTRAP.md`](../BOOTSTRAP.md) complete |
-| **Template sync** | [`template-sync.md`](template-sync.md) | Pack refresh + live Master Index Step B | [`../TEMPLATE_SYNC.md`](../TEMPLATE_SYNC.md) complete |
+| **Template sync** | [`template-sync.md`](template-sync.md) | Pack refresh (A) then live Step B | [`../TEMPLATE_SYNC.md`](../TEMPLATE_SYNC.md) → A → B |
 
 ## How to use *(no install required)*
 
