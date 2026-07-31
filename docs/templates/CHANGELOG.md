@@ -18,6 +18,19 @@
 
 ---
 
+## 2.6.9
+
+- **Live impact:** `versions-only`, `rules`, `process-docs-only`
+- **Files:**
+  - `VERSION` — 2.6.8 → 2.6.9
+  - `agent/Modular_Docs_Workflow.md` — §3 minimal path + §10: same-turn **Decisions** capture for implement/polish preference corrections; threshold + skip rules; version 2.6.9
+  - `agent/Modular_Documentation_Rule.mdc` / `.instructions.md` — After changes: preference corrections → Decisions (+ stale Behavior/Acceptance/Visual) same turn; no session-wrap dependency
+  - `agent/roles/feature-implementer.md` + `roles/cursor|grok/feature-implementer.md` — preference corrections are contract; Do-not defer to bedtime wrap
+  - `Feature_Spec_Template.md`, `Decision_Template.md`, `TODO_Template.md` — Decisions vs Current focus guidance
+  - `help/IDEA_CAPTURE_TIPS.md`, `help/USING_WITH_AGENTS.md` — same-turn capture note
+  - `Master_Index_Template.md`, `agent/upstream-status.example.yaml`, `chat-ui/AGENT.md`, root `README.md` — version stamps
+- **Step B:** Bump Master Index versions to 2.6.9. Refresh installed modular rules if the user wants (bodies changed). Do **not** auto-backfill Decisions rows for past polish sessions. Spec/TODO instruction tweaks apply going forward and when that stem is next edited.
+
 ## 2.6.8
 
 - **Live impact:** `versions-only`, `rules`, `content-templates`, `optional-live-reshape`, `process-docs-only`

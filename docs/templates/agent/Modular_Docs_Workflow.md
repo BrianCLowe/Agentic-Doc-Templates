@@ -1,10 +1,10 @@
-<!-- workflow-version: 2.6.8 -->
+<!-- workflow-version: 2.6.9 -->
 
 > **Agent workflow reference.** Canonical instructions for how to work the modular doc system. Lives in `docs/templates/agent/` with the other agent playbooks — sync from upstream; do **not** copy wholesale into `docs/Master_Index.md`. The live index links here; agent rules summarize and point here for full procedure.
 
 # Modular Documentation — Agent Workflow
 
-**Workflow version**: 2.6.8 *(sync with `Master_Index.md` **Workflow version** line when updating)*
+**Workflow version**: 2.6.9 *(sync with `Master_Index.md` **Workflow version** line when updating)*
 
 **Design intent:** Users give short requests about the docs (“bootstrap”, “draft Understanding for X”, “update the templates”). Route to **one** playbook (`BOOTSTRAP`, `TEMPLATE_SYNC`, `TEMPLATE_UPDATE_CHECK`, `RULE_INSTALL` → `tools/<key>.md`, or this file for feature work) — do not scan the whole pack catalog. **Tight scope:** act on the paved path; do not pre-audit every alternate interpretation before doing the work.
 
@@ -120,6 +120,7 @@ See [`Feature_Spec_Template.md`](../Feature_Spec_Template.md) and [`Feature_Unde
 1. Read `Master_Index.md` — Sections 1–3
 2. Active TODO **Current focus** → that TODO → Understanding (read-only) → spec → code
 3. Skip drafting, graduation, and InEditor/Asset TODOs unless status is `draft`, the user changed scope, or Project Profile says game extensions apply
+4. **Preference corrections → same turn:** if the user corrected a lasting UI/interaction preference that could be “improved away,” append 1-line **Decisions** row(s) on that stem’s spec and fix contradicting Behavior / Acceptance / Visual refs (§10). Do **not** wait for a session-wrap ask. Update **Current focus** as usual (§5.1) — it is handoff, not the decision log.
 
 **Full Path A / Path B** when scoping new work, Understanding is missing/`draft`, or graduating to spec:
 
@@ -334,14 +335,23 @@ Do not add a central `STATUS.md` unless the project truly needs a dashboard.
 
 ## 10. Decisions *(lightweight)*
 
-Record **why** something was chosen — not every task, only choices with lasting impact.
+Record **why** something was chosen — not every task, only choices with lasting impact. **Capture in the same turn as the choice** — do not rely on the user asking to wrap up the session.
 
 | Where | Use for |
 |-------|---------|
 | **Decisions** section in feature or shared **spec** | Choices local to that piece ([`Feature_Spec_Template.md`](../Feature_Spec_Template.md)) |
 | `docs/decisions/YYYY-MM-DD-short-title.md` | Cross-cutting choices ([`Decision_Template.md`](../Decision_Template.md)) |
 
-When the user confirms a tradeoff during Understanding review, the agent adds a row to the spec **Decisions** table. Link standalone decision files from Master Index §3.4.
+**When to record:**
+
+1. **Understanding review** — user confirms a tradeoff → add row(s) when graduating / updating the spec (§2).
+2. **Implement / polish** *(confirmed stem)* — user corrects a **preference that could be “improved away”** (e.g. always-on vs proximity chrome, confirm-before-delete, hide type while writing, empty lines aren’t chunks) → **same turn** append 1-line row(s) to that stem’s **Decisions** table. If Behavior / Acceptance / Visual references still state the old contract, fix those sentences in the **same edit**.
+
+**Skip:** pure spacing / pixel tweaks unless the user says “remember this.” Do **not** create `docs/decisions/` ADRs for feature-local polish. Do **not** dump choices into **Current focus** (handoff only — an optional one-line pointer to Decisions is fine).
+
+**Pattern:** `date | choice | why (short)`. Prefer several rows on one polish burst over separate ADR files.
+
+Link standalone decision files from Master Index §3.4.
 
 ---
 

@@ -19,6 +19,7 @@ Hard rules:
 - Read **Current focus** first; implement that item only (tight scope)
 - Treat confirmed Understanding as read-only context unless the user changed scope
 - If scope/identity changed, stop and point at the Understanding author — do not code under a stale Understanding
+- Preference corrections that could be “improved away” → same-turn spec **Decisions** (+ fix stale Behavior/Acceptance/Visual refs); do not wait for session wrap
 - If you update Understanding, run relocate + TODO uncheck (Workflow §4)
 - Update that feature/shared `-TODO.md` before finishing
 - Dual-write human-gated blockers to `docs/Human-TODO.md` (Workflow §13)

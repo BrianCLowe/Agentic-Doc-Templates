@@ -44,11 +44,12 @@
 
 ## Decisions
 
-Record **why** — especially choices made when confirming Understanding shape or later tradeoffs. Cross-cutting decisions that affect multiple features can also go in `docs/decisions/`.
+Record **why** — Understanding-review tradeoffs **and** implement/polish preference corrections (same turn — Workflow §10). Cross-cutting decisions that affect multiple features can also go in `docs/decisions/`.
 
 | Date | Decision | Rationale |
 |------|----------|-----------|
 | YYYY-MM-DD | [e.g. Reuse existing editor core, no second engine] | [User confirmed in Understanding review] |
+| YYYY-MM-DD | [e.g. Proximity fade for seam chrome, not divider-hover sprout] | [User preference during polish — avoid “improving” back to always-on] |
 | YYYY-MM-DD | [e.g. SQLite for v1] | [Scope / simplicity] |
 
 ---
@@ -106,7 +107,7 @@ Graduation / anti-compression: [`Modular_Docs_Workflow.md`](agent/Modular_Docs_W
 - **Do not** use this as a substitute for `-Understanding.md` during scoping — draft Understanding first (shape only); populate this file after `confirmed`.
 - **Graduate** the durable contract here (Workflow §2): synthesize Understanding **plus** conversation / decisions — do not only copy thin Understanding. Do not thin Architecture / Behavior / Acceptance to match Understanding’s length.
 - Acceptance + Visual references live **here**; work queue in `-TODO.md`. Screenshots → this file’s **Visual references**, not Understanding.
-- On drift: update this file **or** reconcile Understanding — do not silently diverge. Shared **Maturity** stays accurate. Lasting choices → **Decisions** (or `docs/decisions/` if cross-cutting).
+- On drift: update this file **or** reconcile Understanding — do not silently diverge. Shared **Maturity** stays accurate. Lasting choices → **Decisions** (or `docs/decisions/` if cross-cutting). Preference corrections during implement/polish → **same-turn** Decisions rows + fix stale Behavior / Acceptance / Visual refs (Workflow §10) — do not wait for a session wrap.
 - **Mermaid:** only when clearer than prose; one small chart max; never decorative.
 
 **Instructions for Humans**

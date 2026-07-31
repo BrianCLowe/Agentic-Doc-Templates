@@ -56,7 +56,7 @@ Use the right pattern:
 
 - **If this TODO is in `_shared/`** — tracks foundation work on the shared component (same note-type set as features unless the user excepted files). Consumer features link here; do not duplicate these tasks in feature TODOs.
 - **If this TODO is for a feature or shared component** — read Understanding first (shape guardrails). Do not implement until status is `confirmed` or the user waives. **If `confirmed`**, proceed — do not re-prompt Understanding review unless scope changes. Coarse **Acceptance** lives on the **spec**, not Understanding — this file is the living work checklist.
-- Add new items as you discover them; **update Current focus** at session end (`[x]` + date on completed items).
+- Add new items as you discover them; **update Current focus** at session end (`[x]` + date on completed items). Lasting preference corrections → that stem’s spec **Decisions** (same turn — Workflow §10), not this block.
 - **Human-gated items:** when adding a task only a human can close (`playtest`, `decide`, `procure`, `waiting`), **dual-write** in the same edit — owner item here (or Blocked-by link for procure/waiting) **and** an Open row on [`Human-TODO.md`](../Human-TODO.md). Do not bury human asks only on this file.
 - When the user reports human-TODO progress, update this owner item (`[x]` + feedback) and sync Human-TODO Done (Workflow §13).
 - Foundation tasks belong in `_shared/Component-TODO.md`, not in a feature TODO — see [`Modular_Docs_Workflow.md`](agent/Modular_Docs_Workflow.md) §1.

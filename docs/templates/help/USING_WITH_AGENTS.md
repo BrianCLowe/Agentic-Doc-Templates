@@ -51,6 +51,7 @@ OpenClaw loads workspace bootstrap files (especially `AGENTS.md`), not `.cursor/
 |-------------|---------|
 | Agent always reads Master_Index first | Usually, if the rule is loaded — not guaranteed |
 | Agent always updates TODOs | Best when the rule is active *and* you remind at session end |
+| Preference polish sticks across sessions | Rule captures lasting UI choices into spec **Decisions** same turn (no wrap-up ask needed) |
 | Same behavior across tools | Similar, not identical |
 | Rules affect inline autocomplete | Generally **no** — chat/agent sessions only |
 

@@ -69,7 +69,7 @@ When an ask matches a row below, look for a **named agent file** with that filen
 - **`confirmed`** → shape approved; continue from TODO/spec without re-asking Understanding review.
 - Plans: include Understanding path + “confirm shape, not full spec” — unless already `confirmed` and unchanged.
 - Vague ideas → brief questions from `docs/templates/help/IDEA_CAPTURE_TIPS.md`, then draft Understanding.
-- After confirm → **graduate** contract to the spec (Workflow §2). Screenshots → spec **Visual references**, not Understanding. Lasting tradeoffs → spec **Decisions** or `docs/decisions/` (Workflow §10).
+- After confirm → **graduate** contract to the spec (Workflow §2). Screenshots → spec **Visual references**, not Understanding. Lasting tradeoffs → spec **Decisions** or `docs/decisions/` (Workflow §10) — including implement-time preference corrections (same turn).
 
 **While working:**
 - **Session start:** Read the active TODO's **Current focus** block first.
@@ -79,6 +79,7 @@ When an ask matches a row below, look for a **named agent file** with that filen
 - Update **Current focus** and the relevant `-TODO.md` — `[x]` + date on completed items.
 - Human-TODO feedback → sync owner TODO + `docs/Human-TODO.md` Done (Workflow §13); never mark human rows done from assumptions.
 - Update Understanding / spec **only if this session** changed shape, contract, or assumptions. Understanding stays shape-only; contract → spec.
+- **Preference corrections (same turn):** If the user corrected a lasting UI/interaction preference on a confirmed stem that could be “improved away,” append 1-line **Decisions** row(s) and fix contradicting Behavior / Acceptance / Visual refs (Workflow §10). Skip pure spacing unless they say “remember this.” Do **not** put these in Current focus. Do **not** wait for a session-wrap ask.
 - **When updating Understanding:** relocate + TODO uncheck for that stem (Workflow §4). Reconcile vs code only on mismatch / shape change / Understanding update — not session-start audit (Workflow §4).
 - Move finished items to Completed when long. Read other files only when linked from Master_Index or the current TODO/spec.
 
