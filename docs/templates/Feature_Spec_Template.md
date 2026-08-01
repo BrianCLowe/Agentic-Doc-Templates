@@ -4,7 +4,8 @@
 
 **Last Updated**: [YYYY-MM-DD]  
 **Related Understanding**: [FeatureName-Understanding.md](FeatureName-Understanding.md)  
-**Related TODO**: [FeatureName-TODO.md](FeatureName-TODO.md)
+**Related TODO**: [FeatureName-TODO.md](FeatureName-TODO.md)  
+**Related Catalog** *(optional — list-heavy / Workflow §7.1)*: [FeatureName-Catalog.md](FeatureName-Catalog.md)
 
 *(Shared components only — omit for features if not useful)*  
 **Maturity**: draft | usable | stable  
@@ -12,7 +13,7 @@
 
 ---
 
-> **Contract home:** Understanding stays thin (shape / guardrails). **This file** holds durable behavior, architecture, APIs, and **Visual references**. A short Understanding is **not** a reason to write a short spec — do not compress contract detail to match Understanding’s length.
+> **Contract home:** Understanding stays thin (shape / guardrails). **This file** holds durable behavior, architecture, APIs, and **Visual references**. A short Understanding is **not** a reason to write a short spec — do not compress contract detail to match Understanding’s length. **Do not** dump unbounded content registries (units, fuels, tech goals, recipes…) into Behavior — use a sibling [`Feature_Catalog_Template.md`](Feature_Catalog_Template.md) / `-Catalog.md` (Workflow §7.1).
 
 ## Overview
 
@@ -39,6 +40,17 @@
 **Contract completeness here — not in Understanding.** Understanding holds shape only (no How-it-should-work section). Put durable flows, modes, edge cases, and product rules the user (or confirmed decisions) established **here**. Prefer the user’s words for product rules; do not invent. Do **not** omit confirmed contract detail to “keep the pack lean” — lean applies to Understanding and to avoiding filler, not to dropping behavior callers need.
 
 [Behavior that should stay true across refactors.]
+
+---
+
+## Catalog *(optional)*
+
+When this stem is **list-heavy** (growing row registries), keep **identity and rules here** and put rows in the sibling catalog:
+
+- **Rows:** [FeatureName-Catalog.md](FeatureName-Catalog.md) — design-intent table + readiness (`stub` \| `sketched` \| `design-ready` \| `in-code`)
+- **This section:** one short pointer only — do not re-paste the full table.
+
+Omit this section until a Catalog exists. Creating a Document Map Catalog link requires the file on disk the same turn.
 
 ---
 
@@ -106,7 +118,7 @@ Graduation / anti-compression: [`Modular_Docs_Workflow.md`](agent/Modular_Docs_W
 
 - **Do not** use this as a substitute for `-Understanding.md` during scoping — draft Understanding first (shape only); populate this file after `confirmed`.
 - **Graduate** the durable contract here (Workflow §2): synthesize Understanding **plus** conversation / decisions — do not only copy thin Understanding. Do not thin Architecture / Behavior / Acceptance to match Understanding’s length.
-- Acceptance + Visual references live **here**; work queue in `-TODO.md`. Screenshots → this file’s **Visual references**, not Understanding.
+- Acceptance + Visual references live **here**; work queue in `-TODO.md`; row registries in optional `-Catalog.md` (not Understanding). Screenshots → this file’s **Visual references**, not Understanding.
 - On drift: update this file **or** reconcile Understanding — do not silently diverge. Shared **Maturity** stays accurate. Lasting choices → **Decisions** (or `docs/decisions/` if cross-cutting). Preference corrections during implement/polish → **same-turn** Decisions rows + fix stale Behavior / Acceptance / Visual refs (Workflow §10) — do not wait for a session wrap.
 - **Mermaid:** only when clearer than prose; one small chart max; never decorative.
 

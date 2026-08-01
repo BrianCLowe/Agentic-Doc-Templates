@@ -18,6 +18,19 @@
 
 ---
 
+## 2.7.0
+
+- **Live impact:** `versions-only`, `master-index`, `content-templates`, `rules`, `process-docs-only`
+- **Files:**
+  - `VERSION` — 2.6.9 → 2.7.0
+  - `Feature_Catalog_Template.md` — **new** optional sibling for list-heavy stems (readiness column)
+  - `agent/Modular_Docs_Workflow.md` — §0 Catalog paths; **§7.1 Catalog companions**; version 2.7.0
+  - `Feature_Spec_Template.md` — optional Catalog pointer section; do not dump registries into Behavior
+  - `Master_Index_Template.md` — Document Map **Catalog** column; file-layout At a Glance note
+  - `agent/Modular_Documentation_Rule.mdc` / `.instructions.md` — Catalog on map = file same turn; no row dumps in Understanding
+  - `agent/upstream-status.example.yaml`, `chat-ui/AGENT.md`, root `README.md` — version stamps
+- **Step B:** Bump Master Index versions to 2.7.0. Adopt Catalog column on Document Map where useful (use `—` when no catalog). Refresh installed modular rules if the user wants. Do **not** invent Catalogs for every stem — only list-heavy / game registry pressure (Workflow §7.1). New `Feature_Catalog_Template.md` available for scaffolds.
+
 ## 2.6.9
 
 - **Live impact:** `versions-only`, `rules`, `process-docs-only`

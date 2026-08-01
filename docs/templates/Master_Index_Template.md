@@ -1,4 +1,4 @@
-<!-- template-version: 2.6.9 -->
+<!-- template-version: 2.7.0 -->
 
 > **Template reference.** Do not put project-specific content in this file. Copy to `docs/Master_Index.md` for initial setup, or diff against it when syncing template improvements into the live index. Never edit this template unless the user asks you to.
 >
@@ -8,8 +8,8 @@
 
 **Purpose**: Single entry point for **this project's** documentation — overview, locations, and Document Map. Read only the files relevant to the current task.
 
-**Template version**: 2.6.9 *(update when syncing from `templates/Master_Index_Template.md`)*
-**Workflow version**: 2.6.9 *(must match `templates/agent/Modular_Docs_Workflow.md` — update both on sync)*
+**Template version**: 2.7.0 *(update when syncing from `templates/Master_Index_Template.md`)*  
+**Workflow version**: 2.7.0 *(must match `templates/agent/Modular_Docs_Workflow.md` — update both on sync)*
 
 ## 1. Project Overview
 
@@ -53,7 +53,7 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 - **Mermaid:** optional — agent may add a small diagram when it beats prose for structure/flow; do not splash charts everywhere.
 - **Tooling:** `docs/Tooling.md` lists machine tools (not package deps); on a new machine, user can ask to install them ([`Tooling_Template.md`](templates/Tooling_Template.md)).
 - **Human TODO:** `docs/Human-TODO.md` — one inbox for procure / playtest / decide / waiting; index + owner dual-write ([`Human_TODO_Template.md`](templates/Human_TODO_Template.md); [Workflow §13](templates/agent/Modular_Docs_Workflow.md#13-human-todo-inbox--needs-a-human)).
-- **File layout:** flat sibling files — `features/FeatureName.md`, `FeatureName-Understanding.md`, `FeatureName-TODO.md` (same for `_shared/`) — see [Workflow §0](templates/agent/Modular_Docs_Workflow.md#0-naming--file-layout-read-before-creating-files).
+- **File layout:** flat sibling files — `features/FeatureName.md`, `FeatureName-Understanding.md`, `FeatureName-TODO.md`, optional `FeatureName-Catalog.md` for list-heavy stems (same for `_shared/`) — see [Workflow §0](templates/agent/Modular_Docs_Workflow.md#0-naming--file-layout-read-before-creating-files) / [§7.1](templates/agent/Modular_Docs_Workflow.md#71-catalog-companions-list-heavy-content).
 - No file should exceed ~800–1000 lines; split when bloated ([Workflow §8](templates/agent/Modular_Docs_Workflow.md#8-how-to-split-a-large-document)).
 - **Shared** only when something is actually shared across features — empty §3.1 / `_shared/` is fine. Do **not** invent shared rows or park engine/framework primers there ([Workflow §1](templates/agent/Modular_Docs_Workflow.md#1-shared-components--foundation-vs-consumption)). Real shared components get the **same note types as features** unless the **user** excepted them — record omissions in **§3.0** only after an explicit user request. Agents must not invent §3.0 or filler §3.1 rows.
 - **Understanding**: agent drafts **shape / guardrails** first (`draft`); user confirms is / is not + Assumptions (not a full-spec review); **`confirmed`** = shape approved — agents continue without re-asking ([Workflow §4](templates/agent/Modular_Docs_Workflow.md#4-understanding-features--shared)).
@@ -71,27 +71,27 @@ Record **only** omissions the **user explicitly requested**. Agents must **not**
 | *(example)* BlockEditor | InEditor-TODO, Asset-TODO | 2026-06-15 — **user said** “no asset or in-editor work for BlockEditor” |
 | [Add rows only after user excepts] | | |
 
-**Default file set** (create on disk when you add a row — map-only “planned” rows are not allowed): Spec + Understanding + core TODO. InEditor / Asset TODOs when that work applies. **Never omit Understanding or the core TODO** unless the user explicitly excepted them for that item. Understanding may be `draft`; that still requires the file to exist.
+**Default file set** (create on disk when you add a row — map-only “planned” rows are not allowed): Spec + Understanding + core TODO. InEditor / Asset TODOs when that work applies. Optional **Catalog** for list-heavy stems ([Workflow §7.1](templates/agent/Modular_Docs_Workflow.md#71-catalog-companions-list-heavy-content)) — create the file the same turn you add a Catalog map cell. **Never omit Understanding or the core TODO** unless the user explicitly excepted them for that item. Understanding may be `draft`; that still requires the file to exist.
 
 ### 3.1 Shared / Core Components
 
 Leave this table **empty** (or with a single “*(none yet)*” note) unless a piece is truly shared across features. Do not invent rows or park engine/framework overviews here.
 
-| Component | Maturity | Spec | Understanding | Gameplay TODO | InEditor TODO | Asset TODO |
-|-----------|----------|------|---------------|---------------|---------------|------------|
-| *(example — only if actually shared)* BlockEditor | draft | [_shared/BlockEditor.md](_shared/BlockEditor.md) | [_shared/BlockEditor-Understanding.md](_shared/BlockEditor-Understanding.md) | [_shared/BlockEditor-TODO.md](_shared/BlockEditor-TODO.md) | … | … |
-| *(optional)* | — | [_shared/_Foundation-TODO.md](_shared/_Foundation-TODO.md) | — | *(this file)* | — | — |
+| Component | Maturity | Spec | Understanding | Catalog | Gameplay TODO | InEditor TODO | Asset TODO |
+|-----------|----------|------|---------------|---------|---------------|---------------|------------|
+| *(example — only if actually shared)* BlockEditor | draft | [_shared/BlockEditor.md](_shared/BlockEditor.md) | [_shared/BlockEditor-Understanding.md](_shared/BlockEditor-Understanding.md) | — | [_shared/BlockEditor-TODO.md](_shared/BlockEditor-TODO.md) | … | … |
+| *(optional)* | — | [_shared/_Foundation-TODO.md](_shared/_Foundation-TODO.md) | — | — | *(this file)* | — | — |
 
-**Maturity** (shared only): `draft` · `usable` · `stable`. Omit TODO columns only when recorded in §3.0.
+**Maturity** (shared only): `draft` · `usable` · `stable`. Omit TODO columns only when recorded in §3.0. Use **Catalog** when a shared piece has a row registry; otherwise `—`.
 
 ### 3.2 Features & Modules
 
-| Feature          | Spec / Index                                      | Understanding | Gameplay TODO | InEditor TODO | Asset TODO |
-|------------------|---------------------------------------------------|---------------|---------------|---------------|------------|
-| Main Workspace   | [features/MainWorkspace.md](features/MainWorkspace.md) | [features/MainWorkspace-Understanding.md](features/MainWorkspace-Understanding.md) | [features/MainWorkspace-TODO.md](features/MainWorkspace-TODO.md) | [features/MainWorkspace-InEditor-TODO.md](features/MainWorkspace-InEditor-TODO.md) | [features/MainWorkspace-Asset-TODO.md](features/MainWorkspace-Asset-TODO.md) |
-| Diff Workflow    | [features/DiffWorkflow.md](features/DiffWorkflow.md)     | [features/DiffWorkflow-Understanding.md](features/DiffWorkflow-Understanding.md) | [features/DiffWorkflow-TODO.md](features/DiffWorkflow-TODO.md) | [features/DiffWorkflow-InEditor-TODO.md](features/DiffWorkflow-InEditor-TODO.md) | [features/DiffWorkflow-Asset-TODO.md](features/DiffWorkflow-Asset-TODO.md) |
-| World Building   | [features/WorldBuilding-Index.md](...) *(sub-index)* | [features/WorldBuilding-Understanding.md](...) | [features/WorldBuilding-TODO.md](...) | [features/WorldBuilding-InEditor-TODO.md](...) | [features/WorldBuilding-Asset-TODO.md](...) |
-| [Add more rows as needed] | | | | | |
+| Feature          | Spec / Index                                      | Understanding | Catalog | Gameplay TODO | InEditor TODO | Asset TODO |
+|------------------|---------------------------------------------------|---------------|---------|---------------|---------------|------------|
+| Main Workspace   | [features/MainWorkspace.md](features/MainWorkspace.md) | [features/MainWorkspace-Understanding.md](features/MainWorkspace-Understanding.md) | — | [features/MainWorkspace-TODO.md](features/MainWorkspace-TODO.md) | [features/MainWorkspace-InEditor-TODO.md](features/MainWorkspace-InEditor-TODO.md) | [features/MainWorkspace-Asset-TODO.md](features/MainWorkspace-Asset-TODO.md) |
+| Diff Workflow    | [features/DiffWorkflow.md](features/DiffWorkflow.md)     | [features/DiffWorkflow-Understanding.md](features/DiffWorkflow-Understanding.md) | — | [features/DiffWorkflow-TODO.md](features/DiffWorkflow-TODO.md) | [features/DiffWorkflow-InEditor-TODO.md](features/DiffWorkflow-InEditor-TODO.md) | [features/DiffWorkflow-Asset-TODO.md](features/DiffWorkflow-Asset-TODO.md) |
+| World Building   | [features/WorldBuilding-Index.md](...) *(sub-index)* | [features/WorldBuilding-Understanding.md](...) | — | [features/WorldBuilding-TODO.md](...) | [features/WorldBuilding-InEditor-TODO.md](...) | [features/WorldBuilding-Asset-TODO.md](...) |
+| [Add more rows as needed] | | | | | | |
 
 ### 3.3 Project-Level Work
 

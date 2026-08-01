@@ -1,10 +1,10 @@
-<!-- workflow-version: 2.6.9 -->
+<!-- workflow-version: 2.7.0 -->
 
 > **Agent workflow reference.** Canonical instructions for how to work the modular doc system. Lives in `docs/templates/agent/` with the other agent playbooks — sync from upstream; do **not** copy wholesale into `docs/Master_Index.md`. The live index links here; agent rules summarize and point here for full procedure.
 
 # Modular Documentation — Agent Workflow
 
-**Workflow version**: 2.6.9 *(sync with `Master_Index.md` **Workflow version** line when updating)*
+**Workflow version**: 2.7.0 *(sync with `Master_Index.md` **Workflow version** line when updating)*
 
 **Design intent:** Users give short requests about the docs (“bootstrap”, “draft Understanding for X”, “update the templates”). Route to **one** playbook (`BOOTSTRAP`, `TEMPLATE_SYNC`, `TEMPLATE_UPDATE_CHECK`, `RULE_INSTALL` → `tools/<key>.md`, or this file for feature work) — do not scan the whole pack catalog. **Tight scope:** act on the paved path; do not pre-audit every alternate interpretation before doing the work.
 
@@ -27,9 +27,11 @@
 | Feature spec | `docs/features/FeatureName.md` |
 | Feature Understanding | `docs/features/FeatureName-Understanding.md` |
 | Feature TODO | `docs/features/FeatureName-TODO.md` |
+| Feature Catalog *(optional — §7 / list-heavy)* | `docs/features/FeatureName-Catalog.md` |
 | Shared spec | `docs/_shared/ComponentName.md` |
 | Shared Understanding | `docs/_shared/ComponentName-Understanding.md` |
 | Shared TODO | `docs/_shared/ComponentName-TODO.md` |
+| Shared Catalog *(optional)* | `docs/_shared/ComponentName-Catalog.md` |
 | Sub-index *(large feature only)* | `docs/features/FeatureName-Index.md` |
 | Screenshots | `docs/features/assets/…` or `docs/_shared/assets/…` |
 
@@ -40,7 +42,7 @@
 **When adding a new feature or shared component:**
 
 1. Add a row to Master Index §3.1 or §3.2 with the exact paths (**working markdown links** — not “planned” placeholders with nowhere to click).
-2. Create those three (or more) **flat files** at those paths **in the same turn** — from [`Feature_Spec_Template.md`](../Feature_Spec_Template.md), [`Feature_Understanding_Template.md`](../Feature_Understanding_Template.md), [`TODO_Template.md`](../TODO_Template.md).
+2. Create those three (or more) **flat files** at those paths **in the same turn** — from [`Feature_Spec_Template.md`](../Feature_Spec_Template.md), [`Feature_Understanding_Template.md`](../Feature_Understanding_Template.md), [`TODO_Template.md`](../TODO_Template.md). Add [`Feature_Catalog_Template.md`](../Feature_Catalog_Template.md) only when §7 / list-heavy rules apply (not part of the default three).
 3. All files for one feature live **directly** in `features/` (or `_shared/`), not in a subfolder named after the feature.
 
 **Map without files = incomplete work.** Do not add Document Map rows and defer file creation “until the user picks where to start.” Bootstrap Step 3d and this section require the default file set on disk. Understanding status `draft` means **do not implement code** yet — it does **not** mean skip creating `-Understanding.md`.
@@ -304,6 +306,21 @@ Rename In-Editor TODO files to engine-specific versions and update all links:
 - Unreal Engine → `FeatureName-UE-TODO.md`
 - Godot → `FeatureName-Godot-TODO.md`
 - Unity → `FeatureName-Unity-TODO.md`
+
+### 7.1 Catalog companions *(list-heavy content)*
+
+**When:** Project Profile is game-style **or** a stem’s durable content is a growing **registry of rows** (units, fuels, tech goals, recipes, deployables, orbitals, loot tables) that would bloat the spec’s Behavior section.
+
+**Create:** sibling `FeatureName-Catalog.md` (or `_shared/ComponentName-Catalog.md`) from [`Feature_Catalog_Template.md`](../Feature_Catalog_Template.md). Link it from the Document Map (**Catalog** column) and from a short **Catalog** pointer on the spec.
+
+**Rules:**
+- **Understanding** stays shape-only — never dump row tables there.
+- **Spec** owns identity, rules, taxonomy, progression philosophy — not unbounded registries.
+- **Catalog** = design-intent rows (ids, tiers, depends-on, unlock, readiness). Not a TODO. Not Acceptance.
+- **Readiness** on rows: `stub` \| `sketched` \| `design-ready` \| `in-code`.
+- Cross-catalog links use **ids** (e.g. `unit.stillfold_pigeon` → `drive.stillfold`), not duplicated prose.
+- Code-first games: Catalog is design intent; runtime truth may live in source — note `in-code:` path when implemented. Do not invent Content CSV/DataTable pipelines unless the project asks.
+- Catalog is **optional** — omit until list pressure appears. Creating a Document Map Catalog link requires the file on disk the same turn.
 
 ---
 
