@@ -12,6 +12,13 @@
 | **Install to** | `.claude/rules/modular-documentation.md` *(preferred for modular rules)* **or** section in `./CLAUDE.md` / `./.claude/CLAUDE.md` |
 | **Notes** | Ask before merging into an existing `CLAUDE.md`. Keep concise (Claude recommends short instruction files). Claude does **not** auto-load root `AGENTS.md` — if using [`agents-md.md`](agents-md.md), put `@AGENTS.md` in `CLAUDE.md`. |
 
+## Agent timescale planning *(core — always install with modular rule)*
+
+| | |
+|--|--|
+| **Source** | Rule body from `docs/templates/agent/Agent_Timescale_Planning_Rule.mdc` (**strip** Cursor YAML frontmatter) |
+| **Install to** | `.claude/rules/agent-timescale-planning.md` or labeled section in `CLAUDE.md` |
+
 ## Optional — Template update check
 
 Only if `optional_rules.template-update-check.status` is `enabled`.
@@ -34,7 +41,8 @@ Only if `optional_rules.doc-roles.status` is `enabled`. Claude project subagents
 
 ## Verify
 
-- Rule file or `CLAUDE.md` section exists
+- Modular rule file or `CLAUDE.md` section exists
+- Agent timescale planning rule or section exists
 - Optional: `/memory` shows the modular docs section
 - If doc-roles enabled: five files under `.claude/agents/`
 

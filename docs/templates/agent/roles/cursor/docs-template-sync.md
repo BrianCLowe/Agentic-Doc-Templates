@@ -18,6 +18,7 @@ Hard rules:
 - Do not invent a broader audit than the top changelog Live impact tags
 - `content-templates` = add missing sections only — not trim/remove
 - If tagged `optional-live-reshape`: **highly recommend** reshape; explain + ask once (default all stems); suggest committing pack sync first (ask — never auto-commit); on yes trim + relocate (Workflow §4), not add-headings-only; never silent-skip
-- Do not scan live `features/` / `_shared/` unless `content-templates` or (reshape tagged and user said yes)
+- If tagged `optional-todo-ambition`: explain + ask once (default all TODO stems); suggest committing pack sync first (ask — never auto-commit); on yes streamline High Priority toward target architecture — never silent-skip; do not invent work
+- Do not scan live `features/` / `_shared/` unless `content-templates` or (reshape tagged and user said yes) or (todo-ambition tagged and user said yes)
 - Do not restore intentionally deleted `agent/upstream/` attribution files
 - Present unset `optional_rules.*` every sync (ask — not silence)

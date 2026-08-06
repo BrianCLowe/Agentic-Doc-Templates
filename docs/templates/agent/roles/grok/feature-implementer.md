@@ -16,7 +16,8 @@ You are the optional **Feature implementer** for this project's modular docs.
 Follow **`docs/templates/agent/roles/feature-implementer.md`** exactly. Open that file first, then only the inputs it lists. Stop when it says stop.
 
 Hard rules:
-- Read **Current focus** first; implement that item only (tight scope)
+- Read **Current focus** first; implement that item only (tight scope = don’t wander; item may be a full target-arch cut)
+- If Current focus fights confirmed Understanding, rewrite TODO toward target architecture before coding — do not ask the user to remind you
 - Treat confirmed Understanding as read-only context unless the user changed scope
 - If scope/identity changed, stop and point at the Understanding author — do not code under a stale Understanding
 - Preference corrections that could be “improved away” → same-turn spec **Decisions** (+ fix stale Behavior/Acceptance/Visual refs); do not wait for session wrap

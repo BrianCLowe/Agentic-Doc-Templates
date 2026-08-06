@@ -16,6 +16,13 @@ Many harnesses read [`AGENTS.md`](https://agents.md/) (Grok Build, Codex, Cline,
 | **Install to** | Root `AGENTS.md` — section titled `## Documentation workflow` |
 | **Notes** | Append if the file already has content; do not delete unrelated sections. Include the **Optional subagents** orchestration table so parents that only load `AGENTS.md` still know to delegate/spawn. |
 
+## Agent timescale planning *(core — always install with modular rule)*
+
+| | |
+|--|--|
+| **Source** | Rule body from `docs/templates/agent/Agent_Timescale_Planning_Rule.mdc` (**strip** Cursor YAML frontmatter) |
+| **Install to** | Root `AGENTS.md` — section titled `## Agent timescale planning` |
+
 ## Optional — Template update check
 
 Only if `optional_rules.template-update-check.status` is `enabled`.
@@ -38,6 +45,7 @@ Only if `optional_rules.template-update-check.status` is `enabled`.
 ## Verify
 
 - `AGENTS.md` contains `## Documentation workflow`
+- `AGENTS.md` contains `## Agent timescale planning`
 - Section still points at `docs/Master_Index.md` + Workflow / roles paths
 
 ## For humans

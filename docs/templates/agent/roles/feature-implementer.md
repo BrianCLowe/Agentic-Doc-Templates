@@ -29,12 +29,13 @@
 ## Steps
 
 1. Read Current focus; pick the next unchecked item on that TODO.
-2. Before integrating a **shared** piece, check Maturity on its spec or Document Map.
-3. Implement that focus item only (tight scope).
-4. Update the same `-TODO.md`: `[x]` + date; refresh **Current focus**.
-5. Update Understanding / spec **only if this session** changed shape or contract. **Preference corrections that could be “improved away” are contract** — same turn, append 1-line **Decisions** row(s) and fix contradicting Behavior / Acceptance / Visual refs (Workflow §10). Do **not** wait for the user to ask for a session wrap; do **not** put these in Current focus. If you update Understanding, run relocate + TODO uncheck (Workflow §4). Otherwise leave Understanding alone.
-6. If blocked on a human (procure / playtest / decide / waiting): **dual-write** owner TODO + `docs/Human-TODO.md` Open row (Workflow §13) — never store secrets.
-7. Stop when the focus item is done, blocked, or the user redirects.
+2. If that item (or High Priority) encodes an **interim architecture** that fights confirmed Understanding, rewrite the TODO toward the **target** first — then implement ([`../Agent_Timescale_Planning_Rule.mdc`](../Agent_Timescale_Planning_Rule.mdc)). Do not ask the user to remind you.
+3. Before integrating a **shared** piece, check Maturity on its spec or Document Map.
+4. Implement that focus item only (tight scope = don’t wander unrelated; a focus item may still be a full target-arch cut).
+5. Update the same `-TODO.md`: `[x]` + date; refresh **Current focus**.
+6. Update Understanding / spec **only if this session** changed shape or contract. **Preference corrections that could be “improved away” are contract** — same turn, append 1-line **Decisions** row(s) and fix contradicting Behavior / Acceptance / Visual refs (Workflow §10). Do **not** wait for the user to ask for a session wrap; do **not** put these in Current focus. If you update Understanding, run relocate + TODO uncheck (Workflow §4). Otherwise leave Understanding alone.
+7. If blocked on a human (procure / playtest / decide / waiting): **dual-write** owner TODO + `docs/Human-TODO.md` Open row (Workflow §13) — never store secrets.
+8. Stop when the focus item is done, blocked, or the user redirects.
 
 ## Stop when
 
@@ -45,6 +46,7 @@
 
 - Draft or re-open Understanding for full review when status is `confirmed` and scope unchanged
 - Graduate Understanding → spec (use [`doc-graduate.md`](doc-graduate.md))
+- Implement a known-wrong interim architecture because the honest cut “looks multi-concern”
 - Defer Decisions capture to a bedtime / session-wrap ask when the user already corrected a lasting preference this turn
 - Create `docs/decisions/` ADRs for feature-local polish; overload Current focus with every choice
 - Audit code vs docs for unrelated features; invent `_shared/` components; duplicate foundation tasks into a feature TODO

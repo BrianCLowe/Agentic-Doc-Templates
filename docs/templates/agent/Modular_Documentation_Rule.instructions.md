@@ -63,18 +63,18 @@ When an ask matches a row below, look for a **named agent file** with that filen
 - Feature TODOs only **link** to shared TODOs when blocked or integrating (dependency note), they do not duplicate foundation tasks.
 
 **Before implementation:**
-- **Draft `-Understanding.md` first** when scoping — agent writes; user confirms **shape** only (Workflow §4). `draft` blocks **coding**, not creating the file. Shape-only sections — not a second spec.
+- **Draft `-Understanding.md` first** when scoping — agent writes; user confirms **shape** only (Workflow §4). `draft` blocks **coding**, not creating the file. Shape-only sections — not a second spec. Capture **product-defining surface/architecture identity** in is / is not when stated (module/API detail → spec).
 - Tell the user confirmation is **is / is not + Assumptions**, not a full spec review.
 - Do not treat as greenfield if Understanding says it extends/reuses existing work.
 - Do not code while status is `draft` unless the user waives review.
-- **`confirmed`** → shape approved; continue from TODO/spec without re-asking Understanding review.
-- Plans: include Understanding path + “confirm shape, not full spec” — unless already `confirmed` and unchanged.
+- **`confirmed`** → shape approved; continue from TODO/spec without re-asking Understanding review. Plans/TODOs target that shape at agent speed — no user reminder required.
+- Plans: include Understanding path + “confirm shape, not full spec” — unless already `confirmed` and unchanged. Stepped plans = verify order; exploration spikes stay labeled (Workflow §5.2).
 - Vague ideas → brief questions from `docs/templates/help/IDEA_CAPTURE_TIPS.md`, then draft Understanding.
 - After confirm → **graduate** contract to the spec (Workflow §2). Screenshots → spec **Visual references**, not Understanding. Row registries → optional `-Catalog.md` (not Understanding). Lasting tradeoffs → spec **Decisions** or `docs/decisions/` (Workflow §10) — including implement-time preference corrections (same turn).
 
 **While working:**
 - **Session start:** Read the active TODO's **Current focus** block first.
-- Treat the active TODO as the living task list; add items as discovered; use Cross-Feature Dependencies when features interact.
+- Treat the active TODO as the living task list; add items as discovered; use Cross-Feature Dependencies when features interact. Rewrite Current focus that fights confirmed Understanding before coding.
 
 **After changes (mandatory):**
 - Update **Current focus** and the relevant `-TODO.md` — `[x]` + date on completed items.
@@ -92,4 +92,4 @@ If the user says "review spec", "check for gaps", "ask questions", or "confidenc
 - Only proceed after user confirmation
 - Do not re-read unrelated features
 
-**Philosophy:** Keep documentation small and accurate. Prefer short user asks — route to the one matching playbook above. **Tight scope:** do the paved path for the current ask; do not pre-audit alternate interpretations, unrelated files, or “just in case” repo scans before acting. Use Mermaid only when a small diagram beats prose (Workflow §12). TODO **Current focus** + checklists are agent memory across sessions; **`docs/Human-TODO.md`** is the human inbox (Workflow §13).
+**Philosophy:** Keep documentation small and accurate. Prefer short user asks — route to the one matching playbook above. **Tight scope:** do the paved path for the current ask; do not pre-audit alternate interpretations, unrelated files, or “just in case” repo scans before acting. Tight scope is **not** permission to ship human-sized interim architectures when shape is clear — plan target architecture at agent speed (see installed `agent-timescale-planning` rule / `docs/templates/agent/Agent_Timescale_Planning_Rule.mdc`). Use Mermaid only when a small diagram beats prose (Workflow §12). TODO **Current focus** + checklists are agent memory across sessions; **`docs/Human-TODO.md`** is the human inbox (Workflow §13).

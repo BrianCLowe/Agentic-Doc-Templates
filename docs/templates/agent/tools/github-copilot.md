@@ -12,6 +12,13 @@
 | **Install to** | `.github/instructions/modular-documentation.instructions.md` *(preferred)* **or** append a labeled section to `.github/copilot-instructions.md` |
 | **Notes** | Applies to Chat / Agent mode, not inline autocomplete. Ask before overwriting. Enable `.github/instructions` in workspace settings if needed (`chat.instructionsFilesLocations`). |
 
+## Agent timescale planning *(core — always install with modular rule)*
+
+| | |
+|--|--|
+| **Source** | `docs/templates/agent/Agent_Timescale_Planning_Rule.instructions.md` |
+| **Install to** | `.github/instructions/agent-timescale-planning.instructions.md` or labeled section in `copilot-instructions.md` |
+
 ## Optional — Template update check
 
 Only if `optional_rules.template-update-check.status` is `enabled`.
@@ -34,7 +41,7 @@ Copilot does **not** use `.cursor/agents/` / `.grok/agents/` as first-class name
 
 ## Verify
 
-- Instructions file exists under `.github/instructions/` or `copilot-instructions.md`
+- Modular + agent-timescale instructions exist under `.github/instructions/` or `copilot-instructions.md`
 - Optional: `/init` then confirm modular docs section present
 
 ## For humans

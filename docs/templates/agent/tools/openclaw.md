@@ -24,6 +24,15 @@ Record the chosen workspace path under `tools.openclaw.path` / `note` in `docs/r
 
 If the project also uses status key `agents-md` for the same `AGENTS.md`, do **not** duplicate the section — one `## Documentation workflow` is enough; mark both tools `installed` with a shared path note if useful.
 
+## Agent timescale planning *(core — always install with modular rule)*
+
+| | |
+|--|--|
+| **Source** | Rule body from `docs/templates/agent/Agent_Timescale_Planning_Rule.mdc` (**strip** Cursor YAML frontmatter) |
+| **Install to** | Same workspace `AGENTS.md` — section titled `## Agent timescale planning` |
+
+Skip duplicating if `agents-md` already installed that section on the same file.
+
 ## Optional — Template update check
 
 Only if `optional_rules.template-update-check.status` is `enabled`.
@@ -59,6 +68,7 @@ Do **not** put secrets, API keys, or `~/.openclaw/` state into the project repo.
 ## Verify
 
 - Chosen workspace `AGENTS.md` contains `## Documentation workflow`
+- Same `AGENTS.md` contains `## Agent timescale planning`
 - If workspace is the project root: `docs/Master_Index.md` is reachable as a relative path
 - If workspace is `~/.openclaw/workspace`: user confirmed they understand path/cwd limits
 - Status yaml records `openclaw` with `path` = that `AGENTS.md`

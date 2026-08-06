@@ -17,6 +17,15 @@
 
 Also consider status key `agents-md` for the same `AGENTS.md` — do not duplicate the section twice.
 
+## Agent timescale planning *(core — always install with modular rule)*
+
+| | |
+|--|--|
+| **Source** | Rule body from `docs/templates/agent/Agent_Timescale_Planning_Rule.mdc` (**strip** Cursor YAML frontmatter) |
+| **Install to** | Root `AGENTS.md` section `## Agent timescale planning` *(preferred)* **and/or** `.grok/rules/agent-timescale-planning.md` |
+
+Do not duplicate the section if `agents-md` already installed it.
+
 ## Optional — Template update check
 
 Only if `optional_rules.template-update-check.status` is `enabled`. Requires live `docs/upstream-status.yaml`.
@@ -47,6 +56,7 @@ Compat (secondary): Claude/Cursor agent folders may also be scanned when compat 
 ## Verify
 
 - Modular rule listed by `grok inspect` from `AGENTS.md` and/or `.grok/rules/`
+- Agent timescale planning present in `AGENTS.md` and/or `.grok/rules/`
 - If doc-roles enabled: five files under `.grok/agents/`; confirm names appear under **agents** in `grok inspect --json` or `/config-agents` (non-builtin source). If missing → playbook fallback above
 - Remind: short asks are enough; `GROK_SUBAGENTS=1` / `[subagents] enabled` may be required for spawning
 

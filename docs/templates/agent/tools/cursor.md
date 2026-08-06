@@ -12,6 +12,14 @@
 | **Install to** | `.cursor/rules/modular-documentation.mdc` |
 | **Notes** | Keep `alwaysApply: true` for this workflow (applies before a doc file is open). Never overwrite a customized file without showing the diff and asking. |
 
+## Agent timescale planning *(core — always install with modular rule)*
+
+| | |
+|--|--|
+| **Source** | `docs/templates/agent/Agent_Timescale_Planning_Rule.mdc` |
+| **Install to** | `.cursor/rules/agent-timescale-planning.mdc` |
+| **Notes** | `alwaysApply: true`. Target architecture at agent speed; users should not need to remind. |
+
 ## Optional — Template update check
 
 Only if `optional_rules.template-update-check.status` is `enabled`. Requires live `docs/upstream-status.yaml`.
@@ -41,6 +49,7 @@ Files: `understanding-author.md`, `doc-graduate.md`, `feature-implementer.md`, `
 ## Verify
 
 - `.cursor/rules/modular-documentation.mdc` exists
+- `.cursor/rules/agent-timescale-planning.mdc` exists
 - If doc-roles enabled: five files under `.cursor/agents/`
 - Remind user: short asks are enough; parent rule delegates; `/name` optional
 

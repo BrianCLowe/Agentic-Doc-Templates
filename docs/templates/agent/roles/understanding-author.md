@@ -27,11 +27,12 @@
 ## Steps
 
 1. Identify the **one** feature or shared component stem (from the user or Document Map).
-2. If the idea is vague, ask brief questions from `IDEA_CAPTURE_TIPS.md` (cap **5**), then draft — prioritize identity (is / is not).
-3. Write or update `-Understanding.md` from the Understanding template + **Workflow §4** (shape sections only; human review banner; no How-it-should-work / UI / Visual references / Done when). Screenshots → spec **Visual references**.
-4. **On update:** relocate + TODO uncheck for this stem (Workflow §4). Skip TODO re-check only for a brand-new Understanding with no prior `[x]` marks.
-5. Status **`draft`**. If the Document Map row is new: add the row **and** create Understanding + spec stub + core TODO in the **same turn** (Workflow §0).
-6. Show the user the path. Ask them to correct **shape** — say this is **not** a full spec review. If you relocated into the spec, say so in one line. **Stop.**
+2. If the idea is vague, ask brief questions from `IDEA_CAPTURE_TIPS.md` (cap **5**), then draft — prioritize identity (is / is not), including **product-defining surface** when relevant (one continuous surface vs separate editors, same engine vs new subsystem, ownership of a concern).
+3. Write or update `-Understanding.md` from the Understanding template + **Workflow §4** (shape sections only; human review banner; no How-it-should-work / UI / Visual references / Done when). Put product-defining surface/architecture identity in is / is not (or Assumptions) — not module diagrams. Screenshots → spec **Visual references**.
+4. When drafting the core TODO in the same turn: size High Priority for the **target shape**, not an interim that fights it (Workflow §5; [`../Agent_Timescale_Planning_Rule.mdc`](../Agent_Timescale_Planning_Rule.mdc)). Disposable spikes stay labeled exploration — not the paved path.
+5. **On update:** relocate + TODO uncheck for this stem (Workflow §4). Skip TODO re-check only for a brand-new Understanding with no prior `[x]` marks.
+6. Status **`draft`**. If the Document Map row is new: add the row **and** create Understanding + spec stub + core TODO in the **same turn** (Workflow §0).
+7. Show the user the path. Ask them to correct **shape** — say this is **not** a full spec review. If you relocated into the spec, say so in one line. **Stop.**
 
 ## Stop when
 
@@ -47,8 +48,10 @@
 - Run a full post-confirm graduation pass (use [`doc-graduate.md`](doc-graduate.md)) — **except** relocating trim overflow into the spec while shaping
 - Delete durable contract detail without putting it in the spec when missing
 - Add or keep How it should work, UI/UX, Visual references, or Done when on Understanding
-- Ask the user to approve architecture, APIs, flows, or a full behavior contract here
+- Ask the user to approve module/API architecture, flows, or a full behavior contract here — **do** capture product-defining surface/identity as shape when they stated it
+- Encode a known-wrong interim architecture as the TODO paved path because the honest cut “looks big”
 - Pad Understanding into a mini-spec; park relocated prose under **Confirmed with user**
 - Leave premature `[x]` on TODO when code no longer matches
 - Invent `_shared/` rows or §3.0 exceptions; audit unrelated stems
 - Act as Feature implementer in the same pass
+- Ask the user to remind you to plan at agent speed — apply target-architecture defaults yourself

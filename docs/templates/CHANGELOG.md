@@ -12,11 +12,28 @@
 | `master-index` | Adopt structural deltas in live `Master_Index.md` (headings, Key Locations, Document Map columns) |
 | `content-templates` | Add *missing* sections/structure from content templates into live Understanding / Spec / TODO / Tooling / Human-TODO — **not** trim/remove (see `optional-live-reshape`) |
 | `optional-live-reshape` | **Present** (explain + ask once) — **highly recommended** live Understanding → shape trim + relocate into specs (Workflow §4). Default ask toward yes (all stems). Do **not** silent-skip. On yes only: trim/remove + relocate — not add-sections-only. Suggest committing pack sync first so reshape is its own commit |
+| `optional-todo-ambition` | **Present** (explain + ask once) — optional live TODO pass: find human-sprint / n-step interim-architecture staging; streamline High Priority / Current focus toward target architecture (agent timescale). Do **not** silent-skip the ask. On yes only: rewrite chosen `*-TODO.md` files; do not invent work |
 | `rules` | Offer to refresh installed agent rules from local pack (ask if customized) |
 | `optional-upstream-check` | Update or offer `docs/upstream-status.yaml` / update-check rule |
 | `process-docs-only` | Pack process/help/agent docs only — no live feature/shared content scan |
 
 ---
+
+## 2.7.1
+
+- **Live impact:** `versions-only`, `rules`, `content-templates`, `optional-todo-ambition`, `process-docs-only`
+- **Files:**
+  - `VERSION` — 2.7.0 → 2.7.1
+  - `agent/Agent_Timescale_Planning_Rule.mdc` / `.instructions.md` — **new** core always-on rule: target architecture at agent speed; lock shape early; exploration vs shipping; user should not need to remind
+  - `agent/tools/*` — install timescale rule with modular rule (all harnesses)
+  - `agent/Modular_Docs_Workflow.md` — §4 surface-in-shape; §5 High Priority + **§5.2 Exploration vs shipping**; version 2.7.1
+  - `agent/Modular_Documentation_Rule.mdc` / `.instructions.md` — Philosophy + Before implementation: shape surface, agent-speed plans, rewrite fighting focus
+  - `Feature_Understanding_Template.md`, `Feature_Spec_Template.md`, `TODO_Template.md`, `help/IDEA_CAPTURE_TIPS.md` — product-defining surface in shape; module/API on spec; exploration labeling
+  - `agent/roles/understanding-author.md` + `feature-implementer.md` + cursor/grok adapters — target shape / no user reminder
+  - `agent/TEMPLATE_SYNC_B.md`, `agent/roles/template-sync.md` + cursor/grok adapters — Live impact tag `optional-todo-ambition`
+  - `CHANGELOG.md` — tag table + this entry
+  - `help/USING_WITH_AGENTS.md`, `Master_Index_Template.md`, `agent/upstream-status.example.yaml`, `chat-ui/AGENT.md`, root `README.md` — stamps / notes
+- **Step B:** Bump Master Index versions to 2.7.1. Refresh installed rules (modular **and** new `agent-timescale-planning`) if the user wants. `content-templates`: add any *missing* Understanding/TODO/spec structure only (do not treat as reshape). **`optional-todo-ambition` (required ask — optional pass):** Explain that High Priority / Current focus may still stage human-sprint n-step interim architectures that fight confirmed shape. **Offer** a live TODO ambition pass (default choice: all Document Map `*-TODO.md` stems; or named stems / no). **Yes** = open chosen TODOs (+ Understanding for shape); merge interim staging into target-architecture High Priority; keep genuine verify slices / human/shared blockers; refresh Current focus; do **not** invent work. **No/later** = leave bodies; new TODOs still follow agent-timescale instructions. Do **not** silent-skip the ask. Suggest committing pack sync (+ rules) first so TODO rewrites can be a separate commit (ask — do not auto-commit).
 
 ## 2.7.0
 

@@ -12,6 +12,13 @@
 | **Install to** | `.clinerules/modular-documentation.md` *(primary — current Cline docs)* |
 | **Notes** | Cline also auto-detects `AGENTS.md` and some other tools’ rule files. Prefer `.clinerules/` for pack-owned installs. |
 
+## Agent timescale planning *(core — always install with modular rule)*
+
+| | |
+|--|--|
+| **Source** | Rule body from `docs/templates/agent/Agent_Timescale_Planning_Rule.mdc` (strip Cursor frontmatter) |
+| **Install to** | `.clinerules/agent-timescale-planning.md` |
+
 ## Optional — Template update check
 
 If enabled: `.clinerules/template-update-check.md`.
@@ -22,7 +29,7 @@ No first-class Cline agents folder in this pack. Follow role playbooks in-sessio
 
 ## Verify
 
-- File exists under `.clinerules/`
+- `modular-documentation.md` and `agent-timescale-planning.md` exist under `.clinerules/`
 - Visible/toggled in Cline’s Rules panel
 
 ## For humans

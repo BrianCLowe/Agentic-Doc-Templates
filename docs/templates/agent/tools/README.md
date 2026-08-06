@@ -22,6 +22,7 @@ Human overview (TOC): [`../../help/USING_WITH_AGENTS.md`](../../help/USING_WITH_
 Shared sources (do not duplicate into tool files):
 
 - Modular rule bodies: [`../Modular_Documentation_Rule.mdc`](../Modular_Documentation_Rule.mdc), [`../Modular_Documentation_Rule.instructions.md`](../Modular_Documentation_Rule.instructions.md)
+- Agent timescale planning *(core with modular rule)*: [`../Agent_Timescale_Planning_Rule.mdc`](../Agent_Timescale_Planning_Rule.mdc), [`../Agent_Timescale_Planning_Rule.instructions.md`](../Agent_Timescale_Planning_Rule.instructions.md)
 - Role playbooks: [`../roles/`](../roles/README.md)
 - Role adapters: [`../roles/cursor/`](../roles/cursor/), [`../roles/grok/`](../roles/grok/)
 

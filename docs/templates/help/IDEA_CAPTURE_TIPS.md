@@ -49,9 +49,11 @@ This prevents the “brand-new feature” mistake when you meant a **variant** o
 
 - Is this **new from scratch**, or a **new screen/mode** on something that already exists?
 - What **kind of thing** is it *not* (wrong category), even after it is fully built?
+- How should it **feel as a surface** when done? (e.g. one continuous document vs separate panes; same engine vs a second system)
 - Phased / later work for the *same* feature → tell the agent for the **TODO** or **spec**, not for **What this is NOT**.
 
 *Example:* “A separate UI layout for the existing text editor — **not** a second editor engine.”  
+*Example (surface):* “Feels like one manuscript; scene breaks are visual seams — **not** jumping between separate editor windows.”  
 *Not for Understanding NOT:* “Desktop Mode comes later” — that is a TODO / roadmap item if it is still part of this feature’s destination.
 
 ### 3. UI appearance
@@ -186,16 +188,17 @@ The **agent** drafts `FeatureName-Understanding.md` (or `_shared/ComponentName-U
 
 | Your thinking (in chat) | Where it lands |
 |-------------------------|---------------|
-| What *kind of thing* it is (identity, metaphors, defining constraints, brief “feels like”) | Understanding **What this is** |
-| Wrong category / identity (not “not built yet”) | Understanding **What this is NOT** |
+| What *kind of thing* it is (identity, metaphors, defining constraints, brief “feels like,” product surface) | Understanding **What this is** |
+| Wrong category / product surface / identity (not “not built yet”) | Understanding **What this is NOT** |
 | Existing app pieces | Understanding **Relationship to existing work** |
 | Things the agent guessed | Understanding **Assumptions** |
 | Rough happy path / flows | **spec** **Behavior** *(not on Understanding)* |
+| Module/API architecture, durable contract | **spec** *(not on Understanding)* |
 | Screenshots + similar/different | **spec** **Visual references** |
 | A few coarse “done” outcomes | **spec** **Acceptance** *(not a TODO twin)* |
-| Work breakdown | **TODO** |
+| Work breakdown (target architecture — not interim staging) | **TODO** |
 
-Architecture, APIs, full behavior, and the work backlog belong in the **spec** and **TODO** after you confirm shape.
+Product-defining surface (“feels like one document”) is **shape**. Module diagrams, APIs, full behavior, and the work backlog belong in the **spec** and **TODO** after you confirm shape. Agents should plan the confirmed target without you reminding them.
 
 Prompt the agent:
 
@@ -221,9 +224,9 @@ If you already answered the buckets in chat:
 When the user describes a feature vaguely:
 
 1. Read this file and [`Feature_Understanding_Template.md`](Feature_Understanding_Template.md).
-2. Ask **short, plain-language questions** from the buckets above — not a twenty-question form. Prioritize: identity (is / is not *as a finished feature*) and relationship to existing work. Do not put phased or deferred work under **What this is NOT**.
-3. Write or update `-Understanding.md` with status `draft` — **only** What this is / is NOT, Relationship, Assumptions, Confirmed notes. Keep identity-defining user detail; do not pad into a mini-spec. No How it should work, UI/UX, Visual references, or Done when on Understanding. List gaps in **Assumptions**. On updates: re-check that stem’s TODO vs code/spec; **uncheck** anything that no longer matches; relocate trim overflow into the spec.
-4. Tell the user confirmation is for **shape / guardrails**, not a full spec review. After they confirm, **graduate** durable contract content to the spec (`Feature_Spec_Template.md`) — Decisions, architecture, Acceptance, shared Maturity. Spec may hold detail that was never in Understanding.
+2. Ask **short, plain-language questions** from the buckets above — not a twenty-question form. Prioritize: identity (is / is not *as a finished feature*), product surface when relevant, and relationship to existing work. Do not put phased or deferred work under **What this is NOT**.
+3. Write or update `-Understanding.md` with status `draft` — **only** What this is / is NOT, Relationship, Assumptions, Confirmed notes. Keep identity-defining user detail **including product-defining surface/architecture**; do not pad into a mini-spec. No How it should work, UI/UX, Visual references, or Done when on Understanding. List gaps in **Assumptions**. Size TODOs for that target shape (agent timescale). On updates: re-check that stem’s TODO vs code/spec; **uncheck** anything that no longer matches; relocate trim overflow into the spec.
+4. Tell the user confirmation is for **shape / guardrails**, not a full spec review. After they confirm, **graduate** durable contract content to the spec (`Feature_Spec_Template.md`) — Decisions, module/API architecture, Acceptance, shared Maturity. Spec may hold detail that was never in Understanding. Do not ask them to remind you to plan ambitiously.
 5. If the user provides screenshots, persist under `docs/features/assets/` or `docs/_shared/assets/` (or `docs/reference/visuals/`): **copy/move from a workspace path** when the file is attached or `@`-mentioned; if only a pasted chat image (vision-only), ask the user to save into `assets/` or document similar/different from what you saw and note that a file copy was not available. Link in the **spec** **Visual references** — see [Saving chat attachments](#saving-chat-attachments-to-the-repo).
 6. If the user does not know stack or architecture, propose options **after** Understanding shape sections are drafted, with a one-line rationale each — durable choices land in the **spec**.
 7. Do not start implementation until the user confirms Understanding **shape** or explicitly waives review.

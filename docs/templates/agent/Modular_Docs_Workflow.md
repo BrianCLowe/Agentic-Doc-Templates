@@ -1,12 +1,12 @@
-<!-- workflow-version: 2.7.0 -->
+<!-- workflow-version: 2.7.1 -->
 
 > **Agent workflow reference.** Canonical instructions for how to work the modular doc system. Lives in `docs/templates/agent/` with the other agent playbooks — sync from upstream; do **not** copy wholesale into `docs/Master_Index.md`. The live index links here; agent rules summarize and point here for full procedure.
 
 # Modular Documentation — Agent Workflow
 
-**Workflow version**: 2.7.0 *(sync with `Master_Index.md` **Workflow version** line when updating)*
+**Workflow version**: 2.7.1 *(sync with `Master_Index.md` **Workflow version** line when updating)*
 
-**Design intent:** Users give short requests about the docs (“bootstrap”, “draft Understanding for X”, “update the templates”). Route to **one** playbook (`BOOTSTRAP`, `TEMPLATE_SYNC`, `TEMPLATE_UPDATE_CHECK`, `RULE_INSTALL` → `tools/<key>.md`, or this file for feature work) — do not scan the whole pack catalog. **Tight scope:** act on the paved path; do not pre-audit every alternate interpretation before doing the work.
+**Design intent:** Users give short requests about the docs (“bootstrap”, “draft Understanding for X”, “update the templates”). Route to **one** playbook (`BOOTSTRAP`, `TEMPLATE_SYNC`, `TEMPLATE_UPDATE_CHECK`, `RULE_INSTALL` → `tools/<key>.md`, or this file for feature work) — do not scan the whole pack catalog. **Tight scope:** act on the paved path; do not pre-audit every alternate interpretation before doing the work. **Agent timescale:** when feature shape is clear, plan the **target architecture** as one change (verify-order checklists OK); do not stage human-sprint interim architectures — see [`Agent_Timescale_Planning_Rule.mdc`](Agent_Timescale_Planning_Rule.mdc).
 
 **Optional roles** *(never always-on):* Thin wrappers under [`roles/`](roles/README.md). When harness agents are installed (`.cursor/agents/`, `.grok/agents/`, … via [`tools/`](tools/README.md)), the modular **rule** has the parent **delegate/spawn** on matching asks. Otherwise follow the role `.md` fallback. Roles point back here or to `BOOTSTRAP` / `TEMPLATE_SYNC` — they do not replace this workflow.
 
@@ -180,8 +180,8 @@ Each **feature** and substantial **shared component** gets a `-Understanding.md`
 
 | Section | Put here | Do not put here |
 |---------|----------|-----------------|
-| **What this is** | Identity-defining user detail: category, metaphors, naming, “feels like,” ownership, product-defining constraints. Prefer user’s words. Brief feel/layout only if it defines the product. | Flows, APIs, edge matrices, acceptance lists, How-it-should-work, Core Behavior rewrite, padding/speculation |
-| **What this is NOT** | Finished-feature **identity** boundaries (wrong category, architecture, ownership) | Deferred phases, “not built yet,” backlog — those → TODO / Current focus / spec roadmap |
+| **What this is** | Identity-defining user detail: category, metaphors, naming, “feels like,” ownership, product-defining constraints **and surface/architecture identity** (e.g. one continuous surface). Prefer user’s words. Brief feel/layout only if it defines the product. | Flows, module/API diagrams, edge matrices, acceptance lists, How-it-should-work, Core Behavior rewrite, padding/speculation |
+| **What this is NOT** | Finished-feature **identity** boundaries (wrong category, wrong product surface/architecture, ownership) | Deferred phases, “not built yet,” backlog, or “NOT the final architecture yet” excuses — those → TODO / Current focus / spec roadmap |
 | **Relationship** | Extends / wraps / reuses vs greenfield | Foundation task lists |
 | **Assumptions** | Unchecked items needing shape confirmation | Full-spec open questions |
 | **Confirmed with user** | Short correction notes + date | Relocated contract prose |
@@ -216,7 +216,7 @@ Work queue → **TODO**. Durable contract (Behavior, **Acceptance**, Visual refe
 - User corrects you → update immediately
 - After any update → run relocate + TODO check for that stem
 
-**When planning:** Include the Understanding path; state confirmation is for **shape / guardrails**, not the full spec.
+**When planning:** Include the Understanding path; state confirmation is for **shape / guardrails**, not the full spec. Once shape implies a product surface/architecture, **lock it in is / is not** (or Assumptions) and default TODOs/plans to that **target** (agent timescale — not MVP → interim → rewrite). Stepped bullets = build/verify order inside one cut. Do not ask the user to remind you.
 
 **Acceptance** lives on the **spec** (usually 3–7 coarse outcomes) — not on Understanding. **Visual references:** save under `docs/features/assets/`, `docs/_shared/assets/`, or `docs/reference/visuals/`; link from the **spec** with similar vs different — not from `-Understanding.md`. See [`../help/IDEA_CAPTURE_TIPS.md`](../help/IDEA_CAPTURE_TIPS.md#visual-references-screenshots).
 
@@ -246,6 +246,8 @@ When a feature depends on shared foundation work, the feature TODO gets a **depe
 
 **Workflow**:
 
+- **High Priority sizing:** Prefer one item (or a tight cluster) that lands the **confirmed target architecture**. Sub-bullets / Medium Priority = verify slices or follow-ups — not “ship the wrong architecture first.” If Current focus fights confirmed Understanding, rewrite the TODO before coding ([`Agent_Timescale_Planning_Rule.mdc`](Agent_Timescale_Planning_Rule.mdc)).
+- **Exploration vs shipping:** See §5.2.
 - **Session start:** Read the active TODO's **Current focus** block first (§5.1) — then High Priority.
 - While working: Add new items as you discover them.
 - After finishing a task: Mark `[x]`, add completion date/note.
@@ -261,6 +263,17 @@ Each active `-TODO.md` should keep a short **Current focus** block at the top (s
 - Optional: last session date / agent tool
 
 This gives the next agent (or a different tool) a 5-second orientation without re-reading everything.
+
+### 5.2 Exploration vs shipping
+
+When product shape is still unknown, a short **spike** (branch, throwaway prototype, learning pass) is fine. Label it clearly in Current focus / High Priority as **exploration** — not the destination architecture.
+
+**Rules:**
+
+- Spikes teach product rules; they are **optional**, not a required stage before the honest cut.
+- Once Understanding (or the user) locks shape, the **paved path** is the target architecture. Do **not** promote the spike’s interim (e.g. caret bridging, dual systems) into High Priority milestones.
+- After shape is clear: either land the target cut, or keep a named spike item explicitly disposable — never “Phase 1 wrong arch → Phase 2 correct” as the default plan when UX already implied the correct one.
+- Lock 3–4 product rules when shape is ambiguous, then cut — do not use ambiguity as cover for shipping a known-wrong interim once rules are known.
 
 ---
 

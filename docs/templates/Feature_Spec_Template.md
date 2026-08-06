@@ -13,7 +13,7 @@
 
 ---
 
-> **Contract home:** Understanding stays thin (shape / guardrails). **This file** holds durable behavior, architecture, APIs, and **Visual references**. A short Understanding is **not** a reason to write a short spec — do not compress contract detail to match Understanding’s length. **Do not** dump unbounded content registries (units, fuels, tech goals, recipes…) into Behavior — use a sibling [`Feature_Catalog_Template.md`](Feature_Catalog_Template.md) / `-Catalog.md` (Workflow §7.1).
+> **Contract home:** Understanding stays thin (shape / guardrails — including product-defining surface identity). **This file** holds durable behavior, **module/API architecture**, and **Visual references**. Product surface locked in Understanding (“one manuscript feel”) is not reopened here as an interim; deepen *how* it works. A short Understanding is **not** a reason to write a short spec — do not compress contract detail to match Understanding’s length. **Do not** dump unbounded content registries (units, fuels, tech goals, recipes…) into Behavior — use a sibling [`Feature_Catalog_Template.md`](Feature_Catalog_Template.md) / `-Catalog.md` (Workflow §7.1).
 
 ## Overview
 
@@ -117,7 +117,7 @@ Omit this section only when there are no visual references yet — add it when t
 Graduation / anti-compression: [`Modular_Docs_Workflow.md`](agent/Modular_Docs_Workflow.md) §2. Optional role: [`agent/roles/doc-graduate.md`](agent/roles/doc-graduate.md).
 
 - **Do not** use this as a substitute for `-Understanding.md` during scoping — draft Understanding first (shape only); populate this file after `confirmed`.
-- **Graduate** the durable contract here (Workflow §2): synthesize Understanding **plus** conversation / decisions — do not only copy thin Understanding. Do not thin Architecture / Behavior / Acceptance to match Understanding’s length.
+- **Graduate** the durable contract here (Workflow §2): synthesize Understanding **plus** conversation / decisions — do not only copy thin Understanding. Do not thin Architecture / Behavior / Acceptance to match Understanding’s length. Deepen *how* the confirmed product surface works — do not reopen a fighting interim architecture as the contract.
 - Acceptance + Visual references live **here**; work queue in `-TODO.md`; row registries in optional `-Catalog.md` (not Understanding). Screenshots → this file’s **Visual references**, not Understanding.
 - On drift: update this file **or** reconcile Understanding — do not silently diverge. Shared **Maturity** stays accurate. Lasting choices → **Decisions** (or `docs/decisions/` if cross-cutting). Preference corrections during implement/polish → **same-turn** Decisions rows + fix stale Behavior / Acceptance / Visual refs (Workflow §10) — do not wait for a session wrap.
 - **Mermaid:** only when clearer than prose; one small chart max; never decorative.
