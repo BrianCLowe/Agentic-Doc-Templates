@@ -22,7 +22,7 @@
 
 ## Optional — Template update check
 
-Only if `optional_rules.template-update-check.status` is `enabled`. Requires live `docs/upstream-status.yaml`.
+Only if `optional_rules.template-update-check.status` is `enabled` in `docs/ADT-settings.yaml`. Requires `upstream:` stamps in that file.
 
 | | |
 |--|--|
@@ -40,7 +40,9 @@ Only if `optional_rules.doc-roles.status` is `enabled`. These are [Cursor subage
 | **Parent delegates** | If `.cursor/agents/<name>.md` exists → launch that subagent with a self-contained prompt |
 | **Do not** | Install under `.cursor/skills/`; add “use proactively” / “always use for” to descriptions |
 
-Files: `understanding-author.md`, `doc-graduate.md`, `feature-implementer.md`, `docs-bootstrap.md`, `docs-template-sync.md`.
+Files: `understanding-author.md`, `doc-graduate.md`, `feature-implementer.md`, `work-verifier.md`, `docs-bootstrap.md`, `docs-template-sync.md`.
+
+**Do not** install an `orchestrator` adapter — orchestration runs in the **parent** session via `docs/templates/agent/roles/orchestrator.md` (spawns leaf workers only).
 
 ## Conflicts
 
@@ -50,7 +52,7 @@ Files: `understanding-author.md`, `doc-graduate.md`, `feature-implementer.md`, `
 
 - `.cursor/rules/modular-documentation.mdc` exists
 - `.cursor/rules/agent-timescale-planning.mdc` exists
-- If doc-roles enabled: five files under `.cursor/agents/`
+- If doc-roles enabled: six files under `.cursor/agents/` (no `orchestrator.md`)
 - Remind user: short asks are enough; parent rule delegates; `/name` optional
 
 ## For humans

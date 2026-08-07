@@ -1,14 +1,14 @@
-<!-- workflow-version: 2.7.1 -->
+<!-- pack-version: 2.7.2 -->
 
 > **Agent workflow reference.** Canonical instructions for how to work the modular doc system. Lives in `docs/templates/agent/` with the other agent playbooks — sync from upstream; do **not** copy wholesale into `docs/Master_Index.md`. The live index links here; agent rules summarize and point here for full procedure.
 
 # Modular Documentation — Agent Workflow
 
-**Workflow version**: 2.7.1 *(sync with `Master_Index.md` **Workflow version** line when updating)*
+**Pack version**: 2.7.2 *(same as `docs/templates/VERSION` / live Master Index **Pack version**)*
 
 **Design intent:** Users give short requests about the docs (“bootstrap”, “draft Understanding for X”, “update the templates”). Route to **one** playbook (`BOOTSTRAP`, `TEMPLATE_SYNC`, `TEMPLATE_UPDATE_CHECK`, `RULE_INSTALL` → `tools/<key>.md`, or this file for feature work) — do not scan the whole pack catalog. **Tight scope:** act on the paved path; do not pre-audit every alternate interpretation before doing the work. **Agent timescale:** when feature shape is clear, plan the **target architecture** as one change (verify-order checklists OK); do not stage human-sprint interim architectures — see [`Agent_Timescale_Planning_Rule.mdc`](Agent_Timescale_Planning_Rule.mdc).
 
-**Optional roles** *(never always-on):* Thin wrappers under [`roles/`](roles/README.md). When harness agents are installed (`.cursor/agents/`, `.grok/agents/`, … via [`tools/`](tools/README.md)), the modular **rule** has the parent **delegate/spawn** on matching asks. Otherwise follow the role `.md` fallback. Roles point back here or to `BOOTSTRAP` / `TEMPLATE_SYNC` — they do not replace this workflow.
+**Optional roles** *(never always-on):* Thin wrappers under [`roles/`](roles/README.md). When harness agents are installed (`.cursor/agents/`, `.grok/agents/`, … via [`tools/`](tools/README.md)), the modular **rule** has the parent **delegate/spawn** on matching asks. Otherwise follow the role `.md` fallback. **Orchestrator** (*drive backlog / clear TODOs / until blocked*) runs in the **parent session only** — it loops implement → verify → next without waiting for “next”; see [`roles/orchestrator.md`](roles/orchestrator.md). Single-slice *Continue from Current focus* stays [`roles/feature-implementer.md`](roles/feature-implementer.md). Roles point back here or to `BOOTSTRAP` / `TEMPLATE_SYNC` — they do not replace this workflow.
 
 **Read order (feature / shared work):**
 

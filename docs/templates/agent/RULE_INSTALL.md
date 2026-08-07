@@ -1,15 +1,17 @@
 # Rule Install — Agent Instructions
 
-> Use when the user asks to bootstrap modular docs, install the rule, or set up agent instructions. **Ask before writing rule files** — unless `docs/rule-install-status.yaml` already records a decision for that tool (see below).
+> Use when the user asks to bootstrap modular docs, install the rule, or set up agent instructions. **Ask before writing rule files** — unless `docs/ADT-settings.yaml` already records a decision for that tool (see below).
 >
 > **Dispatcher:** After the user confirms a tool, open **only** [`tools/<key>.md`](tools/README.md) and execute that playbook. Do not keep a second copy of install paths in this file.
 
-## Status file — remember answers per tool
+## Settings file — remember answers
 
-**Live file:** `docs/rule-install-status.yaml`  
-**Example schema:** [`rule-install-status.example.yaml`](rule-install-status.example.yaml)
+**Live file:** `docs/ADT-settings.yaml`  
+**Example schema:** [`ADT-settings.example.yaml`](ADT-settings.example.yaml)
 
-After the user answers for a **specific tool**, create or update `docs/rule-install-status.yaml` so future sessions do not re-ask for that tool.
+**Legacy:** If `docs/rule-install-status.yaml` exists and `ADT-settings.yaml` does not → migrate per [`TEMPLATE_SYNC_B.md`](TEMPLATE_SYNC_B.md) B0.1 first, then continue.
+
+After the user answers for a **specific tool**, create or update `docs/ADT-settings.yaml` so future sessions do not re-ask for that tool.
 
 ### Tool keys (use exactly)
 
@@ -31,13 +33,13 @@ After the user answers for a **specific tool**, create or update `docs/rule-inst
 | `installed` | Rule was installed at `path` | No — unless install file is missing, or user asks to reinstall/sync |
 | `declined` | User chose not to install for this tool | No — unless user explicitly asks to install for that tool |
 
-Optional fields: `recorded` (YYYY-MM-DD), `path`, `note`.
+Optional fields: `recorded` (YYYY-MM-DD), `path`, `note`, `customized` (true only if user hand-edited pack-managed rule bodies — sync asks before overwrite).
 
 ### Optional rules (`optional_rules` in the same file)
 
 | Key | Meaning |
 |-----|---------|
-| `template-update-check` | Weekly (or on-request) ping for newer Agentic Doc Templates — see [`TEMPLATE_UPDATE_CHECK.md`](TEMPLATE_UPDATE_CHECK.md) |
+| `template-update-check` | Ping for newer Agentic Doc Templates — see [`TEMPLATE_UPDATE_CHECK.md`](TEMPLATE_UPDATE_CHECK.md); default `upstream.check_mode: always` (interval optional) |
 | `doc-roles` | Optional playbook roles — see [`roles/README.md`](roles/README.md). **Not always-on.** Installed per tool file (`.cursor/agents/`, `.grok/agents/`, …). |
 
 | Status | Meaning |
@@ -46,6 +48,14 @@ Optional fields: `recorded` (YYYY-MM-DD), `path`, `note`.
 | `declined` | User opted out — do not install; do not re-ask unless they request it. |
 | *(missing / unset)* | **Not** a silent no. Briefly explain the option and ask once; then record `enabled` or `declined`. |
 
+### Sync mode (`sync.mode`)
+
+| Mode | Meaning |
+|------|---------|
+| `auto` | Pack sync applies recommended live updates (reshape, TODO ambition, rules refresh, …) without mid-sync quizzes — see [`TEMPLATE_SYNC_B.md`](TEMPLATE_SYNC_B.md) |
+| `choose` | Present optionals each sync |
+| *(missing / unset)* | Ask once (bootstrap Step 4d or first sync) — do not silent-default |
+
 If `optional_rules.template-update-check` is missing, bootstrap should have asked — if you are mid–rule-install (or finishing a template sync) and it is still unset, ask once using the Step 4b prompt, then record `enabled` or `declined`.
 
 If `optional_rules.doc-roles` is missing, ask once using bootstrap Step 4c for **any** rule-install or template-sync pass — not only when installing Cursor/Grok/Claude. Explain what “yes” means for each `tools.*.status: installed` tool (agents-folder adapters where supported; Copilot/OpenClaw/etc.: no adapter files — parent follows `roles/*.md` in-session). Then record `enabled` or `declined`. Do **not** skip the ask because the current tool’s Install row is None.
@@ -53,7 +63,7 @@ If `optional_rules.doc-roles` is missing, ask once using bootstrap Step 4c for *
 ## Before asking
 
 1. Check whether `docs/Master_Index.md` exists (if not, follow [`BOOTSTRAP.md`](BOOTSTRAP.md) first — doc structure before rules).
-2. Read **`docs/rule-install-status.yaml`** if it exists.
+2. Read **`docs/ADT-settings.yaml`** if it exists (migrate legacy status files first if needed).
 3. For each tool you would prompt about, check its entry:
    - `installed` and install file still exists → skip; mention it is already set up.
    - `installed` but file missing → tell the user and offer reinstall (do not skip silently).
@@ -80,8 +90,10 @@ For **each** confirmed tool (or each `tools.*.status: installed` when refreshing
 
 1. Open **`docs/templates/agent/tools/<key>.md` only**.
 2. Execute that playbook end-to-end (modular rule → optional update-check if enabled → optional doc-roles if enabled and that tool supports them).
-3. Update `docs/rule-install-status.yaml` immediately (`status: installed`, `path`, `recorded`).
+3. Update `docs/ADT-settings.yaml` immediately (`status: installed`, `path`, `recorded`).
 4. Stop for that tool — do not open other `tools/*.md`.
+
+On **template sync** `rules` refresh: overwrite pack-managed installs **without asking** unless that tool has `customized: true`.
 
 ### After the user answers no
 
@@ -93,6 +105,7 @@ Always honor direct requests, even when status is `declined`:
 
 - "Install the rule for Copilot" → open [`tools/github-copilot.md`](tools/github-copilot.md), install, set `installed`.
 - "Reset rule install status" / "Ask me again about Cursor" → remove or update that tool's entry, then ask.
+- "Set sync to auto" / "Set sync to choose" → update `sync.mode` in `ADT-settings.yaml`.
 
 ## Multi-tool setups (no conflict)
 
@@ -102,8 +115,8 @@ Installing for one tool **does not remove or replace** another tool's files. Rec
 
 ## Shared install rules
 
-- **Never overwrite** an existing instructions file without showing what will change and getting confirmation.
-- If merging into `copilot-instructions.md`, `CLAUDE.md`, or `AGENTS.md`, **append** a clearly labeled section; do not delete existing sections.
+- **Never overwrite** an existing instructions file without showing what will change and getting confirmation — **except** template-sync refresh of pack-managed modular/timescale rule bodies for `installed` tools that are not `customized: true`.
+- If merging into `copilot-instructions.md`, `CLAUDE.md`, or `AGENTS.md`, **append** a clearly labeled section; do not delete existing sections. On refresh, replace only the pack-owned Documentation workflow / timescale sections.
 - If the modular rule is **already present** at the target path, set status to `installed` if missing from yaml — do not re-install blindly.
 - Do not edit files under `docs/templates/` except when copying **from** them.
 - After install, tell the user which file(s) were created or updated.
@@ -114,7 +127,8 @@ Installing for one tool **does not remove or replace** another tool's files. Rec
 > I found `docs/templates/agent/tools/` with per-tool install playbooks. You're likely using **[tool]**.
 >
 > On disk: [existing install paths or none].  
-> Status file: [Cursor: installed | Grok Build: not asked yet | …].  
+> Settings (`docs/ADT-settings.yaml`): [Cursor: installed | Grok Build: not asked yet | …].  
+> Sync mode: [auto | choose | not asked — see bootstrap Step 4d].  
 > Template update checks: [enabled | declined | not asked — see bootstrap Step 4b].  
 > Optional doc roles: [enabled | declined | not asked — see bootstrap Step 4c].
 >
@@ -130,8 +144,7 @@ Installing for one tool **does not remove or replace** another tool's files. Rec
 ## Related
 
 - Tool playbooks: [`tools/README.md`](tools/README.md)
-- Status file example: [`rule-install-status.example.yaml`](rule-install-status.example.yaml)
-- Upstream check status example: [`upstream-status.example.yaml`](upstream-status.example.yaml)
+- Settings example: [`ADT-settings.example.yaml`](ADT-settings.example.yaml)
 - Optional doc roles: [`roles/README.md`](roles/README.md)
 - Doc structure bootstrap: [`BOOTSTRAP.md`](BOOTSTRAP.md)
 - Updating live docs from templates: [`TEMPLATE_SYNC.md`](TEMPLATE_SYNC.md)

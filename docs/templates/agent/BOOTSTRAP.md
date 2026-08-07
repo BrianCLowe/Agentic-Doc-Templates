@@ -25,7 +25,7 @@ Reorganize without losing content. Target: **everything meta** lives under `docs
 | `docs/help/` (entire folder at docs root) | `docs/templates/help/` |
 | `docs/agent/` (entire folder at docs root) | `docs/templates/agent/` |
 | `docs/templates/SETUP.md`, `USAGE.md`, `IDEA_CAPTURE_TIPS.md`, `USING_WITH_AGENTS.md` (flat in templates) | `docs/templates/help/` |
-| `docs/templates/BOOTSTRAP.md`, `RULE_INSTALL.md`, `TEMPLATE_SYNC.md`, `rule-install-status.example.yaml` (flat in templates) | `docs/templates/agent/` |
+| `docs/templates/BOOTSTRAP.md`, `RULE_INSTALL.md`, `TEMPLATE_SYNC.md`, `rule-install-status.example.yaml` / `ADT-settings.example.yaml` (flat in templates) | `docs/templates/agent/` |
 | `docs/templates/Modular_Docs_Workflow.md` (at templates root) | `docs/templates/agent/Modular_Docs_Workflow.md` |
 | `docs/templates/upstream/` | `docs/templates/agent/upstream/` |
 | `docs/templates/Modular_Documentation_Rule.mdc`, `Modular_Documentation_Rule.instructions.md` (flat in templates) | `docs/templates/agent/` |
@@ -84,8 +84,7 @@ docs/
 ├── Master_Index.md          ← from Master_Index_Template.md (Step 3)
 ├── Tooling.md               ← from Tooling_Template.md (Step 3b — machine tools)
 ├── Human-TODO.md            ← from Human_TODO_Template.md (Step 3c — human inbox)
-├── rule-install-status.yaml ← only when RULE_INSTALL runs later
-├── upstream-status.yaml     ← only when weekly template update checks are enabled (Step 4b)
+├── ADT-settings.yaml        ← pack prefs (tools, optionals, sync mode, upstream) when first recorded
 ├── _shared/
 │   └── assets/
 ├── decisions/
@@ -123,7 +122,7 @@ If any of those are missing, expand the inventory below and run Step 0b if layou
 
 - **Root:** `VERSION`, `CHANGELOG.md`, `Master_Index_Template.md`, `chat-ui/AGENT.md`, `Feature_Spec_Template.md`, `Feature_Understanding_Template.md`, `TODO_Template.md`, `Decision_Template.md`, `Tooling_Template.md`, `Human_TODO_Template.md`
 - **`help/`:** `SETUP.md`, `USAGE.md`, `IDEA_CAPTURE_TIPS.md`, `USING_WITH_AGENTS.md`
-- **`agent/`:** `Modular_Docs_Workflow.md`, `BOOTSTRAP.md`, `RULE_INSTALL.md`, `TEMPLATE_SYNC.md`, `TEMPLATE_SYNC_A.md`, `TEMPLATE_SYNC_B.md`, `TEMPLATE_UPDATE_CHECK.md`, `Modular_Documentation_Rule.mdc`, `Modular_Documentation_Rule.instructions.md`, `Template_Update_Check_Rule.mdc`, `Template_Update_Check_Rule.instructions.md`, `rule-install-status.example.yaml`, `upstream-status.example.yaml`
+- **`agent/`:** `Modular_Docs_Workflow.md`, `BOOTSTRAP.md`, `RULE_INSTALL.md`, `TEMPLATE_SYNC.md`, `TEMPLATE_SYNC_A.md`, `TEMPLATE_SYNC_B.md`, `TEMPLATE_UPDATE_CHECK.md`, `Modular_Documentation_Rule.mdc`, `Modular_Documentation_Rule.instructions.md`, `Template_Update_Check_Rule.mdc`, `Template_Update_Check_Rule.instructions.md`, `ADT-settings.example.yaml`
 
 Run Step 0b if any setup files are still at `docs/` root or flat in `docs/templates/`.
 
@@ -132,7 +131,7 @@ Run Step 0b if any setup files are still at `docs/` root or flat in `docs/templa
 If `docs/Master_Index.md` does not exist:
 
 1. Copy content from `docs/templates/Master_Index_Template.md`.
-2. Replace bracketed placeholders; set **Template version** and **Workflow version** to match the templates.
+2. Replace bracketed placeholders; set **Pack version** from local `docs/templates/VERSION`.
 3. Fill Document Map (§3) from **this conversation and Project Profile** — do not leave §3.2 empty if the user named **features**. Leave **§3.1 Shared empty** unless the user named a truly shared, project-owned piece used by multiple features — do **not** invent `_shared/` rows or dump engine/framework overview (e.g. generic Unreal notes) there. Open README only if overview/map are empty. Do **not** invent features from a codebase scan.
 
 If `Master_Index.md` already exists → do not overwrite; offer [`TEMPLATE_SYNC.md`](TEMPLATE_SYNC.md) instead.
@@ -187,57 +186,61 @@ If the user named **no** features yet, skip Step 3d and say so in Step 4.
 2. Point at the **draft** `-Understanding.md` files created in Step 3d — user reviews / corrects before implementation.
 3. Point at **Open** items on `Human-TODO.md` — things only the human can close (procure, playtest, decide, waiting).
 4. After they confirm an Understanding, graduate durable content into the spec and continue from TODOs ([`../help/SETUP.md`](../help/SETUP.md)).
-5. Run **Step 4b** (weekly template update checks) before finishing.
+5. Run **Step 4b** (template update checks) before finishing.
 6. Run **Step 4c** (optional doc roles) before finishing.
-7. Optional: run [`RULE_INSTALL.md`](RULE_INSTALL.md) for agent rules (asks per tool, records in `rule-install-status.yaml`). If Step 4b / 4c were **yes**, RULE_INSTALL also installs those optional artifacts.
+7. Run **Step 4d** (pack sync mode) before finishing.
+8. Optional: run [`RULE_INSTALL.md`](RULE_INSTALL.md) for agent rules (asks per tool, records in `docs/ADT-settings.yaml`). If Step 4b / 4c were **yes**, RULE_INSTALL also installs those optional artifacts.
 
-## Step 4b — Weekly template update checks (ask first)
+## Step 4b — Template update checks (ask first)
 
-Projects that copied or templated this pack do **not** share the upstream git remote. Offer an **optional** agent rule that pings upstream about once a week (or whenever the user asks).
+Projects that copied or templated this pack do **not** share the upstream git remote. Offer an **optional** agent rule that pings upstream for a newer pack version.
 
 **Ask** (do not enable silently):
 
-> Want the agent to check weekly for Agentic Doc Templates updates?
+> Want the agent to check for Agentic Doc Templates updates?
 >
-> How it works: a tiny `docs/upstream-status.yaml` stores `last_checked` and your local template version. When a week has passed (or you ask), the agent fetches only the upstream `VERSION` file and tells you if a newer pack exists — then you can sync with TEMPLATE_SYNC.
+> How it works: `docs/ADT-settings.yaml` stores your local pack version. The agent fetches only the tiny upstream `VERSION` file and tells you if a newer pack exists — then you can sync with TEMPLATE_SYNC. **Default:** check once per session when the rule runs (`check_mode: always`) — token cost is negligible. Or choose **interval** (e.g. every 7 days) if you prefer fewer network pings.
 >
-> Token cost is negligible (tens of tokens to read the status file; a small network fetch only when due). Decline if you prefer to ask manually: *"Update the doc templates from Agentic Doc Templates and sync our live docs."*
+> Decline if you prefer to ask manually: *"Update the doc templates from Agentic Doc Templates and sync our live docs."*
 
-### On **yes**
+### On **yes** *(or yes + cadence)*
 
-1. Create `docs/upstream-status.yaml` from [`upstream-status.example.yaml`](upstream-status.example.yaml).
-2. Set `last_checked` to today, and `local_template_version` / `local_workflow_version` from local `docs/templates/VERSION` (or the markers in `Master_Index_Template.md` / `agent/Modular_Docs_Workflow.md` if `VERSION` is missing).
-3. Record in `docs/rule-install-status.yaml` under `optional_rules.template-update-check` with `status: enabled` and `recorded` (create the file if needed — see [`rule-install-status.example.yaml`](rule-install-status.example.yaml)).
-4. Install the optional rule when installing tool rules — follow [`RULE_INSTALL.md`](RULE_INSTALL.md) **Optional rules**. If the user skips RULE_INSTALL for now, note that checks need the optional rule installed for their tool(s).
+1. Create or update `docs/ADT-settings.yaml` from [`ADT-settings.example.yaml`](ADT-settings.example.yaml) (keep any existing `tools` / `sync` / other keys).
+2. Set `optional_rules.template-update-check` to `enabled` + `recorded` today.
+3. Ensure `upstream:` exists; set `last_checked` to today and `local_pack_version` from local `docs/templates/VERSION`.
+4. Set `upstream.check_mode`:
+   - **`always`** if they accept the default / say every session / do not specify cadence
+   - **`interval`** + `check_interval_days` (default **7**) if they ask for weekly / every N days
+5. Install the optional rule when installing tool rules — follow [`RULE_INSTALL.md`](RULE_INSTALL.md). If the user skips RULE_INSTALL for now, note that checks need the optional rule installed for their tool(s).
 
 ### On **no**
 
-1. Do **not** create `docs/upstream-status.yaml`.
-2. Record `optional_rules.template-update-check` with `status: declined` and `recorded` in `docs/rule-install-status.yaml` so future sessions do not re-ask unless the user requests it.
-3. Mention they can still sync anytime via [`TEMPLATE_SYNC.md`](TEMPLATE_SYNC.md) or enable checks later (*"Check for template updates every week"*).
+1. Record `optional_rules.template-update-check` with `status: declined` and `recorded` in `docs/ADT-settings.yaml` (create the file if needed). Do **not** require an `upstream:` block when declined.
+2. Mention they can still sync anytime via [`TEMPLATE_SYNC.md`](TEMPLATE_SYNC.md) or enable checks later (*"Enable template update checks"*).
 
 ### Explicit overrides later
 
-- "Check for template updates every week" / "Enable template update checks" → treat as **yes** even if previously declined.
-- "Stop checking for template updates" → remove or leave `docs/upstream-status.yaml`; set optional rule status to `declined`; remove installed `template-update-check` rule files if present (ask before deleting).
+- "Enable template update checks" / "Check for template updates every session" → enable with `check_mode: always`.
+- "Only check for template updates every week" / "Check every N days" → enable (or keep enabled) with `check_mode: interval` and set `check_interval_days`.
+- "Stop checking for template updates" → set optional rule status to `declined`; remove installed `template-update-check` rule files if present (ask before deleting). Keep or clear `upstream:` as the user prefers.
 
 ## Step 4c — Optional doc roles (ask first)
 
-Thin playbook roles (Understanding author, Doc graduate, Feature implementer, Bootstrap, Template sync) live under [`roles/`](roles/README.md). They are **never always-on**. Users can `@`-mention role files with no install.
+Thin playbook roles (Understanding author, Doc graduate, Feature implementer, Work verifier, Orchestrator, Bootstrap, Template sync) live under [`roles/`](roles/README.md). They are **never always-on**. Users can `@`-mention role files with no install. **Orchestrator** is parent-session only (not installed as a harness subagent).
 
 **Ask** (do not enable silently):
 
-> Want optional **doc roles** (Understanding author, Feature implementer, etc.)?
+> Want optional **doc roles** (Understanding author, Feature implementer, Orchestrator, etc.)?
 >
-> How it works: short role files under `docs/templates/agent/roles/`. When we install rules for your tools ([`tools/`](tools/README.md)), matching **subagent** adapters go in that harness’s agents folder (Cursor → `.cursor/agents/`, Grok Build → `.grok/agents/`, …). The modular docs rule then has the **main agent** delegate when your ask matches — you don’t need `/` commands.
+> How it works: short role files under `docs/templates/agent/roles/`. When we install rules for your tools ([`tools/`](tools/README.md)), matching **subagent** adapters go in that harness’s agents folder (Cursor → `.cursor/agents/`, Grok Build → `.grok/agents/`, …). The modular docs rule then has the **main agent** delegate when your ask matches — you don’t need `/` commands. Orchestrator stays in the parent session and dispatches leaf workers.
 >
 > Decline if you prefer the lean modular rule alone. You can still open a role `.md` by path later.
 
 ### On **yes**
 
-1. Record in `docs/rule-install-status.yaml` under `optional_rules.doc-roles` with `status: enabled` and `recorded`.
+1. Record in `docs/ADT-settings.yaml` under `optional_rules.doc-roles` with `status: enabled` and `recorded`.
 2. When running [`RULE_INSTALL.md`](RULE_INSTALL.md) for each installed tool, that tool’s [`tools/<key>.md`](tools/README.md) installs doc-role adapters if the tool supports them. If RULE_INSTALL is skipped for now, note which agents folders still need a later pass.
-3. Point the user at [`roles/README.md`](roles/README.md) — normal asks are enough (*Draft Understanding for X*).
+3. Point the user at [`roles/README.md`](roles/README.md) — normal asks are enough (*Draft Understanding for X*, *Orchestrate — clear ready TODOs until blocked*).
 
 ### On **no**
 
@@ -250,6 +253,25 @@ Thin playbook roles (Understanding author, Doc graduate, Feature implementer, Bo
 - "Enable optional doc roles" / "Install modular docs subagents" → treat as **yes**.
 - "Remove doc roles" / "Disable optional doc roles" → set `declined`; delete installed agent files under the harness folders above (ask before deleting).
 
+## Step 4d — Pack sync mode (ask first)
+
+Controls whether TEMPLATE_SYNC mid-asks about live optionals (reshape, TODO ambition, future similar passes) or just applies them.
+
+**Ask** (do not silent-default):
+
+> When updating the doc templates, should the agent **apply recommended live updates automatically** (`auto`) — reshape Understandings, TODO ambition, refresh installed rules, etc. — or **ask you about optionals each sync** (`choose`)?
+>
+> `auto` is best if you always want the pack’s recommended live passes. `choose` keeps per-sync control. You can switch later: *Set sync to auto* / *Set sync to choose*.
+
+### On **auto** / **choose**
+
+1. Record `sync.mode` and `sync.recorded` in `docs/ADT-settings.yaml` (create from [`ADT-settings.example.yaml`](ADT-settings.example.yaml) if needed).
+2. Mention sync behavior briefly in the bootstrap summary.
+
+### Explicit overrides later
+
+- "Set sync to auto" / "Set sync to choose" → update `sync.mode` (and `recorded`).
+
 ## Do not
 
 - Overwrite an existing project `README.md` that is not the upstream template readme.
@@ -259,8 +281,10 @@ Thin playbook roles (Understanding author, Doc graduate, Feature implementer, Bo
 - Ask before moving root files that are **clearly** upstream (Agentic Doc Templates / Brian Lowe / BrianCLowe markers) — just move them.
 - Finish bootstrap with a filled Document Map but **no** feature/shared files on disk.
 - Put human-gated items only in feature TODOs — dual-write `docs/Human-TODO.md` + owner TODO (Workflow §13).
-- Enable weekly template update checks without asking (Step 4b).
-- Skip Steps 4b / 4c (or stay silent about them) because the user did not ask — present and explain; record `enabled` or `declined`.
+- Enable template update checks without asking (Step 4b).
+- Silent-default `sync.mode` without Step 4d (or first-sync B0.2).
+- Skip Steps 4b / 4c / 4d (or stay silent about them) because the user did not ask — present and explain; record decisions.
+- Keep writing `docs/rule-install-status.yaml` / `docs/upstream-status.yaml` on new projects — use `docs/ADT-settings.yaml` only.
 
 ## Example user prompts
 

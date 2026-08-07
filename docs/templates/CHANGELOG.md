@@ -8,16 +8,33 @@
 
 | Tag | Meaning for Step B |
 |-----|--------------------|
-| `versions-only` | Bump Template / Workflow version in live Master Index; stop |
+| `versions-only` | Bump **Pack version** in live Master Index; stop |
 | `master-index` | Adopt structural deltas in live `Master_Index.md` (headings, Key Locations, Document Map columns) |
 | `content-templates` | Add *missing* sections/structure from content templates into live Understanding / Spec / TODO / Tooling / Human-TODO — **not** trim/remove (see `optional-live-reshape`) |
-| `optional-live-reshape` | **Present** (explain + ask once) — **highly recommended** live Understanding → shape trim + relocate into specs (Workflow §4). Default ask toward yes (all stems). Do **not** silent-skip. On yes only: trim/remove + relocate — not add-sections-only. Suggest committing pack sync first so reshape is its own commit |
-| `optional-todo-ambition` | **Present** (explain + ask once) — optional live TODO pass: find human-sprint / n-step interim-architecture staging; streamline High Priority / Current focus toward target architecture (agent timescale). Do **not** silent-skip the ask. On yes only: rewrite chosen `*-TODO.md` files; do not invent work |
-| `rules` | Offer to refresh installed agent rules from local pack (ask if customized) |
-| `optional-upstream-check` | Update or offer `docs/upstream-status.yaml` / update-check rule |
+| `optional-live-reshape` | Live Understanding → shape trim + relocate into specs (Workflow §4). **`sync.mode: auto`:** run all Document Map stems. **`choose`:** present + ask once (default yes). Do **not** silent-skip under choose |
+| `optional-todo-ambition` | Live TODO ambition pass (agent timescale). **`auto`:** all Document Map `*-TODO.md`. **`choose`:** present + ask once. Do not invent work |
+| `rules` | Refresh installed agent rules/adapters from local pack (**no ask** unless tool has `customized: true`) |
+| `optional-upstream-check` | Stamp `upstream:` in `docs/ADT-settings.yaml` / offer enable update-check if unset |
 | `process-docs-only` | Pack process/help/agent docs only — no live feature/shared content scan |
 
 ---
+
+## 2.7.2
+
+- **Live impact:** `versions-only`, `master-index`, `rules`, `process-docs-only`
+- **Files:**
+  - `VERSION` — 2.7.1 → 2.7.2; **single `pack-version`** (drops dual template/workflow fields)
+  - `agent/ADT-settings.example.yaml` — **new** unified live settings (`sync.mode`, tools, optional_rules, upstream); replaces `rule-install-status.example.yaml` + `upstream-status.example.yaml` (removed); upstream **`check_mode: always`** default (interval optional)
+  - `agent/TEMPLATE_SYNC_B.md` — migrate legacy status files → `docs/ADT-settings.yaml`; **`sync.mode: auto|choose`**; auto runs reshape/ambition when tagged; rules refresh without ask unless `customized: true`; Pack version stamp; legacy weekly → `check_mode: interval`
+  - `agent/BOOTSTRAP.md` — Steps 4b/4c write ADT-settings; **Step 4d** sync mode ask; 4b offers always vs interval; layout tree uses `ADT-settings.yaml`
+  - `agent/RULE_INSTALL.md`, `TEMPLATE_UPDATE_CHECK.md`, `Template_Update_Check_Rule.*`, `TEMPLATE_SYNC_A.md`, `tools/*` — ADT-settings paths; pack-version compare; always-check default
+  - `agent/roles/orchestrator.md` — **new** parent-only backlog loop (verify always; milestone commits; playtest liberal / batch at end)
+  - `agent/roles/work-verifier.md` + `roles/cursor|grok/work-verifier.md` — **new** leaf verify role
+  - `agent/roles/template-sync.md` + cursor/grok adapters — sync.mode + no-ask rules refresh
+  - `agent/roles/README.md` — orchestrator + work-verifier; never install orchestrator adapter
+  - `agent/Modular_Documentation_Rule.mdc` / `.instructions.md` — orchestrate / verify routes
+  - `agent/Modular_Docs_Workflow.md`, `Master_Index_Template.md`, `chat-ui/AGENT.md`, `help/*`, root `README.md` — Pack version + ADT-settings Key Locations
+- **Step B:** Migrate `rule-install-status.yaml` / `upstream-status.yaml` → `docs/ADT-settings.yaml` if needed (B0.1). If `sync.mode` unset → ask once (B0.2 / bootstrap 4d). Set live Master Index **Pack version** to 2.7.2 (replace Template/Workflow version lines). Adopt Key Locations row for `ADT-settings.yaml`. Refresh installed rules/adapters **without asking** (unless `customized: true`); if doc-roles enabled include `work-verifier` (six adapters; no `orchestrator`). No live feature/shared content scan unless other tags appear in a future top entry.
 
 ## 2.7.1
 

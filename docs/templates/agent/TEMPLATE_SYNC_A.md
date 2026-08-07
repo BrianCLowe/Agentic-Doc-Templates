@@ -28,8 +28,8 @@ That folder is the canonical pack — not live project content. Treat this as a 
 
 - `docs/Master_Index.md`
 - `docs/features/`, `docs/_shared/`, `docs/decisions/`, `docs/reference/`
-- `docs/rule-install-status.yaml`
-- `docs/upstream-status.yaml` (weekly check stamp — update versions in Step B)
+- `docs/ADT-settings.yaml` (pack prefs — migrate/update in Step B)
+- Legacy `docs/rule-install-status.yaml` / `docs/upstream-status.yaml` if still present (migrate in Step B — do not delete in A)
 - Installed rules outside templates (`.cursor/rules/`, `AGENTS.md`, …) — update later via [`RULE_INSTALL.md`](RULE_INSTALL.md) if Step B tags `rules`
 
 **Preferred fetch: ZIP** (no git required in the user project):
@@ -63,7 +63,7 @@ cp -R "$tmp/Agentic-Doc-Templates-main/docs/templates" docs/templates
 - Diff old vs new template files and update only what changed
 - Fetch individual files with `gh` / raw URLs one-by-one
 - Read every file under the existing `docs/templates/` before replacing
-- Capture Template / Workflow versions *before* overwrite (read `VERSION` in Step B)
+- Capture pack version *before* overwrite (read `VERSION` in Step B)
 - Open [`TEMPLATE_SYNC_B.md`](TEMPLATE_SYNC_B.md) or the top `CHANGELOG.md` Step B before the overwrite finishes
 - Add Agentic-Doc-Templates as a git remote of the user project and pull into it
 - `git checkout` / `git restore` live docs from any remote

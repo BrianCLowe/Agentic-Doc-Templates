@@ -1,18 +1,23 @@
 ---
 name: Template Update Check
-description: Optional weekly check for Agentic Doc Templates pack updates
+description: Optional check for Agentic Doc Templates pack updates
 applyTo: "**"
 ---
 
 # Template Update Check (optional)
 
-If `docs/upstream-status.yaml` does not exist, ignore this entire rule.
+If `docs/ADT-settings.yaml` does not exist, ignore this entire rule.
+If `optional_rules.template-update-check.status` is not `enabled`, ignore this entire rule.
 
-**Token cost:** Reading that status file is negligible (tens of tokens). Only fetch upstream when the check is due or the user asks.
+**Token cost:** Reading settings is negligible. Fetching upstream `VERSION` is a few tokens of body — also negligible. Default is to check when this rule runs.
 
 **When to act:**
-1. Once per session at start of work on this project (or when the user asks to check for template updates): read **only** `docs/upstream-status.yaml`.
-2. If `last_checked` is still within `check_interval_days` (default 7) and the user did not ask → stop. Do not fetch the network.
-3. If due or requested → follow **`docs/templates/agent/TEMPLATE_UPDATE_CHECK.md`**: fetch the tiny upstream `VERSION` file only; tell the user if an update exists; run `docs/templates/agent/TEMPLATE_SYNC.md` only if they want the pack refreshed.
+1. Once per session at start of work on this project (or when the user asks to check for template updates): read **`docs/ADT-settings.yaml`** — confirm update-check enabled; read `upstream:`.
+2. Resolve `upstream.check_mode` (default **`always`** if unset):
+   - **`always`** → follow **`docs/templates/agent/TEMPLATE_UPDATE_CHECK.md`** (fetch tiny upstream `VERSION`; report if newer). At most once per session unless the user asks again.
+   - **`interval`** → if `last_checked` is still within `check_interval_days` (default 7) and the user did not ask → stop. Otherwise follow TEMPLATE_UPDATE_CHECK.
+3. Run `docs/templates/agent/TEMPLATE_SYNC.md` only if they want the pack refreshed — never auto-sync from a version ping.
+
+**Legacy:** If only `docs/upstream-status.yaml` exists, migrate into `ADT-settings.yaml` per TEMPLATE_SYNC_B B0.1. Legacy `check_interval_days` without `check_mode` → `check_mode: interval`.
 
 Do not download the full template ZIP for a version check.

@@ -12,7 +12,7 @@
 1. **Preferred for coding this repo:** set that agent’s workspace to **this project root** (`agents.defaults.workspace` or `agents.list[].workspace` in `~/.openclaw/openclaw.json` — ask before editing config). Then install into the project’s `AGENTS.md`.
 2. **Alternate:** keep the default OpenClaw workspace and append the modular-docs section there — only if the user wants OpenClaw’s home workspace (not the repo) to carry the rule. Remind them `docs/Master_Index.md` paths only resolve when the workspace/cwd is the project (or they open files by absolute path).
 
-Record the chosen workspace path under `tools.openclaw.path` / `note` in `docs/rule-install-status.yaml`.
+Record the chosen workspace path under `tools.openclaw.path` / `note` in `docs/ADT-settings.yaml`.
 
 ## Modular rule
 

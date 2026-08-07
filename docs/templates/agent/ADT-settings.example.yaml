@@ -1,0 +1,91 @@
+# Example — copy to docs/ADT-settings.yaml when recording the first pack preference.
+# Live file: docs/ADT-settings.yaml (project-specific; survives pack overwrite on TEMPLATE_SYNC)
+#
+# Replaces older docs/rule-install-status.yaml + docs/upstream-status.yaml (migrate on sync).
+
+version: 1
+
+# Pack sync behavior — bootstrap / first sync asks once; do not re-ask every update.
+# auto   = apply all changelog-gated live work + refresh installed rules (no mid-sync optionals quiz)
+# choose = present optionals (reshape, TODO ambition, …) each sync (legacy interactive)
+sync:
+  mode: auto
+  recorded: 2026-08-06
+
+# One entry per tool. Status: installed | declined
+# Do not ask again for a tool when status is installed or declined
+# unless the user explicitly requests install/reinstall for that tool.
+# Install/refresh: open docs/templates/agent/tools/<key>.md only.
+# Set customized: true only if the user edited pack-managed rule bodies — then ask before overwrite.
+
+tools:
+  cursor:
+    status: installed
+    recorded: 2026-06-12
+    path: .cursor/rules/modular-documentation.mdc
+
+  grok-build:
+    status: installed
+    recorded: 2026-07-18
+    path: AGENTS.md
+    note: Documentation workflow section; doc roles under .grok/agents/
+
+  github-copilot:
+    status: declined
+    recorded: 2026-06-12
+    note: User installs manually on work machine
+
+  # claude-code:
+  #   status: installed
+  #   recorded: 2026-06-12
+  #   path: .claude/rules/modular-documentation.md
+
+  # agents-md:
+  #   status: installed
+  #   recorded: 2026-06-12
+  #   path: AGENTS.md
+
+  # openclaw:
+  #   status: installed
+  #   recorded: 2026-07-18
+  #   path: AGENTS.md
+
+  # continue:
+  #   status: declined
+  #   recorded: 2026-06-12
+
+  # cline:
+  #   status: installed
+  #   recorded: 2026-06-12
+  #   path: .clinerules/modular-documentation.md
+
+# Optional pack features. Status: enabled | declined
+# Bootstrap Steps 4b / 4c record these; each tools/<key>.md installs matching artifacts.
+
+optional_rules:
+  template-update-check:
+    status: enabled
+    recorded: 2026-07-16
+
+  doc-roles:
+    status: enabled
+    recorded: 2026-07-18
+    # paths:
+    #   cursor: .cursor/agents/
+    #   grok-build: .grok/agents/
+
+# Upstream ping stamps — used when optional_rules.template-update-check is enabled.
+# Survives pack overwrite (this whole file lives under docs/, not docs/templates/).
+#
+# check_mode:
+#   always   — default / recommended: fetch upstream VERSION each session when the rule runs
+#   interval — only fetch when last_checked is older than check_interval_days
+
+upstream:
+  check_mode: always
+  # check_mode: interval
+  # check_interval_days: 7
+  last_checked: 2026-07-16
+  local_pack_version: "2.7.2"
+  # upstream_pack_version: "2.7.2"
+  # update_available: true

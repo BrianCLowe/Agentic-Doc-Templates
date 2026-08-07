@@ -4,7 +4,7 @@
 > Keep agents aligned with your intent across conversations, features, and long-running projects.
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-![Pack](https://img.shields.io/badge/Pack-2.7.1-blue)
+![Pack](https://img.shields.io/badge/Pack-2.7.2-blue)
 ![Built for](https://img.shields.io/badge/Built%20for-Cursor%20%7C%20Grok%20Build%20%7C%20OpenClaw%20%7C%20Claude%20Code-5865F2)
 
 ---
@@ -124,8 +124,8 @@ Deeper day-to-day patterns: [`docs/templates/help/USAGE.md`](docs/templates/help
 ## Example prompts
 
 - *Bootstrap modular docs using `docs/templates/agent/BOOTSTRAP.md`.*
-- *Draft Understanding for [feature] from what I said — I’ll review.*
 - *Draft Understanding for [feature] from what I said — I’ll review.* *(main agent delegates to Understanding author subagent if installed)*
+- *Orchestrate — clear ready TODOs until blocked.* *(parent-session loop: implement → verify → next)*
 - *Update the doc templates from Agentic Doc Templates and sync our live docs.*
 - *Check for template updates.*
 - *Follow `chat-ui/AGENT.md` — turn our conversation into modular docs with Save-as paths.*

@@ -2,7 +2,7 @@
 
 > **Opt-in only.** These roles are **not** always-on and must not compete with the modular documentation rule. Default project work still uses one agent + the modular rule (installed via [`../tools/`](../tools/README.md)).
 
-Thin, playbook-bound roles for heavier moments (intent capture, graduation, bootstrap, sync). Each role points at an existing playbook — it does **not** restate the workflow.
+Thin, playbook-bound roles for heavier moments (intent capture, graduation, bootstrap, sync, backlog orchestration). Each role points at an existing playbook — it does **not** restate the workflow.
 
 ## Roles
 
@@ -11,6 +11,8 @@ Thin, playbook-bound roles for heavier moments (intent capture, graduation, boot
 | **Understanding author** | [`understanding-author.md`](understanding-author.md) | Capture **feature shape** first (is / is not); draft/revise `-Understanding.md` | Ready for human **shape** review (`draft`) — **no code** |
 | **Doc graduate** | [`doc-graduate.md`](doc-graduate.md) | Confirmed shape → durable **contract** spec | Spec updated — **no code** |
 | **Feature implementer** | [`feature-implementer.md`](feature-implementer.md) | Current focus → code; update that TODO | Focus item done or blocked |
+| **Orchestrator** | [`orchestrator.md`](orchestrator.md) | **Parent-only** loop: dispatch implementers → always verify → milestone commits → drain ready TODOs; defer playtest to end unless hard-gated | Agent work cleared / hard-blocked / budget — end-of-run report (+ playtest batch) |
+| **Work verifier** | [`work-verifier.md`](work-verifier.md) | One unit vs Understanding + spec + TODO | Pass or fail with reasons — **no code** |
 | **Bootstrap** | [`bootstrap.md`](bootstrap.md) | First-time modular docs layout | [`../BOOTSTRAP.md`](../BOOTSTRAP.md) complete |
 | **Template sync** | [`template-sync.md`](template-sync.md) | Pack refresh (A) then live Step B | [`../TEMPLATE_SYNC.md`](../TEMPLATE_SYNC.md) → A → B |
 
@@ -20,6 +22,7 @@ Short asks are enough — the main agent routes by intent:
 
 - *Draft Understanding for [Feature] from what I said — I’ll review.*
 - *Continue from Current focus.*
+- *Orchestrate — clear ready TODOs until blocked.*
 - *Update the doc templates and sync our live docs.*
 
 ## Harness adapters *(optional install)*
@@ -35,6 +38,8 @@ Bootstrap Step 4c / [`../RULE_INSTALL.md`](../RULE_INSTALL.md) → each [`../too
 
 **Parent orchestration** (in the modular rule / `AGENTS.md`): if `<name>.md` exists under a known agents folder, delegate/spawn; else follow the role playbook. Grok Build must use `.grok/agents/` — it does **not** load `.cursor/agents/` as spawn types.
 
+**Orchestrator is parent-only:** follow [`orchestrator.md`](orchestrator.md) in the **current session**. Do **not** install or spawn an `orchestrator` harness adapter — it dispatches leaf workers (`feature-implementer`, `work-verifier`) that *are* installed when doc-roles are enabled.
+
 `/` commands (Cursor) remain optional overrides. Descriptions use gated **Use when …**, not “use proactively.”
 
 ## Disable / remove
@@ -47,4 +52,5 @@ Bootstrap Step 4c / [`../RULE_INSTALL.md`](../RULE_INSTALL.md) → each [`../too
 
 - Roles **point** at playbooks; do not duplicate Workflow prose.
 - Harness adapters only differ by **frontmatter / install path** — same body pointing at `roles/<role>.md`.
+- **Never** add a harness adapter for `orchestrator` — parent-only by design.
 - Tool-specific install steps live in [`../tools/`](../tools/README.md), not here.

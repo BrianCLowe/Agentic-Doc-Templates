@@ -1,4 +1,4 @@
-<!-- template-version: 2.7.1 -->
+<!-- pack-version: 2.7.2 -->
 
 > **Template reference.** Do not put project-specific content in this file. Copy to `docs/Master_Index.md` for initial setup, or diff against it when syncing template improvements into the live index. Never edit this template unless the user asks you to.
 >
@@ -8,8 +8,7 @@
 
 **Purpose**: Single entry point for **this project's** documentation — overview, locations, and Document Map. Read only the files relevant to the current task.
 
-**Template version**: 2.7.1 *(update when syncing from `templates/Master_Index_Template.md`)*
-**Workflow version**: 2.7.1 *(must match `templates/agent/Modular_Docs_Workflow.md` — update both on sync)*
+**Pack version**: 2.7.2 *(from [`templates/VERSION`](templates/VERSION) — update on sync)*
 
 ## 1. Project Overview
 
@@ -43,7 +42,7 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 | `docs/Human-TODO.md` | Human inbox — procure, playtest, decide, waiting (agent cannot close from assumptions) ([`Human_TODO_Template.md`](templates/Human_TODO_Template.md)) |
 | `docs/decisions/` | Optional cross-cutting decisions ([`Decision_Template.md`](templates/Decision_Template.md)) |
 | `docs/templates/` | Upstream template pack — scaffolds, `help/`, `agent/` (incl. [`Modular_Docs_Workflow.md`](templates/agent/Modular_Docs_Workflow.md), optional [`roles/`](templates/agent/roles/README.md), per-tool [`tools/`](templates/agent/tools/README.md)), `chat-ui/`; also [`VERSION`](templates/VERSION) and [`CHANGELOG.md`](templates/CHANGELOG.md) (Step B scope after sync) |
-| `docs/upstream-status.yaml` | Optional — weekly template update check stamp ([`TEMPLATE_UPDATE_CHECK.md`](templates/agent/TEMPLATE_UPDATE_CHECK.md)) |
+| `docs/ADT-settings.yaml` | Pack preferences — sync mode, installed tools, optionals, upstream ping stamps ([`ADT-settings.example.yaml`](templates/agent/ADT-settings.example.yaml)) |
 | `src/` / `backend/` / `frontend/` | Actual code (reference only) |
 
 ### 2.2 At a Glance *(policy summary — full rules in Workflow)*

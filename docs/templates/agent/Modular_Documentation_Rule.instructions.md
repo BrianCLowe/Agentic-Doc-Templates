@@ -21,6 +21,8 @@ This project uses a lean modular documentation system. `docs/Master_Index.md` is
 | draft / revise Understanding, new idea, capture intent, correct What this is / is NOT | see **Optional subagents** → else `docs/templates/agent/roles/understanding-author.md` |
 | graduate confirmed Understanding → spec | see **Optional subagents** → else `docs/templates/agent/roles/doc-graduate.md` |
 | implement / continue Current focus (Understanding `confirmed`, scope unchanged) | see **Optional subagents** → else session default below |
+| orchestrate / drive backlog / clear TODOs / run until blocked | **parent only** → `docs/templates/agent/roles/orchestrator.md` (do **not** spawn an orchestrator subagent) |
+| verify completed unit vs Understanding/spec/TODO | see **Optional subagents** → else `docs/templates/agent/roles/work-verifier.md` |
 | feature / shared work (other) | `docs/Master_Index.md` + that feature’s or component’s files |
 
 **Optional subagents** *(parent orchestrates — user need not type `/`; harness-agnostic)*:
@@ -29,16 +31,19 @@ When an ask matches a row below, look for a **named agent file** with that filen
 
 - If found → **delegate / spawn** that type with a self-contained prompt (feature/component name, paths, user’s ask). On Grok Build: `spawn_subagent` with `subagent_type: <name>` when `.grok/agents/<name>.md` exists. Do **not** treat `.cursor/agents/` as Grok types.
 - If missing → follow the **Fallback** playbook/role **in this session** (or spawn a generic child with that playbook path).
+- **Orchestrator exception:** matching *orchestrate / drive backlog / …* → follow `docs/templates/agent/roles/orchestrator.md` **in this parent session** only. That playbook spawns leaf workers (`feature-implementer`, `work-verifier`). Never install or spawn `orchestrator` as a harness subagent type.
 
 | When ask matches | Agent filename | Fallback |
 |------------------|----------------|----------|
 | draft/revise Understanding, new idea, intent, identity correction | `understanding-author.md` | `docs/templates/agent/roles/understanding-author.md` |
 | user confirmed Understanding → update durable spec | `doc-graduate.md` | `docs/templates/agent/roles/doc-graduate.md` |
 | implement / continue from Current focus | `feature-implementer.md` | session default below |
+| orchestrate / drive backlog / clear TODOs / until blocked | *(parent only — do not spawn)* | `docs/templates/agent/roles/orchestrator.md` |
+| verify completed unit vs Understanding/spec/TODO | `work-verifier.md` | `docs/templates/agent/roles/work-verifier.md` |
 | bootstrap / init modular docs | `docs-bootstrap.md` | `docs/templates/agent/BOOTSTRAP.md` |
 | update / sync doc templates | `docs-template-sync.md` | `docs/templates/agent/TEMPLATE_SYNC.md` |
 
-**Do not** delegate every message — only when a row above matches. Stay in this session for tiny follow-ups, clarifying questions only, or when the user says to stay here / skip subagents. These must not replace this rule or compete like always-on skill packs. Roles: `docs/templates/agent/roles/README.md`. Tool install paths: `docs/templates/agent/tools/README.md`.
+**Do not** delegate every message — only when a row above matches. Stay in this session for tiny follow-ups, clarifying questions only, or when the user says to stay here / skip subagents. Do **not** turn a single-slice Current focus ask into full orchestration unless the user said orchestrate / drive backlog / clear TODOs. These must not replace this rule or compete like always-on skill packs. Roles: `docs/templates/agent/roles/README.md`. Tool install paths: `docs/templates/agent/tools/README.md`.
 
 **Session default** *(implement / continue when Understanding is `confirmed` and scope unchanged)*:
 1. Read `docs/Master_Index.md` Sections 1–3.

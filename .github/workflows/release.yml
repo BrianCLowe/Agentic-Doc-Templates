@@ -48,7 +48,10 @@ jobs:
         run: |
           TAG="${{ steps.ref.outputs.tag }}"
           VERSION="${TAG#v}"
-          FILE_VER="$(awk -F': *' '/^template-version:/ { print $2; exit }' docs/templates/VERSION | tr -d '\r')"
+          FILE_VER="$(awk -F': *' '/^pack-version:/ { print $2; exit }' docs/templates/VERSION | tr -d '\r')"
+          if [[ -z "$FILE_VER" ]]; then
+            FILE_VER="$(awk -F': *' '/^template-version:/ { print $2; exit }' docs/templates/VERSION | tr -d '\r')"
+          fi
           if [[ "$FILE_VER" != "$VERSION" ]]; then
             echo "Tag version $VERSION does not match docs/templates/VERSION ($FILE_VER)"
             exit 1

@@ -50,8 +50,7 @@ docs/
 ├── Master_Index.md              ← project map (you maintain)
 ├── Tooling.md                   ← machine tools (not package deps)
 ├── Human-TODO.md                ← human inbox (procure, playtest, decide, waiting)
-├── rule-install-status.yaml     ← when agent rules are installed
-├── upstream-status.yaml         ← optional weekly template update ping
+├── ADT-settings.yaml            ← pack prefs (tools, optionals, sync mode, upstream)
 ├── reference/                   ← design docs, chat exports, PRDs, legacy specs
 │   └── visuals/                 ← optional inspiration screenshots
 ├── _shared/ + assets/

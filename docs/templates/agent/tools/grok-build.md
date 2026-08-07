@@ -28,7 +28,7 @@ Do not duplicate the section if `agents-md` already installed it.
 
 ## Optional — Template update check
 
-Only if `optional_rules.template-update-check.status` is `enabled`. Requires live `docs/upstream-status.yaml`.
+Only if `optional_rules.template-update-check.status` is `enabled` in `docs/ADT-settings.yaml`. Requires `upstream:` stamps in that file.
 
 | | |
 |--|--|
@@ -49,7 +49,9 @@ Only if `optional_rules.doc-roles.status` is `enabled`.
 | **Fallback** | If names do not show in `grok inspect` / `/config-agents` → follow `docs/templates/agent/roles/<role>.md` in-session (or spawn `general-purpose` with that playbook path). Do not fail bootstrap; do not invent a second folder |
 | **Do not** | Treat `.cursor/agents/` as Grok spawn types; paste full role bodies into always-on `AGENTS.md` |
 
-Files: `understanding-author.md`, `doc-graduate.md`, `feature-implementer.md`, `docs-bootstrap.md`, `docs-template-sync.md`.
+Files: `understanding-author.md`, `doc-graduate.md`, `feature-implementer.md`, `work-verifier.md`, `docs-bootstrap.md`, `docs-template-sync.md`.
+
+**Do not** install an `orchestrator` adapter — orchestration runs in the **parent** session via `docs/templates/agent/roles/orchestrator.md` (spawns leaf workers only).
 
 Compat (secondary): Claude/Cursor agent folders may also be scanned when compat is on — still install this pack’s roles under `.grok/agents/`.
 
@@ -57,7 +59,7 @@ Compat (secondary): Claude/Cursor agent folders may also be scanned when compat 
 
 - Modular rule listed by `grok inspect` from `AGENTS.md` and/or `.grok/rules/`
 - Agent timescale planning present in `AGENTS.md` and/or `.grok/rules/`
-- If doc-roles enabled: five files under `.grok/agents/`; confirm names appear under **agents** in `grok inspect --json` or `/config-agents` (non-builtin source). If missing → playbook fallback above
+- If doc-roles enabled: six files under `.grok/agents/` (no `orchestrator.md`); confirm names appear under **agents** in `grok inspect --json` or `/config-agents` (non-builtin source). If missing → playbook fallback above
 - Remind: short asks are enough; `GROK_SUBAGENTS=1` / `[subagents] enabled` may be required for spawning
 
 ## For humans

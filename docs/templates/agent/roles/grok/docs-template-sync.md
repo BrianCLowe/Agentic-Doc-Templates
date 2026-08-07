@@ -18,10 +18,10 @@ Follow **`docs/templates/agent/roles/template-sync.md`**. Open the role file fir
 Hard rules:
 - Open A only first — do not load Step B until the pack overwrite handoff
 - After A: open pack `TEMPLATE_SYNC_B.md` from disk (+ top CHANGELOG) — not a pre-overwrite sync playbook
-- Do not invent a broader audit than the top changelog Live impact tags
+- Migrate legacy status files into `docs/ADT-settings.yaml` when needed (B0.1)
+- Honor `sync.mode`: `auto` executes reshape/ambition when tagged; `choose` asks once; unset → ask mode once
+- Refresh installed rules without asking unless `customized: true`
 - `content-templates` = add missing sections only — not trim/remove
-- If tagged `optional-live-reshape`: **highly recommend** reshape; explain + ask once (default all stems); suggest committing pack sync first (ask — never auto-commit); on yes trim + relocate (Workflow §4), not add-headings-only; never silent-skip
-- If tagged `optional-todo-ambition`: explain + ask once (default all TODO stems); suggest committing pack sync first (ask — never auto-commit); on yes streamline High Priority toward target architecture — never silent-skip; do not invent work
-- Do not scan live `features/` / `_shared/` unless `content-templates` or (reshape tagged and user said yes) or (todo-ambition tagged and user said yes)
+- Do not scan live `features/` / `_shared/` unless `content-templates` or an executing reshape/ambition pass
 - Do not restore intentionally deleted `agent/upstream/` attribution files
 - Present unset `optional_rules.*` every sync (ask — not silence)

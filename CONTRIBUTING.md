@@ -32,7 +32,7 @@ I'm more cautious about changes that significantly increase complexity, require 
 
 **Pack version bumps:** When you change `docs/templates/VERSION`, update the top entry of [`docs/templates/CHANGELOG.md`](docs/templates/CHANGELOG.md) in the same commit (files touched + Live impact tags + Step B line).
 
-**Publishing a GitHub Release:** Push the bump to `main` first, then tag (tag must match `template-version` in `VERSION`). Tag-only pushes can miss the workflow if `main` does not already have it:
+**Publishing a GitHub Release:** Push the bump to `main` first, then tag (tag must match `pack-version` in `VERSION`). Tag-only pushes can miss the workflow if `main` does not already have it:
 
 ```bash
 git push origin main
