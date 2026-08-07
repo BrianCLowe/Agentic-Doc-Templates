@@ -21,9 +21,9 @@ This check is enabled only when `optional_rules.template-update-check.status` is
 |------|----------|
 | **`always`** *(default / recommended)* | Fetch upstream `VERSION` when the rule runs (typically once per session start, or when the user asks). Report if newer. |
 | **`interval`** | Fetch only when `last_checked` is older than `check_interval_days` (default **7** if unset under interval mode), or when the user asks. |
-| **missing / unset** | Treat as **`always`**. |
+| **missing / unset** | Treat as **`always`** for the fetch this session, but sync/bootstrap should still run the cadence ask ([`TEMPLATE_SYNC_B.md`](TEMPLATE_SYNC_B.md) B0.4) until `check_mode_recorded` is set. |
 
-Migration: legacy files with only `check_interval_days` and no `check_mode` → set `check_mode: interval` and keep the days (preserve old weekly behavior). New enables → `always` unless the user asked for interval.
+Do **not** invent `check_mode` from legacy `check_interval_days` without asking — leave cadence to B0.4 / bootstrap Step 4b.
 
 ## When to run
 

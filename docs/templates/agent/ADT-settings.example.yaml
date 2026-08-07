@@ -7,7 +7,9 @@ version: 1
 
 # Pack sync behavior — bootstrap / first sync asks once; do not re-ask every update.
 # auto   = apply all changelog-gated live work + refresh installed rules (no mid-sync optionals quiz)
-# choose = present optionals (reshape, TODO ambition, …) each sync (legacy interactive)
+#          + local post-sync hygiene commits (pack/stamps, then reshape, then TODO ambition when those ran)
+#          Pre-sync dirty tree is still a hard stop (commit YOUR work first) — see TEMPLATE_SYNC_A A0
+# choose = present optionals (reshape, TODO ambition, …) each sync; suggest commits, ask before committing
 sync:
   mode: auto
   recorded: 2026-08-06
@@ -83,9 +85,10 @@ optional_rules:
 
 upstream:
   check_mode: always
+  check_mode_recorded: 2026-08-07   # set when the user chooses cadence (bootstrap / sync B0.4) — missing → ask once
   # check_mode: interval
   # check_interval_days: 7
   last_checked: 2026-07-16
-  local_pack_version: "2.7.3"
-  # upstream_pack_version: "2.7.3"
+  local_pack_version: "2.7.4"
+  # upstream_pack_version: "2.7.4"
   # update_available: true

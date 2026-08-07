@@ -33,7 +33,7 @@ The modular rule guards itself: *"If `docs/Master_Index.md` does not exist, igno
 | Template update check | Upstream `VERSION` ping — default every session; interval optional | Bootstrap Step 4b · [`../agent/TEMPLATE_UPDATE_CHECK.md`](../agent/TEMPLATE_UPDATE_CHECK.md) |
 | Doc roles | Understanding author, implementer, work verifier, … | Bootstrap Step 4c · [`../agent/roles/README.md`](../agent/roles/README.md) — Cursor → `.cursor/agents/`; Grok Build → `.grok/agents/` |
 | Orchestrator | Parent-only backlog loop (implement → verify → next) | [`../agent/roles/orchestrator.md`](../agent/roles/orchestrator.md) — **not** installed as a harness subagent |
-| Sync mode | `auto` = apply recommended live updates on pack sync; `choose` = ask each time | Bootstrap Step 4d · `sync.mode` in [`docs/ADT-settings.yaml`](../agent/ADT-settings.example.yaml) |
+| Sync mode | `auto` = recommended live updates + post-sync hygiene commits; `choose` = ask each time. Dirty tree before sync still hard-stops | Bootstrap Step 4d · `sync.mode` in [`docs/ADT-settings.yaml`](../agent/ADT-settings.example.yaml) |
 
 Parent agents **orchestrate** role delegation when asks match; `/` commands are optional. Role playbooks stay under `roles/*.md` — never paste them into always-on rules. *Orchestrate / drive the backlog* stays in the parent session and dispatches leaf workers. Settings live in **`docs/ADT-settings.yaml`** (tools, optionals, sync mode, upstream stamps).
 

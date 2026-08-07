@@ -6,7 +6,7 @@
 
 | Order | Open only | What |
 |-------|-----------|------|
-| 1 | [`TEMPLATE_SYNC_A.md`](TEMPLATE_SYNC_A.md) | Download / replace `docs/templates/` |
+| 1 | [`TEMPLATE_SYNC_A.md`](TEMPLATE_SYNC_A.md) | **Preflight** (dirty tree hard gate) → download / replace `docs/templates/` |
 | 2 | [`TEMPLATE_SYNC_B.md`](TEMPLATE_SYNC_B.md) | **After** A finishes (or pack already refreshed) — changelog-gated live updates |
 
 **Stop after opening A.** Follow A to the end; A tells you when to open B from disk. Never open B “for context” before A completes.

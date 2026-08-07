@@ -19,6 +19,16 @@
 
 ---
 
+## 2.7.4
+
+- **Live impact:** `versions-only`, `rules`, `process-docs-only`
+- **Files:**
+  - `VERSION` — 2.7.3 → 2.7.4
+  - `agent/TEMPLATE_SYNC_A.md` — **A0 preflight:** dirty working tree → hard stop; ask user to commit **their** WIP (no auto-commit); explicit waive required to proceed dirty
+  - `agent/TEMPLATE_SYNC_B.md` — **`sync.mode: auto`** includes post-sync hygiene commits; **B0.4** ask once for update-check cadence (`always` vs `interval`) when `check_mode_recorded` missing; no silent interval migrate
+  - `agent/TEMPLATE_SYNC.md`, `roles/template-sync.md` + cursor/grok adapters, `BOOTSTRAP.md` Step 4b/4d, `ADT-settings.example.yaml`, `TEMPLATE_UPDATE_CHECK.md`, `RULE_INSTALL.md` — same policy
+- **Step B:** Bump Master Index **Pack version** to 2.7.4. If update-check is enabled and `upstream.check_mode_recorded` is missing → ask cadence once (B0.4). Refresh installed modular rules / template-sync adapters if the user wants. No live feature/shared content scan.
+
 ## 2.7.3
 
 - **Live impact:** `versions-only`, `master-index`, `rules`, `process-docs-only`

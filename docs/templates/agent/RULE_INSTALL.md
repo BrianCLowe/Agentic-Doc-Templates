@@ -52,8 +52,8 @@ Optional fields: `recorded` (YYYY-MM-DD), `path`, `note`, `customized` (true onl
 
 | Mode | Meaning |
 |------|---------|
-| `auto` | Pack sync applies recommended live updates (reshape, TODO ambition, rules refresh, …) without mid-sync quizzes — see [`TEMPLATE_SYNC_B.md`](TEMPLATE_SYNC_B.md) |
-| `choose` | Present optionals each sync |
+| `auto` | Pack sync applies recommended live updates + local post-sync hygiene commits without mid-sync quizzes — see [`TEMPLATE_SYNC_B.md`](TEMPLATE_SYNC_B.md). Pre-sync dirty tree still hard-stops ([`TEMPLATE_SYNC_A.md`](TEMPLATE_SYNC_A.md) A0) |
+| `choose` | Present optionals each sync; suggest commits, ask before committing |
 | *(missing / unset)* | Ask once (bootstrap Step 4d or first sync) — do not silent-default |
 
 If `optional_rules.template-update-check` is missing, bootstrap should have asked — if you are mid–rule-install (or finishing a template sync) and it is still unset, ask once using the Step 4b prompt, then record `enabled` or `declined`.

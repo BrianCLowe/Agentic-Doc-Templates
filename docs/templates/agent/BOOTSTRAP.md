@@ -212,7 +212,7 @@ Projects that copied or templated this pack do **not** share the upstream git re
 1. Create or update `docs/ADT-settings.yaml` from [`ADT-settings.example.yaml`](ADT-settings.example.yaml) (keep any existing `tools` / `sync` / other keys).
 2. Set `optional_rules.template-update-check` to `enabled` + `recorded` today.
 3. Ensure `upstream:` exists; set `last_checked` to today and `local_pack_version` from local `docs/templates/VERSION`.
-4. Set `upstream.check_mode`:
+4. Set `upstream.check_mode` and **`upstream.check_mode_recorded`** (today):
    - **`always`** if they accept the default / say every session / do not specify cadence
    - **`interval`** + `check_interval_days` (default **7**) if they ask for weekly / every N days
 5. Install the optional rule when installing tool rules — follow [`RULE_INSTALL.md`](RULE_INSTALL.md). If the user skips RULE_INSTALL for now, note that checks need the optional rule installed for their tool(s).
@@ -263,9 +263,9 @@ Controls whether TEMPLATE_SYNC mid-asks about live optionals (reshape, TODO ambi
 
 **Ask** (do not silent-default):
 
-> When updating the doc templates, should the agent **apply recommended live updates automatically** (`auto`) — reshape Understandings, TODO ambition, refresh installed rules, etc. — or **ask you about optionals each sync** (`choose`)?
+> When updating the doc templates, should the agent **apply recommended live updates automatically** (`auto`) — reshape Understandings, TODO ambition, refresh installed rules, local hygiene commits for sync output, etc. — or **ask you about optionals each sync** (`choose`)?
 >
-> `auto` is best if you always want the pack’s recommended live passes. `choose` keeps per-sync control. You can switch later: *Set sync to auto* / *Set sync to choose*.
+> `auto` is best if you always want the pack’s recommended live passes. Uncommitted **your** work before a sync still stops for a commit first. `choose` keeps per-sync control. You can switch later: *Set sync to auto* / *Set sync to choose*.
 
 ### On **auto** / **choose**
 

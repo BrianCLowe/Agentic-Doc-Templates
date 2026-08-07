@@ -6,6 +6,7 @@
 
 | Step | What | How |
 |------|------|-----|
+| **A0 — Preflight** | Dirty working tree → **hard stop** | Ask user to commit **their** work first (below) |
 | **A — Refresh pack** *(this file)* | Replace **entire** `docs/templates/` | ZIP/copy — **full overwrite**, no per-file diffs |
 | **B — Update live docs** | Edit live docs per pack changelog | **Only after A** — open [`TEMPLATE_SYNC_B.md`](TEMPLATE_SYNC_B.md) from disk |
 
@@ -15,6 +16,29 @@
 
 **Upstream repo:** `https://github.com/BrianCLowe/Agentic-Doc-Templates`  
 **Upstream pack path:** `docs/templates/` only
+
+---
+
+## A0 — Preflight: uncommitted work *(hard gate — before download)*
+
+If this project is a git repo, run `git status` (porcelain is enough).
+
+| State | Action |
+|-------|--------|
+| Not a git repo / clean working tree | Continue to download / replace |
+| **Dirty** (any staged or unstaged changes, including untracked that look like project work) | **Hard stop.** Do **not** download, overwrite `docs/templates/`, or start Step B yet. |
+
+On dirty tree:
+
+1. Briefly list what is dirty (paths / short summary) — this is almost certainly **their** WIP, not pack sync output yet.
+2. Explain: pack sync can mix with or obscure uncommitted work; commit (or stash) first is the hygiene step.
+3. **Ask** what to do — do **not** auto-commit their changes:
+   - Commit now (they must explicitly ask you to commit — then commit with a message they approve / that matches repo style, **no push** unless they said push)
+   - They will commit/stash themselves, then say continue
+   - Proceed anyway with a dirty tree *(explicit waive — warn that sync and WIP will interleave)*
+4. **Stop** until they choose. After a clean tree (or explicit waive), continue.
+
+This gate is **not** skipped by `sync.mode: auto`. Auto covers pack/live-doc optionals and **post-sync** hygiene commits — not silently committing unknown WIP before overwrite.
 
 ---
 
@@ -60,6 +84,8 @@ cp -R "$tmp/Agentic-Doc-Templates-main/docs/templates" docs/templates
 
 **Do not (Step A):**
 
+- Skip A0 when the tree is dirty (including under `sync.mode: auto`)
+- Auto-commit the user’s pre-sync WIP without an explicit commit ask
 - Diff old vs new template files and update only what changed
 - Fetch individual files with `gh` / raw URLs one-by-one
 - Read every file under the existing `docs/templates/` before replacing
@@ -68,6 +94,7 @@ cp -R "$tmp/Agentic-Doc-Templates-main/docs/templates" docs/templates
 - Add Agentic-Doc-Templates as a git remote of the user project and pull into it
 - `git checkout` / `git restore` live docs from any remote
 - Treat “sync” as updating the user repo via git
+- Push unless the user explicitly asked to push
 
 If the user already refreshed `docs/templates/` themselves, skip the download — still continue to the handoff below.
 
