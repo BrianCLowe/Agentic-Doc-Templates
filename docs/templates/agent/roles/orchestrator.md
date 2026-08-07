@@ -4,7 +4,7 @@
 >
 > **Parent session only.** Run this playbook **in the current (parent) session**. Do **not** spawn an `orchestrator` subagent — many harnesses cannot nest spawns. Leaf workers (`feature-implementer`, `work-verifier`) are what you spawn. Do **not** install this file into `.cursor/agents/`, `.grok/agents/`, or `.claude/agents/`.
 
-**Job:** Clear ready TODO work by dispatching implementers, always verifying, committing at milestones when granted, and looping until the budget is met or work is blocked — without waiting for the user to say “next.”
+**Job:** Clear ready TODO work by dispatching implementers, always verifying, committing at milestones when granted, and looping until the budget is met or work is blocked — without waiting for the user to say “next.” When the run ships work, dual-write a **human verify map** so the user knows what to check and how to request corrections.
 
 **Canonical procedure:** This file. Workers: [`feature-implementer.md`](feature-implementer.md), [`work-verifier.md`](work-verifier.md). TODO / Current focus: [`../Modular_Docs_Workflow.md`](../Modular_Docs_Workflow.md) §3, §5, §13. Target architecture: [`../Agent_Timescale_Planning_Rule.mdc`](../Agent_Timescale_Planning_Rule.mdc).
 
@@ -112,31 +112,65 @@ Repeat until a **stop condition**:
 - Verify failed twice on an item and no other ready work remains, or
 - User said stay here / skip subagents / cancel orchestration
 
-**Do not** stop solely because Human-TODO has open `playtest` rows. Finish agent work first; surface playtest in the end-of-run report.
+**Do not** stop solely because Human-TODO has open `playtest` rows. Finish agent work first; then run **end-of-run human verify map** (below) and the report.
 
-Then produce the **end-of-run report** and stop.
+## End-of-run — human verify map *(required when this run cleared agent work)*
+
+After the loop stops, if **any** in-scope unit was implementer-done + work-verifier **pass** this run → dual-write a **guided verify list** so the user can walk what is new, question placement/copy/flow, and send adjustments (Workflow §13). Work-verifier checks “matches the docs”; this map is for **human product judgment** the agent cannot close (“why is that button there?”, “we need that control here”).
+
+**Skip** this section only when the run cleared nothing (cancelled early, only hard-blocked, or no verify-pass units).
+
+### What to put on the list *(guided, not vague)*
+
+Build from **what this run actually changed** (TODO items cleared, files/surfaces touched). Prefer concrete look/try bullets over “smoke test the feature.”
+
+For **each stem** with verify-pass work this run, owner-TODO bullets should cover, when applicable:
+
+| Cue | Ask the human to… |
+|-----|--------------------|
+| **Surfaces** | Open each new/changed screen, route, panel, or flow the run touched (name them) |
+| **Placement** | Notice controls, CTAs, nav, empty states — does each sit where they’d put it? |
+| **Copy / hierarchy** | Skim labels and prominence — anything wrong or overpowering? |
+| **Happy path** | Do the main action once end-to-end |
+| **Rough edges** | Note feel bugs, missing affordances, “should be over there” |
+
+Omit rows that do not apply (e.g. pure backend stem → path + outcome check, not UI placement). **Do not** invent a tour of the whole app — only what this orchestration shipped.
+
+### Dual-write
+
+1. **Owner TODO** — add (or refresh) one High/Medium item titled like **Human verify (orchestration YYYY-MM-DD)** with the guided bullets above + “Reply in chat: what felt wrong / where it should move / copy fixes.”
+2. **Human-TODO Open** — thin `- [ ]` row, kind **`playtest`**, Owner → that owner TODO item, Blocks → stem name. Title like **Walk [Stem] — review what landed**. Notes: short pointer (“see owner TODO for the look-list”).
+3. **Dedup** — if an Open `playtest` for the same stem already covers this pass, **update** notes / owner bullets instead of duplicating.
+4. Fold deferred mid-run playtest rows for those stems into this map so the user gets **one guided pass**, not a scatter.
+
+Prompt in the end-of-run report: open **Human-TODO**, walk the owner look-lists, then reply (e.g. *Checked [Stem] — move Save under …* / *Adjust: …*). Do **not** mark these done yourself.
+
+If milestone commits are on and these doc dual-writes dirty the tree after the last code commit → one small **docs: human verify map** commit (no push unless granted).
 
 ## End-of-run report *(required)*
 
 - **Cleared** — stems / items done  
 - **Still open** — remaining in-scope agent items  
-- **Playtest / feel batch** — deferred `playtest` (and decide-as-sign-off) rows for the user now — paths + one-line what to try; prefer this single batch over mid-run pings  
+- **Human verify map** — Human-TODO Open rows + owner look-lists (surfaces to open); invite placement/copy/flow corrections in chat  
+- **Other deferred human** — any `decide` / leftover playtest not folded into the verify map  
 - **Hard-blocked** — item → reason (`procure` / `waiting` / explicit playtest-gated follow-on / draft Understanding / shared maturity)  
 - **Verify failures** — item → what failed and why (if determinable)  
 - **Git** — commits made (subjects/hashes) · push status (`not pushed` / `pushed` / `skipped — no commits`)  
-- **Next** — one line for when the user returns  
+- **Next** — one line (usually: walk the Human-TODO verify look-lists)
 
 ## Do not
 
 - Spawn this role as a subagent; nest orchestrators; assume workers can spawn workers
 - Stop after one Current focus item and wait for “next” while ready work and budget remain
 - Stop the loop for ordinary `playtest` / feel / smoke — defer and batch at end unless a TODO **explicitly** hard-gates follow-on work
+- Skip the end-of-run human verify map when this run cleared verify-pass work
+- Duplicate Open playtest rows for the same stem/pass — update notes instead
 - Ask mid-loop about commits, push, priority tier, playtest now-vs-later, or whether to continue
-- Skip verify
-- Mark TODO items done when verify failed
+- Skip work-verifier
+- Mark TODO items done when work-verifier failed
 - Mark human `playtest` / `decide` done without user confirmation
 - Push unless the pre-run policy granted it
-- Invent `_shared/` components, new Document Map rows, or TODO items that were not already implied by failing work / dual-write rules
+- Invent `_shared/` components, new Document Map rows, or product backlog items unrelated to shipped work / dual-write rules
 - Drain Low/Future when the user chose High-only (or High+Medium)
 - Upgrade a single-slice implement ask into full orchestration
 - Re-open Understanding review when status is `confirmed` and scope unchanged

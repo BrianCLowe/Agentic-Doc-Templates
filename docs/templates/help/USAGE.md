@@ -132,7 +132,7 @@ Anything only you can close → `docs/Human-TODO.md`: procure, playtest/feel, de
 | Update-check cadence | *Check for template updates every session.* / *Only check every week.* |
 | Optional role — intent | *Draft Understanding for [Feature] from what I said — I’ll review.* (main agent delegates if subagents installed) |
 | Optional role — build | *Continue from Current focus.* *(single slice)* |
-| Optional role — orchestrate | *Orchestrate — clear ready TODOs until blocked.* *(parent loop; ask scope/git once, then run)* |
+| Optional role — orchestrate | *Orchestrate — clear ready TODOs until blocked.* *(parent loop; ask scope/git once; end-of-run Human-TODO verify map)* |
 | Optional role — verify | *Verify that unit against Understanding and the spec.* |
 | Optional role — graduate | *Understanding confirmed — graduate to the spec.* |
 | Force a subagent | `/understanding-author` … *(optional; usually unnecessary)* |

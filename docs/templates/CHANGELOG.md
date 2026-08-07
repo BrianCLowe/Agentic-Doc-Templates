@@ -19,6 +19,18 @@
 
 ---
 
+## 2.7.5
+
+- **Live impact:** `versions-only`, `process-docs-only`
+- **Files:**
+  - `VERSION` — 2.7.4 → 2.7.5
+  - `agent/roles/orchestrator.md` — end-of-run **guided look-list** (surfaces / placement / copy / happy path) dual-written as Human-TODO `playtest` + owner bullets; product judgment vs work-verifier; dedup
+  - `agent/roles/README.md` — orchestrator stop line updated
+  - `help/USAGE.md` — orchestrate ask notes end-of-run verify map
+  - `Human_TODO_Template.md` — `playtest` tip for post-orchestration look-list
+  - stamps: Master Index / Workflow / chat-ui / ADT-settings example / root README
+- **Step B:** Bump Master Index **Pack version** to 2.7.5. Refresh Human-TODO template tip if live file still carries the kinds table from pack. No live feature/shared content scan. No rules refresh required (orchestrator is parent playbook only).
+
 ## 2.7.4
 
 - **Live impact:** `versions-only`, `rules`, `process-docs-only`
