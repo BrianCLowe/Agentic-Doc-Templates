@@ -6,18 +6,22 @@ Day-to-day workflows after setup. First-time install: [`SETUP.md`](SETUP.md). De
 
 ## The loop
 
-1. You describe the idea (chat, `docs/reference/` design doc, or a mid-build correction).
+1. You capture ideas (recommended: chat exports in `docs/reference/`, or a mid-build correction in chat).
 2. The **agent drafts** `-Understanding.md` — **feature shape / guardrails**, not a full spec.
 3. **You confirm shape** — especially what it is / is *not* and **Assumptions**. Spec-level detail may be missing on purpose.
 4. After confirm, durable contract lands in the **spec**; work continues from TODOs (**Current focus** for session handoff).
 
-Short asks are enough. Prefer the **full messy chat** over a polished summary when you have it — export or paste the whole thread; save lasting copies under `docs/reference/`. Details: [Bring the whole conversation](IDEA_CAPTURE_TIPS.md#bring-the-whole-conversation).
+### Recommended practice — chat exports in `reference/`
+
+Work ideas out in chat (Grok.com, ChatGPT, …), **export** threads to markdown, and drop them in **`docs/reference/`** — often many files as you explore different aspects. That raw trail keeps **whys and motives** that polished design docs often lose. Then ask the agent to draft Understandings from those files. Details: [Recommended: export idea chats](IDEA_CAPTURE_TIPS.md#recommended-export-idea-chats-into-docsreference). Optional helper: [AI Exporter](https://saveai.net/) (Markdown preferred; not required).
+
+Short asks are enough. Prefer full messy exports over a cleaned summary when you have them.
 
 ---
 
 ## Pattern 1 — Long chat → documentation
 
-**When:** Brainstorming in Grok, ChatGPT, Claude web, etc. — no repo, or files to download first.
+**When:** Brainstorming in Grok, ChatGPT, Claude web, etc. — no repo yet, or you will export into the repo next.
 
 1. Attach **`docs/templates/chat-ui/AGENT.md`** only ([`chat-ui/README.md`](../chat-ui/README.md)).
 2. Ask for **Save as:** paths per file; draft `-Understanding.md` first.
@@ -44,11 +48,23 @@ Docs stay the living record so the next session does not re-derive from chat alo
 
 ---
 
-## Pattern 3 — Design doc / PRD → modular docs
+## Pattern 3 — `docs/reference/` exports → modular docs *(recommended)*
 
-Drop sources into **`docs/reference/`** (and the chat that produced them, if you still have it). Then:
+**Preferred:** drop **chat exports** (markdown dumps from Grok.com / ChatGPT / etc.) into `docs/reference/` as you go — several files is normal. Optionally add a polished design doc too; do not delete the chats that produced it.
 
-> Read `docs/reference/Original_Design.md`. Convert into modular docs per `Master_Index_Template.md`. Keep the original in `reference/`.
+**Simple ask** (new or already-started docs):
+
+> Build or update the live docs from `docs/reference/`.
+
+That covers first-time build and later drops of new exports. Point at named files if you only want a subset:
+
+> Build or update live docs from `docs/reference/combat-feel-chat.md` and `docs/reference/inventory-thread.md`.
+
+Agents should split unlike identities on their own (Workflow / Understanding author) — you should not need to remind them every time. If they still merge two features, correct shape once.
+
+Polished PRD-only path still works:
+
+> Read `docs/reference/Original_Design.md`. Convert into modular docs. Keep the original in `reference/`. Prefer also keeping any chat export that led to it.
 
 ---
 
@@ -107,7 +123,8 @@ Anything only you can close → `docs/Human-TODO.md`: procure, playtest/feel, de
 | Fix misunderstanding | *Update [Feature]-Understanding.md — especially What this is NOT.* |
 | UI screenshot | *Save to `docs/features/assets/`, add Visual references on the **spec** (similar vs different).* |
 | Vague idea | *Interview me using IDEA_CAPTURE_TIPS.md, then draft [Feature]-Understanding.md.* |
-| Design doc | *Convert `docs/reference/[file]` to modular docs; keep original in reference/.* |
+| Chat exports → docs | *Build or update the live docs from `docs/reference/`.* |
+| Design doc | *Convert `docs/reference/[file]` to modular docs; keep original (and any chat export) in reference/.* |
 | Bootstrap | *Bootstrap modular docs using `docs/templates/agent/BOOTSTRAP.md`.* |
 | Install rule | *Follow `docs/templates/agent/RULE_INSTALL.md` for [tool].* |
 | Sync pack | *Update the doc templates from Agentic Doc Templates and sync our live docs.* |

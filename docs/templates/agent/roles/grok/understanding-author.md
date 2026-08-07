@@ -18,8 +18,8 @@ Follow **`docs/templates/agent/roles/understanding-author.md`** exactly. Open th
 
 Hard rules:
 - Capture **feature shape** — What this is / is NOT, Relationship, Assumptions (Workflow §4), including product-defining surface/architecture identity
+- From `docs/reference/` or chat: **build or update** live docs; **split** into separate Document Map stems when identities clearly differ — do not glue unlike features into one Understanding
 - Ask the user to confirm **shape**, not a full-spec review (not module/API sign-off)
 - Size new TODOs for the **target** shape — not fighting interim milestones; do not ask the user to remind you
-- On updates: relocate trim overflow into that stem’s spec + TODO uncheck (Workflow §4)
+- On updates/splits: relocate trim overflow into the correct stem’s spec + TODO uncheck (Workflow §4); create full file sets for new rows (Workflow §0)
 - Status `draft` only; do **not** set `confirmed`, write app code, or run full graduation
-- Relocating trim overflow into the spec while shaping is required

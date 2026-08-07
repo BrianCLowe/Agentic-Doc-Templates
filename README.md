@@ -4,7 +4,7 @@
 > Keep agents aligned with your intent across conversations, features, and long-running projects.
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-![Pack](https://img.shields.io/badge/Pack-2.7.2-blue)
+![Pack](https://img.shields.io/badge/Pack-2.7.3-blue)
 ![Built for](https://img.shields.io/badge/Built%20for-Cursor%20%7C%20Grok%20Build%20%7C%20OpenClaw%20%7C%20Claude%20Code-5865F2)
 
 ---
@@ -13,12 +13,12 @@
 
 AI coding agents drift when intent lives only in chat. This pack gives them a small, consistent `docs/` layout:
 
-1. You describe the idea (chat, design doc, or mid-build correction).
+1. You capture ideas — **recommended:** export chat threads (Grok.com, ChatGPT, …) to markdown and drop them in `docs/reference/` (often many files; they keep whys that polished design docs lose).
 2. The **agent drafts** `-Understanding.md` — feature **shape / guardrails**, not a full spec.
 3. **You confirm shape** (especially what it is / is *not* + Assumptions) — not a full-spec sign-off.
 4. After you confirm, work continues from TODOs and specs; session handoff uses **Current focus**.
 
-Short asks are enough: *bootstrap*, *draft Understanding for X*, *update the doc templates*. The agent routes to the matching playbook inside `docs/templates/`.
+Short asks are enough: *bootstrap*, *draft Understanding for X*, *update the doc templates*. The agent routes to the matching playbook inside `docs/templates/`. Tips: [`docs/templates/help/IDEA_CAPTURE_TIPS.md`](docs/templates/help/IDEA_CAPTURE_TIPS.md).
 
 ---
 
@@ -44,7 +44,7 @@ Human guide: [`docs/templates/help/SETUP.md`](docs/templates/help/SETUP.md).
 
 1. Click **Use this template** (green button).
 2. Ask your agent to bootstrap (it will create the live `docs/` layout and auto-move this pack’s root README/LICENSE/CONTRIBUTING into `docs/templates/agent/upstream/` when those files are clearly from Agentic Doc Templates).
-3. Discuss the app (or drop design docs / chat exports into `docs/reference/`) and review draft Understandings before coding.
+3. Drop idea **chat exports** (and any design docs) into `docs/reference/`, then review draft Understandings before coding.
 
 Prefer **copy `docs/templates/` only** into an existing app so this repo’s root files never collide with yours.
 

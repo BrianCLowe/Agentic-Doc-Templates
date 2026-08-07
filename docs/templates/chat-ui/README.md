@@ -23,7 +23,7 @@ With repo connector:
 
 ## Moving into an IDE later
 
-Keep this chat (export or copy). When you open the project in Cursor or similar, paste or attach the **full brainstorm thread** — not only the downloaded docs — and ideally save a copy under **`docs/reference/`**. The messy conversation often carries intent that a clean Understanding file alone can miss. See [`../help/IDEA_CAPTURE_TIPS.md`](../help/IDEA_CAPTURE_TIPS.md#bring-the-whole-conversation).
+**Recommended:** export this chat (and other idea threads) to markdown and save under **`docs/reference/`** — not only the polished Understanding downloads. Raw threads keep whys and motives that cleaned docs lose. See [`../help/IDEA_CAPTURE_TIPS.md`](../help/IDEA_CAPTURE_TIPS.md#recommended-export-idea-chats-into-docsreference). Optional: [AI Exporter](https://saveai.net/) for Markdown from Grok/ChatGPT/etc. — not required.
 
 ## After download
 

@@ -1,10 +1,10 @@
-<!-- pack-version: 2.7.2 -->
+<!-- pack-version: 2.7.3 -->
 
 > **Agent workflow reference.** Canonical instructions for how to work the modular doc system. Lives in `docs/templates/agent/` with the other agent playbooks — sync from upstream; do **not** copy wholesale into `docs/Master_Index.md`. The live index links here; agent rules summarize and point here for full procedure.
 
 # Modular Documentation — Agent Workflow
 
-**Pack version**: 2.7.2 *(same as `docs/templates/VERSION` / live Master Index **Pack version**)*
+**Pack version**: 2.7.3 *(same as `docs/templates/VERSION` / live Master Index **Pack version**)*
 
 **Design intent:** Users give short requests about the docs (“bootstrap”, “draft Understanding for X”, “update the templates”). Route to **one** playbook (`BOOTSTRAP`, `TEMPLATE_SYNC`, `TEMPLATE_UPDATE_CHECK`, `RULE_INSTALL` → `tools/<key>.md`, or this file for feature work) — do not scan the whole pack catalog. **Tight scope:** act on the paved path; do not pre-audit every alternate interpretation before doing the work. **Agent timescale:** when feature shape is clear, plan the **target architecture** as one change (verify-order checklists OK); do not stage human-sprint interim architectures — see [`Agent_Timescale_Planning_Rule.mdc`](Agent_Timescale_Planning_Rule.mdc).
 
@@ -49,7 +49,9 @@
 
 **Chat UI (no repo write access):** use [`chat-ui/AGENT.md`](../chat-ui/AGENT.md) — shorter instructions and required save-as output format.
 
-**`docs/reference/`:** Drop zone for **source** materials (design docs, PRDs, chat exports, legacy specs). Not Document Map rows. Read when the user points at a file or asks to convert into modular docs. Optional `docs/reference/visuals/` for inspiration screenshots.
+**`docs/reference/`:** Drop zone for **source** materials. **Recommended habit:** markdown **chat exports** of idea threads (often many files) — they preserve user whys/motives better than polished-only design docs ([`../help/IDEA_CAPTURE_TIPS.md`](../help/IDEA_CAPTURE_TIPS.md)). Also fine: PRDs, legacy specs. Not Document Map rows. Read when the user points at a file or asks to convert / **build or update** live docs from them. Optional `docs/reference/visuals/` for inspiration screenshots.
+
+**One identity per stem:** If conversation or `reference/` material describes **two (or more) finished-feature identities** that do different jobs (different category, product surface, or ownership) — **split**. Add separate Document Map rows + default file sets (§0) in the same turn; move misplaced shape/contract content into the correct stem. Do **not** keep unlike things in one Understanding to avoid creating files or because the user mentioned them together. Prefer asking one clarifying question over silently merging. User correction (“those are two features”) → split immediately — do not wait for them to name paths.
 
 ---
 
@@ -211,9 +213,11 @@ Work queue → **TODO**. Durable contract (Behavior, **Acceptance**, Visual refe
 **When to create or update:**
 
 - New feature/change → draft or update Understanding (`draft` if shape changed)
+- `docs/reference/` (or chat) → **build or update** live docs; create missing Document Map rows + file sets when material implies new stems
 - Plan / “how should we build this” → if `confirmed`, use as guardrails + read spec; if `draft`/missing, draft shape first
 - Identity assumption becomes clear → update **What this is NOT** (identity, not backlog)
-- User corrects you → update immediately
+- Two unlike identities were merged into one stem → **split** (§0 one-identity rule): new row + files; move content; do not leave a frankenstein Understanding
+- User corrects you → update immediately (including split/move when they clarify separate features)
 - After any update → run relocate + TODO check for that stem
 
 **When planning:** Include the Understanding path; state confirmation is for **shape / guardrails**, not the full spec. Once shape implies a product surface/architecture, **lock it in is / is not** (or Assumptions) and default TODOs/plans to that **target** (agent timescale — not MVP → interim → rewrite). Stepped bullets = build/verify order inside one cut. Do not ask the user to remind you.

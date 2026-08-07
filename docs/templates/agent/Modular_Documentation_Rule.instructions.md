@@ -18,7 +18,7 @@ This project uses a lean modular documentation system. `docs/Master_Index.md` is
 | update / sync doc templates | see **Optional subagents** → else `docs/templates/agent/TEMPLATE_SYNC.md` |
 | check for template updates | `docs/templates/agent/TEMPLATE_UPDATE_CHECK.md` |
 | install agent rules | `docs/templates/agent/RULE_INSTALL.md` → then only `docs/templates/agent/tools/<key>.md` for each tool |
-| draft / revise Understanding, new idea, capture intent, correct What this is / is NOT | see **Optional subagents** → else `docs/templates/agent/roles/understanding-author.md` |
+| draft / revise Understanding, new idea, capture intent, correct What this is / is NOT, build/update live docs from `docs/reference/` | see **Optional subagents** → else `docs/templates/agent/roles/understanding-author.md` |
 | graduate confirmed Understanding → spec | see **Optional subagents** → else `docs/templates/agent/roles/doc-graduate.md` |
 | implement / continue Current focus (Understanding `confirmed`, scope unchanged) | see **Optional subagents** → else session default below |
 | orchestrate / drive backlog / clear TODOs / run until blocked | **parent only** → `docs/templates/agent/roles/orchestrator.md` (do **not** spawn an orchestrator subagent) |
@@ -35,7 +35,7 @@ When an ask matches a row below, look for a **named agent file** with that filen
 
 | When ask matches | Agent filename | Fallback |
 |------------------|----------------|----------|
-| draft/revise Understanding, new idea, intent, identity correction | `understanding-author.md` | `docs/templates/agent/roles/understanding-author.md` |
+| draft/revise Understanding, new idea, intent, identity correction, build/update from `docs/reference/` | `understanding-author.md` | `docs/templates/agent/roles/understanding-author.md` |
 | user confirmed Understanding → update durable spec | `doc-graduate.md` | `docs/templates/agent/roles/doc-graduate.md` |
 | implement / continue from Current focus | `feature-implementer.md` | session default below |
 | orchestrate / drive backlog / clear TODOs / until blocked | *(parent only — do not spawn)* | `docs/templates/agent/roles/orchestrator.md` |
@@ -75,6 +75,7 @@ When an ask matches a row below, look for a **named agent file** with that filen
 - **`confirmed`** → shape approved; continue from TODO/spec without re-asking Understanding review. Plans/TODOs target that shape at agent speed — no user reminder required.
 - Plans: include Understanding path + “confirm shape, not full spec” — unless already `confirmed` and unchanged. Stepped plans = verify order; exploration spikes stay labeled (Workflow §5.2).
 - Vague ideas → brief questions from `docs/templates/help/IDEA_CAPTURE_TIPS.md`, then draft Understanding.
+- **`docs/reference/` → live docs:** when the user drops exports and asks to build/update — draft or revise Understandings; create missing Document Map rows + file sets. If material (or wording) covers **two unlike identities**, **split** stems (Workflow §0) — do not glue them into one Understanding to stay “tight.”
 - After confirm → **graduate** contract to the spec (Workflow §2). Screenshots → spec **Visual references**, not Understanding. Row registries → optional `-Catalog.md` (not Understanding). Lasting tradeoffs → spec **Decisions** or `docs/decisions/` (Workflow §10) — including implement-time preference corrections (same turn).
 
 **While working:**

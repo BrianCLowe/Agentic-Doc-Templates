@@ -1,4 +1,4 @@
-<!-- pack-version: 2.7.2 -->
+<!-- pack-version: 2.7.3 -->
 
 > **Template reference.** Do not put project-specific content in this file. Copy to `docs/Master_Index.md` for initial setup, or diff against it when syncing template improvements into the live index. Never edit this template unless the user asks you to.
 >
@@ -8,7 +8,7 @@
 
 **Purpose**: Single entry point for **this project's** documentation — overview, locations, and Document Map. Read only the files relevant to the current task.
 
-**Pack version**: 2.7.2 *(from [`templates/VERSION`](templates/VERSION) — update on sync)*
+**Pack version**: 2.7.3 *(from [`templates/VERSION`](templates/VERSION) — update on sync)*
 
 ## 1. Project Overview
 
@@ -36,7 +36,7 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 | `docs/_shared/assets/` | Screenshots for shared components (linked from the shared **spec** **Visual references**) |
 | `docs/features/`  | Feature-specific specs + TODOs (+ optional sub-indexes) |
 | `docs/features/assets/` | Screenshots for features (linked from the feature **spec** **Visual references**) |
-| `docs/reference/` | Drop zone for design docs, PRDs, chat exports, legacy specs — not the living modular docs ([Workflow](templates/agent/Modular_Docs_Workflow.md)) |
+| `docs/reference/` | **Recommended:** chat exports (md) of idea threads — also design docs / PRDs / legacy specs. Not living modular docs ([Workflow](templates/agent/Modular_Docs_Workflow.md); tips: [`help/IDEA_CAPTURE_TIPS.md`](templates/help/IDEA_CAPTURE_TIPS.md)) |
 | `docs/reference/visuals/` | Optional inspiration screenshots before a feature exists |
 | `docs/Tooling.md` | Machine / workflow tools (not package deps) — install on a new machine ([`Tooling_Template.md`](templates/Tooling_Template.md)) |
 | `docs/Human-TODO.md` | Human inbox — procure, playtest, decide, waiting (agent cannot close from assumptions) ([`Human_TODO_Template.md`](templates/Human_TODO_Template.md)) |
@@ -48,6 +48,7 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 ### 2.2 At a Glance *(policy summary — full rules in Workflow)*
 
 - **Simplicity:** users give short doc actions; agents follow this pack — no complex prompts required.
+- **Idea sources:** prefer raw **chat exports** in `docs/reference/` over polished-only design docs — they keep whys/motives for Understanding drafts ([`IDEA_CAPTURE_TIPS.md`](templates/help/IDEA_CAPTURE_TIPS.md)). Ask: *build or update live docs from reference.* Agents keep **one identity per stem** (split unlike features — no user reminder required).
 - **Tight scope:** paved path for the current ask only — no “just in case” audits of unrelated files or alternate interpretations before acting.
 - **Mermaid:** optional — agent may add a small diagram when it beats prose for structure/flow; do not splash charts everywhere.
 - **Tooling:** `docs/Tooling.md` lists machine tools (not package deps); on a new machine, user can ask to install them ([`Tooling_Template.md`](templates/Tooling_Template.md)).

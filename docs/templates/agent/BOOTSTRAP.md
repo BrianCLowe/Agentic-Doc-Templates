@@ -105,7 +105,11 @@ If `docs/reference/README.md` is missing, create it with:
 ```markdown
 # Reference materials
 
-Drop **source** materials here — design docs, PRDs, Notion/export dumps, full chat transcripts, legacy specs.
+**Recommended:** export idea chats (Grok.com, ChatGPT, Claude web, …) to markdown and drop them here — often several threads as you work out different aspects of an app or game. Raw conversations keep your whys, rejects, and motives; polished design docs often lose those.
+
+Then ask: *Build or update the live docs from `docs/reference/`.* Agents draft or revise Understandings (and Document Map rows) and should split unlike identities on their own.
+
+Also fine here: design docs, PRDs, Notion/export dumps, legacy specs. When you have both a chat export and a cleaned write-up, keep **both**.
 
 Living modular docs stay in `features/`, `_shared/`, and `Master_Index.md`. Agents read files here when you point at them (or when converting to modular docs); they do not treat this folder as the Document Map.
 

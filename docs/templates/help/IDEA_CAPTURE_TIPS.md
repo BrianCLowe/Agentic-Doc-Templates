@@ -6,15 +6,38 @@ Your answers in chat feed the agent's draft of [`Feature_Understanding_Template.
 
 ---
 
-## Bring the whole conversation
+## Recommended: export idea chats into `docs/reference/`
 
-If you brainstormed in a **chat interface** (Grok, ChatGPT, Claude web, etc.) and later move into Cursor or another coding agent, give it the **full conversation history** — export, download, or copy-paste the whole thread. Do not feel you must first rewrite it into a clean design doc.
+This pack is built around a simple habit:
 
-**Save lasting copies under `docs/reference/`** (e.g. `docs/reference/my-feature-chat.md` or a `.txt` export). That folder is for design docs, PRDs, and conversation dumps — not for living Understanding/spec/TODO files.
+1. Work out ideas in a **chat** (Grok.com, ChatGPT, Claude web, etc.) — one thread per aspect is fine.
+2. **Export** each conversation to markdown (or paste the full thread).
+3. Drop the files into **`docs/reference/`** (often several — even ten or more — as you explore different parts of an app or game).
+4. Ask your coding agent to **build or update** live docs from those files (Understandings first; Document Map + stubs as needed).
 
-A messy conversation often conveys shape better than a refined summary: it includes what you rejected, half-formed constraints, examples, and the path you took to the idea. The agent can distill that into `-Understanding.md`; you still confirm **is / is not**, not every contract detail.
+**Simple ask:**
 
-When both exist, pass **chat + design doc** (both can live in `docs/reference/`) — prefer not to throw away the chat just because you cleaned something up later.
+> Build or update the live docs from `docs/reference/`.
+
+Agents are instructed to keep reference files and to **split** unlike feature identities without you putting that in the ask.
+
+**Why exports beat a polished design doc for this pack:** messy threads keep your **whys**, rejected alternatives, motives, and half-formed constraints — the intent that gets sanded off when you rewrite into a clean PRD. Agents build better Understandings from that raw trail; you still confirm **is / is not**, not every contract detail.
+
+You do **not** need to rewrite chats into a design doc first. Polished design docs / PRDs are still welcome in `docs/reference/` — when both exist, keep the **chat exports too** and point the agent at both.
+
+**Save lasting copies under `docs/reference/`** (e.g. `docs/reference/combat-feel-chat.md`, `docs/reference/inventory-thread.md`). That folder is for source material — not living Understanding/spec/TODO files.
+
+### Optional: browser chat exporter
+
+Any method that gets a **full markdown (or text) transcript** into `docs/reference/` is fine — copy-paste, native export, or an extension.
+
+One option that supports Grok, ChatGPT, Claude, Gemini, and others with **Markdown** export: **[AI Exporter](https://saveai.net/)** (browser extension). Prefer **Markdown** over PDF for agent use. This pack does **not** require it — use whatever you trust and already have.
+
+### Split when identity differs *(agent duty — not part of your ask)*
+
+One Understanding / Document Map row = **one finished-feature identity**. If source material covers two things that do **different jobs**, agents should create **two rows** and two file sets without waiting for you to say “split.” You only need to correct them if they still merged unlike ideas.
+
+Day-to-day patterns: [`USAGE.md`](USAGE.md).
 
 ---
 
@@ -213,7 +236,7 @@ If you already answered the buckets in chat:
 ## “Good enough” is enough
 
 - Rough answers in chat beat silence — the agent turns them into a draft Understanding.
-- The **whole** messy thread beats a polished one-page rewrite when you have it ([Bring the whole conversation](#bring-the-whole-conversation)).
+- The **whole** messy thread beats a polished one-page rewrite when you have it ([Recommended: export idea chats](#recommended-export-idea-chats-into-docsreference)).
 - “I’m not sure about X” is useful — the agent puts it under **Assumptions** for you to confirm.
 - You can review **shape** in a few minutes — you are not signing off the full contract here.
 
@@ -223,7 +246,7 @@ If you already answered the buckets in chat:
 
 When the user describes a feature vaguely:
 
-1. Read this file and [`Feature_Understanding_Template.md`](Feature_Understanding_Template.md).
+1. Read this file and [`Feature_Understanding_Template.md`](Feature_Understanding_Template.md). If they pointed at `docs/reference/` chat exports, **read those first** — prefer raw threads over polished-only summaries.
 2. Ask **short, plain-language questions** from the buckets above — not a twenty-question form. Prioritize: identity (is / is not *as a finished feature*), product surface when relevant, and relationship to existing work. Do not put phased or deferred work under **What this is NOT**.
 3. Write or update `-Understanding.md` with status `draft` — **only** What this is / is NOT, Relationship, Assumptions, Confirmed notes. Keep identity-defining user detail **including product-defining surface/architecture**; do not pad into a mini-spec. No How it should work, UI/UX, Visual references, or Done when on Understanding. List gaps in **Assumptions**. Size TODOs for that target shape (agent timescale). On updates: re-check that stem’s TODO vs code/spec; **uncheck** anything that no longer matches; relocate trim overflow into the spec.
 4. Tell the user confirmation is for **shape / guardrails**, not a full spec review. After they confirm, **graduate** durable contract content to the spec (`Feature_Spec_Template.md`) — Decisions, module/API architecture, Acceptance, shared Maturity. Spec may hold detail that was never in Understanding. Do not ask them to remind you to plan ambitiously.

@@ -19,6 +19,18 @@
 
 ---
 
+## 2.7.3
+
+- **Live impact:** `versions-only`, `master-index`, `rules`, `process-docs-only`
+- **Files:**
+  - `VERSION` — 2.7.2 → 2.7.3
+  - `help/IDEA_CAPTURE_TIPS.md`, `help/USAGE.md`, `help/SETUP.md` — **recommended practice:** export idea chats to markdown in `docs/reference/`; simple ask *build or update live docs from reference* (split is agent duty, not in the ask); optional [AI Exporter](https://saveai.net/) tip
+  - `agent/BOOTSTRAP.md` — richer `docs/reference/README.md` scaffold text
+  - `agent/Modular_Docs_Workflow.md` §0/§4 — one identity per stem; split/move when unlike features were merged; reference → build/update
+  - `agent/roles/understanding-author.md` + cursor/grok adapters; modular rule — build/update from reference; do not glue unlike identities
+  - `Master_Index_Template.md`, `chat-ui/README.md`, root `README.md` — recommendation surfaced
+- **Step B:** Bump Master Index **Pack version** to 2.7.3. Adopt Key Locations / At a Glance wording for chat-export recommendation if missing. Refresh installed modular rules if the user wants (routing + split guidance). No live feature/shared content scan.
+
 ## 2.7.2
 
 - **Live impact:** `versions-only`, `master-index`, `rules`, `process-docs-only`

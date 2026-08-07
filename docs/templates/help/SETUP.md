@@ -30,11 +30,13 @@ Ask your agent:
 
 > Bootstrap modular docs using `docs/templates/agent/BOOTSTRAP.md`.
 
-That creates `Master_Index.md`, `Tooling.md`, `Human-TODO.md`, `reference/` (for design docs / chat exports), feature/shared folders, and **draft Understanding + stub spec + core TODO for every Document Map row**.
+That creates `Master_Index.md`, `Tooling.md`, `Human-TODO.md`, `reference/` (for **chat exports** / design docs), feature/shared folders, and **draft Understanding + stub spec + core TODO for every Document Map row**.
+
+**Recommended habit:** export idea conversations (Grok.com, ChatGPT, …) to markdown and drop them in `docs/reference/` as you explore — often many threads. Then: *Build or update the live docs from `docs/reference/`.* That preserves whys/motives better than a polished design doc alone ([`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md)).
 
 Then you:
 
-1. Correct overview, Document Map, Tooling, and Human-TODO.
+1. Correct overview, Document Map, Tooling, and Human-TODO (and add any `reference/` exports you already have).
 2. Review draft `-Understanding.md` files before implementation.
 3. Optionally install the modular doc rule — *Follow `docs/templates/agent/RULE_INSTALL.md`* (dispatches to [`../agent/tools/`](../agent/tools/README.md)).
 4. Optionally enable **doc roles** (Understanding author, etc.) — bootstrap asks; details: [`../agent/roles/README.md`](../agent/roles/README.md).
