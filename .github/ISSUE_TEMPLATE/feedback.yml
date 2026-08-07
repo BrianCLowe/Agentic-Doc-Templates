@@ -25,7 +25,7 @@ body:
     id: what-worked
     attributes:
       label: What worked
-      description: e.g. Understanding-first review, chat-ui save-as paths, template sync download, shared foundation TODOs
+      description: e.g. Understanding-first review, chat export → reference habit, template sync download, shared foundation TODOs
     validations:
       required: true
 

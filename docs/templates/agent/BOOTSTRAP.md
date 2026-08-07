@@ -31,7 +31,7 @@ Reorganize without losing content. Target: **everything meta** lives under `docs
 | `docs/templates/Modular_Documentation_Rule.mdc`, `Modular_Documentation_Rule.instructions.md` (flat in templates) | `docs/templates/agent/` |
 | `docs/USING_WITH_AGENTS.md` (at `docs/` root) | `docs/templates/help/USING_WITH_AGENTS.md` |
 
-Fix internal links after moving (including Master Index links to the workflow). **Keep at `docs/templates/` root:** `VERSION`, `CHANGELOG.md`, `Master_Index_Template.md`, `chat-ui/`, `Feature_*_Template.md`, `TODO_Template.md`, `Decision_Template.md`, Tooling/Human_TODO templates. **Keep in `docs/templates/agent/`:** `Modular_Docs_Workflow.md`, rule templates (`.mdc`, `.instructions.md`), bootstrap, rule install, template sync.
+Fix internal links after moving (including Master Index links to the workflow). **Keep at `docs/templates/` root:** `VERSION`, `CHANGELOG.md`, `Master_Index_Template.md`, `Feature_*_Template.md`, `TODO_Template.md`, `Decision_Template.md`, Tooling/Human_TODO templates. **Keep in `docs/templates/agent/`:** `Modular_Docs_Workflow.md`, rule templates (`.mdc`, `.instructions.md`), bootstrap, rule install, template sync. (`chat-ui/` may exist as a paused stub — not a live path.)
 
 ## Step 1 — Relocate upstream README, LICENSE, and CONTRIBUTING *(auto-move when clearly this pack)*
 
@@ -96,7 +96,6 @@ docs/
 └── templates/               ← full template pack (not live project content)
     ├── help/
     ├── agent/
-    ├── chat-ui/
     └── … scaffolds + workflow
 ```
 
@@ -124,7 +123,7 @@ If any of those are missing, expand the inventory below and run Step 0b if layou
 
 **Full inventory** *(only if spot-check fails):*
 
-- **Root:** `VERSION`, `CHANGELOG.md`, `Master_Index_Template.md`, `chat-ui/AGENT.md`, `Feature_Spec_Template.md`, `Feature_Understanding_Template.md`, `TODO_Template.md`, `Decision_Template.md`, `Tooling_Template.md`, `Human_TODO_Template.md`
+- **Root:** `VERSION`, `CHANGELOG.md`, `Master_Index_Template.md`, `Feature_Spec_Template.md`, `Feature_Understanding_Template.md`, `TODO_Template.md`, `Decision_Template.md`, `Tooling_Template.md`, `Human_TODO_Template.md`
 - **`help/`:** `SETUP.md`, `USAGE.md`, `IDEA_CAPTURE_TIPS.md`, `USING_WITH_AGENTS.md`
 - **`agent/`:** `Modular_Docs_Workflow.md`, `BOOTSTRAP.md`, `RULE_INSTALL.md`, `TEMPLATE_SYNC.md`, `TEMPLATE_SYNC_A.md`, `TEMPLATE_SYNC_B.md`, `TEMPLATE_UPDATE_CHECK.md`, `Modular_Documentation_Rule.mdc`, `Modular_Documentation_Rule.instructions.md`, `Template_Update_Check_Rule.mdc`, `Template_Update_Check_Rule.instructions.md`, `ADT-settings.example.yaml`
 
@@ -259,22 +258,25 @@ Thin playbook roles (Understanding author, Doc graduate, Feature implementer, Wo
 
 ## Step 4d — Pack sync mode (ask first)
 
-Controls whether TEMPLATE_SYNC mid-asks about live optionals (reshape, TODO ambition, future similar passes) or just applies them.
+Controls whether TEMPLATE_SYNC mid-asks about live optionals (reshape, TODO ambition, future similar passes) or just applies them — and whether new pack `optional_rules.*` are auto-enabled.
 
 **Ask** (do not silent-default):
 
-> When updating the doc templates, should the agent **apply recommended live updates automatically** (`auto`) — reshape Understandings, TODO ambition, refresh installed rules, local hygiene commits for sync output, etc. — or **ask you about optionals each sync** (`choose`)?
+> When updating the doc templates, pick a sync mode:
+> - **`auto`** — apply recommended live updates (reshape, TODO ambition, rules refresh, hygiene commits) without mid-sync quizzes; still **ask once** when a brand-new pack optional appears (doc-roles, update-check, …)
+> - **`auto-all`** — same as auto, and also **enable + install** any unset pack optionals (never re-enable ones you declined)
+> - **`choose`** — ask about live optionals each sync
 >
-> `auto` is best if you always want the pack’s recommended live passes. Uncommitted **your** work before a sync still stops for a commit first. `choose` keeps per-sync control. You can switch later: *Set sync to auto* / *Set sync to choose*.
+> Uncommitted **your** work before a sync still stops for a commit first. You can switch later: *Set sync to auto* / *Set sync to auto-all* / *Set sync to choose*.
 
-### On **auto** / **choose**
+### On **auto** / **auto-all** / **choose**
 
 1. Record `sync.mode` and `sync.recorded` in `docs/ADT-settings.yaml` (create from [`ADT-settings.example.yaml`](ADT-settings.example.yaml) if needed).
 2. Mention sync behavior briefly in the bootstrap summary.
 
 ### Explicit overrides later
 
-- "Set sync to auto" / "Set sync to choose" → update `sync.mode` (and `recorded`).
+- "Set sync to auto" / "Set sync to auto-all" / "Set sync to choose" → update `sync.mode` (and `recorded`).
 
 ## Do not
 

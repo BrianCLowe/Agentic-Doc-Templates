@@ -1,4 +1,4 @@
-<!-- pack-version: 2.7.5 -->
+<!-- pack-version: 2.7.6 -->
 
 > **Template reference.** Do not put project-specific content in this file. Copy to `docs/Master_Index.md` for initial setup, or diff against it when syncing template improvements into the live index. Never edit this template unless the user asks you to.
 >
@@ -8,7 +8,7 @@
 
 **Purpose**: Single entry point for **this project's** documentation — overview, locations, and Document Map. Read only the files relevant to the current task.
 
-**Pack version**: 2.7.5 *(from [`templates/VERSION`](templates/VERSION) — update on sync)*
+**Pack version**: 2.7.6 *(from [`templates/VERSION`](templates/VERSION) — update on sync)*
 
 ## 1. Project Overview
 
@@ -41,7 +41,7 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 | `docs/Tooling.md` | Machine / workflow tools (not package deps) — install on a new machine ([`Tooling_Template.md`](templates/Tooling_Template.md)) |
 | `docs/Human-TODO.md` | Human inbox — procure, playtest, decide, waiting (agent cannot close from assumptions) ([`Human_TODO_Template.md`](templates/Human_TODO_Template.md)) |
 | `docs/decisions/` | Optional cross-cutting decisions ([`Decision_Template.md`](templates/Decision_Template.md)) |
-| `docs/templates/` | Upstream template pack — scaffolds, `help/`, `agent/` (incl. [`Modular_Docs_Workflow.md`](templates/agent/Modular_Docs_Workflow.md), optional [`roles/`](templates/agent/roles/README.md), per-tool [`tools/`](templates/agent/tools/README.md)), `chat-ui/`; also [`VERSION`](templates/VERSION) and [`CHANGELOG.md`](templates/CHANGELOG.md) (Step B scope after sync) |
+| `docs/templates/` | Upstream template pack — scaffolds, `help/`, `agent/` (incl. [`Modular_Docs_Workflow.md`](templates/agent/Modular_Docs_Workflow.md), optional [`roles/`](templates/agent/roles/README.md), per-tool [`tools/`](templates/agent/tools/README.md)); also [`VERSION`](templates/VERSION) and [`CHANGELOG.md`](templates/CHANGELOG.md) (Step B scope after sync) |
 | `docs/ADT-settings.yaml` | Pack preferences — sync mode, installed tools, optionals, upstream ping stamps ([`ADT-settings.example.yaml`](templates/agent/ADT-settings.example.yaml)) |
 | `src/` / `backend/` / `frontend/` | Actual code (reference only) |
 

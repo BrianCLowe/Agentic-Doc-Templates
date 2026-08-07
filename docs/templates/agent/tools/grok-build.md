@@ -64,7 +64,7 @@ Compat (secondary): Claude/Cursor agent folders may also be scanned when compat 
 
 ## For humans
 
-Chat-only (no repo): [`../../chat-ui/README.md`](../../chat-ui/README.md) — not this file.
+No-repo brainstorms: export chats → `docs/reference/` — [`../../help/IDEA_CAPTURE_TIPS.md`](../../help/IDEA_CAPTURE_TIPS.md#recommended-export-idea-chats-into-docsreference) (chat-only AGENT.md path is paused).
 
 ## Do not
 

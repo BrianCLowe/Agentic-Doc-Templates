@@ -1,10 +1,10 @@
-<!-- pack-version: 2.7.5 -->
+<!-- pack-version: 2.7.6 -->
 
 > **Agent workflow reference.** Canonical instructions for how to work the modular doc system. Lives in `docs/templates/agent/` with the other agent playbooks — sync from upstream; do **not** copy wholesale into `docs/Master_Index.md`. The live index links here; agent rules summarize and point here for full procedure.
 
 # Modular Documentation — Agent Workflow
 
-**Pack version**: 2.7.5 *(same as `docs/templates/VERSION` / live Master Index **Pack version**)*
+**Pack version**: 2.7.6 *(same as `docs/templates/VERSION` / live Master Index **Pack version**)*
 
 **Design intent:** Users give short requests about the docs (“bootstrap”, “draft Understanding for X”, “update the templates”). Route to **one** playbook (`BOOTSTRAP`, `TEMPLATE_SYNC`, `TEMPLATE_UPDATE_CHECK`, `RULE_INSTALL` → `tools/<key>.md`, or this file for feature work) — do not scan the whole pack catalog. **Tight scope:** act on the paved path; do not pre-audit every alternate interpretation before doing the work. **Agent timescale:** when feature shape is clear, plan the **target architecture** as one change (verify-order checklists OK); do not stage human-sprint interim architectures — see [`Agent_Timescale_Planning_Rule.mdc`](Agent_Timescale_Planning_Rule.mdc).
 
@@ -47,9 +47,7 @@
 
 **Map without files = incomplete work.** Do not add Document Map rows and defer file creation “until the user picks where to start.” Bootstrap Step 3d and this section require the default file set on disk. Understanding status `draft` means **do not implement code** yet — it does **not** mean skip creating `-Understanding.md`.
 
-**Chat UI (no repo write access):** use [`chat-ui/AGENT.md`](../chat-ui/AGENT.md) — shorter instructions and required save-as output format.
-
-**`docs/reference/`:** Drop zone for **source** materials. **Recommended habit:** markdown **chat exports** of idea threads (often many files) — they preserve user whys/motives better than polished-only design docs ([`../help/IDEA_CAPTURE_TIPS.md`](../help/IDEA_CAPTURE_TIPS.md)). Also fine: PRDs, legacy specs. Not Document Map rows. Read when the user points at a file or asks to convert / **build or update** live docs from them. Optional `docs/reference/visuals/` for inspiration screenshots.
+**`docs/reference/`:** Drop zone for **source** materials. **Recommended habit:** markdown **chat exports** of idea threads (often many files) — they preserve user whys/motives better than polished-only design docs ([`../help/IDEA_CAPTURE_TIPS.md`](../help/IDEA_CAPTURE_TIPS.md)). Also fine: PRDs, legacy specs. Not Document Map rows. Read when the user points at a file or asks to convert / **build or update** live docs from them. Optional `docs/reference/visuals/` for inspiration screenshots. Do **not** send users to a chat-only `AGENT.md` attach flow — that path is paused; export → `reference/` is the supported route.
 
 **One identity per stem:** If conversation or `reference/` material describes **two (or more) finished-feature identities** that do different jobs (different category, product surface, or ownership) — **split**. Add separate Document Map rows + default file sets (§0) in the same turn; move misplaced shape/contract content into the correct stem. Do **not** keep unlike things in one Understanding to avoid creating files or because the user mentioned them together. Prefer asking one clarifying question over silently merging. User correction (“those are two features”) → split immediately — do not wait for them to name paths.
 

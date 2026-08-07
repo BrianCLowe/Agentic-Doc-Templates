@@ -9,24 +9,44 @@ Source of truth is **on disk** under `docs/templates/`. Do **not** re-fetch from
 ## B0 — Scope gate *(do this first — every sync)*
 
 1. Confirm Step A completed (or pack was already refreshed) and you opened **this** file from disk after that.
-2. Read **local** `docs/templates/VERSION` (`pack-version`). Older dual `template-version` / `workflow-version` lines → treat either as `pack-version`.
-3. **Migrate settings** *(if needed)* — see **B0.1** below.
-4. Read **only the top entry** of `docs/templates/CHANGELOG.md` (Live impact, Files, Unchanged content templates, Step B).
-5. Do **only** the actions implied by that entry’s tags and Step B line.
+2. Read **local** `docs/templates/VERSION` (`pack-version` = **to**). Older dual `template-version` / `workflow-version` lines → treat either as `pack-version`.
+3. **Migrate settings** *(if needed)* — see **B0.1** below. Then capture **from** *(before any upstream stamp)*:
+   - Prefer `docs/ADT-settings.yaml` → `upstream.local_pack_version` (or legacy `local_template_version`)
+   - Else live `Master_Index.md` **Pack version** (or legacy Template/Workflow version)
+   - Else **from** is unset (first sync)
+4. **Select changelog entries** — see **Catch-up** below. Union their **Live impact** tags. Skim each selected entry’s **Step B** line only for one-shots not already covered by tags.
+5. Do **only** the actions implied by the **unioned tags** + those skimmed Step B one-shots. Run the gated checklist **once** (do not walk each version as its own sync). Bump **Pack version** once to **to**.
 6. If `CHANGELOG.md` is missing: fall back to comparing **content-template paths only** (`Feature_*_Template.md`, `TODO_Template.md`, `Tooling_Template.md`, `Human_TODO_Template.md`, `Decision_Template.md`) via `git diff` against HEAD or a prior pack copy. Never open all live feature docs “just in case.”
+
+### Catch-up *(version jumps)*
+
+Compare semver `X.Y.Z` numerically (major, minor, patch).
+
+| Case | Entries to use |
+|------|----------------|
+| **from** unset | **Top entry only** (first sync) |
+| **from** ≥ **to** | **Top entry only** (same-version re-sync) |
+| **from** < **to** | Every `## X.Y.Z` heading where **from** < version ≤ **to**. If that set is empty → top entry only |
+
+**Union tags** from all selected entries. Then:
+
+- Apply the gated checklist **once** for the union (not once per release).
+- If the union includes any of `content-templates`, `optional-live-reshape`, or `optional-todo-ambition`, run those steps even when newer selected entries also list `process-docs-only` (`process-docs-only` on one release does not cancel live passes from skipped releases).
+- Skim Step B lines from selected entries for tips / one-shots not expressed by tags (e.g. Human-TODO tip refresh). Do **not** invent a broader audit than the unioned tags + those lines.
+- Do **not** bump Pack version through intermediate numbers — set it once to **to**.
 
 | Live impact tag | Do in Step B |
 |-----------------|--------------|
 | `versions-only` | Bump **Pack version** in live `Master_Index.md` |
 | `master-index` | Adopt structural deltas from `Master_Index_Template.md` into live index (see below) |
 | `content-templates` | Add *missing* sections/structure only — **not** trim/remove (reshape is a separate tag) |
-| `optional-live-reshape` | Live Understanding shape trim + relocate — **`auto`:** run all stems; **`choose`:** present + ask once |
-| `optional-todo-ambition` | Live TODO ambition pass — **`auto`:** run all Document Map TODO stems; **`choose`:** present + ask once |
+| `optional-live-reshape` | Live Understanding shape trim + relocate — **`auto` / `auto-all`:** run all stems; **`choose`:** present + ask once |
+| `optional-todo-ambition` | Live TODO ambition pass — **`auto` / `auto-all`:** run all Document Map TODO stems; **`choose`:** present + ask once |
 | `rules` | Refresh installed rules/adapters from local `agent/` (see Rules step — **no ask** unless `customized: true`) |
 | `optional-upstream-check` | Stamp `upstream:` in `docs/ADT-settings.yaml` if update-check enabled; offer enable if unset |
-| `process-docs-only` | No live feature/shared content scan (versions / Master Index / rules only as other tags say) |
+| `process-docs-only` | No live feature/shared content scan **for that release alone** — still honor live-content tags from other selected catch-up entries |
 
-**Default when `content-templates`, `optional-live-reshape`, and `optional-todo-ambition` are absent:** bump versions + Master Index structure if tagged → rules if tagged → summarize → **present unset options** (below). **Do not** open live `features/` or `_shared/` docs.
+**Default when `content-templates`, `optional-live-reshape`, and `optional-todo-ambition` are absent from the union:** bump versions + Master Index structure if tagged → rules if tagged → summarize → **present unset options** (below). **Do not** open live `features/` or `_shared/` docs.
 
 ### B0.1 — Settings file *(migrate once, then use forever)*
 
@@ -48,23 +68,24 @@ Read `sync.mode` from `docs/ADT-settings.yaml`.
 
 | Mode | Behavior |
 |------|----------|
-| **`auto`** | Apply all changelog-gated live work without mid-sync optionals quiz: versions, master-index, content-templates (missing only), **optional-live-reshape** (all Document Map Understanding stems), **optional-todo-ambition** (all Document Map `*-TODO.md`), rules refresh, upstream stamp. **Also** perform **post-sync hygiene commits** (below) without asking. Summarize at end (include commit subjects). |
+| **`auto`** | Apply all changelog-gated live work without mid-sync optionals quiz: versions, master-index, content-templates (missing only), **optional-live-reshape** (all Document Map Understanding stems), **optional-todo-ambition** (all Document Map `*-TODO.md`), rules refresh, upstream stamp. **Also** perform **post-sync hygiene commits** (below) without asking. Still **ask once** for brand-new unset `optional_rules.*`. Summarize at end (include commit subjects). |
+| **`auto-all`** | Same as **`auto`**, and also **enable + install** any unset `optional_rules.*` (doc-roles, update-check, future optionals) without asking. Never re-enable **`declined`**. New update-check → `check_mode: always` + record cadence (skip B0.4 ask). Summarize what was auto-enabled. |
 | **`choose`** | Present reshape / TODO ambition (and similar future optional live tags) each sync — ask once per tagged pass. Suggest (do not force) separate commits; commit only if they explicitly ask. |
-| **missing / unset** | **Ask once** before the first optional live pass (or before stopping if none tagged): *Apply recommended live updates automatically on every pack sync (`auto`), or ask about optionals each time (`choose`)?* Record `sync.mode` + `sync.recorded`. Then continue under that mode. Do **not** silent-default. |
+| **missing / unset** | **Ask once** before the first optional live pass (or before stopping if none tagged): *Recommended live updates automatically (`auto`), everything including new pack optionals (`auto-all`), or ask each sync (`choose`)?* Record `sync.mode` + `sync.recorded`. Then continue under that mode. Do **not** silent-default. |
 
-Explicit later: *Set sync to auto* / *Set sync to choose*.
+Explicit later: *Set sync to auto* / *Set sync to auto-all* / *Set sync to choose*.
 
 ### B0.3 — Post-sync git hygiene *(after A0 cleared)*
 
 **Pre-sync dirty tree** is handled in [`TEMPLATE_SYNC_A.md`](TEMPLATE_SYNC_A.md) A0 — hard stop; never auto-commit unknown WIP.
 
-**After** pack overwrite + Step B edits, under **`sync.mode: auto`** (git repo only):
+**After** pack overwrite + Step B edits, under **`sync.mode: auto`** or **`auto-all`** (git repo only):
 
 1. **Pack / stamp commit** — after versions + rules refresh + settings/upstream stamps (and master-index / content-templates if tagged), if the tree is dirty with sync output → **commit** (no ask). Message like pack sync / version bump — match repo style. **No push** unless they already granted push for this sync.
 2. **Reshape commit** — if `optional-live-reshape` ran, commit those live Understanding/spec(/TODO) edits separately when dirty.
 3. **TODO ambition commit** — if `optional-todo-ambition` ran, commit those TODO rewrites separately when dirty.
 
-Invoking sync with `auto` is an **implicit grant** for these **local** hygiene commits for this run only. It does **not** authorize push or committing unrelated WIP.
+Invoking sync with `auto` or `auto-all` is an **implicit grant** for these **local** hygiene commits for this run only. It does **not** authorize push or committing unrelated WIP.
 
 Under **`choose`:** recommend the same split commits; ask; never `git commit` unless they explicitly ask.
 
@@ -72,7 +93,9 @@ Under **`choose`:** recommend the same split commits; ask; never `git commit` un
 
 If `optional_rules.template-update-check.status` is **`enabled`** and `upstream.check_mode_recorded` is **missing** (or `check_mode` itself is missing):
 
-**Ask once** (do not silent-default; do not skip under `sync.mode: auto`):
+Under **`sync.mode: auto-all`:** set `check_mode: always` + `check_mode_recorded` today (no ask). Keep existing `interval` + days if already set.
+
+Otherwise **ask once** (do not silent-default; do not skip under `sync.mode: auto`):
 
 > Template update checks are on. Check for a newer pack **every session** (`always` — recommended; negligible token cost), or only every **N days** (`interval`, default 7 if they had a weekly stamp)?
 
@@ -82,7 +105,7 @@ Record:
 - `upstream.check_interval_days` when interval (keep prior days if present, else **7**)
 - `upstream.check_mode_recorded`: today
 
-If update-check is **declined** or unset → skip B0.4 (unset optional ask in step 10 may enable it — then ask cadence in the **same** turn before stopping).
+If update-check is **declined** or unset → skip B0.4 (step 10 may enable it — under `auto`/`choose` ask cadence in the same turn; under `auto-all` default `always`).
 
 Explicit later: *Check for template updates every session* / *Only check every week*.
 
@@ -93,10 +116,10 @@ Explicit later: *Check for template updates every session* / *Only check every w
 | `Master_Index_Template.md` | `docs/Master_Index.md` — never blind-replace | `master-index` or always for version lines |
 | `agent/Modular_Docs_Workflow.md` | Already replaced in Step A — do not copy into Master_Index | — |
 | `Feature_Understanding_Template.md` | Each `*-Understanding.md` — add *missing* sections only | `content-templates` |
-| `Feature_Understanding_Template.md` + Workflow §4 | Each chosen `*-Understanding.md` — **trim** non-shape sections; **relocate** into that stem’s spec; refresh banner/Instructions | `optional-live-reshape` **and** (auto **or** user said yes) |
+| `Feature_Understanding_Template.md` + Workflow §4 | Each chosen `*-Understanding.md` — **trim** non-shape sections; **relocate** into that stem’s spec; refresh banner/Instructions | `optional-live-reshape` **and** (`auto` / `auto-all` **or** user said yes) |
 | `Feature_Spec_Template.md` | Each feature/shared `.md` spec — add missing sections only; receive relocated contract on reshape | `content-templates` / reshape executing |
 | `TODO_Template.md` | Each `*-TODO.md` — add missing blocks only | `content-templates` |
-| `TODO_Template.md` + Workflow §5 + `Agent_Timescale_Planning_Rule.mdc` | Chosen `*-TODO.md` (+ Understanding for shape) — streamline High Priority / Current focus | `optional-todo-ambition` **and** (auto **or** user said yes) |
+| `TODO_Template.md` + Workflow §5 + `Agent_Timescale_Planning_Rule.mdc` | Chosen `*-TODO.md` (+ Understanding for shape) — streamline High Priority / Current focus | `optional-todo-ambition` **and** (`auto` / `auto-all` **or** user said yes) |
 | `Tooling_Template.md` | `docs/Tooling.md` — create if missing; add sections only | `content-templates` |
 | `Human_TODO_Template.md` | `docs/Human-TODO.md` — create if missing; add columns/sections only | `content-templates` |
 | `agent/Modular_Documentation_Rule.*` | Installed rule paths — refresh via each `tools/<key>.md` for `status: installed` tools | `rules` |
@@ -116,14 +139,14 @@ Versions:
 2. **Master Index** *(if `master-index`)* — Read local `Master_Index_Template.md` + live `Master_Index.md`. Compare **headings / Key Locations / Document Map columns** only — not project prose. **Preserve** overview, Project Profile, Document Map rows (§3.0–3.4), user §3.0 exceptions, custom sections. **Adopt** new index sections, renumbers, Quick Start pointer, Key Locations row for `docs/ADT-settings.yaml` (remove stale `rule-install-status.yaml` / `upstream-status.yaml` rows if present). Update links from `templates/Modular_Docs_Workflow.md` → `templates/agent/Modular_Docs_Workflow.md` if still on the old path. §3.0: record only **user-stated** exceptions.
 3. **Content templates** *(if `content-templates`)* — Add **missing** sections/structure from local templates into live Understanding / Spec / TODO / Tooling / Human-TODO. Do **not** remove or reshape existing sections here. Create `Tooling.md` / `Human-TODO.md` from templates when missing and link from Master Index.
 4. **Live Understanding reshape** *(if `optional-live-reshape`)* —
-   - **`sync.mode: auto`:** execute for **all Document Map Understanding stems** (no ask). After pack/stamp hygiene commit (B0.3) when applicable; reshape gets its own commit after execute (B0.3).
+   - **`sync.mode: auto` or `auto-all`:** execute for **all Document Map Understanding stems** (no ask). After pack/stamp hygiene commit (B0.3) when applicable; reshape gets its own commit after execute (B0.3).
    - **`sync.mode: choose`:** **Present before stopping** (explain + ask once; **do not** report “skipped by design” without asking). **Highly recommended.**
      1. **Commit hygiene *(suggest)*:** Recommend committing pack sync first so reshape can be a separate commit. Ask; never `git commit` unless they explicitly ask.
      2. **Explain briefly:** Older live Understandings may still hold contract sections. **Yes (recommended)** = trim to shape-only (Workflow §4), relocate overflow into that stem’s spec, refresh banner/Instructions. **No** = leave bodies.
      3. **Ask once — default toward yes:** all Document Map Understanding stems / named / no.
-   - **On execute** (auto or yes): for each chosen stem only — open Understanding + matching spec (+ TODO if checking `[x]` per Workflow §4); **relocate, then remove**; do not invent contract detail; stop after chosen stems.
+   - **On execute** (`auto` / `auto-all` or yes): for each chosen stem only — open Understanding + matching spec (+ TODO if checking `[x]` per Workflow §4); **relocate, then remove**; do not invent contract detail; stop after chosen stems.
 5. **Live TODO ambition** *(if `optional-todo-ambition`)* —
-   - **`sync.mode: auto`:** execute for **all Document Map `*-TODO.md` stems** (no ask); commit per B0.3 after.
+   - **`sync.mode: auto` or `auto-all`:** execute for **all Document Map `*-TODO.md` stems** (no ask); commit per B0.3 after.
    - **`sync.mode: choose`:** present + ask once (default all stems / named / no); suggest separate commit; commit only if they ask.
    - **On execute:** for each stem — open TODO + Understanding; merge interim-architecture staging into target-architecture High Priority; keep real blockers; refresh Current focus; do **not** invent work.
 6. **Rules** *(if `rules`)* — For each tool with `tools.*.status: installed` in `docs/ADT-settings.yaml`, open **only** `docs/templates/agent/tools/<key>.md` and refresh that harness.
@@ -133,14 +156,15 @@ Versions:
    - Remove any stale `.cursor/skills/modular-docs-*` leftovers from older pack drafts (ask first only if deleting user-looking paths outside known leftovers).
 7. **Upstream stamp** *(if `optional-upstream-check` or update-check enabled)* — If `optional_rules.template-update-check.status` is `enabled`: ensure `upstream:` exists; set `local_pack_version` from local `VERSION`, `last_checked` today, clear `update_available` / stale `upstream_pack_version`. Do **not** delete `ADT-settings.yaml`. Refresh optional update-check rules if tagged `rules` / body changed (same customized rule as above).
 8. **Layout migration** — Run [`BOOTSTRAP.md`](BOOTSTRAP.md) Step 0b **only** if layout markers show older layout (`docs/help/` or `docs/agent/` at docs root, or flat setup files in `templates/`). Skip on a normal modern pack refresh.
-9. **Summarize** pack refresh + live-doc updates + sync mode used + reshape / TODO ambition executed or (choose) offered/declined + settings migration if any + **git** (A0 preflight outcome; hygiene commits made or skipped; push status — default not pushed).
-10. **Present unset options** *(every sync — before stopping)* — Users cannot ask for what they were never told exists. Read `docs/ADT-settings.yaml`. For each known pack optional (`optional_rules.template-update-check`, `optional_rules.doc-roles`, plus any **new** optional named in the top changelog entry / Step B):
-   - **`declined`** → do not re-ask; a one-line “still off” note is enough.
+9. **Summarize** pack refresh + live-doc updates + sync mode used + catch-up **from→to** (or top-entry-only) + reshape / TODO ambition executed or (choose) offered/declined + settings migration if any + **git** (A0 preflight outcome; hygiene commits made or skipped; push status — default not pushed).
+10. **Present / apply unset options** *(every sync — before stopping)* — Users cannot ask for what they were never told exists. Read `docs/ADT-settings.yaml`. For each known pack optional (`optional_rules.template-update-check`, `optional_rules.doc-roles`, plus any **new** optional named in selected catch-up entries / Step B):
+   - **`declined`** → do not re-ask or re-enable; a one-line “still off” note is enough.
    - **`enabled`** → already handled by refresh steps above; no re-pitch of the feature — but if update-check is enabled and cadence was never recorded, **B0.4** still applies.
-   - **missing / unset** → **briefly explain** + **ask once** (yes / no / later). On **yes** for `template-update-check`, also run **B0.4** cadence ask in the same turn before stopping. On yes/no, record `enabled` or `declined`. Do **not** enable silently. Do **not** treat unset as silent no.
-   - Under **`sync.mode: auto`:** still ask for **brand-new unset optionals** the user has never decided (do not silent-enable new product features). Changelog-tagged **live passes** (reshape, ambition, …) are already covered by auto — those are not “new optionals.” Cadence (B0.4) is still asked when due.
+   - **missing / unset** under **`sync.mode: auto-all`:** **enable + install** without asking (record `enabled` + `recorded` today). For `template-update-check`: ensure `upstream:`, set `local_pack_version`, `check_mode: always`, `check_mode_recorded` today. For `doc-roles` (and any optional with install artifacts): run each installed tool’s `tools/<key>.md` optional section. Note auto-enabled items in the summary. Never treat this as license to flip **`declined`** → enabled.
+   - **missing / unset** under **`auto`** or **`choose`:** **briefly explain** + **ask once** (yes / no / later). On **yes** for `template-update-check`, also run **B0.4** cadence ask in the same turn before stopping. On yes/no, record `enabled` or `declined`. Do **not** enable silently. Do **not** treat unset as silent no.
+   - Under **`sync.mode: auto`:** changelog-tagged **live passes** (reshape, ambition, …) are already covered by auto — those are not “new optionals.” Cadence (B0.4) is still asked when due.
 11. If `sync.mode` still unset after the above → run **B0.2** before stopping.
-12. If update-check is enabled and `check_mode_recorded` still missing → run **B0.4** before stopping.
+12. If update-check is enabled and `check_mode_recorded` still missing → run **B0.4** before stopping (`auto-all` defaults `always` there).
 
 ### Do not (Step B)
 
@@ -150,8 +174,8 @@ Versions:
 - Scan every live Understanding / Spec / TODO unless `content-templates` or (`optional-live-reshape` and executing) or (`optional-todo-ambition` and executing)
 - Treat `content-templates` as permission to trim/remove Understanding sections — that requires `optional-live-reshape` + execute
 - Under **`choose`:** omit the reshape / TODO ambition ask when those tags are present
-- Under **`auto`:** re-ask for reshape / ambition / rules refresh when tags say to run them
-- Under **`auto`:** skip B0.3 hygiene commits when sync produced a dirty tree (unless not a git repo)
+- Under **`auto` / `auto-all`:** re-ask for reshape / ambition / rules refresh when tags say to run them
+- Under **`auto` / `auto-all`:** skip B0.3 hygiene commits when sync produced a dirty tree (unless not a git repo)
 - Auto-commit **pre-sync** WIP (A0) or push without an explicit grant
 - Ask before refreshing installed rules unless `customized: true`
 - On reshape execute: add template headings only and leave obsolete Understanding sections in place
@@ -161,10 +185,15 @@ Versions:
 - Treat a missing or empty `docs/templates/agent/upstream/` as an error or reason to re-download attribution files
 - Open Workflow, help guides, or the whole pack catalog during sync (open Workflow §4 only while executing reshape; Workflow §5 / timescale rule only while executing TODO ambition)
 - Keep pulling from GitHub — work from the **local** `docs/templates/` copy
-- Skip presenting unset `optional_rules.*` because “do not auto-enable” — that means ask, not stay silent
-- Silent-set `check_mode` from legacy `check_interval_days` without B0.4
-- Skip B0.4 when update-check is enabled but `check_mode_recorded` is missing (including under `auto`)
+- Under **`auto` / `choose`:** skip presenting unset `optional_rules.*` because “do not auto-enable” — that means ask, not stay silent
+- Under **`auto-all`:** leave unset `optional_rules.*` unset — enable + install them (except **`declined`**)
+- Silent-set `check_mode` from legacy `check_interval_days` without B0.4 (except **`auto-all`** defaulting `always` when cadence is missing)
+- Skip B0.4 when update-check is enabled but `check_mode_recorded` is missing under `auto` / `choose` (under `auto-all`, default `always`)
 - Equate “no install artifacts for this harness” with “nothing to offer the user”
+- Under **`auto-all`:** flip **`declined`** optionals back to enabled
+- Read **only the top** changelog entry when **from** < **to** and intermediate `##` entries exist — **union** those entries (Catch-up above)
+- Let a newer entry’s `process-docs-only` cancel `content-templates` / reshape / ambition tags from skipped releases in the same jump
+- Walk each catch-up version as its own full sync or bump Pack version through intermediate numbers
 
 ---
 
@@ -182,4 +211,4 @@ Versions:
 
 - "Update the doc templates from Agentic Doc Templates and sync our live docs."
 - "We already refreshed `docs/templates/` — update our live docs from the local pack." *(skip A download; open this file)*
-- "Set sync to auto." / "Set sync to choose."
+- "Set sync to auto." / "Set sync to auto-all." / "Set sync to choose."

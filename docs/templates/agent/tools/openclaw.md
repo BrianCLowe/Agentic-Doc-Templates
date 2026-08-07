@@ -77,7 +77,7 @@ Do **not** put secrets, API keys, or `~/.openclaw/` state into the project repo.
 
 - Setup: `openclaw setup` / `openclaw onboard` seeds missing workspace bootstrap files without overwriting existing ones
 - Treat the OpenClaw workspace as private memory if it is not the project repo
-- Chat-only (no OpenClaw workspace): [`../../chat-ui/README.md`](../../chat-ui/README.md)
+- No-repo brainstorms: export chats → `docs/reference/` — [`../../help/IDEA_CAPTURE_TIPS.md`](../../help/IDEA_CAPTURE_TIPS.md#recommended-export-idea-chats-into-docsreference) (chat-only AGENT.md path is paused)
 
 ## Do not
 

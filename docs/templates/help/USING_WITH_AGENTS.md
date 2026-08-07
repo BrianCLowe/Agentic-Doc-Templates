@@ -18,7 +18,8 @@ The modular documentation **workflow is tool-agnostic**. What differs is **where
 | [OpenClaw](https://docs.openclaw.ai/concepts/agent-workspace) | `openclaw` | [`../agent/tools/openclaw.md`](../agent/tools/openclaw.md) | workspace `AGENTS.md` (prefer project as workspace) |
 | [Continue](https://continue.dev) | `continue` | [`../agent/tools/continue.md`](../agent/tools/continue.md) | `.continue/rules/` |
 | [Cline](https://cline.bot) | `cline` | [`../agent/tools/cline.md`](../agent/tools/cline.md) | `.clinerules/` |
-| Chat UI (no repo) | — | [`../chat-ui/README.md`](../chat-ui/README.md) | Attach `chat-ui/AGENT.md` only |
+
+**No-repo brainstorms:** export chat threads to markdown → `docs/reference/` (do not attach a chat-only AGENT.md — that path is paused). See [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md#recommended-export-idea-chats-into-docsreference).
 
 **Recommended:** `agents-md` (shared baseline) **plus** the tool-specific playbook for your daily harness.
 
@@ -33,7 +34,7 @@ The modular rule guards itself: *"If `docs/Master_Index.md` does not exist, igno
 | Template update check | Upstream `VERSION` ping — default every session; interval optional | Bootstrap Step 4b · [`../agent/TEMPLATE_UPDATE_CHECK.md`](../agent/TEMPLATE_UPDATE_CHECK.md) |
 | Doc roles | Understanding author, implementer, work verifier, … | Bootstrap Step 4c · [`../agent/roles/README.md`](../agent/roles/README.md) — Cursor → `.cursor/agents/`; Grok Build → `.grok/agents/` |
 | Orchestrator | Parent-only backlog loop (implement → verify → next) | [`../agent/roles/orchestrator.md`](../agent/roles/orchestrator.md) — **not** installed as a harness subagent |
-| Sync mode | `auto` = recommended live updates + post-sync hygiene commits; `choose` = ask each time. Dirty tree before sync still hard-stops | Bootstrap Step 4d · `sync.mode` in [`docs/ADT-settings.yaml`](../agent/ADT-settings.example.yaml) |
+| Sync mode | `auto` = recommended live updates + hygiene commits (still asks for new unset optionals); `auto-all` = same + enable/install new optionals; `choose` = ask each time. Dirty tree before sync still hard-stops | Bootstrap Step 4d · `sync.mode` in [`docs/ADT-settings.yaml`](../agent/ADT-settings.example.yaml) |
 
 Parent agents **orchestrate** role delegation when asks match; `/` commands are optional. Role playbooks stay under `roles/*.md` — never paste them into always-on rules. *Orchestrate / drive the backlog* stays in the parent session and dispatches leaf workers. Settings live in **`docs/ADT-settings.yaml`** (tools, optionals, sync mode, upstream stamps).
 

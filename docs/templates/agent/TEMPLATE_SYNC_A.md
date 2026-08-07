@@ -38,7 +38,7 @@ On dirty tree:
    - Proceed anyway with a dirty tree *(explicit waive — warn that sync and WIP will interleave)*
 4. **Stop** until they choose. After a clean tree (or explicit waive), continue.
 
-This gate is **not** skipped by `sync.mode: auto`. Auto covers pack/live-doc optionals and **post-sync** hygiene commits — not silently committing unknown WIP before overwrite.
+This gate is **not** skipped by `sync.mode: auto` or `auto-all`. Those modes cover pack/live-doc optionals and **post-sync** hygiene commits — not silently committing unknown WIP before overwrite.
 
 ---
 
@@ -84,7 +84,7 @@ cp -R "$tmp/Agentic-Doc-Templates-main/docs/templates" docs/templates
 
 **Do not (Step A):**
 
-- Skip A0 when the tree is dirty (including under `sync.mode: auto`)
+- Skip A0 when the tree is dirty (including under `sync.mode: auto` / `auto-all`)
 - Auto-commit the user’s pre-sync WIP without an explicit commit ask
 - Diff old vs new template files and update only what changed
 - Fetch individual files with `gh` / raw URLs one-by-one

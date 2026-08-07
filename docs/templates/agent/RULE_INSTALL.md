@@ -52,13 +52,14 @@ Optional fields: `recorded` (YYYY-MM-DD), `path`, `note`, `customized` (true onl
 
 | Mode | Meaning |
 |------|---------|
-| `auto` | Pack sync applies recommended live updates + local post-sync hygiene commits without mid-sync quizzes — see [`TEMPLATE_SYNC_B.md`](TEMPLATE_SYNC_B.md). Pre-sync dirty tree still hard-stops ([`TEMPLATE_SYNC_A.md`](TEMPLATE_SYNC_A.md) A0) |
+| `auto` | Pack sync applies recommended live updates + local post-sync hygiene commits without mid-sync quizzes — see [`TEMPLATE_SYNC_B.md`](TEMPLATE_SYNC_B.md). Still asks once for brand-new unset `optional_rules.*`. Pre-sync dirty tree still hard-stops ([`TEMPLATE_SYNC_A.md`](TEMPLATE_SYNC_A.md) A0) |
+| `auto-all` | Same as `auto`, and also enable + install unset `optional_rules.*` without asking (never re-enable `declined`) |
 | `choose` | Present optionals each sync; suggest commits, ask before committing |
 | *(missing / unset)* | Ask once (bootstrap Step 4d or first sync) — do not silent-default |
 
-If `optional_rules.template-update-check` is missing, bootstrap should have asked — if you are mid–rule-install (or finishing a template sync) and it is still unset, ask once using the Step 4b prompt, then record `enabled` or `declined`.
+If `optional_rules.template-update-check` is missing: under **`sync.mode: auto-all`** enable + install (default `check_mode: always`); otherwise bootstrap should have asked — if you are mid–rule-install (or finishing a template sync) and it is still unset, ask once using the Step 4b prompt, then record `enabled` or `declined`.
 
-If `optional_rules.doc-roles` is missing, ask once using bootstrap Step 4c for **any** rule-install or template-sync pass — not only when installing Cursor/Grok/Claude. Explain what “yes” means for each `tools.*.status: installed` tool (agents-folder adapters where supported; Copilot/OpenClaw/etc.: no adapter files — parent follows `roles/*.md` in-session). Then record `enabled` or `declined`. Do **not** skip the ask because the current tool’s Install row is None.
+If `optional_rules.doc-roles` is missing: under **`sync.mode: auto-all`** enable + install adapters for each `tools.*.status: installed` tool that supports them; otherwise ask once using bootstrap Step 4c for **any** rule-install or template-sync pass — not only when installing Cursor/Grok/Claude. Explain what “yes” means for each installed tool (agents-folder adapters where supported; Copilot/OpenClaw/etc.: no adapter files — parent follows `roles/*.md` in-session). Then record `enabled` or `declined`. Do **not** skip the ask because the current tool’s Install row is None.
 
 ## Before asking
 
@@ -105,7 +106,7 @@ Always honor direct requests, even when status is `declined`:
 
 - "Install the rule for Copilot" → open [`tools/github-copilot.md`](tools/github-copilot.md), install, set `installed`.
 - "Reset rule install status" / "Ask me again about Cursor" → remove or update that tool's entry, then ask.
-- "Set sync to auto" / "Set sync to choose" → update `sync.mode` in `ADT-settings.yaml`.
+- "Set sync to auto" / "Set sync to auto-all" / "Set sync to choose" → update `sync.mode` in `ADT-settings.yaml`.
 
 ## Multi-tool setups (no conflict)
 
@@ -128,7 +129,7 @@ Installing for one tool **does not remove or replace** another tool's files. Rec
 >
 > On disk: [existing install paths or none].  
 > Settings (`docs/ADT-settings.yaml`): [Cursor: installed | Grok Build: not asked yet | …].  
-> Sync mode: [auto | choose | not asked — see bootstrap Step 4d].  
+> Sync mode: [auto | auto-all | choose | not asked — see bootstrap Step 4d].  
 > Template update checks: [enabled | declined | not asked — see bootstrap Step 4b].  
 > Optional doc roles: [enabled | declined | not asked — see bootstrap Step 4c].
 >

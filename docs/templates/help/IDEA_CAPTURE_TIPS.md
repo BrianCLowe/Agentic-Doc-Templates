@@ -31,7 +31,7 @@ You do **not** need to rewrite chats into a design doc first. Polished design do
 
 Any method that gets a **full markdown (or text) transcript** into `docs/reference/` is fine — copy-paste, native export, or an extension.
 
-One option that supports Grok, ChatGPT, Claude, Gemini, and others with **Markdown** export: **[AI Exporter](https://saveai.net/)** (browser extension). Prefer **Markdown** over PDF for agent use. This pack does **not** require it — use whatever you trust and already have.
+One option that supports Grok, ChatGPT, Claude, Gemini, and others with **Markdown** export: **[AI Exporter](https://saveai.net/)** (browser extension). Prefer **Markdown** over PDF for agent use. **Why this one is recommended here:** it **timestamps** messages, so when you drop **several conversation exports** into `docs/reference/`, the agent can order decisions **across those threads** and treat later ones as superseding earlier ones. This pack does **not** require it — use whatever you trust and already have; if your exports lack timestamps, say which file should win when they conflict.
 
 ### Split when identity differs *(agent duty — not part of your ask)*
 
@@ -246,7 +246,7 @@ If you already answered the buckets in chat:
 
 When the user describes a feature vaguely:
 
-1. Read this file and [`Feature_Understanding_Template.md`](Feature_Understanding_Template.md). If they pointed at `docs/reference/` chat exports, **read those first** — prefer raw threads over polished-only summaries.
+1. Read this file and [`Feature_Understanding_Template.md`](Feature_Understanding_Template.md). If they pointed at `docs/reference/` chat exports, **read those first** — prefer raw threads over polished-only summaries. When exports include **timestamps**, use them to order decisions **across different conversation files**: newer timestamps supersede older ones unless the user says otherwise.
 2. Ask **short, plain-language questions** from the buckets above — not a twenty-question form. Prioritize: identity (is / is not *as a finished feature*), product surface when relevant, and relationship to existing work. Do not put phased or deferred work under **What this is NOT**.
 3. Write or update `-Understanding.md` with status `draft` — **only** What this is / is NOT, Relationship, Assumptions, Confirmed notes. Keep identity-defining user detail **including product-defining surface/architecture**; do not pad into a mini-spec. No How it should work, UI/UX, Visual references, or Done when on Understanding. List gaps in **Assumptions**. Size TODOs for that target shape (agent timescale). On updates: re-check that stem’s TODO vs code/spec; **uncheck** anything that no longer matches; relocate trim overflow into the spec.
 4. Tell the user confirmation is for **shape / guardrails**, not a full spec review. After they confirm, **graduate** durable contract content to the spec (`Feature_Spec_Template.md`) — Decisions, module/API architecture, Acceptance, shared Maturity. Spec may hold detail that was never in Understanding. Do not ask them to remind you to plan ambitiously.

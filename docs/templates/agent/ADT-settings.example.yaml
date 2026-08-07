@@ -6,10 +6,13 @@
 version: 1
 
 # Pack sync behavior — bootstrap / first sync asks once; do not re-ask every update.
-# auto   = apply all changelog-gated live work + refresh installed rules (no mid-sync optionals quiz)
-#          + local post-sync hygiene commits (pack/stamps, then reshape, then TODO ambition when those ran)
-#          Pre-sync dirty tree is still a hard stop (commit YOUR work first) — see TEMPLATE_SYNC_A A0
-# choose = present optionals (reshape, TODO ambition, …) each sync; suggest commits, ask before committing
+# auto     = apply all changelog-gated live work + refresh installed rules (no mid-sync optionals quiz)
+#            + local post-sync hygiene commits (pack/stamps, then reshape, then TODO ambition when those ran)
+#            Still asks once for brand-new unset optional_rules.* (doc-roles, update-check, …)
+#            Pre-sync dirty tree is still a hard stop (commit YOUR work first) — see TEMPLATE_SYNC_A A0
+# auto-all = same as auto, and also enable + install any unset optional_rules.* (never re-enable declined)
+#            New update-check defaults to check_mode: always (no cadence quiz)
+# choose   = present optionals (reshape, TODO ambition, …) each sync; suggest commits, ask before committing
 sync:
   mode: auto
   recorded: 2026-08-06
@@ -89,6 +92,6 @@ upstream:
   # check_mode: interval
   # check_interval_days: 7
   last_checked: 2026-07-16
-  local_pack_version: "2.7.5"
-  # upstream_pack_version: "2.7.5"
+  local_pack_version: "2.7.6"
+  # upstream_pack_version: "2.7.6"
   # update_available: true

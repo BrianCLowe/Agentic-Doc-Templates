@@ -4,7 +4,7 @@
 > Keep agents aligned with your intent across conversations, features, and long-running projects.
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-![Pack](https://img.shields.io/badge/Pack-2.7.5-blue)
+![Pack](https://img.shields.io/badge/Pack-2.7.6-blue)
 ![Built for](https://img.shields.io/badge/Built%20for-Cursor%20%7C%20Grok%20Build%20%7C%20OpenClaw%20%7C%20Claude%20Code-5865F2)
 
 ---
@@ -13,62 +13,60 @@
 
 AI coding agents drift when intent lives only in chat. This pack gives them a small, consistent `docs/` layout:
 
-1. You capture ideas — **recommended:** export chat threads (Grok.com, ChatGPT, …) to markdown and drop them in `docs/reference/` (often many files; they keep whys that polished design docs lose).
+1. You capture ideas — **recommended:** export chat threads (Grok.com, ChatGPT, …) to markdown and drop them in `docs/reference/` (often many files; they keep whys that polished design docs lose). Or talk the idea through with your **coding agent** in the IDE and have it **build or update live docs as you go**.
 2. The **agent drafts** `-Understanding.md` — feature **shape / guardrails**, not a full spec.
-3. **You confirm shape** (especially what it is / is *not* + Assumptions) — not a full-spec sign-off.
-4. After you confirm, work continues from TODOs and specs; session handoff uses **Current focus**.
+3. **You confirm shape** (especially what it is / is *not* + Assumptions) to ensure your spec is built in the shape you expect.
+4. After you confirm, work continues from TODOs and specs. For a single slice: *Continue from Current focus.* For a long run: **orchestrate** — *Orchestrate — clear ready TODOs until blocked.* The parent session loops implement → verify → next milestone without you saying “next” each time. That is the difference between babysitting short focus builds and leaving a multi-hour unattended run that clears a stack of milestones (then a Human-TODO verify map for what to check).
 
-Short asks are enough: *bootstrap*, *draft Understanding for X*, *update the doc templates*. The agent routes to the matching playbook inside `docs/templates/`. Tips: [`docs/templates/help/IDEA_CAPTURE_TIPS.md`](docs/templates/help/IDEA_CAPTURE_TIPS.md).
+Short asks are enough: *bootstrap*, *draft Understanding for X*, *orchestrate*, *update the doc templates*. The agent routes to the matching playbook inside `docs/templates/`. Tips: [`docs/templates/help/IDEA_CAPTURE_TIPS.md`](docs/templates/help/IDEA_CAPTURE_TIPS.md). Orchestrator: [`docs/templates/agent/roles/orchestrator.md`](docs/templates/agent/roles/orchestrator.md).
 
 ---
 
 ## Get started
 
-### Download a release *(simple)*
+Goal: get **`docs/templates/`** into your project, then let the agent create live docs. Deeper notes: [`docs/templates/help/SETUP.md`](docs/templates/help/SETUP.md).
 
-Prefer this if you mainly use the GitHub website:
+### 1. Get the pack *(pick one)*
 
-1. Open [**Releases**](https://github.com/BrianCLowe/Agentic-Doc-Templates/releases) and download **`agentic-doc-templates-X.Y.Z.zip`** (not “Source code”).
-2. Extract into your **project root** so you get `docs/templates/` (replace that folder if it already exists).
-3. Ask your agent to sync live docs (same ask as below).
+| Method | When | What to do |
+|--------|------|------------|
+| **Download release** | Existing project; prefer the GitHub website | Open [**Releases**](https://github.com/BrianCLowe/Agentic-Doc-Templates/releases), download **`agentic-doc-templates-X.Y.Z.zip`** (not “Source code”), extract into your **project root** so you get `docs/templates/` |
+| **Copy `docs/templates/`** *(recommended for existing apps)* | You already have a repo | Clone or browse this repo, copy only **`docs/templates/`** → `your-project/docs/templates/` so pack root files never collide with yours |
+| **Use this template** | Brand-new GitHub repo | Click **Use this template** (green button), clone your new repo. You get the whole pack tree; bootstrap will clean pack-owned root files |
+| **Clone → rename → change remote** | New local app starting from this repo | `git clone` this repo, rename the folder to your app name, `git remote set-url origin <your-repo-url>` (create the empty GitHub repo first if needed). Same whole-repo layout as the template path — bootstrap cleans pack root / Agentic-only `.github/` |
 
-### Existing project *(recommended)*
+After any method you should have **`docs/templates/`** (with `agent/BOOTSTRAP.md` inside). Prefer **copy `docs/templates/` only** into an existing app when you can.
 
-Copy **`docs/templates/`** into your repo as **`your-project/docs/templates/`**, then ask your agent:
+### 2. Bootstrap *(first install)*
+
+Ask your agent:
 
 > Bootstrap modular docs using `docs/templates/agent/BOOTSTRAP.md`.
 
-Human guide: [`docs/templates/help/SETUP.md`](docs/templates/help/SETUP.md).
+That creates the live `docs/` layout (Master Index, `reference/`, feature folders, …). On whole-repo / template installs it also auto-moves this pack’s root README/LICENSE/CONTRIBUTING into `docs/templates/agent/upstream/` when those files are clearly from Agentic Doc Templates, and removes Agentic-only GitHub issue/release config.
 
-### New repository from this template
+### 3. Build live docs from ideas
 
-1. Click **Use this template** (green button).
-2. Ask your agent to bootstrap (it will create the live `docs/` layout and auto-move this pack’s root README/LICENSE/CONTRIBUTING into `docs/templates/agent/upstream/` when those files are clearly from Agentic Doc Templates).
-3. Drop idea **chat exports** (and any design docs) into `docs/reference/`, then review draft Understandings before coding.
+1. Work ideas out in Grok.com / ChatGPT / etc. and **export** threads to markdown ([tips](docs/templates/help/IDEA_CAPTURE_TIPS.md#recommended-export-idea-chats-into-docsreference)).
+2. Drop exports (and any design docs) into **`docs/reference/`**.
+3. Ask: *Build or update the live docs from `docs/reference/`.*
+4. Review draft Understandings before coding.
 
-Prefer **copy `docs/templates/` only** into an existing app so this repo’s root files never collide with yours.
+You can brainstorm before the repo exists — export now, drop into `reference/` after bootstrap.
 
-### Chat UI first *(no repo yet)*
+### 4. Stay current *(later updates)*
 
-Attach only [`docs/templates/chat-ui/AGENT.md`](docs/templates/chat-ui/AGENT.md). Save the exported files into your project later; keep the full brainstorm thread (ideally under `docs/reference/`). See [`docs/templates/chat-ui/README.md`](docs/templates/chat-ui/README.md).
+When this pack improves, do **not** re-bootstrap. Ask:
+
+> Update the doc templates from Agentic Doc Templates and sync our live docs.
+
+The agent refreshes `docs/templates/`, then follows [`CHANGELOG.md`](docs/templates/CHANGELOG.md) for live-doc catch-up. Optional version ping: *Check for template updates.* — [`TEMPLATE_UPDATE_CHECK.md`](docs/templates/agent/TEMPLATE_UPDATE_CHECK.md).
+
+**One-time catch-up:** If your pack is from **before 1.2** (no `agent/TEMPLATE_SYNC.md`), replace `docs/templates/` once from a current release so sync playbooks exist locally.
 
 ### Cursor plugin note
 
 **Compound Engineering** and **Superpowers** often override the modular-docs Cursor rule. Disable them (or their always-on skills) for this workspace if you rely on this pack. Details: [`USING_WITH_AGENTS.md`](docs/templates/help/USING_WITH_AGENTS.md#cursor).
-
----
-
-## Stay current
-
-Once your project has the sync playbooks (`docs/templates/agent/TEMPLATE_SYNC.md` → `_A` / `_B`, added in pack **1.2**; A/B split in **2.6.8**), you do not need to copy files by hand when this repo improves. Ask:
-
-> Update the doc templates from Agentic Doc Templates and sync our live docs.
-
-The agent overwrites the pack (ZIP/copy), then follows [`docs/templates/CHANGELOG.md`](docs/templates/CHANGELOG.md) for what to change in live docs — usually versions and Master Index, not a rewrite of every feature file.
-
-**One-time catch-up:** If your `docs/templates/` is from **before 1.2** (no `agent/TEMPLATE_SYNC.md`), copy or replace that folder from this repo once — or tell the agent to — so the sync instructions exist locally. After that, the ask above is enough.
-
-Version-only ping (optional weekly rule): *Check for template updates.* — [`TEMPLATE_UPDATE_CHECK.md`](docs/templates/agent/TEMPLATE_UPDATE_CHECK.md).
 
 ---
 
@@ -81,7 +79,6 @@ Everything ships under **`docs/templates/`**. Live project docs stay at `docs/` 
 | **Scaffolds** | Master Index, Understanding, Spec, TODO, Tooling, Human-TODO, Decision templates |
 | **[`help/`](docs/templates/help/)** | Human guides — [SETUP](docs/templates/help/SETUP.md), [USAGE](docs/templates/help/USAGE.md), [IDEA_CAPTURE_TIPS](docs/templates/help/IDEA_CAPTURE_TIPS.md), [USING_WITH_AGENTS](docs/templates/help/USING_WITH_AGENTS.md) |
 | **[`agent/`](docs/templates/agent/)** | [`Modular_Docs_Workflow.md`](docs/templates/agent/Modular_Docs_Workflow.md), bootstrap, [`RULE_INSTALL`](docs/templates/agent/RULE_INSTALL.md) → per-tool [`tools/`](docs/templates/agent/tools/README.md), template sync; optional [`roles/`](docs/templates/agent/roles/README.md) (Cursor/Grok subagents — never always-on) |
-| **[`chat-ui/`](docs/templates/chat-ui/)** | Short instructions for Grok/ChatGPT (no workspace) |
 | **[`VERSION`](docs/templates/VERSION)** / **[`CHANGELOG.md`](docs/templates/CHANGELOG.md)** | Cheap upstream compare + sync scope after a pack refresh |
 
 ---
@@ -128,7 +125,7 @@ Deeper day-to-day patterns: [`docs/templates/help/USAGE.md`](docs/templates/help
 - *Orchestrate — clear ready TODOs until blocked.* *(parent-session loop: implement → verify → next)*
 - *Update the doc templates from Agentic Doc Templates and sync our live docs.*
 - *Check for template updates.*
-- *Follow `chat-ui/AGENT.md` — turn our conversation into modular docs with Save-as paths.*
+- *Build or update the live docs from `docs/reference/`.*
 
 More: [`USAGE.md`](docs/templates/help/USAGE.md).
 

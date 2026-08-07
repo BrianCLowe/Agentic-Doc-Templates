@@ -1,6 +1,6 @@
 # Template pack changelog
 
-> **Agents:** After [`agent/TEMPLATE_SYNC_A.md`](agent/TEMPLATE_SYNC_A.md), open [`agent/TEMPLATE_SYNC_B.md`](agent/TEMPLATE_SYNC_B.md) and read **only the top entry** below. Follow its **Live impact** tags and **Step B** line — do not invent a broader audit.
+> **Agents:** After [`agent/TEMPLATE_SYNC_A.md`](agent/TEMPLATE_SYNC_A.md), open [`agent/TEMPLATE_SYNC_B.md`](agent/TEMPLATE_SYNC_B.md). Select catch-up entries from **from** → **to** (B0 Catch-up) — not top-only on version jumps. **Union** Live impact tags; skim Step B lines for one-shots; do not invent a broader audit.
 >
 > **Maintainers:** Every `VERSION` bump must update this file in the same commit (newest entry on top). Keep bullets brief. When editing agent playbooks, write for thorough “off-road” models — explicit scope gates and Do-not lists, not open “as needed” language (see root [`CONTRIBUTING.md`](../../CONTRIBUTING.md)).
 
@@ -11,13 +11,29 @@
 | `versions-only` | Bump **Pack version** in live Master Index; stop |
 | `master-index` | Adopt structural deltas in live `Master_Index.md` (headings, Key Locations, Document Map columns) |
 | `content-templates` | Add *missing* sections/structure from content templates into live Understanding / Spec / TODO / Tooling / Human-TODO — **not** trim/remove (see `optional-live-reshape`) |
-| `optional-live-reshape` | Live Understanding → shape trim + relocate into specs (Workflow §4). **`sync.mode: auto`:** run all Document Map stems. **`choose`:** present + ask once (default yes). Do **not** silent-skip under choose |
-| `optional-todo-ambition` | Live TODO ambition pass (agent timescale). **`auto`:** all Document Map `*-TODO.md`. **`choose`:** present + ask once. Do not invent work |
+| `optional-live-reshape` | Live Understanding → shape trim + relocate into specs (Workflow §4). **`auto` / `auto-all`:** run all Document Map stems. **`choose`:** present + ask once (default yes). Do **not** silent-skip under choose |
+| `optional-todo-ambition` | Live TODO ambition pass (agent timescale). **`auto` / `auto-all`:** all Document Map `*-TODO.md`. **`choose`:** present + ask once. Do not invent work |
 | `rules` | Refresh installed agent rules/adapters from local pack (**no ask** unless tool has `customized: true`) |
 | `optional-upstream-check` | Stamp `upstream:` in `docs/ADT-settings.yaml` / offer enable update-check if unset |
 | `process-docs-only` | Pack process/help/agent docs only — no live feature/shared content scan |
 
 ---
+
+## 2.7.6
+
+- **Live impact:** `versions-only`, `master-index`, `rules`, `content-templates`, `optional-live-reshape`, `optional-todo-ambition`
+- **Files:**
+  - `VERSION` — 2.7.5 → 2.7.6
+  - `agent/TEMPLATE_SYNC_B.md` — **Catch-up:** on version jumps, union Live impact tags from all `##` entries with **from** < version ≤ **to** (not top-only); `process-docs-only` on a newer entry does not cancel live passes from skipped releases; bump Pack version once to **to**. **`sync.mode: auto-all`** — same as `auto` plus enable + install unset `optional_rules.*` (never re-enable `declined`; new update-check defaults `check_mode: always`)
+  - `agent/ADT-settings.example.yaml`, `BOOTSTRAP.md` Step 4d, `RULE_INSTALL.md`, `TEMPLATE_SYNC_A.md`, help USAGE / USING_WITH_AGENTS — `auto-all` documented
+  - `agent/roles/template-sync.md` + cursor/grok adapters — catch-up union + `auto-all`
+  - `help/IDEA_CAPTURE_TIPS.md`, `help/USAGE.md` — AI Exporter tip: timestamps so agents can order which decisions are newer across different conversation exports
+  - root `README.md`, `help/SETUP.md`, `help/USAGE.md`, `help/USING_WITH_AGENTS.md`, Workflow, tools — **pause chat-ui attach-AGENT.md path**; recommend export → `docs/reference/` instead; remove `chat-ui/AGENT.md`
+  - `chat-ui/README.md` — stub pointing at export habit (former AGENT.md instructions removed until fixed)
+  - root `README.md`, `help/SETUP.md` — Get started: acquisition methods (download / copy / template / clone-rename-remote) then bootstrap → build from reference → sync; not “download then sync” as first install
+  - `CHANGELOG.md` — agent header catch-up language; this entry
+  - stamps: Master Index / Workflow / ADT-settings example / root README
+- **Step B:** Bump Master Index **Pack version** to 2.7.6. Refresh installed modular rules / template-sync adapters (sync catch-up playbook; include timescale if missing). **Missed-pass recovery** *(projects that jumped while sync was top-entry-only may lack expected shapes):* (1) `master-index` — adopt missing Key Locations / Document Map columns / At a Glance deltas (Catalog column, `ADT-settings.yaml` row, chat-export tip, etc.). (2) `content-templates` — add *missing* Understanding / Spec / TODO / Tooling / Human-TODO structure only (not trim). (3) **`optional-live-reshape`:** Workflow §4 shape — present/execute per `sync.mode` (same as 2.6.8); decline if already reshaped. (4) **`optional-todo-ambition`:** present/execute per `sync.mode` (same as 2.7.1); decline if already done. Under **`choose`:** ask once per optional pass. Under **`auto` / `auto-all`:** run all Document Map stems for tagged passes (mostly idempotent). If `sync.mode` unset → offer `auto` / `auto-all` / `choose` (B0.2). Under **`auto-all`:** also enable + install any unset pack optionals. Do not invent work beyond these tags.
 
 ## 2.7.5
 

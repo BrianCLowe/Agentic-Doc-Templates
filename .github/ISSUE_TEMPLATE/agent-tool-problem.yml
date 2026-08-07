@@ -56,7 +56,7 @@ body:
       options:
         - Yes — full pack
         - Yes — partial / outdated
-        - Chat UI only (AGENT.md)
+        - Chat exports in docs/reference/ only
         - Not sure
     validations:
       required: true
@@ -72,7 +72,7 @@ body:
     id: prompt
     attributes:
       label: Prompt or rule that was in play (optional)
-      description: Rough prompt text, or whether Modular_Documentation_Rule / chat-ui AGENT.md was loaded
+      description: Rough prompt text, or whether Modular_Documentation_Rule / reference exports were in play
       render: markdown
 
   - type: dropdown

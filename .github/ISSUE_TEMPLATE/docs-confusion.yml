@@ -21,7 +21,7 @@ body:
         - docs/templates/agent/BOOTSTRAP.md
         - docs/templates/agent/TEMPLATE_SYNC.md
         - docs/templates/agent/RULE_INSTALL.md
-        - chat-ui/README.md or AGENT.md
+        - chat-ui/README.md (paused stub) / IDEA_CAPTURE_TIPS export
         - CONTRIBUTING.md
         - Other / not sure
     validations:

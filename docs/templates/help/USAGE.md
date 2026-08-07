@@ -13,26 +13,29 @@ Day-to-day workflows after setup. First-time install: [`SETUP.md`](SETUP.md). De
 
 ### Recommended practice — chat exports in `reference/`
 
-Work ideas out in chat (Grok.com, ChatGPT, …), **export** threads to markdown, and drop them in **`docs/reference/`** — often many files as you explore different aspects. That raw trail keeps **whys and motives** that polished design docs often lose. Then ask the agent to draft Understandings from those files. Details: [Recommended: export idea chats](IDEA_CAPTURE_TIPS.md#recommended-export-idea-chats-into-docsreference). Optional helper: [AI Exporter](https://saveai.net/) (Markdown preferred; not required).
+Work ideas out in chat (Grok.com, ChatGPT, …), **export** threads to markdown, and drop them in **`docs/reference/`** — often many files as you explore different aspects. That raw trail keeps **whys and motives** that polished design docs often lose. Then ask the agent to draft Understandings from those files. Details: [Recommended: export idea chats](IDEA_CAPTURE_TIPS.md#recommended-export-idea-chats-into-docsreference). Optional helper: [AI Exporter](https://saveai.net/) (Markdown + **timestamps** so agents can tell which decisions are newer **across** different conversation exports; not required).
 
 Short asks are enough. Prefer full messy exports over a cleaned summary when you have them.
 
 ---
 
-## Pattern 1 — Long chat → documentation
+## Pattern 1 — Long chat → documentation *(via export)*
 
-**When:** Brainstorming in Grok, ChatGPT, Claude web, etc. — no repo yet, or you will export into the repo next.
+**When:** Brainstorming in Grok, ChatGPT, Claude web, etc.
 
-1. Attach **`docs/templates/chat-ui/AGENT.md`** only ([`chat-ui/README.md`](../chat-ui/README.md)).
-2. Ask for **Save as:** paths per file; draft `-Understanding.md` first.
+1. **Export** the thread(s) to markdown (keep the full messy conversation).
+2. After the project has `docs/reference/` (bootstrap creates it), drop the exports there.
+3. Ask:
 
-> Follow `AGENT.md`. Turn our conversation into modular docs for [app name]. Each file must start with **Save as:** `docs/...`.
+> Build or update the live docs from `docs/reference/`.
 
-With a repo/IDE: put `docs/templates/` in the project (or connect the repo), then:
+Do **not** attach a chat-only `AGENT.md` in the web UI for this pack right now — that path is paused; export is the supported route ([`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md#recommended-export-idea-chats-into-docsreference)).
+
+With an IDE already open on the repo, you can also say:
 
 > Using `docs/templates/`, create project documentation from our conversation so far. Do not invent features we did not talk about.
 
-Your job is to correct wrong **identity** assumptions — not to write Understanding from scratch. When moving into the IDE, bring the **entire** brainstorm thread (see tip above).
+Your job is to correct wrong **identity** assumptions — not to write Understanding from scratch.
 
 ---
 
@@ -118,7 +121,7 @@ Anything only you can close → `docs/Human-TODO.md`: procure, playtest/feel, de
 
 | Goal | Say something like |
 |------|-------------------|
-| Chat → docs | *Create modular docs from our conversation using `docs/templates/`.* |
+| Chat → docs | *Build or update the live docs from `docs/reference/`.* *(export threads there first)* |
 | New idea | *Add [idea] to the docs — draft Understanding + TODO; I'll review.* |
 | Fix misunderstanding | *Update [Feature]-Understanding.md — especially What this is NOT.* |
 | UI screenshot | *Save to `docs/features/assets/`, add Visual references on the **spec** (similar vs different).* |
@@ -128,7 +131,7 @@ Anything only you can close → `docs/Human-TODO.md`: procure, playtest/feel, de
 | Bootstrap | *Bootstrap modular docs using `docs/templates/agent/BOOTSTRAP.md`.* |
 | Install rule | *Follow `docs/templates/agent/RULE_INSTALL.md` for [tool].* |
 | Sync pack | *Update the doc templates from Agentic Doc Templates and sync our live docs.* |
-| Sync mode | *Set sync to auto.* / *Set sync to choose.* *(recorded in `docs/ADT-settings.yaml`)* |
+| Sync mode | *Set sync to auto.* / *Set sync to auto-all.* / *Set sync to choose.* *(recorded in `docs/ADT-settings.yaml`)* |
 | Update-check cadence | *Check for template updates every session.* / *Only check every week.* |
 | Optional role — intent | *Draft Understanding for [Feature] from what I said — I’ll review.* (main agent delegates if subagents installed) |
 | Optional role — build | *Continue from Current focus.* *(single slice)* |
