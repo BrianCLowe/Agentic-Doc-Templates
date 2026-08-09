@@ -142,6 +142,7 @@ Anything only you can close → `docs/Human-TODO.md`: procure, playtest/feel, de
 | Optional role — orchestrate | *Orchestrate — clear ready TODOs until blocked.* *(parent loop; git from `orchestrator.git.mode` — branch-pr / branch-pr-squash / …; close-out: build-verify → todo-warden → optional squash → mark ready; Human-TODO verify map)* |
 | Optional role — todo warden | *Todo warden — reconcile TODOs vs what shipped.* *(docs-only; hard caps; no invention)* |
 | Set orchestrator git | *Set orchestrator git to branch-pr* / *branch-pr-squash* / *current-push* / *local* |
+| Standing workflow note | *Add standing note: always squash before mark ready.* / *From now on, don’t open draft PRs until verify is green.* *(agent should save without being asked twice)* |
 | Optional role — verify | *Verify that unit against Understanding and the spec.* |
 | Optional role — graduate | *Understanding confirmed — graduate to the spec.* |
 | Force a subagent | `/understanding-author` … *(optional; usually unnecessary)* |

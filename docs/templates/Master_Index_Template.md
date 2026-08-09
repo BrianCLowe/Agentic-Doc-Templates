@@ -1,4 +1,4 @@
-<!-- pack-version: 2.7.11 -->
+<!-- pack-version: 2.7.12 -->
 
 > **Template reference.** Do not put project-specific content in this file. Copy to `docs/Master_Index.md` for initial setup, or diff against it when syncing template improvements into the live index. Never edit this template unless the user asks you to.
 >
@@ -8,7 +8,7 @@
 
 **Purpose**: Single entry point for **this project's** documentation — overview, locations, and Document Map. Read only the files relevant to the current task.
 
-**Pack version**: 2.7.11 *(from [`templates/VERSION`](templates/VERSION) — update on sync)*
+**Pack version**: 2.7.12 *(from [`templates/VERSION`](templates/VERSION) — update on sync)*
 
 ## 1. Project Overview
 
@@ -42,7 +42,7 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 | `docs/Human-TODO.md` | Human inbox — procure, playtest, decide, waiting (agent cannot close from assumptions) ([`Human_TODO_Template.md`](templates/Human_TODO_Template.md)) |
 | `docs/decisions/` | Optional cross-cutting decisions ([`Decision_Template.md`](templates/Decision_Template.md)) |
 | `docs/templates/` | Upstream template pack — scaffolds, `help/`, `agent/` (incl. [`Modular_Docs_Workflow.md`](templates/agent/Modular_Docs_Workflow.md), optional [`roles/`](templates/agent/roles/README.md), per-tool [`tools/`](templates/agent/tools/README.md)); also [`VERSION`](templates/VERSION) and [`CHANGELOG.md`](templates/CHANGELOG.md) (Step B scope after sync) |
-| `docs/ADT-settings.yaml` | Pack preferences — **docs profile**, **orchestrator git** mode, sync mode, tools, optionals, upstream stamps ([`ADT-settings.example.yaml`](templates/agent/ADT-settings.example.yaml); Workflow [§0.1](templates/agent/Modular_Docs_Workflow.md#01-docs-profile-ceremony-modes); [orchestrator Git](templates/agent/roles/orchestrator.md)) |
+| `docs/ADT-settings.yaml` | Pack preferences — **docs profile**, **orchestrator git**, **standing.instructions** (freeform process prefs), sync mode, tools, optionals, upstream stamps ([`ADT-settings.example.yaml`](templates/agent/ADT-settings.example.yaml); Workflow [§0.1](templates/agent/Modular_Docs_Workflow.md#01-docs-profile-ceremony-modes) · [§0.2](templates/agent/Modular_Docs_Workflow.md#02-standing-workflow-instructions-user-workflow-not-pack-enums); [orchestrator Git](templates/agent/roles/orchestrator.md)) |
 | `src/` / `backend/` / `frontend/` | Actual code (reference only) |
 
 ### 2.2 At a Glance *(policy summary — full rules in Workflow)*

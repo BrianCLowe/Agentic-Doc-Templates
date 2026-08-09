@@ -222,7 +222,11 @@ Explain: optional Understanding author, implementer, work verifier, etc. as harn
 
 **After they pick a git mode** → run **Forge tooling probe** ([`roles/orchestrator-git.md`](roles/orchestrator-git.md)): infer forge from remote; if **`branch-pr` / `branch-pr-squash`** and CLI missing → **ask to install**; if CLI present but not logged in (or just installed) → **ask to start auth** (install ≠ ready for PRs). Fall back to push + human PR / switch mode if they decline. Do not silent-install or silent-login.
 
-Explicit later (any preference): *Set docs profile to …* / *Set sync to …* / *Set orchestrator git to …* / enable-decline optionals.
+### Optional — standing workflow notes *(not a mandatory quiz row)*
+
+After recording A–E, **one optional line** is enough: *“Any standing workflow notes to save in `docs/ADT-settings.yaml` (agent process prefs the enums don’t cover)?”* Skip on no / defaults / silence. Do **not** invent bullets. Primary path is **lookout capture** later (Workflow §0.2): when they state always/never prefs that oppose pack defaults, append `standing.instructions` same turn.
+
+Explicit later (any preference): *Set docs profile to …* / *Set sync to …* / *Set orchestrator git to …* / *Add standing note: …* / enable-decline optionals.
 
 ## Step 3d — Create files for every Document Map row *(mandatory)*
 

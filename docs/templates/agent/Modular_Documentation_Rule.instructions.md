@@ -55,8 +55,13 @@ When an ask matches a row below, look for a **named agent file** with that filen
 | **`ship-first`** | Spec + core TODO | No Understanding gate; implement from TODO + thin spec |
 If `docs_profile` is unset at bootstrap / first build-from-reference / sync: suggest once from `docs/reference/` (cite 2–3 snippets) → ask → record. Never silent-downgrade a project full of Understandings.
 
+**Standing workflow** *(read `docs/ADT-settings.yaml` → `standing.instructions` when present — Workflow §0.2)*:
+- Non-empty bullets = durable **agent process / pack workflow** prefs. Apply after hard safety + this-turn user ask; before pack defaults.
+- **LOOKOUT (every turn):** user states a lasting pref that **opposes pack defaults**, corrects how you just worked, or says always/never/from now on about **process** (git/PR/ceremony/verify/re-ask) → **same turn** set the first-class ADT-settings key if one fits, else **append** a short bullet under `standing.instructions` and say you saved it. Do not wait for wrap-up.
+- Product/UI prefs for one stem → spec **Decisions** (§10), not standing. One-off “just this run” → do not write standing. Never invent standing notes.
+
 **Session default** *(implement / continue when ready under docs profile and scope unchanged)*:
-1. Read `docs_profile` if present; read `docs/Master_Index.md` Sections 1–3.
+1. Read `docs_profile` if present; read non-empty `standing.instructions`; read `docs/Master_Index.md` Sections 1–3.
 2. Open the active TODO — read **Current focus** first (Workflow §5.1):
    - Shared foundation → `_shared/ComponentName-TODO.md`
    - Feature work → `features/FeatureName-TODO.md`
@@ -66,7 +71,7 @@ If `docs_profile` is unset at bootstrap / first build-from-reference / sync: sug
 5. If the user asks to install tooling: follow **`docs/Tooling.md`** (Workflow §11) — Required (+ skills if listed); Optional only if asked; verify all; ask before admin/large SDKs.
 6. If work needs a **human** (procure, playtest/feel, decide/sign-off, or external waiting): **dual-write** in the same edit — owner `*-TODO.md` item **and** an Open row on **`docs/Human-TODO.md`** (Workflow §13). Never store secrets in docs. Do not bury human asks only in feature TODOs.
 
-**Open `Modular_Docs_Workflow.md` only when:** creating files (§0 / §0.1), choosing Path A vs Path B, graduating Understanding → spec, docs-profile questions, or the user asks about procedure. Do **not** re-read the full Workflow every turn.
+**Open `Modular_Docs_Workflow.md` only when:** creating files (§0 / §0.1), choosing Path A vs Path B, graduating Understanding → spec, docs-profile or standing-capture questions (§0.2), or the user asks about procedure. Do **not** re-read the full Workflow every turn.
 
 **Shared foundation (critical):**
 - **Do not invent `_shared/` docs.** Only add §3.1 / `_shared/` when a **project-owned** piece is (or will be) used by **two or more features**, or the user named it as shared. Empty `_shared/` / empty §3.1 is fine. Never park engine/framework primers (e.g. generic Unreal notes) in `_shared/` because nothing else fit — use `features/` or `docs/reference/` (Workflow §1).
@@ -97,8 +102,8 @@ If `docs_profile` is unset at bootstrap / first build-from-reference / sync: sug
 **After changes (mandatory):**
 - **Build & verify** on code changes before “you can test” (`docs/Tooling.md` Project verify / stack defaults — `Agent_Build_Verify_Rule`).
 - Update **Current focus** + `-TODO.md` (`[x]` + date). Human-TODO feedback → sync owner + Human-TODO Done (§13); never mark human rows from assumptions.
-- Update Understanding/spec **only if this session** changed shape/contract. Preference corrections → same-turn Decisions + fix stale Behavior/Acceptance/Visual (§10). Understanding update → relocate + TODO uncheck (§4). No session-start full reconcile.
+- Update Understanding/spec **only if this session** changed shape/contract. Preference corrections → same-turn Decisions + fix stale Behavior/Acceptance/Visual (§10). **Pack/process prefs that oppose defaults** → same-turn standing or first-class ADT-settings key (§0.2). Understanding update → relocate + TODO uncheck (§4). No session-start full reconcile.
 
 **Clarification** (*review spec* / *gaps* / *confidence* for a **named** stem): re-read **that** stem only; ≤5 questions; wait for confirm; no unrelated stems.
 
-**Philosophy:** Small accurate docs; short asks → one playbook; tight scope = paved path (not alternate audits). Not: human-sprint interim arch when shape is clear · library checklist = product done · ignore open operable Acceptance. Mermaid only when it beats prose (§12). TODO Current focus = agent memory; Human-TODO = human inbox.
+**Philosophy:** Small accurate docs; short asks → one playbook; tight scope = paved path (not alternate audits). User workflow notes stick via standing (§0.2). Not: human-sprint interim arch when shape is clear · library checklist = product done · ignore open operable Acceptance · let process prefs die with the chat. Mermaid only when it beats prose (§12). TODO Current focus = agent memory; Human-TODO = human inbox.

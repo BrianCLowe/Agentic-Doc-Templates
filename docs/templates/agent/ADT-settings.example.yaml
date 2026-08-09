@@ -48,6 +48,26 @@ orchestrator:
     recorded: 2026-08-08
     # source: user | agent-suggested
 
+# Freeform durable workflow prefs the pack does not encode as enums (or not yet).
+# Lives under docs/ — TEMPLATE_SYNC never overwrites this block.
+# Agents: read with docs_profile / orchestrator.git on feature + orchestrate paths (Workflow §0.2).
+# Apply unless they conflict with hard pack safety (dirty-tree hard stop, no silent current-push,
+# no force-push / protected-main surprises). This-turn user instructions always win over standing.
+#
+# LOOKOUT (mandatory): when the user states a lasting preference that opposes pack defaults or
+# corrects agent process (“always…”, “never…”, “from now on…”, “don’t open draft PRs…”,
+# “squash before review…”) → same turn append a short bullet here and say you saved it.
+# Prefer first-class keys when they exist (docs_profile, orchestrator.git.mode, sync.mode).
+# Product/UI prefs for one stem → that stem’s spec Decisions (Workflow §10), not here.
+# Do not invent. Empty / missing block = no ceremony.
+standing:
+  instructions: |
+    # Examples only — delete and write your own (one bullet per durable preference):
+    # - When using draft PRs, squash to one commit before mark ready
+    # - Prefer docker compose verify over host npm for this repo
+  # recorded: 2026-08-09
+  # source: user
+
 # One entry per tool. Status: installed | declined
 # Do not ask again for a tool when status is installed or declined
 # unless the user explicitly requests install/reinstall for that tool.
@@ -123,6 +143,6 @@ upstream:
   # check_mode: interval
   # check_interval_days: 7
   last_checked: 2026-07-16
-  local_pack_version: "2.7.11"
-  # upstream_pack_version: "2.7.11"
+  local_pack_version: "2.7.12"
+  # upstream_pack_version: "2.7.12"
   # update_available: true

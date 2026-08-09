@@ -20,6 +20,19 @@
 
 ---
 
+## 2.7.12
+
+- **Live impact:** `versions-only`, `master-index`, `rules`, `process-docs-only`
+- **Files:**
+  - `VERSION` — 2.7.11 → 2.7.12
+  - `agent/ADT-settings.example.yaml` — **`standing.instructions`** freeform durable process prefs (survives sync)
+  - `agent/Modular_Docs_Workflow.md` — **§0.2** standing instructions: precedence, **LOOKOUT** same-turn capture when user opposes pack defaults, Decisions cross-ref
+  - `agent/Modular_Documentation_Rule.mdc` / `.instructions.md` — always-on standing read + lookout; after-changes capture
+  - `agent/BOOTSTRAP.md` — optional post-3p standing line (not a mandatory quiz)
+  - `agent/roles/orchestrator.md`, `feature-implementer.md` — read standing; capture process prefs mid-run
+  - `Master_Index_Template.md`, `help/USING_WITH_AGENTS.md`, `help/USAGE.md`, root README — stamps / expectations
+- **Step B:** Bump Master Index **Pack version** to 2.7.12. Adopt Key Locations wording for `standing.instructions` if present. Refresh installed modular rules (**no ask** unless `customized: true`). Do **not** invent standing content on consumer projects. No live feature/shared content scan.
+
 ## 2.7.11
 
 - **Live impact:** `versions-only`, `process-docs-only`

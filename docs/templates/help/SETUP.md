@@ -53,7 +53,7 @@ docs/
 ├── Master_Index.md              ← project map (you maintain)
 ├── Tooling.md                   ← machine tools (not package deps)
 ├── Human-TODO.md                ← human inbox (procure, playtest, decide, waiting)
-├── ADT-settings.yaml            ← pack prefs (tools, optionals, sync mode, upstream)
+├── ADT-settings.yaml            ← pack prefs (profile, git, standing notes, tools, optionals, sync, upstream)
 ├── reference/                   ← design docs, chat exports, PRDs, legacy specs
 │   └── visuals/                 ← optional inspiration screenshots
 ├── _shared/ + assets/

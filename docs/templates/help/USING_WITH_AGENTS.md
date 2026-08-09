@@ -34,15 +34,16 @@ The modular rule guards itself: *"If `docs/Master_Index.md` does not exist, igno
 
 | Extra | What | Where |
 |-------|------|--------|
-| **Project prefs (batch)** | Docs profile, update-check, doc-roles, sync mode, orchestrator git — **one** bootstrap ask | Bootstrap **Step 3p** · live keys in [`docs/ADT-settings.yaml`](../agent/ADT-settings.example.yaml) |
+| **Project prefs (batch)** | Docs profile, update-check, doc-roles, sync mode, orchestrator git — **one** bootstrap ask; standing notes optional | Bootstrap **Step 3p** · live keys in [`docs/ADT-settings.yaml`](../agent/ADT-settings.example.yaml) |
 | **Docs profile** | `prevent` (default: Understanding + confirm), `balanced` (Understanding when identity fuzzy), `ship-first` (Spec+TODO only) | Workflow [§0.1](../agent/Modular_Docs_Workflow.md#01-docs-profile-ceremony-modes) · `docs_profile` |
+| **Standing instructions** | Freeform durable **agent process** prefs (opposes pack defaults / always-never workflow). Agents **lookout-capture** same turn | Workflow [§0.2](../agent/Modular_Docs_Workflow.md#02-standing-workflow-instructions-user-workflow-not-pack-enums) · `standing.instructions` |
 | Template update check | Upstream `VERSION` ping — default every session; interval optional | Step 3p · [`../agent/TEMPLATE_UPDATE_CHECK.md`](../agent/TEMPLATE_UPDATE_CHECK.md) |
 | Doc roles | Understanding author, implementer, work verifier, … | Step 3p · [`../agent/roles/README.md`](../agent/roles/README.md) — Cursor → `.cursor/agents/`; Grok Build → `.grok/agents/` |
 | Orchestrator | Parent-only backlog loop (implement → verify → next); readiness follows docs profile | [`../agent/roles/orchestrator.md`](../agent/roles/orchestrator.md) — **not** installed as a harness subagent |
 | **Orchestrator git** | `local` · `branch-pr` · `branch-pr-squash` · `branch-push` · `current-push` · `none` — ask if unset; forge probe on pick | Step 3p / B0.6 · [`orchestrator-git.md`](../agent/roles/orchestrator-git.md) |
 | Sync mode | `auto` / `auto-all` / `choose` — dirty tree before sync still hard-stops; **git mode still asked** under auto-all if unset | Step 3p · `sync.mode` |
 
-Parent agents **orchestrate** role delegation when asks match; `/` commands are optional. Role playbooks stay under `roles/*.md` — never paste them into always-on rules. *Orchestrate / drive the backlog* stays in the parent session and dispatches leaf workers. Settings live in **`docs/ADT-settings.yaml`** (docs profile, orchestrator git, tools, optionals, sync mode, upstream stamps).
+Parent agents **orchestrate** role delegation when asks match; `/` commands are optional. Role playbooks stay under `roles/*.md` — never paste them into always-on rules. *Orchestrate / drive the backlog* stays in the parent session and dispatches leaf workers. Settings live in **`docs/ADT-settings.yaml`** (docs profile, orchestrator git, **standing.instructions**, tools, optionals, sync mode, upstream stamps).
 
 ## Cursor conflict note
 
@@ -65,6 +66,7 @@ OpenClaw loads workspace bootstrap files (especially `AGENTS.md`), not `.cursor/
 | Agent plans at human sprint size | Core timescale rule pushes **target architecture** cuts; still not guaranteed every session |
 | Agent says “you can test” but build is red | Core **build-verify** rule — fill Tooling **Project verify**; agent must run/fix before handoff |
 | Preference polish sticks across sessions | Rule captures lasting UI choices into spec **Decisions** same turn (no wrap-up ask needed) |
+| Process prefs that fight pack defaults stick | Agents lookout-capture into `standing.instructions` (or first-class keys) same turn — Workflow §0.2 |
 | Same behavior across tools | Similar, not identical |
 | Rules affect inline autocomplete | Generally **no** — chat/agent sessions only |
 

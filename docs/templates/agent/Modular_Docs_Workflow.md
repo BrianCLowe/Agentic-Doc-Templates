@@ -1,12 +1,12 @@
-<!-- pack-version: 2.7.11 -->
+<!-- pack-version: 2.7.12 -->
 
 > **Agent workflow reference.** Canonical instructions for how to work the modular doc system. Lives in `docs/templates/agent/` with the other agent playbooks — sync from upstream; do **not** copy wholesale into `docs/Master_Index.md`. The live index links here; agent rules summarize and point here for full procedure.
 
 # Modular Documentation — Agent Workflow
 
-**Pack version**: 2.7.11 *(same as `docs/templates/VERSION` / live Master Index **Pack version**)*
+**Pack version**: 2.7.12 *(same as `docs/templates/VERSION` / live Master Index **Pack version**)*
 
-**Design intent:** Short user asks → **one** playbook (`BOOTSTRAP`, `TEMPLATE_SYNC`, `TEMPLATE_UPDATE_CHECK`, `RULE_INSTALL` → `tools/<key>.md`, roles, or this file for feature procedure). Do not scan the pack catalog. **Tight scope** = paved path only (not “audit every alternate”). **Timescale** = target architecture when shape is clear ([`Agent_Timescale_Planning_Rule.mdc`](Agent_Timescale_Planning_Rule.mdc)). **Operable done** = user-facing stems need an exercise path / phase / library-only — not domain checklist alone (**§5.3**). **Build green** before “you can test” ([`Agent_Build_Verify_Rule.mdc`](Agent_Build_Verify_Rule.mdc)).
+**Design intent:** Short user asks → **one** playbook (`BOOTSTRAP`, `TEMPLATE_SYNC`, `TEMPLATE_UPDATE_CHECK`, `RULE_INSTALL` → `tools/<key>.md`, roles, or this file for feature procedure). Do not scan the pack catalog. **Tight scope** = paved path only (not “audit every alternate”). **Timescale** = target architecture when shape is clear ([`Agent_Timescale_Planning_Rule.mdc`](Agent_Timescale_Planning_Rule.mdc)). **Operable done** = user-facing stems need an exercise path / phase / library-only — not domain checklist alone (**§5.3**). **Build green** before “you can test” ([`Agent_Build_Verify_Rule.mdc`](Agent_Build_Verify_Rule.mdc)). **User workflow wins where safe** — freeform standing notes + same-turn capture when prefs oppose pack defaults (**§0.2**).
 
 **Docs profile:** `docs/ADT-settings.yaml` → `docs_profile.mode` — **`prevent`** (default if unset) · **`balanced`** · **`ship-first`**. Full rules **§0.1**. Never silent-downgrade a project full of Understandings.
 
@@ -14,10 +14,10 @@
 
 **Read order (feature / shared work):**
 
-1. `docs/ADT-settings.yaml` → `docs_profile.mode` when present (else **prevent**)
+1. `docs/ADT-settings.yaml` → `docs_profile.mode` when present (else **prevent**); `orchestrator.git.mode` when relevant; **`standing.instructions` if non-empty** (§0.2)
 2. [`Master_Index.md`](../../Master_Index.md) — project context + Document Map (Sections 1–3)
 3. Active TODO **Current focus** + that item’s Understanding *(if any)* / spec
-4. This file — only when creating files, choosing Path A/B, graduating Understanding, or the user asks about procedure
+4. This file — only when creating files, choosing Path A/B, graduating Understanding, standing capture questions, or the user asks about procedure
 
 ---
 
@@ -55,6 +55,55 @@
 | *Lock shape for [Stem]* (any mode) | Draft/update that stem’s Understanding and use the draft gate for **that stem** |
 
 **Orchestrator / implementer readiness** — see [`roles/orchestrator.md`](roles/orchestrator.md) and §3. Work-verifier always checks **spec + TODO**; Understanding only when the file exists or mode is prevent/balanced with a shape file.
+
+---
+
+## 0.2 Standing workflow instructions *(user workflow, not pack enums)*
+
+**Live setting:** `docs/ADT-settings.yaml` → `standing.instructions` (YAML multi-line string). Example: [`ADT-settings.example.yaml`](ADT-settings.example.yaml).
+
+**Why:** Pack enums (`docs_profile`, `orchestrator.git.mode`, `sync.mode`, …) cover known forks. Freeform standing notes cover the long tail so user workflow does not die with the chat — e.g. “squash before mark ready” before that was a first-class mode.
+
+| Prefer | Use for |
+|--------|---------|
+| **First-class ADT-settings key** | When an enum/key already exists — set `docs_profile` / `orchestrator.git.mode` / `sync.mode` / optionals (do **not** only put it in standing) |
+| **`standing.instructions`** | Lasting **agent process / pack ceremony / delivery** prefs with no key yet, or finer tweaks enums do not express |
+| **Spec Decisions (§10)** | Product/UI/interaction prefs for **one stem** (could be “improved away”) |
+| **This-turn only** | One-off overrides the user does **not** want durable — apply now; **do not** write standing |
+
+**Precedence (highest wins):**
+
+1. Hard pack **safety** (dirty-tree hard stop before sync; no silent `current-push`; no force-push / protected-main surprises; no secrets in docs)
+2. **This-turn** explicit user instruction
+3. **`standing.instructions`** (when non-empty)
+4. Structured ADT-settings enums + pack defaults
+
+**Read:** On feature / implement / orchestrate paths, if `standing.instructions` is present and non-empty (ignore comment-only example lines), treat bullets as durable project prefs. Empty / missing = no ceremony — do not invent content.
+
+### LOOKOUT — same-turn capture *(mandatory)*
+
+Be on the lookout every turn. When the user states a **lasting** preference that **opposes pack defaults**, **corrects how the agent just worked**, or says **always / never / from now on / prefer / don’t** about **agent process** (git delivery, PR readiness, ceremony, verify style, “don’t re-ask X”, “always squash…”) → **same turn**:
+
+1. If a **first-class key** fits → update that key in `docs/ADT-settings.yaml` (`recorded` today, `source: user`).
+2. Else → **append** one short bullet under `standing.instructions` (create `standing:` if missing). Keep bullets imperative and durable (“When using draft PRs, squash before mark ready”).
+3. Tell the user in one line that you saved it (path + paraphrase). Do **not** wait for session wrap or “remember that?”
+4. Apply it for the rest of the session (and future sessions via the file).
+
+**Also capture** when they correct pack behavior mid-run without the word “always” if the intent is durable (“I don’t want draft PRs — ready only after squash” → standing or `branch-pr-squash`).
+
+**Skip:**
+
+- One-off this-run scope (“just this PR”, “for today only”) unless they also say to keep it
+- Product/UI polish for a stem → **Decisions** (§10), not standing
+- Pure spacing / ephemeral chat flavor
+- Inventing standing notes from “vibes” or agent taste
+- Duplicating a preference already encoded in a first-class key (update the key; drop redundant standing bullets if obvious)
+
+**Promotion:** When a standing note becomes a common pack feature, upstream may add an enum; users can set the key and delete the standing bullet. Standing remains the escape hatch.
+
+**Bootstrap:** Do **not** force a freeform quiz. Optional one-liner after Step 3p: *“Any standing workflow notes to save in ADT-settings?”* — skip on no / defaults. Capture-as-you-go is the primary path.
+
+**Explicit later:** *Add standing note: …* / *Clear standing instructions* / edit `docs/ADT-settings.yaml` directly.
 
 ---
 
@@ -450,13 +499,15 @@ Record **why** something was chosen — not every task, only choices with lastin
 |-------|---------|
 | **Decisions** section in feature or shared **spec** | Choices local to that piece ([`Feature_Spec_Template.md`](../Feature_Spec_Template.md)) |
 | `docs/decisions/YYYY-MM-DD-short-title.md` | Cross-cutting choices ([`Decision_Template.md`](../Decision_Template.md)) |
+| **`standing.instructions`** in `docs/ADT-settings.yaml` | Lasting **agent process / pack workflow** prefs (not product UI) — see **§0.2** |
 
 **When to record:**
 
 1. **Understanding review** — user confirms a tradeoff → add row(s) when graduating / updating the spec (§2).
 2. **Implement / polish** *(confirmed stem)* — user corrects a **preference that could be “improved away”** (e.g. always-on vs proximity chrome, confirm-before-delete, hide type while writing, empty lines aren’t chunks) → **same turn** append 1-line row(s) to that stem’s **Decisions** table. If Behavior / Acceptance / Visual references still state the old contract, fix those sentences in the **same edit**.
+3. **Pack / agent process** — user opposes pack defaults or states always/never workflow prefs → **standing** or first-class ADT-settings key (**§0.2**), not Decisions.
 
-**Skip:** pure spacing / pixel tweaks unless the user says “remember this.” Do **not** create `docs/decisions/` ADRs for feature-local polish. Do **not** dump choices into **Current focus** (handoff only — an optional one-line pointer to Decisions is fine).
+**Skip:** pure spacing / pixel tweaks unless the user says “remember this.” Do **not** create `docs/decisions/` ADRs for feature-local polish. Do **not** dump choices into **Current focus** (handoff only — an optional one-line pointer to Decisions is fine). Do **not** put product UI prefs only in standing.
 
 **Pattern:** `date | choice | why (short)`. Prefer several rows on one polish burst over separate ADR files.
 

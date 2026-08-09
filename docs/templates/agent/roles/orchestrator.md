@@ -6,7 +6,7 @@
 
 **Job:** Clear ready TODO work — implement → verify → milestone git — until budget/block, without waiting for “next.” End: human verify map + git close-out (PR modes: build-verify → todo-warden → squash? → mark ready → **return to default branch** when this run created the branch).
 
-**Canonical:** This file (loop). **Git delivery:** [`orchestrator-git.md`](orchestrator-git.md). Workers: [`feature-implementer.md`](feature-implementer.md), [`work-verifier.md`](work-verifier.md), [`todo-warden.md`](todo-warden.md). Workflow §0.1 / §3 / §5 / §5.3 / §13. Timescale: [`../Agent_Timescale_Planning_Rule.mdc`](../Agent_Timescale_Planning_Rule.mdc). Settings: `docs/ADT-settings.yaml` → `docs_profile` + `orchestrator.git.mode`.
+**Canonical:** This file (loop). **Git delivery:** [`orchestrator-git.md`](orchestrator-git.md). Workers: [`feature-implementer.md`](feature-implementer.md), [`work-verifier.md`](work-verifier.md), [`todo-warden.md`](todo-warden.md). Workflow §0.1 / §0.2 / §3 / §5 / §5.3 / §13. Timescale: [`../Agent_Timescale_Planning_Rule.mdc`](../Agent_Timescale_Planning_Rule.mdc). Settings: `docs/ADT-settings.yaml` → `docs_profile` + `orchestrator.git.mode` + **`standing.instructions`**.
 
 ## When to invoke
 
@@ -15,7 +15,7 @@
 
 ## Inputs *(open only these)*
 
-1. `docs/ADT-settings.yaml` → `docs_profile.mode` (unset = **prevent**) **and** `orchestrator.git.mode` → open [`orchestrator-git.md`](orchestrator-git.md) when resolving/running git
+1. `docs/ADT-settings.yaml` → `docs_profile.mode` (unset = **prevent**); `orchestrator.git.mode` → open [`orchestrator-git.md`](orchestrator-git.md) when resolving/running git; **`standing.instructions`** if non-empty (Workflow §0.2) — apply as durable process prefs
 2. `docs/Master_Index.md` Sections 1–3
 3. In-scope `*-TODO.md` (Current focus + agreed tiers)
 4. Linked specs; `-Understanding.md` when present
@@ -23,7 +23,9 @@
 6. `docs/Tooling.md` only if install blocks
 7. This file + worker paths when dispatching
 
-**Do not** open the pack catalog, out-of-scope stems, or full Workflow unless Path A/B / profile / file-create is unclear.
+**Do not** open the pack catalog, out-of-scope stems, or full Workflow unless Path A/B / profile / standing-capture / file-create is unclear.
+
+**Standing lookout (parent):** If the user states a lasting process pref that opposes pack defaults mid-run (always/never squash, PR readiness, ceremony, verify style) → same turn update first-class key or append `standing.instructions` (Workflow §0.2). This-run-only overrides do not rewrite settings unless they want them durable.
 
 ## Pre-run ask *(once)*
 
@@ -41,7 +43,7 @@ Skip dimensions already fixed in the same message:
 | Budget | Drain until cleared or blocked |
 | Git | From setting; else ask (recommend **branch-pr** + forge; offer **branch-pr-squash** for tip-only bots). **Never** silent-default **current-push** |
 
-Record policy internally. **No mid-loop re-asks** about scope/commits/“next.” Explicit limit in the ask **binds**. This-run-only git override does **not** rewrite ADT-settings unless they also set the default.
+Record policy internally. **No mid-loop re-asks** about scope/commits/“next.” Explicit limit in the ask **binds**. This-run-only git override does **not** rewrite ADT-settings unless they also set the default (or you capture a durable standing note / key per §0.2).
 
 ## Ready work
 
