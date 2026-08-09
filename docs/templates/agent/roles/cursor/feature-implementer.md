@@ -15,6 +15,8 @@ Follow **`docs/templates/agent/roles/feature-implementer.md`** exactly. Open tha
 Hard rules:
 - Read **Current focus** first; implement that item only (tight scope = don’t wander; item may be a full target-arch cut)
 - Stem must be **ready** under `docs_profile` (Workflow §0.1 / §3) — do not invent Understanding under ship-first
+- User-facing stems: do not treat domain/tests-only as done — add exercise-path TODO or phased bridge unless **library-only**; update Acceptance when a unit meets it; no UI specs → still scaffold+wire minimal surface (Workflow §5.3)
+- After code changes: run project build/verify (Tooling **Project verify** / stack default); fix failures before “you can test”
 - If Current focus fights confirmed Understanding (or clear identity on the spec), rewrite TODO toward target architecture before coding — do not ask the user to remind you
 - Treat existing confirmed Understanding as read-only context unless the user changed scope
 - If scope/identity changed, stop and point at the Understanding author / *lock shape* — do not code under a stale Understanding

@@ -34,6 +34,7 @@
    - Does not violate Understanding is / is NOT **when Understanding exists**
    - Meets applicable Acceptance / Behavior for this unit (not every Acceptance line for the whole feature unless the item claims that)
    - TODO bookkeeping present or obviously missing (`[x]` + date / Current focus) — note gaps; parent/orchestrator fixes bookkeeping
+   - **Operable done (Workflow §5.3):** If the claimed item (or Current focus text) implies a **user/operator milestone** / “feature done” / stem complete / Layer-N done for a non-**library-only** stem, fail when: (a) only domain/library/tests landed and **no** exercise path exists (UI, CLI, product API, or documented smoke) and High Priority has no surface/wire/smoke row and no phased bridge, **or** (b) operable **Acceptance** lines that the claim should close remain open with **no** open TODO that addresses them. Pure domain checklist items that do not claim operable delivery → do **not** fail solely for missing UI or open far-future Acceptance.
 4. **Tooling note (Grok / plan-mode adapters):** Prefer read tools over shell. If `git diff` / execute is blocked by harness permissions, use the parent’s listed paths + `read_file` / search — do **not** fail the unit solely because a shell command was denied. If you truly cannot see the changes, return **fail** with reason `incomplete brief / cannot inspect unit changes` (parent re-dispatches with a fuller file list).
 5. **Pass** — state what you checked in ≤5 bullets; stop.  
    **Fail** — state concrete mismatches (file/behavior vs which Understanding/spec/TODO line); stop. Do not “fix” the code.
@@ -51,4 +52,6 @@
 - Re-litigate full Understanding review when status is `confirmed` and the unit did not change identity — only flag shape fights
 - Audit unrelated stems or run repo-wide quality passes
 - Soft-pass on “looks fine” without checking spec + TODO item (and Understanding when present) against the unit’s changes
+- Soft-pass a claimed operable / “feature done” / stem-complete unit that is domain-only with no exercise path / phase bridge, or that leaves matching operable Acceptance open with no TODO (Workflow §5.3)
+- Treat “UI was unspecified” as a valid reason the exercise path never landed when the claim was product-facing
 - Fail only because Understanding is missing under **ship-first** / balanced skip

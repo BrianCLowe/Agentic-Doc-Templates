@@ -20,6 +20,14 @@
 | **Install to** | `.cursor/rules/agent-timescale-planning.mdc` |
 | **Notes** | `alwaysApply: true`. Target architecture at agent speed; users should not need to remind. |
 
+## Agent build & verify *(core — always install with modular rule)*
+
+| | |
+|--|--|
+| **Source** | `docs/templates/agent/Agent_Build_Verify_Rule.mdc` |
+| **Install to** | `.cursor/rules/agent-build-verify.mdc` |
+| **Notes** | `alwaysApply: true`. Run project build/typecheck/container/engine verify before “you can test”; fix failures. |
+
 ## Optional — Template update check
 
 Only if `optional_rules.template-update-check.status` is `enabled` in `docs/ADT-settings.yaml`. Requires `upstream:` stamps in that file.
@@ -52,6 +60,7 @@ Files: `understanding-author.md`, `doc-graduate.md`, `feature-implementer.md`, `
 
 - `.cursor/rules/modular-documentation.mdc` exists
 - `.cursor/rules/agent-timescale-planning.mdc` exists
+- `.cursor/rules/agent-build-verify.mdc` exists
 - If doc-roles enabled: six files under `.cursor/agents/` (no `orchestrator.md`)
 - Remind user: short asks are enough; parent rule delegates; `/name` optional
 

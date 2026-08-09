@@ -16,6 +16,10 @@
 
 Same pattern → `.continue/rules/agent-timescale-planning.md` from `Agent_Timescale_Planning_Rule.mdc` body + Continue frontmatter (`alwaysApply: true`).
 
+## Agent build & verify *(core — always install with modular rule)*
+
+Same pattern → `.continue/rules/agent-build-verify.md` from `Agent_Build_Verify_Rule.mdc` body + Continue frontmatter (`alwaysApply: true`).
+
 ## Optional — Template update check
 
 If enabled: same pattern → `.continue/rules/template-update-check.md` from `Template_Update_Check_Rule.mdc` body + frontmatter.
@@ -26,7 +30,7 @@ No first-class Continue agents folder in this pack. Follow `docs/templates/agent
 
 ## Verify
 
-- `modular-documentation.md` and `agent-timescale-planning.md` exist under `.continue/rules/`
+- `modular-documentation.md`, `agent-timescale-planning.md`, and `agent-build-verify.md` exist under `.continue/rules/`
 
 ## For humans
 

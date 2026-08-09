@@ -65,6 +65,7 @@ An item is **ready** only if all of:
 - Not blocked on a **hard human gate** (see below) — ordinary deferred `playtest` does **not** make other agent work unready
 - Linked shared foundation is mature enough to integrate (check Maturity on shared spec / Document Map) — else work the shared TODO first when it is in scope
 - Current focus / High Priority does not encode an interim architecture that fights confirmed Understanding **or** (ship-first / no Understanding) clear product identity on the spec — if it does, rewrite that TODO toward the **target** before dispatching implementers ([`../Agent_Timescale_Planning_Rule.mdc`](../Agent_Timescale_Planning_Rule.mdc))
+- **Operable dual-track (Workflow §5.3):** If a user/operator-facing stem’s open High Priority is **only** domain/library/tests with **no** exercise path (UI / CLI / product API / documented smoke) and no **library-only** / phased bridge — **add** surface/wire/smoke item(s) (**scaffold + wire** minimal boring UI/CLI if no specs) **or** a loud phase note once (same turn as survey), then dispatch. Do **not** invent phase / Human-TODO “await UI design” solely because mockups were never provided. Also skim open **operable Acceptance** on the spec: if those lines have no open TODO that addresses them → add TODO work (or phase). Do **not** drain domain checkboxes and report the stem “cleared” / Layer done while the product still cannot be exercised or matching operable Acceptance stays open with no work left. Pure `_shared/` library stems labeled library-only are exempt; consumer features own wire/exercise rows.
 
 If an **existing** Understanding is `draft` or scope/identity conflicted → **do not code** that stem; note it as blocked on human shape confirm; continue other ready stems if any. Under **`ship-first`**, do **not** invent a draft Understanding just to unblock — implement from TODO + thin spec unless the user asked to *lock shape*.
 
@@ -95,6 +96,7 @@ Repeat until a **stop condition**:
 4. **Always verify** — after each implementer finishes a unit (or after a coherent parallel batch), spawn/delegate `work-verifier` if installed, else follow [`work-verifier.md`](work-verifier.md). Brief: stem paths, which TODO item was claimed done, what changed, Understanding path **if any**. **Do not** mark the TODO done or commit until verify **passes**.
 5. **On verify fail** — one fix pass (re-dispatch implementer with the fail notes), then verify again. **Second fail on the same item** → stop that item; record failure cause; continue other ready work if any.
 6. **Bookkeep** — on verify pass: ensure `[x]` + date and Current focus refresh on that TODO (implementer should have done this; fix if missing). Dual-write Human-TODO if a human gate appeared (Workflow §13). New `playtest` rows → **defer** (continue) unless they meet the hard-gate test above.
+6b. **Build green** — work-verifier is contract/intent; also ensure implementer ran **project build/typecheck/container/engine verify** for code units ([`../Agent_Build_Verify_Rule.mdc`](../Agent_Build_Verify_Rule.mdc)). If the unit clearly never built and handoff implies the user can run it → re-dispatch fix before milestone commit.
 7. **Milestone git** *(if mode ≠ `none`)* — parent commits the verify-clean unit (code + that stem’s doc/TODO updates that belong to the unit). Implementer/verifier leaves **do not** commit. Then continue the loop.
 8. **Push / PR** — only per **Git policy** mode (`branch-pr` / `branch-push` / `current-push`). Do not ask mid-run. Modes `local` / `none` never push.
 
@@ -226,7 +228,7 @@ For **each stem** with verify-pass work this run, owner-TODO bullets should cove
 | **Happy path** | Do the main action once end-to-end |
 | **Rough edges** | Note feel bugs, missing affordances, “should be over there” |
 
-Omit rows that do not apply (e.g. pure backend stem → path + outcome check, not UI placement). **Do not** invent a tour of the whole app — only what this orchestration shipped.
+Omit rows that do not apply (e.g. pure **library-only** stem → path + tests, not UI). Prefer map rows that match an **exercise path** shipped this run (UI / CLI / smoke). **Do not** invent a tour of the whole app — only what this orchestration shipped. If the run cleared only domain work on a user-facing stem, say so and list remaining surface TODOs **and** any still-open operable Acceptance — do not imply the product is operable or Layer complete.
 
 ### Dual-write
 

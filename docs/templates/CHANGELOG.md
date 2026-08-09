@@ -13,11 +13,28 @@
 | `content-templates` | Add *missing* sections/structure from content templates into live Understanding / Spec / TODO / Tooling / Human-TODO — **not** trim/remove (see `optional-live-reshape`) |
 | `optional-live-reshape` | Live Understanding → shape trim + relocate into specs (Workflow §4). **`auto` / `auto-all`:** run all Document Map stems. **`choose`:** present + ask once (default yes). Do **not** silent-skip under choose |
 | `optional-todo-ambition` | Live TODO ambition pass (agent timescale). **`auto` / `auto-all`:** all Document Map `*-TODO.md`. **`choose`:** present + ask once. Do not invent work |
+| `optional-todo-operable` | Live TODO operable dual-track (Workflow §5.3). **`auto` / `auto-all`:** all Document Map `*-TODO.md`. **`choose`:** present + ask once. Add exercise-path rows or **library-only** labels; do not invent unrelated backlog |
 | `rules` | Refresh installed agent rules/adapters from local pack (**no ask** unless tool has `customized: true`) |
 | `optional-upstream-check` | Stamp `upstream:` in `docs/ADT-settings.yaml` / offer enable update-check if unset |
 | `process-docs-only` | Pack process/help/agent docs only — no live feature/shared content scan |
 
 ---
+
+## 2.7.8
+
+- **Live impact:** `versions-only`, `rules`, `content-templates`, `optional-todo-operable`, `process-docs-only`
+- **Files:**
+  - `VERSION` — 2.7.7 → 2.7.8
+  - `agent/Modular_Docs_Workflow.md` — **§5.3 Operable done**: exercise path vs library-only; **layer desync**; **phased bridge**; **Acceptance bridge**; **No UI specs ≠ defer** (scaffold + wire minimal boring surface); §11 Project verify handoff pointer
+  - `agent/Agent_Build_Verify_Rule.mdc` + `.instructions.md` — **core** always-on: discover project verify (Tooling → scripts → Docker → engine → CI); run → fix → re-run before “you can test”
+  - `Tooling_Template.md` — **Project verify (agent handoff)** table (apps, compose, UE, etc.)
+  - `agent/tools/*` — install/refresh build-verify with modular + timescale
+  - `TODO_Template.md`, `Feature_Spec_Template.md` — dual-track / phase note; Acceptance bridge guidance
+  - `agent/roles/feature-implementer.md`, `work-verifier.md`, `understanding-author.md`, `doc-graduate.md`, `orchestrator.md` + cursor|grok adapters — operable gap, scaffold+wire, build-verify before handoff, Acceptance update, graduate TODO bridge, survey rewrite
+  - `agent/Agent_Timescale_Planning_Rule.*`, `Modular_Documentation_Rule.*` — operable ≠ library-only; no-UI-specs default; post-change build-verify
+  - `agent/TEMPLATE_SYNC_B.md` — **`optional-todo-operable`** live pass + rules refresh includes build-verify
+  - stamps: Master Index template / Workflow / ADT-settings example / root README
+- **Step B:** Bump Master Index **Pack version** to 2.7.8. **content-templates:** add *missing* TODO/spec/**Tooling Project verify** structure only. **`optional-todo-operable`:** present/execute per `sync.mode` — for user-facing stems missing exercise path, add UI/CLI/smoke TODO rows (**scaffold + wire** if UI never specified) **or** phased bridge only when intentional; if open operable Acceptance has no covering TODO, add work (or phase); label pure foundation **library-only**; do not invent “await UI design” or unrelated work or twin every Acceptance line. Under **`choose`:** ask once (default all stems). Under **`auto` / `auto-all`:** all Document Map `*-TODO.md`. **Update and refresh** installed modular + timescale + **build-verify** rules **and** doc-role adapters (**no ask** unless `customized: true`). Fill live `Tooling.md` Project verify when empty and stack is known. No Understanding reshape.
 
 ## 2.7.7
 

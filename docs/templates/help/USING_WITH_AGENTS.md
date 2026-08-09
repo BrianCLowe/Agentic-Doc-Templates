@@ -25,7 +25,10 @@ The modular documentation **workflow is tool-agnostic**. What differs is **where
 
 The modular rule guards itself: *"If `docs/Master_Index.md` does not exist, ignore this entire rule."*
 
-**Core with every modular-rule install:** [`../agent/Agent_Timescale_Planning_Rule.mdc`](../agent/Agent_Timescale_Planning_Rule.mdc) — plan/ship at agent speed (target architecture first; exploration ≠ paved path). Always-on; users should not need to remind agents. When Understanding (or a clear contract) locks product-defining surface, TODOs/plans follow that target.
+**Core with every modular-rule install:**
+
+- [`../agent/Agent_Timescale_Planning_Rule.mdc`](../agent/Agent_Timescale_Planning_Rule.mdc) — plan/ship at agent speed (target architecture first; exploration ≠ paved path). Always-on; users should not need to remind agents. When Understanding (or a clear contract) locks product-defining surface, TODOs/plans follow that target.
+- [`../agent/Agent_Build_Verify_Rule.mdc`](../agent/Agent_Build_Verify_Rule.mdc) — after code changes, run the project’s build/typecheck/container/engine verify (`docs/Tooling.md` **Project verify** when filled); fix failures before “you can test.” Stack-agnostic (apps, Docker, UE, etc.).
 
 ## Optional extras
 
@@ -60,6 +63,7 @@ OpenClaw loads workspace bootstrap files (especially `AGENTS.md`), not `.cursor/
 | Agent always reads Master_Index first | Usually, if the rule is loaded — not guaranteed |
 | Agent always updates TODOs | Best when the rule is active *and* you remind at session end |
 | Agent plans at human sprint size | Core timescale rule pushes **target architecture** cuts; still not guaranteed every session |
+| Agent says “you can test” but build is red | Core **build-verify** rule — fill Tooling **Project verify**; agent must run/fix before handoff |
 | Preference polish sticks across sessions | Rule captures lasting UI choices into spec **Decisions** same turn (no wrap-up ask needed) |
 | Same behavior across tools | Similar, not identical |
 | Rules affect inline autocomplete | Generally **no** — chat/agent sessions only |

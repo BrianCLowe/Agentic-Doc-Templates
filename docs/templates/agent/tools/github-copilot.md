@@ -19,6 +19,13 @@
 | **Source** | `docs/templates/agent/Agent_Timescale_Planning_Rule.instructions.md` |
 | **Install to** | `.github/instructions/agent-timescale-planning.instructions.md` or labeled section in `copilot-instructions.md` |
 
+## Agent build & verify *(core — always install with modular rule)*
+
+| | |
+|--|--|
+| **Source** | `docs/templates/agent/Agent_Build_Verify_Rule.instructions.md` |
+| **Install to** | `.github/instructions/agent-build-verify.instructions.md` or labeled section in `copilot-instructions.md` |
+
 ## Optional — Template update check
 
 Only if `optional_rules.template-update-check.status` is `enabled`.
@@ -41,7 +48,7 @@ Copilot does **not** use `.cursor/agents/` / `.grok/agents/` as first-class name
 
 ## Verify
 
-- Modular + agent-timescale instructions exist under `.github/instructions/` or `copilot-instructions.md`
+- Modular + agent-timescale + agent-build-verify instructions exist under `.github/instructions/` or `copilot-instructions.md`
 - Optional: `/init` then confirm modular docs section present
 
 ## For humans

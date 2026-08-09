@@ -1,0 +1,58 @@
+---
+name: Agent Build & Verify
+description: Verify the project still builds/runs before handing off — fix errors; do not leave the user blocked
+applyTo: "**"
+---
+
+# Agent Build & Verify
+
+Do **not** wrap up with “you can test / run / open it” until you have **actually verified** the project’s relevant build or run path for this change — or clearly reported what you could not run and why. Users should not discover compile/link/container errors on first try that the agent never attempted.
+
+## When this applies
+
+After **implementation** that could break build, typecheck, package, container image, game cook/editor compile, or a documented smoke path — especially before:
+
+- Saying the feature/unit is done and the user can try it  
+- Orchestrator milestone commit / end-of-run report that implies a working product  
+- Marking a TODO complete when the item touched code users will build or run  
+
+**Light edits** that cannot affect build (typo in a comment-only doc, pure markdown) → skip. When unsure, run the cheap project verify.
+
+## Discover the verify command *(project-agnostic)*
+
+Use the **first** source that clearly applies — do not invent a second stack:
+
+1. **`docs/Tooling.md`** — section **Project verify (agent handoff)** or equivalent (preferred when present)
+2. **Repo scripts** — root/`package.json` scripts (`build`, `typecheck`, `test`, `lint`), `Makefile` / `justfile`, `*.sln` + documented build, `cargo build`, `go build`, `dotnet build`, etc.
+3. **Containers** — `docker compose build` / `docker compose run …` / service build as the project already uses (match existing compose files; do not invent new services)
+4. **Game / engine** — Unreal: editor compile, `RunUAT`/Build.bat targets, or the project’s documented cook/package step; Unity/Godot: project’s usual batch/CLI compile or play-mode check as documented in Tooling/README
+5. **README / CI** — primary job steps as a hint when nothing else documents handoff verify
+
+**Proportional scope:** Prefer the **smallest check that would catch this change** (e.g. frontend typecheck if only TS changed; one service image if only that Dockerfile changed). Expand if that path is green but the user was told the **whole app** works — then run the project’s documented full path.
+
+If **no** verify path can be found → say so once, list what you tried, and do **not** pretend the build is fine.
+
+## Run → fix → re-run
+
+1. Run the chosen verify command(s) in the environment this repo expects (host shell, `docker compose exec`, engine tools — match Tooling/README).
+2. On failure: **diagnose and fix** (code, config, lockfiles, missing generate-client steps the project already documents). Re-run until green or truly blocked.
+3. **Blocked** (missing secrets, no Docker daemon, no engine license, hardware) → report **exact** error + what the user must provide; do **not** claim handoff is clean.
+4. Do **not** push “please run the build and paste errors” as the default close when you can run the same command.
+
+## What “green enough” means
+
+| Claim to the user | Minimum |
+|-------------------|---------|
+| “You can test this in the app / editor / container” | Project verify for that surface passed (or blocked with clear external reason) |
+| “Unit/library only; no run surface this turn” | At least compile/typecheck/tests for **touched** packages when available |
+| Docs-only / no code | No build required |
+
+Optional tests/E2E: run when the project’s Tooling/CI marks them as handoff-critical or when the TODO claimed them; otherwise prefer **build/typecheck/compile** over a full flaky suite unless already the project norm.
+
+## Do not
+
+- End with “should work — just build it” without having run verify (when runnable)
+- Ignore red output and still mark the TODO done / ship the milestone as clean
+- Invent a heavy CI matrix the repo does not use
+- Skip verify because “it looked fine” or “types should be OK”
+- Confuse **operable product** (Workflow §5.3 exercise path) with **build green** — do both when both apply

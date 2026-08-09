@@ -80,6 +80,32 @@ Package installs are **not** listed as tools above — run them after required t
 
 ---
 
+## Project verify *(agent handoff — required once filled)*
+
+> **Agents:** Before telling the user they can test/run this project after code changes, run the commands below (see installed **Agent Build & Verify** rule / `docs/templates/agent/Agent_Build_Verify_Rule.mdc`). Fix failures; do not dump a raw “please build” on the user when these are runnable. Prefer the **smallest** row that covers the change; use **Full** when claiming the whole app/game works.
+
+| Scope | When | Command(s) | Notes |
+|-------|------|------------|--------|
+| **Cheap / default** | Most code changes | [e.g. `npm run build` · `docker compose exec frontend bun run build` · `dotnet build` · UE editor compile target] | Must be runnable by the agent in this repo’s normal env |
+| **Touched package** | Monorepo / multi-target | [e.g. build only backend or one game module] | Optional — use when faster and sufficient |
+| **Full handoff** | “You can run the app/game” | [e.g. compose up + smoke · packaged build · Play-In-Editor load] | Optional if Cheap already equals full for this project |
+| **Tests** *(optional)* | When CI/TODO requires | [e.g. `pytest` · Playwright profile] | Not a substitute for compile/typecheck when those exist |
+
+**Examples by stack** *(replace with this project’s real commands — delete unused rows):*
+
+| Stack | Typical cheap verify |
+|-------|----------------------|
+| Node / web | `npm run build` or `pnpm typecheck && pnpm build` |
+| Dockerized app | `docker compose build <svc>` and/or `docker compose exec <svc> <build>` |
+| Python | `ruff` / `mypy` / `pytest` as the repo already uses |
+| .NET | `dotnet build` |
+| Unreal | Project’s Build.bat / editor compile / documented UAT target |
+| Unity / Godot | Project’s batch/CLI compile or documented play check |
+
+Leave the table as placeholders until bootstrap/first implement fills real commands. Update when the stack changes.
+
+---
+
 ## Machines *(optional — multi-machine teams)*
 
 Track which boxes are set up so gaps are obvious. Delete this section if unused.

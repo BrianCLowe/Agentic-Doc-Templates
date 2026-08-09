@@ -26,6 +26,15 @@ Also consider status key `agents-md` for the same `AGENTS.md` — do not duplica
 
 Do not duplicate the section if `agents-md` already installed it.
 
+## Agent build & verify *(core — always install with modular rule)*
+
+| | |
+|--|--|
+| **Source** | Rule body from `docs/templates/agent/Agent_Build_Verify_Rule.mdc` (**strip** Cursor YAML frontmatter) |
+| **Install to** | Root `AGENTS.md` section `## Agent build & verify` *(preferred)* **and/or** `.grok/rules/agent-build-verify.md` |
+
+Do not duplicate the section if `agents-md` already installed it.
+
 ## Optional — Template update check
 
 Only if `optional_rules.template-update-check.status` is `enabled` in `docs/ADT-settings.yaml`. Requires `upstream:` stamps in that file.
@@ -59,6 +68,7 @@ Compat (secondary, when enabled): **Claude** `.claude/agents/` can load as spawn
 
 - Modular rule listed by `grok inspect` from `AGENTS.md` and/or `.grok/rules/`
 - Agent timescale planning present in `AGENTS.md` and/or `.grok/rules/`
+- Agent build & verify present in `AGENTS.md` and/or `.grok/rules/`
 - If doc-roles enabled: six files under `.grok/agents/` (no `orchestrator.md`); confirm names appear under **agents** in `grok inspect --json` or `/config-agents` (non-builtin source). If missing → playbook fallback above
 - Remind: short asks are enough. Subagents are **enabled by default**; only check `GROK_SUBAGENTS=0` / `[subagents] enabled = false` if spawning fails or the user disabled them
 

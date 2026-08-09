@@ -19,6 +19,13 @@
 | **Source** | Rule body from `docs/templates/agent/Agent_Timescale_Planning_Rule.mdc` (**strip** Cursor YAML frontmatter) |
 | **Install to** | `.claude/rules/agent-timescale-planning.md` or labeled section in `CLAUDE.md` |
 
+## Agent build & verify *(core — always install with modular rule)*
+
+| | |
+|--|--|
+| **Source** | Rule body from `docs/templates/agent/Agent_Build_Verify_Rule.mdc` (**strip** Cursor YAML frontmatter) |
+| **Install to** | `.claude/rules/agent-build-verify.md` or labeled section in `CLAUDE.md` |
+
 ## Optional — Template update check
 
 Only if `optional_rules.template-update-check.status` is `enabled`.
@@ -45,6 +52,7 @@ Copy the six `roles/cursor/*.md` adapters (including `work-verifier.md`). **Do n
 
 - Modular rule file or `CLAUDE.md` section exists
 - Agent timescale planning rule or section exists
+- Agent build & verify rule or section exists
 - Optional: `/memory` shows the modular docs section
 - If doc-roles enabled: six files under `.claude/agents/` (no `orchestrator.md`)
 

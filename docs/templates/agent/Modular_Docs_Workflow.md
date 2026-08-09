@@ -1,12 +1,12 @@
-<!-- pack-version: 2.7.7 -->
+<!-- pack-version: 2.7.8 -->
 
 > **Agent workflow reference.** Canonical instructions for how to work the modular doc system. Lives in `docs/templates/agent/` with the other agent playbooks — sync from upstream; do **not** copy wholesale into `docs/Master_Index.md`. The live index links here; agent rules summarize and point here for full procedure.
 
 # Modular Documentation — Agent Workflow
 
-**Pack version**: 2.7.7 *(same as `docs/templates/VERSION` / live Master Index **Pack version**)*
+**Pack version**: 2.7.8 *(same as `docs/templates/VERSION` / live Master Index **Pack version**)*
 
-**Design intent:** Users give short requests about the docs (“bootstrap”, “draft Understanding for X”, “update the templates”). Route to **one** playbook (`BOOTSTRAP`, `TEMPLATE_SYNC`, `TEMPLATE_UPDATE_CHECK`, `RULE_INSTALL` → `tools/<key>.md`, or this file for feature work) — do not scan the whole pack catalog. **Tight scope:** act on the paved path; do not pre-audit every alternate interpretation before doing the work. **Agent timescale:** when feature shape is clear, plan the **target architecture** as one change (verify-order checklists OK); do not stage human-sprint interim architectures — see [`Agent_Timescale_Planning_Rule.mdc`](Agent_Timescale_Planning_Rule.mdc).
+**Design intent:** Users give short requests about the docs (“bootstrap”, “draft Understanding for X”, “update the templates”). Route to **one** playbook (`BOOTSTRAP`, `TEMPLATE_SYNC`, `TEMPLATE_UPDATE_CHECK`, `RULE_INSTALL` → `tools/<key>.md`, or this file for feature work) — do not scan the whole pack catalog. **Tight scope:** act on the paved path; do not pre-audit every alternate interpretation before doing the work. **Agent timescale:** when feature shape is clear, plan the **target architecture** as one change (verify-order checklists OK); do not stage human-sprint interim architectures — see [`Agent_Timescale_Planning_Rule.mdc`](Agent_Timescale_Planning_Rule.mdc). **Operable done:** for user/operator-facing stems, checklist fidelity is not enough — domain-only “done” without an exercise path (UI, CLI, or documented smoke) is incomplete unless **library-only** or a **phased bridge**; open operable **Acceptance** without covering TODOs also blocks “stem drained”; **no UI specs ≠ defer** scaffold+wire (§5.3).
 
 **Docs profile** *(ceremony — read [`docs/ADT-settings.yaml`](ADT-settings.example.yaml) `docs_profile.mode` first)*: **`prevent`** (default if unset) = Understanding + shape confirm before code. **`balanced`** = Understanding when identity is ambiguous. **`ship-first`** = Spec + TODO core; no draft coding gate. Full rules: **§0.1**. Never silent-downgrade a project that already uses Understandings.
 
@@ -150,8 +150,8 @@ Optional: `_shared/_Foundation-TODO.md` for cross-cutting shared work that does 
 **Workflow *(when Understanding is in play)*:**
 
 1. Agent drafts `-Understanding.md` → user confirms **shape** (`confirmed`) — is / is not + Assumptions. **Not** a full spec sign-off.
-2. Agent **graduates** durable contract into the spec: overview, architecture/contract, Behavior, **Acceptance**, **Visual references**, **Decisions**, dependencies, maturity (shared). Synthesize from Understanding **plus** conversation / decisions — do **not** only copy thin Understanding. A short Understanding is **not** permission to write a short spec.
-3. After graduation, Understanding keeps only shape sections (§4). Spec = contract truth; **TODO** = living work checklist.
+2. Agent **graduates** durable contract into the spec: overview, architecture/contract, Behavior, **Acceptance**, **Visual references**, **Decisions**, dependencies, maturity (shared). Synthesize from Understanding **plus** conversation / decisions — do **not** only copy thin Understanding. A short Understanding is **not** permission to write a short spec. User-facing stems: Acceptance includes ≥1 **operable** outcome (§5.3).
+3. After graduation, Understanding keeps only shape sections (§4). Spec = contract truth; **TODO** = living work checklist. **Same turn:** if Overview/Acceptance are product-shaped and High Priority is domain-only, apply §5.3 bridge (dual-track exercise path, phased note, or **library-only**) — do not leave product Acceptance with silent package TODOs.
 4. If implementation diverges, update the spec **or** set Understanding to `superseded` and revise (§4) — do not leave both stale.
 
 **Workflow *(ship-first / no Understanding on stem)*:** Keep a thin-but-real spec + TODO; capture lasting preferences on the spec **Decisions** table same turn (§10). Offer *lock shape* (Understanding) when identity fights start.
@@ -302,9 +302,10 @@ When a feature depends on shared foundation work, the feature TODO gets a **depe
 **Workflow**:
 
 - **High Priority sizing:** Prefer one item (or a tight cluster) that lands the **confirmed target architecture**. Sub-bullets / Medium Priority = verify slices or follow-ups — not “ship the wrong architecture first.” If Current focus fights confirmed Understanding, rewrite the TODO before coding ([`Agent_Timescale_Planning_Rule.mdc`](Agent_Timescale_Planning_Rule.mdc)).
+- **Operable done / dual track:** See §5.3 — user-facing stems need domain **and** exercise-path rows; library-only stems must say so.
 - **Exploration vs shipping:** See §5.2.
 - **Session start:** Read the active TODO's **Current focus** block first (§5.1) — then High Priority.
-- While working: Add new items as you discover them.
+- While working: Add new items as you discover them (including exercise-path rows when domain work reveals a missing run path — §5.3).
 - After finishing a task: Mark `[x]`, add completion date/note.
 - When a section gets long: Move finished items to Completed or archive (`-todo-complete.md`).
 - **Session end:** Update **Current focus** for the next session.
@@ -329,6 +330,60 @@ When product shape is still unknown, a short **spike** (branch, throwaway protot
 - Once Understanding (or the user) locks shape, the **paved path** is the target architecture. Do **not** promote the spike’s interim (e.g. caret bridging, dual systems) into High Priority milestones.
 - After shape is clear: either land the target cut, or keep a named spike item explicitly disposable — never “Phase 1 wrong arch → Phase 2 correct” as the default plan when UX already implied the correct one.
 - Lock 3–4 product rules when shape is ambiguous, then cut — do not use ambiguity as cover for shipping a known-wrong interim once rules are known.
+
+### 5.3 Operable done — exercise path *(not library-by-default)*
+
+**Problem this prevents:** Agents clear domain checklists (schema, engine, fixtures, offline tests) and treat the stem as done while no human can exercise the contract in a running product. That is **checklist fidelity without product completeness** — often **product identity + domain delivery** in the same stem with no bridge.
+
+**Layer desync (common failure mode):**
+
+| Layer | Often product-shaped | Often domain-shaped |
+|-------|----------------------|---------------------|
+| Master Index · Understanding · Spec **Overview / Behavior** · **Acceptance** | Outcome, walk-away, control plane, “running and proven” | — |
+| Spec **Architecture / Public API** · TODO High Priority | — | Packages, adapters, offline tests |
+
+That split is **allowed only with an explicit bridge**. Without one, product prose sells a working system while “done” means green modules.
+
+**Default rule:** For a **feature** stem (or any stem whose Understanding/spec identity is user- or operator-facing), “done” for a milestone means:
+
+1. Domain / contract work for that cut is in place, **and**
+2. There is at least one **exercise path** the human or agent can run: **UI**, **CLI**, **API call the product exposes**, or a **documented smoke script** — matching how Master Index / Understanding says the product is used, **and**
+3. Operable **Acceptance** lines that this milestone claimed are closed or still have open TODO work that addresses them (see **Acceptance bridge** below).
+
+**Library-only exception:** `_shared/` pure libraries, internal packages, or stems whose is/is-not (or spec overview) **explicitly** says library/API-only with **no** operator surface in this stem may stay domain + tests only. Mark the TODO or Current focus once: **`library-only`** (or “no product surface — consumers wire it”). Consumer **features** still own the wire/exercise rows.
+
+**Phased bridge** *(when domain lands before surface on purpose):* Put a loud line on High Priority or Current focus, e.g. **`library foundation first · exercise path: control plane / worker / continuous paper`** (name the real path). Do **not** leave product Overview/Acceptance as the only place that implies “running product” while TODOs are package-only with no phase note. **Do not** invent a phase solely because UI was unspecified — see **No UI specs** below.
+
+**No UI specs ≠ defer the surface** *(agent-default):*
+
+- If Master Index / Understanding / Acceptance imply a **user or operator surface** (control plane, desk, app, dashboard, admin, game client, “walk away and it runs,” etc.) and the user **did not** provide mockups, wireframes, or UI copy — that is **not** a reason to leave exercise path off High Priority or to park UI on Human-TODO / Low / “later when designed.”
+- **Default:** put **scaffold + wire** on High Priority (or in the same multi-concern cut as domain): minimal boring control plane, thin admin pages, simple CLI, or documented smoke that hits the real loops. Ugly and provisional is fine — iterate after something runs.
+- **Do not** treat blank canvas as a hard **decide** / design gate. Only defer UI when the user **explicitly** says design-first, no UI yet, library-only, or blocks on a real product choice (not “we don’t have Figma”).
+- “Human-scale thinking” / agent timescale means **build the thin surface at agent speed**, not “wait for a human to invent the UI.” Misreading that as “UI is a human task” is wrong.
+
+**Authoring (Understanding-author / first TODO / build-from-reference / graduate):**
+
+- Prefer a **dual track** on High Priority when the stem is user-facing: domain rows **and** surface/wire/smoke rows (not domain-only lists).
+- Spec **Acceptance** should include ≥1 coarse operable outcome for user-facing stems (e.g. “From the control plane, run paper and see …”) — not only library invariants.
+- Master Index product surface (app, desk, CLI, game client) is a hint: Layer / epic TODOs that only name packages while Index names a runnable surface are **under-authored** — add exercise rows **or** a phased bridge; do not invent unrelated backlog.
+- If Overview/Behavior are product-shaped and Architecture is package-shaped, TODOs **must** dual-track, phase, or label **library-only** — never silent domain-only High Priority.
+- Missing UI specs → still author **scaffold + wire** exercise-path items (minimal default surface). Do **not** author “await UI design” unless the user asked for that gate.
+
+**Acceptance bridge** *(coarse outcomes ≠ second TODO list)*:
+
+- **Acceptance is not a twin checklist** — do not dual-maintain every High Priority row on the spec.
+- **Do** treat open **operable** Acceptance lines as evidence of remaining product work when authoring, surveying, or claiming a stem/milestone “done.”
+- When a completed TODO clearly meets an Acceptance outcome → **check/update that Acceptance line the same turn** (or note why it still fails). Do not leave “all TODOs `[x]`” next to open operable Acceptance with no open work.
+- Claiming **stem drained / Layer N done / feature complete** while operable Acceptance for that claim is still open **and** no open TODO addresses those lines → **incomplete**. Add or leave surface/ops TODOs; refresh Current focus. Pure domain items that do not claim that milestone stay fine.
+
+**While implementing:**
+
+- If domain work reveals more work than the checklist had → **add TODO items** (existing rule). That includes a missing exercise path — do **not** stop at green unit tests when the stem is user-facing and nothing runs the happy path.
+- If the exercise path is missing only because UI was never specified → **scaffold a minimal surface and wire domain into it** (or CLI/smoke) rather than waiting. Wrong/boring UI is acceptable; unwired green libraries are not “done.”
+- Tight scope still forbids wandering into unrelated stems; it does **not** forbid adding the surface row that makes *this* stem operable.
+- Clearing every domain checkbox without an exercise path (and without a `library-only` / phased bridge) → **incomplete for orchestration “stem drained”**; leave or add surface work and refresh Current focus.
+
+**Verify:** Work-verifier treats a unit that claimed a user-facing milestone / “feature done” / stem complete as **fail** if: only library/tests landed with no exercise path and no **library-only**/phased bridge, **or** the claim implies closing operable Acceptance lines that remain open with no remaining TODO that addresses them. Pure domain items that do not claim that milestone are fine.
 
 ---
 
@@ -456,6 +511,8 @@ When the user asks to install tooling / set up this machine / get the project wo
 6. Report pass/fail. Install **Optional** only if asked (or “everything”). Ask before admin / large SDK installs.
 
 Do not invent tools; update the file when the stack changes. No secrets in `Tooling.md`.
+
+**Project verify (handoff):** Fill **`docs/Tooling.md` → Project verify (agent handoff)** with this repo’s real build/typecheck/container/engine commands when known. After code changes, agents follow [`Agent_Build_Verify_Rule.mdc`](Agent_Build_Verify_Rule.mdc) (core install with modular rules): run those commands (or proportional stack defaults), **fix failures**, and only then tell the user they can test. Build green ≠ operable product (see §5.3); both apply when both apply.
 
 ---
 

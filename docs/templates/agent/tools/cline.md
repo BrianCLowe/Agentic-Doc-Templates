@@ -19,6 +19,13 @@
 | **Source** | Rule body from `docs/templates/agent/Agent_Timescale_Planning_Rule.mdc` (strip Cursor frontmatter) |
 | **Install to** | `.clinerules/agent-timescale-planning.md` |
 
+## Agent build & verify *(core — always install with modular rule)*
+
+| | |
+|--|--|
+| **Source** | Rule body from `docs/templates/agent/Agent_Build_Verify_Rule.mdc` (strip Cursor frontmatter) |
+| **Install to** | `.clinerules/agent-build-verify.md` |
+
 ## Optional — Template update check
 
 If enabled: `.clinerules/template-update-check.md`.
@@ -29,7 +36,7 @@ No first-class Cline agents folder in this pack. Follow role playbooks in-sessio
 
 ## Verify
 
-- `modular-documentation.md` and `agent-timescale-planning.md` exist under `.clinerules/`
+- `modular-documentation.md`, `agent-timescale-planning.md`, and `agent-build-verify.md` exist under `.clinerules/`
 - Visible/toggled in Cline’s Rules panel
 
 ## For humans

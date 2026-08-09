@@ -23,6 +23,13 @@ Many harnesses read [`AGENTS.md`](https://agents.md/) (Grok Build, Codex, Cline,
 | **Source** | Rule body from `docs/templates/agent/Agent_Timescale_Planning_Rule.mdc` (**strip** Cursor YAML frontmatter) |
 | **Install to** | Root `AGENTS.md` — section titled `## Agent timescale planning` |
 
+## Agent build & verify *(core — always install with modular rule)*
+
+| | |
+|--|--|
+| **Source** | Rule body from `docs/templates/agent/Agent_Build_Verify_Rule.mdc` (**strip** Cursor YAML frontmatter) |
+| **Install to** | Root `AGENTS.md` — section titled `## Agent build & verify` |
+
 ## Optional — Template update check
 
 Only if `optional_rules.template-update-check.status` is `enabled`.
@@ -46,6 +53,7 @@ Only if `optional_rules.template-update-check.status` is `enabled`.
 
 - `AGENTS.md` contains `## Documentation workflow`
 - `AGENTS.md` contains `## Agent timescale planning`
+- `AGENTS.md` contains `## Agent build & verify`
 - Section still points at `docs/Master_Index.md` + Workflow / roles paths
 
 ## For humans

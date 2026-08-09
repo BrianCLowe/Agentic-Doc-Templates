@@ -81,6 +81,10 @@ Record **why** — Understanding-review tradeoffs **and** implement/polish prefe
 
 **Lives here, not in Understanding.** Few observable outcomes (usually **3–7**) that mean the contract destination is met. **Not** a mirror of High Priority in `-TODO.md` — the living work checklist is the TODO only. Prefer plain bullets; optional checkboxes only if useful when reconciling with code (do not dual-maintain every TODO row here).
 
+For **user/operator-facing** stems, include ≥1 **operable** outcome (human can exercise the happy path via UI, CLI, or documented smoke) — not only library/test invariants. Pure library stems may omit that (Workflow §5.3).
+
+**Bridge to TODOs (Workflow §5.3):** Open operable Acceptance lines mean remaining product work unless a TODO already covers them. Do **not** treat “all domain TODOs `[x]`” as stem complete while these stay unchecked. When work clearly meets a line, check it the same turn. If Architecture/TODOs are library-first on purpose, High Priority / Current focus must say so (**library foundation first · exercise path: …**) — product Overview alone is not the bridge. Missing UI mockups does **not** remove operable outcomes — agents should still scaffold + wire a minimal surface (or CLI/smoke) unless you explicitly said library-only / design-first.
+
 - [ ] [Observable outcome, e.g. "User can enter focus mode from document list and return with Esc"]
 - [ ] [Another coarse outcome]
 - [ ] [One critical edge that defines the product, if any]
@@ -127,4 +131,4 @@ Graduation / anti-compression: [`Modular_Docs_Workflow.md`](agent/Modular_Docs_W
 - Skim this for **what we're actually building** after you confirm Understanding **shape** — this is the contract home; Understanding was only guardrails.
 - Fix wrong **Decisions** or **Maturity** when the agent misjudges readiness; tell the agent to update the spec. If durable behavior, acceptance outcomes, or visual refs you agreed are missing here, tell the agent to add them (do not expect them to live only in Understanding).
 - Skim **Visual references** before UI work — similar vs different is the authority for what to borrow vs change.
-- **Acceptance** is the coarse “done” picture; the day-to-day checklist is the **TODO**.
+- **Acceptance** is the coarse “done” picture; the day-to-day checklist is the **TODO**. Open operable Acceptance + domain-only TODOs = incomplete bridge (Workflow §5.3) — tell the agent if the stem should be library-only, phased, or needs surface TODOs.
