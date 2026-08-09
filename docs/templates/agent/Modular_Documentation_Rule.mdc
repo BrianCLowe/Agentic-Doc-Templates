@@ -22,6 +22,7 @@ This project uses a lean modular documentation system. `docs/Master_Index.md` is
 | implement / continue Current focus (Understanding `confirmed`, scope unchanged) | see **Optional subagents** → else session default below |
 | orchestrate / drive backlog / clear TODOs / run until blocked | **parent only** → `docs/templates/agent/roles/orchestrator.md` (do **not** spawn an orchestrator subagent) |
 | verify completed unit vs Understanding/spec/TODO | see **Optional subagents** → else `docs/templates/agent/roles/work-verifier.md` |
+| todo warden / reconcile TODOs vs implementation / TODO honesty after orchestration | see **Optional subagents** → else `docs/templates/agent/roles/todo-warden.md` |
 | feature / shared work (other) | `docs/Master_Index.md` + that feature’s or component’s files |
 
 **Optional subagents** *(parent orchestrates — user need not type `/`; harness-agnostic)*:
@@ -30,7 +31,7 @@ When an ask matches a row below, look for a **named agent file** with that filen
 
 - If found → **delegate / spawn** that type with a self-contained prompt (feature/component name, paths, user’s ask). On Grok Build: `spawn_subagent` with `subagent_type: <name>` when `.grok/agents/<name>.md` exists. Do **not** treat `.cursor/agents/` as Grok types.
 - If missing → follow the **Fallback** playbook/role **in this session** (or spawn a generic child with that playbook path).
-- **Orchestrator exception:** matching *orchestrate / drive backlog / …* → follow `docs/templates/agent/roles/orchestrator.md` **in this parent session** only. That playbook spawns leaf workers (`feature-implementer`, `work-verifier`). Never install or spawn `orchestrator` as a harness subagent type.
+- **Orchestrator exception:** matching *orchestrate / drive backlog / …* → follow `docs/templates/agent/roles/orchestrator.md` **in this parent session** only. That playbook spawns leaf workers (`feature-implementer`, `work-verifier`, `todo-warden`). Never install or spawn `orchestrator` as a harness subagent type.
 
 | When ask matches | Agent filename | Fallback |
 |------------------|----------------|----------|
@@ -39,6 +40,7 @@ When an ask matches a row below, look for a **named agent file** with that filen
 | implement / continue from Current focus | `feature-implementer.md` | session default below |
 | orchestrate / drive backlog / clear TODOs / until blocked | *(parent only — do not spawn)* | `docs/templates/agent/roles/orchestrator.md` |
 | verify completed unit vs Understanding/spec/TODO | `work-verifier.md` | `docs/templates/agent/roles/work-verifier.md` |
+| todo warden / reconcile TODOs / TODO honesty / gaps after orchestration | `todo-warden.md` | `docs/templates/agent/roles/todo-warden.md` |
 | bootstrap / init modular docs | `docs-bootstrap.md` | `docs/templates/agent/BOOTSTRAP.md` |
 | update / sync doc templates | `docs-template-sync.md` | `docs/templates/agent/TEMPLATE_SYNC.md` |
 
@@ -89,23 +91,13 @@ If `docs_profile` is unset at bootstrap / first build-from-reference / sync: sug
 **While working:**
 - **Session start:** Read the active TODO's **Current focus** block first.
 - Treat the active TODO as the living task list; add items as discovered; use Cross-Feature Dependencies when features interact. Rewrite Current focus that fights confirmed Understanding (or clear product identity under ship-first) before coding.
-- **Operable done (Workflow §5.3):** User/operator-facing stems need domain **and** an exercise path (UI / CLI / product API / documented smoke) unless **library-only** or a loud **phased bridge**. Product Overview/Acceptance + domain-only TODOs = under-authored. Open operable Acceptance with no TODO that addresses them = incomplete; update Acceptance when a unit meets a line. Do not treat domain/tests-only clearance as product/Layer done. **No UI specs ≠ defer UI** — scaffold + wire a minimal boring surface (or CLI/smoke) at agent speed; only defer when the user explicitly gates design-first / no UI / library-only.
+- **Operable (Workflow §5.3):** user-facing stems need exercise path (or library-only / loud phase); no UI specs → still scaffold+wire; open operable Acceptance without covering TODOs = incomplete.
 
 **After changes (mandatory):**
-- **Build & verify** when code changed: run the project’s handoff verify (`docs/Tooling.md` **Project verify** if present, else stack defaults) — fix failures before “you can test.” See installed `agent-build-verify` rule / `docs/templates/agent/Agent_Build_Verify_Rule.mdc`.
-- Update **Current focus** and the relevant `-TODO.md` — `[x]` + date on completed items.
-- Human-TODO feedback → sync owner TODO + `docs/Human-TODO.md` Done (Workflow §13); never mark human rows done from assumptions.
-- Update Understanding / spec **only if this session** changed shape, contract, or assumptions. Understanding stays shape-only; contract → spec.
-- **Preference corrections (same turn):** If the user corrected a lasting UI/interaction preference on a confirmed stem that could be “improved away,” append 1-line **Decisions** row(s) and fix contradicting Behavior / Acceptance / Visual refs (Workflow §10). Skip pure spacing unless they say “remember this.” Do **not** put these in Current focus. Do **not** wait for a session-wrap ask.
-- **When updating Understanding:** relocate + TODO uncheck for that stem (Workflow §4). Reconcile vs code only on mismatch / shape change / Understanding update — not session-start audit (Workflow §4).
-- Move finished items to Completed when long. Read other files only when linked from Master_Index or the current TODO/spec.
+- **Build & verify** on code changes before “you can test” (`docs/Tooling.md` Project verify / stack defaults — `Agent_Build_Verify_Rule`).
+- Update **Current focus** + `-TODO.md` (`[x]` + date). Human-TODO feedback → sync owner + Human-TODO Done (§13); never mark human rows from assumptions.
+- Update Understanding/spec **only if this session** changed shape/contract. Preference corrections → same-turn Decisions + fix stale Behavior/Acceptance/Visual (§10). Understanding update → relocate + TODO uncheck (§4). No session-start full reconcile.
 
-**Clarification Protocol:**
-If the user says "review spec", "check for gaps", "ask questions", or "confidence check" for a **named** feature or Document Map row:
-- Re-read **that** feature’s (or shared component’s) spec, Understanding, and TODO only
-- Identify the top gaps (cap clarifying questions at **5**)
-- Ask targeted clarifying questions instead of assuming
-- Only proceed after user confirmation
-- Do not re-read unrelated features
+**Clarification** (*review spec* / *gaps* / *confidence* for a **named** stem): re-read **that** stem only; ≤5 questions; wait for confirm; no unrelated stems.
 
-**Philosophy:** Keep documentation small and accurate. Prefer short user asks — route to the one matching playbook above. **Tight scope:** do the paved path for the current ask; do not pre-audit alternate interpretations, unrelated files, or “just in case” repo scans before acting. Tight scope is **not** permission to ship human-sized interim architectures when shape is clear — plan target architecture at agent speed (see installed `agent-timescale-planning` rule / `docs/templates/agent/Agent_Timescale_Planning_Rule.mdc`). Tight scope is also **not** “library checklist green = operable product” for user-facing stems, and **not** permission to ignore open operable **Acceptance** when claiming stem/Layer done (Workflow §5.3). Use Mermaid only when a small diagram beats prose (Workflow §12). TODO **Current focus** + checklists are agent memory across sessions; **`docs/Human-TODO.md`** is the human inbox (Workflow §13).
+**Philosophy:** Small accurate docs; short asks → one playbook; tight scope = paved path (not alternate audits). Not: human-sprint interim arch when shape is clear · library checklist = product done · ignore open operable Acceptance. Mermaid only when it beats prose (§12). TODO Current focus = agent memory; Human-TODO = human inbox.

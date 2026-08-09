@@ -46,7 +46,7 @@ Only if `optional_rules.doc-roles.status` is `enabled`. Claude project subagents
 | **Parent delegates** | If `.claude/agents/<name>.md` exists → Task/delegate to that subagent with a self-contained prompt; else role playbook fallback |
 | **Note** | User-scope `~/.claude/agents/` is personal — prefer project `.claude/agents/` for this pack |
 
-Copy the six `roles/cursor/*.md` adapters (including `work-verifier.md`). **Do not** invent an `orchestrator` adapter — orchestration is parent-only via `docs/templates/agent/roles/orchestrator.md`.
+Copy the seven `roles/cursor/*.md` adapters (including `work-verifier.md`, `todo-warden.md`). **Do not** invent an `orchestrator` adapter — orchestration is parent-only via `docs/templates/agent/roles/orchestrator.md`.
 
 ## Verify
 
@@ -54,7 +54,7 @@ Copy the six `roles/cursor/*.md` adapters (including `work-verifier.md`). **Do n
 - Agent timescale planning rule or section exists
 - Agent build & verify rule or section exists
 - Optional: `/memory` shows the modular docs section
-- If doc-roles enabled: six files under `.claude/agents/` (no `orchestrator.md`)
+- If doc-roles enabled: seven files under `.claude/agents/` (no `orchestrator.md`; includes `todo-warden.md`)
 
 ## For humans
 

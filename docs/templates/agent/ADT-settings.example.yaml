@@ -40,7 +40,7 @@ docs_profile:
 # none             = no commits
 # PR close-out order (branch-pr / branch-pr-squash): final push → build verify → squash(if squash mode) → mark ready
 # Unset → always ask (bootstrap Step 3p / sync B0.6 / orchestrator pre-run) — even under sync.mode auto-all; never invent current-push
-# After choose/change: forge tooling probe (infer CLI from remote; if branch-pr* → ask to install if missing, ask to start auth if not logged in)
+# After choose/change: forge tooling probe — see agent/roles/orchestrator-git.md
 # Re-ask only on *Set orchestrator git to …* / change this key.
 orchestrator:
   git:
@@ -123,6 +123,6 @@ upstream:
   # check_mode: interval
   # check_interval_days: 7
   last_checked: 2026-07-16
-  local_pack_version: "2.7.9"
-  # upstream_pack_version: "2.7.9"
+  local_pack_version: "2.7.10"
+  # upstream_pack_version: "2.7.10"
   # update_available: true

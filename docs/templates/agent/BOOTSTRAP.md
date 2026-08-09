@@ -220,7 +220,7 @@ Explain: optional Understanding author, implementer, work verifier, etc. as harn
 
 **Never** silent-default **`current-push`**. Git strategy is high-impact — if they shrug, restate the suggestion and get an explicit pick (or “use suggestion”).
 
-**After they pick a git mode** → run **Forge tooling probe** ([`roles/orchestrator.md`](roles/orchestrator.md) Git policy): infer forge from remote; if **`branch-pr` / `branch-pr-squash`** and CLI missing → **ask to install**; if CLI present but not logged in (or just installed) → **ask to start auth** (install ≠ ready for PRs). Fall back to push + human PR / switch mode if they decline. Do not silent-install or silent-login.
+**After they pick a git mode** → run **Forge tooling probe** ([`roles/orchestrator-git.md`](roles/orchestrator-git.md)): infer forge from remote; if **`branch-pr` / `branch-pr-squash`** and CLI missing → **ask to install**; if CLI present but not logged in (or just installed) → **ask to start auth** (install ≠ ready for PRs). Fall back to push + human PR / switch mode if they decline. Do not silent-install or silent-login.
 
 Explicit later (any preference): *Set docs profile to …* / *Set sync to …* / *Set orchestrator git to …* / enable-decline optionals.
 

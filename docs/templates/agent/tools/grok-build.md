@@ -58,7 +58,7 @@ Only if `optional_rules.doc-roles.status` is `enabled`.
 | **Fallback** | If names do not show in `grok inspect` / `/config-agents` → follow `docs/templates/agent/roles/<role>.md` in-session (or spawn `general-purpose` with that playbook path). Do not fail bootstrap; do not invent a second folder |
 | **Do not** | Treat `.cursor/agents/` as Grok spawn types; paste full role bodies into always-on `AGENTS.md` |
 
-Files: `understanding-author.md`, `doc-graduate.md`, `feature-implementer.md`, `work-verifier.md`, `docs-bootstrap.md`, `docs-template-sync.md`.
+Files: `understanding-author.md`, `doc-graduate.md`, `feature-implementer.md`, `work-verifier.md`, `todo-warden.md`, `docs-bootstrap.md`, `docs-template-sync.md`.
 
 **Do not** install an `orchestrator` adapter — orchestration runs in the **parent** session via `docs/templates/agent/roles/orchestrator.md` (spawns leaf workers only).
 
@@ -69,7 +69,7 @@ Compat (secondary, when enabled): **Claude** `.claude/agents/` can load as spawn
 - Modular rule listed by `grok inspect` from `AGENTS.md` and/or `.grok/rules/`
 - Agent timescale planning present in `AGENTS.md` and/or `.grok/rules/`
 - Agent build & verify present in `AGENTS.md` and/or `.grok/rules/`
-- If doc-roles enabled: six files under `.grok/agents/` (no `orchestrator.md`); confirm names appear under **agents** in `grok inspect --json` or `/config-agents` (non-builtin source). If missing → playbook fallback above
+- If doc-roles enabled: seven files under `.grok/agents/` (no `orchestrator.md`; includes `todo-warden.md`); confirm names appear under **agents** in `grok inspect --json` or `/config-agents` (non-builtin source). If missing → playbook fallback above
 - Remind: short asks are enough. Subagents are **enabled by default**; only check `GROK_SUBAGENTS=0` / `[subagents] enabled = false` if spawning fails or the user disabled them
 
 ## For humans

@@ -20,6 +20,19 @@
 
 ---
 
+## 2.7.10
+
+- **Live impact:** `versions-only`, `rules`, `process-docs-only`
+- **Files:**
+  - `VERSION` — 2.7.9 → 2.7.10
+  - `agent/roles/todo-warden.md` + cursor|grok adapters — **docs-only** honesty pass: reopen overclaims, ≤5 cited gap TODOs, ≤10 reopens; no code; no invention
+  - `agent/roles/orchestrator-git.md` — **extracted** git modes, forge probe, PR close-out (build-verify → warden → squash → ready); `orchestrator.md` slimmed to loop + gates + human verify map
+  - `agent/Modular_Docs_Workflow.md` — tighter design intent + **§5.3** (table form; same guardrails)
+  - `agent/Modular_Documentation_Rule.*` — shorter operable/after-changes/philosophy; still points at Workflow/rules
+  - `agent/roles/orchestrator.md` — close-out via git companion; **gaps-found** keeps PR draft
+  - `roles/README.md`, `tools/cursor|grok|claude-code.md`, `BOOTSTRAP` / `TEMPLATE_SYNC_B` forge pointers, `help/USAGE.md`, stamps
+- **Step B:** Bump Master Index **Pack version** to 2.7.10. If `optional_rules.doc-roles` **enabled** → refresh adapters including new **`todo-warden`**. Refresh modular rules (**no ask** unless `customized: true`). No live feature/shared content scan.
+
 ## 2.7.9
 
 - **Live impact:** `versions-only`, `master-index`, `process-docs-only`

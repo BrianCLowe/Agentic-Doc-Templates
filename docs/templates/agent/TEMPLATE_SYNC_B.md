@@ -155,7 +155,7 @@ Read `orchestrator.git.mode` from `docs/ADT-settings.yaml`.
 
 Recommend: remote + forge CLI → **`branch-pr`** (offer **`branch-pr-squash`** if tip-only bots); remote, no CLI → still offer **`branch-pr`** (with install ask) or **`branch-push`**; else **`local`**. Record choice + `recorded` (+ `source`). Explicit later: *Set orchestrator git to …*.
 
-**After the mode is recorded** → **Forge tooling probe** ([`roles/orchestrator.md`](roles/orchestrator.md)): if **`branch-pr` / `branch-pr-squash`** and CLI missing → ask to install; if not authenticated → **ask to start login** (install alone is not enough). Fall back / switch mode if they decline. Do not silent-install or silent-login.
+**After the mode is recorded** → **Forge tooling probe** ([`roles/orchestrator-git.md`](roles/orchestrator-git.md)): if **`branch-pr` / `branch-pr-squash`** and CLI missing → ask to install; if not authenticated → **ask to start login** (install alone is not enough). Fall back / switch mode if they decline. Do not silent-install or silent-login.
 
 **Do not** under `auto-all` write `local` (or any mode) and move on without an explicit user pick. If they say “defaults,” treat that as accepting the **stated recommendation** and record it **loudly** in the sync summary: *“Recorded orchestrator.git = X (your default). Other options: …”*.
 
@@ -208,7 +208,7 @@ Versions:
 6. **Rules** *(if `rules`)* — For each tool with `tools.*.status: installed` in `docs/ADT-settings.yaml`, open **only** `docs/templates/agent/tools/<key>.md` and refresh that harness.
    - **Default:** refresh pack-managed modular + timescale + **build-verify** rules (and enabled optionals) **without asking** — installed means pack-owned.
    - **Ask before overwrite only if** that tool entry has `customized: true` (or an explicit note that pack rule bodies were hand-edited).
-   - If `optional_rules.doc-roles` is `enabled`, refresh that tool’s agents folder (six adapters; **no** `orchestrator` adapter).
+   - If `optional_rules.doc-roles` is `enabled`, refresh that tool’s agents folder (seven adapters including `todo-warden`; **no** `orchestrator` adapter).
    - Remove any stale `.cursor/skills/modular-docs-*` leftovers from older pack drafts (ask first only if deleting user-looking paths outside known leftovers).
 7. **Upstream stamp** *(if `optional-upstream-check` or update-check enabled)* — If `optional_rules.template-update-check.status` is `enabled`: ensure `upstream:` exists; set `local_pack_version` from local `VERSION`, `last_checked` today, clear `update_available` / stale `upstream_pack_version`. Do **not** delete `ADT-settings.yaml`. Refresh optional update-check rules if tagged `rules` / body changed (same customized rule as above).
 8. **Layout migration** — Run [`BOOTSTRAP.md`](BOOTSTRAP.md) Step 0b **only** if layout markers show older layout (`docs/help/` or `docs/agent/` at docs root, or flat setup files in `templates/`). Skip on a normal modern pack refresh.

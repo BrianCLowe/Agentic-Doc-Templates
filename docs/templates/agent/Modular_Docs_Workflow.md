@@ -1,16 +1,16 @@
-<!-- pack-version: 2.7.9 -->
+<!-- pack-version: 2.7.10 -->
 
 > **Agent workflow reference.** Canonical instructions for how to work the modular doc system. Lives in `docs/templates/agent/` with the other agent playbooks — sync from upstream; do **not** copy wholesale into `docs/Master_Index.md`. The live index links here; agent rules summarize and point here for full procedure.
 
 # Modular Documentation — Agent Workflow
 
-**Pack version**: 2.7.9 *(same as `docs/templates/VERSION` / live Master Index **Pack version**)*
+**Pack version**: 2.7.10 *(same as `docs/templates/VERSION` / live Master Index **Pack version**)*
 
-**Design intent:** Users give short requests about the docs (“bootstrap”, “draft Understanding for X”, “update the templates”). Route to **one** playbook (`BOOTSTRAP`, `TEMPLATE_SYNC`, `TEMPLATE_UPDATE_CHECK`, `RULE_INSTALL` → `tools/<key>.md`, or this file for feature work) — do not scan the whole pack catalog. **Tight scope:** act on the paved path; do not pre-audit every alternate interpretation before doing the work. **Agent timescale:** when feature shape is clear, plan the **target architecture** as one change (verify-order checklists OK); do not stage human-sprint interim architectures — see [`Agent_Timescale_Planning_Rule.mdc`](Agent_Timescale_Planning_Rule.mdc). **Operable done:** for user/operator-facing stems, checklist fidelity is not enough — domain-only “done” without an exercise path (UI, CLI, or documented smoke) is incomplete unless **library-only** or a **phased bridge**; open operable **Acceptance** without covering TODOs also blocks “stem drained”; **no UI specs ≠ defer** scaffold+wire (§5.3).
+**Design intent:** Short user asks → **one** playbook (`BOOTSTRAP`, `TEMPLATE_SYNC`, `TEMPLATE_UPDATE_CHECK`, `RULE_INSTALL` → `tools/<key>.md`, roles, or this file for feature procedure). Do not scan the pack catalog. **Tight scope** = paved path only (not “audit every alternate”). **Timescale** = target architecture when shape is clear ([`Agent_Timescale_Planning_Rule.mdc`](Agent_Timescale_Planning_Rule.mdc)). **Operable done** = user-facing stems need an exercise path / phase / library-only — not domain checklist alone (**§5.3**). **Build green** before “you can test” ([`Agent_Build_Verify_Rule.mdc`](Agent_Build_Verify_Rule.mdc)).
 
-**Docs profile** *(ceremony — read [`docs/ADT-settings.yaml`](ADT-settings.example.yaml) `docs_profile.mode` first)*: **`prevent`** (default if unset) = Understanding + shape confirm before code. **`balanced`** = Understanding when identity is ambiguous. **`ship-first`** = Spec + TODO core; no draft coding gate. Full rules: **§0.1**. Never silent-downgrade a project that already uses Understandings.
+**Docs profile:** `docs/ADT-settings.yaml` → `docs_profile.mode` — **`prevent`** (default if unset) · **`balanced`** · **`ship-first`**. Full rules **§0.1**. Never silent-downgrade a project full of Understandings.
 
-**Optional roles** *(never always-on):* Thin wrappers under [`roles/`](roles/README.md). When harness agents are installed (`.cursor/agents/`, `.grok/agents/`, … via [`tools/`](tools/README.md)), the modular **rule** has the parent **delegate/spawn** on matching asks. Otherwise follow the role `.md` fallback. **Orchestrator** (*drive backlog / clear TODOs / until blocked*) runs in the **parent session only** — it loops implement → verify → next without waiting for “next”; see [`roles/orchestrator.md`](roles/orchestrator.md). Single-slice *Continue from Current focus* stays [`roles/feature-implementer.md`](roles/feature-implementer.md). Roles point back here or to `BOOTSTRAP` / `TEMPLATE_SYNC` — they do not replace this workflow.
+**Optional roles:** [`roles/`](roles/README.md) — never always-on; parent spawns when adapters exist, else playbook in-session. **Orchestrator** = parent only ([`roles/orchestrator.md`](roles/orchestrator.md) + git [`roles/orchestrator-git.md`](roles/orchestrator-git.md)). Single-slice implement → [`roles/feature-implementer.md`](roles/feature-implementer.md).
 
 **Read order (feature / shared work):**
 
@@ -333,57 +333,26 @@ When product shape is still unknown, a short **spike** (branch, throwaway protot
 
 ### 5.3 Operable done — exercise path *(not library-by-default)*
 
-**Problem this prevents:** Agents clear domain checklists (schema, engine, fixtures, offline tests) and treat the stem as done while no human can exercise the contract in a running product. That is **checklist fidelity without product completeness** — often **product identity + domain delivery** in the same stem with no bridge.
+**Failure mode:** Product-shaped Index / Understanding / Overview / Acceptance + domain-only TODOs/Architecture → agents clear packages and call the stem done. **Allowed only with an explicit bridge.**
 
-**Layer desync (common failure mode):**
+**User/operator-facing milestone “done” requires:**
 
-| Layer | Often product-shaped | Often domain-shaped |
-|-------|----------------------|---------------------|
-| Master Index · Understanding · Spec **Overview / Behavior** · **Acceptance** | Outcome, walk-away, control plane, “running and proven” | — |
-| Spec **Architecture / Public API** · TODO High Priority | — | Packages, adapters, offline tests |
+1. Domain work for that cut, **and**  
+2. An **exercise path** (UI · CLI · product API · documented smoke) matching how the product is used, **and**  
+3. Operable **Acceptance** for that claim closed **or** still covered by open TODOs  
 
-That split is **allowed only with an explicit bridge**. Without one, product prose sells a working system while “done” means green modules.
+| Bridge | When | How |
+|--------|------|-----|
+| **Dual-track TODOs** | Default for user-facing stems | High Priority = domain **and** surface/wire/smoke |
+| **`library-only`** | Pure package / no operator surface on **this** stem | Label TODO/focus once; consumers own wire |
+| **Phased** | Domain before surface **on purpose** | Loud: `library foundation first · exercise path: <named path>` — not silent package-only High Priority |
+| **Scaffold + wire** | Product needs a surface but **no UI specs** | Minimal boring UI/CLI/smoke on High Priority / same cut — **not** Human-TODO “await design” unless user gated design-first / no UI / library-only |
 
-**Default rule:** For a **feature** stem (or any stem whose Understanding/spec identity is user- or operator-facing), “done” for a milestone means:
+**Do not:** invent a phase only because mockups are missing; treat blank canvas as a hard decide; twin every High Priority row onto Acceptance.
 
-1. Domain / contract work for that cut is in place, **and**
-2. There is at least one **exercise path** the human or agent can run: **UI**, **CLI**, **API call the product exposes**, or a **documented smoke script** — matching how Master Index / Understanding says the product is used, **and**
-3. Operable **Acceptance** lines that this milestone claimed are closed or still have open TODO work that addresses them (see **Acceptance bridge** below).
+**Acceptance:** not a second checklist. Open **operable** lines = remaining work. When a TODO meets a line → update Acceptance same turn. “All TODOs `[x]`” + open operable Acceptance + no covering work = **incomplete** (stem drained / Layer done claims fail).
 
-**Library-only exception:** `_shared/` pure libraries, internal packages, or stems whose is/is-not (or spec overview) **explicitly** says library/API-only with **no** operator surface in this stem may stay domain + tests only. Mark the TODO or Current focus once: **`library-only`** (or “no product surface — consumers wire it”). Consumer **features** still own the wire/exercise rows.
-
-**Phased bridge** *(when domain lands before surface on purpose):* Put a loud line on High Priority or Current focus, e.g. **`library foundation first · exercise path: control plane / worker / continuous paper`** (name the real path). Do **not** leave product Overview/Acceptance as the only place that implies “running product” while TODOs are package-only with no phase note. **Do not** invent a phase solely because UI was unspecified — see **No UI specs** below.
-
-**No UI specs ≠ defer the surface** *(agent-default):*
-
-- If Master Index / Understanding / Acceptance imply a **user or operator surface** (control plane, desk, app, dashboard, admin, game client, “walk away and it runs,” etc.) and the user **did not** provide mockups, wireframes, or UI copy — that is **not** a reason to leave exercise path off High Priority or to park UI on Human-TODO / Low / “later when designed.”
-- **Default:** put **scaffold + wire** on High Priority (or in the same multi-concern cut as domain): minimal boring control plane, thin admin pages, simple CLI, or documented smoke that hits the real loops. Ugly and provisional is fine — iterate after something runs.
-- **Do not** treat blank canvas as a hard **decide** / design gate. Only defer UI when the user **explicitly** says design-first, no UI yet, library-only, or blocks on a real product choice (not “we don’t have Figma”).
-- “Human-scale thinking” / agent timescale means **build the thin surface at agent speed**, not “wait for a human to invent the UI.” Misreading that as “UI is a human task” is wrong.
-
-**Authoring (Understanding-author / first TODO / build-from-reference / graduate):**
-
-- Prefer a **dual track** on High Priority when the stem is user-facing: domain rows **and** surface/wire/smoke rows (not domain-only lists).
-- Spec **Acceptance** should include ≥1 coarse operable outcome for user-facing stems (e.g. “From the control plane, run paper and see …”) — not only library invariants.
-- Master Index product surface (app, desk, CLI, game client) is a hint: Layer / epic TODOs that only name packages while Index names a runnable surface are **under-authored** — add exercise rows **or** a phased bridge; do not invent unrelated backlog.
-- If Overview/Behavior are product-shaped and Architecture is package-shaped, TODOs **must** dual-track, phase, or label **library-only** — never silent domain-only High Priority.
-- Missing UI specs → still author **scaffold + wire** exercise-path items (minimal default surface). Do **not** author “await UI design” unless the user asked for that gate.
-
-**Acceptance bridge** *(coarse outcomes ≠ second TODO list)*:
-
-- **Acceptance is not a twin checklist** — do not dual-maintain every High Priority row on the spec.
-- **Do** treat open **operable** Acceptance lines as evidence of remaining product work when authoring, surveying, or claiming a stem/milestone “done.”
-- When a completed TODO clearly meets an Acceptance outcome → **check/update that Acceptance line the same turn** (or note why it still fails). Do not leave “all TODOs `[x]`” next to open operable Acceptance with no open work.
-- Claiming **stem drained / Layer N done / feature complete** while operable Acceptance for that claim is still open **and** no open TODO addresses those lines → **incomplete**. Add or leave surface/ops TODOs; refresh Current focus. Pure domain items that do not claim that milestone stay fine.
-
-**While implementing:**
-
-- If domain work reveals more work than the checklist had → **add TODO items** (existing rule). That includes a missing exercise path — do **not** stop at green unit tests when the stem is user-facing and nothing runs the happy path.
-- If the exercise path is missing only because UI was never specified → **scaffold a minimal surface and wire domain into it** (or CLI/smoke) rather than waiting. Wrong/boring UI is acceptable; unwired green libraries are not “done.”
-- Tight scope still forbids wandering into unrelated stems; it does **not** forbid adding the surface row that makes *this* stem operable.
-- Clearing every domain checkbox without an exercise path (and without a `library-only` / phased bridge) → **incomplete for orchestration “stem drained”**; leave or add surface work and refresh Current focus.
-
-**Verify:** Work-verifier treats a unit that claimed a user-facing milestone / “feature done” / stem complete as **fail** if: only library/tests landed with no exercise path and no **library-only**/phased bridge, **or** the claim implies closing operable Acceptance lines that remain open with no remaining TODO that addresses them. Pure domain items that do not claim that milestone are fine.
+**Implement / verify / orchestrate:** add missing exercise-path TODOs when discovered; domain-only clearance without path/phase/library-only is not stem-done. Work-verifier **fails** claimed feature/Layer done that is domain-only without bridge, or that leaves matching operable Acceptance open with no TODO.
 
 ---
 

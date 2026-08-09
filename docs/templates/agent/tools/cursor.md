@@ -48,7 +48,7 @@ Only if `optional_rules.doc-roles.status` is `enabled`. These are [Cursor subage
 | **Parent delegates** | If `.cursor/agents/<name>.md` exists → launch that subagent with a self-contained prompt |
 | **Do not** | Install under `.cursor/skills/`; add “use proactively” / “always use for” to descriptions |
 
-Files: `understanding-author.md`, `doc-graduate.md`, `feature-implementer.md`, `work-verifier.md`, `docs-bootstrap.md`, `docs-template-sync.md`.
+Files: `understanding-author.md`, `doc-graduate.md`, `feature-implementer.md`, `work-verifier.md`, `todo-warden.md`, `docs-bootstrap.md`, `docs-template-sync.md`.
 
 **Do not** install an `orchestrator` adapter — orchestration runs in the **parent** session via `docs/templates/agent/roles/orchestrator.md` (spawns leaf workers only).
 
@@ -61,7 +61,7 @@ Files: `understanding-author.md`, `doc-graduate.md`, `feature-implementer.md`, `
 - `.cursor/rules/modular-documentation.mdc` exists
 - `.cursor/rules/agent-timescale-planning.mdc` exists
 - `.cursor/rules/agent-build-verify.mdc` exists
-- If doc-roles enabled: six files under `.cursor/agents/` (no `orchestrator.md`)
+- If doc-roles enabled: seven files under `.cursor/agents/` (no `orchestrator.md`; includes `todo-warden.md`)
 - Remind user: short asks are enough; parent rule delegates; `/name` optional
 
 ## For humans

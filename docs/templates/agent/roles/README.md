@@ -11,8 +11,9 @@ Thin, playbook-bound roles for heavier moments (intent capture, graduation, boot
 | **Understanding author** | [`understanding-author.md`](understanding-author.md) | Capture **feature shape** first (is / is not); draft/revise `-Understanding.md` (required under **prevent**; on demand under ship-first via *lock shape*) | Ready for human **shape** review (`draft`) — **no code** |
 | **Doc graduate** | [`doc-graduate.md`](doc-graduate.md) | Confirmed shape → durable **contract** spec (when Understanding exists) | Spec updated — **no code** |
 | **Feature implementer** | [`feature-implementer.md`](feature-implementer.md) | Current focus → code when stem is ready under **docs profile**; update that TODO | Focus item done or blocked |
-| **Orchestrator** | [`orchestrator.md`](orchestrator.md) | **Parent-only** loop: implement → verify → git per `orchestrator.git.mode` (branch+PR / current-push / local / …); readiness from `docs_profile`; end-of-run **Human-TODO verify map** | Agent work cleared / hard-blocked / budget — report + human verify inbox |
+| **Orchestrator** | [`orchestrator.md`](orchestrator.md) + [`orchestrator-git.md`](orchestrator-git.md) | **Parent-only** loop + git delivery (PR close-out: build-verify → todo-warden → squash? → ready) | Agent work cleared / hard-blocked / budget — report + human verify inbox |
 | **Work verifier** | [`work-verifier.md`](work-verifier.md) | One unit vs spec + TODO (+ Understanding when present) | Pass or fail with reasons — **no code** |
+| **Todo warden** | [`todo-warden.md`](todo-warden.md) | Post-loop **docs-only** honesty: reopen overclaims, add tightly cited gap TODOs (hard caps; no invention) | Report clean / gaps-found — **no code** |
 | **Bootstrap** | [`bootstrap.md`](bootstrap.md) | First-time modular docs layout | [`../BOOTSTRAP.md`](../BOOTSTRAP.md) complete |
 | **Template sync** | [`template-sync.md`](template-sync.md) | Pack refresh (A) then live Step B | [`../TEMPLATE_SYNC.md`](../TEMPLATE_SYNC.md) → A → B |
 
@@ -38,7 +39,7 @@ Bootstrap Step 3p (doc-roles enable) / [`../RULE_INSTALL.md`](../RULE_INSTALL.md
 
 **Parent orchestration** (in the modular rule / `AGENTS.md`): if `<name>.md` exists under a known agents folder, delegate/spawn; else follow the role playbook. Grok Build must use `.grok/agents/` — it does **not** load `.cursor/agents/` as spawn types.
 
-**Orchestrator is parent-only:** follow [`orchestrator.md`](orchestrator.md) in the **current session**. Do **not** install or spawn an `orchestrator` harness adapter — it dispatches leaf workers (`feature-implementer`, `work-verifier`) that *are* installed when doc-roles are enabled.
+**Orchestrator is parent-only:** follow [`orchestrator.md`](orchestrator.md) (+ [`orchestrator-git.md`](orchestrator-git.md) for git) in the **current session**. Do **not** install or spawn an `orchestrator` harness adapter — it dispatches leaf workers (`feature-implementer`, `work-verifier`, `todo-warden`) that *are* installed when doc-roles are enabled.
 
 `/` commands (Cursor) remain optional overrides. Descriptions use gated **Use when …**, not “use proactively.”
 
