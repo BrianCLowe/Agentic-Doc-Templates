@@ -13,7 +13,7 @@ Thin, playbook-bound roles for heavier moments (intent capture, graduation, boot
 | **Feature implementer** | [`feature-implementer.md`](feature-implementer.md) | Current focus → code when stem is ready under **docs profile**; update that TODO | Focus item done or blocked |
 | **Orchestrator** | [`orchestrator.md`](orchestrator.md) + [`orchestrator-git.md`](orchestrator-git.md) | **Parent-only** loop + git delivery (close-out: build-verify → todo-warden → squash? → ready → **return to default** if run created the branch) | Agent work cleared / hard-blocked / budget — report + human verify inbox |
 | **Work verifier** | [`work-verifier.md`](work-verifier.md) | One unit vs spec + TODO (+ Understanding when present) | Pass or fail with reasons — **no code** |
-| **Todo warden** | [`todo-warden.md`](todo-warden.md) | Post-loop **docs-only** honesty: reopen overclaims, add tightly cited gap TODOs (hard caps; no invention) | Report clean / gaps-found — **no code** |
+| **Todo warden** | [`todo-warden.md`](todo-warden.md) | Post-loop **docs-only** honesty + **hygiene**: reopen overclaims, cited gap TODOs (hard caps), **move** finished `[x]` into Completed | Report clean / gaps-found — **no code**; hygiene-only stays **clean** |
 | **Bootstrap** | [`bootstrap.md`](bootstrap.md) | First-time modular docs layout | [`../BOOTSTRAP.md`](../BOOTSTRAP.md) complete |
 | **Template sync** | [`template-sync.md`](template-sync.md) | Pack refresh (A) then live Step B | [`../TEMPLATE_SYNC.md`](../TEMPLATE_SYNC.md) → A → B |
 

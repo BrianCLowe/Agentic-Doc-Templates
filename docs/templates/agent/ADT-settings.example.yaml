@@ -143,6 +143,6 @@ upstream:
   # check_mode: interval
   # check_interval_days: 7
   last_checked: 2026-07-16
-  local_pack_version: "2.7.12"
-  # upstream_pack_version: "2.7.12"
+  local_pack_version: "2.7.13"
+  # upstream_pack_version: "2.7.13"
   # update_available: true

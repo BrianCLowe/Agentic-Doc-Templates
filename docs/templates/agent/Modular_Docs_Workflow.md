@@ -1,10 +1,10 @@
-<!-- pack-version: 2.7.12 -->
+<!-- pack-version: 2.7.13 -->
 
 > **Agent workflow reference.** Canonical instructions for how to work the modular doc system. Lives in `docs/templates/agent/` with the other agent playbooks — sync from upstream; do **not** copy wholesale into `docs/Master_Index.md`. The live index links here; agent rules summarize and point here for full procedure.
 
 # Modular Documentation — Agent Workflow
 
-**Pack version**: 2.7.12 *(same as `docs/templates/VERSION` / live Master Index **Pack version**)*
+**Pack version**: 2.7.13 *(same as `docs/templates/VERSION` / live Master Index **Pack version**)*
 
 **Design intent:** Short user asks → **one** playbook (`BOOTSTRAP`, `TEMPLATE_SYNC`, `TEMPLATE_UPDATE_CHECK`, `RULE_INSTALL` → `tools/<key>.md`, roles, or this file for feature procedure). Do not scan the pack catalog. **Tight scope** = paved path only (not “audit every alternate”). **Timescale** = target architecture when shape is clear ([`Agent_Timescale_Planning_Rule.mdc`](Agent_Timescale_Planning_Rule.mdc)). **Operable done** = user-facing stems need an exercise path / phase / library-only — not domain checklist alone (**§5.3**). **Build green** before “you can test” ([`Agent_Build_Verify_Rule.mdc`](Agent_Build_Verify_Rule.mdc)). **User workflow wins where safe** — freeform standing notes + same-turn capture when prefs oppose pack defaults (**§0.2**).
 
@@ -355,9 +355,9 @@ When a feature depends on shared foundation work, the feature TODO gets a **depe
 - **Exploration vs shipping:** See §5.2.
 - **Session start:** Read the active TODO's **Current focus** block first (§5.1) — then High Priority.
 - While working: Add new items as you discover them (including exercise-path rows when domain work reveals a missing run path — §5.3).
-- After finishing a task: Mark `[x]`, add completion date/note.
-- When a section gets long: Move finished items to Completed or archive (`-todo-complete.md`).
+- After finishing a task: Mark `[x]`, add completion date/note, and **move** the item into **## Completed** (do not leave long `[x]` lists under High/Medium/Low).
 - **Session end:** Update **Current focus** for the next session.
+- **Todo warden** ([`roles/todo-warden.md`](roles/todo-warden.md)): post-loop honesty **and** hygiene — moves parked `[x]` items into Completed when agents forgot.
 
 ### 5.1 Session handoff — Current focus
 

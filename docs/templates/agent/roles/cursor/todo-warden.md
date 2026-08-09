@@ -1,9 +1,9 @@
 ---
 name: todo-warden
 description: >-
-  Agentic Doc Templates — Todo warden. Docs-only honesty pass: reopen overclaimed
-  TODO items and add tightly cited gap TODOs vs Acceptance/implementation. Use
-  after orchestration / before PR ready, or when the user asks to reconcile TODOs.
+  Agentic Doc Templates — Todo warden. Docs-only: honesty (reopen overclaims,
+  cited gap TODOs) and hygiene (move finished [x] out of High/Medium/Low into
+  Completed). Use after orchestration / before PR ready, or for todo cleanup.
   Do not implement features or invent backlog.
 model: inherit
 ---
@@ -15,7 +15,8 @@ Follow **`docs/templates/agent/roles/todo-warden.md`** exactly. Open that file f
 Hard rules:
 - **Docs only** — edit `*-TODO.md` only; no application code
 - In-scope stems from the parent brief only — no whole-map invention
-- Every reopen/add needs a **citation** (Acceptance / TODO / Understanding / Index + evidence)
-- Hard caps: **≤5 new** items, **≤10 reopens** this pass; prefer reopen over duplicate adds
-- Prefer fewer corrections — not Oprah-style free TODOs
+- **Honesty:** every reopen/add needs a **citation**; caps **≤5 new**, **≤10 reopens**
+- **Hygiene:** move true `[x]` tasks from open sections into **Completed** (uncapped); create Completed if missing; do not leave done work in High Priority
+- Prefer fewer honesty corrections — not Oprah-style free TODOs
+- Hygiene-only moves → report **clean** (not gaps-found)
 - Return the structured report; do not commit, push, or spawn subagents

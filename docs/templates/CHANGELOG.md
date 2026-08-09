@@ -20,6 +20,19 @@
 
 ---
 
+## 2.7.13
+
+- **Live impact:** `versions-only`, `rules`, `content-templates`, `process-docs-only`
+- **Files:**
+  - `VERSION` — 2.7.12 → 2.7.13
+  - `agent/roles/todo-warden.md` + cursor|grok adapters — **hygiene/cleanup**: move true `[x]` from High/Medium/Low into **Completed** (uncapped); honesty+hygiene default; *todo cleanup* = hygiene-only; hygiene never forces `gaps-found`; no auto `-todo-complete.md`
+  - `agent/roles/orchestrator-git.md` — close-out warden brief includes hygiene
+  - `agent/roles/feature-implementer.md` + adapters — finish → move items to Completed
+  - `agent/Modular_Docs_Workflow.md` §5, modular rules — mark done **and move** to Completed
+  - `TODO_Template.md` — heading is plain **`## Completed`** (dropped Archive / `-todo-complete.md` parenthetical)
+  - `roles/README.md`, `help/USAGE.md`, stamps
+- **Step B:** Bump Master Index **Pack version** to 2.7.13. If `optional_rules.doc-roles` **enabled** → refresh **todo-warden** (+ feature-implementer) adapters. Refresh modular rules (**no ask** unless `customized: true`). Do **not** auto-run warden on all live TODOs. No live feature/shared content invent.
+
 ## 2.7.12
 
 - **Live impact:** `versions-only`, `master-index`, `rules`, `process-docs-only`

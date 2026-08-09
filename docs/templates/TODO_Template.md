@@ -49,7 +49,7 @@ Use the right pattern:
 
 - Design question for user: [brief question here]
 
-## Completed (Archive, create a -todo-complete.md file if the list gets too long)
+## Completed
 - [x] Example completed task (finished 2026-05-04 by Cursor) — brief note if useful
 
 ---
@@ -60,7 +60,7 @@ Use the right pattern:
 - **If this TODO is for a feature or shared component** — read Understanding first (shape guardrails). Do not implement until status is `confirmed` or the user waives. **If `confirmed`**, proceed — do not re-prompt Understanding review unless scope changes. Coarse **Acceptance** lives on the **spec**, not Understanding — this file is the living work checklist.
 - **Agent timescale:** Size High Priority / Current focus for the **target architecture** matching confirmed shape. Stepped checklists = verify order inside one cut — not human-sprint interim architectures. Rewrite fighting TODOs before implementing. Label disposable spikes as **exploration** (Workflow §5.2); do not promote spike interims to the paved path once shape is known. Do not ask the user to remind you.
 - **Operable done (Workflow §5.3):** User/operator-facing stems are not done when only domain/library/tests land. High Priority needs ≥1 **exercise path** (UI, CLI, product-facing API, or documented smoke) unless **library-only** or a **phased bridge** names the later path. **No UI specs ≠ defer:** scaffold + wire a minimal boring surface (or CLI/smoke) on High Priority — do not park UI for “design later” unless the user explicitly gated that. Spec **Acceptance** (operable lines) is not a second checklist — but open operable Acceptance with no open TODO that addresses them means incomplete product work; when a TODO meets an Acceptance line, update Acceptance same turn. Clearing domain checkboxes without path/phase/Acceptance bridge is incomplete — **add** surface/wire/smoke items when you discover the gap. Tight scope ≠ skip the run path for *this* stem.
-- Add new items as you discover them; **update Current focus** at session end (`[x]` + date on completed items). Lasting preference corrections → that stem’s spec **Decisions** (same turn — Workflow §10), not this block.
+- Add new items as you discover them; **update Current focus** at session end. On finish: `[x]` + date **and move** the item into **Completed** (do not leave done tasks under High/Medium/Low). Lasting preference corrections → that stem’s spec **Decisions** (same turn — Workflow §10), not this block.
 - **Human-gated items:** when adding a task only a human can close (`playtest`, `decide`, `procure`, `waiting`), **dual-write** in the same edit — owner item here (or Blocked-by link for procure/waiting) **and** an Open row on [`Human-TODO.md`](../Human-TODO.md). Do not bury human asks only on this file.
 - When the user reports human-TODO progress, update this owner item (`[x]` + feedback) and sync Human-TODO Done (Workflow §13).
 - Foundation tasks belong in `_shared/Component-TODO.md`, not in a feature TODO — see [`Modular_Docs_Workflow.md`](agent/Modular_Docs_Workflow.md) §1.
@@ -74,4 +74,4 @@ Use the right pattern:
 
 ---
 
-*Keep High Priority to roughly one screen — archive Completed when the list gets long.*
+*Keep High Priority to roughly one screen — finished work belongs under **Completed**, not under open priority sections.*
