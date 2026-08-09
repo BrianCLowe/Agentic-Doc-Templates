@@ -53,9 +53,11 @@
 |-------|--------|
 | Not a git repo | Treat as **`none`** this run |
 | Dirty **unrelated** WIP | **Hard stop** — commit/stash/waive (TEMPLATE_SYNC A0 spirit) |
-| `branch-pr` / `branch-pr-squash` / `branch-push` | Non-default intentional branch → **stay**; else create `orchestrate/YYYY-MM-DD-<scope>` |
-| `local` / `current-push` | Stay on current branch |
+| `branch-pr` / `branch-pr-squash` / `branch-push` | Non-default **intentional** feature branch → **stay** (record `branch_origin: pre-existing`). Else create `orchestrate/YYYY-MM-DD-<scope>` (record `branch_origin: created`) |
+| `local` / `current-push` | Stay on current branch (`branch_origin: n/a`) |
 | `none` | No branch setup |
+
+**Remember for end-of-run:** whether this run **created** the branch vs **stayed** on a pre-existing one. That drives **return to default** (below).
 
 ### During the loop
 
@@ -67,10 +69,11 @@
 ### End of run *(non-PR)*
 
 - Include human-verify-map doc commit if it dirtied the tree.
-- **`branch-push`:** push remaining; report branch.
+- **`branch-push`:** push remaining; report branch name used for the run.
 - **`current-push`:** push; report.
 - **`local` / `none`:** report commits/dirty; no push.
 - **Never merge.** Force-push only as **force-with-lease** in squash step below.
+- Then **return to default branch** (below) when applicable.
 
 ### PR close-out *(branch-pr / branch-pr-squash — strict order)*
 
@@ -78,23 +81,41 @@ After agent work done (+ human-verify-map committed if needed). **Do not reorder
 
 1. **Final push** — remote matches local.
 2. **Build verify** *(gate)* — [`Agent_Build_Verify_Rule.mdc`](../Agent_Build_Verify_Rule.mdc) / Tooling **Project verify**. Fix → re-run until green, or stop (leave **draft**, report block).  
-   **Do not** warden / squash / mark ready while red.
+   **Do not** warden / squash / mark ready while red. If stopping here with a clean tree → still **return to default** (step 6), then report.
 3. **Todo warden** *(docs-only; after green)* — if this run cleared implementer units: spawn `todo-warden` or follow [`todo-warden.md`](todo-warden.md). Brief: in-scope stems + claimed-done list.  
-   - **`gaps-found`:** commit TODOs, push, **leave draft**, **skip squash + ready**, report; optional re-loop if budget.  
+   - **`gaps-found`:** commit TODOs, push, **leave draft**, **skip squash + ready**; then **return to default** (run branch remains on remote). Optional re-loop if budget — if re-looping, **stay** on run branch until that loop’s close-out.  
    - **`clean`:** continue.  
    - No code units this run → skip warden.
 4. **Squash** *(`branch-pr-squash` only; after 2 green + 3 clean)* — one commit on **run branch** (not default); subject = run scope; **`--force-with-lease` only**. Unsafe history → skip squash, note, continue.
 5. **Mark ready** *(default)* — after 2 green, 3 clean/skipped, 4 done/skipped. Skip if *leave draft*, verify never green, or warden **gaps-found**.
-6. **Report** — branch, PR URL, draft/ready, squash?, verify, warden, CI if cheap.
+6. **Return to default branch** — see below (after this run’s work on the run branch is finished).
+7. **Report** — run branch, PR URL, draft/ready, squash?, verify, warden, CI if cheap, **current HEAD** (e.g. *now on `main`; was `orchestrate/…`*).
 
-**Order why:** green build → honest backlog → optional single HEAD → invite checks.
+**Order why:** green build → honest backlog → optional single HEAD → invite checks → leave the machine on the default branch so the next ask is not on a closed/merged/stale PR tip.
+
+### Return to default branch *(end of run — default when this run created the branch)*
+
+**Purpose:** After orchestration, local HEAD should not stay on a disposable `orchestrate/…` (or equivalent) so the next ask (template sync, casual fix) does not land on a closed/merged PR branch.
+
+| Case | Action |
+|------|--------|
+| This run **created** the run branch (`branch_origin: created`) | **Default:** `git checkout` repo default (`main` / `master` / `git symbolic-ref refs/remotes/origin/HEAD` / forge default). Optional cheap `git pull --ff-only` on default if clean and tracking exists — do not merge/rebase fights. |
+| This run **stayed** on a pre-existing intentional feature branch | **Do not** auto-checkout default (user may still be building that feature). One line in report: *stayed on `<branch>` (pre-existing)*. |
+| User said *stay on this branch* / *this run only stay here* | Skip return. |
+| Working tree **dirty** with uncommitted work | **Do not** checkout away — report dirty + stay; ask commit/stash if needed. |
+| `local` / `current-push` / `none` / never left default | Skip (already on default or no branch hop). |
+| `branch-push` with **created** branch | Same as created: return to default after final push (+ warden if any). |
+
+**When:** **Last** git step after this run’s delivery for the branch is done (final push, close-out steps 1–5 as applicable, including gaps-found push). **Never** checkout default *before* final push / squash / mark-ready on the run branch.
+
+**Do not:** delete the run branch locally/remotely unless the user asked; merge the PR; force-checkout over dirty files.
 
 ### Non-PR + warden
 
-After loop (+ human verify map): if implementer units shipped → run **todo-warden** once. **gaps-found** → commit TODOs when mode allows commits; do not claim stem/Layer drained.
+After loop (+ human verify map): if implementer units shipped → run **todo-warden** once. **gaps-found** → commit TODOs when mode allows commits; do not claim stem/Layer drained. Then **return to default** when `branch_origin: created`.
 
 ### Grants / do not
 
 - Mode (or this-run override) grants **only** that mode’s commit/push/PR for **orchestration**.
 - Not a grant for template sync or other playbooks.
-- **Do not:** merge PRs; bare `--force`; silent-default `current-push`; invent forge; store tokens.
+- **Do not:** merge PRs; bare `--force`; silent-default `current-push`; invent forge; store tokens; leave HEAD on an orchestrator-created branch after a finished run without reporting it.

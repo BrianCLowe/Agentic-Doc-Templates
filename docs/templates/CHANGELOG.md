@@ -20,6 +20,16 @@
 
 ---
 
+## 2.7.11
+
+- **Live impact:** `versions-only`, `process-docs-only`
+- **Files:**
+  - `VERSION` — 2.7.10 → 2.7.11
+  - `agent/roles/orchestrator-git.md` — **return to default branch** after run when this orchestration **created** `orchestrate/…` (not pre-existing feature branches); report final HEAD; skip if dirty / user said stay
+  - `agent/roles/orchestrator.md`, `roles/README.md` — end report includes current branch after return
+  - stamps: Master Index / Workflow / ADT-settings example / root README
+- **Step B:** Bump Master Index **Pack version** to 2.7.11. No live feature/shared scan. Rules refresh not required (orchestrator playbooks only).
+
 ## 2.7.10
 
 - **Live impact:** `versions-only`, `rules`, `process-docs-only`

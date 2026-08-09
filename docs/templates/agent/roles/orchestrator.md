@@ -4,7 +4,7 @@
 >
 > **Parent session only.** Do **not** spawn an `orchestrator` subagent. Leaf workers: `feature-implementer`, `work-verifier`, `todo-warden`. Do **not** install this file into harness `agents/` folders.
 
-**Job:** Clear ready TODO work — implement → verify → milestone git — until budget/block, without waiting for “next.” End: human verify map + git close-out (PR modes: build-verify → todo-warden → squash? → mark ready).
+**Job:** Clear ready TODO work — implement → verify → milestone git — until budget/block, without waiting for “next.” End: human verify map + git close-out (PR modes: build-verify → todo-warden → squash? → mark ready → **return to default branch** when this run created the branch).
 
 **Canonical:** This file (loop). **Git delivery:** [`orchestrator-git.md`](orchestrator-git.md). Workers: [`feature-implementer.md`](feature-implementer.md), [`work-verifier.md`](work-verifier.md), [`todo-warden.md`](todo-warden.md). Workflow §0.1 / §3 / §5 / §5.3 / §13. Timescale: [`../Agent_Timescale_Planning_Rule.mdc`](../Agent_Timescale_Planning_Rule.mdc). Settings: `docs/ADT-settings.yaml` → `docs_profile` + `orchestrator.git.mode`.
 
@@ -99,7 +99,7 @@ Per stem with pass work, owner-TODO bullets when applicable: **surfaces** to ope
 
 ## End-of-run report
 
-Cleared · still open · human verify map · other deferred human · hard-blocked · verify failures · **git** (mode, branch, commits, push, PR, verify, warden, ready/draft) · next (usually walk Human-TODO look-lists).
+Cleared · still open · human verify map · other deferred human · hard-blocked · verify failures · **git** (mode, run branch, commits, push, PR, verify, warden, ready/draft, **current HEAD after return-to-default**) · next (usually walk Human-TODO look-lists).
 
 ## Do not
 
@@ -111,6 +111,7 @@ Cleared · still open · human verify map · other deferred human · hard-blocke
 - Skip todo-warden after a code-shipping run; mark PR ready on warden **gaps-found**  
 - Mark human playtest/decide done without user confirm  
 - Push/PR/current-push without mode (or this-run) grant; **merge** PRs; bare force-push; silent-default **current-push**  
+- Leave HEAD on an **orchestrator-created** run branch after a finished run without returning to default (unless user said stay / dirty tree)  
 - Invent `_shared`/map rows/backlog unrelated to shipped work or dual-write  
 - Drain Low when user chose High-only; upgrade single-slice to full orchestrate  
 - Re-open Understanding when `confirmed` + scope unchanged  

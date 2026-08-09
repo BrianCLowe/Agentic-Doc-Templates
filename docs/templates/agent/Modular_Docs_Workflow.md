@@ -1,10 +1,10 @@
-<!-- pack-version: 2.7.10 -->
+<!-- pack-version: 2.7.11 -->
 
 > **Agent workflow reference.** Canonical instructions for how to work the modular doc system. Lives in `docs/templates/agent/` with the other agent playbooks — sync from upstream; do **not** copy wholesale into `docs/Master_Index.md`. The live index links here; agent rules summarize and point here for full procedure.
 
 # Modular Documentation — Agent Workflow
 
-**Pack version**: 2.7.10 *(same as `docs/templates/VERSION` / live Master Index **Pack version**)*
+**Pack version**: 2.7.11 *(same as `docs/templates/VERSION` / live Master Index **Pack version**)*
 
 **Design intent:** Short user asks → **one** playbook (`BOOTSTRAP`, `TEMPLATE_SYNC`, `TEMPLATE_UPDATE_CHECK`, `RULE_INSTALL` → `tools/<key>.md`, roles, or this file for feature procedure). Do not scan the pack catalog. **Tight scope** = paved path only (not “audit every alternate”). **Timescale** = target architecture when shape is clear ([`Agent_Timescale_Planning_Rule.mdc`](Agent_Timescale_Planning_Rule.mdc)). **Operable done** = user-facing stems need an exercise path / phase / library-only — not domain checklist alone (**§5.3**). **Build green** before “you can test” ([`Agent_Build_Verify_Rule.mdc`](Agent_Build_Verify_Rule.mdc)).
 
