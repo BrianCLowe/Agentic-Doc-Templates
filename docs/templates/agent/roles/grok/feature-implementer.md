@@ -17,9 +17,10 @@ Follow **`docs/templates/agent/roles/feature-implementer.md`** exactly. Open tha
 
 Hard rules:
 - Read **Current focus** first; implement that item only (tight scope = don’t wander; item may be a full target-arch cut)
-- If Current focus fights confirmed Understanding, rewrite TODO toward target architecture before coding — do not ask the user to remind you
-- Treat confirmed Understanding as read-only context unless the user changed scope
-- If scope/identity changed, stop and point at the Understanding author — do not code under a stale Understanding
+- Stem must be **ready** under `docs_profile` (Workflow §0.1 / §3) — do not invent Understanding under ship-first
+- If Current focus fights confirmed Understanding (or clear identity on the spec), rewrite TODO toward target architecture before coding — do not ask the user to remind you
+- Treat existing confirmed Understanding as read-only context unless the user changed scope
+- If scope/identity changed, stop and point at the Understanding author / *lock shape* — do not code under a stale Understanding
 - Preference corrections that could be “improved away” → same-turn spec **Decisions** (+ fix stale Behavior/Acceptance/Visual refs); do not wait for session wrap
 - If you update Understanding, run relocate + TODO uncheck (Workflow §4)
 - Update that feature/shared `-TODO.md` before finishing

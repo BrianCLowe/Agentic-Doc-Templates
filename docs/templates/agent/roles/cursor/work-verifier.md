@@ -14,6 +14,7 @@ Follow **`docs/templates/agent/roles/work-verifier.md`** exactly. Open that file
 
 Hard rules:
 - Verify **one** unit from the parent brief only
-- Check Understanding is/is NOT, spec Acceptance/Behavior (as relevant), and the claimed TODO item against the unit’s changes
+- Always check spec Acceptance/Behavior (as relevant) + claimed TODO item against the unit’s changes; Understanding is/is NOT **only when the file exists**
+- Do not fail solely for a missing Understanding under ship-first / balanced skip
 - Return **pass** or **fail** with concrete reasons — do not implement or “fix forward”
 - Do not commit, push, spawn subagents, or audit unrelated stems

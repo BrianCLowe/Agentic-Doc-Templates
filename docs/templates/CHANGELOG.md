@@ -19,6 +19,25 @@
 
 ---
 
+## 2.7.7
+
+- **Live impact:** `versions-only`, `master-index`, `rules`, `process-docs-only`
+- **Files:**
+  - `VERSION` — 2.7.6 → 2.7.7
+  - `agent/ADT-settings.example.yaml` — **`docs_profile.mode`**: `prevent` \| `balanced` \| `ship-first`; **`orchestrator.git.mode`**: `local` \| `branch-pr` \| `branch-push` \| `current-push` \| `none`
+  - `agent/Modular_Docs_Workflow.md` — **§0.1 Docs profile** (plain-language options); §0/§1/§2/§3/§4 branch on profile; Spec+TODO core
+  - `agent/Modular_Documentation_Rule.*` — docs_profile table + ready gates
+  - `agent/BOOTSTRAP.md` — **Step 3p one-batch** project preferences (profile, update-check, doc-roles, sync, orchestrator git); 3d uses profile
+  - `agent/TEMPLATE_SYNC_B.md` — **B0.5** docs_profile; **B0.6** orchestrator git **always ask if unset** (including `auto-all`; never invent `current-push` / silent-write)
+  - `agent/roles/orchestrator.md` — Git policy; **forge tooling probe** (infer CLI from remote; ask to install if missing; **ask to start auth** if not logged in — install ≠ PR-ready); readiness by docs_profile
+  - `agent/roles/work-verifier.md` + Grok adapter — plan-mode: prefer read tools if shell blocked
+  - `agent/roles/*`, cursor|grok adapters — profile + git wiring; Grok work-verifier `permission_mode: plan`
+  - `agent/tools/grok-build.md` — subagents on by default; Claude vs Cursor compat
+  - `agent/Agent_Timescale_Planning_Rule.*` — identity on Understanding or spec under ship-first
+  - `Master_Index_Template.md`, `help/*`, root README — prevent default + ship-first + batch prefs + orchestrator git
+  - stamps: Master Index / Workflow / ADT-settings example / root README
+- **Step B:** Bump Master Index **Pack version** to 2.7.7. Adopt At a Glance / Key Locations **docs profile** + **orchestrator git** wording. If `docs_profile.mode` unset → **B0.5** (`auto-all` → `prevent`). If `orchestrator.git.mode` unset → **B0.6 always ask** (even under `auto-all`). **Update and refresh** installed modular + timescale rules **and** doc-role adapters from this pack (**no ask** unless `customized: true`); if Grok doc-roles enabled include `work-verifier` (`permission_mode: plan` + read-tool fallback). Do **not** delete existing Understandings. No live feature/shared content scan beyond rules/index stamps.
+
 ## 2.7.6
 
 - **Live impact:** `versions-only`, `master-index`, `rules`, `content-templates`, `optional-live-reshape`, `optional-todo-ambition`

@@ -44,7 +44,7 @@ Optional fields: `recorded` (YYYY-MM-DD), `path`, `note`, `customized` (true onl
 
 | Status | Meaning |
 |--------|---------|
-| `enabled` | User opted in (bootstrap Step 4b / 4c or explicit ask). When installing/refreshing a tool, that tool’s `tools/<key>.md` also installs matching optional artifacts. |
+| `enabled` | User opted in (bootstrap Step 3p preference batch or explicit ask). When installing/refreshing a tool, that tool’s `tools/<key>.md` also installs matching optional artifacts. |
 | `declined` | User opted out — do not install; do not re-ask unless they request it. |
 | *(missing / unset)* | **Not** a silent no. Briefly explain the option and ask once; then record `enabled` or `declined`. |
 
@@ -55,11 +55,13 @@ Optional fields: `recorded` (YYYY-MM-DD), `path`, `note`, `customized` (true onl
 | `auto` | Pack sync applies recommended live updates + local post-sync hygiene commits without mid-sync quizzes — see [`TEMPLATE_SYNC_B.md`](TEMPLATE_SYNC_B.md). Still asks once for brand-new unset `optional_rules.*`. Pre-sync dirty tree still hard-stops ([`TEMPLATE_SYNC_A.md`](TEMPLATE_SYNC_A.md) A0) |
 | `auto-all` | Same as `auto`, and also enable + install unset `optional_rules.*` without asking (never re-enable `declined`) |
 | `choose` | Present optionals each sync; suggest commits, ask before committing |
-| *(missing / unset)* | Ask once (bootstrap Step 4d or first sync) — do not silent-default |
+| *(missing / unset)* | Ask once (bootstrap Step 3p or first sync) — do not silent-default |
 
-If `optional_rules.template-update-check` is missing: under **`sync.mode: auto-all`** enable + install (default `check_mode: always`); otherwise bootstrap should have asked — if you are mid–rule-install (or finishing a template sync) and it is still unset, ask once using the Step 4b prompt, then record `enabled` or `declined`.
+If `optional_rules.template-update-check` is missing: under **`sync.mode: auto-all`** enable + install (default `check_mode: always`); otherwise bootstrap should have asked — if you are mid–rule-install (or finishing a template sync) and it is still unset, ask once using the Step 3p **B** wording, then record `enabled` or `declined`.
 
-If `optional_rules.doc-roles` is missing: under **`sync.mode: auto-all`** enable + install adapters for each `tools.*.status: installed` tool that supports them; otherwise ask once using bootstrap Step 4c for **any** rule-install or template-sync pass — not only when installing Cursor/Grok/Claude. Explain what “yes” means for each installed tool (agents-folder adapters where supported; Copilot/OpenClaw/etc.: no adapter files — parent follows `roles/*.md` in-session). Then record `enabled` or `declined`. Do **not** skip the ask because the current tool’s Install row is None.
+If `optional_rules.doc-roles` is missing: under **`sync.mode: auto-all`** enable + install adapters for each `tools.*.status: installed` tool that supports them; otherwise ask once using bootstrap Step 3p **C** for **any** rule-install or template-sync pass — not only when installing Cursor/Grok/Claude. Explain what “yes” means for each installed tool (agents-folder adapters where supported; Copilot/OpenClaw/etc.: no adapter files — parent follows `roles/*.md` in-session). Then record `enabled` or `declined`. Do **not** skip the ask because the current tool’s Install row is None.
+
+If `orchestrator.git.mode` is missing mid-sync: **B0.6 always ask** (even under `auto-all`) — never invent `current-push` or silent-write.
 
 ## Before asking
 
@@ -129,9 +131,10 @@ Installing for one tool **does not remove or replace** another tool's files. Rec
 >
 > On disk: [existing install paths or none].  
 > Settings (`docs/ADT-settings.yaml`): [Cursor: installed | Grok Build: not asked yet | …].  
-> Sync mode: [auto | auto-all | choose | not asked — see bootstrap Step 4d].  
-> Template update checks: [enabled | declined | not asked — see bootstrap Step 4b].  
-> Optional doc roles: [enabled | declined | not asked — see bootstrap Step 4c].
+> Sync mode: [auto | auto-all | choose | not asked — see bootstrap Step 3p].  
+> Template update checks: [enabled | declined | not asked — see bootstrap Step 3p].  
+> Optional doc roles: [enabled | declined | not asked — see bootstrap Step 3p].  
+> Orchestrator git: [branch-pr | … | not asked — see bootstrap Step 3p / B0.6].
 >
 > Install the modular docs rule for **[tool]**? (I won't ask again for that tool after you answer.)  
 > If you also use other agents on this repo, say which — each gets its own `tools/<key>.md` pass.

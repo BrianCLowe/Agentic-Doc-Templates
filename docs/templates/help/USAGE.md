@@ -6,10 +6,12 @@ Day-to-day workflows after setup. First-time install: [`SETUP.md`](SETUP.md). De
 
 ## The loop
 
+Depends on **docs profile** in `docs/ADT-settings.yaml` (`prevent` default if unset — [Workflow §0.1](../agent/Modular_Docs_Workflow.md#01-docs-profile-ceremony-modes)):
+
 1. You capture ideas (recommended: chat exports in `docs/reference/`, or a mid-build correction in chat).
-2. The **agent drafts** `-Understanding.md` — **feature shape / guardrails**, not a full spec.
-3. **You confirm shape** — especially what it is / is *not* and **Assumptions**. Spec-level detail may be missing on purpose.
-4. After confirm, durable contract lands in the **spec**; work continues from TODOs (**Current focus** for session handoff).
+2. **`prevent` (default):** agent drafts `-Understanding.md` (shape / guardrails). **`ship-first`:** agent drafts thin **spec + TODO** only. **`balanced`:** Understanding when identity is ambiguous.
+3. When Understanding is used: **you confirm shape** — is / is *not* + **Assumptions** (not a full-spec review).
+4. Durable contract lives on the **spec**; work continues from TODOs (**Current focus** for session handoff). Under ship-first, grow the spec as you build; use *lock shape for X* if identity fights start.
 
 ### Recommended practice — chat exports in `reference/`
 
@@ -44,6 +46,8 @@ Your job is to correct wrong **identity** assumptions — not to write Understan
 **When:** Already building; a new idea or scope change appears.
 
 > New idea: [brief]. Add it to the docs — draft Understanding + TODO; I'll review.
+
+*(Under **ship-first**, say *spec + TODO* instead of Understanding, or *lock shape* if you want the prevent gate for that stem.)*
 
 > Update `RoleEditor-Understanding.md` — fix What this is NOT: separate UI on the existing editor, not a new editor engine.
 
@@ -122,7 +126,7 @@ Anything only you can close → `docs/Human-TODO.md`: procure, playtest/feel, de
 | Goal | Say something like |
 |------|-------------------|
 | Chat → docs | *Build or update the live docs from `docs/reference/`.* *(export threads there first)* |
-| New idea | *Add [idea] to the docs — draft Understanding + TODO; I'll review.* |
+| New idea | *Add [idea] to the docs — draft Understanding + TODO; I'll review.* *(ship-first: spec + TODO; or *lock shape for X*)* |
 | Fix misunderstanding | *Update [Feature]-Understanding.md — especially What this is NOT.* |
 | UI screenshot | *Save to `docs/features/assets/`, add Visual references on the **spec** (similar vs different).* |
 | Vague idea | *Interview me using IDEA_CAPTURE_TIPS.md, then draft [Feature]-Understanding.md.* |
@@ -135,7 +139,8 @@ Anything only you can close → `docs/Human-TODO.md`: procure, playtest/feel, de
 | Update-check cadence | *Check for template updates every session.* / *Only check every week.* |
 | Optional role — intent | *Draft Understanding for [Feature] from what I said — I’ll review.* (main agent delegates if subagents installed) |
 | Optional role — build | *Continue from Current focus.* *(single slice)* |
-| Optional role — orchestrate | *Orchestrate — clear ready TODOs until blocked.* *(parent loop; ask scope/git once; end-of-run Human-TODO verify map)* |
+| Optional role — orchestrate | *Orchestrate — clear ready TODOs until blocked.* *(parent loop; git from `orchestrator.git.mode` in ADT-settings — branch-pr / current-push / local / …; end-of-run Human-TODO verify map)* |
+| Set orchestrator git | *Set orchestrator git to branch-pr* / *current-push* / *local* |
 | Optional role — verify | *Verify that unit against Understanding and the spec.* |
 | Optional role — graduate | *Understanding confirmed — graduate to the spec.* |
 | Force a subagent | `/understanding-author` … *(optional; usually unnecessary)* |

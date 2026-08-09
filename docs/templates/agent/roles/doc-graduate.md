@@ -10,6 +10,7 @@
 
 - User confirmed Understanding (or approved a plan that references it) and asks to graduate / update the spec
 - User says: *Doc graduate*, *graduate Understanding to spec*
+- **Not** under pure **ship-first** with no Understanding — grow the spec during implement instead; only run this role if an Understanding exists
 
 ## Inputs *(open only these)*
 

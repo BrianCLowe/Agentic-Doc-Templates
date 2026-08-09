@@ -44,42 +44,51 @@ When an ask matches a row below, look for a **named agent file** with that filen
 
 **Do not** delegate every message — only when a row above matches. Stay in this session for tiny follow-ups, clarifying questions only, or when the user says to stay here / skip subagents. Do **not** turn a single-slice Current focus ask into full orchestration unless the user said orchestrate / drive backlog / clear TODOs. These must not replace this rule or compete like always-on skill packs. Roles: `docs/templates/agent/roles/README.md`. Tool install paths: `docs/templates/agent/tools/README.md`.
 
-**Session default** *(implement / continue when Understanding is `confirmed` and scope unchanged)*:
-1. Read `docs/Master_Index.md` Sections 1–3.
+**Docs profile** *(read `docs/ADT-settings.yaml` → `docs_profile.mode`; unset = **`prevent`** — Workflow §0.1)*:
+| Mode | New map-row files | Coding gate |
+|------|-------------------|-------------|
+| **`prevent`** | Spec + Understanding (`draft`) + core TODO | No code while Understanding is `draft` (unless waived) |
+| **`balanced`** | Spec + TODO; + Understanding when identity ambiguous / multi-surface / split / user asked | Draft gate only if that stem **has** Understanding |
+| **`ship-first`** | Spec + core TODO | No Understanding gate; implement from TODO + thin spec |
+If `docs_profile` is unset at bootstrap / first build-from-reference / sync: suggest once from `docs/reference/` (cite 2–3 snippets) → ask → record. Never silent-downgrade a project full of Understandings.
+
+**Session default** *(implement / continue when ready under docs profile and scope unchanged)*:
+1. Read `docs_profile` if present; read `docs/Master_Index.md` Sections 1–3.
 2. Open the active TODO — read **Current focus** first (Workflow §5.1):
    - Shared foundation → `_shared/ComponentName-TODO.md`
    - Feature work → `features/FeatureName-TODO.md`
    - InEditor / Asset TODOs: only when Project Profile **Game extensions** / user indicates game-style work — default is **core TODO only**
-3. Read that item’s `-Understanding.md` (context) and spec as linked — do not re-ask for review unless scope changes (Workflow §4).
+3. Read that item’s `-Understanding.md` **if it exists** (context) and spec as linked — do not re-ask for review unless scope changes (Workflow §4).
 4. Before integrating a **shared** piece, check its **Maturity** on the spec or Document Map (`draft` | `usable` | `stable`).
 5. If the user asks to install tooling: follow **`docs/Tooling.md`** (Workflow §11) — Required (+ skills if listed); Optional only if asked; verify all; ask before admin/large SDKs.
 6. If work needs a **human** (procure, playtest/feel, decide/sign-off, or external waiting): **dual-write** in the same edit — owner `*-TODO.md` item **and** an Open row on **`docs/Human-TODO.md`** (Workflow §13). Never store secrets in docs. Do not bury human asks only in feature TODOs.
 
-**Open `Modular_Docs_Workflow.md` only when:** creating files (§0 Naming), choosing Path A vs Path B, graduating Understanding → spec, or the user asks about procedure. Do **not** re-read the full Workflow every turn.
+**Open `Modular_Docs_Workflow.md` only when:** creating files (§0 / §0.1), choosing Path A vs Path B, graduating Understanding → spec, docs-profile questions, or the user asks about procedure. Do **not** re-read the full Workflow every turn.
 
 **Shared foundation (critical):**
 - **Do not invent `_shared/` docs.** Only add §3.1 / `_shared/` when a **project-owned** piece is (or will be) used by **two or more features**, or the user named it as shared. Empty `_shared/` / empty §3.1 is fine. Never park engine/framework primers (e.g. generic Unreal notes) in `_shared/` because nothing else fit — use `features/` or `docs/reference/` (Workflow §1).
-- When a real shared component exists: it gets **Understanding by default** (Workflow §1, §4). §3.0 exceptions are **user-requested only** — never invent them because files are missing or to “leave for later.”
+- When a real shared component exists: same **profile default file set** as features (Workflow §0.1, §1). §3.0 exceptions are **user-requested only** — never invent them because files are missing or to “leave for later.” Project ceremony is `docs_profile`, not a fake §3.0 “no Understanding project-wide.”
 - **File layout:** create only paths from Workflow **§0** / Document Map — flat files in `features/` and `_shared/` (optional `-Catalog.md` for list-heavy stems — Workflow §7.1).
-- **Document Map = files on disk.** Adding a §3.1/§3.2 row requires creating Understanding (`draft` OK) + spec stub + core TODO in the same turn. A **Catalog** map cell requires `*-Catalog.md` the same turn. Never leave map-only “planned” rows. Bootstrap Step 3d. **Do not add filler §3.1 rows.**
-- Real shared components get the **same note types as features** unless the user explicitly excepted specific files — record those in Master Index **§3.0** (Workflow §1). If Understanding or core TODO is missing for a mapped row and there is no user exception, **create them**.
+- **Document Map = files on disk.** Adding a §3.1/§3.2 row requires creating the **profile default file set** in the same turn (always spec + core TODO; Understanding per §0.1). A **Catalog** map cell requires `*-Catalog.md` the same turn. Never leave map-only “planned” rows. Bootstrap Step 3d. **Do not add filler §3.1 rows.**
+- Real shared components get the **same note types as features** (for the profile) unless the user explicitly excepted specific files — record those in Master Index **§3.0** (Workflow §1). If core TODO or required Understanding is missing for a mapped row (and no user exception / profile skip), **create them**.
 - Tasks that **build or refactor** a shared component go in `_shared/ComponentName-TODO.md` (and related shared TODOs) — **not** in a consumer feature's TODO.
 - Feature TODOs only **link** to shared TODOs when blocked or integrating (dependency note), they do not duplicate foundation tasks.
 
 **Before implementation:**
-- **Draft `-Understanding.md` first** when scoping — agent writes; user confirms **shape** only (Workflow §4). `draft` blocks **coding**, not creating the file. Shape-only sections — not a second spec. Capture **product-defining surface/architecture identity** in is / is not when stated (module/API detail → spec).
-- Tell the user confirmation is **is / is not + Assumptions**, not a full spec review.
+- **`prevent`:** **Draft `-Understanding.md` first** when scoping — agent writes; user confirms **shape** only (Workflow §4). `draft` blocks **coding**, not creating the file. Shape-only sections — not a second spec. Capture **product-defining surface/architecture identity** in is / is not when stated (module/API detail → spec). Tell the user confirmation is **is / is not + Assumptions**, not a full spec review.
+- **`balanced`:** Draft Understanding when identity is ambiguous / multi-surface / split / user asked; otherwise thin spec + TODO is enough to start.
+- **`ship-first`:** No Understanding required; implement from Current focus + thin spec. Offer *lock shape for [Stem]* when identity fights start.
 - Do not treat as greenfield if Understanding says it extends/reuses existing work.
-- Do not code while status is `draft` unless the user waives review.
+- Do not code while an **existing** Understanding is `draft` unless the user waives review (all modes).
 - **`confirmed`** → shape approved; continue from TODO/spec without re-asking Understanding review. Plans/TODOs target that shape at agent speed — no user reminder required.
-- Plans: include Understanding path + “confirm shape, not full spec” — unless already `confirmed` and unchanged. Stepped plans = verify order; exploration spikes stay labeled (Workflow §5.2).
-- Vague ideas → brief questions from `docs/templates/help/IDEA_CAPTURE_TIPS.md`, then draft Understanding.
-- **`docs/reference/` → live docs:** when the user drops exports and asks to build/update — draft or revise Understandings; create missing Document Map rows + file sets. If material (or wording) covers **two unlike identities**, **split** stems (Workflow §0) — do not glue them into one Understanding to stay “tight.”
-- After confirm → **graduate** contract to the spec (Workflow §2). Screenshots → spec **Visual references**, not Understanding. Row registries → optional `-Catalog.md` (not Understanding). Lasting tradeoffs → spec **Decisions** or `docs/decisions/` (Workflow §10) — including implement-time preference corrections (same turn).
+- Plans: under prevent (or when Understanding exists), include Understanding path + “confirm shape, not full spec” — unless already `confirmed` and unchanged. Stepped plans = verify order; exploration spikes stay labeled (Workflow §5.2).
+- Vague ideas → brief questions from `docs/templates/help/IDEA_CAPTURE_TIPS.md`, then draft Understanding (**prevent** / when locking shape) or thin spec + TODO (**ship-first** / clear **balanced**).
+- **`docs/reference/` → live docs:** when the user drops exports and asks to build/update — create missing Document Map rows + **profile default file sets**; draft/revise Understandings when the profile requires them. If material covers **two unlike identities**, **split** stems (Workflow §0) — do not glue them into one Understanding to stay “tight.” If `docs_profile` unset, suggest + ask once (Workflow §0.1) before bulk create.
+- After confirm → **graduate** contract to the spec when Understanding was used (Workflow §2). Under ship-first, grow the spec as you implement. Screenshots → spec **Visual references**. Row registries → optional `-Catalog.md`. Lasting tradeoffs → spec **Decisions** or `docs/decisions/` (Workflow §10) — including implement-time preference corrections (same turn).
 
 **While working:**
 - **Session start:** Read the active TODO's **Current focus** block first.
-- Treat the active TODO as the living task list; add items as discovered; use Cross-Feature Dependencies when features interact. Rewrite Current focus that fights confirmed Understanding before coding.
+- Treat the active TODO as the living task list; add items as discovered; use Cross-Feature Dependencies when features interact. Rewrite Current focus that fights confirmed Understanding (or clear product identity under ship-first) before coding.
 
 **After changes (mandatory):**
 - Update **Current focus** and the relevant `-TODO.md` — `[x]` + date on completed items.

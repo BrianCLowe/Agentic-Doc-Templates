@@ -4,7 +4,7 @@
 
 **Job:** Check that claimed work matches **user intent and contract** for one stem unit. Pass or fail with reasons. **No feature implementation.**
 
-**Canonical procedure:** This file. Shape vs contract: [`../Modular_Docs_Workflow.md`](../Modular_Docs_Workflow.md) §4, §2. Acceptance lives on the **spec**; TODO is the checklist. Orchestration loop: [`orchestrator.md`](orchestrator.md).
+**Canonical procedure:** This file. Shape vs contract: [`../Modular_Docs_Workflow.md`](../Modular_Docs_Workflow.md) §0.1, §4, §2. Acceptance lives on the **spec**; TODO is the checklist. Orchestration loop: [`orchestrator.md`](orchestrator.md).
 
 ## When to invoke
 
@@ -13,10 +13,10 @@
 
 ## Inputs *(open only these)*
 
-1. The brief from the parent: stem name, TODO path, exact item claimed done, paths to Understanding + spec
-2. That stem’s `-Understanding.md` (What this is / is NOT + Assumptions) — read-only
-3. That stem’s spec — Behavior, Acceptance, Decisions, Visual refs as relevant to the unit
-4. That stem’s `-TODO.md` — the claimed item + Current focus
+1. The brief from the parent: stem name, TODO path, exact item claimed done, paths to spec + Understanding **if any**, docs_profile if known
+2. That stem’s spec — Behavior, Acceptance, Decisions, Visual refs as relevant to the unit
+3. That stem’s `-TODO.md` — the claimed item + Current focus
+4. That stem’s `-Understanding.md` **only if it exists** (What this is / is NOT + Assumptions) — read-only
 5. Code / files **touched by this unit only** (from the brief or git diff for the unit) — do not audit the whole repo
 
 **Do not** open unrelated features, the pack catalog, or Workflow unless a procedure gate is unclear.
@@ -27,14 +27,15 @@
 
 ## Steps
 
-1. Read Understanding shape for the stem — flag if the unit **fights** confirmed is / is not (wrong product surface/architecture).
-2. Read the claimed TODO item and the related spec Acceptance / Behavior (and Decisions if the unit touched preference/contract).
-3. Inspect only the unit’s changes (diff or named files). Check:
+1. Read the claimed TODO item and the related spec Acceptance / Behavior (and Decisions if the unit touched preference/contract).
+2. If `-Understanding.md` exists — read shape; flag if the unit **fights** confirmed is / is not (wrong product surface/architecture). If no Understanding (ship-first / balanced skip) — skip this step; do **not** fail solely for a missing Understanding file.
+3. Inspect only the unit’s changes (diff, named files, or parent brief). Check:
    - Implements the TODO item’s intent
-   - Does not violate Understanding is / is NOT
+   - Does not violate Understanding is / is NOT **when Understanding exists**
    - Meets applicable Acceptance / Behavior for this unit (not every Acceptance line for the whole feature unless the item claims that)
    - TODO bookkeeping present or obviously missing (`[x]` + date / Current focus) — note gaps; parent/orchestrator fixes bookkeeping
-4. **Pass** — state what you checked in ≤5 bullets; stop.  
+4. **Tooling note (Grok / plan-mode adapters):** Prefer read tools over shell. If `git diff` / execute is blocked by harness permissions, use the parent’s listed paths + `read_file` / search — do **not** fail the unit solely because a shell command was denied. If you truly cannot see the changes, return **fail** with reason `incomplete brief / cannot inspect unit changes` (parent re-dispatches with a fuller file list).
+5. **Pass** — state what you checked in ≤5 bullets; stop.  
    **Fail** — state concrete mismatches (file/behavior vs which Understanding/spec/TODO line); stop. Do not “fix” the code.
 
 ## Stop when
@@ -49,4 +50,5 @@
 - Spawn subagents
 - Re-litigate full Understanding review when status is `confirmed` and the unit did not change identity — only flag shape fights
 - Audit unrelated stems or run repo-wide quality passes
-- Soft-pass on “looks fine” without checking Understanding + spec + TODO item against the unit’s changes
+- Soft-pass on “looks fine” without checking spec + TODO item (and Understanding when present) against the unit’s changes
+- Fail only because Understanding is missing under **ship-first** / balanced skip

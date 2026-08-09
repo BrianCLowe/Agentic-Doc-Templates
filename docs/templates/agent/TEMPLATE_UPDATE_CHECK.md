@@ -23,7 +23,7 @@ This check is enabled only when `optional_rules.template-update-check.status` is
 | **`interval`** | Fetch only when `last_checked` is older than `check_interval_days` (default **7** if unset under interval mode), or when the user asks. |
 | **missing / unset** | Treat as **`always`** for the fetch this session, but sync/bootstrap should still run the cadence ask ([`TEMPLATE_SYNC_B.md`](TEMPLATE_SYNC_B.md) B0.4) until `check_mode_recorded` is set. |
 
-Do **not** invent `check_mode` from legacy `check_interval_days` without asking — leave cadence to B0.4 / bootstrap Step 4b.
+Do **not** invent `check_mode` from legacy `check_interval_days` without asking — leave cadence to B0.4 / bootstrap Step 3p.
 
 ## When to run
 

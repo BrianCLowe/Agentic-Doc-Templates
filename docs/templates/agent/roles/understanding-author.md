@@ -4,13 +4,14 @@
 
 **Job:** Capture **feature shape** first (is / is not). Draft or revise `-Understanding.md` so the user can confirm **guardrails** before implementation — **not** a full spec review.
 
-**Canonical procedure:** [`../Modular_Docs_Workflow.md`](../Modular_Docs_Workflow.md) §0 (naming if creating files), §4 (Understanding). Template: [`../../Feature_Understanding_Template.md`](../../Feature_Understanding_Template.md). Interview help: [`../../help/IDEA_CAPTURE_TIPS.md`](../../help/IDEA_CAPTURE_TIPS.md). Graduation is **not** this role (§2 / [`doc-graduate.md`](doc-graduate.md)) — except relocating trim overflow into the spec while shaping.
+**Canonical procedure:** [`../Modular_Docs_Workflow.md`](../Modular_Docs_Workflow.md) §0 / §0.1 (naming + docs profile), §4 (Understanding). Template: [`../../Feature_Understanding_Template.md`](../../Feature_Understanding_Template.md). Interview help: [`../../help/IDEA_CAPTURE_TIPS.md`](../../help/IDEA_CAPTURE_TIPS.md). Graduation is **not** this role (§2 / [`doc-graduate.md`](doc-graduate.md)) — except relocating trim overflow into the spec while shaping.
 
 ## When to invoke
 
 - New idea, vague idea, or mid-build correction of **what it is**
-- Chat / `docs/reference/` material → **build or update** live docs (Understanding first)
-- User says: *draft Understanding*, *Understanding author*, *capture intent for X*, *build/update live docs from reference*
+- Chat / `docs/reference/` material → **build or update** live docs (Understanding first under **prevent** / when locking shape)
+- User says: *draft Understanding*, *Understanding author*, *capture intent for X*, *lock shape for X*, *build/update live docs from reference*
+- Under **ship-first** / clear **balanced** stems: only when the user asks to lock shape or identity fights require it — do not invent Understandings for every map row
 
 ## Inputs *(open only these)*
 
@@ -30,7 +31,7 @@
 2. If identity count is ambiguous, ask brief questions from `IDEA_CAPTURE_TIPS.md` (cap **5**), then draft — prioritize identity (is / is not), including **product-defining surface** when relevant. Prefer one clarifying split question over silently merging.
 3. For **each** stem: write or update `-Understanding.md` from the Understanding template + **Workflow §4** (shape sections only; human review banner; no How-it-should-work / UI / Visual references / Done when). Put product-defining surface/architecture identity in is / is not (or Assumptions) — not module diagrams. Screenshots → spec **Visual references**.
 4. When drafting the core TODO in the same turn: size High Priority for the **target shape**, not an interim that fights it (Workflow §5; [`../Agent_Timescale_Planning_Rule.mdc`](../Agent_Timescale_Planning_Rule.mdc)). Disposable spikes stay labeled exploration — not the paved path.
-5. **New row:** add Document Map row **and** create Understanding + spec stub + core TODO in the **same turn** (Workflow §0). **Split:** create the new stem’s file set; move misplaced shape/contract content out of the old stem; update both TODOs / Current focus; relocate + TODO uncheck (Workflow §4).
+5. **New row:** add Document Map row **and** create the **profile default file set** in the **same turn** (Workflow §0 / §0.1 — always spec + TODO; Understanding per profile). When this role runs, you are locking shape → create/update Understanding even under ship-first for **named** stems. **Split:** create the new stem’s file set; move misplaced shape/contract content out of the old stem; update both TODOs / Current focus; relocate + TODO uncheck (Workflow §4).
 6. **On update (no split):** relocate + TODO uncheck for that stem (Workflow §4). Skip TODO re-check only for a brand-new Understanding with no prior `[x]` marks.
 7. Status **`draft`** on new/changed Understandings. Show the user the path(s). Ask them to correct **shape** — say this is **not** a full spec review. If you split or relocated, say so in one line. **Stop.**
 

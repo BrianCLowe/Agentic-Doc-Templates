@@ -4,19 +4,19 @@
 > Keep agents aligned with your intent across conversations, features, and long-running projects.
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-![Pack](https://img.shields.io/badge/Pack-2.7.6-blue)
+![Pack](https://img.shields.io/badge/Pack-2.7.7-blue)
 ![Built for](https://img.shields.io/badge/Built%20for-Cursor%20%7C%20Grok%20Build%20%7C%20OpenClaw%20%7C%20Claude%20Code-5865F2)
 
 ---
 
 ## How it works
 
-AI coding agents drift when intent lives only in chat. This pack gives them a small, consistent `docs/` layout:
+AI coding agents drift when intent lives only in chat. This pack gives them a small, consistent `docs/` layout. **Default is prevent-wrong-builds** (Understanding + shape confirm); **ship-first** is there if you prefer Spec+TODO only and fix-forward — pick a **docs profile** at bootstrap.
 
 1. You capture ideas — **recommended:** export chat threads (Grok.com, ChatGPT, …) to markdown and drop them in `docs/reference/` (often many files; they keep whys that polished design docs lose). Or talk the idea through with your **coding agent** in the IDE and have it **build or update live docs as you go**.
-2. The **agent drafts** `-Understanding.md` — feature **shape / guardrails**, not a full spec.
-3. **You confirm shape** (especially what it is / is *not* + Assumptions) to ensure your spec is built in the shape you expect.
-4. After you confirm, work continues from TODOs and specs. For a single slice: *Continue from Current focus.* For a long run: **orchestrate** — *Orchestrate — clear ready TODOs until blocked.* The parent session loops implement → verify → next milestone without you saying “next” each time. That is the difference between babysitting short focus builds and leaving a multi-hour unattended run that clears a stack of milestones (then a Human-TODO verify map for what to check).
+2. At bootstrap the agent asks **project preferences in one batch** (docs profile, sync mode, orchestrator git, optionals) — not a drip of five separate quizzes.
+3. Under **prevent**, **you confirm shape** (is / is *not* + Assumptions) before code. Under **ship-first**, implement from TODOs and grow the spec; *lock shape* anytime identity gets sharp.
+4. Work continues from TODOs and specs. For a single slice: *Continue from Current focus.* For a long run: **orchestrate** — *Orchestrate — clear ready TODOs until blocked.* The parent session loops implement → verify → next milestone (git via **`orchestrator.git.mode`**: recommend branch+PR for CI, or **current-push** if you set “push the branch I’m on”).
 
 Short asks are enough: *bootstrap*, *draft Understanding for X*, *orchestrate*, *update the doc templates*. The agent routes to the matching playbook inside `docs/templates/`. Tips: [`docs/templates/help/IDEA_CAPTURE_TIPS.md`](docs/templates/help/IDEA_CAPTURE_TIPS.md). Orchestrator: [`docs/templates/agent/roles/orchestrator.md`](docs/templates/agent/roles/orchestrator.md).
 

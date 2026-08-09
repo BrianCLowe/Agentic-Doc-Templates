@@ -8,11 +8,11 @@ Thin, playbook-bound roles for heavier moments (intent capture, graduation, boot
 
 | Role | File | Job | Stop when |
 |------|------|-----|-----------|
-| **Understanding author** | [`understanding-author.md`](understanding-author.md) | Capture **feature shape** first (is / is not); draft/revise `-Understanding.md` | Ready for human **shape** review (`draft`) — **no code** |
-| **Doc graduate** | [`doc-graduate.md`](doc-graduate.md) | Confirmed shape → durable **contract** spec | Spec updated — **no code** |
-| **Feature implementer** | [`feature-implementer.md`](feature-implementer.md) | Current focus → code; update that TODO | Focus item done or blocked |
-| **Orchestrator** | [`orchestrator.md`](orchestrator.md) | **Parent-only** loop: implement → verify → milestone commits; defer playtest; end-of-run **Human-TODO verify map** | Agent work cleared / hard-blocked / budget — report + human verify inbox |
-| **Work verifier** | [`work-verifier.md`](work-verifier.md) | One unit vs Understanding + spec + TODO | Pass or fail with reasons — **no code** |
+| **Understanding author** | [`understanding-author.md`](understanding-author.md) | Capture **feature shape** first (is / is not); draft/revise `-Understanding.md` (required under **prevent**; on demand under ship-first via *lock shape*) | Ready for human **shape** review (`draft`) — **no code** |
+| **Doc graduate** | [`doc-graduate.md`](doc-graduate.md) | Confirmed shape → durable **contract** spec (when Understanding exists) | Spec updated — **no code** |
+| **Feature implementer** | [`feature-implementer.md`](feature-implementer.md) | Current focus → code when stem is ready under **docs profile**; update that TODO | Focus item done or blocked |
+| **Orchestrator** | [`orchestrator.md`](orchestrator.md) | **Parent-only** loop: implement → verify → git per `orchestrator.git.mode` (branch+PR / current-push / local / …); readiness from `docs_profile`; end-of-run **Human-TODO verify map** | Agent work cleared / hard-blocked / budget — report + human verify inbox |
+| **Work verifier** | [`work-verifier.md`](work-verifier.md) | One unit vs spec + TODO (+ Understanding when present) | Pass or fail with reasons — **no code** |
 | **Bootstrap** | [`bootstrap.md`](bootstrap.md) | First-time modular docs layout | [`../BOOTSTRAP.md`](../BOOTSTRAP.md) complete |
 | **Template sync** | [`template-sync.md`](template-sync.md) | Pack refresh (A) then live Step B | [`../TEMPLATE_SYNC.md`](../TEMPLATE_SYNC.md) → A → B |
 
@@ -27,7 +27,7 @@ Short asks are enough — the main agent routes by intent:
 
 ## Harness adapters *(optional install)*
 
-Bootstrap Step 4c / [`../RULE_INSTALL.md`](../RULE_INSTALL.md) → each [`../tools/<key>.md`](../tools/README.md) installs adapters when `doc-roles` is enabled:
+Bootstrap Step 3p (doc-roles enable) / [`../RULE_INSTALL.md`](../RULE_INSTALL.md) → each [`../tools/<key>.md`](../tools/README.md) installs adapters when `doc-roles` is enabled:
 
 | Harness | Adapter source | Install to |
 |---------|----------------|------------|

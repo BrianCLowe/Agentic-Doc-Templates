@@ -1,20 +1,60 @@
-<!-- pack-version: 2.7.6 -->
+<!-- pack-version: 2.7.7 -->
 
 > **Agent workflow reference.** Canonical instructions for how to work the modular doc system. Lives in `docs/templates/agent/` with the other agent playbooks — sync from upstream; do **not** copy wholesale into `docs/Master_Index.md`. The live index links here; agent rules summarize and point here for full procedure.
 
 # Modular Documentation — Agent Workflow
 
-**Pack version**: 2.7.6 *(same as `docs/templates/VERSION` / live Master Index **Pack version**)*
+**Pack version**: 2.7.7 *(same as `docs/templates/VERSION` / live Master Index **Pack version**)*
 
 **Design intent:** Users give short requests about the docs (“bootstrap”, “draft Understanding for X”, “update the templates”). Route to **one** playbook (`BOOTSTRAP`, `TEMPLATE_SYNC`, `TEMPLATE_UPDATE_CHECK`, `RULE_INSTALL` → `tools/<key>.md`, or this file for feature work) — do not scan the whole pack catalog. **Tight scope:** act on the paved path; do not pre-audit every alternate interpretation before doing the work. **Agent timescale:** when feature shape is clear, plan the **target architecture** as one change (verify-order checklists OK); do not stage human-sprint interim architectures — see [`Agent_Timescale_Planning_Rule.mdc`](Agent_Timescale_Planning_Rule.mdc).
+
+**Docs profile** *(ceremony — read [`docs/ADT-settings.yaml`](ADT-settings.example.yaml) `docs_profile.mode` first)*: **`prevent`** (default if unset) = Understanding + shape confirm before code. **`balanced`** = Understanding when identity is ambiguous. **`ship-first`** = Spec + TODO core; no draft coding gate. Full rules: **§0.1**. Never silent-downgrade a project that already uses Understandings.
 
 **Optional roles** *(never always-on):* Thin wrappers under [`roles/`](roles/README.md). When harness agents are installed (`.cursor/agents/`, `.grok/agents/`, … via [`tools/`](tools/README.md)), the modular **rule** has the parent **delegate/spawn** on matching asks. Otherwise follow the role `.md` fallback. **Orchestrator** (*drive backlog / clear TODOs / until blocked*) runs in the **parent session only** — it loops implement → verify → next without waiting for “next”; see [`roles/orchestrator.md`](roles/orchestrator.md). Single-slice *Continue from Current focus* stays [`roles/feature-implementer.md`](roles/feature-implementer.md). Roles point back here or to `BOOTSTRAP` / `TEMPLATE_SYNC` — they do not replace this workflow.
 
 **Read order (feature / shared work):**
 
-1. [`Master_Index.md`](../../Master_Index.md) — project context + Document Map (Sections 1–3)
-2. Active TODO **Current focus** + that item’s Understanding / spec
-3. This file — only when creating files, choosing Path A/B, graduating Understanding, or the user asks about procedure
+1. `docs/ADT-settings.yaml` → `docs_profile.mode` when present (else **prevent**)
+2. [`Master_Index.md`](../../Master_Index.md) — project context + Document Map (Sections 1–3)
+3. Active TODO **Current focus** + that item’s Understanding *(if any)* / spec
+4. This file — only when creating files, choosing Path A/B, graduating Understanding, or the user asks about procedure
+
+---
+
+## 0.1 Docs profile *(ceremony modes)*
+
+**Live setting:** `docs/ADT-settings.yaml` → `docs_profile.mode` (`prevent` | `balanced` | `ship-first`). Example: [`ADT-settings.example.yaml`](ADT-settings.example.yaml).
+
+| Mode | Default file set on new map row | Coding gate | When to use |
+|------|----------------------------------|-------------|-------------|
+| **`prevent`** | Spec + **Understanding** (`draft`) + core TODO | **Do not code** while Understanding is `draft` unless user waives | Identity-sensitive products; you prefer prevent wrong builds (pack default) |
+| **`balanced`** | Spec + core TODO; **+ Understanding** when identity is ambiguous / multi-surface / split pressure / user asked | Same draft gate **only for stems that have** an Understanding | Mid-size apps; you accept agent judgment on “needs shape file?” |
+| **`ship-first`** | Spec + core TODO only (Understanding **not** required) | No Understanding draft gate — implement from TODO + thin spec | Prototypes, clear CRUD, “fix-forward” teams |
+
+**Always required (all modes):** Master Index + Document Map, **spec**, **core TODO**, Human-TODO dual-write rules (§13). Catalog / decisions remain optional per their own sections.
+
+**Unset `docs_profile`:** treat as **`prevent`**. Do **not** invent `ship-first` because files are missing.
+
+**Suggest once** *(bootstrap Step 3p preference batch / first “build from reference” / sync B0.5 if still unset)*:
+
+1. Skim `docs/reference/` (if any) + conversation — do not inventory the whole repo.
+2. Recommend a mode with **2–3 short citations** (export path + quote or paraphrase). **Explain each option in plain language** so the user is not guessing labels:
+   - **prevent** — “You confirm is/is-not before code” — competing product identities; “not X”; multi-surface / editor / game systems
+   - **ship-first** — “Spec+TODO only; no shape gate” — clear CRUD/API; prototype/spike; tiny map
+   - **balanced** — “Understanding only when identity is fuzzy (multi-surface, not-X, split, or you say lock shape)” — mid-size / mixed signals
+3. **Ask once** (bootstrap: inside Step 3p preference batch). Record `docs_profile.mode`, `recorded`, and `source: agent-suggested` or `user`.
+4. Re-ask only on explicit *Set docs profile to prevent|balanced|ship-first*.
+
+**Upgrade / downgrade:**
+
+| Change | Behavior |
+|--------|----------|
+| → **prevent** | Create missing Understandings as `draft` for map rows that lack them; do not wipe specs/TODOs |
+| → **balanced** | Keep existing Understandings; stop requiring new ones when identity is clear |
+| → **ship-first** | Stop requiring Understanding / confirm; **do not delete** existing `-Understanding.md` files |
+| *Lock shape for [Stem]* (any mode) | Draft/update that stem’s Understanding and use the draft gate for **that stem** |
+
+**Orchestrator / implementer readiness** — see [`roles/orchestrator.md`](roles/orchestrator.md) and §3. Work-verifier always checks **spec + TODO**; Understanding only when the file exists or mode is prevent/balanced with a shape file.
 
 ---
 
@@ -42,10 +82,13 @@
 **When adding a new feature or shared component:**
 
 1. Add a row to Master Index §3.1 or §3.2 with the exact paths (**working markdown links** — not “planned” placeholders with nowhere to click).
-2. Create those three (or more) **flat files** at those paths **in the same turn** — from [`Feature_Spec_Template.md`](../Feature_Spec_Template.md), [`Feature_Understanding_Template.md`](../Feature_Understanding_Template.md), [`TODO_Template.md`](../TODO_Template.md). Add [`Feature_Catalog_Template.md`](../Feature_Catalog_Template.md) only when §7 / list-heavy rules apply (not part of the default three).
+2. Create the **default file set for the active docs profile** (§0.1) at those paths **in the same turn**:
+   - **Always:** [`Feature_Spec_Template.md`](../Feature_Spec_Template.md) + [`TODO_Template.md`](../TODO_Template.md)
+   - **+ Understanding** ([`Feature_Understanding_Template.md`](../Feature_Understanding_Template.md)): required under **`prevent`**; under **`balanced`** when identity is ambiguous / multi-surface / split / user asked; under **`ship-first`** only if user asked *lock shape* or an Understanding already exists for that stem
+   - Add [`Feature_Catalog_Template.md`](../Feature_Catalog_Template.md) only when §7 / list-heavy rules apply
 3. All files for one feature live **directly** in `features/` (or `_shared/`), not in a subfolder named after the feature.
 
-**Map without files = incomplete work.** Do not add Document Map rows and defer file creation “until the user picks where to start.” Bootstrap Step 3d and this section require the default file set on disk. Understanding status `draft` means **do not implement code** yet — it does **not** mean skip creating `-Understanding.md`.
+**Map without files = incomplete work.** Do not add Document Map rows and defer file creation “until the user picks where to start.” Bootstrap Step 3d and this section require the profile’s default file set on disk. Under **`prevent`**, Understanding status `draft` means **do not implement code** yet — it does **not** mean skip creating `-Understanding.md`.
 
 **`docs/reference/`:** Drop zone for **source** materials. **Recommended habit:** markdown **chat exports** of idea threads (often many files) — they preserve user whys/motives better than polished-only design docs ([`../help/IDEA_CAPTURE_TIPS.md`](../help/IDEA_CAPTURE_TIPS.md)). Also fine: PRDs, legacy specs. Not Document Map rows. Read when the user points at a file or asks to convert / **build or update** live docs from them. Optional `docs/reference/visuals/` for inspiration screenshots. Do **not** send users to a chat-only `AGENT.md` attach flow — that path is paused; export → `reference/` is the supported route.
 
@@ -67,17 +110,17 @@
 
 Only when a real shared piece exists: `_shared/` often needs **foundation work first** — code, APIs, or patterns that multiple features will consume later.
 
-**Each substantial shared component** (that passed the gate) gets the **full set of note types** — same as a feature — unless the user explicitly says otherwise for that component:
+**Each substantial shared component** (that passed the gate) gets the **same default file set as a feature** for the active docs profile (§0.1) — unless the user explicitly says otherwise for that component:
 
-- `_shared/ComponentName.md` — spec / contract / architecture
-- `_shared/ComponentName-Understanding.md` — agent model of user intent (see §4)
-- `_shared/ComponentName-TODO.md` — core / systems / foundation tasks
+- `_shared/ComponentName.md` — spec / contract / architecture **(always)**
+- `_shared/ComponentName-Understanding.md` — shape guardrails (§4) — **per profile** (required under `prevent`; situational under `balanced`; optional under `ship-first`)
+- `_shared/ComponentName-TODO.md` — core / systems / foundation tasks **(always)**
 - `_shared/ComponentName-InEditor-TODO.md` — engine editor work *(game extensions / user asked)*
 - `_shared/ComponentName-Asset-TODO.md` — assets & content *(game extensions / user asked)*
 
-**Exceptions:** If the user **explicitly** says a component or feature does not need a particular note type (e.g. "BlockEditor has no asset work"), omit that file and record the exception in Master Index **§3.0** with who said it and when.
+**Exceptions:** If the user **explicitly** says a component or feature does not need a particular note type (e.g. "BlockEditor has no asset work"), omit that file and record the exception in Master Index **§3.0** with who said it and when. Project-wide ceremony is **`docs_profile`**, not a §3.0 “no Understanding for the whole project” invention.
 
-**Do not invent exceptions** for rows that *should* exist. Missing files, a thin Document Map, or “we’ll add Understanding later” are **not** reasons to skip Understanding on a real feature/shared row — create the default set. Do **not** invent §3.1 shared rows (or §3.0 excuses) to fill empty space. Do **not** write a §3.0 row that excuses the whole project from Understanding.
+**Do not invent exceptions** for rows that *should* exist under the active profile. Under **`prevent`**, missing files or “we’ll add Understanding later” are **not** reasons to skip Understanding — create the default set. Under **`ship-first` / `balanced`**, not creating Understanding when the profile allows is **correct**, not an exception. Do **not** invent §3.1 shared rows (or §3.0 excuses) to fill empty space.
 
 **Maturity** *(shared components only)*: Set on the shared **spec** (`draft` | `usable` | `stable`) so consumer features know whether integration is safe. Update when foundation work progresses — see [`Feature_Spec_Template.md`](../Feature_Spec_Template.md).
 
@@ -97,19 +140,21 @@ Optional: `_shared/_Foundation-TODO.md` for cross-cutting shared work that does 
 
 ## 2. Understanding → Spec graduation
 
-**Source of truth:** This section and §4 are the canonical shape-vs-contract procedure. Rules, roles, and template Instruction blocks summarize; **this file wins on conflict**.
+**Source of truth:** This section and §4 are the canonical shape-vs-contract procedure. Rules, roles, and template Instruction blocks summarize; **this file wins on conflict**. Applies fully under **`prevent`**, and for any stem that **has** an Understanding under other profiles. Under **`ship-first`** (no Understanding), grow the **spec** directly as contract home — skip steps 1 and the Understanding half of step 3.
 
 | File | Role | When to update |
 |------|------|----------------|
-| `-Understanding.md` | **Feature shape / guardrails** — is / is not, Assumptions; user confirms **shape** (not the full contract) | Scoping, planning, corrections |
-| `.md` spec (feature or `_shared/`) | **Durable contract** — architecture, API, decisions, stable behavior, Acceptance, Visual references | After Understanding is `confirmed`; when code and docs must match |
+| `-Understanding.md` | **Feature shape / guardrails** — is / is not, Assumptions; user confirms **shape** (not the full contract) | When the profile requires it, or user locks shape / identity is ambiguous |
+| `.md` spec (feature or `_shared/`) | **Durable contract** — architecture, API, decisions, stable behavior, Acceptance, Visual references | After shape confirm (if Understanding exists); as you implement under `ship-first`; when code and docs must match |
 
-**Workflow:**
+**Workflow *(when Understanding is in play)*:**
 
 1. Agent drafts `-Understanding.md` → user confirms **shape** (`confirmed`) — is / is not + Assumptions. **Not** a full spec sign-off.
 2. Agent **graduates** durable contract into the spec: overview, architecture/contract, Behavior, **Acceptance**, **Visual references**, **Decisions**, dependencies, maturity (shared). Synthesize from Understanding **plus** conversation / decisions — do **not** only copy thin Understanding. A short Understanding is **not** permission to write a short spec.
 3. After graduation, Understanding keeps only shape sections (§4). Spec = contract truth; **TODO** = living work checklist.
 4. If implementation diverges, update the spec **or** set Understanding to `superseded` and revise (§4) — do not leave both stale.
+
+**Workflow *(ship-first / no Understanding on stem)*:** Keep a thin-but-real spec + TODO; capture lasting preferences on the spec **Decisions** table same turn (§10). Offer *lock shape* (Understanding) when identity fights start.
 
 See [`Feature_Spec_Template.md`](../Feature_Spec_Template.md) and [`Feature_Understanding_Template.md`](../Feature_Understanding_Template.md).
 
@@ -117,14 +162,22 @@ See [`Feature_Spec_Template.md`](../Feature_Spec_Template.md) and [`Feature_Unde
 
 ## 3. Quick Start — Working on Any Task
 
-**Minimal implement path** *(Understanding is `confirmed` and scope unchanged — prefer this)*:
+**Minimal implement path** *(prefer this when ready under §0.1)*:
 
-1. Read `Master_Index.md` — Sections 1–3
-2. Active TODO **Current focus** → that TODO → Understanding (read-only) → spec → code
-3. Skip drafting, graduation, and InEditor/Asset TODOs unless status is `draft`, the user changed scope, or Project Profile says game extensions apply
+**Ready when:**
+
+| Profile | Ready to code |
+|---------|----------------|
+| **`prevent`** | Understanding is `confirmed` (or user waived) and scope unchanged |
+| **`balanced`** | If stem has Understanding → same as prevent; if none → thin spec + TODO exist and identity is clear |
+| **`ship-first`** | Spec + TODO exist for the stem; no Understanding required |
+
+1. Read `docs_profile` (if set) + `Master_Index.md` — Sections 1–3
+2. Active TODO **Current focus** → that TODO → Understanding *(if present — read-only)* → spec → code
+3. Skip drafting/graduation unless profile requires shape work, status is `draft` on an existing Understanding, the user changed scope, or Project Profile says game extensions apply
 4. **Preference corrections → same turn:** if the user corrected a lasting UI/interaction preference that could be “improved away,” append 1-line **Decisions** row(s) on that stem’s spec and fix contradicting Behavior / Acceptance / Visual refs (§10). Do **not** wait for a session-wrap ask. Update **Current focus** as usual (§5.1) — it is handoff, not the decision log.
 
-**Full Path A / Path B** when scoping new work, Understanding is missing/`draft`, or graduating to spec:
+**Full Path A / Path B** when scoping new work, Understanding is required and missing/`draft`, or graduating to spec:
 
 1. Read `Master_Index.md` — Sections 1–3 (overview, locations, Document Map)
 2. Decide: **shared foundation work** (Path A) or **feature work** (Path B) — §1
@@ -134,13 +187,13 @@ See [`Feature_Spec_Template.md`](../Feature_Spec_Template.md) and [`Feature_Unde
 Use when building or changing a reusable component, API, or pattern in `_shared/`.
 
 1. Open `_shared/[ComponentName].md`
-2. Open `_shared/[ComponentName]-Understanding.md` — **draft or update first** from the conversation; show the user for review (§4). If already `confirmed` and scope unchanged, read only — do not re-draft.
+2. **Understanding** — under **`prevent`**, or **`balanced`** when identity is unclear / multi-surface: open or draft `_shared/[ComponentName]-Understanding.md` first; show for shape review (§4). If already `confirmed` and scope unchanged, read only. Under **`ship-first`**, skip unless the file exists or user said *lock shape*.
 3. Open the relevant shared TODO file(s) (create from [`TODO_Template.md`](../TODO_Template.md) if missing):
    - Core / foundation → `_shared/[ComponentName]-TODO.md`
    - In-Editor work → `_shared/[ComponentName]-InEditor-TODO.md` *(only if Project Profile game extensions apply, or user asked — unless excepted in Master Index §3.0)*
    - Assets & content → `_shared/[ComponentName]-Asset-TODO.md` *(same gate)*
-4. Do the work (only after Understanding is `confirmed` or the user explicitly waives review)
-5. **Graduate** confirmed content into `_shared/[ComponentName].md` if the spec is still placeholder (§2)
+4. Do the work when **ready** under the table above (not blocked on a draft Understanding that exists)
+5. **Graduate** confirmed shape into the shared spec if Understanding was used and the spec is still placeholder (§2); under ship-first grow the spec as you go
 6. **Update the shared TODO file(s)** before ending the session — refresh **Current focus** (§5.1)
 7. If consumer features are blocked, ensure their TODOs link here — do not copy foundation tasks into feature TODOs
 
@@ -148,13 +201,13 @@ Use when building or changing a reusable component, API, or pattern in `_shared/
 
 1. Open shared docs **only** when linked from this feature’s Understanding, spec, or TODO dependency notes — or the one shared component you are integrating now. Do **not** open every §3.1 “relevant” row.
 2. Open `features/[FeatureName].md`
-3. Open `features/[FeatureName]-Understanding.md` — **draft or update first** if missing/`draft` or scope changed; if `confirmed` and scope unchanged, read only (§4)
+3. **Understanding** — same profile rules as Path A step 2 for `features/[FeatureName]-Understanding.md`
 4. Open the relevant feature TODO file(s):
    - Core gameplay/systems → `features/[FeatureName]-TODO.md`
    - In-Editor work → `features/[FeatureName]-InEditor-TODO.md` *(Project Profile game extensions or user asked — §7)*
    - Assets & content → `features/[FeatureName]-Asset-TODO.md` *(same gate)*
-5. Do the work (only after Understanding is `confirmed` or the user explicitly waives review)
-6. **Graduate** confirmed content into `features/[FeatureName].md` if the spec is still placeholder (§2)
+5. Do the work when **ready** under the table above
+6. **Graduate** or grow the feature spec per §2
 7. **Update the feature TODO file(s)** before ending the session — refresh **Current focus** (§5.1)
 
 If the work is really shared foundation, **stop** — use Path A instead.
@@ -165,16 +218,16 @@ If the work is really shared foundation, **stop** — use Path A instead.
 
 ## 4. Understanding (Features & Shared)
 
-**Source of truth** with §2 — other pack files summarize; this section wins on conflict. Drafting examples: [`Feature_Understanding_Template.md`](../Feature_Understanding_Template.md).
+**Source of truth** with §2 — other pack files summarize; this section wins on conflict. Drafting examples: [`Feature_Understanding_Template.md`](../Feature_Understanding_Template.md). **When required:** §0.1 docs profile.
 
-Each **feature** and substantial **shared component** gets a `-Understanding.md` — the agent’s model of **feature shape** (guardrails). **Not** a second durable spec.
+Under **`prevent`**, each **feature** and substantial **shared component** gets a `-Understanding.md` — the agent’s model of **feature shape** (guardrails). **Not** a second durable spec. Under **`balanced`**, create when identity is ambiguous / multi-surface / split pressure / user asked. Under **`ship-first`**, only when user asks *lock shape* or the file already exists.
 
 - Features: `features/FeatureName-Understanding.md`
 - Shared: `_shared/ComponentName-Understanding.md`
 
 **Who writes it:** Agent drafts first (`draft`) from conversation, design doc, or interview. User **reviews and corrects shape** — they do not author from scratch and are **not** approving the full contract here.
 
-**Default:** Same Understanding for shared components as features. **Only skip** when the user **explicitly** excepts it (Master Index §3.0). Missing files or convenience are not exceptions.
+**Default under prevent:** Same Understanding for shared components as features. **Only skip** when the user **explicitly** excepts it (Master Index §3.0) **or** project `docs_profile` is `ship-first` / `balanced` allows skip. Under prevent, missing files or convenience are not exceptions.
 
 **Shape sections only** (keep these; nothing else):
 

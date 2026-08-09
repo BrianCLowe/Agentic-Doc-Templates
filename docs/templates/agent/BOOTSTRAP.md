@@ -159,124 +159,114 @@ If `docs/Human-TODO.md` does not exist:
 
 If it already exists → add newly discovered human-gated needs (procure / playtest / decide / waiting); do not wipe user-completed rows.
 
+## Step 3p — Project preferences *(one batch ask — before Step 3d)*
+
+**Mandatory:** Present **and explain** every still-unset preference below in **one** user-facing message. Do **not** drip-feed separate quizzes across later steps for the same keys. Skip only keys already set in `docs/ADT-settings.yaml`. Create/update that file from [`ADT-settings.example.yaml`](ADT-settings.example.yaml) when recording.
+
+**You must include** (when unset):
+
+| # | Preference | Key | Why it matters |
+|---|------------|-----|----------------|
+| A | **Docs profile** (ceremony) | `docs_profile.mode` | Controls whether Understanding + shape-confirm block code. **Required before Step 3d** file create. |
+| B | **Template update checks** | `optional_rules.template-update-check` | Optional upstream VERSION ping |
+| C | **Doc roles** | `optional_rules.doc-roles` | Optional subagent adapters (orchestrator stays parent-only) |
+| D | **Pack sync mode** | `sync.mode` | How TEMPLATE_SYNC handles live optionals |
+| E | **Orchestrator git** | `orchestrator.git.mode` | How long unattended runs land in git — **important**; never silent-default |
+
+### How to present *(agent requirements)*
+
+1. Skim conversation + `docs/reference/` if present (do not inventory the whole repo) for docs-profile + git recommendations only.
+2. Lead with: *“I need a few project preferences once — all in this message. Pick each or say ‘defaults’ / accept suggestions.”*
+3. For **each** unset row: short plain-language **what it does**, the **options**, and your **suggestion** (with 1–3 citations for docs profile when reference exists).
+4. Wait for answers (or “use your suggestions”) → record all chosen keys + `recorded` today + `source` where applicable → continue to Step 3d.
+5. If they only answer some rows, re-ask **only** the missing ones before 3d (docs profile is blocking for 3d).
+
+### A — Docs profile *(options to explain)*
+
+| Mode | Tell the user |
+|------|----------------|
+| **`prevent`** *(suggested default if unclear)* | Agent drafts `-Understanding.md` first; **you confirm shape** (is / is not) before code. Best when wrong product identity is expensive. |
+| **`balanced`** | Spec + TODO always; Understanding **only when** product identity is fuzzy (competing surfaces, “not X”, multi-feature mush, or you ask to lock shape). You are choosing “judgment call,” not “no docs.” |
+| **`ship-first`** | Spec + TODO only; no shape-confirm gate. Faster; fix-forward via verify + Human-TODO. *Lock shape for X* anytime. |
+
+Suggest with citations when possible (prevent / balanced / ship-first signals — Workflow §0.1).
+
+### B — Template update checks
+
+Explain: optional rule pings upstream `VERSION` only; then they can TEMPLATE_SYNC. Default cadence **`always`** (per session) or **`interval`**. Options: **enable** (always or interval) / **decline**.
+
+### C — Doc roles
+
+Explain: optional Understanding author, implementer, work verifier, etc. as harness adapters; short asks still work without install; orchestrator is never a subagent. Options: **enable** / **decline**.
+
+### D — Pack sync mode
+
+| Mode | Tell the user |
+|------|----------------|
+| **`auto`** | Recommended live updates + hygiene commits without mid-sync quizzes; still asks for brand-new pack optionals |
+| **`auto-all`** | Same + enable/install unset pack optionals (never re-enable declined). **Still asks orchestrator git** (see E / B0.6) |
+| **`choose`** | Ask about live optionals each sync |
+
+### E — Orchestrator git *(always explain fully when unset)*
+
+| Mode | Tell the user |
+|------|----------------|
+| **`branch-pr`** *(suggest if remote + forge CLI)* | New/use run branch → milestone commits → push → **open PR** (no merge). Best for CI. |
+| **`branch-push`** *(suggest if remote, no forge CLI)* | Same without PR |
+| **`local`** *(suggest if no remote)* | Milestone commits only; nothing leaves the machine |
+| **`current-push`** | Commit + **push the branch you are on now** (often `main`). Solo / you own the remote. **Never** applied without you picking it. |
+| **`none`** | No commits during orchestration |
+
+**Never** silent-default **`current-push`**. Git strategy is high-impact — if they shrug, restate the suggestion and get an explicit pick (or “use suggestion”).
+
+**After they pick a git mode** → run **Forge tooling probe** ([`roles/orchestrator.md`](roles/orchestrator.md) Git policy): infer forge from remote; if **`branch-pr`** and CLI missing → **ask to install**; if CLI present but not logged in (or just installed) → **ask to start auth** (install ≠ ready for PRs). Fall back to push + human PR / switch mode if they decline. Do not silent-install or silent-login.
+
+Explicit later (any preference): *Set docs profile to …* / *Set sync to …* / *Set orchestrator git to …* / enable-decline optionals.
+
 ## Step 3d — Create files for every Document Map row *(mandatory)*
 
-**A Document Map row is not documentation.** If you put a feature or shared component in §3.1 / §3.2, you **must** create the default file set in the same session (see [`Modular_Docs_Workflow.md`](Modular_Docs_Workflow.md) §0):
+**A Document Map row is not documentation.** If you put a feature or shared component in §3.1 / §3.2, you **must** create the **profile default file set** in the same session (Workflow §0 / §0.1). Read `docs_profile.mode` (unset → **prevent**).
 
-| Always create | Status / notes |
-|---------------|----------------|
-| `*-Understanding.md` | status `draft` — agent interpretation for user review |
-| `*.md` spec | stub/placeholder OK until Understanding is `confirmed` |
-| `*-TODO.md` | core TODO; add InEditor/Asset TODOs when Project Profile / game extensions apply |
+| File | `prevent` | `balanced` | `ship-first` |
+|------|-----------|------------|--------------|
+| `*.md` spec | always (stub OK) | always | always |
+| `*-TODO.md` | always | always | always |
+| `*-Understanding.md` | always (`draft`) | when identity ambiguous / multi-surface / split / user asked; else optional | only if user asked *lock shape* |
+
+Add InEditor/Asset TODOs when Project Profile / game extensions apply.
 
 **Do not:**
 
 - Leave map-only “planned” rows with broken or missing links “until the user picks one”
-- Treat the Understanding `draft` gate as a reason to **skip creating** Understanding files — `draft` blocks **coding**, not **writing docs**
-- Create nine fully graduated specs before the user confirms — stubs + draft Understandings are correct
+- Under **`prevent`**: treat the Understanding `draft` gate as a reason to **skip creating** Understanding files — `draft` blocks **coding**, not **writing docs**
+- Under **`ship-first`**: invent Understanding files “just in case”
+- Create nine fully graduated specs before the user confirms — stubs (+ draft Understandings when required) are correct
 
 **When many features were named** (e.g. 5+):
 
-1. Create the default file set for **every** map row (Understanding as `draft`, thin spec stub, core TODO).
-2. Tell the user which Understandings to review first (suggest Path A foundation or the feature they care about most).
+1. Create the profile default file set for **every** map row.
+2. If Understandings were created: tell the user which to review first (Path A foundation or the feature they care about most).
 3. Optionally ask once: “Review all draft Understandings, or start with [X]?” — do **not** wait for that ask before creating the files.
 
 If the user named **no** features yet, skip Step 3d and say so in Step 4.
 
 ## Step 4 — Tell the user what's next
 
-1. Confirm or correct Section 1 (Project Overview), Document Map, `docs/Tooling.md`, and `docs/Human-TODO.md`.
-2. Point at the **draft** `-Understanding.md` files created in Step 3d — user reviews / corrects before implementation.
+1. Confirm or correct Section 1 (Project Overview), Document Map, `docs/Tooling.md`, and `docs/Human-TODO.md`. Confirm **preferences** recorded in Step 3p (docs profile, sync, git, optionals).
+2. If draft `-Understanding.md` files exist — user reviews / corrects **shape** before implementation (**prevent** / those stems). Under **ship-first**, point at specs + TODOs instead.
 3. Point at **Open** items on `Human-TODO.md` — things only the human can close (procure, playtest, decide, waiting).
-4. After they confirm an Understanding, graduate durable content into the spec and continue from TODOs ([`../help/SETUP.md`](../help/SETUP.md)).
-5. Run **Step 4b** (template update checks) before finishing.
-6. Run **Step 4c** (optional doc roles) before finishing.
-7. Run **Step 4d** (pack sync mode) before finishing.
-8. Optional: run [`RULE_INSTALL.md`](RULE_INSTALL.md) for agent rules (asks per tool, records in `docs/ADT-settings.yaml`). If Step 4b / 4c were **yes**, RULE_INSTALL also installs those optional artifacts.
+4. After they confirm an Understanding (when used), graduate durable content into the spec and continue from TODOs ([`../help/SETUP.md`](../help/SETUP.md)). Under ship-first, continue from TODOs and grow the spec as you build.
+5. **Preference catch-up:** if any Step 3p key is still unset, re-present **only** the missing rows (same explanations as 3p) before finishing — do not invent defaults for **orchestrator git** or **current-push**.
+6. Optional: run [`RULE_INSTALL.md`](RULE_INSTALL.md) for agent rules (asks per tool, records in `docs/ADT-settings.yaml`). If doc-roles or update-check were **enabled** in 3p, RULE_INSTALL also installs those optional artifacts.
 
-## Step 4b — Template update checks (ask first)
+### Preference detail (reference — already covered in Step 3p)
 
-Projects that copied or templated this pack do **not** share the upstream git remote. Offer an **optional** agent rule that pings upstream for a newer pack version.
-
-**Ask** (do not enable silently):
-
-> Want the agent to check for Agentic Doc Templates updates?
->
-> How it works: `docs/ADT-settings.yaml` stores your local pack version. The agent fetches only the tiny upstream `VERSION` file and tells you if a newer pack exists — then you can sync with TEMPLATE_SYNC. **Default:** check once per session when the rule runs (`check_mode: always`) — token cost is negligible. Or choose **interval** (e.g. every 7 days) if you prefer fewer network pings.
->
-> Decline if you prefer to ask manually: *"Update the doc templates from Agentic Doc Templates and sync our live docs."*
-
-### On **yes** *(or yes + cadence)*
-
-1. Create or update `docs/ADT-settings.yaml` from [`ADT-settings.example.yaml`](ADT-settings.example.yaml) (keep any existing `tools` / `sync` / other keys).
-2. Set `optional_rules.template-update-check` to `enabled` + `recorded` today.
-3. Ensure `upstream:` exists; set `last_checked` to today and `local_pack_version` from local `docs/templates/VERSION`.
-4. Set `upstream.check_mode` and **`upstream.check_mode_recorded`** (today):
-   - **`always`** if they accept the default / say every session / do not specify cadence
-   - **`interval`** + `check_interval_days` (default **7**) if they ask for weekly / every N days
-5. Install the optional rule when installing tool rules — follow [`RULE_INSTALL.md`](RULE_INSTALL.md). If the user skips RULE_INSTALL for now, note that checks need the optional rule installed for their tool(s).
-
-### On **no**
-
-1. Record `optional_rules.template-update-check` with `status: declined` and `recorded` in `docs/ADT-settings.yaml` (create the file if needed). Do **not** require an `upstream:` block when declined.
-2. Mention they can still sync anytime via [`TEMPLATE_SYNC.md`](TEMPLATE_SYNC.md) or enable checks later (*"Enable template update checks"*).
-
-### Explicit overrides later
-
-- "Enable template update checks" / "Check for template updates every session" → enable with `check_mode: always`.
-- "Only check for template updates every week" / "Check every N days" → enable (or keep enabled) with `check_mode: interval` and set `check_interval_days`.
-- "Stop checking for template updates" → set optional rule status to `declined`; remove installed `template-update-check` rule files if present (ask before deleting). Keep or clear `upstream:` as the user prefers.
-
-## Step 4c — Optional doc roles (ask first)
-
-Thin playbook roles (Understanding author, Doc graduate, Feature implementer, Work verifier, Orchestrator, Bootstrap, Template sync) live under [`roles/`](roles/README.md). They are **never always-on**. Users can `@`-mention role files with no install. **Orchestrator** is parent-session only (not installed as a harness subagent).
-
-**Ask** (do not enable silently):
-
-> Want optional **doc roles** (Understanding author, Feature implementer, Orchestrator, etc.)?
->
-> How it works: short role files under `docs/templates/agent/roles/`. When we install rules for your tools ([`tools/`](tools/README.md)), matching **subagent** adapters go in that harness’s agents folder (Cursor → `.cursor/agents/`, Grok Build → `.grok/agents/`, …). The modular docs rule then has the **main agent** delegate when your ask matches — you don’t need `/` commands. Orchestrator stays in the parent session and dispatches leaf workers.
->
-> Decline if you prefer the lean modular rule alone. You can still open a role `.md` by path later.
-
-### On **yes**
-
-1. Record in `docs/ADT-settings.yaml` under `optional_rules.doc-roles` with `status: enabled` and `recorded`.
-2. When running [`RULE_INSTALL.md`](RULE_INSTALL.md) for each installed tool, that tool’s [`tools/<key>.md`](tools/README.md) installs doc-role adapters if the tool supports them. If RULE_INSTALL is skipped for now, note which agents folders still need a later pass.
-3. Point the user at [`roles/README.md`](roles/README.md) — normal asks are enough (*Draft Understanding for X*, *Orchestrate — clear ready TODOs until blocked*).
-
-### On **no**
-
-1. Do **not** copy anything into `.cursor/agents/`, `.grok/agents/`, `.claude/agents/`, or `.codex/agents/`.
-2. Record `optional_rules.doc-roles` with `status: declined` and `recorded`.
-3. Mention role files still work by path: *Follow `docs/templates/agent/roles/understanding-author.md`.*
-
-### Explicit overrides later
-
-- "Enable optional doc roles" / "Install modular docs subagents" → treat as **yes**.
-- "Remove doc roles" / "Disable optional doc roles" → set `declined`; delete installed agent files under the harness folders above (ask before deleting).
-
-## Step 4d — Pack sync mode (ask first)
-
-Controls whether TEMPLATE_SYNC mid-asks about live optionals (reshape, TODO ambition, future similar passes) or just applies them — and whether new pack `optional_rules.*` are auto-enabled.
-
-**Ask** (do not silent-default):
-
-> When updating the doc templates, pick a sync mode:
-> - **`auto`** — apply recommended live updates (reshape, TODO ambition, rules refresh, hygiene commits) without mid-sync quizzes; still **ask once** when a brand-new pack optional appears (doc-roles, update-check, …)
-> - **`auto-all`** — same as auto, and also **enable + install** any unset pack optionals (never re-enable ones you declined)
-> - **`choose`** — ask about live optionals each sync
->
-> Uncommitted **your** work before a sync still stops for a commit first. You can switch later: *Set sync to auto* / *Set sync to auto-all* / *Set sync to choose*.
-
-### On **auto** / **auto-all** / **choose**
-
-1. Record `sync.mode` and `sync.recorded` in `docs/ADT-settings.yaml` (create from [`ADT-settings.example.yaml`](ADT-settings.example.yaml) if needed).
-2. Mention sync behavior briefly in the bootstrap summary.
-
-### Explicit overrides later
-
-- "Set sync to auto" / "Set sync to auto-all" / "Set sync to choose" → update `sync.mode` (and `recorded`).
+| Topic | On enable / choose |
+|-------|--------------------|
+| Template update-check **yes** | Set `optional_rules.template-update-check` enabled; `upstream:` + `local_pack_version`; `check_mode` always or interval + `check_mode_recorded` |
+| Doc roles **yes** | `optional_rules.doc-roles` enabled; install adapters via each `tools/<key>.md` on RULE_INSTALL |
+| Update-check / roles **no** | Record `declined` |
+| Explicit later | *Enable template update checks* / *Enable optional doc roles* / *Set sync to …* / *Set docs profile to …* / *Set orchestrator git to …* |
 
 ## Do not
 
@@ -287,9 +277,9 @@ Controls whether TEMPLATE_SYNC mid-asks about live optionals (reshape, TODO ambi
 - Ask before moving root files that are **clearly** upstream (Agentic Doc Templates / Brian Lowe / BrianCLowe markers) — just move them.
 - Finish bootstrap with a filled Document Map but **no** feature/shared files on disk.
 - Put human-gated items only in feature TODOs — dual-write `docs/Human-TODO.md` + owner TODO (Workflow §13).
-- Enable template update checks without asking (Step 4b).
-- Silent-default `sync.mode` without Step 4d (or first-sync B0.2).
-- Skip Steps 4b / 4c / 4d (or stay silent about them) because the user did not ask — present and explain; record decisions.
+- Drip-feed preference quizzes (4b/4c/4d/4e-style) when Step 3p already covers them — **one batch**.
+- Silent-default `sync.mode` or **`orchestrator.git.mode: current-push`** without the user picking them.
+- Skip Step 3p (or stay silent about unset prefs) because the user did not ask — present and explain; record decisions.
 - Keep writing `docs/rule-install-status.yaml` / `docs/upstream-status.yaml` on new projects — use `docs/ADT-settings.yaml` only.
 
 ## Example user prompts

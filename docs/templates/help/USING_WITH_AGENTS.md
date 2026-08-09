@@ -25,18 +25,21 @@ The modular documentation **workflow is tool-agnostic**. What differs is **where
 
 The modular rule guards itself: *"If `docs/Master_Index.md` does not exist, ignore this entire rule."*
 
-**Core with every modular-rule install:** [`../agent/Agent_Timescale_Planning_Rule.mdc`](../agent/Agent_Timescale_Planning_Rule.mdc) — plan/ship at agent speed (target architecture first; exploration ≠ paved path). Always-on; users should not need to remind agents. Understanding locks product-defining surface; TODOs/plans follow that target.
+**Core with every modular-rule install:** [`../agent/Agent_Timescale_Planning_Rule.mdc`](../agent/Agent_Timescale_Planning_Rule.mdc) — plan/ship at agent speed (target architecture first; exploration ≠ paved path). Always-on; users should not need to remind agents. When Understanding (or a clear contract) locks product-defining surface, TODOs/plans follow that target.
 
 ## Optional extras
 
 | Extra | What | Where |
 |-------|------|--------|
-| Template update check | Upstream `VERSION` ping — default every session; interval optional | Bootstrap Step 4b · [`../agent/TEMPLATE_UPDATE_CHECK.md`](../agent/TEMPLATE_UPDATE_CHECK.md) |
-| Doc roles | Understanding author, implementer, work verifier, … | Bootstrap Step 4c · [`../agent/roles/README.md`](../agent/roles/README.md) — Cursor → `.cursor/agents/`; Grok Build → `.grok/agents/` |
-| Orchestrator | Parent-only backlog loop (implement → verify → next) | [`../agent/roles/orchestrator.md`](../agent/roles/orchestrator.md) — **not** installed as a harness subagent |
-| Sync mode | `auto` = recommended live updates + hygiene commits (still asks for new unset optionals); `auto-all` = same + enable/install new optionals; `choose` = ask each time. Dirty tree before sync still hard-stops | Bootstrap Step 4d · `sync.mode` in [`docs/ADT-settings.yaml`](../agent/ADT-settings.example.yaml) |
+| **Project prefs (batch)** | Docs profile, update-check, doc-roles, sync mode, orchestrator git — **one** bootstrap ask | Bootstrap **Step 3p** · live keys in [`docs/ADT-settings.yaml`](../agent/ADT-settings.example.yaml) |
+| **Docs profile** | `prevent` (default: Understanding + confirm), `balanced` (Understanding when identity fuzzy), `ship-first` (Spec+TODO only) | Workflow [§0.1](../agent/Modular_Docs_Workflow.md#01-docs-profile-ceremony-modes) · `docs_profile` |
+| Template update check | Upstream `VERSION` ping — default every session; interval optional | Step 3p · [`../agent/TEMPLATE_UPDATE_CHECK.md`](../agent/TEMPLATE_UPDATE_CHECK.md) |
+| Doc roles | Understanding author, implementer, work verifier, … | Step 3p · [`../agent/roles/README.md`](../agent/roles/README.md) — Cursor → `.cursor/agents/`; Grok Build → `.grok/agents/` |
+| Orchestrator | Parent-only backlog loop (implement → verify → next); readiness follows docs profile | [`../agent/roles/orchestrator.md`](../agent/roles/orchestrator.md) — **not** installed as a harness subagent |
+| **Orchestrator git** | `local` · `branch-pr` *(CI)* · `branch-push` · `current-push` · `none` — **always ask if unset**; after pick, probe forge CLI from remote — **ask to install** if missing, **ask to start auth** if not logged in (install ≠ PR-ready) | Step 3p / B0.6 · `orchestrator.git.mode` · [Git policy](../agent/roles/orchestrator.md) |
+| Sync mode | `auto` / `auto-all` / `choose` — dirty tree before sync still hard-stops; **git mode still asked** under auto-all if unset | Step 3p · `sync.mode` |
 
-Parent agents **orchestrate** role delegation when asks match; `/` commands are optional. Role playbooks stay under `roles/*.md` — never paste them into always-on rules. *Orchestrate / drive the backlog* stays in the parent session and dispatches leaf workers. Settings live in **`docs/ADT-settings.yaml`** (tools, optionals, sync mode, upstream stamps).
+Parent agents **orchestrate** role delegation when asks match; `/` commands are optional. Role playbooks stay under `roles/*.md` — never paste them into always-on rules. *Orchestrate / drive the backlog* stays in the parent session and dispatches leaf workers. Settings live in **`docs/ADT-settings.yaml`** (docs profile, orchestrator git, tools, optionals, sync mode, upstream stamps).
 
 ## Cursor conflict note
 

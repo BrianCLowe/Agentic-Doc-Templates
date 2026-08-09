@@ -53,14 +53,14 @@ Files: `understanding-author.md`, `doc-graduate.md`, `feature-implementer.md`, `
 
 **Do not** install an `orchestrator` adapter — orchestration runs in the **parent** session via `docs/templates/agent/roles/orchestrator.md` (spawns leaf workers only).
 
-Compat (secondary): Claude/Cursor agent folders may also be scanned when compat is on — still install this pack’s roles under `.grok/agents/`.
+Compat (secondary, when enabled): **Claude** `.claude/agents/` can load as spawnable types. **Cursor** `compat.cursor.agents` is for named instruction files under Cursor paths — **not** “load `.cursor/agents/*.md` as Grok spawn types.” Always install this pack’s roles under `.grok/agents/`.
 
 ## Verify
 
 - Modular rule listed by `grok inspect` from `AGENTS.md` and/or `.grok/rules/`
 - Agent timescale planning present in `AGENTS.md` and/or `.grok/rules/`
 - If doc-roles enabled: six files under `.grok/agents/` (no `orchestrator.md`); confirm names appear under **agents** in `grok inspect --json` or `/config-agents` (non-builtin source). If missing → playbook fallback above
-- Remind: short asks are enough; `GROK_SUBAGENTS=1` / `[subagents] enabled` may be required for spawning
+- Remind: short asks are enough. Subagents are **enabled by default**; only check `GROK_SUBAGENTS=0` / `[subagents] enabled = false` if spawning fails or the user disabled them
 
 ## For humans
 

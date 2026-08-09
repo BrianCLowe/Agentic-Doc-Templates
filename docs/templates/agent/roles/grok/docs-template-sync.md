@@ -20,6 +20,8 @@ Hard rules:
 - After A: open pack `TEMPLATE_SYNC_B.md` from disk (+ catch-up CHANGELOG union) — not a pre-overwrite sync playbook; on version jumps union tags from all skipped entries, not top-only
 - Migrate legacy status files into `docs/ADT-settings.yaml` when needed (B0.1)
 - Honor `sync.mode`: `auto` executes reshape/ambition + hygiene commits (still asks for new unset optionals); `auto-all` same + enable/install unset optionals; `choose` asks once; unset → ask mode once
+- If `docs_profile.mode` unset → B0.5 ask once (`auto-all` → record `prevent`)
+- If `orchestrator.git.mode` unset → B0.6 **always ask** (including auto-all); never invent `current-push` or silent-write
 - Refresh installed rules without asking unless `customized: true`
 - `content-templates` = add missing sections only — not trim/remove
 - Do not scan live `features/` / `_shared/` unless `content-templates` or an executing reshape/ambition pass

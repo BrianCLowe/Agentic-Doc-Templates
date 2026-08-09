@@ -30,15 +30,15 @@ Ask your agent:
 
 > Bootstrap modular docs using `docs/templates/agent/BOOTSTRAP.md`.
 
-That creates `Master_Index.md`, `Tooling.md`, `Human-TODO.md`, `reference/` (for **chat exports** / design docs), feature/shared folders, and **draft Understanding + stub spec + core TODO for every Document Map row** named in the bootstrap conversation (skip file creation if you named no features yet).
+That creates `Master_Index.md`, `Tooling.md`, `Human-TODO.md`, `reference/` (for **chat exports** / design docs), feature/shared folders, records **project preferences in one batch** (docs profile, sync mode, orchestrator git, optional update-check / doc-roles — agent must present and explain each), and the **profile default file set** for every Document Map row named in the bootstrap conversation (always spec + TODO; Understanding when the profile requires it — skip file creation if you named no features yet).
 
-**Recommended habit** *(after bootstrap creates `docs/reference/`):* export idea conversations (Grok.com, ChatGPT, …) to markdown and drop them there — often many threads. Then ask: *Build or update the live docs from `docs/reference/`.* That preserves whys/motives better than a polished design doc alone ([`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md)). Bootstrap alone does not require exports first; building from `reference/` is the follow-up that fills rich Understandings.
+**Recommended habit** *(after bootstrap creates `docs/reference/`):* export idea conversations (Grok.com, ChatGPT, …) to markdown and drop them there — often many threads. Then ask: *Build or update the live docs from `docs/reference/`.* That preserves whys/motives better than a polished design doc alone ([`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md)). Bootstrap alone does not require exports first; building from `reference/` is the follow-up that fills rich Understandings (or thin specs under **ship-first**).
 
 Then you:
 
 1. Drop / add `reference/` exports if you have them, then ask the agent to build or update live docs from that folder.
-2. Correct overview, Document Map, Tooling, and Human-TODO.
-3. Review draft `-Understanding.md` files before implementation.
+2. Correct overview, Document Map, Tooling, Human-TODO, and **docs profile** if you want a different ceremony level.
+3. Review draft `-Understanding.md` files before implementation when your profile uses them (**prevent** default).
 4. Optionally install the modular doc rule — *Follow `docs/templates/agent/RULE_INSTALL.md`* (dispatches to [`../agent/tools/`](../agent/tools/README.md)).
 5. Optionally enable **doc roles** (Understanding author, etc.) — bootstrap asks; details: [`../agent/roles/README.md`](../agent/roles/README.md).
 

@@ -109,6 +109,53 @@ If update-check is **declined** or unset → skip B0.4 (step 10 may enable it �
 
 Explicit later: *Check for template updates every session* / *Only check every week*.
 
+### B0.5 — Docs profile *(ask once if unset)*
+
+Read `docs_profile.mode` from `docs/ADT-settings.yaml`.
+
+| State | Behavior |
+|-------|----------|
+| **`prevent` / `balanced` / `ship-first`** | Keep; no re-ask |
+| **missing / unset** | **Ask once** before stopping (do not silent-default to invent ship-first). Runtime already treats unset as **prevent** for coding gates. |
+
+**Ask** (brief; optional 1-line suggest if `docs/reference/` or live Understandings give a signal):
+
+> Docs profile controls Understanding ceremony (Workflow §0.1):
+> - **`prevent`** — Understanding + shape confirm before code (current default if unset)
+> - **`balanced`** — Understanding only when identity is ambiguous
+> - **`ship-first`** — Spec + TODO only; fix-forward
+>
+> Keep **prevent**, or switch?
+
+Record `docs_profile.mode` + `recorded` (+ `source: user` or `agent-suggested`). Explicit later: *Set docs profile to …*.
+
+Under **`sync.mode: auto-all`:** if unset, set **`prevent`** + `recorded` today (no quiz) — never invent `ship-first` without a user choice.
+
+### B0.6 — Orchestrator git mode *(always ask if unset — including auto-all)*
+
+Read `orchestrator.git.mode` from `docs/ADT-settings.yaml`.
+
+| State | Behavior |
+|-------|----------|
+| **`local` / `branch-pr` / `branch-push` / `current-push` / `none`** | Keep; no re-ask |
+| **missing / unset** | **Always ask once before stopping** — even under **`sync.mode: auto-all`**. Git strategy is high-impact. **Never** silent-default **`current-push`** or invent a mode without a user answer. |
+
+**Present and explain** the full menu (bootstrap Step 3p **E** wording):
+
+| Mode | One-line |
+|------|----------|
+| **`branch-pr`** | Branch → commits → push → PR (no merge); best for CI |
+| **`branch-push`** | Branch → commits → push; no PR |
+| **`local`** | Commits only; no push |
+| **`current-push`** | Commit + push **whatever branch you are on** (often `main`); solo opt-in only |
+| **`none`** | No commits |
+
+Recommend: remote + forge CLI → **`branch-pr`**; remote, no CLI → still offer **`branch-pr`** (with install ask) or **`branch-push`**; else **`local`**. Record choice + `recorded` (+ `source`). Explicit later: *Set orchestrator git to …*.
+
+**After the mode is recorded** → **Forge tooling probe** ([`roles/orchestrator.md`](roles/orchestrator.md)): if **`branch-pr`** and CLI missing → ask to install; if not authenticated → **ask to start login** (install alone is not enough). Fall back / switch mode if they decline. Do not silent-install or silent-login.
+
+**Do not** under `auto-all` write `local` (or any mode) and move on without an explicit user pick. If they say “defaults,” treat that as accepting the **stated recommendation** and record it **loudly** in the sync summary: *“Recorded orchestrator.git = X (your default). Other options: …”*.
+
 ### Reference — local template → live file *(only when tagged)*
 
 | Local template (read) | Live file (edit carefully) | When |
@@ -165,6 +212,8 @@ Versions:
    - Under **`sync.mode: auto`:** changelog-tagged **live passes** (reshape, ambition, …) are already covered by auto — those are not “new optionals.” Cadence (B0.4) is still asked when due.
 11. If `sync.mode` still unset after the above → run **B0.2** before stopping.
 12. If update-check is enabled and `check_mode_recorded` still missing → run **B0.4** before stopping (`auto-all` defaults `always` there).
+13. If `docs_profile.mode` still unset → run **B0.5** before stopping (`auto-all` defaults `prevent` there).
+14. If `orchestrator.git.mode` still unset → run **B0.6** before stopping (**always ask**, including under `auto-all` — never invent `current-push` or silent-write `local`).
 
 ### Do not (Step B)
 

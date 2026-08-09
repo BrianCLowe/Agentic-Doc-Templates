@@ -46,7 +46,7 @@ Skip if the user only wants OpenClaw for chat/ops and will sync templates from a
 
 ## Optional — Doc roles
 
-OpenClaw has **no** pack-supported `.openclaw/agents/` (or `.cursor/agents/`) install target. Still present `optional_rules.doc-roles` when unset (TEMPLATE_SYNC present-unset-options / bootstrap Step 4c).
+OpenClaw has **no** pack-supported `.openclaw/agents/` (or `.cursor/agents/`) install target. Still present `optional_rules.doc-roles` when unset (TEMPLATE_SYNC present-unset-options / bootstrap Step 3p).
 
 | | |
 |--|--|

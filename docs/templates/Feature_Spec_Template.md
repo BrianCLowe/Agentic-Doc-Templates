@@ -1,6 +1,6 @@
 # [Feature or Shared Component Name]
 
-> Never edit this template unless the user asks you to. Use under `docs/features/` for features or `docs/_shared/` for shared components (adjust paths). Create from [`Feature_Understanding_Template.md`](Feature_Understanding_Template.md) after Understanding is `confirmed` — see [`Modular_Docs_Workflow.md`](agent/Modular_Docs_Workflow.md) §2.
+> Never edit this template unless the user asks you to. Use under `docs/features/` for features or `docs/_shared/` for shared components (adjust paths). Under **`prevent`**, grow from [`Feature_Understanding_Template.md`](Feature_Understanding_Template.md) after Understanding is `confirmed` ([`Modular_Docs_Workflow.md`](agent/Modular_Docs_Workflow.md) §2). Under **`ship-first`**, this file is the contract home from day one (Workflow §0.1).
 
 **Last Updated**: [YYYY-MM-DD]  
 **Related Understanding**: [FeatureName-Understanding.md](FeatureName-Understanding.md)  

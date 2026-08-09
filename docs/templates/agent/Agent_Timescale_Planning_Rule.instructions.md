@@ -14,7 +14,7 @@ Coding agents complete multi-concern cuts in one focused session. Do **not** pla
 - Treat stepped plans as **build/verify order inside one change**, not as permission to ship a known-wrong intermediate.
 - Multi-concern work (mapping + chrome + persistence, API + UI + tests, etc.) is a normal single session — not a reason to stage an architecture that fights the UX.
 
-**Lock shape early (modular docs):** Product-defining surface/architecture identity belongs in Understanding **What this is / is NOT** (or Assumptions) — e.g. one continuous surface vs N editors. Module/API detail stays on the **spec**. Once shape is locked, plans and TODOs must target it.
+**Lock shape early (modular docs):** Product-defining surface/architecture identity belongs in Understanding **What this is / is NOT** (or Assumptions) when the project uses Understanding (`docs_profile: prevent` / balanced when ambiguous / *lock shape*) — e.g. one continuous surface vs N editors. Under **ship-first**, put identity constraints on the **spec** (overview / Decisions) until an Understanding exists. Module/API detail stays on the **spec**. Once shape is locked, plans and TODOs must target it.
 
 **Exploration vs shipping:**
 

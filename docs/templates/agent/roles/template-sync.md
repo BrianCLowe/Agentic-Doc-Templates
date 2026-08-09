@@ -23,10 +23,10 @@
 
 1. Open entry [`TEMPLATE_SYNC.md`](../TEMPLATE_SYNC.md) → follow **A** only ([`TEMPLATE_SYNC_A.md`](../TEMPLATE_SYNC_A.md)). **A0 first:** dirty tree → hard stop; do not auto-commit their WIP.
 2. When A’s handoff says so: open **local** [`TEMPLATE_SYNC_B.md`](../TEMPLATE_SYNC_B.md) from disk — discard any pre-overwrite sync procedure.
-3. Run Step B from B + **unioned** catch-up changelog tags (including B0 settings migrate + sync.mode + B0.3 hygiene commits under `auto` / `auto-all` + **B0.4** cadence when due).
+3. Run Step B from B + **unioned** catch-up changelog tags (including B0 settings migrate + sync.mode + B0.3 hygiene commits under `auto` / `auto-all` + **B0.4** cadence when due + **B0.5** docs_profile when unset + **B0.6** orchestrator.git when unset — **always ask git**, even under auto-all).
 4. **Rules** when tagged: refresh installed tools via each `tools/<key>.md` — **no ask** unless `customized: true`.
-5. **Reshape / TODO ambition** when tagged in the union: if `sync.mode: auto` or `auto-all` → execute all Document Map stems + hygiene commits; if `choose` → explain + ask once; if mode unset → B0.2 ask once then continue.
-6. Summarize what changed (sync mode, catch-up from→to if a jump, what executed, settings migration, git / commits).
+5. **Reshape / TODO ambition** when tagged in the union: if `sync.mode: auto` or `auto-all` → execute all Document Map stems + hygiene commits; if `choose` → explain + ask once; if mode unset → B0.2 ask once then continue. Reshape only applies to stems that **have** Understanding files.
+6. Summarize what changed (sync mode, docs_profile if set/asked, catch-up from→to if a jump, what executed, settings migration, git / commits).
 7. Run B’s **Present / apply unset options** for missing `optional_rules.*` (`auto-all` enables + installs; `auto`/`choose` ask once).
 8. **Stop.**
 
@@ -34,7 +34,9 @@
 
 - A0 cleared (clean tree or explicit waive) and Step A handoff completed and Step B for the **unioned** catch-up tags is done,
 - Tagged optional live passes were executed (`auto` / `auto-all`) or presented (`choose`),
-- Unset optionals were presented (`auto`/`choose`), auto-enabled (`auto-all`), or already `enabled` / `declined`, and
+- Unset optionals were presented (`auto`/`choose`), auto-enabled (`auto-all`), or already `enabled` / `declined`,
+- `docs_profile` was set or left intentionally unset only if B0.5 was not yet due,
+- `orchestrator.git.mode` was set or left intentionally unset only if B0.6 was not yet due, and
 - You have not scanned live `features/` / `_shared/` unless `content-templates` or an executing reshape/ambition pass required it
 
 ## Do not

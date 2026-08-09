@@ -17,6 +17,34 @@ sync:
   mode: auto
   recorded: 2026-08-06
 
+# Docs ceremony profile — how heavy the pre-build gate is.
+# prevent   = default. Understanding + shape confirm before code (blocks wrong builds).
+# balanced  = Understanding only when identity is ambiguous / multi-surface / split pressure;
+#             clear single-identity stems may be Spec + TODO only.
+# ship-first = Spec + TODO core only; no draft coding gate; fix-forward via verify + Human-TODO.
+# Bootstrap / first “build from reference” may suggest a mode from docs/reference/ (cite 2–3
+# snippets) then ask once. Unset → treat as prevent (no silent downgrade of existing projects).
+# Re-ask only on explicit *Set docs profile to …* / *Change docs ceremony*.
+docs_profile:
+  mode: prevent
+  recorded: 2026-08-08
+  # source: user | agent-suggested
+
+# Orchestrator git delivery — how unattended backlog runs land in git.
+# local       = milestone commits only; no push / PR
+# branch-pr   = create/use run branch → commits → push → open/update PR (no merge). Recommended when remote + forge CLI
+# branch-push = same without PR (remote but no gh/glab, or no PR culture)
+# current-push = milestone commits on the branch you are already on → push (solo opt-in; often main). Never silent-default
+# none         = no commits
+# Unset → always ask (bootstrap Step 3p / sync B0.6 / orchestrator pre-run) — even under sync.mode auto-all; never invent current-push
+# After choose/change: forge tooling probe (infer CLI from remote; if branch-pr → ask to install if missing, ask to start auth if not logged in)
+# Re-ask only on *Set orchestrator git to …* / change this key.
+orchestrator:
+  git:
+    mode: branch-pr
+    recorded: 2026-08-08
+    # source: user | agent-suggested
+
 # One entry per tool. Status: installed | declined
 # Do not ask again for a tool when status is installed or declined
 # unless the user explicitly requests install/reinstall for that tool.
@@ -92,6 +120,6 @@ upstream:
   # check_mode: interval
   # check_interval_days: 7
   last_checked: 2026-07-16
-  local_pack_version: "2.7.6"
-  # upstream_pack_version: "2.7.6"
+  local_pack_version: "2.7.7"
+  # upstream_pack_version: "2.7.7"
   # update_available: true

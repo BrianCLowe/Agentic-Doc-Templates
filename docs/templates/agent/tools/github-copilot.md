@@ -30,7 +30,7 @@ Only if `optional_rules.template-update-check.status` is `enabled`.
 
 ## Optional — Doc roles
 
-Copilot does **not** use `.cursor/agents/` / `.grok/agents/` as first-class named subagents in this pack. That does **not** mean there is nothing to offer — still present `optional_rules.doc-roles` when unset (bootstrap Step 4c / TEMPLATE_SYNC present-unset-options).
+Copilot does **not** use `.cursor/agents/` / `.grok/agents/` as first-class named subagents in this pack. That does **not** mean there is nothing to offer — still present `optional_rules.doc-roles` when unset (bootstrap Step 3p / TEMPLATE_SYNC present-unset-options).
 
 | | |
 |--|--|
