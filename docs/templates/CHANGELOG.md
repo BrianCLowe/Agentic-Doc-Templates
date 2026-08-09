@@ -20,6 +20,16 @@
 
 ---
 
+## 2.7.9
+
+- **Live impact:** `versions-only`, `master-index`, `process-docs-only`
+- **Files:**
+  - `VERSION` — 2.7.8 → 2.7.9
+  - `agent/roles/orchestrator.md` — **`branch-pr-squash`**; PR close-out **strict order**: final push → **build verify** → squash (squash mode only) → **mark ready** (default); draft mid-run; force-with-lease only for squash
+  - `agent/ADT-settings.example.yaml`, `BOOTSTRAP.md` Step 3p **E**, `TEMPLATE_SYNC_B.md` **B0.6**, `Master_Index_Template.md` — new mode + close-out wording
+  - stamps: Workflow / ADT-settings example / root README
+- **Step B:** Bump Master Index **Pack version** to 2.7.9. Adopt At a Glance **orchestrator git** wording (`branch-pr-squash`, build-verify then ready). Existing `branch-pr` users keep mode (behavior now includes ready-at-end + pre-ready build verify — no mode migration). Do **not** invent `branch-pr-squash` without user choice. No live feature/shared scan. Rules refresh not required (orchestrator is parent playbook only).
+
 ## 2.7.8
 
 - **Live impact:** `versions-only`, `rules`, `content-templates`, `optional-todo-operable`, `process-docs-only`

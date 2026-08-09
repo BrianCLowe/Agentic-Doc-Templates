@@ -211,7 +211,8 @@ Explain: optional Understanding author, implementer, work verifier, etc. as harn
 
 | Mode | Tell the user |
 |------|----------------|
-| **`branch-pr`** *(suggest if remote + forge CLI)* | New/use run branch → milestone commits → push → **open PR** (no merge). Best for CI. |
+| **`branch-pr`** *(suggest if remote + forge CLI)* | Run branch → milestone commits → push → **draft PR** mid-run → end: **build-verify → mark ready** (no merge). Unattended CI/Bugbot after the run. |
+| **`branch-pr-squash`** | Same as `branch-pr`, then **squash to one commit** after green verify and **before** mark ready — for tip-only automated reviewers (HEAD-only bots). |
 | **`branch-push`** *(suggest if remote, no forge CLI)* | Same without PR |
 | **`local`** *(suggest if no remote)* | Milestone commits only; nothing leaves the machine |
 | **`current-push`** | Commit + **push the branch you are on now** (often `main`). Solo / you own the remote. **Never** applied without you picking it. |
@@ -219,7 +220,7 @@ Explain: optional Understanding author, implementer, work verifier, etc. as harn
 
 **Never** silent-default **`current-push`**. Git strategy is high-impact — if they shrug, restate the suggestion and get an explicit pick (or “use suggestion”).
 
-**After they pick a git mode** → run **Forge tooling probe** ([`roles/orchestrator.md`](roles/orchestrator.md) Git policy): infer forge from remote; if **`branch-pr`** and CLI missing → **ask to install**; if CLI present but not logged in (or just installed) → **ask to start auth** (install ≠ ready for PRs). Fall back to push + human PR / switch mode if they decline. Do not silent-install or silent-login.
+**After they pick a git mode** → run **Forge tooling probe** ([`roles/orchestrator.md`](roles/orchestrator.md) Git policy): infer forge from remote; if **`branch-pr` / `branch-pr-squash`** and CLI missing → **ask to install**; if CLI present but not logged in (or just installed) → **ask to start auth** (install ≠ ready for PRs). Fall back to push + human PR / switch mode if they decline. Do not silent-install or silent-login.
 
 Explicit later (any preference): *Set docs profile to …* / *Set sync to …* / *Set orchestrator git to …* / enable-decline optionals.
 

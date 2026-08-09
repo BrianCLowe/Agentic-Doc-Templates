@@ -139,22 +139,23 @@ Read `orchestrator.git.mode` from `docs/ADT-settings.yaml`.
 
 | State | Behavior |
 |-------|----------|
-| **`local` / `branch-pr` / `branch-push` / `current-push` / `none`** | Keep; no re-ask |
+| **`local` / `branch-pr` / `branch-pr-squash` / `branch-push` / `current-push` / `none`** | Keep; no re-ask |
 | **missing / unset** | **Always ask once before stopping** — even under **`sync.mode: auto-all`**. Git strategy is high-impact. **Never** silent-default **`current-push`** or invent a mode without a user answer. |
 
 **Present and explain** the full menu (bootstrap Step 3p **E** wording):
 
 | Mode | One-line |
 |------|----------|
-| **`branch-pr`** | Branch → commits → push → PR (no merge); best for CI |
+| **`branch-pr`** | Branch → commits → draft PR mid-run → end: **build-verify → mark ready** (no merge) |
+| **`branch-pr-squash`** | Same + **squash to one commit** after green verify, before mark ready (tip-only review bots) |
 | **`branch-push`** | Branch → commits → push; no PR |
 | **`local`** | Commits only; no push |
 | **`current-push`** | Commit + push **whatever branch you are on** (often `main`); solo opt-in only |
 | **`none`** | No commits |
 
-Recommend: remote + forge CLI → **`branch-pr`**; remote, no CLI → still offer **`branch-pr`** (with install ask) or **`branch-push`**; else **`local`**. Record choice + `recorded` (+ `source`). Explicit later: *Set orchestrator git to …*.
+Recommend: remote + forge CLI → **`branch-pr`** (offer **`branch-pr-squash`** if tip-only bots); remote, no CLI → still offer **`branch-pr`** (with install ask) or **`branch-push`**; else **`local`**. Record choice + `recorded` (+ `source`). Explicit later: *Set orchestrator git to …*.
 
-**After the mode is recorded** → **Forge tooling probe** ([`roles/orchestrator.md`](roles/orchestrator.md)): if **`branch-pr`** and CLI missing → ask to install; if not authenticated → **ask to start login** (install alone is not enough). Fall back / switch mode if they decline. Do not silent-install or silent-login.
+**After the mode is recorded** → **Forge tooling probe** ([`roles/orchestrator.md`](roles/orchestrator.md)): if **`branch-pr` / `branch-pr-squash`** and CLI missing → ask to install; if not authenticated → **ask to start login** (install alone is not enough). Fall back / switch mode if they decline. Do not silent-install or silent-login.
 
 **Do not** under `auto-all` write `local` (or any mode) and move on without an explicit user pick. If they say “defaults,” treat that as accepting the **stated recommendation** and record it **loudly** in the sync summary: *“Recorded orchestrator.git = X (your default). Other options: …”*.
 

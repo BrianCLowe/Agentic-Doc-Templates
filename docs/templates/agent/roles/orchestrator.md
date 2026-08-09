@@ -43,7 +43,7 @@ Before the first dispatch, ask **once** (skip any dimension the user already fix
 | Stems | Implied by the ask; else all Document Map stems with open ready work |
 | Priorities | **All open tiers** — Medium/Low count if listed (they are intentional work) |
 | Budget | Drain until cleared or blocked |
-| Git | From `orchestrator.git.mode` if set; else ask once with recommend (**branch-pr** when remote + forge CLI, else **branch-push** when remote only, else **local**). **Never** silent-default **current-push** |
+| Git | From `orchestrator.git.mode` if set; else ask once with recommend (**branch-pr** when remote + forge CLI; offer **branch-pr-squash** for tip-only bots; else **branch-push** when remote only, else **local**). **Never** silent-default **current-push** |
 
 Record the chosen policy in one short internal checklist for the run. **Do not** re-ask mid-loop about scope, commits, or “what’s next.”
 
@@ -98,7 +98,7 @@ Repeat until a **stop condition**:
 6. **Bookkeep** — on verify pass: ensure `[x]` + date and Current focus refresh on that TODO (implementer should have done this; fix if missing). Dual-write Human-TODO if a human gate appeared (Workflow §13). New `playtest` rows → **defer** (continue) unless they meet the hard-gate test above.
 6b. **Build green** — work-verifier is contract/intent; also ensure implementer ran **project build/typecheck/container/engine verify** for code units ([`../Agent_Build_Verify_Rule.mdc`](../Agent_Build_Verify_Rule.mdc)). If the unit clearly never built and handoff implies the user can run it → re-dispatch fix before milestone commit.
 7. **Milestone git** *(if mode ≠ `none`)* — parent commits the verify-clean unit (code + that stem’s doc/TODO updates that belong to the unit). Implementer/verifier leaves **do not** commit. Then continue the loop.
-8. **Push / PR** — only per **Git policy** mode (`branch-pr` / `branch-push` / `current-push`). Do not ask mid-run. Modes `local` / `none` never push.
+8. **Push / PR** — only per **Git policy** mode (`branch-pr` / `branch-pr-squash` / `branch-push` / `current-push`). Do not ask mid-run. Modes `local` / `none` never push.
 
 **Current focus** is the in-loop “what to do next” pointer — refresh it as units complete. It is **not** a reason to stop and wait for the user. Skipping past deferred playtest to the next agent item is correct.
 
@@ -109,29 +109,32 @@ Repeat until a **stop condition**:
 | Mode | Commits | Branch | Push | PR |
 |------|---------|--------|------|-----|
 | **`local`** | Milestone after verify pass | Stay on current branch | No | No |
-| **`branch-pr`** | Same | Run branch (see start rules) | Yes (branch) | Open/update PR; **never merge** |
+| **`branch-pr`** | Same | Run branch (see start rules) | Yes (branch) | Open/update **draft** PR mid-run; end: build-verify → **mark ready** (no merge) |
+| **`branch-pr-squash`** | Same | Same | Yes (branch) | Same as `branch-pr`, then **squash to one commit** after green verify and **before** mark ready — for automated reviewers that only inspect **HEAD** (e.g. tip-only bots) |
 | **`branch-push`** | Same | Run branch | Yes (branch) | No |
 | **`current-push`** | Same | Stay on **current** branch (usually default/`main`) | Yes | No |
 | **`none`** | No | — | No | No |
 
 **Never silent-default `current-push`.** Only when set in ADT-settings or the user explicitly chooses it.
 
+**PR modes (`branch-pr` / `branch-pr-squash`):** Unattended orchestration should leave automatic checks able to run. **Default end-of-run:** mark the PR **ready for review** (not leave draft). Override only if the user said *this run leave draft* / *keep draft*.
+
 ### Resolve mode *(before first dispatch)*
 
 1. Read `orchestrator.git.mode` from `docs/ADT-settings.yaml`.
-2. **If set** → use it (unless this-run-only override). One-line start note. Then run **Forge tooling probe** if mode is `branch-pr` (or first orchestrate after a git-mode change).
+2. **If set** → use it (unless this-run-only override). One-line start note. Then run **Forge tooling probe** if mode is `branch-pr` or `branch-pr-squash` (or first orchestrate after a git-mode change).
 3. **If unset** → probe remote + which forge CLIs exist (see probe) → **ask once** with a recommendation:
-   - remote + matching forge CLI present → recommend **`branch-pr`**
+   - remote + matching forge CLI present → recommend **`branch-pr`** (or **`branch-pr-squash`** if they use tip-only PR review bots / multi-milestone commits need one HEAD for bots)
    - remote, CLI missing → recommend **`branch-pr`** *if they want CI PRs* (probe will offer install) **or** **`branch-push`** if they want zero forge tools
    - no remote / not a git repo → recommend **`local`** (or **`none`** if they refuse commits)
    - Offer **`current-push`** only as an explicit solo option: *“Commit + push the branch I’m on now (often main).”*
 4. Record their choice: `orchestrator.git.mode` + `recorded` (+ `source: user` or `agent-suggested`) in `docs/ADT-settings.yaml` (create from example if needed) — unless they said **this run only**.
 5. After the mode is chosen (or already set and needs PR tooling) → **Forge tooling probe**.
-6. Explicit later: *Set orchestrator git to local|branch-pr|branch-push|current-push|none*.
+6. Explicit later: *Set orchestrator git to local|branch-pr|branch-pr-squash|branch-push|current-push|none*.
 
 ### Forge tooling probe *(when setting or using git mode)*
 
-**When to run:** After the user picks / changes `orchestrator.git.mode` (bootstrap Step 3p **E**, sync B0.6, orchestrator pre-run, or *Set orchestrator git to …*). Also once at the start of an orchestrate run if mode is **`branch-pr`**.
+**When to run:** After the user picks / changes `orchestrator.git.mode` (bootstrap Step 3p **E**, sync B0.6, orchestrator pre-run, or *Set orchestrator git to …*). Also once at the start of an orchestrate run if mode is **`branch-pr`** or **`branch-pr-squash`**.
 
 **Infer forge from remote** (push remote, usually `origin`) — do **not** ask the user which forge:
 
@@ -145,26 +148,26 @@ Repeat until a **stop condition**:
 **Quick checks** (cheap — do not audit the whole machine):
 
 1. `git` available (all modes except pure no-git).
-2. For **`branch-pr`:** preferred CLI on `PATH` (e.g. `gh --version` / `glab --version`). Optionally `gh auth status` / equivalent — if CLI exists but **not logged in**, say so.
+2. For **`branch-pr` / `branch-pr-squash`:** preferred CLI on `PATH` (e.g. `gh --version` / `glab --version`). Optionally `gh auth status` / equivalent — if CLI exists but **not logged in**, say so.
 3. For **`branch-push` / `current-push`:** forge CLI **not** required; only `git` + push credentials.
 4. For **`local` / `none`:** skip forge CLI.
 
-**If `branch-pr` and CLI missing or unusable:**
+**If `branch-pr` / `branch-pr-squash` and CLI missing or unusable:**
 
-1. Tell them clearly: *“`branch-pr` opens PRs via [gh/glab/…]. I don’t see it installed (or authenticated). Install alone is not enough — the CLI must also be logged in.”*
+1. Tell them clearly: *“PR modes open PRs via [gh/glab/…]. I don’t see it installed (or authenticated). Install alone is not enough — the CLI must also be logged in.”*
 2. **Ask once** (do not silent-install / silent-login):
-   - **Install + use** the recommended CLI (state the install command for their OS if known), then continue with `branch-pr`, **or**
-   - **Skip install** — keep `branch-pr` but fall back to **push branch + “open a PR in the browser”** for this environment, **or**
+   - **Install + use** the recommended CLI (state the install command for their OS if known), then continue with the chosen PR mode, **or**
+   - **Skip install** — keep the PR mode but fall back to **push branch + “open a PR in the browser”** for this environment, **or**
    - **Switch mode** to `branch-push` / `local` / `current-push` and update the setting if they want that permanent.
 3. On **yes, install:**
    - Prefer official / package-manager installs (`winget`, `brew`, `apt`, etc.). **Ask before** admin elevation or large SDKs (Workflow §11).
    - After install, re-check version.
    - **Auth is a separate step:** if the CLI is present but **not authenticated** (or you just installed it), **say so explicitly** and **ask once** whether you may **start the login flow** now (e.g. `gh auth login`, `glab auth login`). Do **not** assume install fixed PR ability. Do **not** run interactive login without that yes.
-   - On **yes, auth:** start the forge’s login command; tell them what they’ll see (browser / device code / paste token). On **no:** keep `branch-pr` with push + human PR until they log in later.
+   - On **yes, auth:** start the forge’s login command; tell them what they’ll see (browser / device code / paste token). On **no:** keep PR mode with push + human PR until they log in later.
    - If `docs/Tooling.md` exists, add/update a **Required** (or Optional) row for that CLI when it is a project machine dependency — no secrets.
-4. On **no install:** do **not** fail bootstrap/sync/orchestrate setup; record the practical fallback in the summary (*branch-pr without CLI/auth = push + human PR*).
+4. On **no install:** do **not** fail bootstrap/sync/orchestrate setup; record the practical fallback in the summary (*PR mode without CLI/auth = push + human PR*).
 
-**If CLI is installed but auth check fails** (mode already `branch-pr`, no install needed): still **ask once** to trigger login — same wording: install was enough for the binary, not for API/PR.
+**If CLI is installed but auth check fails** (mode already `branch-pr` / `branch-pr-squash`, no install needed): still **ask once** to trigger login — same wording: install was enough for the binary, not for API/PR.
 
 **Do not:** invent a forge; install CLIs or start auth without asking; store tokens in docs; treat missing CLI/auth as a hard bootstrap failure; imply that install alone enables automated PRs.
 
@@ -174,24 +177,47 @@ Repeat until a **stop condition**:
 |-------|--------|
 | Not a git repo | Treat as **`none`** for this run; note in report |
 | Dirty tree with **unrelated** WIP (not explained by this session) | **Hard stop** — ask them to commit/stash/waive; do not invent commits of foreign mess (same spirit as TEMPLATE_SYNC A0) |
-| Mode `branch-pr` or `branch-push` | If already on a **non-default** feature branch that looks intentional → **stay** (do not nest `orchestrate/…` under another feature branch). If on default (`main`/`master`/repo default) → create and checkout `orchestrate/YYYY-MM-DD-<short-scope>` |
+| Mode `branch-pr` / `branch-pr-squash` / `branch-push` | If already on a **non-default** feature branch that looks intentional → **stay** (do not nest `orchestrate/…` under another feature branch). If on default (`main`/`master`/repo default) → create and checkout `orchestrate/YYYY-MM-DD-<short-scope>` |
 | Mode `local` or `current-push` | Stay on current branch |
 | Mode `none` | No branch setup |
 
 ### During the loop
 
 - **Commit** (all modes except `none`): after verify **pass**, parent commits one milestone per unit (or clean parallel batch). Prefer clear subjects; no secrets; no amend unless session amend safety allows.
-- **Push cadence** (`branch-pr` / `branch-push` / `current-push`): push after milestones (or every few milestones if push is slow) so remote/CI can run early — do not wait only until the very end if several units already passed. **No force-push.**
-- **`branch-pr`:** after first successful push, open a **draft PR** if none exists (title/body: scope + “orchestrator run”) via the forge CLI from the probe; update description at end. If forge CLI still missing/unauthed → push branch and print “open a PR from this branch” (do not fail the run).
+- **Push cadence** (`branch-pr` / `branch-pr-squash` / `branch-push` / `current-push`): push after milestones (or every few milestones if push is slow) so remote can receive early history — do not wait only until the very end if several units already passed. **No force-push mid-loop.**
+- **`branch-pr` / `branch-pr-squash`:** after first successful push, open a **draft PR** if none exists (title/body: scope + “orchestrator run”) via the forge CLI from the probe. Stay **draft** during the loop so tip-only bots / noisy checks are not the mid-run gate. If forge CLI still missing/unauthed → push branch and print “open a PR from this branch” (do not fail the run).
 - **Protected branch / push rejected** (`current-push`): report error; **stop** git delivery for the run (keep loop only if commits stay local) — offer *once* to fall back to `branch-pr` for **this run** and optionally update the setting. Do not silently switch modes.
 
 ### End of run
 
 - Modes with commits: ensure final human-verify-map doc commit is included when dual-write dirtied the tree.
-- **`branch-pr` / `branch-push`:** push remaining commits; ensure PR exists/updated (**branch-pr**); report branch name + PR URL if any + CI status if cheap to read.
+- **`branch-push`:** push remaining commits; report branch name.
 - **`current-push`:** push; report result (no PR).
 - **`local` / `none`:** report commits or dirty tree; push status `not pushed` / `skipped`.
-- **Never merge** a PR. Never force-push.
+- **`branch-pr` / `branch-pr-squash`:** follow **PR close-out sequence** below (strict order).
+- **Never merge** a PR. **Never force-push** except the single **force-with-lease** allowed in the squash step of **`branch-pr-squash`** (run branch only — never default branch).
+
+### PR close-out sequence *(branch-pr / branch-pr-squash only — strict order)*
+
+Run this **once** after agent work for the run is done (and human-verify-map dual-write committed if it dirtied the tree). Do **not** reorder steps.
+
+1. **Final push** — push any remaining commits on the run branch so remote matches local.
+2. **Build verify** *(gate)* — run project handoff verify per [`Agent_Build_Verify_Rule.mdc`](../Agent_Build_Verify_Rule.mdc) / `docs/Tooling.md` **Project verify** (proportional to what this run shipped). **Fix failures and re-run** until green, or stop with a clear external block (daemon down, secrets, engine license).  
+   - **Do not** squash yet.  
+   - **Do not** mark the PR ready yet.  
+   - If verify is red and fixable → fix on the branch (milestone commit + push) and re-verify.  
+   - If still blocked → leave PR **draft**, report why, stop close-out (user can still open the draft).
+3. **Squash** *(**`branch-pr-squash` only**, and only after step 2 is green)* — collapse this run’s commits on the **run branch** into **one** commit so tip-only automated reviewers see the full change on HEAD:
+   - Confirm you are **not** on the repo default branch.
+   - Prefer squashing commits since merge-base with default (`main`/`master`/repo default), or all commits unique to this branch.
+   - One clear subject summarizing the orchestration scope; no secrets.
+   - Push with **`--force-with-lease`** only (never bare `--force`). If lease fails → stop and report; do not overwrite unknown remote work.
+   - If squash is unsafe (shared branch with others’ commits you did not create, unclear history) → **skip squash**, note in report, continue to mark ready on multi-commit tip.
+4. **Mark ready for review** *(default)* — after step 2 is green (and step 3 done or skipped): mark the PR **ready** (`gh pr ready` / forge equivalent). Update PR title/body with final scope + verify status.  
+   - Skip mark-ready only if user said *leave draft* / *keep draft* for this run, or step 2 never went green.
+5. **Report** — branch name, PR URL, draft vs ready, whether squash ran, build-verify result, CI/Bugbot note if cheap to read.
+
+**Why this order:** Build-verify proves the tree is green **before** rewriting history or inviting automatic review. Squash then puts that green tree on a single HEAD for tip-only bots. Ready-for-review is last so checks (Bugbot, required CI) start on the final tip.
 
 ### Grants
 

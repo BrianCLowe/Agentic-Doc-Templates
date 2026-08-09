@@ -31,13 +31,16 @@ docs_profile:
   # source: user | agent-suggested
 
 # Orchestrator git delivery — how unattended backlog runs land in git.
-# local       = milestone commits only; no push / PR
-# branch-pr   = create/use run branch → commits → push → open/update PR (no merge). Recommended when remote + forge CLI
-# branch-push = same without PR (remote but no gh/glab, or no PR culture)
-# current-push = milestone commits on the branch you are already on → push (solo opt-in; often main). Never silent-default
-# none         = no commits
+# local            = milestone commits only; no push / PR
+# branch-pr        = run branch → milestone commits → push → draft PR mid-run → end: build-verify → mark ready (no merge)
+# branch-pr-squash = same as branch-pr, then squash to one commit after green verify and before mark ready
+#                    (for automated reviewers that only inspect HEAD / tip commits)
+# branch-push      = same without PR (remote but no gh/glab, or no PR culture)
+# current-push     = milestone commits on the branch you are already on → push (solo opt-in; often main). Never silent-default
+# none             = no commits
+# PR close-out order (branch-pr / branch-pr-squash): final push → build verify → squash(if squash mode) → mark ready
 # Unset → always ask (bootstrap Step 3p / sync B0.6 / orchestrator pre-run) — even under sync.mode auto-all; never invent current-push
-# After choose/change: forge tooling probe (infer CLI from remote; if branch-pr → ask to install if missing, ask to start auth if not logged in)
+# After choose/change: forge tooling probe (infer CLI from remote; if branch-pr* → ask to install if missing, ask to start auth if not logged in)
 # Re-ask only on *Set orchestrator git to …* / change this key.
 orchestrator:
   git:
@@ -120,6 +123,6 @@ upstream:
   # check_mode: interval
   # check_interval_days: 7
   last_checked: 2026-07-16
-  local_pack_version: "2.7.8"
-  # upstream_pack_version: "2.7.8"
+  local_pack_version: "2.7.9"
+  # upstream_pack_version: "2.7.9"
   # update_available: true

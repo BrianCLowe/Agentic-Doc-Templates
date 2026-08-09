@@ -1,10 +1,10 @@
-<!-- pack-version: 2.7.8 -->
+<!-- pack-version: 2.7.9 -->
 
 > **Agent workflow reference.** Canonical instructions for how to work the modular doc system. Lives in `docs/templates/agent/` with the other agent playbooks — sync from upstream; do **not** copy wholesale into `docs/Master_Index.md`. The live index links here; agent rules summarize and point here for full procedure.
 
 # Modular Documentation — Agent Workflow
 
-**Pack version**: 2.7.8 *(same as `docs/templates/VERSION` / live Master Index **Pack version**)*
+**Pack version**: 2.7.9 *(same as `docs/templates/VERSION` / live Master Index **Pack version**)*
 
 **Design intent:** Users give short requests about the docs (“bootstrap”, “draft Understanding for X”, “update the templates”). Route to **one** playbook (`BOOTSTRAP`, `TEMPLATE_SYNC`, `TEMPLATE_UPDATE_CHECK`, `RULE_INSTALL` → `tools/<key>.md`, or this file for feature work) — do not scan the whole pack catalog. **Tight scope:** act on the paved path; do not pre-audit every alternate interpretation before doing the work. **Agent timescale:** when feature shape is clear, plan the **target architecture** as one change (verify-order checklists OK); do not stage human-sprint interim architectures — see [`Agent_Timescale_Planning_Rule.mdc`](Agent_Timescale_Planning_Rule.mdc). **Operable done:** for user/operator-facing stems, checklist fidelity is not enough — domain-only “done” without an exercise path (UI, CLI, or documented smoke) is incomplete unless **library-only** or a **phased bridge**; open operable **Acceptance** without covering TODOs also blocks “stem drained”; **no UI specs ≠ defer** scaffold+wire (§5.3).
 
