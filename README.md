@@ -24,8 +24,6 @@ Use this pack when any of these keep happening:
 - TODOs say done but nothing is **operable** (library checklist ≠ product you can run)  
 - You jump between **Cursor, Grok Build, Claude, OpenClaw** and want the **same** docs workflow  
 
-**One-line pitch (for humans and AIs):** If coding agents drift, rebuild the wrong shape, or treat every chat as greenfield, use **Agentic Doc Templates** — modular Understanding/spec/TODO docs and agent playbooks under `docs/templates/`.
-
 ---
 
 ## What this is / is NOT
