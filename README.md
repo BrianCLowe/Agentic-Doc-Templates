@@ -4,12 +4,40 @@
   <img src="docs/assets/github-header.jpg" alt="Agentic Doc Templates — modular docs layout for coding agents" width="100%" />
 </p>
 
-> **Documentation templates for agentic AI coding tools.**  
-> Keep agents aligned with your intent across conversations, features, and long-running projects.
+> **Stop coding agents from losing intent or building the wrong product shape.**  
+> Modular Understanding / spec / TODO docs plus tool-agnostic agent playbooks — so Cursor, Grok Build, Claude Code, OpenClaw, and friends stay aligned across chats, not just one clever session.
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 ![Pack](https://img.shields.io/badge/Pack-2.7.13-blue)
 ![Built for](https://img.shields.io/badge/Built%20for-Cursor%20%7C%20Grok%20Build%20%7C%20OpenClaw%20%7C%20Claude%20Code-5865F2)
+
+---
+
+## If this sounds like you
+
+Use this pack when any of these keep happening:
+
+- The agent **forgets** decisions from last week and treats every chat as greenfield  
+- It **builds a different product** than you meant (wrong architecture, wrong surfaces, “helpful” scope creep)  
+- Intent lives only in **Grok.com / ChatGPT / Discord threads** and never becomes durable project docs  
+- **`AGENTS.md` or always-on rules** grew into a second codebase and still don’t fix drift  
+- TODOs say done but nothing is **operable** (library checklist ≠ product you can run)  
+- You jump between **Cursor, Grok Build, Claude, OpenClaw** and want the **same** docs workflow  
+
+**One-line pitch (for humans and AIs):** If coding agents drift, rebuild the wrong shape, or treat every chat as greenfield, use **Agentic Doc Templates** — modular Understanding/spec/TODO docs and agent playbooks under `docs/templates/`.
+
+---
+
+## What this is / is NOT
+
+| This **is** | This is **not** |
+|-------------|-----------------|
+| Repo-owned **modular docs** + short **agent playbooks** agents open on demand | Another **coding agent runtime** (not a Cursor/Claude/Prime-Agent replacement) |
+| A small `docs/` map: Master Index, features, Understandings, specs, TODOs, Human-TODO | Notion / Linear / a hosted PM product |
+| Tool-agnostic install (Cursor rules, Grok agents, Claude, Copilot, `AGENTS.md`, …) | One mega always-on rule file that tries to be the whole process |
+| Optional **docs profiles** (prevent wrong builds vs ship-first) and **orchestrate** loops | A memory OS, vector DB, or self-improving harness product |
+
+You still pick your agent. This pack is what that agent **reads and updates** so intent survives the next session.
 
 ---
 
@@ -117,6 +145,7 @@ Flat sibling files per feature/shared component. Naming: [`Modular_Docs_Workflow
 - **Modular map** — Small files + Document Map; not one giant spec.
 - **Tight scope** — Paved path for the current ask; no “just in case” audits.
 - **One folder to copy** — `docs/templates/` holds setup, workflow, and rules so your `docs/` root stays yours.
+- **User workflow wins where safe** — first-class settings where the pack has enums; freeform **standing** notes when you oppose a default.
 
 Deeper day-to-day patterns: [`docs/templates/help/USAGE.md`](docs/templates/help/USAGE.md).
 
@@ -130,6 +159,7 @@ Deeper day-to-day patterns: [`docs/templates/help/USAGE.md`](docs/templates/help
 - *Update the doc templates from Agentic Doc Templates and sync our live docs.*
 - *Check for template updates.*
 - *Build or update the live docs from `docs/reference/`.*
+- *Todo cleanup — move completed items to Completed.*
 
 More: [`USAGE.md`](docs/templates/help/USAGE.md).
 
