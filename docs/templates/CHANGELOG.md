@@ -27,8 +27,8 @@
   - `VERSION` — 2.7.18 → 2.7.19
   - `agent/roles/orchestrator-git.md` — new **`milestone-pr`** (recommend): one PR per verified slice → wait CI / Bugbot auto-fixes → **merge** → new branch for the next slice; keep **`branch-pr-squash`** as one-morning-PR / no merge. **Cloud Agent path** this-runs **`milestone-pr`** when durable is `local` / `none` / `branch-push` / `current-push` / `branch-pr` / `branch-pr-squash` / unset (do **not** rewrite ADT-settings; explicit this-run user order wins)
   - `agent/roles/orchestrator.md` — loop runs the milestone PR cycle before the next unit; merge grant only for `milestone-pr`; **§5.4 kit coverage** — add covering TODOs on existing stems, do not skip inventory Medium as “not picked up”
-  - `agent/workflow/naming-layout.md` — **inventory vs new map rows** (leftover kit methods stay on the catch-all stem until that slice is next)
-  - `agent/workflow/todos.md` — **§5.4** finished-kit spec ⇒ covering TODOs; pickup ≠ backlog; filling in-scope items is not inventing work
+  - `agent/workflow/naming-layout.md` — **inventory vs new map rows**; **no map rows for vague planned-only**; terse wrap-the-public-API is **actionable** (not a stub)
+  - `agent/workflow/todos.md` — **§5.4** finished-kit spec ⇒ covering TODOs; pickup ≠ backlog; filling in-scope items is not inventing work; **diff vendor docs vs code** without facet-by-facet hand-holding
   - `agent/workflow/understanding.md` §2, `Agent_Timescale_Planning_Rule.mdc` / `.instructions.md`, modular rule, spec/TODO templates, doc-graduate / understanding-author — pointers
   - `agent/roles/todo-warden.md`, `roles/README.md` — per-slice vs end-of-run close-out
   - `agent/BOOTSTRAP.md` Step 3p **E**, `agent/TEMPLATE_SYNC_B.md` B0.6 — recommend **`milestone-pr`**; menu + cloud note

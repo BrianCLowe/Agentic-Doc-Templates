@@ -57,7 +57,7 @@ All of:
 | **Shared maturity** | Enough to integrate; else shared TODO first when in scope |
 | **Target arch** | Rewrite High Priority / focus that fights confirmed shape before dispatch ([timescale](../Agent_Timescale_Planning_Rule.mdc)) |
 | **Operable (§5.3)** | User-facing stem with domain-only High Priority and no exercise path / library-only / phase → **add** surface/wire/smoke (**scaffold+wire** if no UI specs) or phase note **once**, then dispatch. Open operable Acceptance with no covering TODO → add work (or phase). Do not report “cleared/Layer done” without path. Library-only `_shared/` exempt; consumers own wire. |
-| **Kit coverage (§5.4)** | In-scope spec surface with **no** covering TODO on any existing stem → **add** the item on the inventory/owning stem, then it is ready work. Do **not** skip it as “not picked up.” Do **not** create a new map row unless splitting per Workflow §0. |
+| **Kit coverage (§5.4)** | In-scope spec surface with **no** covering TODO on any existing stem → **add** the item on the inventory/owning stem, then it is ready work. Do **not** skip it as “not picked up.” Do **not** create a new map row unless splitting per Workflow §0. Terse wrap-the-public-API → expand from the docs; do not interview each facet. |
 
 `draft` Understanding → **do not code** that stem; continue other ready stems. **ship-first:** do not invent Understanding to unblock.
 

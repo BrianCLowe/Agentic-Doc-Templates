@@ -2,7 +2,7 @@
   "id": "kit-inventory-covering-todos",
   "title": "Finished-kit spec leftovers stay on the inventory stem as TODOs — no empty map rows, no wait-for-pickup",
   "role": "doc-graduate",
-  "user": "Plan the finished kit. Files and embeddings stay on KitApi — do not give them their own spec or TODO files. Add covering TODOs for those in-scope surfaces so they can be drained later. Do not wait until someone picks them up.",
+  "user": "Fully support everything the vendor API offers. Keep leftover methods on KitApi — do not give them their own spec or TODO files.",
   "fixture": "fixtures/kit-inventory",
   "expect": {
     "files_must_change": [
@@ -27,7 +27,8 @@
         "file": "docs/templates/agent/workflow/naming-layout.md",
         "patterns": [
           "Inventory / catch-all vs new map rows",
-          "until a slice is actually next"
+          "Do not add map rows for vague planned-only items",
+          "Terse ≠ vague"
         ]
       },
       {
@@ -35,7 +36,8 @@
         "patterns": [
           "Finished-kit contract ⇒ covering TODOs",
           "Pickup ≠ backlog",
-          "is **not** inventing work"
+          "is **not** inventing work",
+          "Terse + public contract"
         ]
       }
     ],

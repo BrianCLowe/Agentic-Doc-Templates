@@ -13,7 +13,7 @@ One client wrapping the upstream kit. Chat is the paved path. Video is the next 
 
 ## Behavior
 
-In-scope leftover surfaces (same client, not a new SDK):
+In-scope leftover surfaces from the **vendor public API** (same client, not a new SDK):
 
 - **Files** — upload/list; not a gate for video or image (`url` first)
 - **Embeddings** — embed texts; wrap upstream; empty-input guards
