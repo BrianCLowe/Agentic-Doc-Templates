@@ -9,8 +9,8 @@
 | Mode | Commits | Branch | Push | PR / close-out |
 |------|---------|--------|------|----------------|
 | **`local`** | Milestone after verify pass | Current | No | No |
-| **`branch-pr`** | Same | Run branch | Yes | Draft mid-run → **close-out** (no merge) |
-| **`branch-pr-squash`** | Same | Run branch | Yes | Same + **squash after green verify, before ready** (tip-only bots / HEAD-only review) |
+| **`branch-pr`** | Same | Run branch | Yes | Draft mid-run → **close-out** (no merge; keeps milestone history) |
+| **`branch-pr-squash`** | Same | Run branch | Yes | Same + **squash after green verify, before ready** — **recommend** when remote + forge (Bugbot / tip-only / HEAD-only review sees the full run) |
 | **`branch-push`** | Same | Run branch | Yes | No PR |
 | **`current-push`** | Same | **Current** (often main) | Yes | No PR — **never silent-default** |
 | **`none`** | No | — | No | No |
@@ -22,8 +22,8 @@
 1. Read `orchestrator.git.mode`.
 2. **If set** → use it (unless this-run-only override). One line: *Git: `<mode>`*. Probe forge if PR mode (or first run after mode change).
 3. **If unset** → **ask once** (recommend):
-   - remote + forge CLI → **`branch-pr`** (offer **`branch-pr-squash`** for tip-only bots)
-   - remote, no CLI → **`branch-pr`** + install ask, or **`branch-push`**
+   - remote + forge CLI → **`branch-pr-squash`** (Bugbot / tip-only bots only see HEAD; squash makes the full run one tip before mark ready). Offer plain **`branch-pr`** if they want to keep milestone commits on the PR
+   - remote, no CLI → **`branch-pr-squash`** + install ask, or **`branch-push`**
    - no remote → **`local`** (or **`none`**)
    - **`current-push`** only as explicit solo option
 4. Record `mode` + `recorded` (+ `source`) unless *this run only*.
@@ -64,7 +64,7 @@
 - **Commit** (not `none`): parent, after work-verifier **pass** — one milestone per unit/batch. No secrets; no force-push mid-loop.
 - **Push** (`branch-pr*`, `branch-push`, `current-push`): after milestones (or every few if slow).
 - **PR modes:** after first push, open **draft** PR if missing (scope + “orchestrator run”). Stay draft mid-run. No CLI → push + “open PR in browser.”
-- **`current-push` rejected:** stop delivery; offer once to fall back to `branch-pr` this run — no silent mode switch.
+- **`current-push` rejected:** stop delivery; offer once to fall back to `branch-pr-squash` (or `branch-pr`) this run — no silent mode switch.
 
 ### End of run *(non-PR)*
 

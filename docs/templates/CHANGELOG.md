@@ -20,6 +20,17 @@
 
 ---
 
+## 2.7.18
+
+- **Live impact:** `versions-only`, `master-index`, `process-docs-only`
+- **Files:**
+  - `VERSION` — 2.7.17 → 2.7.18
+  - `agent/roles/orchestrator-git.md`, `agent/roles/orchestrator.md` — when unset, **recommend `branch-pr-squash`** (remote + forge) so Bugbot / tip-only HEAD review sees the full orchestrator run; offer plain **`branch-pr`** to keep milestone history
+  - `agent/BOOTSTRAP.md` Step 3p **E**, `agent/TEMPLATE_SYNC_B.md` B0.6 — same recommend flip; menu order leads with squash
+  - `agent/ADT-settings.example.yaml` — example mode **`branch-pr-squash`**
+  - `Master_Index_Template.md`, `help/*`, root `README.md` — recommend wording
+- **Step B:** Bump Master Index **Pack version** to 2.7.18. Adopt At a Glance **orchestrator git** recommend **`branch-pr-squash`** if that bullet still leads with plain `branch-pr` only. **Do not** migrate existing live `orchestrator.git.mode: branch-pr` — keep recorded mode; user can *Set orchestrator git to branch-pr-squash* if they want tip-only bots to see the full run. No live feature/shared scan. Rules refresh not required (orchestrator is parent playbook only).
+
 ## 2.7.17
 
 - **Live impact:** `versions-only`, `rules`, `process-docs-only`

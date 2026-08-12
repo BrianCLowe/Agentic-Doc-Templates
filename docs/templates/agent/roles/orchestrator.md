@@ -41,7 +41,7 @@ Skip dimensions already fixed in the same message:
 | Stems | Ask-implied; else all map stems with ready work |
 | Priorities | **All open tiers** |
 | Budget | Drain until cleared or blocked |
-| Git | From setting; else ask (recommend **branch-pr** + forge; offer **branch-pr-squash** for tip-only bots). **Never** silent-default **current-push** |
+| Git | From setting; else ask (recommend **branch-pr-squash** + forge so Bugbot / tip-only bots see the full run; offer plain **branch-pr** to keep milestone history). **Never** silent-default **current-push** |
 
 Record policy internally. **No mid-loop re-asks** about scope/commits/“next.” Explicit limit in the ask **binds**. This-run-only git override does **not** rewrite ADT-settings unless they also set the default (or you capture a durable standing note / key per §0.2).
 

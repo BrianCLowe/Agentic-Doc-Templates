@@ -237,8 +237,8 @@ Explain: optional Understanding author, implementer, work verifier, etc. as harn
 
 | Mode | Tell the user |
 |------|----------------|
-| **`branch-pr`** *(suggest if remote + forge CLI)* | Run branch → milestone commits → push → **draft PR** mid-run → end: **build-verify → mark ready** (no merge). Unattended CI/Bugbot after the run. |
-| **`branch-pr-squash`** | Same as `branch-pr`, then **squash to one commit** after green verify and **before** mark ready — for tip-only automated reviewers (HEAD-only bots). |
+| **`branch-pr-squash`** *(suggest if remote + forge CLI)* | Run branch → milestone commits → push → **draft PR** mid-run → end: **build-verify → squash to one commit → mark ready** (no merge). Squash so Bugbot / tip-only (HEAD-only) reviewers see the **full** run, not just the last milestone tip. |
+| **`branch-pr`** | Same without squash — keeps milestone history on the PR. Unattended CI after the run. |
 | **`branch-push`** *(suggest if remote, no forge CLI)* | Same without PR |
 | **`local`** *(suggest if no remote)* | Milestone commits only; nothing leaves the machine |
 | **`current-push`** | Commit + **push the branch you are on now** (often `main`). Solo / you own the remote. **Never** applied without you picking it. |

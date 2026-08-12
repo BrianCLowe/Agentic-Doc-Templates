@@ -32,9 +32,9 @@ docs_profile:
 
 # Orchestrator git delivery — how unattended backlog runs land in git.
 # local            = milestone commits only; no push / PR
-# branch-pr        = run branch → milestone commits → push → draft PR mid-run → end: build-verify → mark ready (no merge)
-# branch-pr-squash = same as branch-pr, then squash to one commit after green verify and before mark ready
-#                    (for automated reviewers that only inspect HEAD / tip commits)
+# branch-pr-squash = run branch → milestone commits → push → draft PR mid-run → end: build-verify → squash → mark ready
+#                    (recommend when remote + forge — Bugbot / tip-only bots only see HEAD; squash = full run as one tip)
+# branch-pr        = same without squash (keeps milestone history on the PR)
 # branch-push      = same without PR (remote but no gh/glab, or no PR culture)
 # current-push     = milestone commits on the branch you are already on → push (solo opt-in; often main). Never silent-default
 # none             = no commits
@@ -44,8 +44,8 @@ docs_profile:
 # Re-ask only on *Set orchestrator git to …* / change this key.
 orchestrator:
   git:
-    mode: branch-pr
-    recorded: 2026-08-08
+    mode: branch-pr-squash
+    recorded: 2026-08-12
     # source: user | agent-suggested
 
 # Freeform durable workflow prefs the pack does not encode as enums (or not yet).
