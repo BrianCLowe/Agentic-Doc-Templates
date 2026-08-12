@@ -139,10 +139,10 @@ Anything only you can close → `docs/Human-TODO.md`: procure, playtest/feel, de
 | Update-check cadence | *Check for template updates every session.* / *Only check every week.* |
 | Optional role — intent | *Draft Understanding for [Feature] from what I said — I’ll review.* (main agent delegates if subagents installed) |
 | Optional role — build | *Continue from Current focus.* *(single slice)* |
-| Optional role — orchestrate | *Orchestrate — clear ready TODOs until blocked.* *(parent loop; git from `orchestrator.git.mode` — recommend branch-pr-squash; Cloud Agent this-runs squash-PR if durable is local-oriented; close-out: build-verify → todo-warden → squash? → mark ready; Human-TODO verify map)* |
+| Optional role — orchestrate | *Orchestrate — clear ready TODOs until blocked.* *(parent loop; git from `orchestrator.git.mode` — recommend milestone-pr; Cloud Agent this-runs milestone-pr if durable is local-oriented or `branch-pr` / `branch-pr-squash`; per-slice: build-verify → warden → squash → ready → wait CI/Bugbot → merge → next branch; Human-TODO verify map)* |
 | Optional role — todo warden | *Todo warden — reconcile TODOs vs what shipped.* / *Todo cleanup — move completed items to Completed.* *(docs-only; honesty caps; hygiene moves finished `[x]`)* |
-| Set orchestrator git | *Set orchestrator git to branch-pr-squash* / *branch-pr* / *current-push* / *local* |
-| Standing workflow note | *Add standing note: always squash before mark ready.* / *From now on, don’t open draft PRs until verify is green.* *(agent should save without being asked twice)* |
+| Set orchestrator git | *Set orchestrator git to milestone-pr* / *branch-pr-squash* / *branch-pr* / *current-push* / *local* |
+| Standing workflow note | *Add standing note: always squash before mark ready.* / *From now on, merge each slice after CI.* *(agent should save without being asked twice)* |
 | Optional role — verify | *Verify that unit against Understanding and the spec.* |
 | Optional role — graduate | *Understanding confirmed — graduate to the spec.* |
 | Force a subagent | `/understanding-author` … *(optional; usually unnecessary)* |

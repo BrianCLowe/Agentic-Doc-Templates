@@ -237,18 +237,19 @@ Explain: optional Understanding author, implementer, work verifier, etc. as harn
 
 | Mode | Tell the user |
 |------|----------------|
-| **`branch-pr-squash`** *(suggest if remote + forge CLI)* | Run branch → milestone commits → push → **draft PR** mid-run → end: **build-verify → squash to one commit → mark ready** (no merge). Squash so Bugbot / tip-only (HEAD-only) reviewers see the **full** run, not just the last milestone tip. |
-| **`branch-pr`** | Same without squash — keeps milestone history on the PR. Unattended CI after the run. |
+| **`milestone-pr`** *(suggest if remote + forge CLI)* | **Overnight drain:** each verified slice → own branch → draft PR → build-verify → squash that slice → mark ready → **wait CI / accept Bugbot auto-fixes** → **merge** → new branch for the next slice. Reviewable diffs; work lands before morning. |
+| **`branch-pr-squash`** | One run branch → milestone commits → draft PR mid-run → end: **build-verify → squash the whole run to one commit → mark ready** (no merge). Use when you want **one morning PR** to review yourself. |
+| **`branch-pr`** | Same without squash — keeps milestone history on the PR. Unattended CI after the run. No merge. |
 | **`branch-push`** *(suggest if remote, no forge CLI)* | Same without PR |
 | **`local`** *(suggest if no remote)* | Milestone commits only; nothing leaves the machine |
 | **`current-push`** | Commit + **push the branch you are on now** (often `main`). Solo / you own the remote. **Never** applied without you picking it. |
 | **`none`** | No commits during orchestration |
 
-**Cloud Agents:** if they later orchestrate in Cursor Cloud (or similar) while this key stays `local` / `none` / etc., the agent uses **`branch-pr-squash` for that run only** and does **not** rewrite this setting — see [`roles/orchestrator-git.md`](roles/orchestrator-git.md) **Cloud Agent path**.
+**Cloud Agents:** if they later orchestrate in Cursor Cloud (or similar) while this key stays `local` / `none` / `branch-pr-squash` / etc., the agent uses **`milestone-pr` for that run only** and does **not** rewrite this setting — see [`roles/orchestrator-git.md`](roles/orchestrator-git.md) **Cloud Agent path**.
 
 **Never** silent-default **`current-push`**. Git strategy is high-impact — if they shrug, restate the suggestion and get an explicit pick (or “use suggestion”).
 
-**After they pick a git mode** → run **Forge tooling probe** ([`roles/orchestrator-git.md`](roles/orchestrator-git.md)): infer forge from remote; if **`branch-pr` / `branch-pr-squash`** and CLI missing → **ask to install**; if CLI present but not logged in (or just installed) → **ask to start auth** (install ≠ ready for PRs). Fall back to push + human PR / switch mode if they decline. Do not silent-install or silent-login.
+**After they pick a git mode** → run **Forge tooling probe** ([`roles/orchestrator-git.md`](roles/orchestrator-git.md)): infer forge from remote; if **`milestone-pr` / `branch-pr` / `branch-pr-squash`** and CLI missing → **ask to install**; if CLI present but not logged in (or just installed) → **ask to start auth** (install ≠ ready for PRs). Fall back to push + human PR / switch mode if they decline. Do not silent-install or silent-login.
 
 ### Optional — standing workflow notes *(not a mandatory quiz row)*
 

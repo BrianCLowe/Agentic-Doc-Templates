@@ -139,23 +139,24 @@ Read `orchestrator.git.mode` from `docs/ADT-settings.yaml`.
 
 | State | Behavior |
 |-------|----------|
-| **`local` / `branch-pr` / `branch-pr-squash` / `branch-push` / `current-push` / `none`** | Keep; no re-ask |
+| **`local` / `milestone-pr` / `branch-pr` / `branch-pr-squash` / `branch-push` / `current-push` / `none`** | Keep; no re-ask |
 | **missing / unset** | **Always ask once before stopping** — even under **`sync.mode: auto-all`**. Git strategy is high-impact. **Never** silent-default **`current-push`** or invent a mode without a user answer. |
 
 **Present and explain** the full menu (bootstrap Step 3p **E** wording):
 
 | Mode | One-line |
 |------|----------|
-| **`branch-pr-squash`** | Branch → commits → draft PR mid-run → end: **build-verify → squash to one commit → mark ready** (Bugbot / tip-only bots see the full run) |
-| **`branch-pr`** | Same without squash (keeps milestone history) |
+| **`milestone-pr`** | **Overnight:** each verified slice → own PR → wait CI/Bugbot → **merge** → next branch |
+| **`branch-pr-squash`** | One run branch → end: **build-verify → squash whole run → mark ready** (no merge; one morning PR) |
+| **`branch-pr`** | Same without squash (keeps milestone history; no merge) |
 | **`branch-push`** | Branch → commits → push; no PR |
 | **`local`** | Commits only; no push |
 | **`current-push`** | Commit + push **whatever branch you are on** (often `main`); solo opt-in only |
 | **`none`** | No commits |
 
-Recommend: remote + forge CLI → **`branch-pr-squash`** (Bugbot / HEAD-only bots); offer plain **`branch-pr`** to keep milestone commits; remote, no CLI → still offer **`branch-pr-squash`** (with install ask) or **`branch-push`**; else **`local`**. Record choice + `recorded` (+ `source`). Explicit later: *Set orchestrator git to …*. **Note (do not re-ask):** a later **Cloud Agent** orchestration this-runs **`branch-pr-squash`** if durable stays `local` / `none` / etc. — see [`roles/orchestrator-git.md`](roles/orchestrator-git.md); sync does not need a second key.
+Recommend: remote + forge CLI → **`milestone-pr`** (overnight drain: per-slice PR, CI/Bugbot, merge, next branch); offer **`branch-pr-squash`** for one PR / human merges in the morning; offer **`branch-pr`** to keep history on one PR; remote, no CLI → still offer **`milestone-pr`** (with install ask) or **`branch-push`**; else **`local`**. Record choice + `recorded` (+ `source`). Explicit later: *Set orchestrator git to …*. **Note (do not re-ask):** a later **Cloud Agent** orchestration this-runs **`milestone-pr`** if durable stays `local` / `none` / `branch-pr-squash` / etc. — see [`roles/orchestrator-git.md`](roles/orchestrator-git.md); sync does not need a second key.
 
-**After the mode is recorded** → **Forge tooling probe** ([`roles/orchestrator-git.md`](roles/orchestrator-git.md)): if **`branch-pr` / `branch-pr-squash`** and CLI missing → ask to install; if not authenticated → **ask to start login** (install alone is not enough). Fall back / switch mode if they decline. Do not silent-install or silent-login.
+**After the mode is recorded** → **Forge tooling probe** ([`roles/orchestrator-git.md`](roles/orchestrator-git.md)): if **`milestone-pr` / `branch-pr` / `branch-pr-squash`** and CLI missing → ask to install; if not authenticated → **ask to start login** (install alone is not enough). Fall back / switch mode if they decline. Do not silent-install or silent-login.
 
 **Do not** under `auto-all` write `local` (or any mode) and move on without an explicit user pick. If they say “defaults,” treat that as accepting the **stated recommendation** and record it **loudly** in the sync summary: *“Recorded orchestrator.git = X (your default). Other options: …”*.
 

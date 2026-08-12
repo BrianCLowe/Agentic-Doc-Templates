@@ -11,7 +11,8 @@
 
 ## When to invoke
 
-- Orchestrator PR close-out **after build verify** and **before** squash / mark ready (when this run cleared code work) — **both** honesty and hygiene
+- Orchestrator **`milestone-pr`** close-out **after each slice’s build verify** and **before** squash / mark ready / merge (stems in that PR) — **both** honesty and hygiene
+- Orchestrator **`branch-pr*`** close-out **after build verify** and **before** squash / mark ready (when this run cleared code work) — **both** honesty and hygiene
 - User says: *Todo warden*, *reconcile TODOs vs implementation*, *check TODO gaps after orchestration*, *honesty pass on the backlog*
 - User says: *Todo cleanup*, *archive completed TODOs*, *move done items to Completed*, *tidy the TODO completed sections* — **hygiene required**; honesty only if they also asked for gaps / after an implement run (or parent brief includes honesty)
 

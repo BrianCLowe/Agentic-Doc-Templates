@@ -20,6 +20,19 @@
 
 ---
 
+## 2.7.19
+
+- **Live impact:** `versions-only`, `master-index`, `process-docs-only`
+- **Files:**
+  - `VERSION` — 2.7.18 → 2.7.19
+  - `agent/roles/orchestrator-git.md` — new **`milestone-pr`** (recommend): one PR per verified slice → wait CI / Bugbot auto-fixes → **merge** → new branch for the next slice; keep **`branch-pr-squash`** as one-morning-PR / no merge. **Cloud Agent path** this-runs **`milestone-pr`** when durable is `local` / `none` / `branch-push` / `current-push` / `branch-pr` / `branch-pr-squash` / unset (do **not** rewrite ADT-settings; explicit this-run user order wins)
+  - `agent/roles/orchestrator.md` — loop runs the milestone PR cycle before the next unit; merge grant only for `milestone-pr`
+  - `agent/roles/todo-warden.md`, `roles/README.md` — per-slice vs end-of-run close-out
+  - `agent/BOOTSTRAP.md` Step 3p **E**, `agent/TEMPLATE_SYNC_B.md` B0.6 — recommend **`milestone-pr`**; menu + cloud note
+  - `agent/ADT-settings.example.yaml` — example mode **`milestone-pr`**
+  - `Master_Index_Template.md`, `help/*`, root `README.md` — recommend + cloud path wording
+- **Step B:** Bump Master Index **Pack version** to 2.7.19. Adopt At a Glance **orchestrator git** recommend **`milestone-pr`** + Cloud Agent this-run note if missing. **Do not** migrate existing live `orchestrator.git.mode` (including `local` / `branch-pr` / `branch-pr-squash`) — cloud overrides are this-run only. No live feature/shared scan. Rules refresh not required (orchestrator is parent playbook only).
+
 ## 2.7.18
 
 - **Live impact:** `versions-only`, `master-index`, `process-docs-only`

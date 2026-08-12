@@ -31,22 +31,23 @@ docs_profile:
   # source: user | agent-suggested
 
 # Orchestrator git delivery — how unattended backlog runs land in git.
+# milestone-pr     = recommend when remote + forge — each verified slice: branch → PR → wait CI/Bugbot → merge → next branch
 # local            = milestone commits only; no push / PR
-# branch-pr-squash = run branch → milestone commits → push → draft PR mid-run → end: build-verify → squash → mark ready
-#                    (recommend when remote + forge — Bugbot / tip-only bots only see HEAD; squash = full run as one tip)
-# branch-pr        = same without squash (keeps milestone history on the PR)
+# branch-pr-squash = one run branch → milestone commits → push → draft PR mid-run → end: build-verify → squash whole run → mark ready (no merge)
+# branch-pr        = same without squash (keeps milestone history on the PR; no merge)
 # branch-push      = same without PR (remote but no gh/glab, or no PR culture)
 # current-push     = milestone commits on the branch you are already on → push (solo opt-in; often main). Never silent-default
 # none             = no commits
-# PR close-out order (branch-pr / branch-pr-squash): final push → build verify → squash(if squash mode) → mark ready
+# milestone-pr cycle: per slice — final push → build verify → warden → squash slice → mark ready → wait CI/Bugbot → merge → default → next branch
+# branch-pr / branch-pr-squash close-out: final push → build verify → squash(if squash mode) → mark ready (no merge)
 # Unset → always ask (bootstrap Step 3p / sync B0.6 / orchestrator pre-run) — even under sync.mode auto-all; never invent current-push
-# Cloud Agent path: if a remote Cloud Agent orchestrates while this key is local/none/branch-push/current-push/branch-pr,
-#   it uses branch-pr-squash for that run only (does not rewrite this file) — see agent/roles/orchestrator-git.md
+# Cloud Agent path: if a remote Cloud Agent orchestrates while this key is local/none/branch-push/current-push/branch-pr/branch-pr-squash,
+#   it uses milestone-pr for that run only (does not rewrite this file) — see agent/roles/orchestrator-git.md
 # After choose/change: forge tooling probe — see agent/roles/orchestrator-git.md
 # Re-ask only on *Set orchestrator git to …* / change this key.
 orchestrator:
   git:
-    mode: branch-pr-squash
+    mode: milestone-pr
     recorded: 2026-08-12
     # source: user | agent-suggested
 
@@ -66,6 +67,7 @@ standing:
   instructions: |
     # Examples only — delete and write your own (one bullet per durable preference):
     # - When using draft PRs, squash to one commit before mark ready
+    # - Merge each verified slice after CI (milestone-pr); don't wait for one giant PR
     # - Prefer docker compose verify over host npm for this repo
   # recorded: 2026-08-09
   # source: user

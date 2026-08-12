@@ -134,7 +134,7 @@ Installing for one tool **does not remove or replace** another tool's files. Rec
 > Sync mode: [auto | auto-all | choose | not asked — see bootstrap Step 3p].  
 > Template update checks: [enabled | declined | not asked — see bootstrap Step 3p].  
 > Optional doc roles: [enabled | declined | not asked — see bootstrap Step 3p].  
-> Orchestrator git: [branch-pr-squash | branch-pr | … | not asked — see bootstrap Step 3p / B0.6].
+> Orchestrator git: [milestone-pr | branch-pr-squash | branch-pr | … | not asked — see bootstrap Step 3p / B0.6].
 >
 > Install the modular docs rule for **[tool]**? (I won't ask again for that tool after you answer.)  
 > If you also use other agents on this repo, say which — each gets its own `tools/<key>.md` pass.

@@ -4,7 +4,7 @@
 >
 > **Parent session only.** Do **not** spawn an `orchestrator` subagent. Leaf workers: `feature-implementer`, `work-verifier`, `todo-warden`. Do **not** install this file into harness `agents/` folders.
 
-**Job:** Clear ready TODO work — implement → verify → milestone git — until budget/block, without waiting for “next.” End: human verify map + git close-out (PR modes: build-verify → todo-warden → squash? → mark ready → **return to default branch** when this run created the branch).
+**Job:** Clear ready TODO work — implement → verify → milestone git — until budget/block, without waiting for “next.” **`milestone-pr`:** each verified slice is its own PR (wait CI/Bugbot → merge → next branch) — do not stop at mark-ready and do not squash the whole night into one commit. End: human verify map + git close-out (`branch-pr*`: build-verify → todo-warden → squash? → mark ready, no merge → **return to default** when this run created the branch).
 
 **Canonical:** This file (loop). **Git delivery:** [`orchestrator-git.md`](orchestrator-git.md). Workers: [`feature-implementer.md`](feature-implementer.md), [`work-verifier.md`](work-verifier.md), [`todo-warden.md`](todo-warden.md). Workflow modules (open only if needed): [`../workflow/profile-standing.md`](../workflow/profile-standing.md) · [`../workflow/implement.md`](../workflow/implement.md) · [`../workflow/todos.md`](../workflow/todos.md) · [`../workflow/human-todo.md`](../workflow/human-todo.md). Index: [`../Modular_Docs_Workflow.md`](../Modular_Docs_Workflow.md). Timescale: [`../Agent_Timescale_Planning_Rule.mdc`](../Agent_Timescale_Planning_Rule.mdc). Settings: `docs/ADT-settings.yaml` → `docs_profile` + `orchestrator.git.mode` + **`standing.instructions`**.
 
@@ -25,7 +25,7 @@
 
 **Do not** open the pack catalog, out-of-scope stems, or full Workflow unless Path A/B / profile / standing-capture / file-create is unclear.
 
-**Standing lookout (parent):** If the user states a lasting process pref that opposes pack defaults mid-run (always/never squash, PR readiness, ceremony, verify style) → same turn update first-class key or append `standing.instructions` (Workflow §0.2). This-run-only overrides do not rewrite settings unless they want them durable.
+**Standing lookout (parent):** If the user states a lasting process pref that opposes pack defaults mid-run (always/never squash, merge after CI, PR readiness, ceremony, verify style) → same turn update first-class key or append `standing.instructions` (Workflow §0.2). This-run-only overrides do not rewrite settings unless they want them durable.
 
 ## Pre-run ask *(once)*
 
@@ -34,14 +34,14 @@ Skip dimensions already fixed in the same message:
 1. **Stem scope** — this feature / named / all map stems with open ready work  
 2. **Priority scope** — High only · High+Medium · all open tiers  
 3. **Budget** — drain until cleared/blocked *(default)* · or a cap  
-4. **Git** — open [`orchestrator-git.md`](orchestrator-git.md) when resolving. **Cloud Agent** → that file’s **Cloud Agent path** (this-run **`branch-pr-squash`** even if durable is `local` / `none` / …; do not rewrite settings). Else: only ask if mode **unset** (or this-run override); if set → one line *Git: `<mode>`*; do not re-ask  
+4. **Git** — open [`orchestrator-git.md`](orchestrator-git.md) when resolving. **Cloud Agent** → that file’s **Cloud Agent path** (this-run **`milestone-pr`** even if durable is `local` / `none` / `branch-pr-squash` / …; do not rewrite settings). Else: only ask if mode **unset** (or this-run override); if set → one line *Git: `<mode>`*; do not re-ask  
 
 | Loose default | Value |
 |---------------|--------|
 | Stems | Ask-implied; else all map stems with ready work |
 | Priorities | **All open tiers** |
 | Budget | Drain until cleared or blocked |
-| Git | From setting; else ask (recommend **branch-pr-squash** + forge so Bugbot / tip-only bots see the full run; offer plain **branch-pr** to keep milestone history). **Cloud Agent:** this-run **branch-pr-squash** when durable is local-oriented or plain `branch-pr` — see orchestrator-git. **Never** silent-default **current-push** |
+| Git | From setting; else ask (recommend **milestone-pr** + forge: one PR per slice, wait CI/Bugbot, merge, next branch; offer **branch-pr-squash** for one morning PR / no merge). **Cloud Agent:** this-run **milestone-pr** when durable is local-oriented or `branch-pr*` — see orchestrator-git. **Never** silent-default **current-push** |
 
 Record policy internally. **No mid-loop re-asks** about scope/commits/“next.” Explicit limit in the ask **binds**. This-run-only / cloud git override does **not** rewrite ADT-settings unless they also set the default (or you capture a durable standing note / key per §0.2).
 
@@ -81,7 +81,7 @@ Until **stop condition**:
 5. **Verify fail** — one fix pass; second fail → stop item, continue others  
 6. **Bookkeep** — `[x]` + date, Current focus; dual-write human gates; defer new playtest  
 7. **Unit build green** — implementer should have run build-verify for code; re-dispatch if handoff implies runnable but never built  
-8. **Milestone git** — parent commits (mode ≠ `none`); then push/PR per [`orchestrator-git.md`](orchestrator-git.md)  
+8. **Milestone git** — parent commits (mode ≠ `none`); then push/PR per [`orchestrator-git.md`](orchestrator-git.md). **`milestone-pr`:** run that file’s **milestone PR cycle** (close-out → wait CI/Bugbot → merge → new branch) **before** the next survey — waiting is drain, not a stop. Implementers may run in parallel across stems; **git cycles stay serial** (one PR at a time).  
 
 **Current focus** is the next-work pointer — not a stop signal.
 
@@ -89,7 +89,7 @@ Until **stop condition**:
 
 - In-scope agent items cleared (deferred playtest OK), or no ready agent work left, or budget hit, or second verify fail with no other ready work, or user cancel/skip subagents  
 
-**Do not** stop only for open deferred playtest. Then: **human verify map** → **git end/close-out** ([`orchestrator-git.md`](orchestrator-git.md)).
+**Do not** stop only for open deferred playtest. Then: **human verify map** → **git end/close-out** ([`orchestrator-git.md`](orchestrator-git.md)). **`milestone-pr`:** if the map dirties docs after the last code merge → one extra docs-only milestone cycle.
 
 ## End-of-run — human verify map
 
@@ -101,7 +101,7 @@ Per stem with pass work, owner-TODO bullets when applicable: **surfaces** to ope
 
 ## End-of-run report
 
-Cleared · still open · human verify map · other deferred human · hard-blocked · verify failures · **git** (mode, run branch, commits, push, PR, verify, warden, ready/draft, **current HEAD after return-to-default**) · next (usually walk Human-TODO look-lists).
+Cleared · still open · human verify map · other deferred human · hard-blocked · verify failures · **git** (mode, branches, commits, push, PR URLs, merged/degraded, verify, warden, ready/draft, **current HEAD after return-to-default**) · next (usually walk Human-TODO look-lists).
 
 ## Do not
 
@@ -110,9 +110,10 @@ Cleared · still open · human verify map · other deferred human · hard-blocke
 - Stop for ordinary playtest — defer unless explicit hard-gate  
 - Skip human verify map when verify-pass work shipped  
 - Skip work-verifier; mark done on verifier fail  
-- Skip todo-warden after a code-shipping run; mark PR ready on warden **gaps-found**  
+- Skip todo-warden after a code-shipping run / milestone PR; mark PR ready on warden **gaps-found**  
 - Mark human playtest/decide done without user confirm  
-- Push/PR/current-push without mode (or this-run) grant; **merge** PRs; bare force-push; silent-default **current-push**  
+- Push/PR/current-push without mode (or this-run) grant; **merge** PRs except **`milestone-pr`** after that file’s merge gate; bare force-push; silent-default **current-push**  
+- Under **`milestone-pr`:** squash the whole overnight run into one PR; skip CI/Bugbot wait; merge on red required checks; stack a second PR on an unmerged first PR  
 - Leave HEAD on an **orchestrator-created** run branch after a finished run without returning to default (unless user said stay / dirty tree)  
 - Invent `_shared`/map rows/backlog unrelated to shipped work or dual-write  
 - Drain Low when user chose High-only; upgrade single-slice to full orchestrate  
