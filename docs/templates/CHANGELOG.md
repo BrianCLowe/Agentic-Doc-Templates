@@ -22,11 +22,15 @@
 
 ## 2.7.14
 
-- **Live impact:** `versions-only`, `process-docs-only`
+- **Live impact:** `versions-only`, `rules`, `content-templates`, `process-docs-only`
 - **Files:**
   - `VERSION` — 2.7.13 → 2.7.14
   - `agent/BOOTSTRAP.md` — new **Step 1c**: on whole-repo copies, delete the pack's own `.cursor/environment.json` (Cloud Agent env config that only verifies the release-build toolchain) so it does not pollute user project repos; keep the user's own `.cursor/` config. Do-not list updated.
-- **Step B:** Bump Master Index **Pack version** to 2.7.14. No live feature/shared content scan; no rule refresh.
+  - `agent/Modular_Docs_Workflow.md` §4 — new **de-confirm gate**: a `confirmed` Understanding flips to `draft` / `superseded` **only** on a significant shape change (is / is not / guardrail / product surface); an **additive** request (new research angle / extra detail that fits the shape) → **spec + TODO**, keep `confirmed`. Routing bullet clarified.
+  - `agent/roles/understanding-author.md` + cursor|grok adapters — do not de-confirm / re-draft for additive asks; invoke only on a significant shape change
+  - `agent/roles/feature-implementer.md` + cursor|grok adapters — additive request that fits confirmed is / is not is **not** a scope change: add to spec + TODO, keep `confirmed`, continue; only shape change stops
+  - `Feature_Understanding_Template.md` — AI-instructions de-confirm gate note
+- **Step B:** Bump Master Index **Pack version** to 2.7.14. If `optional_rules.doc-roles` **enabled** → refresh **understanding-author** + **feature-implementer** adapters. Refresh modular rules (**no ask** unless `customized: true`). No live feature/shared content invent (de-confirm gate is guidance for future edits, not a live-doc reshape).
 
 ## 2.7.13
 

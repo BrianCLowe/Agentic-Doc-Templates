@@ -303,6 +303,8 @@ Work queue → **TODO**. Durable contract (Behavior, **Acceptance**, Visual refe
 
 **When `confirmed`:** Read for guardrails; proceed from TODO/spec. **Do not** re-surface for review unless shape/scope changes, conflict with code, or status returns to `draft` / `superseded`. Unchecked **Assumptions** after confirm → ask those items only.
 
+**De-confirm gate (`confirmed` → `draft` / `superseded`):** Flip status **only** when a **significant shape change** is outlined — the **is / is not** identity, product surface, ownership, or a stated guardrail actually changes (a genuinely new identity → §0 **split**, not a de-confirm). An **additive** request is **not** a shape change: a new research angle, an extra behavior, an edge case, or added detail that still fits the confirmed **is / is not** → record it in the **spec** (Behavior / Acceptance / Decisions) and/or a **TODO** item and **keep `confirmed`**. Do **not** revert a confirmed Understanding, rewrite **is / is not**, or re-open shape review just to capture an addition. If genuinely unsure, ask one question — *does this change what the feature is, or just add to it?* — and **default to additive**.
+
 **Reconciliation:** If code diverges from confirmed **shape**, update the spec + **Last reconciled with code**, or set `superseded` and draft a new Understanding. Run **only when** the user reports a mismatch, implementation contradicts Understanding, this session changes that feature’s shape/behavior, **or** you are updating that Understanding — **not** as a session-start repo-wide audit.
 
 **On Understanding update — relocate + TODO** *(same turn, this stem only)*:
@@ -312,7 +314,7 @@ Work queue → **TODO**. Durable contract (Behavior, **Acceptance**, Visual refe
 
 **When to create or update:**
 
-- New feature/change → draft or update Understanding (`draft` if shape changed)
+- New feature/change → draft or update Understanding — set **`draft` only if the is / is not or a guardrail changed**; an **additive** item or research angle that fits the confirmed shape → **spec + TODO**, keep `confirmed` (de-confirm gate above)
 - `docs/reference/` (or chat) → **build or update** live docs; create missing Document Map rows + file sets when material implies new stems
 - Plan / “how should we build this” → if `confirmed`, use as guardrails + read spec; if `draft`/missing, draft shape first
 - Identity assumption becomes clear → update **What this is NOT** (identity, not backlog)
