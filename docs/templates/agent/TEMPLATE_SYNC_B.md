@@ -153,7 +153,7 @@ Read `orchestrator.git.mode` from `docs/ADT-settings.yaml`.
 | **`current-push`** | Commit + push **whatever branch you are on** (often `main`); solo opt-in only |
 | **`none`** | No commits |
 
-Recommend: remote + forge CLI → **`branch-pr-squash`** (Bugbot / HEAD-only bots); offer plain **`branch-pr`** to keep milestone commits; remote, no CLI → still offer **`branch-pr-squash`** (with install ask) or **`branch-push`**; else **`local`**. Record choice + `recorded` (+ `source`). Explicit later: *Set orchestrator git to …*.
+Recommend: remote + forge CLI → **`branch-pr-squash`** (Bugbot / HEAD-only bots); offer plain **`branch-pr`** to keep milestone commits; remote, no CLI → still offer **`branch-pr-squash`** (with install ask) or **`branch-push`**; else **`local`**. Record choice + `recorded` (+ `source`). Explicit later: *Set orchestrator git to …*. **Note (do not re-ask):** a later **Cloud Agent** orchestration this-runs **`branch-pr-squash`** if durable stays `local` / `none` / etc. — see [`roles/orchestrator-git.md`](roles/orchestrator-git.md); sync does not need a second key.
 
 **After the mode is recorded** → **Forge tooling probe** ([`roles/orchestrator-git.md`](roles/orchestrator-git.md)): if **`branch-pr` / `branch-pr-squash`** and CLI missing → ask to install; if not authenticated → **ask to start login** (install alone is not enough). Fall back / switch mode if they decline. Do not silent-install or silent-login.
 

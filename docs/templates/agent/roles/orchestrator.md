@@ -34,16 +34,16 @@ Skip dimensions already fixed in the same message:
 1. **Stem scope** — this feature / named / all map stems with open ready work  
 2. **Priority scope** — High only · High+Medium · all open tiers  
 3. **Budget** — drain until cleared/blocked *(default)* · or a cap  
-4. **Git** — only if `orchestrator.git.mode` **unset** (or this-run override) → [`orchestrator-git.md`](orchestrator-git.md). If set: one line *Git: `<mode>`*; do not re-ask  
+4. **Git** — open [`orchestrator-git.md`](orchestrator-git.md) when resolving. **Cloud Agent** → that file’s **Cloud Agent path** (this-run **`branch-pr-squash`** even if durable is `local` / `none` / …; do not rewrite settings). Else: only ask if mode **unset** (or this-run override); if set → one line *Git: `<mode>`*; do not re-ask  
 
 | Loose default | Value |
 |---------------|--------|
 | Stems | Ask-implied; else all map stems with ready work |
 | Priorities | **All open tiers** |
 | Budget | Drain until cleared or blocked |
-| Git | From setting; else ask (recommend **branch-pr-squash** + forge so Bugbot / tip-only bots see the full run; offer plain **branch-pr** to keep milestone history). **Never** silent-default **current-push** |
+| Git | From setting; else ask (recommend **branch-pr-squash** + forge so Bugbot / tip-only bots see the full run; offer plain **branch-pr** to keep milestone history). **Cloud Agent:** this-run **branch-pr-squash** when durable is local-oriented or plain `branch-pr` — see orchestrator-git. **Never** silent-default **current-push** |
 
-Record policy internally. **No mid-loop re-asks** about scope/commits/“next.” Explicit limit in the ask **binds**. This-run-only git override does **not** rewrite ADT-settings unless they also set the default (or you capture a durable standing note / key per §0.2).
+Record policy internally. **No mid-loop re-asks** about scope/commits/“next.” Explicit limit in the ask **binds**. This-run-only / cloud git override does **not** rewrite ADT-settings unless they also set the default (or you capture a durable standing note / key per §0.2).
 
 ## Ready work
 

@@ -40,6 +40,8 @@ docs_profile:
 # none             = no commits
 # PR close-out order (branch-pr / branch-pr-squash): final push → build verify → squash(if squash mode) → mark ready
 # Unset → always ask (bootstrap Step 3p / sync B0.6 / orchestrator pre-run) — even under sync.mode auto-all; never invent current-push
+# Cloud Agent path: if a remote Cloud Agent orchestrates while this key is local/none/branch-push/current-push/branch-pr,
+#   it uses branch-pr-squash for that run only (does not rewrite this file) — see agent/roles/orchestrator-git.md
 # After choose/change: forge tooling probe — see agent/roles/orchestrator-git.md
 # Re-ask only on *Set orchestrator git to …* / change this key.
 orchestrator:

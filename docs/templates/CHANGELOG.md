@@ -25,11 +25,12 @@
 - **Live impact:** `versions-only`, `master-index`, `process-docs-only`
 - **Files:**
   - `VERSION` — 2.7.17 → 2.7.18
-  - `agent/roles/orchestrator-git.md`, `agent/roles/orchestrator.md` — when unset, **recommend `branch-pr-squash`** (remote + forge) so Bugbot / tip-only HEAD review sees the full orchestrator run; offer plain **`branch-pr`** to keep milestone history
-  - `agent/BOOTSTRAP.md` Step 3p **E**, `agent/TEMPLATE_SYNC_B.md` B0.6 — same recommend flip; menu order leads with squash
-  - `agent/ADT-settings.example.yaml` — example mode **`branch-pr-squash`**
-  - `Master_Index_Template.md`, `help/*`, root `README.md` — recommend wording
-- **Step B:** Bump Master Index **Pack version** to 2.7.18. Adopt At a Glance **orchestrator git** recommend **`branch-pr-squash`** if that bullet still leads with plain `branch-pr` only. **Do not** migrate existing live `orchestrator.git.mode: branch-pr` — keep recorded mode; user can *Set orchestrator git to branch-pr-squash* if they want tip-only bots to see the full run. No live feature/shared scan. Rules refresh not required (orchestrator is parent playbook only).
+  - `agent/roles/orchestrator-git.md` — **Cloud Agent path**: remote Cloud Agents this-run **`branch-pr-squash`** when durable mode is `local` / `none` / `branch-push` / `current-push` / `branch-pr` / unset (do **not** rewrite ADT-settings; explicit this-run user order wins); when unset on local IDE, **recommend `branch-pr-squash`**
+  - `agent/roles/orchestrator.md` — pre-run git resolves via Cloud Agent path when applicable
+  - `agent/BOOTSTRAP.md` Step 3p **E**, `agent/TEMPLATE_SYNC_B.md` B0.6 — recommend flip + cloud note; menu order leads with squash
+  - `agent/ADT-settings.example.yaml` — example mode **`branch-pr-squash`** + cloud this-run comment
+  - `Master_Index_Template.md`, `help/*`, root `README.md` — recommend + cloud path wording
+- **Step B:** Bump Master Index **Pack version** to 2.7.18. Adopt At a Glance **orchestrator git** recommend **`branch-pr-squash`** + Cloud Agent this-run note if missing. **Do not** migrate existing live `orchestrator.git.mode` (including `local` / `branch-pr`) — cloud overrides are this-run only. No live feature/shared scan. Rules refresh not required (orchestrator is parent playbook only).
 
 ## 2.7.17
 
