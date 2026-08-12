@@ -54,6 +54,6 @@ Bootstrap Step 3p (doc-roles enable) / [`../RULE_INSTALL.md`](../RULE_INSTALL.md
 - Roles **point** at playbooks / **workflow modules**; do not duplicate Workflow prose.
 - Prefer links to [`../workflow/<module>.md`](../workflow/README.md) over the whole index when the role needs one topic.
 - **De-confirm / additive-vs-shape** lives only in [`../workflow/understanding.md`](../workflow/understanding.md) §4 — roles and adapters use **one-line pointers**.
-- Harness adapters are **generated** from [`adapter-src/`](adapter-src/README.md) (`python3 scripts/gen_role_adapters.py`) — do not hand-edit `cursor/` or `grok/`.
+- Harness adapters are **generated** from [`adapter-src/`](adapter-src/README.md) via [`../GENERATE_ROLE_ADAPTERS.md`](../GENERATE_ROLE_ADAPTERS.md) — do not hand-edit `cursor/` or `grok/` as source of truth.
 - **Never** add a harness adapter for `orchestrator` — parent-only by design.
 - Tool-specific install steps live in [`../tools/`](../tools/README.md), not here.

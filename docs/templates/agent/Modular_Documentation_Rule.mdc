@@ -17,6 +17,7 @@ This project uses a lean modular documentation system. `docs/Master_Index.md` is
 | update / sync doc templates | see **Optional subagents** → else `docs/templates/agent/TEMPLATE_SYNC.md` |
 | check for template updates | `docs/templates/agent/TEMPLATE_UPDATE_CHECK.md` |
 | install agent rules | `docs/templates/agent/RULE_INSTALL.md` → then only `docs/templates/agent/tools/<key>.md` for each tool |
+| regenerate role adapters / sync cursor\|grok agents from adapter-src | `docs/templates/agent/GENERATE_ROLE_ADAPTERS.md` |
 | draft / revise Understanding, new idea, capture intent, correct What this is / is NOT, build/update live docs from `docs/reference/` | see **Optional subagents** → else `docs/templates/agent/roles/understanding-author.md` |
 | graduate confirmed Understanding → spec | see **Optional subagents** → else `docs/templates/agent/roles/doc-graduate.md` |
 | implement / continue Current focus (Understanding `confirmed`, scope unchanged) | see **Optional subagents** → else session default below |

@@ -1,5 +1,5 @@
 {
-  "_comment": "Source of truth for cursor/ + grok/ adapters. Edit bodies/ + this file, then: python3 scripts/gen_role_adapters.py",
+  "_comment": "Source of truth for cursor/ + grok/ adapters. Edit bodies/ + this file, then follow ../GENERATE_ROLE_ADAPTERS.md (no Python).",
   "harnesses": [
     "cursor",
     "grok"

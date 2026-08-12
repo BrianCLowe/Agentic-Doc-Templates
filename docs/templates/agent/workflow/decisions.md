@@ -1,4 +1,4 @@
-<!-- pack-version: 2.7.16 -->
+<!-- pack-version: 2.7.17 -->
 
 > **Workflow module.** Open from the [workflow index](../Modular_Docs_Workflow.md) for same-turn Decisions capture (product/UI prefs). Pack/process prefs → [profile-standing](profile-standing.md) §0.2.
 

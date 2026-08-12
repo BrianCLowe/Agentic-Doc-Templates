@@ -1,7 +1,7 @@
 # Behavioral eval harness
 
-> **Maintainers.** Tiny golden cases for “agents behave correctly” — the pack’s product value.  
-> Consumers do **not** need this folder (it is outside `docs/templates/` and not in the release zip).
+> **Maintainers (this upstream repo only).** Tiny golden cases for “agents behave correctly” — the pack’s product value.  
+> Outside `docs/templates/` and **not** in the release zip. Whole-repo / “Use this template” installs: bootstrap **Step 1d** deletes root `eval/` from user projects.
 
 ## What it checks
 
