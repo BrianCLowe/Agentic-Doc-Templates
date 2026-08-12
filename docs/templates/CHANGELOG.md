@@ -25,11 +25,11 @@
 - **Live impact:** `versions-only`, `rules`, `process-docs-only`
 - **Files:**
   - `VERSION` — 2.7.16 → 2.7.17
-  - `agent/scripts/gen_role_adapters.py` — **moved into the pack** (was root `scripts/`); ships with `docs/templates/` so adapter regen stays next to `roles/adapter-src/`
-  - Root `scripts/` removed from the upstream layout
-  - `agent/BOOTSTRAP.md` — **Step 1d**: on whole-repo / “Use this template” installs, delete upstream root `eval/`, legacy root `scripts/gen_role_adapters.py`, and `.github/workflows/pack-checks.yml`; keep `docs/templates/agent/scripts/`
-  - `help/SETUP.md`, `CONTRIBUTING.md`, `roles/` / adapter-src path stamps, CI `pack-checks.yml` command path
-- **Step B:** Bump Master Index **Pack version** to 2.7.17. If the project still has root `eval/` / root `scripts/gen_role_adapters.py` / `.github/workflows/pack-checks.yml` from a whole-repo copy of this pack → delete them (same gates as bootstrap Step 1d). Refresh modular rules only if already installed (**no ask** unless `customized: true`). No live feature/shared content invent.
+  - `agent/GENERATE_ROLE_ADAPTERS.md` — **markdown playbook** to regenerate cursor/grok adapters from `roles/adapter-src/` (**no Python** in the pack)
+  - Root `scripts/gen_role_adapters.py` — upstream CI helper only (not in the release zip); bootstrap deletes it on whole-repo copies
+  - `agent/BOOTSTRAP.md` — **Step 1d**: on whole-repo / “Use this template” installs, delete upstream root `eval/`, root `scripts/gen_role_adapters.py`, leftover `docs/templates/agent/scripts/*.py`, and `.github/workflows/pack-checks.yml`; keep `GENERATE_ROLE_ADAPTERS.md` + `adapter-src/`
+  - `help/SETUP.md`, `CONTRIBUTING.md`, `roles/` / adapter-src stamps
+- **Step B:** Bump Master Index **Pack version** to 2.7.17. If the project still has root `eval/` / root `scripts/gen_role_adapters.py` / `docs/templates/agent/scripts/*.py` / `.github/workflows/pack-checks.yml` from a whole-repo copy → delete them (bootstrap Step 1d gates). Refresh modular rules only if already installed (**no ask** unless `customized: true`). No live feature/shared content invent.
 
 ## 2.7.16
 

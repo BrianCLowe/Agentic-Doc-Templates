@@ -22,7 +22,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 EVAL = ROOT / "eval"
 CASES = EVAL / "cases"
-GEN = ROOT / "docs/templates/agent/scripts/gen_role_adapters.py"
+GEN = ROOT / "scripts" / "gen_role_adapters.py"
 
 # Full de-confirm prose must live only here (pointer-only elsewhere).
 DECONFIRM_SOT = ROOT / "docs/templates/agent/workflow/understanding.md"

@@ -31,7 +31,7 @@ Reorganize without losing content. Target: **everything meta** lives under `docs
 | `docs/templates/Modular_Documentation_Rule.mdc`, `Modular_Documentation_Rule.instructions.md` (flat in templates) | `docs/templates/agent/` |
 | `docs/USING_WITH_AGENTS.md` (at `docs/` root) | `docs/templates/help/USING_WITH_AGENTS.md` |
 
-Fix internal links after moving (including Master Index links to the workflow). **Keep at `docs/templates/` root:** `VERSION`, `CHANGELOG.md`, `Master_Index_Template.md`, `Feature_*_Template.md`, `TODO_Template.md`, `Decision_Template.md`, Tooling/Human_TODO templates. **Keep in `docs/templates/agent/`:** `Modular_Docs_Workflow.md` (index), `workflow/` modules, `scripts/` (adapter generator), `roles/` (incl. `adapter-src/`), rule templates (`.mdc`, `.instructions.md`), bootstrap, rule install, template sync. (`chat-ui/` may exist as a paused stub — not a live path.)
+Fix internal links after moving (including Master Index links to the workflow). **Keep at `docs/templates/` root:** `VERSION`, `CHANGELOG.md`, `Master_Index_Template.md`, `Feature_*_Template.md`, `TODO_Template.md`, `Decision_Template.md`, Tooling/Human_TODO templates. **Keep in `docs/templates/agent/`:** `Modular_Docs_Workflow.md` (index), `workflow/` modules, `roles/` (incl. `adapter-src/`), `GENERATE_ROLE_ADAPTERS.md`, rule templates (`.mdc`, `.instructions.md`), bootstrap, rule install, template sync. (`chat-ui/` may exist as a paused stub — not a live path.)
 
 ## Step 1 — Relocate upstream README, LICENSE, and CONTRIBUTING *(auto-move when clearly this pack)*
 
@@ -89,16 +89,17 @@ When the whole template repo was cloned/copied into a project (or “Use this te
 
 ## Step 1d — Remove upstream maintainer tooling (user projects)
 
-**This pack's** root `eval/` and any **legacy** root `scripts/gen_role_adapters.py` are for maintaining [Agentic-Doc-Templates](https://github.com/BrianCLowe/Agentic-Doc-Templates) itself. They must **not** stay in a user’s app repo. The adapter generator that *does* ship with the pack lives under `docs/templates/agent/scripts/` (keep that).
+**This pack's** root `eval/`, root `scripts/` (CI helper), and any leftover `docs/templates/agent/scripts/*.py` are for maintaining [Agentic-Doc-Templates](https://github.com/BrianCLowe/Agentic-Doc-Templates) itself. They must **not** stay in a user’s app repo. Adapter regeneration for pack editors is the markdown playbook [`GENERATE_ROLE_ADAPTERS.md`](GENERATE_ROLE_ADAPTERS.md) — **no Python**.
 
 When the whole template repo was cloned/copied into a project (or “Use this template” left these behind):
 
 1. If project-root **`eval/`** exists **and** is this pack’s harness (e.g. `eval/run_eval.py`, `eval/cases/additive-keeps-confirmed.json`, or `eval/README.md` names Agentic Doc Templates / modular-docs behavioral eval) → **delete the entire `eval/` directory**.
-2. If project-root **`scripts/gen_role_adapters.py`** exists (legacy path before the generator moved into the pack) → **delete that file**. Remove root `scripts/` if it is empty afterward.
-3. If `.github/workflows/pack-checks.yml` exists **and** is this pack’s integrity workflow (e.g. workflow `name: Pack checks`, runs `gen_role_adapters.py --check` and/or `eval/run_eval.py`) → **delete that file**. Remove `.github/workflows/` / `.github/` if empty afterward (same care as Step 1b — do not delete the user’s other workflows).
-4. Do **not** delete `docs/templates/agent/scripts/` or `docs/templates/agent/roles/adapter-src/` — those are pack files.
-5. Do **not** delete a user’s own `eval/` or `scripts/` that are clearly for their app (different README / no Agentic Doc Templates markers).
-6. Prefer copying only `docs/templates/` next time so maintainer folders never land in the project.
+2. If project-root **`scripts/gen_role_adapters.py`** exists (upstream CI helper) → **delete that file**. Remove root `scripts/` if it is empty afterward.
+3. If **`docs/templates/agent/scripts/`** exists with pack Python helpers (e.g. `gen_role_adapters.py`) from an older pack zip → **delete that directory** (the playbook replaced it).
+4. If `.github/workflows/pack-checks.yml` exists **and** is this pack’s integrity workflow (e.g. workflow `name: Pack checks`, runs `gen_role_adapters.py --check` and/or `eval/run_eval.py`) → **delete that file**. Remove `.github/workflows/` / `.github/` if empty afterward (same care as Step 1b — do not delete the user’s other workflows).
+5. Do **not** delete `docs/templates/agent/roles/adapter-src/` or [`GENERATE_ROLE_ADAPTERS.md`](GENERATE_ROLE_ADAPTERS.md) — those are pack files.
+6. Do **not** delete a user’s own `eval/` or `scripts/` that are clearly for their app (different README / no Agentic Doc Templates markers).
+7. Prefer copying only `docs/templates/` next time so maintainer folders never land in the project.
 
 ## Step 2 — Create docs layout
 
@@ -150,7 +151,7 @@ If any of those are missing, expand the inventory below and run Step 0b if layou
 
 - **Root:** `VERSION`, `CHANGELOG.md`, `Master_Index_Template.md`, `Feature_Spec_Template.md`, `Feature_Understanding_Template.md`, `TODO_Template.md`, `Decision_Template.md`, `Tooling_Template.md`, `Human_TODO_Template.md`
 - **`help/`:** `SETUP.md`, `USAGE.md`, `IDEA_CAPTURE_TIPS.md`, `USING_WITH_AGENTS.md`
-- **`agent/`:** `Modular_Docs_Workflow.md`, `workflow/` (modules), `scripts/gen_role_adapters.py`, `roles/` (+ `adapter-src/`), `BOOTSTRAP.md`, `RULE_INSTALL.md`, `TEMPLATE_SYNC.md`, `TEMPLATE_SYNC_A.md`, `TEMPLATE_SYNC_B.md`, `TEMPLATE_UPDATE_CHECK.md`, `Modular_Documentation_Rule.mdc`, `Modular_Documentation_Rule.instructions.md`, `Agent_Timescale_Planning_Rule.mdc`, `Agent_Timescale_Planning_Rule.instructions.md`, `Agent_Build_Verify_Rule.mdc`, `Agent_Build_Verify_Rule.instructions.md`, `Template_Update_Check_Rule.mdc`, `Template_Update_Check_Rule.instructions.md`, `ADT-settings.example.yaml`
+- **`agent/`:** `Modular_Docs_Workflow.md`, `workflow/` (modules), `roles/` (+ `adapter-src/`), `GENERATE_ROLE_ADAPTERS.md`, `BOOTSTRAP.md`, `RULE_INSTALL.md`, `TEMPLATE_SYNC.md`, `TEMPLATE_SYNC_A.md`, `TEMPLATE_SYNC_B.md`, `TEMPLATE_UPDATE_CHECK.md`, `Modular_Documentation_Rule.mdc`, `Modular_Documentation_Rule.instructions.md`, `Agent_Timescale_Planning_Rule.mdc`, `Agent_Timescale_Planning_Rule.instructions.md`, `Agent_Build_Verify_Rule.mdc`, `Agent_Build_Verify_Rule.instructions.md`, `Template_Update_Check_Rule.mdc`, `Template_Update_Check_Rule.instructions.md`, `ADT-settings.example.yaml`
 
 Run Step 0b if any setup files are still at `docs/` root or flat in `docs/templates/`.
 
@@ -305,7 +306,7 @@ If the user named **no** features yet, skip Step 3d and say so in Step 4.
 - Create `docs/help/` or `docs/agent/` at docs root — those belong inside `docs/templates/`.
 - Leave Agentic Doc Templates `.github/ISSUE_TEMPLATE/`, `.github/workflows/release.yml`, or `.github/workflows/pack-checks.yml` in a user project — delete them (Step 1b / 1d).
 - Leave the pack's own `.cursor/environment.json` (Cloud Agent env config) in a user project on a whole-repo copy — delete it (Step 1c); keep the user's own env/rules.
-- Leave upstream root **`eval/`** or legacy root **`scripts/gen_role_adapters.py`** in a user project on a whole-repo copy — delete them (Step 1d); keep `docs/templates/agent/scripts/`.
+- Leave upstream root **`eval/`**, root **`scripts/gen_role_adapters.py`**, or leftover **`docs/templates/agent/scripts/*.py`** in a user project on a whole-repo copy — delete them (Step 1d); keep [`GENERATE_ROLE_ADAPTERS.md`](GENERATE_ROLE_ADAPTERS.md).
 - Ask before moving root files that are **clearly** upstream (Agentic Doc Templates / Brian Lowe / BrianCLowe markers) — just move them.
 - Finish bootstrap with a filled Document Map but **no** feature/shared files on disk.
 - Put human-gated items only in feature TODOs — dual-write `docs/Human-TODO.md` + owner TODO (Workflow §13).

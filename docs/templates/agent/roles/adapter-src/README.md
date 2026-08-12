@@ -11,10 +11,11 @@
 
 ## Regenerate
 
-```bash
-python3 docs/templates/agent/scripts/gen_role_adapters.py
-python3 docs/templates/agent/scripts/gen_role_adapters.py --check   # CI / pre-commit
-```
+Ask your agent (or follow yourself):
+
+> Regenerate role adapters using `docs/templates/agent/GENERATE_ROLE_ADAPTERS.md`.
+
+**No Python in the pack.** Upstream CI may use a root `scripts/` helper; consumers never need it.
 
 ## Rules
 
