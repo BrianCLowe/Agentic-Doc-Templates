@@ -9,26 +9,46 @@
 | Mode | Commits | Branch | Push | PR / close-out |
 |------|---------|--------|------|----------------|
 | **`local`** | Milestone after verify pass | Current | No | No |
-| **`branch-pr`** | Same | Run branch | Yes | Draft mid-run → **close-out** (no merge) |
-| **`branch-pr-squash`** | Same | Run branch | Yes | Same + **squash after green verify, before ready** (tip-only bots / HEAD-only review) |
+| **`branch-pr`** | Same | Run branch | Yes | Draft mid-run → **close-out** (no merge; keeps milestone history) |
+| **`branch-pr-squash`** | Same | Run branch | Yes | Same + **squash after green verify, before ready** — **recommend** when remote + forge (Bugbot / tip-only / HEAD-only review sees the full run) |
 | **`branch-push`** | Same | Run branch | Yes | No PR |
 | **`current-push`** | Same | **Current** (often main) | Yes | No PR — **never silent-default** |
 | **`none`** | No | — | No | No |
 
 **PR modes:** end-of-run **mark ready** by default (unattended checks). Override only if user said *leave draft* / *keep draft*.
 
+### Cloud Agent path *(remote unattended — does not rewrite settings)*
+
+**Why:** Durable `orchestrator.git.mode` is often **`local`** / **`none`** / **`branch-push`** for IDE work on a laptop. A **Cloud Agent** (Cursor Cloud or similar remote VM whose platform instructions require feature-branch + PR delivery) still needs a PR so CI/Bugbot can see the run. Tip-only bots need a **squash** tip — so the cloud effective mode is **`branch-pr-squash`**.
+
+**Detect Cloud Agent:** session is a remote/unattended cloud run with platform branch+PR obligations — **not** local IDE Composer / desktop agent / user laptop CLI. If unsure → **not** cloud (follow durable mode / ask).
+
+**This-run effective mode** *(before first dispatch; do **not** write `docs/ADT-settings.yaml`)*:
+
+| Durable `orchestrator.git.mode` | Cloud this-run |
+|---------------------------------|----------------|
+| unset / **`local`** / **`none`** / **`branch-push`** / **`current-push`** / **`branch-pr`** | **`branch-pr-squash`** |
+| **`branch-pr-squash`** | **`branch-pr-squash`** (no change) |
+
+One line: *Git: `branch-pr-squash` (cloud this-run; durable setting remains `<mode|unset>`)*. Then forge probe + normal PR close-out (including squash).
+
+**User wins:** explicit this-run order (*use local this run* / *no PR* / *branch-pr only* / *leave draft*) overrides the cloud default. Still **do not** rewrite ADT-settings unless they asked to change the durable default.
+
+**Not this path:** local IDE orchestration — honor durable mode even if the machine has `gh`. Template sync / non-orchestrate playbooks — unchanged.
+
 ### Resolve mode *(before first dispatch)*
 
 1. Read `orchestrator.git.mode`.
-2. **If set** → use it (unless this-run-only override). One line: *Git: `<mode>`*. Probe forge if PR mode (or first run after mode change).
-3. **If unset** → **ask once** (recommend):
-   - remote + forge CLI → **`branch-pr`** (offer **`branch-pr-squash`** for tip-only bots)
-   - remote, no CLI → **`branch-pr`** + install ask, or **`branch-push`**
+2. **Cloud Agent?** → apply **Cloud Agent path** above (this-run effective mode); skip steps 3–4 for mode choice; continue at forge probe. Else step 3.
+3. **If set** → use it (unless this-run-only override). One line: *Git: `<mode>`*. Probe forge if PR mode (or first run after mode change).
+4. **If unset** → **ask once** (recommend):
+   - remote + forge CLI → **`branch-pr-squash`** (Bugbot / tip-only bots only see HEAD; squash makes the full run one tip before mark ready). Offer plain **`branch-pr`** if they want to keep milestone commits on the PR
+   - remote, no CLI → **`branch-pr-squash`** + install ask, or **`branch-push`**
    - no remote → **`local`** (or **`none`**)
    - **`current-push`** only as explicit solo option
-4. Record `mode` + `recorded` (+ `source`) unless *this run only*.
-5. **Forge tooling probe** (below).
-6. Later: *Set orchestrator git to local|branch-pr|branch-pr-squash|branch-push|current-push|none*.
+5. Record `mode` + `recorded` (+ `source`) unless *this run only* / cloud this-run override.
+6. **Forge tooling probe** (below).
+7. Later: *Set orchestrator git to local|branch-pr|branch-pr-squash|branch-push|current-push|none*.
 
 ### Forge tooling probe
 
@@ -64,7 +84,7 @@
 - **Commit** (not `none`): parent, after work-verifier **pass** — one milestone per unit/batch. No secrets; no force-push mid-loop.
 - **Push** (`branch-pr*`, `branch-push`, `current-push`): after milestones (or every few if slow).
 - **PR modes:** after first push, open **draft** PR if missing (scope + “orchestrator run”). Stay draft mid-run. No CLI → push + “open PR in browser.”
-- **`current-push` rejected:** stop delivery; offer once to fall back to `branch-pr` this run — no silent mode switch.
+- **`current-push` rejected:** stop delivery; offer once to fall back to `branch-pr-squash` (or `branch-pr`) this run — no silent mode switch.
 
 ### End of run *(non-PR)*
 
@@ -116,6 +136,6 @@ After loop (+ human verify map): if implementer units shipped → run **todo-war
 
 ### Grants / do not
 
-- Mode (or this-run override) grants **only** that mode’s commit/push/PR for **orchestration**.
+- Mode (or this-run / **Cloud Agent** override) grants **only** that effective mode’s commit/push/PR for **orchestration**.
 - Not a grant for template sync or other playbooks.
-- **Do not:** merge PRs; bare `--force`; silent-default `current-push`; invent forge; store tokens; leave HEAD on an orchestrator-created branch after a finished run without reporting it.
+- **Do not:** merge PRs; bare `--force`; silent-default `current-push`; invent forge; store tokens; rewrite durable `orchestrator.git.mode` because of a Cloud Agent this-run; leave HEAD on an orchestrator-created branch after a finished run without reporting it.
