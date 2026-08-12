@@ -20,6 +20,14 @@
 
 ---
 
+## 2.7.14
+
+- **Live impact:** `versions-only`, `process-docs-only`
+- **Files:**
+  - `VERSION` — 2.7.13 → 2.7.14
+  - `agent/BOOTSTRAP.md` — new **Step 1c**: on whole-repo copies, delete the pack's own `.cursor/environment.json` (Cloud Agent env config that only verifies the release-build toolchain) so it does not pollute user project repos; keep the user's own `.cursor/` config. Do-not list updated.
+- **Step B:** Bump Master Index **Pack version** to 2.7.14. No live feature/shared content scan; no rule refresh.
+
 ## 2.7.13
 
 - **Live impact:** `versions-only`, `rules`, `content-templates`, `process-docs-only`
