@@ -31,7 +31,7 @@ Compare semver `X.Y.Z` numerically (major, minor, patch).
 **Union tags** from all selected entries. Then:
 
 - Apply the gated checklist **once** for the union (not once per release).
-- If the union includes any of `content-templates`, `optional-live-reshape`, `optional-todo-ambition`, or `optional-todo-operable`, run those steps even when newer selected entries also list `process-docs-only` (`process-docs-only` on one release does not cancel live passes from skipped releases).
+- If the union includes any of `content-templates`, `optional-live-reshape`, `optional-todo-ambition`, `optional-todo-operable`, or `optional-todo-kit-coverage`, run those steps even when newer selected entries also list `process-docs-only` (`process-docs-only` on one release does not cancel live passes from skipped releases).
 - Skim Step B lines from selected entries for tips / one-shots not expressed by tags (e.g. Human-TODO tip refresh). Do **not** invent a broader audit than the unioned tags + those lines.
 - Do **not** bump Pack version through intermediate numbers — set it once to **to**.
 
@@ -43,11 +43,12 @@ Compare semver `X.Y.Z` numerically (major, minor, patch).
 | `optional-live-reshape` | Live Understanding shape trim + relocate — **`auto` / `auto-all`:** run all stems; **`choose`:** present + ask once |
 | `optional-todo-ambition` | Live TODO ambition pass — **`auto` / `auto-all`:** run all Document Map TODO stems; **`choose`:** present + ask once |
 | `optional-todo-operable` | Live TODO operable dual-track pass — **`auto` / `auto-all`:** all Document Map TODO stems; **`choose`:** present + ask once |
+| `optional-todo-kit-coverage` | Live TODO kit-coverage pass (Workflow §5.4) — **`auto` / `auto-all`:** all Document Map TODO stems; **`choose`:** present + ask once |
 | `rules` | Refresh installed rules/adapters from local `agent/` (see Rules step — **no ask** unless `customized: true`) |
 | `optional-upstream-check` | Stamp `upstream:` in `docs/ADT-settings.yaml` if update-check enabled; offer enable if unset |
 | `process-docs-only` | No live feature/shared content scan **for that release alone** — still honor live-content tags from other selected catch-up entries |
 
-**Default when `content-templates`, `optional-live-reshape`, `optional-todo-ambition`, and `optional-todo-operable` are absent from the union:** bump versions + Master Index structure if tagged → rules if tagged → summarize → **present unset options** (below). **Do not** open live `features/` or `_shared/` docs.
+**Default when `content-templates`, `optional-live-reshape`, `optional-todo-ambition`, `optional-todo-operable`, and `optional-todo-kit-coverage` are absent from the union:** bump versions + Master Index structure if tagged → rules if tagged → summarize → **present unset options** (below). **Do not** open live `features/` or `_shared/` docs.
 
 ### B0.1 — Settings file *(migrate once, then use forever)*
 
@@ -69,9 +70,9 @@ Read `sync.mode` from `docs/ADT-settings.yaml`.
 
 | Mode | Behavior |
 |------|----------|
-| **`auto`** | Apply all changelog-gated live work without mid-sync optionals quiz: versions, master-index, content-templates (missing only), **optional-live-reshape** (all Document Map Understanding stems), **optional-todo-ambition** / **optional-todo-operable** (all Document Map `*-TODO.md` when tagged), rules refresh, upstream stamp. **Also** perform **post-sync hygiene commits** (below) without asking. Still **ask once** for brand-new unset `optional_rules.*`. Summarize at end (include commit subjects). |
+| **`auto`** | Apply all changelog-gated live work without mid-sync optionals quiz: versions, master-index, content-templates (missing only), **optional-live-reshape** (all Document Map Understanding stems), **optional-todo-ambition** / **optional-todo-operable** / **optional-todo-kit-coverage** (all Document Map `*-TODO.md` when tagged), rules refresh, upstream stamp. **Also** perform **post-sync hygiene commits** (below) without asking. Still **ask once** for brand-new unset `optional_rules.*`. Summarize at end (include commit subjects). |
 | **`auto-all`** | Same as **`auto`**, and also **enable + install** any unset `optional_rules.*` (doc-roles, update-check, future optionals) without asking. Never re-enable **`declined`**. New update-check → `check_mode: always` + record cadence (skip B0.4 ask). Summarize what was auto-enabled. |
-| **`choose`** | Present reshape / TODO ambition / TODO operable (and similar future optional live tags) each sync — ask once per tagged pass. Suggest (do not force) separate commits; commit only if they explicitly ask. |
+| **`choose`** | Present reshape / TODO ambition / TODO operable / TODO kit-coverage (and similar future optional live tags) each sync — ask once per tagged pass. Suggest (do not force) separate commits; commit only if they explicitly ask. |
 | **missing / unset** | **Ask once** before the first optional live pass (or before stopping if none tagged): *Recommended live updates automatically (`auto`), everything including new pack optionals (`auto-all`), or ask each sync (`choose`)?* Record `sync.mode` + `sync.recorded`. Then continue under that mode. Do **not** silent-default. |
 
 Explicit later: *Set sync to auto* / *Set sync to auto-all* / *Set sync to choose*.
@@ -86,6 +87,7 @@ Explicit later: *Set sync to auto* / *Set sync to auto-all* / *Set sync to choos
 2. **Reshape commit** — if `optional-live-reshape` ran, commit those live Understanding/spec(/TODO) edits separately when dirty.
 3. **TODO ambition commit** — if `optional-todo-ambition` ran, commit those TODO rewrites separately when dirty.
 4. **TODO operable commit** — if `optional-todo-operable` ran, commit those dual-track / exercise-path TODO edits separately when dirty (may combine with ambition in one commit if both ran the same stems).
+5. **TODO kit-coverage commit** — if `optional-todo-kit-coverage` ran, commit those covering-TODO edits separately when dirty (may combine with other TODO live passes if the same stems).
 
 Invoking sync with `auto` or `auto-all` is an **implicit grant** for these **local** hygiene commits for this run only. It does **not** authorize push or committing unrelated WIP.
 
@@ -172,6 +174,7 @@ Recommend: remote + forge CLI → **`milestone-pr`** (overnight drain: per-slice
 | `TODO_Template.md` | Each `*-TODO.md` — add missing blocks only | `content-templates` |
 | `TODO_Template.md` + Workflow §5 + `Agent_Timescale_Planning_Rule.mdc` | Chosen `*-TODO.md` (+ Understanding for shape) — streamline High Priority / Current focus | `optional-todo-ambition` **and** (`auto` / `auto-all` **or** user said yes) |
 | `TODO_Template.md` + Workflow §5.3 | Chosen `*-TODO.md` (+ Understanding/spec for surface identity) — add exercise-path rows or **library-only** labels | `optional-todo-operable` **and** (`auto` / `auto-all` **or** user said yes) |
+| `TODO_Template.md` + Workflow §5.4 | Chosen `*-TODO.md` + matching spec — covering TODOs for spec-named leftovers; one research item if spec is thin | `optional-todo-kit-coverage` **and** (`auto` / `auto-all` **or** user said yes) |
 | `Tooling_Template.md` | `docs/Tooling.md` — create if missing; add sections only | `content-templates` |
 | `Human_TODO_Template.md` | `docs/Human-TODO.md` — create if missing; add columns/sections only | `content-templates` |
 | `agent/Modular_Documentation_Rule.*` | Installed rule paths — refresh via each `tools/<key>.md` for `status: installed` tools | `rules` |
@@ -206,6 +209,10 @@ Versions:
    - **`sync.mode: auto` or `auto-all`:** execute for **all Document Map `*-TODO.md` stems** (no ask); commit per B0.3 after.
    - **`sync.mode: choose`:** present + ask once (default all stems / named / no); explain Workflow §5.3 dual-track; suggest separate commit; commit only if they ask.
    - **On execute:** for each stem — open TODO + Understanding/spec (Overview, Acceptance, surface identity) + Master Index product surface if needed. If user/operator-facing and High Priority has **no** exercise path (UI / CLI / product API / documented smoke) → **add** surface/wire/smoke items (**scaffold + wire** minimal boring surface when UI was never specified) **or** a loud phased bridge (`library foundation first · exercise path: …`) only when domain-before-surface is intentional; refresh Current focus when the next work should be the path. If open **operable Acceptance** has no open TODO that addresses those lines → add matching work items (or phase). If pure foundation → one **library-only** note (TODO or Current focus). Do **not** invent “await UI design” for blank canvas, invent unrelated backlog, rewrite domain items, force UI onto library stems, or dual-maintain every Acceptance line as a TODO twin.
+5c. **Live TODO kit coverage** *(if `optional-todo-kit-coverage`)* —
+   - **`sync.mode: auto` or `auto-all`:** execute for **all Document Map `*-TODO.md` stems** (no ask); commit per B0.3 after.
+   - **`sync.mode: choose`:** present + ask once (default all stems / named / no); explain Workflow §5.4 (spec-named leftovers get TODOs on **existing** stems; terse wrap-the-API is not a stub; no new map rows); suggest separate commit; commit only if they ask.
+   - **On execute:** for each stem — open that spec + `-TODO.md` only (no vendor-doc fetch). If the spec **already names** in-scope leftover surfaces (Behavior / Architecture leftover list) with **no** covering open TODO on this stem or another map-row stem → **add** Medium items on **this** stem (High only if Current focus is empty and this is the next winner). If Overview/identity claims wrap-the-vendor-API (or equivalent) but the spec lists **no** leftover surfaces and the TODO has **no** open research item → add **one** Medium item: *Diff vendor API docs vs this kit; add covering TODOs (Workflow §5.4)* — next-session research, not this sync. Do **not** create Document Map rows; do **not** invent playground/UI/out-of-kit APIs; do **not** split stems; do **not** implement code.
 6. **Rules** *(if `rules`)* — For each tool with `tools.*.status: installed` in `docs/ADT-settings.yaml`, open **only** `docs/templates/agent/tools/<key>.md` and refresh that harness.
    - **Default:** refresh pack-managed modular + timescale + **build-verify** rules (and enabled optionals) **without asking** — installed means pack-owned.
    - **Ask before overwrite only if** that tool entry has `customized: true` (or an explicit note that pack rule bodies were hand-edited).
@@ -213,7 +220,7 @@ Versions:
    - Remove any stale `.cursor/skills/modular-docs-*` leftovers from older pack drafts (ask first only if deleting user-looking paths outside known leftovers).
 7. **Upstream stamp** *(if `optional-upstream-check` or update-check enabled)* — If `optional_rules.template-update-check.status` is `enabled`: ensure `upstream:` exists; set `local_pack_version` from local `VERSION`, `last_checked` today, clear `update_available` / stale `upstream_pack_version`. Do **not** delete `ADT-settings.yaml`. Refresh optional update-check rules if tagged `rules` / body changed (same customized rule as above).
 8. **Layout migration** — Run [`BOOTSTRAP.md`](BOOTSTRAP.md) Step 0b **only** if layout markers show older layout (`docs/help/` or `docs/agent/` at docs root, or flat setup files in `templates/`). Skip on a normal modern pack refresh.
-9. **Summarize** pack refresh + live-doc updates + sync mode used + catch-up **from→to** (or top-entry-only) + reshape / TODO ambition / TODO operable executed or (choose) offered/declined + settings migration if any + **git** (A0 preflight outcome; hygiene commits made or skipped; push status — default not pushed).
+9. **Summarize** pack refresh + live-doc updates + sync mode used + catch-up **from→to** (or top-entry-only) + reshape / TODO ambition / TODO operable / TODO kit-coverage executed or (choose) offered/declined + settings migration if any + **git** (A0 preflight outcome; hygiene commits made or skipped; push status — default not pushed).
 10. **Present / apply unset options** *(every sync — before stopping)* — Users cannot ask for what they were never told exists. Read `docs/ADT-settings.yaml`. For each known pack optional (`optional_rules.template-update-check`, `optional_rules.doc-roles`, plus any **new** optional named in selected catch-up entries / Step B):
    - **`declined`** → do not re-ask or re-enable; a one-line “still off” note is enough.
    - **`enabled`** → already handled by refresh steps above; no re-pitch of the feature — but if update-check is enabled and cadence was never recorded, **B0.4** still applies.
@@ -230,20 +237,21 @@ Versions:
 - Open or follow this file before Step A / pack refresh completes
 - Run Step B from a pre–Step A in-memory copy of any sync playbook
 - Capture versions before Step A overwrite
-- Scan every live Understanding / Spec / TODO unless `content-templates` or (`optional-live-reshape` and executing) or (`optional-todo-ambition` and executing) or (`optional-todo-operable` and executing)
+- Scan every live Understanding / Spec / TODO unless `content-templates` or (`optional-live-reshape` and executing) or (`optional-todo-ambition` and executing) or (`optional-todo-operable` and executing) or (`optional-todo-kit-coverage` and executing)
 - Treat `content-templates` as permission to trim/remove Understanding sections — that requires `optional-live-reshape` + execute
-- Under **`choose`:** omit the reshape / TODO ambition / TODO operable ask when those tags are present
-- Under **`auto` / `auto-all`:** re-ask for reshape / ambition / operable / rules refresh when tags say to run them
+- Under **`choose`:** omit the reshape / TODO ambition / TODO operable / TODO kit-coverage ask when those tags are present
+- Under **`auto` / `auto-all`:** re-ask for reshape / ambition / operable / kit-coverage / rules refresh when tags say to run them
 - Under **`auto` / `auto-all`:** skip B0.3 hygiene commits when sync produced a dirty tree (unless not a git repo)
 - Auto-commit **pre-sync** WIP (A0) or push without an explicit grant
 - Ask before refreshing installed rules unless `customized: true`
 - On reshape execute: add template headings only and leave obsolete Understanding sections in place
 - On TODO ambition execute: invent work, expand scope, or collapse real human/shared blockers
 - On TODO operable execute: invent unrelated backlog, force UI onto **library-only** stems, or rewrite domain items beyond adding exercise-path / library-only labels
+- On TODO kit-coverage execute: fetch vendor APIs, create new map rows, split stems, invent playground/out-of-kit surfaces, or implement code
 - Keep writing `docs/rule-install-status.yaml` or `docs/upstream-status.yaml` after migration
 - Reconstruct whether a missing section is “new in this version” vs “never adopted” when content templates are unchanged — the changelog already answered
 - Treat a missing or empty `docs/templates/agent/upstream/` as an error or reason to re-download attribution files
-- Open Workflow, help guides, or the whole pack catalog during sync (open Workflow §4 only while executing reshape; Workflow §5 / timescale rule only while executing TODO ambition or TODO operable)
+- Open Workflow, help guides, or the whole pack catalog during sync (open Workflow §4 only while executing reshape; Workflow §5 / timescale rule only while executing TODO ambition, TODO operable, or TODO kit-coverage)
 - Keep pulling from GitHub — work from the **local** `docs/templates/` copy
 - Under **`auto` / `choose`:** skip presenting unset `optional_rules.*` because “do not auto-enable” — that means ask, not stay silent
 - Under **`auto-all`:** leave unset `optional_rules.*` unset — enable + install them (except **`declined`**)
@@ -252,7 +260,7 @@ Versions:
 - Equate “no install artifacts for this harness” with “nothing to offer the user”
 - Under **`auto-all`:** flip **`declined`** optionals back to enabled
 - Read **only the top** changelog entry when **from** < **to** and intermediate `##` entries exist — **union** those entries (Catch-up above)
-- Let a newer entry’s `process-docs-only` cancel `content-templates` / reshape / ambition / operable tags from skipped releases in the same jump
+- Let a newer entry’s `process-docs-only` cancel `content-templates` / reshape / ambition / operable / kit-coverage tags from skipped releases in the same jump
 - Walk each catch-up version as its own full sync or bump Pack version through intermediate numbers
 
 ---

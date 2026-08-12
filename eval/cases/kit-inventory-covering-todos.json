@@ -39,6 +39,27 @@
           "is **not** inventing work",
           "Terse + public contract"
         ]
+      },
+      {
+        "file": "docs/templates/CHANGELOG.md",
+        "patterns": [
+          "optional-todo-kit-coverage"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/TEMPLATE_SYNC_B.md",
+        "patterns": [
+          "optional-todo-kit-coverage",
+          "no vendor-doc fetch",
+          "add **one** Medium item"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/roles/todo-warden.md",
+        "patterns": [
+          "Kit coverage hole (Workflow §5.4)",
+          "at most one** §5.4 research item"
+        ]
       }
     ],
     "summaries_must_point": [
@@ -50,6 +71,11 @@
       {
         "file": "docs/templates/agent/roles/doc-graduate.md",
         "must_contain": ["§5.4"],
+        "must_not_contain": ["Pickup ≠ backlog"]
+      },
+      {
+        "file": "docs/templates/agent/roles/template-sync.md",
+        "must_contain": ["kit-coverage"],
         "must_not_contain": ["Pickup ≠ backlog"]
       }
     ]
