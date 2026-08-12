@@ -1,4 +1,4 @@
-<!-- pack-version: 2.7.15 -->
+<!-- pack-version: 2.7.16 -->
 
 > **Workflow module — source of truth** for shape vs contract (Understanding + graduation + de-confirm gate). Open from the [workflow index](../Modular_Docs_Workflow.md) when drafting/confirming Understanding, graduating to spec, or deciding additive vs shape change. Rules and roles summarize; **this file wins on conflict**.
 

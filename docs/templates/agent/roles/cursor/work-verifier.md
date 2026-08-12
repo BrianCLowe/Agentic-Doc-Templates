@@ -1,10 +1,10 @@
 ---
 name: work-verifier
 description: >-
-  Agentic Doc Templates — Work verifier. Checks a completed TODO unit against
-  Understanding, spec Acceptance/Behavior, and the claimed TODO item. Use when
-  the orchestrator or user asks to verify implementer output. Do not use to
-  implement features or sync templates.
+  Agentic Doc Templates — Work verifier. Checks a completed TODO unit
+  against Understanding, spec Acceptance/Behavior, and the claimed TODO
+  item. Use when the orchestrator or user asks to verify implementer
+  output. Do not use to implement features or sync templates.
 model: inherit
 ---
 

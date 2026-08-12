@@ -43,7 +43,7 @@ Only if `optional_rules.doc-roles.status` is `enabled`. These are [Cursor subage
 
 | | |
 |--|--|
-| **Adapter source** | `docs/templates/agent/roles/cursor/*.md` |
+| **Adapter source** | `docs/templates/agent/roles/cursor/*.md` *(generated from [`../roles/adapter-src/`](../roles/adapter-src/README.md) — do not hand-edit)* |
 | **Install to** | `.cursor/agents/` (same filenames) |
 | **Parent delegates** | If `.cursor/agents/<name>.md` exists → launch that subagent with a self-contained prompt |
 | **Do not** | Install under `.cursor/skills/`; add “use proactively” / “always use for” to descriptions |

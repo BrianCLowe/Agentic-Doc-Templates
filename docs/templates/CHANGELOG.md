@@ -20,6 +20,20 @@
 
 ---
 
+## 2.7.16
+
+- **Live impact:** `versions-only`, `master-index`, `rules`, `content-templates`, `process-docs-only`
+- **Files:**
+  - `VERSION` — 2.7.15 → 2.7.16
+  - `agent/roles/adapter-src/` — **single source** for cursor/grok adapters (`manifest.json` + `bodies/`); regenerate with `python3 scripts/gen_role_adapters.py`
+  - `scripts/gen_role_adapters.py` — generate or `--check` drift (CI)
+  - `agent/roles/cursor/*`, `agent/roles/grok/*` — regenerated; do not hand-edit
+  - De-confirm / additive-vs-shape — **pointer-only** in roles, adapters, `Feature_Understanding_Template.md`; full gate remains only in `agent/workflow/understanding.md` §4
+  - `eval/` — behavioral golden cases + `run_eval.py` (pack integrity always; prepare/verify for agent turns). Not in the release zip
+  - `.github/workflows/pack-checks.yml` — adapter `--check` + `eval/run_eval.py` on PR/push
+  - `roles/README.md`, `CONTRIBUTING.md`, stamps
+- **Step B:** Bump Master Index **Pack version** to 2.7.16. If `optional_rules.doc-roles` **enabled** → refresh **all** role adapters from this pack (generated). Refresh modular rules (**no ask** unless `customized: true`). No live feature/shared content invent.
+
 ## 2.7.15
 
 - **Live impact:** `versions-only`, `master-index`, `rules`, `content-templates`, `process-docs-only`

@@ -1,10 +1,10 @@
-<!-- pack-version: 2.7.15 -->
+<!-- pack-version: 2.7.16 -->
 
 > **Agent workflow index.** Paved path + router into thin modules under [`workflow/`](workflow/README.md). Sync from upstream; do **not** copy wholesale into `docs/Master_Index.md`. The live index links here; agent rules summarize and point here — then open **one** module when needed.
 
 # Modular Documentation — Agent Workflow
 
-**Pack version**: 2.7.15 *(same as `docs/templates/VERSION` / live Master Index **Pack version**)*
+**Pack version**: 2.7.16 *(same as `docs/templates/VERSION` / live Master Index **Pack version**)*
 
 **Design intent:** Short user asks → **one** playbook (`BOOTSTRAP`, `TEMPLATE_SYNC`, `TEMPLATE_UPDATE_CHECK`, `RULE_INSTALL` → `tools/<key>.md`, roles, or this index → **one** workflow module). Do not scan the pack catalog. **Tight scope** = paved path only (not “audit every alternate”). Edge cases live in modules — load them only when the router says so.
 

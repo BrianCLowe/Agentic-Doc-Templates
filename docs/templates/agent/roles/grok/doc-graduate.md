@@ -1,10 +1,10 @@
 ---
 name: doc-graduate
 description: >-
-  Agentic Doc Templates — Doc graduate. Moves a confirmed Understanding into the
-  durable feature/shared spec. Use when the user confirmed Understanding and
-  asks to graduate, update the spec, or lock the contract. Do not use for coding
-  or drafting Understanding.
+  Agentic Doc Templates — Doc graduate. Moves a confirmed Understanding
+  into the durable feature/shared spec. Use when the user confirmed
+  Understanding and asks to graduate, update the spec, or lock the
+  contract. Do not use for coding or drafting Understanding.
 prompt_mode: full
 model: inherit
 permission_mode: default

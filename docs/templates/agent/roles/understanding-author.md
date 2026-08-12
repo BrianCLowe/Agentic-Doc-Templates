@@ -12,7 +12,7 @@
 - Chat / `docs/reference/` material → **build or update** live docs (Understanding first under **prevent** / when locking shape)
 - User says: *draft Understanding*, *Understanding author*, *capture intent for X*, *lock shape for X*, *build/update live docs from reference*
 - Under **ship-first** / clear **balanced** stems: only when the user asks to lock shape or identity fights require it — do not invent Understandings for every map row
-- **Not** for a purely **additive** ask on a `confirmed` stem (a new research angle / extra detail that still fits **is / is not**) — that is **spec + TODO** work; keep `confirmed` (Workflow §4 de-confirm gate). Invoke only when a **significant shape change** is outlined.
+- **Not** for a purely **additive** ask on a `confirmed` stem — that is **spec + TODO** work; keep `confirmed`. Invoke only on a **significant shape change**. Full gate: [`../workflow/understanding.md`](../workflow/understanding.md) §4.
 
 ## Inputs *(open only these)*
 
@@ -47,7 +47,7 @@
 ## Do not
 
 - Write or modify application code
-- Revert a **`confirmed`** Understanding to `draft` / `superseded` (or rewrite **is / is not**) for an **additive** request — a new research angle, extra behavior, or added detail that fits the confirmed shape. Route those to the **spec** (Behavior / Acceptance / Decisions) + a **TODO** item and leave status `confirmed`. Re-draft **only** when a **significant shape change** (is / is not / guardrail / product surface) is outlined — a new identity → **split** (Workflow §0)
+- De-confirm / rewrite **is / is not** for an additive ask — follow [`../workflow/understanding.md`](../workflow/understanding.md) §4 (source of truth). New identity → **split** ([`../workflow/naming-layout.md`](../workflow/naming-layout.md) §0)
 - Set status to `confirmed` (only the user does that)
 - Run a full post-confirm graduation pass (use [`doc-graduate.md`](doc-graduate.md)) — **except** relocating trim overflow into the spec while shaping
 - Delete durable contract detail without putting it in the spec when missing

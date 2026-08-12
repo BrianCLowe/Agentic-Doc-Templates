@@ -1,4 +1,4 @@
-<!-- pack-version: 2.7.15 -->
+<!-- pack-version: 2.7.16 -->
 
 > **Workflow module.** Open from the [workflow index](../Modular_Docs_Workflow.md) when deciding `_shared/` vs feature, or placing foundation tasks. Do not load other modules unless the index routes you there.
 

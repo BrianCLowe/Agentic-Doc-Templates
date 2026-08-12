@@ -1,4 +1,4 @@
-<!-- pack-version: 2.7.15 -->
+<!-- pack-version: 2.7.16 -->
 
 > **Workflow module.** Open from the [workflow index](../Modular_Docs_Workflow.md) only for sub-indexes, game extensions / catalogs, document splits, lean status, or Mermaid judgment. Skip unless Project Profile or the ask triggers these.
 

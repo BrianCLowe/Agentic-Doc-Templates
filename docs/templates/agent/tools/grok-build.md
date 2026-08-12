@@ -52,7 +52,7 @@ Only if `optional_rules.doc-roles.status` is `enabled`.
 
 | | |
 |--|--|
-| **Adapter source** | `docs/templates/agent/roles/grok/*.md` *(frontmatter aligned with bundled agents under `~/.grok/bundled/agents/` — e.g. `name`, `description`, `prompt_mode`, …)* |
+| **Adapter source** | `docs/templates/agent/roles/grok/*.md` *(generated from [`../roles/adapter-src/`](../roles/adapter-src/README.md); frontmatter aligned with bundled agents under `~/.grok/bundled/agents/` — e.g. `name`, `description`, `prompt_mode`, …)* |
 | **Install to** | Project `.grok/agents/` (same filenames); user-global alternate is `~/.grok/agents/` — prefer project for this pack |
 | **Parent delegates** | If `.grok/agents/<name>.md` exists **and** appears as a spawnable type → `spawn_subagent` with `subagent_type: <name>` and a self-contained prompt |
 | **Fallback** | If names do not show in `grok inspect` / `/config-agents` → follow `docs/templates/agent/roles/<role>.md` in-session (or spawn `general-purpose` with that playbook path). Do not fail bootstrap; do not invent a second folder |
