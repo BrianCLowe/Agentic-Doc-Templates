@@ -300,31 +300,43 @@ def verify(case_id: str, workdir: Path) -> int:
             errors.append(f"expected file to change: {rel}")
 
     for rel in expect.get("files_must_not_change") or []:
-        if rel in baseline and rel in current and current[rel] != baseline[rel]:
-            errors.append(f"file should not change: {rel}")
+        if rel in baseline:
+            if rel not in current:
+                errors.append(f"file should not change: {rel}")
+            elif current[rel] != baseline[rel]:
+                errors.append(f"file should not change: {rel}")
 
     up = expect.get("understanding_path")
-    if up and abspath(up).exists():
-        text = abspath(up).read_text()
-        status = read_status(text)
-        if "understanding_status" in expect:
-            if status != expect["understanding_status"]:
-                errors.append(
-                    f"Understanding status {status!r} != "
-                    f"{expect['understanding_status']!r}"
-                )
-        if "understanding_status_one_of" in expect:
-            allowed = expect["understanding_status_one_of"]
-            if status not in allowed:
-                errors.append(
-                    f"Understanding status {status!r} not in {allowed}"
-                )
-        for pat in expect.get("understanding_must_contain") or []:
-            if pat not in text:
-                errors.append(f"Understanding missing {pat!r}")
-        for pat in expect.get("understanding_must_not_contain") or []:
-            if pat in text:
-                errors.append(f"Understanding must not contain {pat!r}")
+    if up:
+        up_path = abspath(up)
+        if up_path.exists():
+            text = up_path.read_text()
+            status = read_status(text)
+            if "understanding_status" in expect:
+                if status != expect["understanding_status"]:
+                    errors.append(
+                        f"Understanding status {status!r} != "
+                        f"{expect['understanding_status']!r}"
+                    )
+            if "understanding_status_one_of" in expect:
+                allowed = expect["understanding_status_one_of"]
+                if status not in allowed:
+                    errors.append(
+                        f"Understanding status {status!r} not in {allowed}"
+                    )
+            for pat in expect.get("understanding_must_contain") or []:
+                if pat not in text:
+                    errors.append(f"Understanding missing {pat!r}")
+            for pat in expect.get("understanding_must_not_contain") or []:
+                if pat in text:
+                    errors.append(f"Understanding must not contain {pat!r}")
+        elif (
+            "understanding_status" in expect
+            or "understanding_status_one_of" in expect
+            or expect.get("understanding_must_contain")
+            or expect.get("understanding_must_not_contain")
+        ):
+            errors.append(f"missing Understanding file {up}")
 
     if errors:
         print("VERIFY FAIL")

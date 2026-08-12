@@ -11,7 +11,7 @@
       "docs/features/NoteEditor.md",
       "docs/features/NoteEditor-TODO.md"
     ],
-    "files_must_not_change_status_line": [
+    "files_must_not_change": [
       "docs/features/NoteEditor-Understanding.md"
     ],
     "understanding_must_contain": ["Status**: `confirmed`"],
