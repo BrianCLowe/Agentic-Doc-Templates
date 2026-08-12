@@ -84,7 +84,7 @@ Short correction / confirmation notes only — not a parking lot for contract pr
 
 ## Instructions for AI Agents
 
-Full procedure: [`Modular_Docs_Workflow.md`](agent/Modular_Docs_Workflow.md) §4 (shape) and §2 (graduation). Optional role: [`agent/roles/understanding-author.md`](agent/roles/understanding-author.md).
+Full procedure: [`workflow/understanding.md`](agent/workflow/understanding.md) §4 (shape) and §2 (graduation) — index: [`Modular_Docs_Workflow.md`](agent/Modular_Docs_Workflow.md). Optional role: [`agent/roles/understanding-author.md`](agent/roles/understanding-author.md).
 
 1. **Write this file first** when scoping — before implementation code. Shape sections only (above); not a second spec.
 2. Draft from the conversation (or a short [`IDEA_CAPTURE_TIPS.md`](../help/IDEA_CAPTURE_TIPS.md) interview if vague). Status `draft`. Capture product-defining surface/architecture identity in is / is not when the user stated it (or as Assumptions). **Show the user** and ask them to confirm **shape** (is / is not + Assumptions) — not the full contract.

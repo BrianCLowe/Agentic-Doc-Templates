@@ -53,6 +53,7 @@ Checklist when changing `docs/templates/agent/` or workflow rules:
 - Prefer “do X, then stop” over “update as needed”
 - Name which files to open; name which not to open
 - Put the common case first (minimal path); park rare migrations behind a clear trigger
+- Keep [`Modular_Docs_Workflow.md`](docs/templates/agent/Modular_Docs_Workflow.md) as a short **index** (paved path + router); put full procedure in one [`workflow/`](docs/templates/agent/workflow/README.md) module — do not re-inflate the monolith
 - If Step B / sync behavior changes, update [`CHANGELOG.md`](docs/templates/CHANGELOG.md) so consumers do not reverse-engineer the pack
 
 If you're unsure whether something fits, just start a Discussion first — I'm happy to talk about it.

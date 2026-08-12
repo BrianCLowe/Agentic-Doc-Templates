@@ -51,7 +51,8 @@ Bootstrap Step 3p (doc-roles enable) / [`../RULE_INSTALL.md`](../RULE_INSTALL.md
 
 ## Design rules *(for maintainers)*
 
-- Roles **point** at playbooks; do not duplicate Workflow prose.
+- Roles **point** at playbooks / **workflow modules**; do not duplicate Workflow prose.
+- Prefer links to [`../workflow/<module>.md`](../workflow/README.md) over the whole index when the role needs one topic.
 - Harness adapters only differ by **frontmatter / install path** — same body pointing at `roles/<role>.md`.
 - **Never** add a harness adapter for `orchestrator` — parent-only by design.
 - Tool-specific install steps live in [`../tools/`](../tools/README.md), not here.

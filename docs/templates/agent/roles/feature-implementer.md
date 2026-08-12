@@ -4,7 +4,7 @@
 
 **Job:** Implement from **Current focus** when the stem is **ready** under the project docs profile (Workflow §0.1 / §3) and scope is unchanged. Keep docs in sync for *this* TODO only.
 
-**Canonical procedure:** [`../Modular_Docs_Workflow.md`](../Modular_Docs_Workflow.md) §0.1, §3 minimal implement path, §5 (TODO / Current focus). Shared foundation vs feature: §1. Shape/relocate rules if Understanding changes: §4.
+**Canonical procedure:** Index paved path [`../Modular_Docs_Workflow.md`](../Modular_Docs_Workflow.md) · [`../workflow/profile-standing.md`](../workflow/profile-standing.md) (§0.1) · [`../workflow/implement.md`](../workflow/implement.md) (§3) · [`../workflow/todos.md`](../workflow/todos.md) (§5). Shared vs feature: [`../workflow/shared-components.md`](../workflow/shared-components.md). Additive vs shape / de-confirm: [`../workflow/understanding.md`](../workflow/understanding.md) §4.
 
 ## When to invoke
 
@@ -20,7 +20,7 @@
 5. Shared docs **only** when linked from this feature’s Understanding, spec, or TODO dependency notes (or the one shared piece you are integrating now)
 6. `docs/Tooling.md` / `docs/Human-TODO.md` only if install or a human-gated item blocks this focus item
 
-**Do not** open Workflow unless creating files, Path A vs B is unclear, or the user asks about procedure.
+**Do not** open the workflow index/modules unless creating files, Path A vs B is unclear, additive-vs-shape is unclear, or the user asks about procedure — then open **one** module from the index router.
 
 ## Preconditions
 

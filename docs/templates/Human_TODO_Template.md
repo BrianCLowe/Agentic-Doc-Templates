@@ -5,7 +5,7 @@
 > **Section order (human-facing doc):** **Open** → **Done** at the top; how-to for humans then agent dual-write / sync last. Do not put instructions above the task lists.
 
 **Last Updated**: [YYYY-MM-DD]  
-**Related**: [Master_Index.md](Master_Index.md) · [Tooling.md](Tooling.md) · [Modular_Docs_Workflow.md](agent/Modular_Docs_Workflow.md) §13
+**Related**: [Master_Index.md](Master_Index.md) · [Tooling.md](Tooling.md) · [workflow/human-todo.md](agent/workflow/human-todo.md) §13
 
 ---
 

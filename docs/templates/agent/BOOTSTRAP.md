@@ -31,7 +31,7 @@ Reorganize without losing content. Target: **everything meta** lives under `docs
 | `docs/templates/Modular_Documentation_Rule.mdc`, `Modular_Documentation_Rule.instructions.md` (flat in templates) | `docs/templates/agent/` |
 | `docs/USING_WITH_AGENTS.md` (at `docs/` root) | `docs/templates/help/USING_WITH_AGENTS.md` |
 
-Fix internal links after moving (including Master Index links to the workflow). **Keep at `docs/templates/` root:** `VERSION`, `CHANGELOG.md`, `Master_Index_Template.md`, `Feature_*_Template.md`, `TODO_Template.md`, `Decision_Template.md`, Tooling/Human_TODO templates. **Keep in `docs/templates/agent/`:** `Modular_Docs_Workflow.md`, rule templates (`.mdc`, `.instructions.md`), bootstrap, rule install, template sync. (`chat-ui/` may exist as a paused stub — not a live path.)
+Fix internal links after moving (including Master Index links to the workflow). **Keep at `docs/templates/` root:** `VERSION`, `CHANGELOG.md`, `Master_Index_Template.md`, `Feature_*_Template.md`, `TODO_Template.md`, `Decision_Template.md`, Tooling/Human_TODO templates. **Keep in `docs/templates/agent/`:** `Modular_Docs_Workflow.md` (index), `workflow/` modules, rule templates (`.mdc`, `.instructions.md`), bootstrap, rule install, template sync. (`chat-ui/` may exist as a paused stub — not a live path.)
 
 ## Step 1 — Relocate upstream README, LICENSE, and CONTRIBUTING *(auto-move when clearly this pack)*
 
@@ -136,7 +136,7 @@ If any of those are missing, expand the inventory below and run Step 0b if layou
 
 - **Root:** `VERSION`, `CHANGELOG.md`, `Master_Index_Template.md`, `Feature_Spec_Template.md`, `Feature_Understanding_Template.md`, `TODO_Template.md`, `Decision_Template.md`, `Tooling_Template.md`, `Human_TODO_Template.md`
 - **`help/`:** `SETUP.md`, `USAGE.md`, `IDEA_CAPTURE_TIPS.md`, `USING_WITH_AGENTS.md`
-- **`agent/`:** `Modular_Docs_Workflow.md`, `BOOTSTRAP.md`, `RULE_INSTALL.md`, `TEMPLATE_SYNC.md`, `TEMPLATE_SYNC_A.md`, `TEMPLATE_SYNC_B.md`, `TEMPLATE_UPDATE_CHECK.md`, `Modular_Documentation_Rule.mdc`, `Modular_Documentation_Rule.instructions.md`, `Agent_Timescale_Planning_Rule.mdc`, `Agent_Timescale_Planning_Rule.instructions.md`, `Agent_Build_Verify_Rule.mdc`, `Agent_Build_Verify_Rule.instructions.md`, `Template_Update_Check_Rule.mdc`, `Template_Update_Check_Rule.instructions.md`, `ADT-settings.example.yaml`
+- **`agent/`:** `Modular_Docs_Workflow.md`, `workflow/` (modules), `BOOTSTRAP.md`, `RULE_INSTALL.md`, `TEMPLATE_SYNC.md`, `TEMPLATE_SYNC_A.md`, `TEMPLATE_SYNC_B.md`, `TEMPLATE_UPDATE_CHECK.md`, `Modular_Documentation_Rule.mdc`, `Modular_Documentation_Rule.instructions.md`, `Agent_Timescale_Planning_Rule.mdc`, `Agent_Timescale_Planning_Rule.instructions.md`, `Agent_Build_Verify_Rule.mdc`, `Agent_Build_Verify_Rule.instructions.md`, `Template_Update_Check_Rule.mdc`, `Template_Update_Check_Rule.instructions.md`, `ADT-settings.example.yaml`
 
 Run Step 0b if any setup files are still at `docs/` root or flat in `docs/templates/`.
 
