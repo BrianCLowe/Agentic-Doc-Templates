@@ -72,7 +72,7 @@ Be on the lookout every turn. When the user states a **lasting** preference that
 3. Tell the user in one line that you saved it (path + paraphrase). Do **not** wait for session wrap or “remember that?”
 4. Apply it for the rest of the session (and future sessions via the file).
 
-**Also capture** when they correct pack behavior mid-run without the word “always” if the intent is durable (“I don’t want draft PRs — ready only after squash” → standing or `branch-pr-squash`).
+**Also capture** when they correct pack behavior mid-run without the word “always” if the intent is durable (“I don’t want draft PRs — ready only after squash” → standing or `branch-pr-squash`; “merge each slice after CI” → `milestone-pr`).
 
 **Skip:**
 

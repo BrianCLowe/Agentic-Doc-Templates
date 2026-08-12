@@ -1,4 +1,4 @@
-<!-- pack-version: 2.7.17 -->
+<!-- pack-version: 2.7.19 -->
 
 > **Template reference.** Do not put project-specific content in this file. Copy to `docs/Master_Index.md` for initial setup, or diff against it when syncing template improvements into the live index. Never edit this template unless the user asks you to.
 >
@@ -8,7 +8,7 @@
 
 **Purpose**: Single entry point for **this project's** documentation — overview, locations, and Document Map. Read only the files relevant to the current task.
 
-**Pack version**: 2.7.17 *(from [`templates/VERSION`](templates/VERSION) — update on sync)*
+**Pack version**: 2.7.19 *(from [`templates/VERSION`](templates/VERSION) — update on sync)*
 
 ## 1. Project Overview
 
@@ -48,13 +48,13 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 ### 2.2 At a Glance *(policy summary — full rules in Workflow)*
 
 - **Simplicity:** users give short doc actions; agents follow this pack — no complex prompts required.
-- **Idea sources:** prefer raw **chat exports** in `docs/reference/` over polished-only design docs — they keep whys/motives for Understanding drafts ([`IDEA_CAPTURE_TIPS.md`](templates/help/IDEA_CAPTURE_TIPS.md)). Ask: *build or update live docs from reference.* Agents keep **one identity per stem** (split unlike features — no user reminder required).
+- **Idea sources:** prefer raw **chat exports** in `docs/reference/` over polished-only design docs — they keep whys/motives for Understanding drafts ([`IDEA_CAPTURE_TIPS.md`](templates/help/IDEA_CAPTURE_TIPS.md)). Ask: *build or update live docs from reference.* Agents keep **one identity per stem** (split unlike features — no user reminder required). Kit leftovers stay as TODOs on the inventory stem until that slice is next; **no map rows for vague planned-only items**; a terse wrap-the-public-API goal is actionable ([Workflow §0](templates/agent/workflow/naming-layout.md#0-naming--file-layout-read-before-creating-files) · [§5.4](templates/agent/workflow/todos.md#54-finished-kit-contract--covering-todos-not-wait-for-pickup)).
 - **Tight scope:** paved path for the current ask only — no “just in case” audits of unrelated files or alternate interpretations before acting.
 - **Mermaid:** optional — agent may add a small diagram when it beats prose for structure/flow; do not splash charts everywhere.
 - **Tooling:** `docs/Tooling.md` lists machine tools (not package deps); on a new machine, user can ask to install them ([`Tooling_Template.md`](templates/Tooling_Template.md)).
 - **Human TODO:** `docs/Human-TODO.md` — one inbox for procure / playtest / decide / waiting; index + owner dual-write ([`Human_TODO_Template.md`](templates/Human_TODO_Template.md); [Workflow §13](templates/agent/workflow/human-todo.md#13-human-todo-inbox--needs-a-human)).
 - **Docs profile:** `docs/ADT-settings.yaml` → `docs_profile.mode` — **`prevent`** (default if unset: Understanding + shape confirm), **`balanced`**, or **`ship-first`** (Spec+TODO core). See [Workflow §0.1](templates/agent/workflow/profile-standing.md#01-docs-profile-ceremony-modes).
-- **Orchestrator git:** `orchestrator.git.mode` — recommend **`branch-pr-squash`** (Bugbot / tip-only bots), or **`branch-pr`**, **`branch-push`**, **`local`**, **`current-push`** (never silent-default), or **`none`**. Asked if unset even under sync `auto-all`. **Cloud Agent** orchestration this-runs **`branch-pr-squash`** when durable mode is local-oriented (does not rewrite settings). See [orchestrator-git](templates/agent/roles/orchestrator-git.md).
+- **Orchestrator git:** `orchestrator.git.mode` — recommend **`milestone-pr`** (overnight: per-slice PR → CI/Bugbot → merge → next branch), or **`branch-pr-squash`** (one morning PR, no merge), **`branch-pr`**, **`branch-push`**, **`local`**, **`current-push`** (never silent-default), or **`none`**. Asked if unset even under sync `auto-all`. **Cloud Agent** orchestration this-runs **`milestone-pr`** when durable mode is local-oriented or `branch-pr*` (does not rewrite settings). See [orchestrator-git](templates/agent/roles/orchestrator-git.md).
 - **File layout:** flat sibling files — always `features/FeatureName.md` + `FeatureName-TODO.md`; **Understanding** per docs profile; optional `FeatureName-Catalog.md` for list-heavy stems (same for `_shared/`) — [Workflow §0](templates/agent/workflow/naming-layout.md#0-naming--file-layout-read-before-creating-files) / [§7.1](templates/agent/workflow/extensions.md#71-catalog-companions-list-heavy-content).
 - No file should exceed ~800–1000 lines; split when bloated ([Workflow §8](templates/agent/workflow/extensions.md#8-how-to-split-a-large-document)).
 - **Shared** only when something is actually shared across features — empty §3.1 / `_shared/` is fine. Do **not** invent shared rows or park engine/framework primers there ([Workflow §1](templates/agent/workflow/shared-components.md#1-shared-components--foundation-vs-consumption)). Real shared components get the **same note types as features** (for the profile) unless the **user** excepted them — record omissions in **§3.0** only after an explicit user request. Agents must not invent §3.0 or filler §3.1 rows.

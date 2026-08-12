@@ -67,7 +67,7 @@ That covers first-time build and later drops of new exports. Point at named file
 
 > Build or update live docs from `docs/reference/combat-feel-chat.md` and `docs/reference/inventory-thread.md`.
 
-Agents should split unlike identities on their own (Workflow / Understanding author) — you should not need to remind them every time. If they still merge two features, correct shape once.
+Agents should split unlike **finished-feature identities** on their own (Workflow / Understanding author) — you should not need to remind them every time. If they still merge two features, correct shape once. Leftover **methods of one kit** should stay as TODOs on the inventory stem (not a stack of empty spec files) — but those TODOs **should exist** so *orchestrate* can drain them. A terse “wrap this public API” is **actionable** (agent diffs docs vs code); vague planned-only extras do **not** get map rows.
 
 Polished PRD-only path still works:
 
@@ -89,7 +89,7 @@ Full copy-vs-whole-repo notes and layout: [`SETUP.md`](SETUP.md). Optional rules
 
 > Update the doc templates from Agentic Doc Templates and sync our live docs.
 
-Agent overwrites `docs/templates/` ([`TEMPLATE_SYNC_A.md`](../agent/TEMPLATE_SYNC_A.md)), then follows the top [`CHANGELOG.md`](../CHANGELOG.md) entry via [`TEMPLATE_SYNC_B.md`](../agent/TEMPLATE_SYNC_B.md) (usually versions + Master Index — not every feature file). Entry: [`TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md) (in the pack since **1.2**; A/B split in **2.6.8**).
+Agent overwrites `docs/templates/` ([`TEMPLATE_SYNC_A.md`](../agent/TEMPLATE_SYNC_A.md)), then follows the top [`CHANGELOG.md`](../CHANGELOG.md) entry via [`TEMPLATE_SYNC_B.md`](../agent/TEMPLATE_SYNC_B.md) (usually versions + Master Index — not every feature file). When tagged **`optional-todo-kit-coverage`**, Step B may add covering TODOs from the **live spec** (Completed counts; or one research TODO if Overview says wrap-the-API but the spec lists no leftovers) — it does **not** fetch vendor APIs. Todo-warden adds covering items for **named** leftovers; it does not replace the thin-spec research pass. Entry: [`TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md) (in the pack since **1.2**; A/B split in **2.6.8**).
 
 **Before 1.2:** If `docs/templates/agent/TEMPLATE_SYNC.md` is missing, copy/replace `docs/templates/` from this repo once (or ask the agent to), then use the sync ask for later updates.
 
@@ -139,10 +139,10 @@ Anything only you can close → `docs/Human-TODO.md`: procure, playtest/feel, de
 | Update-check cadence | *Check for template updates every session.* / *Only check every week.* |
 | Optional role — intent | *Draft Understanding for [Feature] from what I said — I’ll review.* (main agent delegates if subagents installed) |
 | Optional role — build | *Continue from Current focus.* *(single slice)* |
-| Optional role — orchestrate | *Orchestrate — clear ready TODOs until blocked.* *(parent loop; git from `orchestrator.git.mode` — recommend branch-pr-squash; Cloud Agent this-runs squash-PR if durable is local-oriented; close-out: build-verify → todo-warden → squash? → mark ready; Human-TODO verify map)* |
-| Optional role — todo warden | *Todo warden — reconcile TODOs vs what shipped.* / *Todo cleanup — move completed items to Completed.* *(docs-only; honesty caps; hygiene moves finished `[x]`)* |
-| Set orchestrator git | *Set orchestrator git to branch-pr-squash* / *branch-pr* / *current-push* / *local* |
-| Standing workflow note | *Add standing note: always squash before mark ready.* / *From now on, don’t open draft PRs until verify is green.* *(agent should save without being asked twice)* |
+| Optional role — orchestrate | *Orchestrate — clear ready TODOs until blocked.* *(parent loop; git from `orchestrator.git.mode` — recommend milestone-pr; Cloud Agent this-runs milestone-pr if durable is local-oriented or `branch-pr` / `branch-pr-squash`; per-slice: build-verify → warden → squash → ready → wait CI/Bugbot → merge → next branch; Human-TODO verify map)* |
+| Optional role — todo warden | *Todo warden — reconcile TODOs vs what shipped.* / *Todo cleanup — move completed items to Completed.* *(docs-only; honesty caps; hygiene moves finished `[x]`; named leftovers get covering TODOs — no vendor-doc fetch)* |
+| Set orchestrator git | *Set orchestrator git to milestone-pr* / *branch-pr-squash* / *branch-pr* / *current-push* / *local* |
+| Standing workflow note | *Add standing note: always squash before mark ready.* / *From now on, merge each slice after CI.* *(agent should save without being asked twice)* |
 | Optional role — verify | *Verify that unit against Understanding and the spec.* |
 | Optional role — graduate | *Understanding confirmed — graduate to the spec.* |
 | Force a subagent | `/understanding-author` … *(optional; usually unnecessary)* |

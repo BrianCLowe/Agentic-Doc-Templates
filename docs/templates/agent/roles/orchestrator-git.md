@@ -8,18 +8,28 @@
 
 | Mode | Commits | Branch | Push | PR / close-out |
 |------|---------|--------|------|----------------|
-| **`local`** | Milestone after verify pass | Current | No | No |
-| **`branch-pr`** | Same | Run branch | Yes | Draft mid-run → **close-out** (no merge; keeps milestone history) |
-| **`branch-pr-squash`** | Same | Run branch | Yes | Same + **squash after green verify, before ready** — **recommend** when remote + forge (Bugbot / tip-only / HEAD-only review sees the full run) |
+| **`milestone-pr`** | Milestone after verify pass | **New branch per milestone** | Yes | **Per milestone:** draft → build-verify → warden → squash → mark ready → **wait CI / Bugbot** → **merge** → default → next branch. **Recommend** for overnight drain + forge |
+| **`local`** | Same | Current | No | No |
+| **`branch-pr`** | Same | One run branch | Yes | Draft mid-run → **end-of-run close-out** (no merge; keeps milestone history) |
+| **`branch-pr-squash`** | Same | One run branch | Yes | Same + **squash the whole run** before ready (one PR for human review in the morning; no merge) |
 | **`branch-push`** | Same | Run branch | Yes | No PR |
 | **`current-push`** | Same | **Current** (often main) | Yes | No PR — **never silent-default** |
 | **`none`** | No | — | No | No |
 
-**PR modes:** end-of-run **mark ready** by default (unattended checks). Override only if user said *leave draft* / *keep draft*.
+**Why not one giant squash PR for overnight:** a multi-hour drain as a single tip is hard to review, CI/Bugbot fire only at the end, and nothing lands if the last slice fails. **`milestone-pr`** ships each verified unit as its own PR so checks run on a reviewable diff, auto-fixes apply to that slice, and merged work is on default before the next slice starts.
+
+**PR modes:**
+
+| Mode | When mark ready | Merge |
+|------|-----------------|-------|
+| **`milestone-pr`** | After **each** milestone close-out | **Yes** — after green CI (or no CI) + Bugbot pass below |
+| **`branch-pr` / `branch-pr-squash`** | **End of run** | **No** |
+
+Override ready/merge only if user said *leave draft* / *keep draft* / *no merge*.
 
 ### Cloud Agent path *(remote unattended — does not rewrite settings)*
 
-**Why:** Durable `orchestrator.git.mode` is often **`local`** / **`none`** / **`branch-push`** for IDE work on a laptop. A **Cloud Agent** (Cursor Cloud or similar remote VM whose platform instructions require feature-branch + PR delivery) still needs a PR so CI/Bugbot can see the run. Tip-only bots need a **squash** tip — so the cloud effective mode is **`branch-pr-squash`**.
+**Why:** Durable `orchestrator.git.mode` is often **`local`** / **`none`** / **`branch-push`** for IDE work on a laptop. A **Cloud Agent** (Cursor Cloud or similar remote VM whose platform instructions require feature-branch + PR delivery) is the overnight drain path: it needs PRs so CI/Bugbot can see each slice, a **squash tip per PR** so tip-only bots see the whole slice, and **merge + next branch** so work lands instead of sitting as one giant morning PR.
 
 **Detect Cloud Agent:** session is a remote/unattended cloud run with platform branch+PR obligations — **not** local IDE Composer / desktop agent / user laptop CLI. If unsure → **not** cloud (follow durable mode / ask).
 
@@ -27,12 +37,12 @@
 
 | Durable `orchestrator.git.mode` | Cloud this-run |
 |---------------------------------|----------------|
-| unset / **`local`** / **`none`** / **`branch-push`** / **`current-push`** / **`branch-pr`** | **`branch-pr-squash`** |
-| **`branch-pr-squash`** | **`branch-pr-squash`** (no change) |
+| unset / **`local`** / **`none`** / **`branch-push`** / **`current-push`** / **`branch-pr`** / **`branch-pr-squash`** | **`milestone-pr`** |
+| **`milestone-pr`** | **`milestone-pr`** (no change) |
 
-One line: *Git: `branch-pr-squash` (cloud this-run; durable setting remains `<mode|unset>`)*. Then forge probe + normal PR close-out (including squash).
+One line: *Git: `milestone-pr` (cloud this-run; durable setting remains `<mode|unset>`)*. Then forge probe + **milestone PR cycle** (below).
 
-**User wins:** explicit this-run order (*use local this run* / *no PR* / *branch-pr only* / *leave draft*) overrides the cloud default. Still **do not** rewrite ADT-settings unless they asked to change the durable default.
+**User wins:** explicit this-run order (*use local this run* / *no PR* / *one PR* / *branch-pr-squash this run* / *no merge* / *leave draft*) overrides the cloud default. Still **do not** rewrite ADT-settings unless they asked to change the durable default.
 
 **Not this path:** local IDE orchestration — honor durable mode even if the machine has `gh`. Template sync / non-orchestrate playbooks — unchanged.
 
@@ -42,13 +52,13 @@ One line: *Git: `branch-pr-squash` (cloud this-run; durable setting remains `<mo
 2. **Cloud Agent?** → apply **Cloud Agent path** above (this-run effective mode); skip steps 3–4 for mode choice; continue at forge probe. Else step 3.
 3. **If set** → use it (unless this-run-only override). One line: *Git: `<mode>`*. Probe forge if PR mode (or first run after mode change).
 4. **If unset** → **ask once** (recommend):
-   - remote + forge CLI → **`branch-pr-squash`** (Bugbot / tip-only bots only see HEAD; squash makes the full run one tip before mark ready). Offer plain **`branch-pr`** if they want to keep milestone commits on the PR
-   - remote, no CLI → **`branch-pr-squash`** + install ask, or **`branch-push`**
+   - remote + forge CLI → **`milestone-pr`** (overnight: one PR per verified slice, wait CI/Bugbot, merge, next branch). Offer **`branch-pr-squash`** for one PR / human merges in the morning; offer **`branch-pr`** to keep milestone history on one PR
+   - remote, no CLI → **`milestone-pr`** + install ask, or **`branch-push`**
    - no remote → **`local`** (or **`none`**)
    - **`current-push`** only as explicit solo option
 5. Record `mode` + `recorded` (+ `source`) unless *this run only* / cloud this-run override.
 6. **Forge tooling probe** (below).
-7. Later: *Set orchestrator git to local|branch-pr|branch-pr-squash|branch-push|current-push|none*.
+7. Later: *Set orchestrator git to milestone-pr|local|branch-pr|branch-pr-squash|branch-push|current-push|none*.
 
 ### Forge tooling probe
 
@@ -65,7 +75,9 @@ One line: *Git: `branch-pr-squash` (cloud this-run; durable setting remains `<mo
 
 **Checks (cheap):** `git`; for PR modes — CLI on PATH + auth status if easy.
 
-**PR mode + CLI missing/unauthed:** say so; **ask once** — install, skip (push + human PR), or switch mode. Install ≠ login: after install, **ask** before `gh auth login` / equivalent. No silent install/auth; no tokens in docs. Missing CLI is not a hard bootstrap failure.
+**PR modes** = `milestone-pr` / `branch-pr` / `branch-pr-squash`.
+
+**PR mode + CLI missing/unauthed:** say so; **ask once** — install, skip (push + human PR), or switch mode. Install ≠ login: after install, **ask** before `gh auth login` / equivalent. No silent install/auth; no tokens in docs. Missing CLI is not a hard bootstrap failure. **`milestone-pr` without merge permission** still opens PRs; merge step degrades (below) instead of inventing a bypass.
 
 ### Start of run *(after mode resolved)*
 
@@ -73,18 +85,23 @@ One line: *Git: `branch-pr-squash` (cloud this-run; durable setting remains `<mo
 |-------|--------|
 | Not a git repo | Treat as **`none`** this run |
 | Dirty **unrelated** WIP | **Hard stop** — commit/stash/waive (TEMPLATE_SYNC A0 spirit) |
+| `milestone-pr` | **Cloud this-run** already on a non-default branch → **stay**, continue **`milestone-pr`** (record `branch_origin: platform`) — that branch is the platform workspace, not “someone else’s feature.” Non-cloud, non-default **intentional** user feature branch → **stay** and **degrade this run to `branch-pr-squash`** (one PR, **no merge** onto default — do not slice-merge someone else’s feature branch). Else create first `orchestrate/YYYY-MM-DD-<stem-or-scope>` (record `branch_origin: created`) |
 | `branch-pr` / `branch-pr-squash` / `branch-push` | Non-default **intentional** feature branch → **stay** (record `branch_origin: pre-existing`). Else create `orchestrate/YYYY-MM-DD-<scope>` (record `branch_origin: created`) |
 | `local` / `current-push` | Stay on current branch (`branch_origin: n/a`) |
 | `none` | No branch setup |
 
-**Remember for end-of-run:** whether this run **created** the branch vs **stayed** on a pre-existing one. That drives **return to default** (below).
+**Remember for end-of-run:** whether this run **created** branches vs **stayed** on a pre-existing one. That drives **return to default** (below).
 
 ### During the loop
 
-- **Commit** (not `none`): parent, after work-verifier **pass** — one milestone per unit/batch. No secrets; no force-push mid-loop.
-- **Push** (`branch-pr*`, `branch-push`, `current-push`): after milestones (or every few if slow).
-- **PR modes:** after first push, open **draft** PR if missing (scope + “orchestrator run”). Stay draft mid-run. No CLI → push + “open PR in browser.”
-- **`current-push` rejected:** stop delivery; offer once to fall back to `branch-pr-squash` (or `branch-pr`) this run — no silent mode switch.
+- **Commit** (not `none`): parent, after work-verifier **pass** — one milestone per unit/batch. No secrets; no force-push mid-loop except **`--force-with-lease`** in a squash step.
+- **Push** (`milestone-pr`, `branch-pr*`, `branch-push`, `current-push`): after milestones (or every few if slow).
+- **`milestone-pr`:** after that commit + push, run the **milestone PR cycle** (below) **before** the next implementer unit. Waiting on CI is overnight drain — not a stop. **One cycle at a time** (do not open a second milestone PR until this one merged or degraded).
+- **`branch-pr` / `branch-pr-squash`:** after first push, open **one draft** PR if missing (scope + “orchestrator run”). Stay draft mid-run. Close-out only at **end of run**.
+- No CLI → push + “open PR in browser.”
+- **`current-push` rejected:** stop delivery; offer once to fall back to `milestone-pr` (or `branch-pr-squash`) this run — no silent mode switch.
+
+**PR unit (`milestone-pr`):** one work-verifier-pass unit (or the same-stem batch the loop already grouped). Do **not** accumulate the rest of the night, other stems, or “until the stem is drained” into one PR. Exception: the next item is the **immediate continuation of the same Current-focus unit** still in progress (implementer split) → stay on this branch. Do **not** stack a second PR on an unmerged first PR — add commits to the open PR instead.
 
 ### End of run *(non-PR)*
 
@@ -92,12 +109,48 @@ One line: *Git: `branch-pr-squash` (cloud this-run; durable setting remains `<mo
 - **`branch-push`:** push remaining; report branch name used for the run.
 - **`current-push`:** push; report.
 - **`local` / `none`:** report commits/dirty; no push.
-- **Never merge.** Force-push only as **force-with-lease** in squash step below.
+- **Never merge** in these modes. Force-push only as **force-with-lease** in a squash step.
 - Then **return to default branch** (below) when applicable.
+
+### Milestone PR cycle *(`milestone-pr` — strict order, each slice)*
+
+After work-verifier **pass** + milestone commit + push. **Do not reorder. Do not start the next implementer unit until this cycle merged or degraded.**
+
+Human-verify-map is **not** part of each cycle — once at true end of run ([`orchestrator.md`](orchestrator.md)). If that map dirties docs after the last code merge → one extra docs-only cycle.
+
+1. **Draft PR** — if missing, open **draft** for **this slice** (stem + unit, not “whole orchestration”). Stay draft until step 6.
+2. **Final push** — remote matches local on this milestone branch.
+3. **Build verify** *(gate)* — [`Agent_Build_Verify_Rule.mdc`](../Agent_Build_Verify_Rule.mdc) / Tooling **Project verify**. Fix → re-run until green, or **degrade** (leave **draft**, report).  
+   **Do not** warden / squash / mark ready / merge while red.
+4. **Todo warden** *(docs-only; after green)* — stems in **this PR**; spawn `todo-warden` or follow [`todo-warden.md`](todo-warden.md). Brief: those stems + claimed-done this slice; **honesty+hygiene**.  
+   - **`gaps-found`:** commit TODOs, push, **leave draft**, **skip squash + ready + merge** (degrade this slice; optional re-loop **this stem on this branch**).  
+   - **`clean`:** continue.  
+   - No code in this slice → skip warden.
+5. **Squash** *(after 3 green + 4 clean)* — one commit on **this milestone branch** (not default); subject = this slice; **`--force-with-lease` only**. Unsafe history → skip squash, note, continue. Tip-only bots must see the **whole slice**, not the last fix-up tip.
+6. **Mark ready** *(default)* — after 3 green, 4 clean/skipped, 5 done/skipped. Skip if *leave draft*, verify never green, or warden **gaps-found**.
+7. **Wait CI** — poll forge checks every **60–120s**. **Stop waiting** at the first of: required checks completed · **45 minutes** with no check still running · budget exhausted.  
+   - **Green:** all required checks passed → continue to step 8.  
+   - **Red:** apply a fix, local build-verify, push, re-wait. **Fix budget: 2 rounds** after first ready, then **degrade** (leave ready, **do not merge**).  
+   - **Incomplete / timeout / budget** (required checks still pending, queued, or never started): **degrade** — do **not** continue to steps 8–9.  
+   - **No CI configured:** treat as green for the merge gate after local verify; still do step 8.  
+   - Do **not** merge on red, pending, or missing required checks. Do **not** admin-bypass.
+8. **Bugbot / tip-only review** — after CI completes (or after ready if no CI), wait up to **10 minutes** (15 if no CI) for comments or auto-pushed commits. None → go to merge.  
+   - **Pushed commits** on this branch: `git pull --ff-only`, local build-verify; green → re-wait CI (counts toward the 2-round budget); red → fix or degrade.  
+   - **Auto-fix** targeting this branch: **accept** when the diff clearly addresses the reported finding; reject drive-by refactors / unrelated files. Then local verify + re-wait CI.  
+   - **Comments only:** apply **clear, in-scope** fixes (one pass); ignore nits / out-of-scope. Do not redesign. If changes were made → commit, push, local build-verify; green → re-wait CI (counts toward the 2-round budget); red → fix or degrade. No changes → go to merge.  
+   - Do **not** wait for human reviewers.
+9. **Merge** — squash-merge via the inferred CLI (**no** failing-check bypass). Forge delete-on-merge is OK.  
+   - **Denied** (permissions, required human review, read-only CLI, protection): **degrade** — do not retry with bypass, do not stack a second PR.  
+10. **Return to default** *(successful merge only — skip on degrade)* — `git checkout` default; `git pull --ff-only` if clean and tracking exists. Pull/rebase fight → **stop git cycling**, report, stay put.  
+11. **Next branch or stop** *(successful merge only — skip on degrade)* — ready work + budget remain → create `orchestrate/YYYY-MM-DD-<stem-or-scope>` from default (append `-2`, `-3` if the name exists); continue the loop. Else stay on default (true end).
+
+**Degrade** *(any step above)*: leave the PR as-is (draft or ready); do **not** merge; **skip steps 10–11**. Same stem’s next item → **stay on this unmerged branch** (more commits on the **same** PR). Other **independent** stems → new branch from **default** (they do not need this PR). Report the block.
+
+**Order why:** each overnight slice is reviewable, checked, and on default before the next slice starts — so a late failure does not roll back earlier work, and Bugbot never sees only the last fix-up commit of a giant run.
 
 ### PR close-out *(branch-pr / branch-pr-squash — strict order)*
 
-After agent work done (+ human-verify-map committed if needed). **Do not reorder.**
+After agent work done (+ human-verify-map committed if needed). **Do not reorder. Do not merge.**
 
 1. **Final push** — remote matches local.
 2. **Build verify** *(gate)* — [`Agent_Build_Verify_Rule.mdc`](../Agent_Build_Verify_Rule.mdc) / Tooling **Project verify**. Fix → re-run until green, or stop (leave **draft**, report block).  
@@ -113,22 +166,22 @@ After agent work done (+ human-verify-map committed if needed). **Do not reorder
 
 **Order why:** green build → honest backlog → optional single HEAD → invite checks → leave the machine on the default branch so the next ask is not on a closed/merged/stale PR tip.
 
-### Return to default branch *(end of run — default when this run created the branch)*
+### Return to default branch *(after a created-branch delivery)*
 
-**Purpose:** After orchestration, local HEAD should not stay on a disposable `orchestrate/…` (or equivalent) so the next ask (template sync, casual fix) does not land on a closed/merged PR branch.
+**Purpose:** Local HEAD should not stay on a disposable `orchestrate/…` so the next ask (template sync, casual fix, **next milestone**) does not land on a closed/merged/stale PR tip.
 
 | Case | Action |
 |------|--------|
-| This run **created** the run branch (`branch_origin: created`) | **Default:** `git checkout` repo default (`main` / `master` / `git symbolic-ref refs/remotes/origin/HEAD` / forge default). Optional cheap `git pull --ff-only` on default if clean and tracking exists — do not merge/rebase fights. |
+| This run **created** the branch (`branch_origin: created` or `platform`) | **Default:** `git checkout` repo default (`main` / `master` / `git symbolic-ref refs/remotes/origin/HEAD` / forge default). Optional cheap `git pull --ff-only` on default if clean and tracking exists — do not merge/rebase fights. **`milestone-pr`:** do this after **each successful merge** (step 9), then step 11 may create the next branch. On degrade, **skip** return-to-default. |
 | This run **stayed** on a pre-existing intentional feature branch | **Do not** auto-checkout default (user may still be building that feature). One line in report: *stayed on `<branch>` (pre-existing)*. |
 | User said *stay on this branch* / *this run only stay here* | Skip return. |
 | Working tree **dirty** with uncommitted work | **Do not** checkout away — report dirty + stay; ask commit/stash if needed. |
 | `local` / `current-push` / `none` / never left default | Skip (already on default or no branch hop). |
 | `branch-push` with **created** branch | Same as created: return to default after final push (+ warden if any). |
 
-**When:** **Last** git step after this run’s delivery for the branch is done (final push, close-out steps 1–5 as applicable, including gaps-found push). **Never** checkout default *before* final push / squash / mark-ready on the run branch.
+**When:** after that branch’s delivery is done (milestone cycle **successful merge**, or branch-pr close-out 1–5, including gaps-found push). **Never** checkout default *before* final push / squash / mark-ready / merge on the run branch. **Never** checkout default on **`milestone-pr` degrade** (stay on the unmerged slice).
 
-**Do not:** delete the run branch locally/remotely unless the user asked; merge the PR; force-checkout over dirty files.
+**Do not:** mass-delete branches (forge delete-on-merge is OK); merge PRs **except** `milestone-pr` step 9; force-checkout over dirty files.
 
 ### Non-PR + warden
 
@@ -136,6 +189,7 @@ After loop (+ human verify map): if implementer units shipped → run **todo-war
 
 ### Grants / do not
 
-- Mode (or this-run / **Cloud Agent** override) grants **only** that effective mode’s commit/push/PR for **orchestration**.
+- Mode (or this-run / **Cloud Agent** override) grants **only** that effective mode’s commit/push/PR/**merge** for **orchestration**.
+- **`milestone-pr` merge grant** is only step 9 after green local verify + warden clean/skipped + (**required CI green** or no CI configured) + Bugbot pass (or no comments). **Not** a grant after CI timeout / pending checks / Bugbot comments that still need a push. Never a grant to bypass protection or merge other playbooks’ PRs.
 - Not a grant for template sync or other playbooks.
-- **Do not:** merge PRs; bare `--force`; silent-default `current-push`; invent forge; store tokens; rewrite durable `orchestrator.git.mode` because of a Cloud Agent this-run; leave HEAD on an orchestrator-created branch after a finished run without reporting it.
+- **Do not:** merge PRs in `branch-pr` / `branch-pr-squash` / non-PR modes; bare `--force`; silent-default `current-push`; invent forge; store tokens; rewrite durable `orchestrator.git.mode` because of a Cloud Agent this-run; leave HEAD on an orchestrator-created branch after a **finished** run without returning to default; stack PRs; accumulate a whole overnight drain into one PR under `milestone-pr`.

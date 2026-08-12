@@ -81,4 +81,20 @@ When product shape is still unknown, a short **spike** (branch, throwaway protot
 
 **Implement / verify / orchestrate:** add missing exercise-path TODOs when discovered; domain-only clearance without path/phase/library-only is not stem-done. Work-verifier **fails** claimed feature/Layer done that is domain-only without bridge, or that leaves matching operable Acceptance open with no TODO.
 
+### 5.4 Finished-kit contract ⇒ covering TODOs *(not wait-for-pickup)*
+
+**Failure mode:** Agent can write the **finished product** spec (kit contract, remaining APIs, owning stems) but then **omits TODO items** for those in-scope surfaces — citing “do not invent work,” “no planned-only map rows,” “until someone picks one up,” or treating a **terse but actionable** goal as a stub that needs hand-holding through each facet. Overnight **orchestrate** then has nothing to drain except Current focus.
+
+**Rule:** If this stem’s spec (or the confirmed kit contract) names a surface as **in-scope for the product**, that surface needs an **implementable TODO** on an **existing** stem (this inventory TODO, or the owning stem already on the map) — **open or Completed**. Writing missing **open** items is **not** inventing work. **Inventing** is adding APIs, products, or map rows the user never included. Do **not** resurrect surfaces that already have a Completed covering item.
+
+**Terse + public contract = expand, don’t interview.** “Fully support this vendor’s API” (or equivalent) is actionable when the vendor docs / OpenAPI / upstream SDK are available: **diff those against current code** and add covering TODOs for gaps. Do **not** wait for the user to name Files, embeddings, batch, … one by one. Do **not** treat that plan as vague or as a Catalog `stub`. Vague = cannot implement without a **product decision the docs don’t answer** (playground UI, private app names, “maybe later”).
+
+**Pickup ≠ backlog:** “Picked up” = Current focus / orchestrator **starts that unit**. It is **not** when the TODO row is first written. Do **not** leave in-scope spec surfaces off the TODO until a human chooses them.
+
+**Order on the inventory TODO:** High / Current focus = the next winner (target architecture for **that** cut). Medium / Low = the rest of the finished kit, unordered until promoted. Orchestrate drains High through Low unless the user capped tiers.
+
+**Still do not:** new Document Map rows for leftovers or for vague planned-only ideas ([`naming-layout.md`](naming-layout.md) §0 inventory rule); TODOs for out-of-kit future APIs; one mega-commit for the whole kit (git: `milestone-pr` — many verified units).
+
+**Timescale:** Spec the **finished product**, not an intermediate architecture. Backlog that product as **many verify-order units**. Overnight drain = implement those units, not wait, not one dump.
+
 ---

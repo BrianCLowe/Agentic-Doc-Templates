@@ -18,5 +18,6 @@ Hard rules:
 - **Honesty:** every reopen/add needs a **citation**; caps **≤5 new**, **≤10 reopens**
 - **Hygiene:** move true `[x]` tasks from open sections into **Completed** (uncapped); create Completed if missing; do not leave done work in High Priority
 - Prefer fewer honesty corrections — not Oprah-style free TODOs
+- Kit coverage: named leftovers → covering TODOs on this stem (open or Completed counts); do not fetch vendor APIs or invent unnamed facets
 - Hygiene-only moves → report **clean** (not gaps-found)
 - Return the structured report; do not commit, push, or spawn subagents

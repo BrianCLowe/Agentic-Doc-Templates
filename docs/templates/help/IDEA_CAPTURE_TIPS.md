@@ -35,7 +35,7 @@ One option that supports Grok, ChatGPT, Claude, Gemini, and others with **Markdo
 
 ### Split when identity differs *(agent duty — not part of your ask)*
 
-One Understanding / Document Map row = **one finished-feature identity**. If source material covers two things that do **different jobs**, agents should create **two rows** and two file sets without waiting for you to say “split.” You only need to correct them if they still merged unlike ideas.
+One Understanding / Document Map row = **one finished-feature identity**. If source material covers two things that do **different jobs**, agents should create **two rows** and two file sets without waiting for you to say “split.” You only need to correct them if they still merged unlike ideas. Methods of one kit stay on that kit’s spec + TODO until a slice is actually next — agents should still write covering TODOs for in-scope leftovers (not skip the backlog because they could write the spec). Do **not** add map rows for vague planned-only items. A terse “fully support this vendor API” is not a stub: the agent should expand from the public docs, not wait for you to name each facet.
 
 Day-to-day patterns: [`USAGE.md`](USAGE.md).
 
@@ -254,6 +254,8 @@ When the user describes a feature vaguely:
 6. If the user does not know stack or architecture, propose options **after** Understanding shape sections are drafted, with a one-line rationale each — durable choices land in the **spec**.
 7. Do not start implementation until the user confirms Understanding **shape** or explicitly waives review.
 8. End sessions by updating TODO **Current focus** ([`workflow/todos.md`](../agent/workflow/todos.md) §5.1). Preference corrections during polish → same-turn spec **Decisions** ([`workflow/decisions.md`](../agent/workflow/decisions.md)), not deferred to wrap-up.
+
+**Terse + documented contract is not vague.** “Fully support this vendor’s public API” (library wrap, match the SDK/docs) is **actionable without further information** — read those docs, diff against current code, expand spec + covering TODOs on **existing** stems (Workflow §5.4). Do **not** interview through each uncovered method. Do **not** add Document Map rows for vague planned-only extras (playground, “maybe later”) — Workflow §0 inventory.
 
 When the user **is** experienced, do not over-interview — still fill **What this is NOT** and **Relationship to existing work**; skip obvious questions.
 

@@ -306,6 +306,27 @@ def verify(case_id: str, workdir: Path) -> int:
             elif current[rel] != baseline[rel]:
                 errors.append(f"file should not change: {rel}")
 
+    for item in expect.get("file_must_contain") or []:
+        rel = item["path"]
+        p = abspath(rel)
+        if not p.exists():
+            errors.append(f"file_must_contain missing file {rel}")
+            continue
+        text = p.read_text()
+        for pat in item.get("patterns") or []:
+            if pat not in text:
+                errors.append(f"{rel} missing {pat!r}")
+
+    for item in expect.get("file_must_not_contain") or []:
+        rel = item["path"]
+        p = abspath(rel)
+        if not p.exists():
+            continue
+        text = p.read_text()
+        for pat in item.get("patterns") or []:
+            if pat in text:
+                errors.append(f"{rel} must not contain {pat!r}")
+
     up = expect.get("understanding_path")
     if up:
         up_path = abspath(up)

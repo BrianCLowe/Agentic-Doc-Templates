@@ -14,11 +14,31 @@
 | `optional-live-reshape` | Live Understanding → shape trim + relocate into specs (Workflow §4). **`auto` / `auto-all`:** run all Document Map stems. **`choose`:** present + ask once (default yes). Do **not** silent-skip under choose |
 | `optional-todo-ambition` | Live TODO ambition pass (agent timescale). **`auto` / `auto-all`:** all Document Map `*-TODO.md`. **`choose`:** present + ask once. Do not invent work |
 | `optional-todo-operable` | Live TODO operable dual-track (Workflow §5.3). **`auto` / `auto-all`:** all Document Map `*-TODO.md`. **`choose`:** present + ask once. Add exercise-path rows or **library-only** labels; do not invent unrelated backlog |
+| `optional-todo-kit-coverage` | Live TODO kit-coverage pass (Workflow §5.4). **`auto` / `auto-all`:** all Document Map `*-TODO.md`. **`choose`:** present + ask once. Add covering TODOs for spec-named in-scope leftovers on **existing** stems (**open or Completed** counts — do not resurrect); one research item if the spec is thin. No new map rows; no vendor-doc fetch in sync |
 | `rules` | Refresh installed agent rules/adapters from local pack (**no ask** unless tool has `customized: true`) |
 | `optional-upstream-check` | Stamp `upstream:` in `docs/ADT-settings.yaml` / offer enable update-check if unset |
 | `process-docs-only` | Pack process/help/agent docs only — no live feature/shared content scan |
 
 ---
+
+## 2.7.19
+
+- **Live impact:** `versions-only`, `master-index`, `process-docs-only`, `rules`, `optional-todo-kit-coverage`
+- **Files:**
+  - `VERSION` — 2.7.18 → 2.7.19
+  - `agent/roles/orchestrator-git.md` — new **`milestone-pr`** (recommend): one PR per verified slice → wait CI / Bugbot auto-fixes → **merge** → new branch for the next slice; keep **`branch-pr-squash`** as one-morning-PR / no merge. **Cloud Agent path** this-runs **`milestone-pr`** when durable is `local` / `none` / `branch-push` / `current-push` / `branch-pr` / `branch-pr-squash` / unset (do **not** rewrite ADT-settings; explicit this-run user order wins). Cloud this-run **stays** on the platform workspace branch (no degrade to squash). **Degrade** skips return-to-default / next branch. CI timeout / pending → degrade (do not merge). Comment-only Bugbot fixes re-wait CI
+  - `agent/roles/orchestrator.md` — loop runs the milestone PR cycle before the next unit; **serial implementers** under `milestone-pr`; merge grant only for `milestone-pr`; **§5.4 kit coverage** — add covering TODOs on existing stems, do not skip inventory Medium as “not picked up”
+  - `agent/workflow/naming-layout.md` — **inventory vs new map rows**; **no map rows for vague planned-only**; terse wrap-the-public-API is **actionable** (not a stub)
+  - `agent/workflow/todos.md` — **§5.4** finished-kit spec ⇒ covering TODOs; pickup ≠ backlog; filling in-scope items is not inventing work; **diff vendor docs vs code** without facet-by-facet hand-holding
+  - `agent/workflow/understanding.md` §2, `Agent_Timescale_Planning_Rule.mdc` / `.instructions.md`, modular rule, spec/TODO templates, doc-graduate / understanding-author — pointers
+  - `agent/roles/todo-warden.md`, `roles/README.md` — per-slice vs end-of-run close-out; named leftovers get covering TODOs (open or Completed); thin wrap-the-API research only if this run claimed kit-complete; no vendor fetch
+  - `agent/roles/template-sync.md` + `adapter-src/bodies/docs-template-sync.md` + `todo-warden.md` — honor **`optional-todo-kit-coverage`**; covering includes Completed
+  - `agent/roles/cursor/*`, `agent/roles/grok/*` — regenerated adapters
+  - `agent/BOOTSTRAP.md` Step 3p **E**, `agent/TEMPLATE_SYNC_B.md` B0.6 — recommend **`milestone-pr`**; menu + cloud note; B adds **`optional-todo-kit-coverage`** live pass (spec-named leftovers → TODOs on this stem; Completed counts; thin wrap-the-API spec → one research TODO; no vendor fetch)
+  - `help/USAGE.md` — sync kit-coverage vs warden split
+  - `agent/ADT-settings.example.yaml` — example mode **`milestone-pr`**
+  - `Master_Index_Template.md`, `help/*`, root `README.md` — recommend + cloud path + inventory/TODO wording
+- **Step B:** Bump Master Index **Pack version** to 2.7.19. Adopt At a Glance **orchestrator git** recommend **`milestone-pr`** + Cloud Agent this-run note if missing; adopt **inventory stem** / covering-TODOs wording on At a Glance idea-sources if missing. **Do not** migrate existing live `orchestrator.git.mode` (including `local` / `branch-pr` / `branch-pr-squash`) — cloud overrides are this-run only. **Update and refresh** installed modular + timescale rules from this pack (**no ask** unless `customized: true`). **`optional-todo-kit-coverage`:** present/execute per `sync.mode` — for each Document Map stem, if the **spec already names** in-scope leftover surfaces with no covering TODO (**open or Completed** on **this** stem), add items on that stem (no new map rows; do not resurrect Completed). If Overview claims wrap-the-vendor-API but the spec lists no leftovers, add **one** research TODO (diff vendor docs next session) — do **not** fetch vendor APIs during sync. Under **`choose`:** ask once (default all stems). Under **`auto` / `auto-all`:** all Document Map `*-TODO.md`. Todo-warden does not replace this pass. Orchestrator playbooks are parent-only (no adapter).
 
 ## 2.7.18
 

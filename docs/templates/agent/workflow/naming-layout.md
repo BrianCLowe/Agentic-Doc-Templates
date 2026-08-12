@@ -40,4 +40,12 @@
 
 **One identity per stem:** If conversation or `reference/` material describes **two (or more) finished-feature identities** that do different jobs (different category, product surface, or ownership) — **split**. Add separate Document Map rows + default file sets (§0) in the same turn; move misplaced shape/contract content into the correct stem. Do **not** keep unlike things in one Understanding to avoid creating files or because the user mentioned them together. Prefer asking one clarifying question over silently merging. User correction (“those are two features”) → split immediately — do not wait for them to name paths.
 
+**Inventory / catch-all vs new map rows:** A Document Map row is a surface you are **about to build** (or just ranked as the next unlike winner) — **not** every method, endpoint, or leftover API in a kit.
+
+**Do not add map rows for vague planned-only items.** “Maybe a playground later,” “billing someday,” “whatever else we think of” — no identity, no implementable contract, needs a product decision the docs do not answer. Those stay off the map (and off the TODO) until they become a real slice. **Map row = files on disk the same turn** still holds: never add a planned-only placeholder row with nowhere to click.
+
+**Terse ≠ vague.** If the idea is **actionable without further information** — e.g. a **library** whose job is to fully wrap a **documented public API** / upstream SDK — do **not** treat it as a stub idea and do **not** interview the user through each uncovered facet. Diff current code against those docs and put covering TODOs on the **existing** inventory/owning stem ([`todos.md`](todos.md) §5.4). One inventory stem may list many unordered in-scope surfaces until a slice is actually next.
+
+**Do not** split each leftover into its own map row “for completeness” — that is empty spec+TODO files with nothing to implement this turn. **Split** when the user names it as its own finished-feature identity, or it is the **next** unlike winner and you are about to build it. Methods of one kit stay one identity until a surface becomes its own product.
+
 ---
