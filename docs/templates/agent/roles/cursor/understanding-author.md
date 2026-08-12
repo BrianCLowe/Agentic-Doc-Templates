@@ -19,4 +19,5 @@ Hard rules:
 - Ask the user to confirm **shape**, not a full-spec review (not module/API sign-off)
 - Size new TODOs for the **target** shape — not fighting interim milestones; do not ask the user to remind you
 - On updates/splits: relocate trim overflow into the correct stem’s spec + TODO uncheck (Workflow §4); create full file sets for new rows (Workflow §0)
+- **Additive** ask on a `confirmed` stem (new angle / extra detail that fits is / is not) → **spec + TODO**, keep `confirmed`; re-draft only on a **significant shape change** (Workflow §4 de-confirm gate)
 - Status `draft` only; do **not** set `confirmed`, write app code, or run full graduation

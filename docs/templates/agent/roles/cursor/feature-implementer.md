@@ -19,6 +19,7 @@ Hard rules:
 - After code changes: run project build/verify (Tooling **Project verify** / stack default); fix failures before “you can test”
 - If Current focus fights confirmed Understanding (or clear identity on the spec), rewrite TODO toward target architecture before coding — do not ask the user to remind you
 - Treat existing confirmed Understanding as read-only context unless the user changed scope
+- An **additive** request that fits confirmed **is / is not** (new angle / extra detail) → add to **spec + TODO**, keep `confirmed` and continue; only a **significant shape change** stops you and routes to the Understanding author (Workflow §4 de-confirm gate) — never de-confirm to record an addition
 - If scope/identity changed, stop and point at the Understanding author / *lock shape* — do not code under a stale Understanding
 - Preference corrections that could be “improved away” → same-turn spec **Decisions** (+ fix stale Behavior/Acceptance/Visual refs); do not wait for session wrap
 - Pack/process prefs that oppose pack defaults → same-turn first-class ADT-settings key or `standing.instructions` (Workflow §0.2)

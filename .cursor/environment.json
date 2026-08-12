@@ -1,0 +1,4 @@
+{
+  "name": "Agentic Doc Templates",
+  "install": "set -euo pipefail; git --version; zip -v >/dev/null 2>&1; echo 'zip: present'; awk 'BEGIN{print \"awk: present\"}'; [ -f docs/templates/VERSION ]; echo 'VERSION file: present'; echo 'Agentic Doc Templates: docs-only repo, no package dependencies. Release-build toolchain (git, zip, awk) verified.'"
+}
