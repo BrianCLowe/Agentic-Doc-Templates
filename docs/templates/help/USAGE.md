@@ -67,7 +67,7 @@ That covers first-time build and later drops of new exports. Point at named file
 
 > Build or update live docs from `docs/reference/combat-feel-chat.md` and `docs/reference/inventory-thread.md`.
 
-Agents should split unlike identities on their own (Workflow / Understanding author) — you should not need to remind them every time. If they still merge two features, correct shape once.
+Agents should split unlike **finished-feature identities** on their own (Workflow / Understanding author) — you should not need to remind them every time. If they still merge two features, correct shape once. Leftover **methods of one kit** should stay as TODOs on the inventory stem (not a stack of empty spec files) — but those TODOs **should exist** so *orchestrate* can drain them.
 
 Polished PRD-only path still works:
 

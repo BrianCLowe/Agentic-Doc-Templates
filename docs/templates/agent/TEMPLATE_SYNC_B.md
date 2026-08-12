@@ -201,7 +201,7 @@ Versions:
 5. **Live TODO ambition** *(if `optional-todo-ambition`)* —
    - **`sync.mode: auto` or `auto-all`:** execute for **all Document Map `*-TODO.md` stems** (no ask); commit per B0.3 after.
    - **`sync.mode: choose`:** present + ask once (default all stems / named / no); suggest separate commit; commit only if they ask.
-   - **On execute:** for each stem — open TODO + Understanding; merge interim-architecture staging into target-architecture High Priority; keep real blockers; refresh Current focus; do **not** invent work.
+   - **On execute:** for each stem — open TODO + Understanding; merge interim-architecture staging into target-architecture High Priority; keep real blockers; refresh Current focus; do **not** invent **out-of-kit** work. Covering TODOs for in-scope spec surfaces is Workflow §5.4 (not inventing).
 5b. **Live TODO operable** *(if `optional-todo-operable`)* —
    - **`sync.mode: auto` or `auto-all`:** execute for **all Document Map `*-TODO.md` stems** (no ask); commit per B0.3 after.
    - **`sync.mode: choose`:** present + ask once (default all stems / named / no); explain Workflow §5.3 dual-track; suggest separate commit; commit only if they ask.

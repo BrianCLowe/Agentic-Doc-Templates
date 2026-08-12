@@ -37,7 +37,7 @@
 
 ## Behavior (stable)
 
-**Contract completeness here — not in Understanding.** Understanding holds shape only (no How-it-should-work section). Put durable flows, modes, edge cases, and product rules the user (or confirmed decisions) established **here**. Prefer the user’s words for product rules; do not invent. Do **not** omit confirmed contract detail to “keep the pack lean” — lean applies to Understanding and to avoiding filler, not to dropping behavior callers need.
+**Contract completeness here — not in Understanding.** Understanding holds shape only (no How-it-should-work section). Put durable flows, modes, edge cases, and product rules the user (or confirmed decisions) established **here**. Prefer the user’s words for product rules; do not invent. Do **not** omit confirmed contract detail to “keep the pack lean” — lean applies to Understanding and to avoiding filler, not to dropping behavior callers need. **In-scope surfaces named here** need covering TODOs on this stem or the owning stem already on the map (Workflow §5.4) — a complete spec is not a reason to skip the backlog.
 
 [Behavior that should stay true across refactors.]
 

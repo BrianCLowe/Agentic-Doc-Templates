@@ -35,7 +35,7 @@ One option that supports Grok, ChatGPT, Claude, Gemini, and others with **Markdo
 
 ### Split when identity differs *(agent duty — not part of your ask)*
 
-One Understanding / Document Map row = **one finished-feature identity**. If source material covers two things that do **different jobs**, agents should create **two rows** and two file sets without waiting for you to say “split.” You only need to correct them if they still merged unlike ideas.
+One Understanding / Document Map row = **one finished-feature identity**. If source material covers two things that do **different jobs**, agents should create **two rows** and two file sets without waiting for you to say “split.” You only need to correct them if they still merged unlike ideas. Methods of one kit stay on that kit’s spec + TODO until a slice is actually next — agents should still write covering TODOs for in-scope leftovers (not skip the backlog because they could write the spec).
 
 Day-to-day patterns: [`USAGE.md`](USAGE.md).
 

@@ -57,6 +57,7 @@ All of:
 | **Shared maturity** | Enough to integrate; else shared TODO first when in scope |
 | **Target arch** | Rewrite High Priority / focus that fights confirmed shape before dispatch ([timescale](../Agent_Timescale_Planning_Rule.mdc)) |
 | **Operable (§5.3)** | User-facing stem with domain-only High Priority and no exercise path / library-only / phase → **add** surface/wire/smoke (**scaffold+wire** if no UI specs) or phase note **once**, then dispatch. Open operable Acceptance with no covering TODO → add work (or phase). Do not report “cleared/Layer done” without path. Library-only `_shared/` exempt; consumers own wire. |
+| **Kit coverage (§5.4)** | In-scope spec surface with **no** covering TODO on any existing stem → **add** the item on the inventory/owning stem, then it is ready work. Do **not** skip it as “not picked up.” Do **not** create a new map row unless splitting per Workflow §0. |
 
 `draft` Understanding → **do not code** that stem; continue other ready stems. **ship-first:** do not invent Understanding to unblock.
 
@@ -117,6 +118,7 @@ Cleared · still open · human verify map · other deferred human · hard-blocke
 - Leave HEAD on an **orchestrator-created** run branch after a finished run without returning to default (unless user said stay / dirty tree)  
 - Invent `_shared`/map rows/backlog unrelated to shipped work or dual-write  
 - Drain Low when user chose High-only; upgrade single-slice to full orchestrate  
+- Skip inventory Medium/Low because they “haven’t been picked up”; omit covering TODOs for in-scope spec surfaces (Workflow §5.4)  
 - Re-open Understanding when `confirmed` + scope unchanged  
 - Auto-commit on non-orchestrate asks because “orchestration commits”  
 - Store secrets in docs or commit messages  

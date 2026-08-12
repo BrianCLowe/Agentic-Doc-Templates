@@ -43,12 +43,12 @@ Use when the stem is already **ready** under the docs profile and scope is uncha
 |-----------|-----------|
 | Docs profile unset / suggest / upgrade | [`workflow/profile-standing.md`](workflow/profile-standing.md) (§0.1) |
 | Standing / process prefs / LOOKOUT capture | [`workflow/profile-standing.md`](workflow/profile-standing.md) (§0.2) |
-| Creating files / new Document Map row / split stem | [`workflow/naming-layout.md`](workflow/naming-layout.md) (§0) |
+| Creating files / new Document Map row / split stem / inventory vs new row | [`workflow/naming-layout.md`](workflow/naming-layout.md) (§0) |
 | `_shared/` vs feature / foundation task placement | [`workflow/shared-components.md`](workflow/shared-components.md) (§1) |
 | Draft / revise Understanding · de-confirm gate · relocate | [`workflow/understanding.md`](workflow/understanding.md) (§4) |
 | Graduate confirmed shape → durable spec | [`workflow/understanding.md`](workflow/understanding.md) (§2) |
 | Path A vs Path B unclear · readiness table detail | [`workflow/implement.md`](workflow/implement.md) (§3) |
-| TODO layout · Current focus · operable done · exploration | [`workflow/todos.md`](workflow/todos.md) (§5) |
+| TODO layout · Current focus · operable done · exploration · kit covering TODOs | [`workflow/todos.md`](workflow/todos.md) (§5) |
 | Spec Decisions (product/UI) | [`workflow/decisions.md`](workflow/decisions.md) (§10) |
 | Install tooling / Project verify handoff | [`workflow/tooling.md`](workflow/tooling.md) (§11) |
 | Human inbox dual-write | [`workflow/human-todo.md`](workflow/human-todo.md) (§13) |
@@ -95,7 +95,7 @@ Full procedure (incl. **de-confirm gate**): [`workflow/understanding.md`](workfl
 
 ### 5. TODO Management
 
-Full procedure: [`workflow/todos.md`](workflow/todos.md#5-todo-management). Current focus §5.1 · exploration §5.2 · operable §5.3 live in that file.
+Full procedure: [`workflow/todos.md`](workflow/todos.md#5-todo-management). Current focus §5.1 · exploration §5.2 · operable §5.3 · kit covering TODOs §5.4 live in that file.
 
 ### 5.1 Session handoff — Current focus
 

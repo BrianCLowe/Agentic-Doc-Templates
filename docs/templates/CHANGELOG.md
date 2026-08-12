@@ -22,16 +22,19 @@
 
 ## 2.7.19
 
-- **Live impact:** `versions-only`, `master-index`, `process-docs-only`
+- **Live impact:** `versions-only`, `master-index`, `process-docs-only`, `rules`
 - **Files:**
   - `VERSION` — 2.7.18 → 2.7.19
   - `agent/roles/orchestrator-git.md` — new **`milestone-pr`** (recommend): one PR per verified slice → wait CI / Bugbot auto-fixes → **merge** → new branch for the next slice; keep **`branch-pr-squash`** as one-morning-PR / no merge. **Cloud Agent path** this-runs **`milestone-pr`** when durable is `local` / `none` / `branch-push` / `current-push` / `branch-pr` / `branch-pr-squash` / unset (do **not** rewrite ADT-settings; explicit this-run user order wins)
-  - `agent/roles/orchestrator.md` — loop runs the milestone PR cycle before the next unit; merge grant only for `milestone-pr`
+  - `agent/roles/orchestrator.md` — loop runs the milestone PR cycle before the next unit; merge grant only for `milestone-pr`; **§5.4 kit coverage** — add covering TODOs on existing stems, do not skip inventory Medium as “not picked up”
+  - `agent/workflow/naming-layout.md` — **inventory vs new map rows** (leftover kit methods stay on the catch-all stem until that slice is next)
+  - `agent/workflow/todos.md` — **§5.4** finished-kit spec ⇒ covering TODOs; pickup ≠ backlog; filling in-scope items is not inventing work
+  - `agent/workflow/understanding.md` §2, `Agent_Timescale_Planning_Rule.mdc` / `.instructions.md`, modular rule, spec/TODO templates, doc-graduate / understanding-author — pointers
   - `agent/roles/todo-warden.md`, `roles/README.md` — per-slice vs end-of-run close-out
   - `agent/BOOTSTRAP.md` Step 3p **E**, `agent/TEMPLATE_SYNC_B.md` B0.6 — recommend **`milestone-pr`**; menu + cloud note
   - `agent/ADT-settings.example.yaml` — example mode **`milestone-pr`**
-  - `Master_Index_Template.md`, `help/*`, root `README.md` — recommend + cloud path wording
-- **Step B:** Bump Master Index **Pack version** to 2.7.19. Adopt At a Glance **orchestrator git** recommend **`milestone-pr`** + Cloud Agent this-run note if missing. **Do not** migrate existing live `orchestrator.git.mode` (including `local` / `branch-pr` / `branch-pr-squash`) — cloud overrides are this-run only. No live feature/shared scan. Rules refresh not required (orchestrator is parent playbook only).
+  - `Master_Index_Template.md`, `help/*`, root `README.md` — recommend + cloud path + inventory/TODO wording
+- **Step B:** Bump Master Index **Pack version** to 2.7.19. Adopt At a Glance **orchestrator git** recommend **`milestone-pr`** + Cloud Agent this-run note if missing; adopt **inventory stem** / covering-TODOs wording on At a Glance idea-sources if missing. **Do not** migrate existing live `orchestrator.git.mode` (including `local` / `branch-pr` / `branch-pr-squash`) — cloud overrides are this-run only. **Update and refresh** installed modular + timescale rules from this pack (**no ask** unless `customized: true`). No live feature/shared scan. Orchestrator playbooks are parent-only (no adapter).
 
 ## 2.7.18
 
