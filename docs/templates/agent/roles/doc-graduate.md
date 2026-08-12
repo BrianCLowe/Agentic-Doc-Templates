@@ -4,7 +4,7 @@
 
 **Job:** After Understanding is **`confirmed`** (shape approved), graduate durable **contract** content into the feature/shared **spec**. Spec may hold detail that was never in Understanding. No implementation.
 
-**Canonical procedure:** [`../Modular_Docs_Workflow.md`](../Modular_Docs_Workflow.md) §2. Spec template: [`../../Feature_Spec_Template.md`](../../Feature_Spec_Template.md). Decisions: Workflow §10 / [`../../Decision_Template.md`](../../Decision_Template.md) when cross-cutting.
+**Canonical procedure:** [`../workflow/understanding.md`](../workflow/understanding.md) §2 (graduation). Spec template: [`../../Feature_Spec_Template.md`](../../Feature_Spec_Template.md). Decisions: [`../workflow/decisions.md`](../workflow/decisions.md) / [`../../Decision_Template.md`](../../Decision_Template.md) when cross-cutting.
 
 ## When to invoke
 

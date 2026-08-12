@@ -63,7 +63,7 @@ Use the right pattern:
 - Add new items as you discover them; **update Current focus** at session end. On finish: `[x]` + date **and move** the item into **Completed** (do not leave done tasks under High/Medium/Low). Lasting preference corrections → that stem’s spec **Decisions** (same turn — Workflow §10), not this block.
 - **Human-gated items:** when adding a task only a human can close (`playtest`, `decide`, `procure`, `waiting`), **dual-write** in the same edit — owner item here (or Blocked-by link for procure/waiting) **and** an Open row on [`Human-TODO.md`](../Human-TODO.md). Do not bury human asks only on this file.
 - When the user reports human-TODO progress, update this owner item (`[x]` + feedback) and sync Human-TODO Done (Workflow §13).
-- Foundation tasks belong in `_shared/Component-TODO.md`, not in a feature TODO — see [`Modular_Docs_Workflow.md`](agent/Modular_Docs_Workflow.md) §1.
+- Foundation tasks belong in `_shared/Component-TODO.md`, not in a feature TODO — see [`workflow/shared-components.md`](agent/workflow/shared-components.md) §1.
 - In-Editor feature TODOs: rename to engine-specific version per Workflow §7.
 
 **Instructions for Humans**:

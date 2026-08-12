@@ -8,7 +8,7 @@ applyTo: "**"
 
 First, check if `docs/Master_Index.md` exists. If it does not exist, ignore this entire rule and work normally.
 
-This project uses a lean modular documentation system. `docs/Master_Index.md` is the single entry point for **project context and the Document Map**. Full procedure: **`docs/templates/agent/Modular_Docs_Workflow.md`** — open it only when the gates below say so.
+This project uses a lean modular documentation system. `docs/Master_Index.md` is the single entry point for **project context and the Document Map**. Procedure index: **`docs/templates/agent/Modular_Docs_Workflow.md`** (paved path + router) — open it only when the gates below say so, then open **one** named module under `docs/templates/agent/workflow/`.
 
 **Route by ask** *(open only that playbook — do not scan the pack catalog)*:
 
@@ -71,7 +71,7 @@ If `docs_profile` is unset at bootstrap / first build-from-reference / sync: sug
 5. If the user asks to install tooling: follow **`docs/Tooling.md`** (Workflow §11) — Required (+ skills if listed); Optional only if asked; verify all; ask before admin/large SDKs.
 6. If work needs a **human** (procure, playtest/feel, decide/sign-off, or external waiting): **dual-write** in the same edit — owner `*-TODO.md` item **and** an Open row on **`docs/Human-TODO.md`** (Workflow §13). Never store secrets in docs. Do not bury human asks only in feature TODOs.
 
-**Open `Modular_Docs_Workflow.md` only when:** creating files (§0 / §0.1), choosing Path A vs Path B, graduating Understanding → spec, docs-profile or standing-capture questions (§0.2), or the user asks about procedure. Do **not** re-read the full Workflow every turn.
+**Open `Modular_Docs_Workflow.md` (index) only when:** creating files, choosing Path A vs Path B, graduating Understanding → spec, docs-profile or standing-capture questions, or the user asks about procedure. Then open **only the one module** the index router names (e.g. `workflow/understanding.md` for shape/de-confirm). Do **not** load the whole `workflow/` folder or re-read the index every turn.
 
 **Shared foundation (critical):**
 - **Do not invent `_shared/` docs.** Only add §3.1 / `_shared/` when a **project-owned** piece is (or will be) used by **two or more features**, or the user named it as shared. Empty `_shared/` / empty §3.1 is fine. Never park engine/framework primers (e.g. generic Unreal notes) in `_shared/` because nothing else fit — use `features/` or `docs/reference/` (Workflow §1).

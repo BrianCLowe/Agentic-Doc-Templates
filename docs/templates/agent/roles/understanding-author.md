@@ -4,7 +4,7 @@
 
 **Job:** Capture **feature shape** first (is / is not). Draft or revise `-Understanding.md` so the user can confirm **guardrails** before implementation — **not** a full spec review.
 
-**Canonical procedure:** [`../Modular_Docs_Workflow.md`](../Modular_Docs_Workflow.md) §0 / §0.1 (naming + docs profile), §4 (Understanding). Template: [`../../Feature_Understanding_Template.md`](../../Feature_Understanding_Template.md). Interview help: [`../../help/IDEA_CAPTURE_TIPS.md`](../../help/IDEA_CAPTURE_TIPS.md). Graduation is **not** this role (§2 / [`doc-graduate.md`](doc-graduate.md)) — except relocating trim overflow into the spec while shaping.
+**Canonical procedure:** [`../workflow/naming-layout.md`](../workflow/naming-layout.md) (§0) · [`../workflow/profile-standing.md`](../workflow/profile-standing.md) (§0.1) · [`../workflow/understanding.md`](../workflow/understanding.md) (§4 — **source of truth**, incl. de-confirm gate). Index: [`../Modular_Docs_Workflow.md`](../Modular_Docs_Workflow.md). Template: [`../../Feature_Understanding_Template.md`](../../Feature_Understanding_Template.md). Interview help: [`../../help/IDEA_CAPTURE_TIPS.md`](../../help/IDEA_CAPTURE_TIPS.md). Graduation is **not** this role (§2 / [`doc-graduate.md`](doc-graduate.md)) — except relocating trim overflow into the spec while shaping.
 
 ## When to invoke
 
@@ -22,7 +22,7 @@
 4. Existing `-Understanding.md` for each stem you touch (if any)
 5. That stem’s `-TODO.md` and spec (for relocate + TODO completion check on updates; and when **splitting** — both old and new stems)
 6. Implementation for **touched stems only** when re-verifying checked TODO items (read — do not code)
-7. This role file + Understanding template — open Workflow §0 / §4 only if naming or identity/split rules are unclear
+7. This role file + Understanding template — open [`../workflow/naming-layout.md`](../workflow/naming-layout.md) / [`../workflow/understanding.md`](../workflow/understanding.md) only if naming or identity/split rules are unclear
 
 **Do not** open unrelated features, the full pack catalog, or start coding.
 

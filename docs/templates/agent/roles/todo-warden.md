@@ -7,7 +7,7 @@
 1. **Honesty** — Reopen overclaimed `[x]` items and add **only** tightly cited gap TODOs so Spec/Acceptance/shape claims are not silently “done.” Prefer **fewer** corrections over a flood of backlog. Do **not** invent polish, new features, or Oprah-style “you get a TODO, you get a TODO.”
 2. **Hygiene (cleanup)** — Move **true** finished items out of open priority sections into **Completed** so High/Medium/Low stay “what’s left,” not a graveyard of checked boxes. Projects often mark `[x]` in place and never archive — this pass fixes that.
 
-**Canonical procedure:** This file. Operable done / Acceptance bridge: [`../Modular_Docs_Workflow.md`](../Modular_Docs_Workflow.md) §5 / §5.3. Unit-level code-vs-claim: [`work-verifier.md`](work-verifier.md) (different job — one unit; this role is **post-loop stem honesty + TODO layout hygiene**).
+**Canonical procedure:** This file. Operable done / Acceptance bridge: [`../workflow/todos.md`](../workflow/todos.md) §5 / §5.3. Unit-level code-vs-claim: [`work-verifier.md`](work-verifier.md) (different job — one unit; this role is **post-loop stem honesty + TODO layout hygiene**).
 
 ## When to invoke
 

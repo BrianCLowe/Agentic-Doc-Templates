@@ -62,10 +62,10 @@ docs/
 └── templates/                   ← this pack (overwrite on sync; not live content)
     ├── VERSION / CHANGELOG.md
     ├── help/ · agent/
-    └── … scaffolds + agent/Modular_Docs_Workflow.md
+    └── … scaffolds + agent/Modular_Docs_Workflow.md (index) + agent/workflow/
 ```
 
-Naming and Path A/B: [`../agent/Modular_Docs_Workflow.md`](../agent/Modular_Docs_Workflow.md) §0.
+Naming: [`../agent/workflow/naming-layout.md`](../agent/workflow/naming-layout.md) §0. Path A/B: [`../agent/workflow/implement.md`](../agent/workflow/implement.md) §3. Index: [`../agent/Modular_Docs_Workflow.md`](../agent/Modular_Docs_Workflow.md).
 
 ---
 

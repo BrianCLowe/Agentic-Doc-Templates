@@ -6,7 +6,7 @@ Day-to-day workflows after setup. First-time install: [`SETUP.md`](SETUP.md). De
 
 ## The loop
 
-Depends on **docs profile** in `docs/ADT-settings.yaml` (`prevent` default if unset — [Workflow §0.1](../agent/Modular_Docs_Workflow.md#01-docs-profile-ceremony-modes)):
+Depends on **docs profile** in `docs/ADT-settings.yaml` (`prevent` default if unset — [Workflow §0.1](../agent/workflow/profile-standing.md#01-docs-profile-ceremony-modes)):
 
 1. You capture ideas (recommended: chat exports in `docs/reference/`, or a mid-build correction in chat).
 2. **`prevent` (default):** agent drafts `-Understanding.md` (shape / guardrails). **`ship-first`:** agent drafts thin **spec + TODO** only. **`balanced`:** Understanding when identity is ambiguous.

@@ -6,7 +6,7 @@
 
 **Job:** Clear ready TODO work — implement → verify → milestone git — until budget/block, without waiting for “next.” End: human verify map + git close-out (PR modes: build-verify → todo-warden → squash? → mark ready → **return to default branch** when this run created the branch).
 
-**Canonical:** This file (loop). **Git delivery:** [`orchestrator-git.md`](orchestrator-git.md). Workers: [`feature-implementer.md`](feature-implementer.md), [`work-verifier.md`](work-verifier.md), [`todo-warden.md`](todo-warden.md). Workflow §0.1 / §0.2 / §3 / §5 / §5.3 / §13. Timescale: [`../Agent_Timescale_Planning_Rule.mdc`](../Agent_Timescale_Planning_Rule.mdc). Settings: `docs/ADT-settings.yaml` → `docs_profile` + `orchestrator.git.mode` + **`standing.instructions`**.
+**Canonical:** This file (loop). **Git delivery:** [`orchestrator-git.md`](orchestrator-git.md). Workers: [`feature-implementer.md`](feature-implementer.md), [`work-verifier.md`](work-verifier.md), [`todo-warden.md`](todo-warden.md). Workflow modules (open only if needed): [`../workflow/profile-standing.md`](../workflow/profile-standing.md) · [`../workflow/implement.md`](../workflow/implement.md) · [`../workflow/todos.md`](../workflow/todos.md) · [`../workflow/human-todo.md`](../workflow/human-todo.md). Index: [`../Modular_Docs_Workflow.md`](../Modular_Docs_Workflow.md). Timescale: [`../Agent_Timescale_Planning_Rule.mdc`](../Agent_Timescale_Planning_Rule.mdc). Settings: `docs/ADT-settings.yaml` → `docs_profile` + `orchestrator.git.mode` + **`standing.instructions`**.
 
 ## When to invoke
 

@@ -4,7 +4,7 @@
 
 **Job:** Check that claimed work matches **user intent and contract** for one stem unit. Pass or fail with reasons. **No feature implementation.**
 
-**Canonical procedure:** This file. Shape vs contract: [`../Modular_Docs_Workflow.md`](../Modular_Docs_Workflow.md) §0.1, §4, §2. Acceptance lives on the **spec**; TODO is the checklist. Orchestration loop: [`orchestrator.md`](orchestrator.md).
+**Canonical procedure:** This file. Shape vs contract: [`../workflow/profile-standing.md`](../workflow/profile-standing.md) §0.1 · [`../workflow/understanding.md`](../workflow/understanding.md) §4 / §2. Operable: [`../workflow/todos.md`](../workflow/todos.md) §5.3. Acceptance lives on the **spec**; TODO is the checklist. Orchestration loop: [`orchestrator.md`](orchestrator.md).
 
 ## When to invoke
 

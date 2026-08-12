@@ -20,6 +20,18 @@
 
 ---
 
+## 2.7.15
+
+- **Live impact:** `versions-only`, `master-index`, `rules`, `content-templates`, `process-docs-only`
+- **Files:**
+  - `VERSION` — 2.7.14 → 2.7.15
+  - `agent/Modular_Docs_Workflow.md` — **index + paved path + router** (no longer a 600-line monolith). Agents load the short path first; open **one** module when needed
+  - `agent/workflow/` — new modules: `profile-standing`, `naming-layout`, `shared-components`, `understanding` (source of truth for shape/graduation/**de-confirm gate**), `implement`, `todos`, `decisions`, `tooling`, `human-todo`, `extensions` + `README.md`
+  - Index keeps **compatibility anchors** so older Master Index / help deep links still resolve, then point into modules
+  - Roles (`understanding-author`, `feature-implementer`, `doc-graduate`, `work-verifier`, `todo-warden`) + modular rules + content/help templates — point at specific modules, not the whole workflow
+  - `Master_Index_Template.md`, `BOOTSTRAP.md`, root README stamp
+- **Step B:** Bump Master Index **Pack version** to 2.7.15. Adopt Key Locations wording for workflow index + `workflow/` if missing. Refresh installed modular rules (**no ask** unless `customized: true`). If `optional_rules.doc-roles` **enabled** → refresh role adapters that point at Workflow. No live feature/shared content invent (structural playbook split only).
+
 ## 2.7.14
 
 - **Live impact:** `versions-only`, `rules`, `content-templates`, `process-docs-only`

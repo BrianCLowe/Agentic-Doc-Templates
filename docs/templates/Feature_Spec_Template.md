@@ -1,6 +1,6 @@
 # [Feature or Shared Component Name]
 
-> Never edit this template unless the user asks you to. Use under `docs/features/` for features or `docs/_shared/` for shared components (adjust paths). Under **`prevent`**, grow from [`Feature_Understanding_Template.md`](Feature_Understanding_Template.md) after Understanding is `confirmed` ([`Modular_Docs_Workflow.md`](agent/Modular_Docs_Workflow.md) §2). Under **`ship-first`**, this file is the contract home from day one (Workflow §0.1).
+> Never edit this template unless the user asks you to. Use under `docs/features/` for features or `docs/_shared/` for shared components (adjust paths). Under **`prevent`**, grow from [`Feature_Understanding_Template.md`](Feature_Understanding_Template.md) after Understanding is `confirmed` ([`workflow/understanding.md`](agent/workflow/understanding.md) §2). Under **`ship-first`**, this file is the contract home from day one ([`workflow/profile-standing.md`](agent/workflow/profile-standing.md) §0.1).
 
 **Last Updated**: [YYYY-MM-DD]  
 **Related Understanding**: [FeatureName-Understanding.md](FeatureName-Understanding.md)  
@@ -118,7 +118,7 @@ Omit this section only when there are no visual references yet — add it when t
 
 ## Instructions for AI Agents
 
-Graduation / anti-compression: [`Modular_Docs_Workflow.md`](agent/Modular_Docs_Workflow.md) §2. Optional role: [`agent/roles/doc-graduate.md`](agent/roles/doc-graduate.md).
+Graduation / anti-compression: [`workflow/understanding.md`](agent/workflow/understanding.md) §2. Optional role: [`agent/roles/doc-graduate.md`](agent/roles/doc-graduate.md).
 
 - **Do not** use this as a substitute for `-Understanding.md` during scoping — draft Understanding first (shape only); populate this file after `confirmed`.
 - **Graduate** the durable contract here (Workflow §2): synthesize Understanding **plus** conversation / decisions — do not only copy thin Understanding. Do not thin Architecture / Behavior / Acceptance to match Understanding’s length. Deepen *how* the confirmed product surface works — do not reopen a fighting interim architecture as the contract.

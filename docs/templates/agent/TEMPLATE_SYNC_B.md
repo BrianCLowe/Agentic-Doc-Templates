@@ -164,9 +164,9 @@ Recommend: remote + forge CLI → **`branch-pr`** (offer **`branch-pr-squash`** 
 | Local template (read) | Live file (edit carefully) | When |
 |-----------------------|----------------------------|------|
 | `Master_Index_Template.md` | `docs/Master_Index.md` — never blind-replace | `master-index` or always for version lines |
-| `agent/Modular_Docs_Workflow.md` | Already replaced in Step A — do not copy into Master_Index | — |
+| `agent/Modular_Docs_Workflow.md` + `agent/workflow/` | Already replaced in Step A — do not copy into Master_Index | — |
 | `Feature_Understanding_Template.md` | Each `*-Understanding.md` — add *missing* sections only | `content-templates` |
-| `Feature_Understanding_Template.md` + Workflow §4 | Each chosen `*-Understanding.md` — **trim** non-shape sections; **relocate** into that stem’s spec; refresh banner/Instructions | `optional-live-reshape` **and** (`auto` / `auto-all` **or** user said yes) |
+| `Feature_Understanding_Template.md` + `agent/workflow/understanding.md` §4 | Each chosen `*-Understanding.md` — **trim** non-shape sections; **relocate** into that stem’s spec; refresh banner/Instructions | `optional-live-reshape` **and** (`auto` / `auto-all` **or** user said yes) |
 | `Feature_Spec_Template.md` | Each feature/shared `.md` spec — add missing sections only; receive relocated contract on reshape | `content-templates` / reshape executing |
 | `TODO_Template.md` | Each `*-TODO.md` — add missing blocks only | `content-templates` |
 | `TODO_Template.md` + Workflow §5 + `Agent_Timescale_Planning_Rule.mdc` | Chosen `*-TODO.md` (+ Understanding for shape) — streamline High Priority / Current focus | `optional-todo-ambition` **and** (`auto` / `auto-all` **or** user said yes) |

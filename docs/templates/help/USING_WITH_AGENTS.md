@@ -35,8 +35,8 @@ The modular rule guards itself: *"If `docs/Master_Index.md` does not exist, igno
 | Extra | What | Where |
 |-------|------|--------|
 | **Project prefs (batch)** | Docs profile, update-check, doc-roles, sync mode, orchestrator git — **one** bootstrap ask; standing notes optional | Bootstrap **Step 3p** · live keys in [`docs/ADT-settings.yaml`](../agent/ADT-settings.example.yaml) |
-| **Docs profile** | `prevent` (default: Understanding + confirm), `balanced` (Understanding when identity fuzzy), `ship-first` (Spec+TODO only) | Workflow [§0.1](../agent/Modular_Docs_Workflow.md#01-docs-profile-ceremony-modes) · `docs_profile` |
-| **Standing instructions** | Freeform durable **agent process** prefs (opposes pack defaults / always-never workflow). Agents **lookout-capture** same turn | Workflow [§0.2](../agent/Modular_Docs_Workflow.md#02-standing-workflow-instructions-user-workflow-not-pack-enums) · `standing.instructions` |
+| **Docs profile** | `prevent` (default: Understanding + confirm), `balanced` (Understanding when identity fuzzy), `ship-first` (Spec+TODO only) | Workflow [§0.1](../agent/workflow/profile-standing.md#01-docs-profile-ceremony-modes) · `docs_profile` |
+| **Standing instructions** | Freeform durable **agent process** prefs (opposes pack defaults / always-never workflow). Agents **lookout-capture** same turn | Workflow [§0.2](../agent/workflow/profile-standing.md#02-standing-workflow-instructions-user-workflow-not-pack-enums) · `standing.instructions` |
 | Template update check | Upstream `VERSION` ping — default every session; interval optional | Step 3p · [`../agent/TEMPLATE_UPDATE_CHECK.md`](../agent/TEMPLATE_UPDATE_CHECK.md) |
 | Doc roles | Understanding author, implementer, work verifier, … | Step 3p · [`../agent/roles/README.md`](../agent/roles/README.md) — Cursor → `.cursor/agents/`; Grok Build → `.grok/agents/` |
 | Orchestrator | Parent-only backlog loop (implement → verify → next); readiness follows docs profile | [`../agent/roles/orchestrator.md`](../agent/roles/orchestrator.md) — **not** installed as a harness subagent |
