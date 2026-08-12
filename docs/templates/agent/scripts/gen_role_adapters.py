@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """Generate cursor/ and grok/ role adapters from adapter-src/.
 
-Source of truth:
+Source of truth (sibling of this scripts/ folder):
   docs/templates/agent/roles/adapter-src/manifest.json
   docs/templates/agent/roles/adapter-src/bodies/*.md
 
-Usage:
-  python3 scripts/gen_role_adapters.py          # write adapters
-  python3 scripts/gen_role_adapters.py --check  # exit 1 if generated != on disk
+Usage (from repo / project root):
+  python3 docs/templates/agent/scripts/gen_role_adapters.py
+  python3 docs/templates/agent/scripts/gen_role_adapters.py --check
 """
 
 from __future__ import annotations
@@ -17,13 +17,14 @@ import json
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
-SRC = ROOT / "docs/templates/agent/roles/adapter-src"
+AGENT_DIR = Path(__file__).resolve().parents[1]  # docs/templates/agent
+SRC = AGENT_DIR / "roles" / "adapter-src"
 MANIFEST = SRC / "manifest.json"
 OUT = {
-    "cursor": ROOT / "docs/templates/agent/roles/cursor",
-    "grok": ROOT / "docs/templates/agent/roles/grok",
+    "cursor": AGENT_DIR / "roles" / "cursor",
+    "grok": AGENT_DIR / "roles" / "grok",
 }
+CMD = "python3 docs/templates/agent/scripts/gen_role_adapters.py"
 
 
 def yaml_scalar(value) -> str:
@@ -35,7 +36,6 @@ def yaml_scalar(value) -> str:
 def render_description(text: str) -> str:
     """Fold description as YAML >- block (single paragraph)."""
     words = " ".join(text.split())
-    # Soft-wrap near 72 chars for readability
     lines: list[str] = []
     cur: list[str] = []
     n = 0
@@ -54,7 +54,6 @@ def render_description(text: str) -> str:
 
 def render_frontmatter(name: str, description: str, extra: dict) -> str:
     parts = ["---", f"name: {name}", render_description(description)]
-    # Stable key order for harness fields
     preferred = ["prompt_mode", "model", "permission_mode", "agents_md"]
     keys = [k for k in preferred if k in extra] + [
         k for k in extra if k not in preferred
@@ -71,7 +70,6 @@ def render_body(base_body: str, extra_hard_rules: list[str] | None) -> str:
         return body
     if not body.rstrip().endswith("Hard rules:") and "Hard rules:" not in body:
         raise SystemExit("body missing Hard rules: section")
-    # Append extras before final newline of hard-rules list
     extra_block = "\n".join(f"- {r}" for r in extra_hard_rules)
     return body.rstrip() + "\n" + extra_block + "\n"
 
@@ -80,10 +78,9 @@ def generate_one(name: str, entry: dict, harness: str) -> str:
     body_path = SRC / entry["body"]
     base_body = body_path.read_text()
     fm = dict(entry.get(harness) or {})
-    extras = entry.get(f"{harness}_extra_hard_rules") if harness != "cursor" else None
-    # Also allow grok_extra_hard_rules key used in manifest
+    extras = None
     if harness == "grok":
-        extras = entry.get("grok_extra_hard_rules") or extras
+        extras = entry.get("grok_extra_hard_rules")
     text = render_frontmatter(name, entry["description"], fm)
     text += "\n" + render_body(base_body, extras)
     return text
@@ -103,25 +100,30 @@ def write_all(files: dict[tuple[str, str], str]) -> None:
         path = OUT[harness] / f"{name}.md"
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(text)
-        print(f"wrote {path.relative_to(ROOT)}")
+        try:
+            rel = path.relative_to(Path.cwd())
+        except ValueError:
+            rel = path
+        print(f"wrote {rel}")
 
 
 def check_all(files: dict[tuple[str, str], str]) -> int:
     drift = 0
     for (harness, name), text in files.items():
         path = OUT[harness] / f"{name}.md"
+        try:
+            rel = path.relative_to(Path.cwd())
+        except ValueError:
+            rel = path
         if not path.exists():
-            print(f"MISSING {path.relative_to(ROOT)}")
+            print(f"MISSING {rel}")
             drift += 1
             continue
-        on_disk = path.read_text()
-        if on_disk != text:
-            print(f"DRIFT {path.relative_to(ROOT)}")
+        if path.read_text() != text:
+            print(f"DRIFT {rel}")
             drift += 1
     if drift:
-        print(
-            f"\n{drift} adapter(s) out of date. Run: python3 scripts/gen_role_adapters.py"
-        )
+        print(f"\n{drift} adapter(s) out of date. Run: {CMD}")
         return 1
     print(f"OK — {len(files)} adapters match adapter-src/")
     return 0

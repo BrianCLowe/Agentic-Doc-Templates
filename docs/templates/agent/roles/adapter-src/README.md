@@ -12,8 +12,8 @@
 ## Regenerate
 
 ```bash
-python3 scripts/gen_role_adapters.py
-python3 scripts/gen_role_adapters.py --check   # CI / pre-commit
+python3 docs/templates/agent/scripts/gen_role_adapters.py
+python3 docs/templates/agent/scripts/gen_role_adapters.py --check   # CI / pre-commit
 ```
 
 ## Rules
