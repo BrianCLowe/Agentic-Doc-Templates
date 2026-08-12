@@ -54,6 +54,9 @@ Checklist when changing `docs/templates/agent/` or workflow rules:
 - Name which files to open; name which not to open
 - Put the common case first (minimal path); park rare migrations behind a clear trigger
 - Keep [`Modular_Docs_Workflow.md`](docs/templates/agent/Modular_Docs_Workflow.md) as a short **index** (paved path + router); put full procedure in one [`workflow/`](docs/templates/agent/workflow/README.md) module — do not re-inflate the monolith
+- Edit harness adapters only under [`adapter-src/`](docs/templates/agent/roles/adapter-src/README.md), then `python3 scripts/gen_role_adapters.py` (CI runs `--check`)
+- De-confirm / additive-vs-shape: full prose only in [`workflow/understanding.md`](docs/templates/agent/workflow/understanding.md); elsewhere **one-line pointers**
+- Prefer a new [`eval/`](eval/README.md) golden case over more prose when fixing a field behavior bug; `python3 eval/run_eval.py` must stay green
 - If Step B / sync behavior changes, update [`CHANGELOG.md`](docs/templates/CHANGELOG.md) so consumers do not reverse-engineer the pack
 
 If you're unsure whether something fits, just start a Discussion first — I'm happy to talk about it.

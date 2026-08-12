@@ -1,0 +1,106 @@
+{
+  "_comment": "Source of truth for cursor/ + grok/ adapters. Edit bodies/ + this file, then: python3 scripts/gen_role_adapters.py",
+  "harnesses": [
+    "cursor",
+    "grok"
+  ],
+  "roles": {
+    "doc-graduate": {
+      "description": "Agentic Doc Templates — Doc graduate. Moves a confirmed Understanding into the durable feature/shared spec. Use when the user confirmed Understanding and asks to graduate, update the spec, or lock the contract. Do not use for coding or drafting Understanding.",
+      "body": "bodies/doc-graduate.md",
+      "cursor": {
+        "model": "inherit"
+      },
+      "grok": {
+        "prompt_mode": "full",
+        "model": "inherit",
+        "permission_mode": "default",
+        "agents_md": true
+      }
+    },
+    "docs-bootstrap": {
+      "description": "Agentic Doc Templates — Bootstrap. First-time modular docs layout via BOOTSTRAP.md. Use when the user asks to bootstrap or init modular docs. Do not use for day-to-day feature work or template sync.",
+      "body": "bodies/docs-bootstrap.md",
+      "cursor": {
+        "model": "inherit"
+      },
+      "grok": {
+        "prompt_mode": "full",
+        "model": "inherit",
+        "permission_mode": "default",
+        "agents_md": true
+      }
+    },
+    "docs-template-sync": {
+      "description": "Agentic Doc Templates — Template sync. Refreshes docs/templates from upstream and applies changelog-scoped live updates. Use when the user asks to update or sync doc templates from Agentic Doc Templates. Do not use for feature implementation or Understanding drafts.",
+      "body": "bodies/docs-template-sync.md",
+      "cursor": {
+        "model": "inherit"
+      },
+      "grok": {
+        "prompt_mode": "full",
+        "model": "inherit",
+        "permission_mode": "default",
+        "agents_md": true
+      }
+    },
+    "feature-implementer": {
+      "description": "Agentic Doc Templates — Feature implementer. Implements from TODO Current focus when Understanding is confirmed. Use when the user asks to implement, continue, or work Current focus and scope is unchanged. Do not use to draft Understanding or sync templates.",
+      "body": "bodies/feature-implementer.md",
+      "cursor": {
+        "model": "inherit"
+      },
+      "grok": {
+        "prompt_mode": "full",
+        "model": "inherit",
+        "permission_mode": "default",
+        "agents_md": true
+      }
+    },
+    "todo-warden": {
+      "description": "Agentic Doc Templates — Todo warden. Docs-only: honesty (reopen overclaims, cited gap TODOs) and hygiene (move finished [x] out of High/Medium/Low into Completed). Use after orchestration / before PR ready, or for todo cleanup. Do not implement features or invent backlog.",
+      "body": "bodies/todo-warden.md",
+      "cursor": {
+        "model": "inherit"
+      },
+      "grok": {
+        "prompt_mode": "full",
+        "model": "inherit",
+        "permission_mode": "plan",
+        "agents_md": true
+      },
+      "grok_extra_hard_rules": [
+        "Prefer read/search over shell; plan-mode is fine for this role"
+      ]
+    },
+    "understanding-author": {
+      "description": "Agentic Doc Templates — Understanding author. Drafts or revises -Understanding.md for feature shape / guardrails (What this is / is NOT). Use when the user describes a new idea, asks to draft or fix Understanding, capture intent, or correct identity/scope. Do not use for coding, graduation, or template sync.",
+      "body": "bodies/understanding-author.md",
+      "cursor": {
+        "model": "inherit"
+      },
+      "grok": {
+        "prompt_mode": "full",
+        "model": "inherit",
+        "permission_mode": "default",
+        "agents_md": true
+      }
+    },
+    "work-verifier": {
+      "description": "Agentic Doc Templates — Work verifier. Checks a completed TODO unit against Understanding, spec Acceptance/Behavior, and the claimed TODO item. Use when the orchestrator or user asks to verify implementer output. Do not use to implement features or sync templates.",
+      "body": "bodies/work-verifier.md",
+      "cursor": {
+        "model": "inherit"
+      },
+      "grok": {
+        "prompt_mode": "full",
+        "model": "inherit",
+        "permission_mode": "plan",
+        "agents_md": true
+      },
+      "grok_extra_hard_rules": [
+        "Prefer read/search over shell; if plan-mode blocks `git diff`/execute, inspect via parent file list + read tools — do not fail only because shell was denied"
+      ]
+    }
+  }
+}

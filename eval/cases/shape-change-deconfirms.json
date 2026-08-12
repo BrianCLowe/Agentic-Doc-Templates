@@ -1,0 +1,33 @@
+{
+  "id": "shape-change-deconfirms",
+  "title": "Significant shape change on confirmed Understanding → draft/superseded + reshape",
+  "role": "understanding-author",
+  "user": "NoteEditor is not a single continuous manuscript surface anymore — it is a multi-pane IDE with a separate preview window. Update the Understanding; that identity change is intentional.",
+  "fixture": "fixtures/additive-keeps-confirmed",
+  "expect": {
+    "understanding_status_one_of": ["draft", "superseded"],
+    "understanding_path": "docs/features/NoteEditor-Understanding.md",
+    "files_must_change": [
+      "docs/features/NoteEditor-Understanding.md"
+    ],
+    "understanding_must_not_contain": []
+  },
+  "pack_contract": {
+    "source_must_include": [
+      {
+        "file": "docs/templates/agent/workflow/understanding.md",
+        "patterns": [
+          "significant shape change",
+          "De-confirm gate",
+          "product surface"
+        ]
+      }
+    ],
+    "summaries_must_point": [
+      {
+        "file": "docs/templates/agent/roles/understanding-author.md",
+        "must_contain": ["workflow/understanding.md", "significant shape change"]
+      }
+    ]
+  }
+}

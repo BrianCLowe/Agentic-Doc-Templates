@@ -1,4 +1,4 @@
-<!-- pack-version: 2.7.15 -->
+<!-- pack-version: 2.7.16 -->
 
 > **Workflow module.** Open from the [workflow index](../Modular_Docs_Workflow.md) when Path A vs Path B is unclear, or you need the ready-to-code table. Prefer the index **paved path** when already ready.
 

@@ -26,7 +26,7 @@
 
 - Stem is **ready** (Workflow §3 ready table): prevent → Understanding `confirmed` or waived; balanced without Understanding / ship-first → spec + TODO exist.
 - If an **existing** Understanding is `draft` → **stop** (or get waiver); do not code.
-- Scope unchanged. An **additive** request that fits the confirmed **is / is not** (a new research angle, extra behavior, an edge case, added detail) is **not** a scope change: add it to the **spec** (Behavior / Acceptance / Decisions) + a **TODO** item, keep Understanding `confirmed`, and continue. **Only** a **significant shape change** (is / is not / guardrail / product surface) → **stop** and point to [`understanding-author.md`](understanding-author.md) (or *lock shape* under ship-first); do not code under a stale confirmed Understanding. Do not de-confirm to record an addition (Workflow §4 de-confirm gate).
+- Scope unchanged. Additive vs shape / de-confirm → [`../workflow/understanding.md`](../workflow/understanding.md) §4 (**source of truth**). Additive → spec + TODO, keep `confirmed`, continue. Significant shape change → **stop** → [`understanding-author.md`](understanding-author.md) (or *lock shape*).
 
 ## Steps
 
@@ -50,7 +50,7 @@
 
 ## Do not
 
-- Draft or re-open Understanding for full review when status is `confirmed` and scope unchanged — **including** to record an additive spec item or research angle (that goes to **spec + TODO**; keep `confirmed`). Re-open only on a **significant shape change** (Workflow §4 de-confirm gate)
+- Draft or re-open Understanding for an additive ask on `confirmed` — see [`../workflow/understanding.md`](../workflow/understanding.md) §4
 - Invent Understanding files under **ship-first** unless the user asked to lock shape
 - Graduate Understanding → spec (use [`doc-graduate.md`](doc-graduate.md))
 - Implement a known-wrong interim architecture because the honest cut “looks multi-concern”

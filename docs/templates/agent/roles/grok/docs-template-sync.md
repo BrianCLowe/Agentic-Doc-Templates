@@ -1,10 +1,10 @@
 ---
 name: docs-template-sync
 description: >-
-  Agentic Doc Templates — Template sync. Refreshes docs/templates from upstream
-  and applies changelog-scoped live updates. Use when the user asks to update or
-  sync doc templates from Agentic Doc Templates. Do not use for feature
-  implementation or Understanding drafts.
+  Agentic Doc Templates — Template sync. Refreshes docs/templates from
+  upstream and applies changelog-scoped live updates. Use when the user
+  asks to update or sync doc templates from Agentic Doc Templates. Do not
+  use for feature implementation or Understanding drafts.
 prompt_mode: full
 model: inherit
 permission_mode: default

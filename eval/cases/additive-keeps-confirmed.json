@@ -1,0 +1,52 @@
+{
+  "id": "additive-keeps-confirmed",
+  "title": "Additive idea on confirmed Understanding → spec+TODO, status stays confirmed",
+  "role": "feature-implementer",
+  "user": "Also research whether we should support CSV export for NoteEditor — add it to the docs if it fits.",
+  "fixture": "fixtures/additive-keeps-confirmed",
+  "expect": {
+    "understanding_status": "confirmed",
+    "understanding_path": "docs/features/NoteEditor-Understanding.md",
+    "files_must_change": [
+      "docs/features/NoteEditor.md",
+      "docs/features/NoteEditor-TODO.md"
+    ],
+    "files_must_not_change_status_line": [
+      "docs/features/NoteEditor-Understanding.md"
+    ],
+    "understanding_must_contain": ["Status**: `confirmed`"],
+    "understanding_must_not_contain": [
+      "Status**: `draft`",
+      "Status**: `superseded`"
+    ]
+  },
+  "pack_contract": {
+    "source_must_include": [
+      {
+        "file": "docs/templates/agent/workflow/understanding.md",
+        "patterns": ["De-confirm gate", "keep `confirmed`", "additive"]
+      }
+    ],
+    "summaries_must_point": [
+      {
+        "file": "docs/templates/agent/roles/feature-implementer.md",
+        "must_contain": ["workflow/understanding.md"],
+        "must_not_contain": [
+          "An **additive** request that fits the confirmed **is / is not**"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/roles/understanding-author.md",
+        "must_contain": ["workflow/understanding.md"],
+        "must_not_contain": [
+          "Revert a **`confirmed`** Understanding to `draft` / `superseded`"
+        ]
+      },
+      {
+        "file": "docs/templates/Feature_Understanding_Template.md",
+        "must_contain": ["workflow/understanding.md"],
+        "must_not_contain": ["**De-confirm gate:** an **additive** request"]
+      }
+    ]
+  }
+}

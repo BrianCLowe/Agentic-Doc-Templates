@@ -1,0 +1,27 @@
+{
+  "id": "ship-first-no-understanding-required",
+  "title": "ship-first profile: implement from spec+TODO without inventing Understanding",
+  "role": "feature-implementer",
+  "user": "Continue from Current focus and implement the next TODO item.",
+  "fixture": "fixtures/ship-first-crud",
+  "expect": {
+    "files_must_not_exist": [
+      "docs/features/ItemsApi-Understanding.md"
+    ],
+    "files_must_change": [
+      "docs/features/ItemsApi-TODO.md"
+    ]
+  },
+  "pack_contract": {
+    "source_must_include": [
+      {
+        "file": "docs/templates/agent/workflow/profile-standing.md",
+        "patterns": ["ship-first", "Understanding **not** required"]
+      },
+      {
+        "file": "docs/templates/agent/roles/feature-implementer.md",
+        "patterns": ["ship-first"]
+      }
+    ]
+  }
+}
