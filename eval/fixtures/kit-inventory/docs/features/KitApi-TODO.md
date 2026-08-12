@@ -2,7 +2,7 @@
 
 ## Current focus
 
-**Active task:** Video is next (see VideoGeneration-TODO). Kit leftovers are not Current focus yet.
+**Active task:** Video is next (see VideoGeneration-TODO). Kit leftover covering TODOs belong under Medium until promoted.
 
 ## High Priority
 

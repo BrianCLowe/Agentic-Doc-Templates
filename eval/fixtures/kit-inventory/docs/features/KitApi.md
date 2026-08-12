@@ -1,10 +1,11 @@
 # KitApi
 
+**Related Understanding**: [KitApi-Understanding.md](KitApi-Understanding.md)  
 **Related TODO**: [KitApi-TODO.md](KitApi-TODO.md)
 
 ## Overview
 
-One client wrapping the upstream kit. Chat is the paved path. Video is the next winner (own stem). Leftover surfaces stay on this inventory until picked as Current focus.
+One client wrapping the upstream kit. Chat is the paved path. Video is the next winner (own stem). Leftover surfaces stay on this inventory stem (covering TODOs here — not extra spec/TODO files).
 
 ## Architecture / Contract
 

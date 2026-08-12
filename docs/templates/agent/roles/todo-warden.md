@@ -7,7 +7,7 @@
 1. **Honesty** — Reopen overclaimed `[x]` items and add **only** tightly cited gap TODOs so Spec/Acceptance/shape claims are not silently “done.” Prefer **fewer** corrections over a flood of backlog. Do **not** invent polish, new features, or Oprah-style “you get a TODO, you get a TODO.”
 2. **Hygiene (cleanup)** — Move **true** finished items out of open priority sections into **Completed** so High/Medium/Low stay “what’s left,” not a graveyard of checked boxes. Projects often mark `[x]` in place and never archive — this pass fixes that.
 
-**Canonical procedure:** This file. Operable done / Acceptance bridge: [`../workflow/todos.md`](../workflow/todos.md) §5 / §5.3. Kit coverage hole: Workflow §5.4 (at most **one** research item — sync `optional-todo-kit-coverage` or a planning session does the vendor-doc diff). Unit-level code-vs-claim: [`work-verifier.md`](work-verifier.md) (different job — one unit; this role is **post-loop stem honesty + TODO layout hygiene**).
+**Canonical procedure:** This file. Operable done / Acceptance bridge: [`../workflow/todos.md`](../workflow/todos.md) §5 / §5.3. Kit coverage: Workflow §5.4 — named leftovers get covering TODOs (not a research stub); thin wrap-the-API research is sync / planning unless this run claimed kit-complete. Unit-level code-vs-claim: [`work-verifier.md`](work-verifier.md) (different job — one unit; this role is **post-loop stem honesty + TODO layout hygiene**).
 
 ## When to invoke
 
@@ -52,7 +52,9 @@ Only **reopen/add** when **at least one** of these is true and you can point to 
 3. **Missing exercise path** — user/operator-facing stem, not **library-only** / no phased bridge, High Priority empty or domain-only, no exercise path row (Workflow §5.3).
 4. **Shape fight** — shipped work fights Understanding is / is not when Understanding exists (reopen or add a **targeted** fix TODO — not a redesign epic).
 5. **Master Index / Overview product claim** this stem owns, with **zero** covering open work and code clearly unfinished for that claim (cite the sentence).
-6. **Kit coverage hole (Workflow §5.4)** — this stem’s spec **names** in-scope leftover surfaces with **no** covering open TODO on any map stem, **and** there is no open “expand covering TODOs / diff vendor API” item. Add **one** Medium item citing those spec sentences: *Diff vendor API docs vs this kit; add covering TODOs (Workflow §5.4)* — next-session research. Do **not** explode into one TODO per leftover; do **not** fetch vendor docs in this role.
+6. **Kit coverage hole (Workflow §5.4)** — covering = open **or Completed** `[x]` on **this** stem’s TODO (do not resurrect shipped methods; do not open other stems).
+   - **Named leftovers:** this spec **names** in-scope leftover surfaces with **no** covering item. Add implementable Medium items for those **named** surfaces (High only if Current focus is empty), within honesty caps; defer extras. Do **not** fetch vendor docs; do **not** invent unnamed facets; do **not** substitute the thin-spec research item here.
+   - **Thin wrap-the-API:** Overview claims wrap-the-vendor-API but the spec lists **no** leftover surfaces, **and** this run claimed the kit/API fully supported (or parent asked project-wide honesty), **and** there is no open or Completed research item. Add **one** Medium item: *Diff vendor API docs vs this kit; add covering TODOs (Workflow §5.4)*. Ordinary per-slice close-out that did **not** claim kit-complete → do **not** add the research item (that is sync `optional-todo-kit-coverage` or a planning session).
 
 **Not allowed as grounds for new work:** “would be nice,” test coverage vibes, refactor wishes, docs polish, second Acceptance twin of every Behavior bullet, stems outside the brief, new product ideas, vague planned-only extras (playground, “maybe later”).
 
@@ -128,5 +130,5 @@ Caps: new≤5 reopened≤10; hygiene moves uncapped
 - Move items you reopened this pass into Completed
 - Commit, push, merge, or spawn subagents
 - Soft-add TODOs “just in case” when the stem is honestly complete for this run’s claims
-- Fetch vendor API docs or expand every leftover facet (that is sync `optional-todo-kit-coverage` or a planning session — this role adds **at most one** §5.4 research item)
+- Fetch vendor API docs or invent unnamed leftover facets (named spec leftovers get covering TODOs; thin wrap-the-API research is at most **one** item and only when this run claimed kit-complete)
 - Create new Document Map rows for leftovers

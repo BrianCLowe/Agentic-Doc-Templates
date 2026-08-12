@@ -17,7 +17,7 @@
     "file_must_contain": [
       {
         "path": "docs/features/KitApi-TODO.md",
-        "patterns": ["Files", "embed"]
+        "patterns": ["Files", "Embeddings"]
       }
     ]
   },
@@ -58,7 +58,8 @@
         "file": "docs/templates/agent/roles/todo-warden.md",
         "patterns": [
           "Kit coverage hole (Workflow §5.4)",
-          "at most one** §5.4 research item"
+          "Named leftovers",
+          "Thin wrap-the-API"
         ]
       }
     ],

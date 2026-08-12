@@ -85,7 +85,7 @@ One line: *Git: `milestone-pr` (cloud this-run; durable setting remains `<mode|u
 |-------|--------|
 | Not a git repo | Treat as **`none`** this run |
 | Dirty **unrelated** WIP | **Hard stop** — commit/stash/waive (TEMPLATE_SYNC A0 spirit) |
-| `milestone-pr` | Non-default **intentional** feature branch → **stay** and **degrade this run to `branch-pr-squash`** (one PR, **no merge** onto default — do not slice-merge someone else’s feature branch). Else create first `orchestrate/YYYY-MM-DD-<stem-or-scope>` (record `branch_origin: created`) |
+| `milestone-pr` | **Cloud this-run** already on a non-default branch → **stay**, continue **`milestone-pr`** (record `branch_origin: platform`) — that branch is the platform workspace, not “someone else’s feature.” Non-cloud, non-default **intentional** user feature branch → **stay** and **degrade this run to `branch-pr-squash`** (one PR, **no merge** onto default — do not slice-merge someone else’s feature branch). Else create first `orchestrate/YYYY-MM-DD-<stem-or-scope>` (record `branch_origin: created`) |
 | `branch-pr` / `branch-pr-squash` / `branch-push` | Non-default **intentional** feature branch → **stay** (record `branch_origin: pre-existing`). Else create `orchestrate/YYYY-MM-DD-<scope>` (record `branch_origin: created`) |
 | `local` / `current-push` | Stay on current branch (`branch_origin: n/a`) |
 | `none` | No branch setup |
@@ -129,20 +129,22 @@ Human-verify-map is **not** part of each cycle — once at true end of run ([`or
 5. **Squash** *(after 3 green + 4 clean)* — one commit on **this milestone branch** (not default); subject = this slice; **`--force-with-lease` only**. Unsafe history → skip squash, note, continue. Tip-only bots must see the **whole slice**, not the last fix-up tip.
 6. **Mark ready** *(default)* — after 3 green, 4 clean/skipped, 5 done/skipped. Skip if *leave draft*, verify never green, or warden **gaps-found**.
 7. **Wait CI** — poll forge checks every **60–120s**. **Stop waiting** at the first of: required checks completed · **45 minutes** with no check still running · budget exhausted.  
+   - **Green:** all required checks passed → continue to step 8.  
    - **Red:** apply a fix, local build-verify, push, re-wait. **Fix budget: 2 rounds** after first ready, then **degrade** (leave ready, **do not merge**).  
+   - **Incomplete / timeout / budget** (required checks still pending, queued, or never started): **degrade** — do **not** continue to steps 8–9.  
    - **No CI configured:** treat as green for the merge gate after local verify; still do step 8.  
-   - Do **not** merge on red required checks. Do **not** admin-bypass.
+   - Do **not** merge on red, pending, or missing required checks. Do **not** admin-bypass.
 8. **Bugbot / tip-only review** — after CI completes (or after ready if no CI), wait up to **10 minutes** (15 if no CI) for comments or auto-pushed commits. None → go to merge.  
    - **Pushed commits** on this branch: `git pull --ff-only`, local build-verify; green → re-wait CI (counts toward the 2-round budget); red → fix or degrade.  
    - **Auto-fix** targeting this branch: **accept** when the diff clearly addresses the reported finding; reject drive-by refactors / unrelated files. Then local verify + re-wait CI.  
-   - **Comments only:** apply **clear, in-scope** fixes (one pass); ignore nits / out-of-scope. Do not redesign.  
+   - **Comments only:** apply **clear, in-scope** fixes (one pass); ignore nits / out-of-scope. Do not redesign. If changes were made → commit, push, local build-verify; green → re-wait CI (counts toward the 2-round budget); red → fix or degrade. No changes → go to merge.  
    - Do **not** wait for human reviewers.
 9. **Merge** — squash-merge via the inferred CLI (**no** failing-check bypass). Forge delete-on-merge is OK.  
    - **Denied** (permissions, required human review, read-only CLI, protection): **degrade** — do not retry with bypass, do not stack a second PR.  
-10. **Return to default** — `git checkout` default; `git pull --ff-only` if clean and tracking exists. Pull/rebase fight → **stop git cycling**, report, stay put.  
-11. **Next branch or stop** — ready work + budget remain → create `orchestrate/YYYY-MM-DD-<stem-or-scope>` from default (append `-2`, `-3` if the name exists); continue the loop. Else stay on default (true end).
+10. **Return to default** *(successful merge only — skip on degrade)* — `git checkout` default; `git pull --ff-only` if clean and tracking exists. Pull/rebase fight → **stop git cycling**, report, stay put.  
+11. **Next branch or stop** *(successful merge only — skip on degrade)* — ready work + budget remain → create `orchestrate/YYYY-MM-DD-<stem-or-scope>` from default (append `-2`, `-3` if the name exists); continue the loop. Else stay on default (true end).
 
-**Degrade** *(any step above)*: leave the PR as-is (draft or ready); do **not** merge. Same stem’s next item → **stay on this unmerged branch** (more commits on the **same** PR). Other **independent** stems → new branch from **default** (they do not need this PR). Report the block.
+**Degrade** *(any step above)*: leave the PR as-is (draft or ready); do **not** merge; **skip steps 10–11**. Same stem’s next item → **stay on this unmerged branch** (more commits on the **same** PR). Other **independent** stems → new branch from **default** (they do not need this PR). Report the block.
 
 **Order why:** each overnight slice is reviewable, checked, and on default before the next slice starts — so a late failure does not roll back earlier work, and Bugbot never sees only the last fix-up commit of a giant run.
 
@@ -170,14 +172,14 @@ After agent work done (+ human-verify-map committed if needed). **Do not reorder
 
 | Case | Action |
 |------|--------|
-| This run **created** the branch (`branch_origin: created`) | **Default:** `git checkout` repo default (`main` / `master` / `git symbolic-ref refs/remotes/origin/HEAD` / forge default). Optional cheap `git pull --ff-only` on default if clean and tracking exists — do not merge/rebase fights. **`milestone-pr`:** do this after **each** merge (or degrade), then step 11 may create the next branch. |
+| This run **created** the branch (`branch_origin: created` or `platform`) | **Default:** `git checkout` repo default (`main` / `master` / `git symbolic-ref refs/remotes/origin/HEAD` / forge default). Optional cheap `git pull --ff-only` on default if clean and tracking exists — do not merge/rebase fights. **`milestone-pr`:** do this after **each successful merge** (step 9), then step 11 may create the next branch. On degrade, **skip** return-to-default. |
 | This run **stayed** on a pre-existing intentional feature branch | **Do not** auto-checkout default (user may still be building that feature). One line in report: *stayed on `<branch>` (pre-existing)*. |
 | User said *stay on this branch* / *this run only stay here* | Skip return. |
 | Working tree **dirty** with uncommitted work | **Do not** checkout away — report dirty + stay; ask commit/stash if needed. |
 | `local` / `current-push` / `none` / never left default | Skip (already on default or no branch hop). |
 | `branch-push` with **created** branch | Same as created: return to default after final push (+ warden if any). |
 
-**When:** after that branch’s delivery is done (milestone cycle steps 1–9, or branch-pr close-out 1–5, including gaps-found push). **Never** checkout default *before* final push / squash / mark-ready / merge on the run branch.
+**When:** after that branch’s delivery is done (milestone cycle **successful merge**, or branch-pr close-out 1–5, including gaps-found push). **Never** checkout default *before* final push / squash / mark-ready / merge on the run branch. **Never** checkout default on **`milestone-pr` degrade** (stay on the unmerged slice).
 
 **Do not:** mass-delete branches (forge delete-on-merge is OK); merge PRs **except** `milestone-pr` step 9; force-checkout over dirty files.
 
@@ -188,6 +190,6 @@ After loop (+ human verify map): if implementer units shipped → run **todo-war
 ### Grants / do not
 
 - Mode (or this-run / **Cloud Agent** override) grants **only** that effective mode’s commit/push/PR/**merge** for **orchestration**.
-- **`milestone-pr` merge grant** is only step 9 after green local verify + warden clean/skipped + (CI green or no CI) + Bugbot pass/timeout — never a grant to bypass protection or merge other playbooks’ PRs.
+- **`milestone-pr` merge grant** is only step 9 after green local verify + warden clean/skipped + (**required CI green** or no CI configured) + Bugbot pass (or no comments). **Not** a grant after CI timeout / pending checks / Bugbot comments that still need a push. Never a grant to bypass protection or merge other playbooks’ PRs.
 - Not a grant for template sync or other playbooks.
 - **Do not:** merge PRs in `branch-pr` / `branch-pr-squash` / non-PR modes; bare `--force`; silent-default `current-push`; invent forge; store tokens; rewrite durable `orchestrator.git.mode` because of a Cloud Agent this-run; leave HEAD on an orchestrator-created branch after a **finished** run without returning to default; stack PRs; accumulate a whole overnight drain into one PR under `milestone-pr`.

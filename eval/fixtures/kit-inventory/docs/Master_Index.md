@@ -12,5 +12,5 @@ One client kit. Video is next. Leftover API surfaces stay on KitApi until a slic
 
 | Feature | Spec | Understanding | TODO |
 |---------|------|---------------|------|
-| KitApi | [KitApi.md](features/KitApi.md) | — | [KitApi-TODO.md](features/KitApi-TODO.md) |
+| KitApi | [KitApi.md](features/KitApi.md) | [KitApi-Understanding.md](features/KitApi-Understanding.md) | [KitApi-TODO.md](features/KitApi-TODO.md) |
 | VideoGeneration | [VideoGeneration.md](features/VideoGeneration.md) | — | [VideoGeneration-TODO.md](features/VideoGeneration-TODO.md) |
