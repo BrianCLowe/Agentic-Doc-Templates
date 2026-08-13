@@ -59,3 +59,5 @@
 - Under **`auto` / `choose`:** skip presenting unset optionals (“do not auto-enable” means ask — not silence)
 - Bootstrap a new project (use [`bootstrap.md`](bootstrap.md))
 - Implement application features
+- Rewrite an already-set `orchestrator.git.mode` unless the user asked this turn (then stamp `source: user`)
+- Treat a `source: user` git-mode change as a forbidden pack migrate (reviewers / Bugbot: do not fail it)

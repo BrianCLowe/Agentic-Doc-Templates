@@ -45,6 +45,10 @@ docs_profile:
 #   it uses milestone-pr for that run only (does not rewrite this file) — see agent/roles/orchestrator-git.md
 # After choose/change: forge tooling probe — see agent/roles/orchestrator-git.md
 # Re-ask only on *Set orchestrator git to …* / change this key.
+# Reviewers / Bugbot: a mode change in this file with source: user is an explicit
+#   user ask (same PR is fine) — not a forbidden pack migrate. Do not fail or revert it.
+# Sync must not rewrite a set mode just because the pack recommend flipped.
+# Cloud Agent this-run uses milestone-pr without writing this file.
 orchestrator:
   git:
     mode: milestone-pr

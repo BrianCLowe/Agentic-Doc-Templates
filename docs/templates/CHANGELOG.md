@@ -21,6 +21,16 @@
 
 ---
 
+## 2.7.20
+
+- **Live impact:** `versions-only`, `process-docs-only`
+- **Files:**
+  - `VERSION` — 2.7.19 → 2.7.20
+  - `agent/TEMPLATE_SYNC_B.md` B0.6 — already-set git mode stays; **user ask this turn** may rewrite + `source: user`. That is **not** a pack migrate
+  - `agent/ADT-settings.example.yaml` — **Reviewers / Bugbot:** do not fail a durable `orchestrator.git.mode` change when `source: user`
+  - `agent/roles/orchestrator-git.md`, `roles/template-sync.md` + adapter — same exception
+- **Step B:** Bump Master Index **Pack version** to 2.7.20. **Do not** migrate an already-set `orchestrator.git.mode` just because the pack now recommends `milestone-pr` (cloud this-run still does not write the file). **Exception — reviewers / Bugbot:** if this PR changes `orchestrator.git.mode` **and** stamps `source: user` (or the user said *Set orchestrator git to …* / asked to change that setting on this PR), that is **user-directed**. Do **not** fail, revert, or treat it as a forbidden sync migrate. If live `ADT-settings.yaml` lacks that reviewer note next to `orchestrator.git`, add the comment from the example (do **not** change the mode). No live feature/shared scan. Rules refresh not required.
+
 ## 2.7.19
 
 - **Live impact:** `versions-only`, `master-index`, `process-docs-only`, `rules`, `optional-todo-kit-coverage`
@@ -38,7 +48,7 @@
   - `help/USAGE.md` — sync kit-coverage vs warden split
   - `agent/ADT-settings.example.yaml` — example mode **`milestone-pr`**
   - `Master_Index_Template.md`, `help/*`, root `README.md` — recommend + cloud path + inventory/TODO wording
-- **Step B:** Bump Master Index **Pack version** to 2.7.19. Adopt At a Glance **orchestrator git** recommend **`milestone-pr`** + Cloud Agent this-run note if missing; adopt **inventory stem** / covering-TODOs wording on At a Glance idea-sources if missing. **Do not** migrate existing live `orchestrator.git.mode` (including `local` / `branch-pr` / `branch-pr-squash`) — cloud overrides are this-run only. **Update and refresh** installed modular + timescale rules from this pack (**no ask** unless `customized: true`). **`optional-todo-kit-coverage`:** present/execute per `sync.mode` — for each Document Map stem, if the **spec already names** in-scope leftover surfaces with no covering TODO (**open or Completed** on **this** stem), add items on that stem (no new map rows; do not resurrect Completed). If Overview claims wrap-the-vendor-API but the spec lists no leftovers, add **one** research TODO (diff vendor docs next session) — do **not** fetch vendor APIs during sync. Under **`choose`:** ask once (default all stems). Under **`auto` / `auto-all`:** all Document Map `*-TODO.md`. Todo-warden does not replace this pass. Orchestrator playbooks are parent-only (no adapter).
+- **Step B:** Bump Master Index **Pack version** to 2.7.19. Adopt At a Glance **orchestrator git** recommend **`milestone-pr`** + Cloud Agent this-run note if missing; adopt **inventory stem** / covering-TODOs wording on At a Glance idea-sources if missing. **Do not** migrate existing live `orchestrator.git.mode` (including `local` / `branch-pr` / `branch-pr-squash`) — cloud overrides are this-run only. **Exception:** an explicit user *Set orchestrator git to …* / setting change this PR with `source: user` is **user-directed** — reviewers / Bugbot must **not** fail or revert it. **Update and refresh** installed modular + timescale rules from this pack (**no ask** unless `customized: true`). **`optional-todo-kit-coverage`:** present/execute per `sync.mode` — for each Document Map stem, if the **spec already names** in-scope leftover surfaces with no covering TODO (**open or Completed** on **this** stem), add items on that stem (no new map rows; do not resurrect Completed). If Overview claims wrap-the-vendor-API but the spec lists no leftovers, add **one** research TODO (diff vendor docs next session) — do **not** fetch vendor APIs during sync. Under **`choose`:** ask once (default all stems). Under **`auto` / `auto-all`:** all Document Map `*-TODO.md`. Todo-warden does not replace this pass. Orchestrator playbooks are parent-only (no adapter).
 
 ## 2.7.18
 
