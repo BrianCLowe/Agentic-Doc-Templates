@@ -141,7 +141,7 @@ Read `orchestrator.git.mode` from `docs/ADT-settings.yaml`.
 
 | State | Behavior |
 |-------|----------|
-| **`local` / `milestone-pr` / `branch-pr` / `branch-pr-squash` / `branch-push` / `current-push` / `none`** | Keep; no re-ask |
+| **`local` / `milestone-pr` / `branch-pr` / `branch-pr-squash` / `branch-push` / `current-push` / `none`** | **Keep the exact value; no re-ask.** Do **not** rewrite to `milestone-pr` because it is now recommended. **This-turn exception:** user said *Set orchestrator git to …* / asked to change this setting → record the new mode + `recorded` today + **`source: user`**. That is **user-directed**, not a pack migrate. **Reviewers / Bugbot:** do **not** fail or revert a mode change that stamps `source: user`. |
 | **missing / unset** | **Always ask once before stopping** — even under **`sync.mode: auto-all`**. Git strategy is high-impact. **Never** silent-default **`current-push`** or invent a mode without a user answer. |
 
 **Present and explain** the full menu (bootstrap Step 3p **E** wording):
@@ -160,7 +160,7 @@ Recommend: remote + forge CLI → **`milestone-pr`** (overnight drain: per-slice
 
 **After the mode is recorded** → **Forge tooling probe** ([`roles/orchestrator-git.md`](roles/orchestrator-git.md)): if **`milestone-pr` / `branch-pr` / `branch-pr-squash`** and CLI missing → ask to install; if not authenticated → **ask to start login** (install alone is not enough). Fall back / switch mode if they decline. Do not silent-install or silent-login.
 
-**Do not** under `auto-all` write `local` (or any mode) and move on without an explicit user pick. If they say “defaults,” treat that as accepting the **stated recommendation** and record it **loudly** in the sync summary: *“Recorded orchestrator.git = X (your default). Other options: …”*.
+**Do not** under `auto-all` write `local` (or any mode) and move on without an explicit user pick. If they say “defaults,” treat that as accepting the **stated recommendation** and record it **loudly** in the sync summary: *“Recorded orchestrator.git = X (your default). Other options: …”*. Do **not** stamp `source: user` unless they picked the mode this turn.
 
 ### Reference — local template → live file *(only when tagged)*
 
@@ -262,6 +262,8 @@ Versions:
 - Read **only the top** changelog entry when **from** < **to** and intermediate `##` entries exist — **union** those entries (Catch-up above)
 - Let a newer entry’s `process-docs-only` cancel `content-templates` / reshape / ambition / operable / kit-coverage tags from skipped releases in the same jump
 - Walk each catch-up version as its own full sync or bump Pack version through intermediate numbers
+- Rewrite an already-set `orchestrator.git.mode` because the pack now recommends `milestone-pr`, because At a Glance wording changed, or because a Cloud Agent this-runs `milestone-pr`
+- Fail, revert, or treat as a forbidden migrate a durable `orchestrator.git.mode` change that stamps **`source: user`** (or the user asked to change that setting on this PR) — that is user-directed
 
 ---
 

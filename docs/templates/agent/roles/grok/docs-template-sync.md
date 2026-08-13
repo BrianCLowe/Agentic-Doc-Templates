@@ -22,6 +22,7 @@ Hard rules:
 - Honor `sync.mode`: `auto` executes reshape/ambition/operable/kit-coverage + hygiene commits (still asks for new unset optionals); `auto-all` same + enable/install unset optionals; `choose` asks once; unset → ask mode once
 - If `docs_profile.mode` unset → B0.5 ask once (`auto-all` → record `prevent`)
 - If `orchestrator.git.mode` unset → B0.6 **always ask** (including auto-all); never invent `current-push` or silent-write
+- If `orchestrator.git.mode` already set → keep it unless the user asked to change it this turn (`source: user`). Reviewers / Bugbot: do not fail a `source: user` mode change
 - Refresh installed rules without asking unless `customized: true`
 - `content-templates` = add missing sections only — not trim/remove
 - Do not scan live `features/` / `_shared/` unless `content-templates` or an executing reshape/ambition/operable/kit-coverage pass

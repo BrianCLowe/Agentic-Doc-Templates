@@ -1,4 +1,4 @@
-<!-- pack-version: 2.7.19 -->
+<!-- pack-version: 2.7.20 -->
 
 > **Template reference.** Do not put project-specific content in this file. Copy to `docs/Master_Index.md` for initial setup, or diff against it when syncing template improvements into the live index. Never edit this template unless the user asks you to.
 >
@@ -8,7 +8,7 @@
 
 **Purpose**: Single entry point for **this project's** documentation — overview, locations, and Document Map. Read only the files relevant to the current task.
 
-**Pack version**: 2.7.19 *(from [`templates/VERSION`](templates/VERSION) — update on sync)*
+**Pack version**: 2.7.20 *(from [`templates/VERSION`](templates/VERSION) — update on sync)*
 
 ## 1. Project Overview
 
