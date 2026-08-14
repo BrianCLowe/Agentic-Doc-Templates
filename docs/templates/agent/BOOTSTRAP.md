@@ -64,17 +64,18 @@ Do **not** overwrite a project-owned root `README.md`. If an upstream README is 
 
 ## Step 1b — Remove upstream GitHub config (user projects)
 
-**This pack’s** `.github/` files are for [Agentic-Doc-Templates](https://github.com/BrianCLowe/Agentic-Doc-Templates) only (issue forms + Release workflow). They must **not** stay in a user’s app repo.
+**This pack’s** `.github/` files are for [Agentic-Doc-Templates](https://github.com/BrianCLowe/Agentic-Doc-Templates) only (issue forms, Release workflow, **FUNDING.yml**). They must **not** stay in a user’s app repo. Bootstrap does **not** wipe all of `.github/` — only the gated files below.
 
 When the whole template repo was cloned/copied into a project (or “Use this template” left `.github/` behind):
 
 1. If `.github/ISSUE_TEMPLATE/` exists **and** contains Agentic Doc Templates forms (e.g. `agent-tool-problem.yml`, `template-improvement.yml`, `docs-confusion.yml`, `feedback.yml`, or bodies that mention Agentic Doc Templates / modular docs templates) → **delete that directory**.
 2. If `.github/ISSUE_TEMPLATE/` looks like the **user’s own** issue forms → **do not delete**.
 3. If `.github/workflows/release.yml` exists **and** is the upstream pack Release workflow (e.g. workflow `name: Release`, builds `agentic-doc-templates-*.zip`, or comments/body mention Agentic Doc Templates pack releases) → **delete that file**. Remove `.github/workflows/` if it is empty afterward.
-4. Pack-checks workflow cleanup is **Step 1d** (same whole-repo gate).
-5. Do **not** delete the user’s other workflows, Copilot instructions, or other project GitHub config.
-6. Remove `.github/` if it is empty afterward.
-7. Prefer copying only `docs/templates/` next time so `.github/` never lands in the project.
+4. If `.github/FUNDING.yml` exists **and** is this pack’s (e.g. `github: BrianCLowe`, comments mention Agentic Doc Templates / `sponsors/BrianCLowe`) → **delete that file**. If it is the **user’s own** funding file → **do not delete**.
+5. Pack-checks workflow cleanup is **Step 1d** (same whole-repo gate).
+6. Do **not** delete the user’s other workflows, Copilot instructions, or other project GitHub config.
+7. Remove `.github/` if it is empty afterward.
+8. Prefer copying only `docs/templates/` next time so `.github/` never lands in the project.
 
 ## Step 1c — Remove upstream Cloud Agent config (user projects)
 
@@ -307,7 +308,7 @@ If the user named **no** features yet, skip Step 3d and say so in Step 4.
 - Overwrite an existing project `README.md` that is not the upstream template readme.
 - Put project feature content into `docs/templates/` (templates stay canonical reference only).
 - Create `docs/help/` or `docs/agent/` at docs root — those belong inside `docs/templates/`.
-- Leave Agentic Doc Templates `.github/ISSUE_TEMPLATE/`, `.github/workflows/release.yml`, or `.github/workflows/pack-checks.yml` in a user project — delete them (Step 1b / 1d).
+- Leave Agentic Doc Templates `.github/ISSUE_TEMPLATE/`, `.github/workflows/release.yml`, `.github/workflows/pack-checks.yml`, or `.github/FUNDING.yml` in a user project — delete them (Step 1b / 1d).
 - Leave the pack's own `.cursor/environment.json` (Cloud Agent env config) in a user project on a whole-repo copy — delete it (Step 1c); keep the user's own env/rules.
 - Leave upstream root **`eval/`**, root **`scripts/gen_role_adapters.py`**, or leftover **`docs/templates/agent/scripts/*.py`** in a user project on a whole-repo copy — delete them (Step 1d); keep [`GENERATE_ROLE_ADAPTERS.md`](GENERATE_ROLE_ADAPTERS.md).
 - Ask before moving root files that are **clearly** upstream (Agentic Doc Templates / Brian Lowe / BrianCLowe markers) — just move them.

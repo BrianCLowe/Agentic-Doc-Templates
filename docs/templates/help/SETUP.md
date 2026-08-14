@@ -18,7 +18,7 @@ You need **`docs/templates/`** in your project (scaffolds, [`help/`](.), [`agent
 | **Clone → rename → change remote** | New local app from a full clone; point `origin` at your empty repo |
 | Git submodule | Awkward path; still prefer copying or sparse-checkout of `docs/templates/` |
 
-Whole-repo / template installs: bootstrap auto-moves clearly upstream root files into `docs/templates/agent/upstream/` and deletes Agentic-only `.github/ISSUE_TEMPLATE/`, `.github/workflows/release.yml` / `pack-checks.yml`, root `eval/`, root `scripts/gen_role_adapters.py`, and any leftover `docs/templates/agent/scripts/*.py`. Short acquisition table also on the [upstream README — Get started](https://github.com/BrianCLowe/Agentic-Doc-Templates#get-started).
+Whole-repo / template installs: bootstrap auto-moves clearly upstream root files into `docs/templates/agent/upstream/` and deletes Agentic-only `.github/ISSUE_TEMPLATE/`, `.github/FUNDING.yml`, `.github/workflows/release.yml` / `pack-checks.yml`, root `eval/`, root `scripts/gen_role_adapters.py`, and any leftover `docs/templates/agent/scripts/*.py`. Short acquisition table also on the [upstream README — Get started](https://github.com/BrianCLowe/Agentic-Doc-Templates#get-started).
 
 **Inside the pack:** `help/` (this guide), `agent/` (bootstrap, rules, sync), plus `VERSION`, `CHANGELOG.md`, and the scaffold templates at the pack root.
 

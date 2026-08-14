@@ -21,6 +21,15 @@
 
 ---
 
+## 2.7.22
+
+- **Live impact:** `versions-only`, `process-docs-only`
+- **Files:**
+  - `VERSION` — 2.7.21 → 2.7.22
+  - `agent/BOOTSTRAP.md` Step 1b — delete upstream `.github/FUNDING.yml` (`github: BrianCLowe`) on whole-repo / “Use this template” copies; do **not** wipe all of `.github/` or the user’s own funding file
+  - `help/SETUP.md`, root `CONTRIBUTING.md` — same list
+- **Step B:** Bump Master Index **Pack version** to 2.7.22. If a whole-repo copy left `.github/FUNDING.yml` with `github: BrianCLowe` / Agentic Doc Templates comments → **delete that file**. Do **not** delete the user’s own funding file. No live feature/shared scan. Rules refresh not required.
+
 ## 2.7.21
 
 - **Live impact:** `versions-only`, `master-index`, `process-docs-only`
