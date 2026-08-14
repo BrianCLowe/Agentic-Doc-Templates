@@ -1,0 +1,58 @@
+{
+  "id": "milestone-pr-multi-todo",
+  "title": "milestone-pr groups related TODOs, allows concurrent implementers, and squashes before ready — not one-TODO serial PRs",
+  "role": "orchestrator",
+  "user": "Orchestrate — clear ready TODOs until blocked.",
+  "fixture": "fixtures/additive-keeps-confirmed",
+  "expect": {},
+  "pack_contract": {
+    "source_must_include": [
+      {
+        "file": "docs/templates/agent/roles/orchestrator-git.md",
+        "patterns": [
+          "PR unit + concurrency",
+          "Do not** treat “one TODO = one PR”",
+          "Spawn concurrent implementers",
+          "squash before mark ready",
+          "whole milestone"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/roles/orchestrator.md",
+        "patterns": [
+          "does not force serial-only or one-TODO-per-PR",
+          "Spawn **multiple** when step 2 says they do not overlap",
+          "squash the whole milestone"
+        ]
+      },
+      {
+        "file": "docs/templates/CHANGELOG.md",
+        "patterns": [
+          "2.7.21",
+          "not** one TODO / one implementer"
+        ]
+      }
+    ],
+    "summaries_must_point": [
+      {
+        "file": "docs/templates/agent/roles/orchestrator.md",
+        "must_contain": [
+          "PR unit + concurrency"
+        ],
+        "must_not_contain": [
+          "serial only — one implementer at a time",
+          "Serial implementers only"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/BOOTSTRAP.md",
+        "must_contain": [
+          "concurrent implementers when they do not overlap"
+        ],
+        "must_not_contain": [
+          "each verified slice → own branch"
+        ]
+      }
+    ]
+  }
+}

@@ -237,7 +237,7 @@ Explain: optional Understanding author, implementer, work verifier, etc. as harn
 
 | Mode | Tell the user |
 |------|----------------|
-| **`milestone-pr`** *(suggest if remote + forge CLI)* | **Overnight drain:** each verified slice → own branch → draft PR → build-verify → squash that slice → mark ready → **wait CI / accept Bugbot auto-fixes** → **merge** → new branch for the next slice. Reviewable diffs; work lands before morning. |
+| **`milestone-pr`** *(suggest if remote + forge CLI)* | **Overnight drain:** each **milestone** (one or more related TODOs; concurrent implementers when they do not overlap) → own branch → draft PR → build-verify → **squash that milestone** → mark ready → **wait CI / accept Bugbot auto-fixes** → **merge** → new branch for the next milestone. Reviewable diffs; tip-only bots see the whole cut; work lands before morning. |
 | **`branch-pr-squash`** | One run branch → milestone commits → draft PR mid-run → end: **build-verify → squash the whole run to one commit → mark ready** (no merge). Use when you want **one morning PR** to review yourself. |
 | **`branch-pr`** | Same without squash — keeps milestone history on the PR. Unattended CI after the run. No merge. |
 | **`branch-push`** *(suggest if remote, no forge CLI)* | Same without PR |

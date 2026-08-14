@@ -93,8 +93,8 @@ When product shape is still unknown, a short **spike** (branch, throwaway protot
 
 **Order on the inventory TODO:** High / Current focus = the next winner (target architecture for **that** cut). Medium / Low = the rest of the finished kit, unordered until promoted. Orchestrate drains High through Low unless the user capped tiers.
 
-**Still do not:** new Document Map rows for leftovers or for vague planned-only ideas ([`naming-layout.md`](naming-layout.md) §0 inventory rule); TODOs for out-of-kit future APIs; one mega-commit for the whole kit (git: `milestone-pr` — many verified units).
+**Still do not:** new Document Map rows for leftovers or for vague planned-only ideas ([`naming-layout.md`](naming-layout.md) §0 inventory rule); TODOs for out-of-kit future APIs; one mega-commit for the whole kit (git: `milestone-pr` — many milestones; a milestone may be several related TODOs, then squash that PR).
 
-**Timescale:** Spec the **finished product**, not an intermediate architecture. Backlog that product as **many verify-order units**. Overnight drain = implement those units, not wait, not one dump.
+**Timescale:** Spec the **finished product**, not an intermediate architecture. Backlog that product as **many verify-order units**. Overnight drain = implement those units (group into milestones when they belong together; parallelize when they do not overlap), not wait, not one dump. See [`roles/orchestrator-git.md`](../roles/orchestrator-git.md) **PR unit + concurrency**.
 
 ---

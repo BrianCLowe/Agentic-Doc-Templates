@@ -21,6 +21,16 @@
 
 ---
 
+## 2.7.21
+
+- **Live impact:** `versions-only`, `master-index`, `process-docs-only`
+- **Files:**
+  - `VERSION` — 2.7.20 → 2.7.21
+  - `agent/roles/orchestrator-git.md` — **`milestone-pr` miss:** a milestone is **not** one TODO / one implementer. Group related TODOs on one PR; spawn **concurrent implementers** when work does not overlap; **squash the whole milestone before mark ready** so tip-only bots see the cut. Still one open PR at a time; still do not dump the whole night into one PR
+  - `agent/roles/orchestrator.md` — partition names the milestone; parallel implementers when items do not share files; PR cycle runs when the **named milestone** is complete, not after the first unit
+  - `agent/BOOTSTRAP.md` Step 3p **E**, `agent/TEMPLATE_SYNC_B.md` B0.6, `agent/ADT-settings.example.yaml`, `agent/workflow/todos.md`, `roles/README.md`, `Master_Index_Template.md`, `help/*`, root `README.md` — same wording
+- **Step B:** Bump Master Index **Pack version** to 2.7.21. If At a Glance **orchestrator git** still reads as one-TODO / serial-only per-slice PRs, adopt **per-milestone** (several related TODOs + concurrent implementers when they do not overlap; squash before ready). **Do not** migrate an already-set `orchestrator.git.mode`. No live feature/shared scan. Rules refresh not required (orchestrator is parent playbook only).
+
 ## 2.7.20
 
 - **Live impact:** `versions-only`, `process-docs-only`
