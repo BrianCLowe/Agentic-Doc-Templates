@@ -4,7 +4,7 @@
 >
 > **Parent session only.** Do **not** spawn an `orchestrator` subagent. Leaf workers: `feature-implementer`, `work-verifier`, `todo-warden`. Do **not** install this file into harness `agents/` folders.
 
-**Job:** Clear ready TODO work — implement → verify → milestone git — until budget/block, without waiting for “next.” **`milestone-pr`:** each verified slice is its own PR (wait CI/Bugbot → merge → next branch) — do not stop at mark-ready and do not squash the whole night into one commit. End: human verify map + git close-out (`branch-pr*`: build-verify → todo-warden → squash? → mark ready, no merge → **return to default** when this run created the branch).
+**Job:** Clear ready TODO work — implement → verify → milestone git — until budget/block, without waiting for “next.” **`milestone-pr`:** each **milestone** is its own PR (wait CI/Bugbot → merge → next branch). A milestone may be **several related TODOs**; spawn **concurrent implementers** when work does not overlap; **squash the whole milestone before mark ready** (tip-only checks). Do not stop at mark-ready and do not squash the whole night into one commit. End: human verify map + git close-out (`branch-pr*`: build-verify → todo-warden → squash? → mark ready, no merge → **return to default** when this run created the branch).
 
 **Canonical:** This file (loop). **Git delivery:** [`orchestrator-git.md`](orchestrator-git.md). Workers: [`feature-implementer.md`](feature-implementer.md), [`work-verifier.md`](work-verifier.md), [`todo-warden.md`](todo-warden.md). Workflow modules (open only if needed): [`../workflow/profile-standing.md`](../workflow/profile-standing.md) · [`../workflow/implement.md`](../workflow/implement.md) · [`../workflow/todos.md`](../workflow/todos.md) · [`../workflow/human-todo.md`](../workflow/human-todo.md). Index: [`../Modular_Docs_Workflow.md`](../Modular_Docs_Workflow.md). Timescale: [`../Agent_Timescale_Planning_Rule.mdc`](../Agent_Timescale_Planning_Rule.mdc). Settings: `docs/ADT-settings.yaml` → `docs_profile` + `orchestrator.git.mode` + **`standing.instructions`**.
 
@@ -41,7 +41,7 @@ Skip dimensions already fixed in the same message:
 | Stems | Ask-implied; else all map stems with ready work |
 | Priorities | **All open tiers** |
 | Budget | Drain until cleared or blocked |
-| Git | From setting; else ask (recommend **milestone-pr** + forge: one PR per slice, wait CI/Bugbot, merge, next branch; offer **branch-pr-squash** for one morning PR / no merge). **Cloud Agent:** this-run **milestone-pr** when durable is local-oriented or `branch-pr*` — see orchestrator-git. **Never** silent-default **current-push** |
+| Git | From setting; else ask (recommend **milestone-pr** + forge: one PR per milestone — several related TODOs + concurrent implementers when they do not overlap; squash before ready; wait CI/Bugbot; merge; next branch; offer **branch-pr-squash** for one morning PR / no merge). **Cloud Agent:** this-run **milestone-pr** when durable is local-oriented or `branch-pr*` — see orchestrator-git. **Never** silent-default **current-push** |
 
 Record policy internally. **No mid-loop re-asks** about scope/commits/“next.” Explicit limit in the ask **binds**. This-run-only / cloud git override does **not** rewrite ADT-settings unless they also set the default (or you capture a durable standing note / key per §0.2).
 
@@ -76,13 +76,13 @@ New playtest mid-run → dual-write (§13), defer, continue. Do not invent hard 
 Until **stop condition**:
 
 1. **Survey** — focus, open tiers, Human-TODO, Understanding status  
-2. **Partition** — parallel only across non-overlapping stems (**`milestone-pr`:** serial only — one implementer at a time); serial same stem/shared; shared before blocked consumers  
-3. **Implementer** — spawn/delegate or in-session playbook; brief: stem, TODO path, item, profile, Understanding/spec paths; one unit only  
-4. **Work-verifier** — always after unit/batch; **no** mark-done/commit until **pass**  
+2. **Partition** — name the **milestone** (the TODO list for this PR — one item, a same-stem cluster, or several **non-overlapping** stems you are shipping together this cut — [`orchestrator-git.md`](orchestrator-git.md) **PR unit + concurrency**). Spawn **parallel** implementers when items do not share files (typical: different stems). Serial: same files, same Current-focus unit, shared before blocked consumers. **`milestone-pr` does not force serial-only or one-TODO-per-PR.**  
+3. **Implementer** — spawn/delegate or in-session playbook; brief each: stem, TODO path, item, profile, Understanding/spec paths. **One unit per implementer.** Spawn **multiple** when step 2 says they do not overlap.  
+4. **Work-verifier** — always after each returned unit; **no** mark-done/commit until **pass**. Several returned units → verify each (in parallel if the harness allows).  
 5. **Verify fail** — one fix pass; second fail → stop item, continue others  
 6. **Bookkeep** — `[x]` + date, Current focus; dual-write human gates; defer new playtest  
 7. **Unit build green** — implementer should have run build-verify for code; re-dispatch if handoff implies runnable but never built  
-8. **Milestone git** — parent commits (mode ≠ `none`); then push/PR per [`orchestrator-git.md`](orchestrator-git.md). **`milestone-pr`:** run that file’s **milestone PR cycle** (close-out → wait CI/Bugbot → merge → new branch) **before** the next implementer — waiting is drain, not a stop. **Serial implementers only** (one unit at a time; one PR at a time).  
+8. **Milestone git** — parent commits each verify-pass (mode ≠ `none`); serialize commits if several implementers return together; then push/PR per [`orchestrator-git.md`](orchestrator-git.md). **`milestone-pr`:** stay on this branch while the named milestone still has remaining grouped TODOs or in-flight parallel units. When that milestone is **complete** → that file’s **milestone PR cycle** (warden → **squash the whole milestone** → ready → wait CI/Bugbot → merge → new branch) **before** the next milestone. Do **not** start the cycle after the first TODO if more grouped work remains. Waiting is drain, not a stop. **One open PR at a time.**  
 
 **Current focus** is the next-work pointer — not a stop signal.
 
@@ -114,7 +114,7 @@ Cleared · still open · human verify map · other deferred human · hard-blocke
 - Skip todo-warden after a code-shipping run / milestone PR; mark PR ready on warden **gaps-found**  
 - Mark human playtest/decide done without user confirm  
 - Push/PR/current-push without mode (or this-run) grant; **merge** PRs except **`milestone-pr`** after that file’s merge gate; bare force-push; silent-default **current-push**  
-- Under **`milestone-pr`:** squash the whole overnight run into one PR; skip CI/Bugbot wait; merge on red **or pending** required checks; run parallel implementers; stack a second PR on an unmerged first PR; checkout default / start the next branch on **degrade**  
+- Under **`milestone-pr`:** treat one TODO as one PR; force serial-only implementers; skip squash before mark ready; squash the whole overnight run into one PR; skip CI/Bugbot wait; merge on red **or pending** required checks; stack a second PR on an unmerged first PR; checkout default / start the next branch on **degrade**  
 - Leave HEAD on an **orchestrator-created** run branch after a finished run without returning to default (unless user said stay / dirty tree)  
 - Invent `_shared`/map rows/backlog unrelated to shipped work or dual-write  
 - Drain Low when user chose High-only; upgrade single-slice to full orchestrate  

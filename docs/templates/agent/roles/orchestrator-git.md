@@ -8,7 +8,7 @@
 
 | Mode | Commits | Branch | Push | PR / close-out |
 |------|---------|--------|------|----------------|
-| **`milestone-pr`** | Milestone after verify pass | **New branch per milestone** | Yes | **Per milestone:** draft → build-verify → warden → squash → mark ready → **wait CI / Bugbot** → **merge** → default → next branch. **Recommend** for overnight drain + forge |
+| **`milestone-pr`** | After each verify-pass unit (several TODOs may share one PR) | **New branch per milestone** | Yes | **Per milestone:** draft → build-verify → warden → **squash the whole milestone** → mark ready → **wait CI / Bugbot** → **merge** → default → next branch. A milestone may be **several related TODOs** with **concurrent implementers** when work does not overlap. **Recommend** for overnight drain + forge |
 | **`local`** | Same | Current | No | No |
 | **`branch-pr`** | Same | One run branch | Yes | Draft mid-run → **end-of-run close-out** (no merge; keeps milestone history) |
 | **`branch-pr-squash`** | Same | One run branch | Yes | Same + **squash the whole run** before ready (one PR for human review in the morning; no merge) |
@@ -16,7 +16,7 @@
 | **`current-push`** | Same | **Current** (often main) | Yes | No PR — **never silent-default** |
 | **`none`** | No | — | No | No |
 
-**Why not one giant squash PR for overnight:** a multi-hour drain as a single tip is hard to review, CI/Bugbot fire only at the end, and nothing lands if the last slice fails. **`milestone-pr`** ships each verified unit as its own PR so checks run on a reviewable diff, auto-fixes apply to that slice, and merged work is on default before the next slice starts.
+**Why not one giant squash PR for overnight:** a multi-hour drain as a single tip is hard to review, CI/Bugbot fire only at the end, and nothing lands if the last slice fails. **`milestone-pr`** ships each **milestone** as its own PR so checks run on a reviewable diff, auto-fixes apply to that slice, and merged work is on default before the next milestone starts. A milestone is **not** locked to one TODO — group related TODOs and run concurrent implementers when they do not overlap; **squash before mark ready** so tip-only bots see the whole milestone.
 
 **PR modes:**
 
@@ -29,7 +29,7 @@ Override ready/merge only if user said *leave draft* / *keep draft* / *no merge*
 
 ### Cloud Agent path *(remote unattended — does not rewrite settings)*
 
-**Why:** Durable `orchestrator.git.mode` is often **`local`** / **`none`** / **`branch-push`** for IDE work on a laptop. A **Cloud Agent** (Cursor Cloud or similar remote VM whose platform instructions require feature-branch + PR delivery) is the overnight drain path: it needs PRs so CI/Bugbot can see each slice, a **squash tip per PR** so tip-only bots see the whole slice, and **merge + next branch** so work lands instead of sitting as one giant morning PR.
+**Why:** Durable `orchestrator.git.mode` is often **`local`** / **`none`** / **`branch-push`** for IDE work on a laptop. A **Cloud Agent** (Cursor Cloud or similar remote VM whose platform instructions require feature-branch + PR delivery) is the overnight drain path: it needs PRs so CI/Bugbot can see each milestone, a **squash tip per PR** so tip-only bots see the **whole milestone** (not the last fix-up, and not one-TODO-only), and **merge + next branch** so work lands instead of sitting as one giant morning PR.
 
 **Detect Cloud Agent:** session is a remote/unattended cloud run with platform branch+PR obligations — **not** local IDE Composer / desktop agent / user laptop CLI. If unsure → **not** cloud (follow durable mode / ask).
 
@@ -52,7 +52,7 @@ One line: *Git: `milestone-pr` (cloud this-run; durable setting remains `<mode|u
 2. **Cloud Agent?** → apply **Cloud Agent path** above (this-run effective mode); skip steps 3–4 for mode choice; continue at forge probe. Else step 3.
 3. **If set** → use it (unless this-run-only override). One line: *Git: `<mode>`*. Probe forge if PR mode (or first run after mode change).
 4. **If unset** → **ask once** (recommend):
-   - remote + forge CLI → **`milestone-pr`** (overnight: one PR per verified slice, wait CI/Bugbot, merge, next branch). Offer **`branch-pr-squash`** for one PR / human merges in the morning; offer **`branch-pr`** to keep milestone history on one PR
+   - remote + forge CLI → **`milestone-pr`** (overnight: one PR per milestone — may include several related TODOs; concurrent implementers when they do not overlap; squash before ready; wait CI/Bugbot; merge; next branch). Offer **`branch-pr-squash`** for one PR / human merges in the morning; offer **`branch-pr`** to keep milestone history on one PR
    - remote, no CLI → **`milestone-pr`** + install ask, or **`branch-push`**
    - no remote → **`local`** (or **`none`**)
    - **`current-push`** only as explicit solo option
@@ -94,14 +94,40 @@ One line: *Git: `milestone-pr` (cloud this-run; durable setting remains `<mode|u
 
 ### During the loop
 
-- **Commit** (not `none`): parent, after work-verifier **pass** — one milestone per unit/batch. No secrets; no force-push mid-loop except **`--force-with-lease`** in a squash step.
-- **Push** (`milestone-pr`, `branch-pr*`, `branch-push`, `current-push`): after milestones (or every few if slow).
-- **`milestone-pr`:** after that commit + push, run the **milestone PR cycle** (below) **before** the next implementer unit. Waiting on CI is overnight drain — not a stop. **One cycle at a time** (do not open a second milestone PR until this one merged or degraded).
+- **Commit** (not `none`): parent, after each work-verifier **pass** — one commit per finished unit (serialize commits if several implementers return together). No secrets; no force-push mid-loop except **`--force-with-lease`** in a squash step.
+- **Push** (`milestone-pr`, `branch-pr*`, `branch-push`, `current-push`): after commits (or every few if slow).
+- **`milestone-pr`:** stay on this branch while the **named milestone** still has remaining grouped TODOs or in-flight parallel implementers. When that milestone is **complete** → run the **milestone PR cycle** (below) **before** the next milestone. Do **not** start the cycle after the first TODO if more grouped work remains. Waiting on CI is overnight drain — not a stop. **One open PR at a time** (do not open a second milestone PR until this one merged or degraded).
 - **`branch-pr` / `branch-pr-squash`:** after first push, open **one draft** PR if missing (scope + “orchestrator run”). Stay draft mid-run. Close-out only at **end of run**.
 - No CLI → push + “open PR in browser.”
 - **`current-push` rejected:** stop delivery; offer once to fall back to `milestone-pr` (or `branch-pr-squash`) this run — no silent mode switch.
 
-**PR unit (`milestone-pr`):** one work-verifier-pass unit (or the same-stem batch the loop already grouped). Do **not** accumulate the rest of the night, other stems, or “until the stem is drained” into one PR. Exception: the next item is the **immediate continuation of the same Current-focus unit** still in progress (implementer split) → stay on this branch. Do **not** stack a second PR on an unmerged first PR — add commits to the open PR instead.
+### PR unit + concurrency *(`milestone-pr`)*
+
+A **milestone** is the PR unit. Parent **names** it at partition (stem + short slice title + the TODO list). **Do not** treat “one TODO = one PR” as a hard rule. **Do not** force serial-only implementers.
+
+**Put multiple TODOs on one milestone when any of:**
+
+- Same reviewable cut — same stem, that stem **plus** the shared unblocker for this cut, same Current-focus cluster / one Acceptance line / domain+wire of one operable cut / implementer-split
+- Closing after the first item would leave a half-done cut
+- Non-overlapping stems the parent **named together** at partition (concurrent this cut — one squash tip)
+
+**Do not put on the same milestone:**
+
+- Unrelated next High/Medium that were **not** named at partition
+- “Until the stem is drained” / the rest of the night
+- Kitchen-sink / two unrelated diffs you did not name as this cut
+
+**Spawn concurrent implementers when all of:**
+
+- Items do not share files (typical: **different stems**, including several stems named on this milestone)
+- Shared foundation consumers need is already done (or is the unit in flight — consumers **wait**)
+- Each implementer has its **own** TODO (never two agents on the same Current-focus unit)
+
+**Do not parallelize:** same files · same Current-focus unit split across two agents · consumer stem blocked on in-flight shared work · a second **PR** (add commits to the open milestone PR instead).
+
+Same-stem default is **serial** (same files). Same-stem parallel only when the items clearly do not share files and are not one focus split.
+
+After the last unit in the milestone: **squash** (tip-only bots / Bugbot must see the **whole milestone**) → mark ready → wait CI/Bugbot → merge. Do **not** stack a second PR on an unmerged first PR.
 
 ### End of run *(non-PR)*
 
@@ -112,21 +138,21 @@ One line: *Git: `milestone-pr` (cloud this-run; durable setting remains `<mode|u
 - **Never merge** in these modes. Force-push only as **force-with-lease** in a squash step.
 - Then **return to default branch** (below) when applicable.
 
-### Milestone PR cycle *(`milestone-pr` — strict order, each slice)*
+### Milestone PR cycle *(`milestone-pr` — strict order, each milestone)*
 
-After work-verifier **pass** + milestone commit + push. **Do not reorder. Do not start the next implementer unit until this cycle merged or degraded.**
+After the **named milestone** is complete (every grouped TODO verify-pass + committed + pushed; in-flight parallel implementers for this PR have returned). **Do not reorder. Do not start the next milestone’s PR until this cycle merged or degraded.** Do **not** start this cycle after the first TODO if more grouped work remains.
 
 Human-verify-map is **not** part of each cycle — once at true end of run ([`orchestrator.md`](orchestrator.md)). If that map dirties docs after the last code merge → one extra docs-only cycle.
 
-1. **Draft PR** — if missing, open **draft** for **this slice** (stem + unit, not “whole orchestration”). Stay draft until step 6.
+1. **Draft PR** — if missing, open **draft** for **this milestone** (named slice + its TODO list, not “whole orchestration”). Stay draft until step 6. Open the draft after the first push on this branch (mid-milestone is fine); stay draft until squash + ready.
 2. **Final push** — remote matches local on this milestone branch.
 3. **Build verify** *(gate)* — [`Agent_Build_Verify_Rule.mdc`](../Agent_Build_Verify_Rule.mdc) / Tooling **Project verify**. Fix → re-run until green, or **degrade** (leave **draft**, report).  
    **Do not** warden / squash / mark ready / merge while red.
-4. **Todo warden** *(docs-only; after green)* — stems in **this PR**; spawn `todo-warden` or follow [`todo-warden.md`](todo-warden.md). Brief: those stems + claimed-done this slice; **honesty+hygiene**.  
-   - **`gaps-found`:** commit TODOs, push, **leave draft**, **skip squash + ready + merge** (degrade this slice; optional re-loop **this stem on this branch**).  
+4. **Todo warden** *(docs-only; after green)* — stems in **this PR**; spawn `todo-warden` or follow [`todo-warden.md`](todo-warden.md). Brief: those stems + claimed-done this milestone; **honesty+hygiene**.  
+   - **`gaps-found`:** commit TODOs, push, **leave draft**, **skip squash + ready + merge** (degrade this milestone; optional re-loop **this stem on this branch**).  
    - **`clean`:** continue.  
-   - No code in this slice → skip warden.
-5. **Squash** *(after 3 green + 4 clean)* — one commit on **this milestone branch** (not default); subject = this slice; **`--force-with-lease` only**. Unsafe history → skip squash, note, continue. Tip-only bots must see the **whole slice**, not the last fix-up tip.
+   - No code in this milestone → skip warden.
+5. **Squash** *(after 3 green + 4 clean)* — one commit on **this milestone branch** (not default); subject = this milestone (all TODOs in it); **`--force-with-lease` only**. Unsafe history → skip squash, note, continue. Tip-only bots must see the **whole milestone**, not the last fix-up tip and not a one-TODO fragment.
 6. **Mark ready** *(default)* — after 3 green, 4 clean/skipped, 5 done/skipped. Skip if *leave draft*, verify never green, or warden **gaps-found**.
 7. **Wait CI** — poll forge checks every **60–120s**. **Stop waiting** at the first of: required checks completed · **45 minutes** with no check still running · budget exhausted.  
    - **Green:** all required checks passed → continue to step 8.  
@@ -146,7 +172,7 @@ Human-verify-map is **not** part of each cycle — once at true end of run ([`or
 
 **Degrade** *(any step above)*: leave the PR as-is (draft or ready); do **not** merge; **skip steps 10–11**. Same stem’s next item → **stay on this unmerged branch** (more commits on the **same** PR). Other **independent** stems → new branch from **default** (they do not need this PR). Report the block.
 
-**Order why:** each overnight slice is reviewable, checked, and on default before the next slice starts — so a late failure does not roll back earlier work, and Bugbot never sees only the last fix-up commit of a giant run.
+**Order why:** each overnight milestone is reviewable, checked, and on default before the next milestone starts — so a late failure does not roll back earlier work, and Bugbot never sees only the last fix-up commit. Grouping related TODOs + concurrent implementers is how a milestone stays agent-speed; squash-before-ready is how tip-only checks still see the whole cut.
 
 ### PR close-out *(branch-pr / branch-pr-squash — strict order)*
 
@@ -192,4 +218,4 @@ After loop (+ human verify map): if implementer units shipped → run **todo-war
 - Mode (or this-run / **Cloud Agent** override) grants **only** that effective mode’s commit/push/PR/**merge** for **orchestration**.
 - **`milestone-pr` merge grant** is only step 9 after green local verify + warden clean/skipped + (**required CI green** or no CI configured) + Bugbot pass (or no comments). **Not** a grant after CI timeout / pending checks / Bugbot comments that still need a push. Never a grant to bypass protection or merge other playbooks’ PRs.
 - Not a grant for template sync or other playbooks.
-- **Do not:** merge PRs in `branch-pr` / `branch-pr-squash` / non-PR modes; bare `--force`; silent-default `current-push`; invent forge; store tokens; rewrite durable `orchestrator.git.mode` because of a Cloud Agent this-run (**explicit** *Set orchestrator git to …* / `source: user` **is** a durable rewrite — reviewers / Bugbot must not fail it); leave HEAD on an orchestrator-created branch after a **finished** run without returning to default; stack PRs; accumulate a whole overnight drain into one PR under `milestone-pr`.
+- **Do not:** merge PRs in `branch-pr` / `branch-pr-squash` / non-PR modes; bare `--force`; silent-default `current-push`; invent forge; store tokens; rewrite durable `orchestrator.git.mode` because of a Cloud Agent this-run (**explicit** *Set orchestrator git to …* / `source: user` **is** a durable rewrite — reviewers / Bugbot must not fail it); leave HEAD on an orchestrator-created branch after a **finished** run without returning to default; stack PRs; treat one TODO as one PR; force serial-only implementers under `milestone-pr`; skip squash before ready (tip-only bots would see only the last tip); accumulate a whole overnight drain into one PR under `milestone-pr`.
