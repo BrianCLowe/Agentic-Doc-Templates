@@ -79,5 +79,5 @@ No-repo brainstorms: export chats → `docs/reference/` — [`../../help/IDEA_CA
 ## Do not
 
 - Install Cursor `roles/cursor/` adapters into `.grok/agents/` (wrong frontmatter)
-- Install Grok adapters into `.cursor/agents/` as a substitute for `.grok/agents/`
+- Install Grok adapters into `.cursor/agents/` or `.github/agents/` as a substitute for `.grok/agents/`
 - Abort rule install if inspect does not list custom types yet — keep files + use playbook fallback

@@ -29,9 +29,12 @@ This project uses a lean modular documentation system. `docs/Master_Index.md` is
 
 **Optional subagents** *(parent orchestrates — user need not type `/`; harness-agnostic)*:
 
-When an ask matches a row below, look for a **named agent file** with that filename under **any** of: `.cursor/agents/`, `.grok/agents/`, `.claude/agents/`, `.codex/agents/`.
+When an ask matches a row below, look for that role under a known agents folder (table filename is `<name>.md`):
 
-- If found → **delegate / spawn** that type with a self-contained prompt (feature/component name, paths, user’s ask). On Grok Build: `spawn_subagent` with `subagent_type: <name>` when `.grok/agents/<name>.md` exists. Do **not** treat `.cursor/agents/` as Grok types.
+- `<name>.md` under `.cursor/agents/`, `.grok/agents/`, `.claude/agents/`, `.codex/agents/`
+- `<name>.agent.md` under `.github/agents/` (Copilot CLI / Agents window / Chat custom agents)
+
+- If found → **delegate / spawn** that type with a self-contained prompt (feature/component name, paths, user’s ask). On Grok Build: `spawn_subagent` with `subagent_type: <name>` when `.grok/agents/<name>.md` exists. Do **not** treat `.cursor/agents/` as Grok types. On Copilot: delegate `.github/agents/<name>.agent.md` (CLI `/agent` or inference). Do **not** treat `.cursor/agents/` as Copilot types. User-global `~/.copilot/agents/` is personal — prefer project `.github/agents/`.
 - If missing → follow the **Fallback** playbook/role **in this session** (or spawn a generic child with that playbook path).
 - **Orchestrator exception:** matching *orchestrate / drive backlog / …* → follow `docs/templates/agent/roles/orchestrator.md` **in this parent session** only. That playbook spawns leaf workers (`feature-implementer`, `work-verifier`, `todo-warden`). Never install or spawn `orchestrator` as a harness subagent type.
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Upstream CI helper — generate cursor/grok adapters from adapter-src/.
+"""Upstream CI helper — generate cursor/grok/copilot adapters from adapter-src/.
 
 NOT part of the consumer pack (bootstrap deletes root scripts/ on whole-repo copies).
 Pack editors: follow docs/templates/agent/GENERATE_ROLE_ADAPTERS.md (no Python).
@@ -23,8 +23,18 @@ MANIFEST = SRC / "manifest.json"
 OUT = {
     "cursor": AGENT_DIR / "roles" / "cursor",
     "grok": AGENT_DIR / "roles" / "grok",
+    "copilot": AGENT_DIR / "roles" / "copilot",
+}
+EXT = {
+    "cursor": ".md",
+    "grok": ".md",
+    "copilot": ".agent.md",
 }
 CMD = "python3 scripts/gen_role_adapters.py"
+
+
+def adapter_path(harness: str, name: str) -> Path:
+    return OUT[harness] / f"{name}{EXT[harness]}"
 
 
 def yaml_scalar(value) -> str:
@@ -95,7 +105,7 @@ def generate_all() -> dict[tuple[str, str], str]:
 
 def write_all(files: dict[tuple[str, str], str]) -> None:
     for (harness, name), text in files.items():
-        path = OUT[harness] / f"{name}.md"
+        path = adapter_path(harness, name)
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(text)
         print(f"wrote {path.relative_to(ROOT)}")
@@ -104,7 +114,7 @@ def write_all(files: dict[tuple[str, str], str]) -> None:
 def check_all(files: dict[tuple[str, str], str]) -> int:
     drift = 0
     for (harness, name), text in files.items():
-        path = OUT[harness] / f"{name}.md"
+        path = adapter_path(harness, name)
         rel = path.relative_to(ROOT)
         if not path.exists():
             print(f"MISSING {rel}")

@@ -1,13 +1,13 @@
 # Role adapter source
 
-> **Maintainers only.** Cursor and Grok adapters under `../cursor/` and `../grok/` are **generated**. Edit here, then regenerate — do not hand-edit the harness copies.
+> **Maintainers only.** Cursor, Grok, and Copilot adapters under `../cursor/`, `../grok/`, and `../copilot/` are **generated**. Edit here, then regenerate — do not hand-edit the harness copies.
 
 ## Layout
 
 | Path | Role |
 |------|------|
 | [`manifest.json`](manifest.json) | Role list, descriptions, per-harness frontmatter, optional grok-only hard-rule extras |
-| [`bodies/*.md`](bodies/) | Shared adapter body (intro + Hard rules) for both harnesses |
+| [`bodies/*.md`](bodies/) | Shared adapter body (intro + Hard rules) for all harnesses |
 
 ## Regenerate
 

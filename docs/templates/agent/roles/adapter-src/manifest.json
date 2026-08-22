@@ -1,8 +1,9 @@
 {
-  "_comment": "Source of truth for cursor/ + grok/ adapters. Edit bodies/ + this file, then follow ../GENERATE_ROLE_ADAPTERS.md (no Python).",
+  "_comment": "Source of truth for cursor/ + grok/ + copilot/ adapters. Edit bodies/ + this file, then follow ../GENERATE_ROLE_ADAPTERS.md (no Python).",
   "harnesses": [
     "cursor",
-    "grok"
+    "grok",
+    "copilot"
   ],
   "roles": {
     "doc-graduate": {

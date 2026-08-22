@@ -21,6 +21,20 @@
 
 ---
 
+## 2.7.23
+
+- **Live impact:** `versions-only`, `process-docs-only`, `rules`
+- **Files:**
+  - `VERSION` — 2.7.22 → 2.7.23
+  - `agent/roles/adapter-src/manifest.json` — add `copilot` harness
+  - `agent/roles/copilot/*.agent.md` — **(new)** Copilot CLI / Agents window / Chat adapters (`name` + `description` only; no `model: inherit`)
+  - `agent/GENERATE_ROLE_ADAPTERS.md`, `roles/adapter-src/README.md` — generate `roles/copilot/<role>.agent.md`
+  - Root `scripts/gen_role_adapters.py` — `.agent.md` extension for copilot
+  - `agent/tools/github-copilot.md` — doc-roles install → `.github/agents/` (was Install None)
+  - `agent/Modular_Documentation_Rule.mdc` / `.instructions.md` — look up `<name>.agent.md` under `.github/agents/`; do not treat `.cursor/agents/` as Copilot types
+  - `agent/roles/README.md`, `agent/tools/README.md`, `agent/RULE_INSTALL.md`, `agent/TEMPLATE_SYNC_A.md` / `_B.md`, `agent/ADT-settings.example.yaml`, `agent/tools/agents-md.md` / `openclaw.md` / `cursor.md` / `grok-build.md`, `help/USING_WITH_AGENTS.md`, `help/SETUP.md` — Copilot path + Chat vs Agents window session note
+- **Step B:** Bump Master Index **Pack version** to 2.7.23. **Update and refresh** installed modular + timescale + build-verify rules from this pack (**no ask** unless `customized: true`). If `optional_rules.doc-roles` is **enabled** and `tools.github-copilot.status: installed` → install/refresh seven `.github/agents/*.agent.md` from `roles/copilot/` (this version adds that folder — older packs had no Copilot agents-folder install). Do **not** copy `roles/cursor/` into `.github/agents/`. If doc-roles is **declined**, leave it. If **missing/unset**, ask once (do **not** stay silent). OpenClaw/Continue/Cline still have no adapters. No live feature/shared scan.
+
 ## 2.7.22
 
 - **Live impact:** `versions-only`, `process-docs-only`

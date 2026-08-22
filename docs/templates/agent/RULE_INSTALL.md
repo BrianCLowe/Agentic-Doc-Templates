@@ -19,7 +19,7 @@ After the user answers for a **specific tool**, create or update `docs/ADT-setti
 |-----|------|----------|
 | `cursor` | Cursor | [`tools/cursor.md`](tools/cursor.md) |
 | `grok-build` | Grok Build | [`tools/grok-build.md`](tools/grok-build.md) |
-| `github-copilot` | GitHub Copilot (VS Code) | [`tools/github-copilot.md`](tools/github-copilot.md) |
+| `github-copilot` | GitHub Copilot (VS Code Chat, Agents window, CLI) | [`tools/github-copilot.md`](tools/github-copilot.md) |
 | `claude-code` | Claude Code | [`tools/claude-code.md`](tools/claude-code.md) |
 | `agents-md` | Root `AGENTS.md` (cross-tool) | [`tools/agents-md.md`](tools/agents-md.md) |
 | `openclaw` | OpenClaw | [`tools/openclaw.md`](tools/openclaw.md) |
@@ -40,7 +40,7 @@ Optional fields: `recorded` (YYYY-MM-DD), `path`, `note`, `customized` (true onl
 | Key | Meaning |
 |-----|---------|
 | `template-update-check` | Ping for newer Agentic Doc Templates — see [`TEMPLATE_UPDATE_CHECK.md`](TEMPLATE_UPDATE_CHECK.md); default `upstream.check_mode: always` (interval optional) |
-| `doc-roles` | Optional playbook roles — see [`roles/README.md`](roles/README.md). **Not always-on.** Installed per tool file (`.cursor/agents/`, `.grok/agents/`, …). |
+| `doc-roles` | Optional playbook roles — see [`roles/README.md`](roles/README.md). **Not always-on.** Installed per tool file (`.cursor/agents/`, `.grok/agents/`, `.github/agents/`, …). |
 
 | Status | Meaning |
 |--------|---------|
@@ -59,7 +59,7 @@ Optional fields: `recorded` (YYYY-MM-DD), `path`, `note`, `customized` (true onl
 
 If `optional_rules.template-update-check` is missing: under **`sync.mode: auto-all`** enable + install (default `check_mode: always`); otherwise bootstrap should have asked — if you are mid–rule-install (or finishing a template sync) and it is still unset, ask once using the Step 3p **B** wording, then record `enabled` or `declined`.
 
-If `optional_rules.doc-roles` is missing: under **`sync.mode: auto-all`** enable + install adapters for each `tools.*.status: installed` tool that supports them; otherwise ask once using bootstrap Step 3p **C** for **any** rule-install or template-sync pass — not only when installing Cursor/Grok/Claude. Explain what “yes” means for each installed tool (agents-folder adapters where supported; Copilot/OpenClaw/etc.: no adapter files — parent follows `roles/*.md` in-session). Then record `enabled` or `declined`. Do **not** skip the ask because the current tool’s Install row is None.
+If `optional_rules.doc-roles` is missing: under **`sync.mode: auto-all`** enable + install adapters for each `tools.*.status: installed` tool that supports them; otherwise ask once using bootstrap Step 3p **C** for **any** rule-install or template-sync pass — not only when installing Cursor/Grok/Claude/Copilot. Explain what “yes” means for each installed tool (Cursor → `.cursor/agents/`; Grok → `.grok/agents/`; Claude → `.claude/agents/`; Copilot → `.github/agents/*.agent.md`; OpenClaw/Continue/Cline: no adapter files — parent follows `roles/*.md` in-session). Then record `enabled` or `declined`. Do **not** skip the ask because the current tool’s Install row is None.
 
 If `orchestrator.git.mode` is missing mid-sync: **B0.6 always ask** (even under `auto-all`) — never invent `current-push` or silent-write.
 

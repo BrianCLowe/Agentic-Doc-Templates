@@ -12,7 +12,7 @@ The modular documentation **workflow is tool-agnostic**. What differs is **where
 |------|------------|------------------------|---------------|
 | [Cursor](https://cursor.com) | `cursor` | [`../agent/tools/cursor.md`](../agent/tools/cursor.md) | `.cursor/rules/` |
 | [Grok Build](https://docs.x.ai/build/overview) | `grok-build` | [`../agent/tools/grok-build.md`](../agent/tools/grok-build.md) | `AGENTS.md` / `.grok/rules/` · roles → `.grok/agents/` |
-| [GitHub Copilot](https://github.com/features/copilot) | `github-copilot` | [`../agent/tools/github-copilot.md`](../agent/tools/github-copilot.md) | `.github/instructions/` |
+| [GitHub Copilot](https://github.com/features/copilot) | `github-copilot` | [`../agent/tools/github-copilot.md`](../agent/tools/github-copilot.md) | `.github/instructions/` · roles → `.github/agents/` |
 | [Claude Code](https://code.claude.com) | `claude-code` | [`../agent/tools/claude-code.md`](../agent/tools/claude-code.md) | `.claude/rules/` or `CLAUDE.md` |
 | Cross-tool [`AGENTS.md`](https://agents.md/) | `agents-md` | [`../agent/tools/agents-md.md`](../agent/tools/agents-md.md) | root `AGENTS.md` |
 | [OpenClaw](https://docs.openclaw.ai/concepts/agent-workspace) | `openclaw` | [`../agent/tools/openclaw.md`](../agent/tools/openclaw.md) | workspace `AGENTS.md` (prefer project as workspace) |
@@ -38,7 +38,7 @@ The modular rule guards itself: *"If `docs/Master_Index.md` does not exist, igno
 | **Docs profile** | `prevent` (default: Understanding + confirm), `balanced` (Understanding when identity fuzzy), `ship-first` (Spec+TODO only) | Workflow [§0.1](../agent/workflow/profile-standing.md#01-docs-profile-ceremony-modes) · `docs_profile` |
 | **Standing instructions** | Freeform durable **agent process** prefs (opposes pack defaults / always-never workflow). Agents **lookout-capture** same turn | Workflow [§0.2](../agent/workflow/profile-standing.md#02-standing-workflow-instructions-user-workflow-not-pack-enums) · `standing.instructions` |
 | Template update check | Upstream `VERSION` ping — default every session; interval optional | Step 3p · [`../agent/TEMPLATE_UPDATE_CHECK.md`](../agent/TEMPLATE_UPDATE_CHECK.md) |
-| Doc roles | Understanding author, implementer, work verifier, … | Step 3p · [`../agent/roles/README.md`](../agent/roles/README.md) — Cursor → `.cursor/agents/`; Grok Build → `.grok/agents/` |
+| Doc roles | Understanding author, implementer, work verifier, … | Step 3p · [`../agent/roles/README.md`](../agent/roles/README.md) — Cursor → `.cursor/agents/`; Grok Build → `.grok/agents/`; Copilot → `.github/agents/` |
 | Orchestrator | Parent-only backlog loop (implement → verify → next); readiness follows docs profile | [`../agent/roles/orchestrator.md`](../agent/roles/orchestrator.md) — **not** installed as a harness subagent |
 | **Orchestrator git** | `local` · **`milestone-pr`** *(recommend + forge; several related TODOs + concurrent implementers when they do not overlap; squash before ready)* · `branch-pr` · `branch-pr-squash` · `branch-push` · `current-push` · `none` — ask if unset; forge probe on pick; **Cloud Agent** this-runs milestone-pr if durable is local-oriented or `branch-pr*` | Step 3p / B0.6 · [`orchestrator-git.md`](../agent/roles/orchestrator-git.md) |
 | Sync mode | `auto` / `auto-all` / `choose` — dirty tree before sync still hard-stops; **git mode still asked** under auto-all if unset | Step 3p · `sync.mode` |
@@ -52,6 +52,10 @@ Parent agents **orchestrate** role delegation when asks match; `/` commands are 
 ## Grok Build note
 
 `.cursor/agents/` is **not** a Grok spawn path. Use [`../agent/tools/grok-build.md`](../agent/tools/grok-build.md) so doc roles install under `.grok/agents/`.
+
+## Copilot note
+
+`.cursor/agents/` is **not** a Copilot custom-agent path. Use [`../agent/tools/github-copilot.md`](../agent/tools/github-copilot.md) so doc roles install under `.github/agents/` (`*.agent.md`). Chat, the Agents window, and Copilot CLI share those files; they do **not** share chat history.
 
 ## OpenClaw note
 

@@ -35,9 +35,10 @@ Bootstrap Step 3p (doc-roles enable) / [`../RULE_INSTALL.md`](../RULE_INSTALL.md
 | Cursor | [`cursor/`](cursor/) | `.cursor/agents/` |
 | Grok Build | [`grok/`](grok/) | `.grok/agents/` |
 | Claude Code | `cursor/` copies (compatible shape) | `.claude/agents/` |
-| Copilot / OpenClaw / Continue / Cline | — | No agents folder; parent follows playbooks in-session — still **ask** when `optional_rules.doc-roles` is unset (record enabled/declined); “no adapters” ≠ “nothing to offer” |
+| Copilot (CLI / Agents window / Chat) | [`copilot/`](copilot/) (`*.agent.md`) | `.github/agents/` |
+| OpenClaw / Continue / Cline | — | No agents folder; parent follows playbooks in-session — still **ask** when `optional_rules.doc-roles` is unset (record enabled/declined); “no adapters” ≠ “nothing to offer” |
 
-**Parent orchestration** (in the modular rule / `AGENTS.md`): if `<name>.md` exists under a known agents folder, delegate/spawn; else follow the role playbook. Grok Build must use `.grok/agents/` — it does **not** load `.cursor/agents/` as spawn types.
+**Parent orchestration** (in the modular rule / `AGENTS.md`): if `<name>.md` exists under a known agents folder — or `<name>.agent.md` under `.github/agents/` — delegate/spawn; else follow the role playbook. Grok Build must use `.grok/agents/` — it does **not** load `.cursor/agents/` as spawn types. Copilot must use `.github/agents/` — it does **not** load `.cursor/agents/` as custom agents.
 
 **Orchestrator is parent-only:** follow [`orchestrator.md`](orchestrator.md) (+ [`orchestrator-git.md`](orchestrator-git.md) for git) in the **current session**. Do **not** install or spawn an `orchestrator` harness adapter — it dispatches leaf workers (`feature-implementer`, `work-verifier`, `todo-warden`) that *are* installed when doc-roles are enabled.
 
@@ -46,7 +47,7 @@ Bootstrap Step 3p (doc-roles enable) / [`../RULE_INSTALL.md`](../RULE_INSTALL.md
 ## Disable / remove
 
 1. Stop naming roles / say *skip subagents*.
-2. Set `optional_rules.doc-roles.status: declined` and delete installed files under `.cursor/agents/`, `.grok/agents/`, `.claude/agents/` as applicable (ask before deleting).
+2. Set `optional_rules.doc-roles.status: declined` and delete installed files under `.cursor/agents/`, `.grok/agents/`, `.claude/agents/`, `.github/agents/` as applicable (ask before deleting).
 3. Keep the lean modular rule alone.
 
 ## Design rules *(for maintainers)*
@@ -54,6 +55,6 @@ Bootstrap Step 3p (doc-roles enable) / [`../RULE_INSTALL.md`](../RULE_INSTALL.md
 - Roles **point** at playbooks / **workflow modules**; do not duplicate Workflow prose.
 - Prefer links to [`../workflow/<module>.md`](../workflow/README.md) over the whole index when the role needs one topic.
 - **De-confirm / additive-vs-shape** lives only in [`../workflow/understanding.md`](../workflow/understanding.md) §4 — roles and adapters use **one-line pointers**.
-- Harness adapters are **generated** from [`adapter-src/`](adapter-src/README.md) via [`../GENERATE_ROLE_ADAPTERS.md`](../GENERATE_ROLE_ADAPTERS.md) — do not hand-edit `cursor/` or `grok/` as source of truth.
+- Harness adapters are **generated** from [`adapter-src/`](adapter-src/README.md) via [`../GENERATE_ROLE_ADAPTERS.md`](../GENERATE_ROLE_ADAPTERS.md) — do not hand-edit `cursor/`, `grok/`, or `copilot/` as source of truth.
 - **Never** add a harness adapter for `orchestrator` — parent-only by design.
 - Tool-specific install steps live in [`../tools/`](../tools/README.md), not here.

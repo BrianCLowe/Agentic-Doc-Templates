@@ -25,7 +25,7 @@ Shared sources (do not duplicate into tool files):
 - Agent timescale planning *(core with modular rule)*: [`../Agent_Timescale_Planning_Rule.mdc`](../Agent_Timescale_Planning_Rule.mdc), [`../Agent_Timescale_Planning_Rule.instructions.md`](../Agent_Timescale_Planning_Rule.instructions.md)
 - Agent build & verify *(core with modular rule)*: [`../Agent_Build_Verify_Rule.mdc`](../Agent_Build_Verify_Rule.mdc), [`../Agent_Build_Verify_Rule.instructions.md`](../Agent_Build_Verify_Rule.instructions.md)
 - Role playbooks: [`../roles/`](../roles/README.md)
-- Role adapters: [`../roles/cursor/`](../roles/cursor/), [`../roles/grok/`](../roles/grok/)
+- Role adapters: [`../roles/cursor/`](../roles/cursor/), [`../roles/grok/`](../roles/grok/), [`../roles/copilot/`](../roles/copilot/)
 
 ## Dispatcher rules
 

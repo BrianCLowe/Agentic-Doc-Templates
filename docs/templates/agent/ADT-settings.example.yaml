@@ -137,6 +137,7 @@ optional_rules:
     # paths:
     #   cursor: .cursor/agents/
     #   grok-build: .grok/agents/
+    #   github-copilot: .github/agents/
 
 # Upstream ping stamps — used when optional_rules.template-update-check is enabled.
 # Survives pack overwrite (this whole file lives under docs/, not docs/templates/).
