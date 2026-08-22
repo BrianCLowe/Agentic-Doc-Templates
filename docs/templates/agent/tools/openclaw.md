@@ -60,9 +60,9 @@ OpenClaw has **no** pack-supported `.openclaw/agents/` (or `.cursor/agents/`) in
 | | |
 |--|--|
 | **Install** | **None** for adapter files |
-| **Runtime** | Parent follows `docs/templates/agent/roles/<role>.md` in-session when the modular rule’s ask matches (same fallback as Copilot) |
+| **Runtime** | Parent follows `docs/templates/agent/roles/<role>.md` in-session when the modular rule’s ask matches (same fallback as tools with no agents folder) |
 | **On enable** | Record `optional_rules.doc-roles: enabled`; playbooks already on disk after pack sync |
-| **Also using Cursor / Grok / Claude?** | Install adapters via those tool files when those tools are `installed` |
+| **Also using Cursor / Grok / Claude / Copilot?** | Install adapters via those tool files when those tools are `installed` |
 
 ## Conflicts / naming traps
 

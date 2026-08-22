@@ -71,4 +71,4 @@ Scoped rule only: set `alwaysApply: false` and `globs: docs/**` — usually wors
 ## Do not
 
 - Paste role playbook bodies into the always-on rule
-- Treat `.grok/agents/` or `.claude/agents/` as Cursor install targets (other tool files own those)
+- Treat `.grok/agents/`, `.claude/agents/`, or `.github/agents/` as Cursor install targets (other tool files own those)

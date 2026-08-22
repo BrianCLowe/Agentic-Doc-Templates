@@ -1,8 +1,8 @@
-# Tool install — GitHub Copilot (VS Code)
+# Tool install — GitHub Copilot (VS Code Chat, Agents window, CLI)
 
 > **Status key:** `github-copilot`  
 > Open only when installing or refreshing Copilot for this repo.  
-> Docs: [Custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+> Docs: [Custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions) · [Custom agents](https://code.visualstudio.com/docs/copilot/customization/custom-agents) · [CLI custom agents](https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-custom-agents) · [Agents window](https://code.visualstudio.com/docs/copilot/agents/agents-window)
 
 ## Modular rule
 
@@ -37,26 +37,34 @@ Only if `optional_rules.template-update-check.status` is `enabled`.
 
 ## Optional — Doc roles
 
-Copilot does **not** use `.cursor/agents/` / `.grok/agents/` as first-class named subagents in this pack. That does **not** mean there is nothing to offer — still present `optional_rules.doc-roles` when unset (bootstrap Step 3p / TEMPLATE_SYNC present-unset-options).
+Only if `optional_rules.doc-roles.status` is `enabled`. Copilot custom agents (CLI, Agents window, Chat dropdown): [CLI custom agents](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/create-custom-agents-for-cli) → `.github/agents/*.agent.md`.
+
+Copilot does **not** load `.cursor/agents/` / `.grok/agents/` as named subagents. Install the Copilot adapters into `.github/agents/` so the Agents window and `copilot` CLI can see them.
 
 | | |
 |--|--|
-| **Install** | **None** for agent adapter files |
-| **Runtime** | Parent follows `docs/templates/agent/roles/<role>.md` in-session when the modular rule’s ask matches |
-| **On enable** | Record `optional_rules.doc-roles: enabled` so the decision is explicit; playbooks already on disk after pack sync |
-| **Also using Cursor / Grok / Claude?** | Install adapters via those tool files when those tools are `installed` |
+| **Adapter source** | `docs/templates/agent/roles/copilot/*.agent.md` *(generated from [`../roles/adapter-src/`](../roles/adapter-src/README.md) — do not hand-edit; do not copy `roles/cursor/` here)* |
+| **Install to** | `.github/agents/` (same filenames, including the `.agent.md` suffix) |
+| **Parent delegates** | If `.github/agents/<name>.agent.md` exists → delegate that custom agent with a self-contained prompt (CLI `/agent` or inference; Agents window / Chat dropdown). Else role playbook fallback |
+| **Do not** | Install under `.cursor/agents/`; copy Cursor `model: inherit` adapters into `.github/agents/`; use user-global `~/.copilot/agents/` as the pack target |
+
+Files: `understanding-author.agent.md`, `doc-graduate.agent.md`, `feature-implementer.agent.md`, `work-verifier.agent.md`, `todo-warden.agent.md`, `docs-bootstrap.agent.md`, `docs-template-sync.agent.md`.
+
+**Do not** install an `orchestrator` adapter — orchestration runs in the **parent** session via `docs/templates/agent/roles/orchestrator.md` (spawns leaf workers only).
 
 ## Verify
 
 - Modular + agent-timescale + agent-build-verify instructions exist under `.github/instructions/` or `copilot-instructions.md`
 - Optional: `/init` then confirm modular docs section present
+- If doc-roles enabled: seven files under `.github/agents/` (no `orchestrator`; includes `todo-warden.agent.md`)
+- Custom agents appear in Chat **Configure Custom Agents** / CLI `/agent` (custom list) / Agents window Customizations
 
 ## For humans
 
-Monorepo: enable `chat.useCustomizationsInParentRepositories` when opening a subfolder. Docs: [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions).
+Chat view and the Agents window share `.github/agents/` and `.github/instructions/`, but **not** the same chat history (Agents window / CLI are Agent Host sessions). Monorepo: enable `chat.useCustomizationsInParentRepositories` when opening a subfolder. Docs: [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions) · [Agents window](https://code.visualstudio.com/docs/copilot/agents/agents-window).
 
 ## Do not
 
 - Expect Copilot to load `.cursor/agents/` as subagents
 - Paste role playbook bodies into always-on Copilot instructions
-- Skip offering doc-roles because Install is None — explain in-session playbooks and ask once when unset
+- Skip offering doc-roles because an older pack said Install was None — this tool now has an agents-folder install

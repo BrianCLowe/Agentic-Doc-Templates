@@ -2,17 +2,17 @@
 
 # Generate role adapters — Agent Instructions
 
-> **Maintainers / pack editors.** Use when editing [`roles/adapter-src/`](roles/adapter-src/README.md) or when cursor/grok adapters drift. **No Python required** — write the markdown files directly. Do not invent a local script.
+> **Maintainers / pack editors.** Use when editing [`roles/adapter-src/`](roles/adapter-src/README.md) or when cursor/grok/copilot adapters drift. **No Python required** — write the markdown files directly. Do not invent a local script.
 
 ## Goal
 
-Regenerate every harness adapter under `roles/cursor/` and `roles/grok/` from the single source in `roles/adapter-src/`, then stop.
+Regenerate every harness adapter under `roles/cursor/`, `roles/grok/`, and `roles/copilot/` from the single source in `roles/adapter-src/`, then stop.
 
 ## Inputs *(open only these)*
 
 1. [`roles/adapter-src/manifest.json`](roles/adapter-src/manifest.json) — role list, descriptions, per-harness frontmatter, optional `grok_extra_hard_rules`
 2. [`roles/adapter-src/bodies/<role>.md`](roles/adapter-src/bodies/) — shared body (intro + Hard rules) for each role in the manifest
-3. Existing `roles/cursor/*.md` and `roles/grok/*.md` only to overwrite
+3. Existing `roles/cursor/*.md`, `roles/grok/*.md`, and `roles/copilot/*.agent.md` only to overwrite
 
 **Do not** open unrelated playbooks or scan the pack catalog.
 
@@ -55,24 +55,32 @@ Same as Cursor, but:
 
 Append them at the end of the existing `Hard rules:` list (do not create a second Hard rules section).
 
-### 3. Coverage
+### 3. Copilot adapter → `roles/copilot/<role>.agent.md`
 
-- Write **both** harnesses for every role in the manifest.
-- Delete `roles/cursor/<name>.md` or `roles/grok/<name>.md` only if that role was **removed** from the manifest (ask before deleting if unsure).
+Same as Cursor, but:
+
+- Filename is `<role>.agent.md` (Copilot CLI / Agents window / Chat convention).
+- Use `roles.<role>.copilot` for frontmatter keys when present. Typical: **none** beyond `name` + `description` — do **not** copy `model: inherit`.
+- Body = full text of `adapter-src/bodies/<body>` — **no edits**. No grok extras.
+
+### 4. Coverage
+
+- Write **all three** harnesses for every role in the manifest.
+- Delete `roles/cursor/<name>.md`, `roles/grok/<name>.md`, or `roles/copilot/<name>.agent.md` only if that role was **removed** from the manifest (ask before deleting if unsure).
 - **Never** create an `orchestrator` adapter.
 
 ## Stop when
 
-- Every manifest role has matching `cursor/` and `grok/` files, and
+- Every manifest role has matching `cursor/`, `grok/`, and `copilot/` files, and
 - Bodies match `adapter-src/bodies/` (plus grok extras when listed), and
 - You report which roles were rewritten
 
 ## Do not
 
 - Require or invent Python / shell generators for this pack — this playbook **is** the generator
-- Hand-edit `cursor/` or `grok/` as the source of truth — edit `adapter-src/` then re-run this playbook
+- Hand-edit `cursor/`, `grok/`, or `copilot/` as the source of truth — edit `adapter-src/` then re-run this playbook
 - Restate full Workflow gates in adapter bodies (pointers only)
-- Install adapters into `.cursor/agents/` / `.grok/agents/` here — that is [`RULE_INSTALL.md`](RULE_INSTALL.md) / `tools/<key>.md`
+- Install adapters into `.cursor/agents/` / `.grok/agents/` / `.github/agents/` here — that is [`RULE_INSTALL.md`](RULE_INSTALL.md) / `tools/<key>.md`
 
 ## Related
 

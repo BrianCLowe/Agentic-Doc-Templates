@@ -105,7 +105,7 @@ If the user already refreshed `docs/templates/` themselves, skip the download �
 Pack on disk is now current. **Stop using this file for procedure.**
 
 1. Open **local** [`TEMPLATE_SYNC_B.md`](TEMPLATE_SYNC_B.md) from disk (the copy just written by the overwrite — not a pre-A memory of any sync playbook).
-2. If you entered via `roles/template-sync.md`, you may re-skim that pack role from disk; prefer **B** for the live-doc checklist. Harness adapters under `.cursor/agents/` / `.grok/agents/` may still be stale until B’s `rules` refresh.
+2. If you entered via `roles/template-sync.md`, you may re-skim that pack role from disk; prefer **B** for the live-doc checklist. Harness adapters under `.cursor/agents/` / `.grok/agents/` / `.github/agents/` may still be stale until B’s `rules` refresh.
 3. Do **not** continue from any Step B text you read before the overwrite (including an old monolithic `TEMPLATE_SYNC.md`).
 
 → Follow [`TEMPLATE_SYNC_B.md`](TEMPLATE_SYNC_B.md) only from here.
