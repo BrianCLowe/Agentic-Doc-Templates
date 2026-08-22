@@ -182,7 +182,7 @@ Recommend: remote + forge CLI → **`milestone-pr`** (overnight drain: per-miles
 | `agent/Agent_Build_Verify_Rule.*` | Core build/verify rule — install/refresh with modular rule via each `tools/<key>.md` | `rules` |
 | `agent/Template_Update_Check_Rule.*` | Optional update-check — same dispatch | `rules` or `optional-upstream-check` |
 | `agent/tools/*.md` | Install/sync adapters — open only for tools already `installed` | `rules` |
-| `agent/roles/cursor/*.md` / `agent/roles/grok/*.md` | Optional subagents — via tool playbooks | `rules` when `optional_rules.doc-roles` is `enabled` |
+| `agent/roles/cursor/*.md` / `agent/roles/grok/*.md` / `agent/roles/copilot/*.agent.md` | Optional subagents — via tool playbooks | `rules` when `optional_rules.doc-roles` is `enabled` |
 
 Versions:
 

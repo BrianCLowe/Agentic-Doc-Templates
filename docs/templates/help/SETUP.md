@@ -42,7 +42,7 @@ Then you:
 4. Optionally install the modular doc rule — *Follow `docs/templates/agent/RULE_INSTALL.md`* (dispatches to [`../agent/tools/`](../agent/tools/README.md)).
 5. Optionally enable **doc roles** (Understanding author, etc.) — bootstrap asks; details: [`../agent/roles/README.md`](../agent/roles/README.md).
 
-**Cursor:** Disable **Compound Engineering** / **Superpowers** if they override the modular rule — [`../agent/tools/cursor.md`](../agent/tools/cursor.md). **Grok Build:** roles go under `.grok/agents/` — [`../agent/tools/grok-build.md`](../agent/tools/grok-build.md).
+**Cursor:** Disable **Compound Engineering** / **Superpowers** if they override the modular rule — [`../agent/tools/cursor.md`](../agent/tools/cursor.md). **Grok Build:** roles go under `.grok/agents/` — [`../agent/tools/grok-build.md`](../agent/tools/grok-build.md). **Copilot:** roles go under `.github/agents/` (`*.agent.md`) — [`../agent/tools/github-copilot.md`](../agent/tools/github-copilot.md).
 
 ---
 

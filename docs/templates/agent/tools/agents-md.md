@@ -46,8 +46,8 @@ Only if `optional_rules.template-update-check.status` is `enabled`.
 | | |
 |--|--|
 | **Install** | **None** here |
-| **Runtime** | Orchestration text in the modular rule section tells the parent to look for harness agent folders (`.cursor/agents/`, `.grok/agents/`, …) or fall back to role playbooks |
-| **Adapters** | Install via [`cursor.md`](cursor.md), [`grok-build.md`](grok-build.md), or [`claude-code.md`](claude-code.md) when those tools are `installed` |
+| **Runtime** | Orchestration text in the modular rule section tells the parent to look for harness agent folders (`.cursor/agents/`, `.grok/agents/`, `.github/agents/`, …) or fall back to role playbooks |
+| **Adapters** | Install via [`cursor.md`](cursor.md), [`grok-build.md`](grok-build.md), [`claude-code.md`](claude-code.md), or [`github-copilot.md`](github-copilot.md) when those tools are `installed` |
 
 ## Verify
 
