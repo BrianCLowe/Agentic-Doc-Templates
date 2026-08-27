@@ -16,7 +16,8 @@
           "host isolation",
           "branch_origin: host-worktree",
           "do **not** `git checkout` default",
-          "from `origin/<default>`"
+          "from `origin/<default>`",
+          "--no-track"
         ]
       },
       {
