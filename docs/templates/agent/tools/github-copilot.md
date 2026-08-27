@@ -52,6 +52,17 @@ Files: `understanding-author.agent.md`, `doc-graduate.agent.md`, `feature-implem
 
 **Do not** install an `orchestrator` adapter — orchestration runs in the **parent** session via `docs/templates/agent/roles/orchestrator.md` (spawns leaf workers only).
 
+## Host isolation *(orchestrator parallel implementers)*
+
+Parent opens this only when spawning concurrent implementers ([`../roles/orchestrator-git.md`](../roles/orchestrator-git.md) **Host worktrees**).
+
+| | |
+|--|--|
+| **Can isolate?** | **Yes** only on a surface that can start a worktree (Agents window **New Worktree**, Copilot CLI `/worktree`) |
+| **Cannot** | Chat view / local harness — always the current workspace → parent stays **serial** |
+| **Already in one** | This session is already a Copilot worktree → **stay**; do not delete it |
+| **Do not** | `git worktree add`; invent `.adt-worktrees/`; assume Chat can start a worktree |
+
 ## Verify
 
 - Modular + agent-timescale + agent-build-verify instructions exist under `.github/instructions/` or `copilot-instructions.md`

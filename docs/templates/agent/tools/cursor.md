@@ -52,6 +52,18 @@ Files: `understanding-author.md`, `doc-graduate.md`, `feature-implementer.md`, `
 
 **Do not** install an `orchestrator` adapter — orchestration runs in the **parent** session via `docs/templates/agent/roles/orchestrator.md` (spawns leaf workers only).
 
+## Host isolation *(orchestrator parallel implementers)*
+
+Parent opens this only when spawning concurrent implementers ([`../roles/orchestrator-git.md`](../roles/orchestrator-git.md) **Host worktrees**).
+
+| | |
+|--|--|
+| **Can isolate?** | **Yes** when this session can spawn/move a child into a Cursor worktree or an isolated subagent (Agents Window worktree, `/worktree`, isolated project copy). Cursor **creates** the tree. |
+| **Cannot** | Classic IDE Chat with no `/worktree` and no Agents Window isolation → parent stays **serial** |
+| **Already in one** | cwd under `~/.cursor/worktrees` or a linked worktree → **stay**; do not `/delete-worktree` or checkout default here |
+| **Cloud Agent** | VM + branch — not a git worktree; see orchestrator-git **Cloud Agent path** |
+| **Do not** | `git worktree add`; invent `.adt-worktrees/`; write `.cursor/worktrees.json` unless the user asked |
+
 ## Conflicts
 
 **Compound Engineering** and **Superpowers** often override the modular rule (skip Master Index / Understanding). Recommend disabling them for this workspace.

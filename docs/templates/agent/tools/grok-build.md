@@ -62,6 +62,17 @@ Files: `understanding-author.md`, `doc-graduate.md`, `feature-implementer.md`, `
 
 **Do not** install an `orchestrator` adapter — orchestration runs in the **parent** session via `docs/templates/agent/roles/orchestrator.md` (spawns leaf workers only).
 
+## Host isolation *(orchestrator parallel implementers)*
+
+Parent opens this only when spawning concurrent implementers ([`../roles/orchestrator-git.md`](../roles/orchestrator-git.md) **Host worktrees**).
+
+| | |
+|--|--|
+| **Can isolate?** | **Yes** — `spawn_subagent` with `isolation: worktree` (do **not** also pass `cwd`; they are mutually exclusive) |
+| **Cannot** | Isolation denied / subagents disabled → parent stays **serial** |
+| **Already in one** | cwd under `~/.grok/worktrees` or `grok -w` / `/fork --worktree` session → **stay**; do not `grok worktree rm` this tree |
+| **Do not** | `git worktree add`; invent `.adt-worktrees/` |
+
 Compat (secondary, when enabled): **Claude** `.claude/agents/` can load as spawnable types. **Cursor** `compat.cursor.agents` is for named instruction files under Cursor paths — **not** “load `.cursor/agents/*.md` as Grok spawn types.” Always install this pack’s roles under `.grok/agents/`.
 
 ## Verify

@@ -15,3 +15,4 @@ Hard rules:
 - If you update Understanding, run relocate + TODO uncheck (Workflow §4)
 - Update that feature/shared `-TODO.md` before finishing: `[x]` + date and **move** finished items into **Completed**
 - Dual-write human-gated blockers to `docs/Human-TODO.md` (Workflow §13)
+- If the parent brief names a host cwd / worktree path → work only there; do not create or remove worktrees; do not checkout default

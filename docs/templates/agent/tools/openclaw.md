@@ -64,6 +64,10 @@ OpenClaw has **no** pack-supported `.openclaw/agents/` (or `.cursor/agents/`) in
 | **On enable** | Record `optional_rules.doc-roles: enabled`; playbooks already on disk after pack sync |
 | **Also using Cursor / Grok / Claude / Copilot?** | Install adapters via those tool files when those tools are `installed` |
 
+## Host isolation *(orchestrator parallel implementers)*
+
+**No host worktree manager.** Parent stays **serial**. Do **not** `git worktree add` or invent `.adt-worktrees/`. Policy: [`../roles/orchestrator-git.md`](../roles/orchestrator-git.md) **Host worktrees**.
+
 ## Conflicts / naming traps
 
 | OpenClaw file | Not the same as |

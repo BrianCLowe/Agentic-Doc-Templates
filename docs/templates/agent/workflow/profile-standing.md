@@ -49,7 +49,7 @@
 
 | Prefer | Use for |
 |--------|---------|
-| **First-class ADT-settings key** | When an enum/key already exists — set `docs_profile` / `orchestrator.git.mode` / `sync.mode` / optionals (do **not** only put it in standing) |
+| **First-class ADT-settings key** | When an enum/key already exists — set `docs_profile` / `orchestrator.git.mode` / `sync.mode` / optionals (do **not** only put it in standing). **Not a key:** `orchestrator.git.worktrees` — host isolation is playbook-only ([`../roles/orchestrator-git.md`](../roles/orchestrator-git.md) **Host worktrees**) |
 | **`standing.instructions`** | Lasting **agent process / pack ceremony / delivery** prefs with no key yet, or finer tweaks enums do not express |
 | **Spec Decisions (§10)** | Product/UI/interaction prefs for **one stem** (could be “improved away”) |
 | **This-turn only** | One-off overrides the user does **not** want durable — apply now; **do not** write standing |

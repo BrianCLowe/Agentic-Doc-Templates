@@ -21,6 +21,18 @@
 
 ---
 
+## 2.7.24
+
+- **Live impact:** `versions-only`, `master-index`, `process-docs-only`, `rules`
+- **Files:**
+  - `VERSION` — 2.7.23 → 2.7.24
+  - `agent/roles/orchestrator-git.md` — **Host worktrees** (not a settings key): detect linked/host worktree and **stay**; do not checkout default in that tree; dirty-WIP hard-stop is **this tree** only; concurrent implementers require **host isolation** (else serial); pack does **not** `git worktree add`
+  - `agent/roles/orchestrator.md` — parallel only when host can isolate; brief child cwd; do not return-to-default inside a host worktree
+  - `agent/tools/*.md` — **Host isolation** per harness (Cursor / Grok / Copilot / Claude can isolate; OpenClaw / Continue / Cline / `AGENTS.md` → serial)
+  - `agent/roles/feature-implementer.md` + `work-verifier.md` + `adapter-src` + regenerated cursor/grok/copilot adapters — honor briefed host cwd; do not create/remove worktrees
+  - `agent/BOOTSTRAP.md` Step 3p **E**, `agent/TEMPLATE_SYNC_B.md` B0.6, `agent/ADT-settings.example.yaml`, `agent/workflow/profile-standing.md`, `Master_Index_Template.md`, `help/*`, `roles/README.md`, `workflow/todos.md`, root `README.md` — host-worktree wording; no new quiz; do not invent a worktrees key
+- **Step B:** Bump Master Index **Pack version** to 2.7.24. If At a Glance **orchestrator git** lacks the **host worktrees** note (already-in-a-worktree → stay; pack does not create trees; concurrent needs host isolation), adopt it. **Do not** add `orchestrator.git.worktrees`. **Do not** migrate an already-set `orchestrator.git.mode`. If `optional_rules.doc-roles` is **enabled** → refresh `feature-implementer` + `work-verifier` adapters from this pack (**no ask** unless `customized: true`). No live feature/shared scan.
+
 ## 2.7.23
 
 - **Live impact:** `versions-only`, `process-docs-only`, `rules`

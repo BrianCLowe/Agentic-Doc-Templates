@@ -48,6 +48,17 @@ Only if `optional_rules.doc-roles.status` is `enabled`. Claude project subagents
 
 Copy the seven `roles/cursor/*.md` adapters (including `work-verifier.md`, `todo-warden.md`). **Do not** invent an `orchestrator` adapter — orchestration is parent-only via `docs/templates/agent/roles/orchestrator.md`.
 
+## Host isolation *(orchestrator parallel implementers)*
+
+Parent opens this only when spawning concurrent implementers ([`../roles/orchestrator-git.md`](../roles/orchestrator-git.md) **Host worktrees**).
+
+| | |
+|--|--|
+| **Can isolate?** | **Yes** — spawn with `isolation: worktree` (or the user asked Claude to isolate agents) |
+| **Cannot** | Isolation unavailable → parent stays **serial** |
+| **Already in one** | cwd under `.claude/worktrees` or `claude --worktree` / `-w` session → **stay**; do not remove Claude trees |
+| **Do not** | `git worktree add`; invent `.adt-worktrees/` |
+
 ## Verify
 
 - Modular rule file or `CLAUDE.md` section exists
