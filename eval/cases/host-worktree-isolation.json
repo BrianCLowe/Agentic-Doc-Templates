@@ -1,0 +1,66 @@
+{
+  "id": "host-worktree-isolation",
+  "title": "orchestrator uses host worktrees for isolation — no pack-owned trees or settings key",
+  "role": "orchestrator",
+  "user": "Orchestrate — clear ready TODOs until blocked.",
+  "fixture": "fixtures/additive-keeps-confirmed",
+  "expect": {},
+  "pack_contract": {
+    "source_must_include": [
+      {
+        "file": "docs/templates/agent/roles/orchestrator-git.md",
+        "patterns": [
+          "Host worktrees",
+          "Not a key",
+          "git worktree add",
+          "host isolation",
+          "branch_origin: host-worktree",
+          "do **not** `git checkout` default",
+          "from `origin/<default>`",
+          "--no-track"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/roles/orchestrator.md",
+        "patterns": [
+          "host can isolate",
+          "shared checkout is not safe"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/tools/cursor.md",
+        "patterns": [
+          "Host isolation",
+          "git worktree add"
+        ]
+      },
+      {
+        "file": "docs/templates/CHANGELOG.md",
+        "patterns": [
+          "2.7.24",
+          "Host worktrees"
+        ]
+      }
+    ],
+    "summaries_must_point": [
+      {
+        "file": "docs/templates/agent/ADT-settings.example.yaml",
+        "must_contain": [
+          "Worktrees are not a key"
+        ],
+        "must_not_contain": [
+          "worktrees:"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/tools/openclaw.md",
+        "must_contain": [
+          "No host worktree manager"
+        ],
+        "must_not_contain": [
+          "Can isolate?** | **Yes"
+        ]
+      }
+    ]
+  }
+}

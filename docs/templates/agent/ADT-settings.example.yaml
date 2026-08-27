@@ -49,6 +49,8 @@ docs_profile:
 #   user ask (same PR is fine) — not a forbidden pack migrate. Do not fail or revert it.
 # Sync must not rewrite a set mode just because the pack recommend flipped.
 # Cloud Agent this-run uses milestone-pr without writing this file.
+# Worktrees are not a key (do not add orchestrator.git.worktrees). Host isolation
+# for concurrent implementers lives in agent/roles/orchestrator-git.md + tools/<host>.md.
 orchestrator:
   git:
     mode: milestone-pr

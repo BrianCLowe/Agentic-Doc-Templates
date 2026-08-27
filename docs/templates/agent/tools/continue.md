@@ -28,6 +28,10 @@ If enabled: same pattern → `.continue/rules/template-update-check.md` from `Te
 
 No first-class Continue agents folder in this pack. Follow `docs/templates/agent/roles/<role>.md` in-session when asks match.
 
+## Host isolation *(orchestrator parallel implementers)*
+
+**No host worktree manager.** Parent stays **serial**. Do **not** `git worktree add` or invent `.adt-worktrees/`. Policy: [`../roles/orchestrator-git.md`](../roles/orchestrator-git.md) **Host worktrees**.
+
 ## Verify
 
 - `modular-documentation.md`, `agent-timescale-planning.md`, and `agent-build-verify.md` exist under `.continue/rules/`

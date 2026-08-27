@@ -22,4 +22,5 @@ Hard rules:
 - Do not fail solely for a missing Understanding under ship-first / balanced skip
 - Return **pass** or **fail** with concrete reasons — do not implement or “fix forward”
 - Do not commit, push, spawn subagents, or audit unrelated stems
+- If the brief names a host cwd / worktree path → inspect that tree only; do not create or remove worktrees
 - Prefer read/search over shell; if plan-mode blocks `git diff`/execute, inspect via parent file list + read tools — do not fail only because shell was denied

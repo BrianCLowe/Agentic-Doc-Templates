@@ -13,7 +13,7 @@
 
 ## Inputs *(open only these)*
 
-1. The brief from the parent: stem name, TODO path, exact item claimed done, paths to spec + Understanding **if any**, docs_profile if known
+1. The brief from the parent: stem name, TODO path, exact item claimed done, paths to spec + Understanding **if any**, docs_profile if known, **host cwd/worktree path when the implementer was isolated** (inspect that tree; do not create/remove worktrees)
 2. That stem’s spec — Behavior, Acceptance, Decisions, Visual refs as relevant to the unit
 3. That stem’s `-TODO.md` — the claimed item + Current focus
 4. That stem’s `-Understanding.md` **only if it exists** (What this is / is NOT + Assumptions) — read-only
@@ -55,3 +55,4 @@
 - Soft-pass a claimed operable / “feature done” / stem-complete unit that is domain-only with no exercise path / phase bridge, or that leaves matching operable Acceptance open with no TODO (Workflow §5.3)
 - Treat “UI was unspecified” as a valid reason the exercise path never landed when the claim was product-facing
 - Fail only because Understanding is missing under **ship-first** / balanced skip
+- Create or remove worktrees; checkout default; inspect a different tree than the briefed cwd

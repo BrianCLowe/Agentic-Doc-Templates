@@ -26,6 +26,7 @@ Shared sources (do not duplicate into tool files):
 - Agent build & verify *(core with modular rule)*: [`../Agent_Build_Verify_Rule.mdc`](../Agent_Build_Verify_Rule.mdc), [`../Agent_Build_Verify_Rule.instructions.md`](../Agent_Build_Verify_Rule.instructions.md)
 - Role playbooks: [`../roles/`](../roles/README.md)
 - Role adapters: [`../roles/cursor/`](../roles/cursor/), [`../roles/grok/`](../roles/grok/), [`../roles/copilot/`](../roles/copilot/)
+- Orchestrator **Host isolation** (when spawning concurrent implementers): the **Host isolation** section in the current tool file — policy in [`../roles/orchestrator-git.md`](../roles/orchestrator-git.md). Do not invent pack worktrees.
 
 ## Dispatcher rules
 

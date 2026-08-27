@@ -21,7 +21,7 @@
         "file": "docs/templates/agent/roles/orchestrator.md",
         "patterns": [
           "does not force serial-only or one-TODO-per-PR",
-          "Spawn **multiple** when step 2 says they do not overlap",
+          "Spawn **multiple** only when step 2 says they do not overlap",
           "squash the whole milestone"
         ]
       },
