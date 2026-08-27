@@ -14,7 +14,9 @@
           "Not a key",
           "git worktree add",
           "host isolation",
-          "branch_origin: host-worktree"
+          "branch_origin: host-worktree",
+          "do **not** `git checkout` default",
+          "from `origin/<default>`"
         ]
       },
       {
