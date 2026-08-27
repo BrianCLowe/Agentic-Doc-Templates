@@ -130,7 +130,7 @@ Cloud isolation is a **VM + branch**, not a git worktree. Local `/worktree` / `g
 
 ### PR unit + concurrency *(`milestone-pr`)*
 
-A **milestone** is the PR unit. Parent **names** it at partition (stem + short slice title + the TODO list). **Do not** treat “one TODO = one PR” as a hard rule. **Do not** force serial-only implementers.
+A **milestone** is the PR unit. Parent **names** it at partition (stem + short slice title + the TODO list). **Do not** treat “one TODO = one PR” as a hard rule. **Do not** force serial-only implementers **when the host can isolate**. Host cannot isolate → serial (do not share one checkout across two writers).
 
 **Put multiple TODOs on one milestone when any of:**
 
