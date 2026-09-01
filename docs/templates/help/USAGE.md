@@ -142,7 +142,7 @@ Anything only you can close → `docs/Human-TODO.md`: procure, playtest/feel, de
 | Optional role — orchestrate | *Orchestrate — clear ready TODOs until blocked.* *(parent loop; git from `orchestrator.git.mode` — recommend milestone-pr; Cloud Agent this-runs milestone-pr if durable is local-oriented or `branch-pr` / `branch-pr-squash`; per-milestone: several related TODOs + concurrent implementers when they do not overlap **and** the host can isolate → build-verify → warden → squash → ready → wait CI/Bugbot → merge → next branch; already-in-a-host-worktree → stay; Human-TODO verify map)* |
 | Optional role — todo warden | *Todo warden — reconcile TODOs vs what shipped.* / *Todo cleanup — move completed items to Completed.* *(docs-only; honesty caps; hygiene moves finished `[x]`; named leftovers get covering TODOs — no vendor-doc fetch)* |
 | Set orchestrator git | *Set orchestrator git to milestone-pr* / *branch-pr-squash* / *branch-pr* / *current-push* / *local* |
-| Standing workflow note | *Add standing note: always squash before mark ready.* / *From now on, merge each slice after CI.* *(agent should save without being asked twice)* |
+| Standing playbook override | *Add standing note: always squash before mark ready.* / *From now on, merge each slice after CI.* *(agent should save without being asked twice — only playbook overrides, not random notes)* |
 | Optional role — verify | *Verify that unit against Understanding and the spec.* |
 | Optional role — graduate | *Understanding confirmed — graduate to the spec.* |
 | Force a subagent | `/understanding-author` … *(optional; usually unnecessary)* |

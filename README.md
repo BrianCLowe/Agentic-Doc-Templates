@@ -143,7 +143,7 @@ Flat sibling files per feature/shared component. Naming: [`Modular_Docs_Workflow
 - **Modular map** — Small files + Document Map; not one giant spec.
 - **Tight scope** — Paved path for the current ask; no “just in case” audits.
 - **One folder to copy** — `docs/templates/` holds setup, workflow, and rules so your `docs/` root stays yours.
-- **User workflow wins where safe** — first-class settings where the pack has enums; freeform **standing** notes when you oppose a default.
+- **User workflow wins where safe** — first-class settings where the pack has enums; **standing** when you override a playbook and no key exists (not a notes pad).
 
 Deeper day-to-day patterns: [`docs/templates/help/USAGE.md`](docs/templates/help/USAGE.md).
 

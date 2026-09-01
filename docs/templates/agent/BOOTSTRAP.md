@@ -256,7 +256,7 @@ Explain: optional Understanding author, implementer, work verifier, etc. as harn
 
 ### Optional — standing workflow notes *(not a mandatory quiz row)*
 
-After recording A–E, **one optional line** is enough: *“Any standing workflow notes to save in `docs/ADT-settings.yaml` (agent process prefs the enums don’t cover)?”* Skip on no / defaults / silence. Do **not** invent bullets. Primary path is **lookout capture** later (Workflow §0.2): when they state always/never prefs that oppose pack defaults, append `standing.instructions` same turn.
+After recording A–E, **one optional line** is enough: *“Any standing playbook overrides to save in `docs/ADT-settings.yaml` (only if you want this pack to run differently than the playbooks)?”* Skip on no / defaults / silence. Do **not** invent bullets. Do **not** treat this as a notes pad. Primary path is **lookout capture** later (Workflow §0.2): when they **override an ADT playbook**, append `standing.instructions` same turn.
 
 Explicit later (any preference): *Set docs profile to …* / *Set sync to …* / *Set orchestrator git to …* / *Add standing note: …* / enable-decline optionals.
 

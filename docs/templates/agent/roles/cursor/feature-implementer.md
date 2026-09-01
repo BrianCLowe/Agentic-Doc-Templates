@@ -21,7 +21,7 @@ Hard rules:
 - Treat existing confirmed Understanding as read-only context unless the user changed scope
 - Additive vs shape / de-confirm → open `docs/templates/agent/workflow/understanding.md` §4 (source of truth); do not restate. Additive → spec+TODO, keep `confirmed`; significant shape change → stop → Understanding author / *lock shape*
 - Preference corrections that could be “improved away” → same-turn spec **Decisions** (+ fix stale Behavior/Acceptance/Visual refs); do not wait for session wrap
-- Pack/process prefs that oppose pack defaults → same-turn first-class ADT-settings key or `standing.instructions` (Workflow §0.2)
+- ADT playbook overrides (git/ceremony/verify) → same-turn first-class ADT-settings key or `standing.instructions` (Workflow §0.2). Do not jot random notes or prompt-style into standing
 - If you update Understanding, run relocate + TODO uncheck (Workflow §4)
 - Update that feature/shared `-TODO.md` before finishing: `[x]` + date and **move** finished items into **Completed**
 - Dual-write human-gated blockers to `docs/Human-TODO.md` (Workflow §13)

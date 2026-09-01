@@ -33,7 +33,7 @@ Use when the stem is already **ready** under the docs profile and scope is uncha
 
 **Additive vs shape (one line):** On a `confirmed` Understanding, a new research angle / extra behavior / edge case that still fits **is / is not** → **spec + TODO**, keep `confirmed`. De-confirm / re-draft **only** on a significant shape change — full rule in [`workflow/understanding.md`](workflow/understanding.md#4-understanding-features--shared).
 
-**Same-turn prefs:** Product/UI correction that could be “improved away” → spec **Decisions** ([`workflow/decisions.md`](workflow/decisions.md)). Pack/process always-never → standing or first-class key ([`workflow/profile-standing.md`](workflow/profile-standing.md)).
+**Same-turn prefs:** Product/UI correction that could be “improved away” → spec **Decisions** ([`workflow/decisions.md`](workflow/decisions.md)). **Override an ADT playbook** (no first-class key) → standing ([`workflow/profile-standing.md`](workflow/profile-standing.md)). Do not jot random notes into standing.
 
 ---
 
@@ -42,7 +42,7 @@ Use when the stem is already **ready** under the docs profile and scope is uncha
 | Situation | Open only |
 |-----------|-----------|
 | Docs profile unset / suggest / upgrade | [`workflow/profile-standing.md`](workflow/profile-standing.md) (§0.1) |
-| Standing / process prefs / LOOKOUT capture | [`workflow/profile-standing.md`](workflow/profile-standing.md) (§0.2) |
+| Standing / playbook-override LOOKOUT | [`workflow/profile-standing.md`](workflow/profile-standing.md) (§0.2) |
 | Creating files / new Document Map row / split stem / inventory vs new row | [`workflow/naming-layout.md`](workflow/naming-layout.md) (§0) |
 | `_shared/` vs feature / foundation task placement | [`workflow/shared-components.md`](workflow/shared-components.md) (§1) |
 | Draft / revise Understanding · de-confirm gate · relocate | [`workflow/understanding.md`](workflow/understanding.md) (§4) |
