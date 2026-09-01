@@ -92,4 +92,28 @@ Be on the lookout every turn. Capture **only** when the user is **overriding an 
 
 **Explicit later:** *Add standing note: …* / *Clear standing instructions* / edit `docs/ADT-settings.yaml` directly. *Add standing note* still means a **playbook override** — do not file prompt-engineering or other-product API style just because they said “remember.”
 
+### Sync relocate *(2.7.25 one-shot — misplaced standing → live docs)*
+
+Run only when the selected changelog catch-up includes **2.7.25** (TEMPLATE_SYNC_B Step B one-shot). Skip if `standing.instructions` is missing, empty, or comment-only examples.
+
+**Open only:** `docs/ADT-settings.yaml` → `standing.instructions`, then **only** the one destination file a misplaced bullet names (below). Do **not** scan the Document Map or live feature/shared folder.
+
+For **each** standing bullet:
+
+1. **Keep** if it **overrides an ADT playbook** (git / ceremony / orchestrate / verify / re-ask / file-create) and no first-class key fits.
+2. **Promote** if a first-class key fits → set that key (`recorded` today, `source: user`) and **delete** the standing bullet.
+3. **Move then delete** anything else — do not leave a copy in standing:
+
+| Misplaced bullet | Destination *(create the section/row if missing; do not invent a stem)* |
+|------------------|------------------------------------------------------------------------|
+| Product/UI / interaction for a **named** Document Map stem | That stem’s spec **Decisions** (1-line row). Fix stale Behavior / Acceptance / Visual in the **same edit** if they still state the old contract |
+| How to prompt / call a **named** product API that is a map stem | That stem’s spec **Decisions** (or **Behavior** if that section already holds the call contract) |
+| Machine / host tool command that is not pack ceremony | `docs/Tooling.md` (Project verify or notes) |
+| Cross-cutting product choice and `docs/decisions/` already exists for it | That decision file (do **not** create a new ADR for a prompt-style aside) |
+
+4. **No named home** (bullet names nothing on the Document Map / Tooling / an existing decision) → **delete from standing** and list the dropped text in the sync summary. Do **not** invent a map row, Understanding, spec, or `docs/decisions/` file.
+5. Tell the user one line per relocated or dropped bullet (old paraphrase → new path, or “dropped, no home”).
+
+**Do not:** invent standing; rewrite playbook-override bullets that already belong; open every spec “just in case”; treat `process-docs-only` as a ban on this one-shot (it bans a live scan, not the named destination).
+
 ---

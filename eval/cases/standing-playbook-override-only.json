@@ -18,7 +18,9 @@
           "not a scratch pad",
           "Do not jot random notes",
           "How to prompt",
-          "playbook overrides only"
+          "playbook overrides only",
+          "Sync relocate",
+          "Move then delete"
         ]
       },
       {
@@ -39,7 +41,9 @@
         "file": "docs/templates/CHANGELOG.md",
         "patterns": [
           "2.7.25",
-          "playbook overrides only"
+          "playbook overrides only",
+          "Standing relocate",
+          "Move then delete"
         ]
       }
     ],
@@ -78,6 +82,15 @@
         ],
         "must_not_contain": [
           "Freeform durable **agent process** prefs"
+        ]
+      },
+      {
+        "file": "docs/templates/CHANGELOG.md",
+        "must_contain": [
+          "Standing relocate"
+        ],
+        "must_not_contain": [
+          "Do not** delete or rewrite existing consumer `standing.instructions`"
         ]
       }
     ]
