@@ -101,7 +101,7 @@ Run only when the selected changelog catch-up includes **2.7.25** (TEMPLATE_SYNC
 For **each** standing bullet:
 
 1. **Keep** if it **overrides an ADT playbook** (git / ceremony / orchestrate / verify / re-ask / file-create) and no first-class key fits.
-2. **Promote** if a first-class key fits → set that key (`recorded` today, `source: user`) and **delete** the standing bullet.
+2. **Promote** if a first-class key fits **and that key is unset or already matches** → **unset:** set that key (`recorded` today, `source: user`) and **delete** the standing bullet. **Already matches:** **delete** the standing bullet (do **not** restamp). If the key is already set to a **different** value → **keep** the standing bullet; do **not** overwrite `docs_profile` / `orchestrator.git.mode` / `sync.mode` or stamp `source: user` (B0.6: that stamp blocks revert; user is not speaking this turn).
 3. **Move then delete** anything else — do not leave a copy in standing:
 
 | Misplaced bullet | Destination *(create the section/row if missing; do not invent a stem)* |
