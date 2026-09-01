@@ -69,7 +69,7 @@
 Be on the lookout every turn. Capture **only** when the user is **overriding an ADT playbook** for future sessions — how *this pack* should run git, docs ceremony, orchestrate, verify handoff, re-ask, or file-create. Same turn:
 
 1. If a **first-class key** fits → update that key in `docs/ADT-settings.yaml` (`recorded` today, `source: user`).
-2. Else → **append** one short bullet under `standing.instructions` (create `standing:` if missing). Keep bullets imperative and durable (“When using draft PRs, squash before mark ready”).
+2. Else → **append** one short bullet under `standing.instructions` (create `standing:` if missing). Keep bullets imperative and durable. Do **not** create the key just to have a block.
 3. Tell the user in one line that you saved it (path + paraphrase). Do **not** wait for session wrap or “remember that?”
 4. Apply it for the rest of the session (and future sessions via the file).
 
@@ -88,7 +88,7 @@ Be on the lookout every turn. Capture **only** when the user is **overriding an 
 
 **Promotion:** When a standing note becomes a common pack feature, upstream may add an enum; users can set the key and delete the standing bullet. Standing remains the escape hatch for playbook overrides.
 
-**Bootstrap:** Do **not** force a freeform quiz. Optional one-liner after Step 3p: *“Any standing playbook overrides to save in ADT-settings (only if you want this pack to run differently than the playbooks)?”* — skip on no / defaults. Capture-as-you-go is the primary path.
+**Bootstrap:** Do **not** quiz for standing. Skip unless they already stated a playbook override this conversation. Capture-as-you-go is the only path. Missing `standing:` is correct.
 
 **Explicit later:** *Add standing note: …* / *Clear standing instructions* / edit `docs/ADT-settings.yaml` directly. *Add standing note* still means a **playbook override** — do not file prompt-engineering or other-product API style just because they said “remember.”
 
