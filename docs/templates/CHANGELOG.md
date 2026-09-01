@@ -21,6 +21,18 @@
 
 ---
 
+## 2.7.25
+
+- **Live impact:** `versions-only`, `master-index`, `process-docs-only`, `rules`
+- **Files:**
+  - `VERSION` — 2.7.24 → 2.7.25
+  - `agent/workflow/profile-standing.md` — **§0.2 LOOKOUT** is **playbook overrides only**: user wants to **override an ADT playbook** (git/ceremony/orchestrate/verify/re-ask). **Not a scratch pad** — do not jot random notes, how to prompt another model/API, or other-product style. Dropped “corrects how you just worked” as a capture trigger
+  - `agent/ADT-settings.example.yaml` — same scope on the `standing:` comment
+  - `agent/Modular_Documentation_Rule.mdc` / `.instructions.md` — always-on lookout + after-changes + philosophy: playbook overrides, not a notes pad
+  - `agent/Modular_Docs_Workflow.md`, `BOOTSTRAP.md`, `roles/orchestrator.md`, `roles/feature-implementer.md` + adapter-src + regenerated adapters — same
+  - `workflow/decisions.md`, `Master_Index_Template.md`, `help/*`, root `README.md` — standing = playbook override, not freeform process notes
+- **Step B:** Bump Master Index **Pack version** to 2.7.25. If Key Locations still calls `standing.instructions` “freeform process prefs” without playbook-override scope, adopt the template wording. Refresh installed modular rules (**no ask** unless `customized: true`). If `optional_rules.doc-roles` is **enabled** → refresh `feature-implementer` adapters from this pack. **Do not** invent standing content. **Do not** delete or rewrite existing consumer `standing.instructions` bullets. No live feature/shared scan.
+
 ## 2.7.24
 
 - **Live impact:** `versions-only`, `master-index`, `process-docs-only`, `rules`

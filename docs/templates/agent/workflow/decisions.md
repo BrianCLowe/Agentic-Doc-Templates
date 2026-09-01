@@ -12,13 +12,13 @@ Record **why** something was chosen — not every task, only choices with lastin
 |-------|---------|
 | **Decisions** section in feature or shared **spec** | Choices local to that piece ([`Feature_Spec_Template.md`](../../Feature_Spec_Template.md)) |
 | `docs/decisions/YYYY-MM-DD-short-title.md` | Cross-cutting choices ([`Decision_Template.md`](../../Decision_Template.md)) |
-| **`standing.instructions`** in `docs/ADT-settings.yaml` | Lasting **agent process / pack workflow** prefs (not product UI) — see **§0.2** |
+| **`standing.instructions`** in `docs/ADT-settings.yaml` | Lasting **ADT playbook overrides** (not product UI, not a notes pad) — see **§0.2** |
 
 **When to record:**
 
 1. **Understanding review** — user confirms a tradeoff → add row(s) when graduating / updating the spec (§2).
 2. **Implement / polish** *(confirmed stem)* — user corrects a **preference that could be “improved away”** (e.g. always-on vs proximity chrome, confirm-before-delete, hide type while writing, empty lines aren’t chunks) → **same turn** append 1-line row(s) to that stem’s **Decisions** table. If Behavior / Acceptance / Visual references still state the old contract, fix those sentences in the **same edit**.
-3. **Pack / agent process** — user opposes pack defaults or states always/never workflow prefs → **standing** or first-class ADT-settings key (**§0.2**), not Decisions.
+3. **Override an ADT playbook** — user wants this pack to run differently than a playbook (and no first-class key fits) → **standing** or first-class ADT-settings key (**§0.2**), not Decisions. Do **not** jot random notes or prompt-engineering into standing.
 
 **Skip:** pure spacing / pixel tweaks unless the user says “remember this.” Do **not** create `docs/decisions/` ADRs for feature-local polish. Do **not** dump choices into **Current focus** (handoff only — an optional one-line pointer to Decisions is fine). Do **not** put product UI prefs only in standing.
 

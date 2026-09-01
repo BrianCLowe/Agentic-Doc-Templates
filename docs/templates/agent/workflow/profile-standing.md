@@ -45,14 +45,15 @@
 
 **Live setting:** `docs/ADT-settings.yaml` → `standing.instructions` (YAML multi-line string). Example: [`ADT-settings.example.yaml`](../ADT-settings.example.yaml).
 
-**Why:** Pack enums (`docs_profile`, `orchestrator.git.mode`, `sync.mode`, …) cover known forks. Freeform standing notes cover the long tail so user workflow does not die with the chat — e.g. “squash before mark ready” before that was a first-class mode.
+**Why:** Pack enums (`docs_profile`, `orchestrator.git.mode`, `sync.mode`, …) cover known forks. Standing is the escape hatch when the user wants to **override an ADT playbook** (how *this pack* would otherwise run) and no first-class key exists yet — e.g. “squash before mark ready” before that was a mode. It is **not a scratch pad** for random notes.
 
 | Prefer | Use for |
 |--------|---------|
 | **First-class ADT-settings key** | When an enum/key already exists — set `docs_profile` / `orchestrator.git.mode` / `sync.mode` / optionals (do **not** only put it in standing). **Not a key:** `orchestrator.git.worktrees` — host isolation is playbook-only ([`../roles/orchestrator-git.md`](../roles/orchestrator-git.md) **Host worktrees**) |
-| **`standing.instructions`** | Lasting **agent process / pack ceremony / delivery** prefs with no key yet, or finer tweaks enums do not express |
+| **`standing.instructions`** | Lasting **overrides of this pack’s playbooks** (docs ceremony, git delivery, orchestrate / verify / re-ask, file-create) that no key expresses |
 | **Spec Decisions (§10)** | Product/UI/interaction prefs for **one stem** (could be “improved away”) |
 | **This-turn only** | One-off overrides the user does **not** want durable — apply now; **do not** write standing |
+| **Do not write** | Notes that do **not** change how an ADT playbook runs |
 
 **Precedence (highest wins):**
 
@@ -61,31 +62,34 @@
 3. **`standing.instructions`** (when non-empty)
 4. Structured ADT-settings enums + pack defaults
 
-**Read:** On feature / implement / orchestrate paths, if `standing.instructions` is present and non-empty (ignore comment-only example lines), treat bullets as durable project prefs. Empty / missing = no ceremony — do not invent content.
+**Read:** On feature / implement / orchestrate paths, if `standing.instructions` is present and non-empty (ignore comment-only example lines), treat bullets as durable **playbook overrides**. Empty / missing = no ceremony — do not invent content.
 
-### LOOKOUT — same-turn capture *(mandatory)*
+### LOOKOUT — same-turn capture *(mandatory, playbook overrides only)*
 
-Be on the lookout every turn. When the user states a **lasting** preference that **opposes pack defaults**, **corrects how the agent just worked**, or says **always / never / from now on / prefer / don’t** about **agent process** (git delivery, PR readiness, ceremony, verify style, “don’t re-ask X”, “always squash…”) → **same turn**:
+Be on the lookout every turn. Capture **only** when the user is **overriding an ADT playbook** for future sessions — how *this pack* should run git, docs ceremony, orchestrate, verify handoff, re-ask, or file-create. Same turn:
 
 1. If a **first-class key** fits → update that key in `docs/ADT-settings.yaml` (`recorded` today, `source: user`).
 2. Else → **append** one short bullet under `standing.instructions` (create `standing:` if missing). Keep bullets imperative and durable (“When using draft PRs, squash before mark ready”).
 3. Tell the user in one line that you saved it (path + paraphrase). Do **not** wait for session wrap or “remember that?”
 4. Apply it for the rest of the session (and future sessions via the file).
 
-**Also capture** when they correct pack behavior mid-run without the word “always” if the intent is durable (“I don’t want draft PRs — ready only after squash” → standing or `branch-pr-squash`; “merge each slice after CI” → `milestone-pr`).
+**Also capture** when they correct **pack playbook behavior** mid-run without the word “always” if the intent is durable (“I don’t want draft PRs — ready only after squash” → standing or `branch-pr-squash`; “merge each slice after CI” → `milestone-pr`).
 
-**Skip:**
+**Skip** *(do not write standing)*:
 
+- **Do not jot random notes** — session asides, “remember this,” product thoughts, or a dump of chat flavor
+- **How to prompt** another model / API / third-party product (xAI, Grok.com, ChatGPT, …) unless they are changing how an **ADT playbook** in this repo should run
 - One-off this-run scope (“just this PR”, “for today only”) unless they also say to keep it
 - Product/UI polish for a stem → **Decisions** (§10), not standing
+- Correcting how you just worked on **product/code** (unless the correction is “stop following playbook X that way”)
 - Pure spacing / ephemeral chat flavor
 - Inventing standing notes from “vibes” or agent taste
 - Duplicating a preference already encoded in a first-class key (update the key; drop redundant standing bullets if obvious)
 
-**Promotion:** When a standing note becomes a common pack feature, upstream may add an enum; users can set the key and delete the standing bullet. Standing remains the escape hatch.
+**Promotion:** When a standing note becomes a common pack feature, upstream may add an enum; users can set the key and delete the standing bullet. Standing remains the escape hatch for playbook overrides.
 
-**Bootstrap:** Do **not** force a freeform quiz. Optional one-liner after Step 3p: *“Any standing workflow notes to save in ADT-settings?”* — skip on no / defaults. Capture-as-you-go is the primary path.
+**Bootstrap:** Do **not** force a freeform quiz. Optional one-liner after Step 3p: *“Any standing playbook overrides to save in ADT-settings (only if you want this pack to run differently than the playbooks)?”* — skip on no / defaults. Capture-as-you-go is the primary path.
 
-**Explicit later:** *Add standing note: …* / *Clear standing instructions* / edit `docs/ADT-settings.yaml` directly.
+**Explicit later:** *Add standing note: …* / *Clear standing instructions* / edit `docs/ADT-settings.yaml` directly. *Add standing note* still means a **playbook override** — do not file prompt-engineering or other-product API style just because they said “remember.”
 
 ---

@@ -1,0 +1,85 @@
+{
+  "id": "standing-playbook-override-only",
+  "title": "standing.instructions is for ADT playbook overrides — not a notes pad",
+  "role": "feature-implementer",
+  "user": "When prompting XaiBrain / the xAI API, give the task and expected response structure only. Grok 4.6+ is the model — no long role-play or over-explained prompt engineering.",
+  "fixture": "fixtures/ship-first-crud",
+  "expect": {
+    "files_must_not_change": [
+      "docs/ADT-settings.yaml"
+    ]
+  },
+  "pack_contract": {
+    "source_must_include": [
+      {
+        "file": "docs/templates/agent/workflow/profile-standing.md",
+        "patterns": [
+          "override an ADT playbook",
+          "not a scratch pad",
+          "Do not jot random notes",
+          "How to prompt",
+          "playbook overrides only"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/Modular_Documentation_Rule.mdc",
+        "patterns": [
+          "override an ADT playbook",
+          "Do not jot random notes"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/ADT-settings.example.yaml",
+        "patterns": [
+          "Not a scratch pad",
+          "playbook overrides only"
+        ]
+      },
+      {
+        "file": "docs/templates/CHANGELOG.md",
+        "patterns": [
+          "2.7.25",
+          "playbook overrides only"
+        ]
+      }
+    ],
+    "summaries_must_point": [
+      {
+        "file": "docs/templates/agent/Modular_Documentation_Rule.mdc",
+        "must_contain": [
+          "ADT playbook overrides"
+        ],
+        "must_not_contain": [
+          "corrects how you just worked"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/Modular_Documentation_Rule.instructions.md",
+        "must_contain": [
+          "ADT playbook overrides"
+        ],
+        "must_not_contain": [
+          "corrects how you just worked"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/workflow/profile-standing.md",
+        "must_contain": [
+          "override an ADT playbook"
+        ],
+        "must_not_contain": [
+          "corrects how the agent just worked"
+        ]
+      },
+      {
+        "file": "docs/templates/help/USING_WITH_AGENTS.md",
+        "must_contain": [
+          "override an ADT playbook"
+        ],
+        "must_not_contain": [
+          "Freeform durable **agent process** prefs"
+        ]
+      }
+    ]
+  }
+}

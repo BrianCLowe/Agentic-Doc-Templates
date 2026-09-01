@@ -25,7 +25,7 @@
 
 **Do not** open the pack catalog, out-of-scope stems, or full Workflow unless Path A/B / profile / standing-capture / file-create is unclear.
 
-**Standing lookout (parent):** If the user states a lasting process pref that opposes pack defaults mid-run (always/never squash, merge after CI, PR readiness, ceremony, verify style) → same turn update first-class key or append `standing.instructions` (Workflow §0.2). This-run-only overrides do not rewrite settings unless they want them durable.
+**Standing lookout (parent):** If the user wants to **override an ADT playbook** mid-run (always/never squash, merge after CI, PR readiness, ceremony) → same turn update first-class key or append `standing.instructions` (Workflow §0.2). This-run-only overrides do not rewrite settings unless they want them durable. **Do not jot random notes** or prompt-engineering into standing.
 
 ## Pre-run ask *(once)*
 
