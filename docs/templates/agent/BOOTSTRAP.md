@@ -188,7 +188,7 @@ If it already exists → add newly discovered human-gated needs (procure / playt
 
 ## Step 3p — Project preferences *(one batch ask — before Step 3d)*
 
-**Mandatory:** Present **and explain** every still-unset preference below in **one** user-facing message. Do **not** drip-feed separate quizzes across later steps for the same keys. Skip only keys already set in `docs/ADT-settings.yaml`. Create/update that file from [`ADT-settings.example.yaml`](ADT-settings.example.yaml) when recording.
+**Mandatory:** Present **and explain** every still-unset preference below in **one** user-facing message. Do **not** drip-feed separate quizzes across later steps for the same keys. Skip only keys already set in `docs/ADT-settings.yaml`. Create/update that file from [`ADT-settings.example.yaml`](ADT-settings.example.yaml) when recording. Do **not** copy a `standing:` key from the example — omit it unless they already stated a playbook override.
 
 **You must include** (when unset):
 
@@ -254,9 +254,9 @@ Explain: optional Understanding author, implementer, work verifier, etc. as harn
 
 **After they pick a git mode** → run **Forge tooling probe** ([`roles/orchestrator-git.md`](roles/orchestrator-git.md)): infer forge from remote; if **`milestone-pr` / `branch-pr` / `branch-pr-squash`** and CLI missing → **ask to install**; if CLI present but not logged in (or just installed) → **ask to start auth** (install ≠ ready for PRs). Fall back to push + human PR / switch mode if they decline. Do not silent-install or silent-login.
 
-### Optional — standing workflow notes *(not a mandatory quiz row)*
+### Standing — do not quiz
 
-After recording A–E, **one optional line** is enough: *“Any standing playbook overrides to save in `docs/ADT-settings.yaml` (only if you want this pack to run differently than the playbooks)?”* Skip on no / defaults / silence. Do **not** invent bullets. Do **not** treat this as a notes pad. Primary path is **lookout capture** later (Workflow §0.2): when they **override an ADT playbook**, append `standing.instructions` same turn.
+Do **not** ask “any standing notes?” after A–E. Missing `standing:` is correct. Write `standing.instructions` only if they **already** stated a playbook override this conversation and no first-class key fits (Workflow §0.2). Do **not** invent bullets.
 
 Explicit later (any preference): *Set docs profile to …* / *Set sync to …* / *Set orchestrator git to …* / *Add standing note: …* / enable-decline optionals.
 

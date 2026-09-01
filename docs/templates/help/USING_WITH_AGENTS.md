@@ -34,7 +34,7 @@ The modular rule guards itself: *"If `docs/Master_Index.md` does not exist, igno
 
 | Extra | What | Where |
 |-------|------|--------|
-| **Project prefs (batch)** | Docs profile, update-check, doc-roles, sync mode, orchestrator git — **one** bootstrap ask; standing playbook overrides optional | Bootstrap **Step 3p** · live keys in [`docs/ADT-settings.yaml`](../agent/ADT-settings.example.yaml) |
+| **Project prefs (batch)** | Docs profile, update-check, doc-roles, sync mode, orchestrator git — **one** bootstrap ask. Do **not** quiz for standing | Bootstrap **Step 3p** · live keys in [`docs/ADT-settings.yaml`](../agent/ADT-settings.example.yaml) |
 | **Docs profile** | `prevent` (default: Understanding + confirm), `balanced` (Understanding when identity fuzzy), `ship-first` (Spec+TODO only) | Workflow [§0.1](../agent/workflow/profile-standing.md#01-docs-profile-ceremony-modes) · `docs_profile` |
 | **Standing instructions** | Durable **ADT playbook overrides** when no first-class key exists. Lookout-capture only when they change how a pack playbook runs — **not** a notes pad | Workflow [§0.2](../agent/workflow/profile-standing.md#02-standing-workflow-instructions-user-workflow-not-pack-enums) · `standing.instructions` |
 | Template update check | Upstream `VERSION` ping — default every session; interval optional | Step 3p · [`../agent/TEMPLATE_UPDATE_CHECK.md`](../agent/TEMPLATE_UPDATE_CHECK.md) |

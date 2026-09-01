@@ -21,6 +21,18 @@
 
 ---
 
+## 2.7.26
+
+- **Live impact:** `versions-only`, `process-docs-only`
+- **Files:**
+  - `VERSION` — 2.7.25 → 2.7.26
+  - `agent/ADT-settings.example.yaml` — **omit** the `standing:` key. Comments: missing / empty is the correct default; do not invent; do not copy an empty block “to have something.” Dropped the sample bullets (they restated first-class git modes / Tooling and read as “write your own”)
+  - `agent/BOOTSTRAP.md` — do not copy `standing:` from the example; **do not quiz** “any standing notes?” after 3p
+  - `agent/TEMPLATE_SYNC_B.md` B0.1 — same omit-when-creating
+  - `agent/workflow/profile-standing.md` — no standing quiz; do not create the key just to have a block
+  - `help/USING_WITH_AGENTS.md` — bootstrap does not quiz for standing
+- **Step B:** Bump Master Index **Pack version** to 2.7.26. **Do not** add `standing:` to live `ADT-settings.yaml` from the example. If live `standing.instructions` is **only** the old pack comment examples (“Examples only — delete and write your own” / squash-before-ready / milestone-pr restatement / docker-compose verify) → **delete** the `standing:` key (leave real user bullets). Do **not** invent standing. No live feature/shared scan. No second 2.7.25 relocate unless that one-shot is still in catch-up.
+
 ## 2.7.25
 
 - **Live impact:** `versions-only`, `master-index`, `process-docs-only`, `rules`

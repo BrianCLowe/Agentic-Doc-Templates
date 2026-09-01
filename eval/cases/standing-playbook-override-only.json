@@ -33,8 +33,9 @@
       {
         "file": "docs/templates/agent/ADT-settings.example.yaml",
         "patterns": [
-          "Not a scratch pad",
-          "playbook overrides only"
+          "omit this entire key",
+          "Missing / empty is the correct default",
+          "Do not invent"
         ]
       },
       {
@@ -43,7 +44,9 @@
           "2.7.25",
           "playbook overrides only",
           "Standing relocate",
-          "Move then delete"
+          "Move then delete",
+          "2.7.26",
+          "omit** the `standing:` key"
         ]
       }
     ],
@@ -91,6 +94,26 @@
         ],
         "must_not_contain": [
           "Do not** delete or rewrite existing consumer `standing.instructions`"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/ADT-settings.example.yaml",
+        "must_contain": [
+          "omit this entire key"
+        ],
+        "must_not_contain": [
+          "Examples only — delete and write your own",
+          "Prefer docker compose verify",
+          "instructions: |"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/BOOTSTRAP.md",
+        "must_contain": [
+          "do not quiz"
+        ],
+        "must_not_contain": [
+          "Any standing playbook overrides to save"
         ]
       }
     ]

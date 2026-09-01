@@ -57,28 +57,18 @@ orchestrator:
     recorded: 2026-08-12
     # source: user | agent-suggested
 
-# Durable overrides of this pack’s playbooks when no first-class key exists yet.
-# Not a scratch pad — do not jot random notes, how to prompt another model/API, or
-# other-product style. Lives under docs/ — TEMPLATE_SYNC never overwrites this block.
-# Agents: read with docs_profile / orchestrator.git on feature + orchestrate paths (Workflow §0.2).
-# Apply unless they conflict with hard pack safety (dirty-tree hard stop, no silent current-push,
-# no force-push / protected-main surprises). This-turn user instructions always win over standing.
-#
-# LOOKOUT (mandatory, playbook overrides only): when the user wants an ADT playbook to run
-# differently going forward (git delivery, docs ceremony, orchestrate / verify / re-ask —
-# “don’t open draft PRs…”, “squash before mark ready…”) → same turn first-class key if one
-# fits, else append a short bullet here and say you saved it.
-# Prefer first-class keys when they exist (docs_profile, orchestrator.git.mode, sync.mode).
-# Product/UI prefs for one stem → that stem’s spec Decisions (Workflow §10), not here.
-# Do not invent. Empty / missing block = no ceremony.
-standing:
-  instructions: |
-    # Examples only — delete and write your own (one bullet per durable preference):
-    # - When using draft PRs, squash to one commit before mark ready
-    # - Merge each milestone after CI (milestone-pr); don't wait for one giant PR; group related TODOs; parallelize when they do not overlap
-    # - Prefer docker compose verify over host npm for this repo
-  # recorded: 2026-08-09
-  # source: user
+# standing: — omit this entire key unless the user has actually overridden an
+# ADT playbook and no first-class key fits (docs_profile, orchestrator.git.mode,
+# sync.mode, optionals). Missing / empty is the correct default. Do not invent
+# bullets. Do not copy an empty standing block into live ADT-settings.yaml
+# "to have something." Not a notes pad — prompt style, other-product API,
+# Tooling verify commands, and restating a git mode do not belong here
+# (use the key / Tooling.md / spec Decisions). TEMPLATE_SYNC never overwrites
+# a live standing block if one exists.
+# LOOKOUT (Workflow §0.2): create standing.instructions only in that override
+# case, then say you saved it. This-turn user instructions always win.
+# Hard pack safety still wins (dirty-tree hard stop, no silent current-push,
+# no force-push / protected-main surprises).
 
 # One entry per tool. Status: installed | declined
 # Do not ask again for a tool when status is installed or declined
