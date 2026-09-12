@@ -123,7 +123,7 @@ CLAIMED_PACK_VERSION = [
     re.compile(r"<!--\s*pack-version:\s*\d+\.\d+(?:\.\d+)?\s*-->"),
     re.compile(r"\*\*Pack version\*\*\s*:\s*\d+\.\d+(?:\.\d+)?"),
     re.compile(r"local_pack_version:\s*\"\d+\.\d+(?:\.\d+)?\""),
-    re.compile(r"badge/Pack-\d+\.\d+(?:\.\d+)?"),
+    re.compile(r"badge/Pack-"),
 ]
 
 UNDERSTANDING_SERMONS = (

@@ -8,7 +8,6 @@
 > Modular Understanding / spec / TODO docs plus tool-agnostic agent playbooks — so Cursor, Grok Build, Claude Code, OpenClaw, and friends stay aligned across chats, not just one clever session.
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-![Pack](https://img.shields.io/badge/Pack-docs%2Ftemplates%2FVERSION-blue)
 ![Built for](https://img.shields.io/badge/Built%20for-Cursor%20%7C%20Grok%20Build%20%7C%20OpenClaw%20%7C%20Claude%20Code-5865F2)
 
 ---
@@ -179,7 +178,7 @@ More: [`USAGE.md`](docs/templates/help/USAGE.md).
 
 ## Contributing
 
-PRs that improve the templates or workflows are welcome. Prefer focused changes; when bumping [`VERSION`](docs/templates/VERSION), update [`CHANGELOG.md`](docs/templates/CHANGELOG.md) in the same commit. **`VERSION` is the only place the pack version number lives** — do not copy it into scaffolds, badges, or examples.
+PRs that improve the templates or workflows are welcome. Prefer focused changes; when bumping [`VERSION`](docs/templates/VERSION), update [`CHANGELOG.md`](docs/templates/CHANGELOG.md) in the same commit. **`VERSION` is the only place the pack version number lives** — do not copy it into scaffolds, README badges, or examples.
 
 Pack-maintainer decisions (so we cannot silently undo one): root [`DECISIONS.md`](DECISIONS.md) — bootstrap deletes it from user copies.
 
