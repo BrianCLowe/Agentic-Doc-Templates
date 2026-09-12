@@ -10,7 +10,7 @@
 
 ---
 
-**Humans:** Confirm **shape** only (is / is not + Assumptions). How to review: [`help/SCAFFOLDS.md`](help/SCAFFOLDS.md). Interview prompts: [`help/IDEA_CAPTURE_TIPS.md`](help/IDEA_CAPTURE_TIPS.md).
+**Humans:** Confirm **shape** only (is / is not + real-fork Assumptions). How to review: [`help/SCAFFOLDS.md`](help/SCAFFOLDS.md). Interview prompts: [`help/IDEA_CAPTURE_TIPS.md`](help/IDEA_CAPTURE_TIPS.md).
 
 **Agents:** This file is fill-in blanks — not a tutorial. If context is thin (new session, compaction, memory loss), re-open [`agent/workflow/understanding.md`](agent/workflow/understanding.md) before drafting or editing. Index: [`agent/Modular_Docs_Workflow.md`](agent/Modular_Docs_Workflow.md). Optional role: [`agent/roles/understanding-author.md`](agent/roles/understanding-author.md).
 
@@ -33,9 +33,8 @@
 | [ExistingFeature.md](ExistingFeature.md) | [Extends / wraps / alternate UI for / configures] |
 | [_shared/SomePattern.md](../_shared/SomePattern.md) | [Consumes / blocked by / extends] |
 
-## Assumptions (needs user confirmation)
+## Assumptions (real forks only)
 
-- [ ] [Assumption]
 - [ ] [Assumption]
 
 ## Confirmed with user

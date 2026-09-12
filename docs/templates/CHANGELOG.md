@@ -12,6 +12,7 @@
 | `master-index` | Adopt structural deltas in live `Master_Index.md` (headings, Key Locations, Document Map columns) |
 | `content-templates` | Add *missing* sections/structure from content templates into live Understanding / Spec / TODO / Tooling / Human-TODO — **not** trim/remove (see `optional-live-reshape`) |
 | `optional-live-reshape` | Live Understanding → shape trim + relocate into specs (Workflow §4). **`auto` / `auto-all`:** run all Document Map stems. **`choose`:** present + ask once (default yes). Do **not** silent-skip under choose |
+| `optional-assumption-cleanout` | Live Understanding lock-gate clean-out (Workflow §4). **`auto` / `auto-all`:** all Document Map Understanding stems. **`choose`:** present + ask once (default yes). Lock obvious defaults; delete invented quizzes; do not treat `docs/reference/` examples as the target unless clearly set as the target; leave only real forks. Do not invent new Assumptions or Understanding on `ship-first` |
 | `optional-todo-ambition` | Live TODO ambition pass (agent timescale). **`auto` / `auto-all`:** all Document Map `*-TODO.md`. **`choose`:** present + ask once. Do not invent work |
 | `optional-todo-operable` | Live TODO operable dual-track (Workflow §5.3). **`auto` / `auto-all`:** all Document Map `*-TODO.md`. **`choose`:** present + ask once. Add exercise-path rows or **library-only** labels; do not invent unrelated backlog |
 | `optional-todo-kit-coverage` | Live TODO kit-coverage pass (Workflow §5.4). **`auto` / `auto-all`:** all Document Map `*-TODO.md`. **`choose`:** present + ask once. Add covering TODOs for spec-named in-scope leftovers on **existing** stems (**open or Completed** counts — do not resurrect); one research item if the spec is thin. No new map rows; no vendor-doc fetch in sync |
@@ -20,6 +21,22 @@
 | `process-docs-only` | Pack process/help/agent docs only — no live feature/shared content scan |
 
 ---
+
+## 2.7.28
+
+- **Live impact:** `versions-only`, `process-docs-only`, `rules`, `optional-assumption-cleanout`
+- **Files:**
+  - `VERSION` — 2.7.27 → 2.7.28
+  - `CHANGELOG.md` — new Live impact tag `optional-assumption-cleanout`
+  - `agent/workflow/understanding.md` §4 — **lock gate** (source of truth): lock obvious defaults in is / is not; **Assumptions = real forks only** (empty is success); **no-ask proviso** (design already clear → zero Assumption asks is correct); do **not** treat examples in `docs/reference/` / chat as the target unless clearly set as the target; lesser-path ask only with a **real non-timescale reason** (not an MVP / half-measure to finish faster). **Clean-out pass** procedure lives here
+  - `Feature_Understanding_Template.md` — heading `Assumptions (real forks only)`; one optional bullet
+  - `roles/understanding-author.md` + adapter-src / cursor|grok|copilot adapters — pointer: lock obvious; offer clean-out; reference examples are not the target unless clearly set
+  - `roles/template-sync.md` + adapter-src / cursor|grok|copilot adapters + `TEMPLATE_SYNC_B.md` — honor **`optional-assumption-cleanout`**
+  - `help/SCAFFOLDS.md`, `IDEA_CAPTURE_TIPS.md`, `USAGE.md` — empty Assumptions is correct; reference examples ≠ target unless clearly set
+  - Modular rules + timescale rule + workflow index — one-line pointers (do not restate the gate)
+  - Root `DECISIONS.md` **D17** — do not silently undo
+  - Root `eval/` — `lock-obvious-assumptions` pack contract + fail-snapshot of an invented-decision Understanding
+- **Step B:** Bump Master Index **Pack version** to 2.7.28 from local `VERSION`. Refresh installed modular rules (**no ask** unless `customized: true`). If `optional_rules.doc-roles` is **enabled** → refresh **understanding-author** + **docs-template-sync** adapters. **`optional-assumption-cleanout`:** present/execute per `sync.mode`. **`auto` / `auto-all`:** all Document Map Understanding stems. **`choose`:** present + ask once (default yes). Execute = Workflow §4 clean-out (lock obvious; delete invented quizzes; un-target reference examples that were not clearly set as the target; leave real forks). **Keep status** — do **not** de-confirm or inject a mid-sync shape quiz. Do **not** invent new Assumptions. Do **not** invent Understanding on `ship-first`. Do **not** rewrite user fill-in that is already category-correct.
 
 ## 2.7.27
 

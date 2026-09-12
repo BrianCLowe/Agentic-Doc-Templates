@@ -1,0 +1,117 @@
+{
+  "id": "lock-obvious-assumptions",
+  "title": "Understanding locks obvious defaults; Assumptions are real forks only; reference examples are not the target unless clearly set",
+  "role": "understanding-author",
+  "user": "Draft Understanding for HomeStudio. I want an app for designing homes anywhere in the US. In the reference chat I walked a timber-frame lot in VA/WV as an example. Maybe use something like Rodin for 3D later. Appliances should be Energy Star.",
+  "fixture": "fixtures/lock-obvious-assumptions",
+  "fail_snapshot": "fail-snapshots/invented-decision-understanding",
+  "expect": {
+    "understanding_status": "draft",
+    "understanding_path": "docs/features/HomeStudio-Understanding.md",
+    "understanding_must_contain": [
+      "home-design",
+      "real forks only"
+    ],
+    "understanding_must_not_contain": [
+      "timber-frame home design app",
+      "Rodin is the 3D vendor",
+      "VA / DPOR / mountain snow tables as the default?",
+      "Energy Star vs other efficiency labels?",
+      "Should defaults be user-editable?"
+    ]
+  },
+  "pack_contract": {
+    "source_must_include": [
+      {
+        "file": "docs/templates/agent/workflow/understanding.md",
+        "patterns": [
+          "Lock gate",
+          "real forks only",
+          "Empty Assumptions is success",
+          "Examples are not the target",
+          "clearly set as the target",
+          "No-ask proviso",
+          "zero Assumption asks is correct",
+          "Clean-out pass",
+          "optional-assumption-cleanout",
+          "Keep status",
+          "do **not** de-confirm",
+          "lesser path",
+          "real non-timescale reason",
+          "half-measure",
+          "Lock the obvious"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/TEMPLATE_SYNC_B.md",
+        "patterns": [
+          "optional-assumption-cleanout",
+          "Live Assumption clean-out",
+          "clearly set as the target",
+          "Keep status",
+          "do **not** de-confirm"
+        ]
+      }
+    ],
+    "summaries_must_point": [
+      {
+        "file": "docs/templates/agent/roles/understanding-author.md",
+        "must_contain": [
+          "workflow/understanding.md",
+          "real forks only",
+          "clearly set as the target",
+          "clean-out",
+          "zero Assumption asks is correct",
+          "keep status"
+        ],
+        "must_not_contain": [
+          "A walkthrough, sample project, named vendor, or place the user used to explain the idea"
+        ]
+      },
+      {
+        "file": "docs/templates/Feature_Understanding_Template.md",
+        "must_contain": [
+          "real forks only",
+          "workflow/understanding.md"
+        ],
+        "must_not_contain": [
+          "Empty Assumptions is success"
+        ]
+      },
+      {
+        "file": "docs/templates/help/SCAFFOLDS.md",
+        "must_contain": [
+          "real forks only",
+          "Empty is correct",
+          "clean-out"
+        ]
+      },
+      {
+        "file": "docs/templates/help/IDEA_CAPTURE_TIPS.md",
+        "must_contain": [
+          "real forks only",
+          "lesser path",
+          "clearly set as the target"
+        ],
+        "must_not_contain": [
+          "List gaps in **Assumptions**"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/Modular_Documentation_Rule.mdc",
+        "must_contain": [
+          "real forks only",
+          "clearly set as the target"
+        ]
+      },
+      {
+        "file": "docs/templates/CHANGELOG.md",
+        "must_contain": [
+          "2.7.28",
+          "lock gate",
+          "optional-assumption-cleanout"
+        ]
+      }
+    ]
+  }
+}

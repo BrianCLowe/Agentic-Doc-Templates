@@ -10,7 +10,7 @@ Depends on **docs profile** in `docs/ADT-settings.yaml` — a first-class choice
 
 1. You capture ideas (recommended: chat exports in `docs/reference/`, or a mid-build correction in chat).
 2. **`prevent` (default):** agent drafts `-Understanding.md` (shape / guardrails). **`ship-first`:** agent drafts thin **spec + TODO** only. **`balanced`:** Understanding when identity is ambiguous.
-3. When Understanding is used: **you confirm shape** — is / is *not* + **Assumptions** (not a full-spec review).
+3. When Understanding is used: **you confirm shape** — is / is *not* + any remaining **real-fork** Assumptions (empty is fine; not a full-spec review). Agents should lock obvious defaults and not treat examples in `docs/reference/` as the target unless you clearly set them as the target.
 4. Durable contract lives on the **spec**; work continues from TODOs (**Current focus** for session handoff). Under ship-first, grow the spec as you build; use *lock shape for X* if identity fights start.
 
 ### Recommended practice — chat exports in `reference/`
@@ -89,7 +89,7 @@ Full copy-vs-whole-repo notes and layout: [`SETUP.md`](SETUP.md). Optional rules
 
 > Update the doc templates from Agentic Doc Templates and sync our live docs.
 
-Agent overwrites `docs/templates/` ([`TEMPLATE_SYNC_A.md`](../agent/TEMPLATE_SYNC_A.md)), then follows the top [`CHANGELOG.md`](../CHANGELOG.md) entry via [`TEMPLATE_SYNC_B.md`](../agent/TEMPLATE_SYNC_B.md) (usually versions + Master Index — not every feature file). When tagged **`optional-live-reshape`** (2.7.27+), Step B may strip copied instruction sermons from live Understanding / spec / TODO and leave a short pointer to [`SCAFFOLDS.md`](SCAFFOLDS.md) — it does **not** rewrite your fill-in. `master-index` may replace a dumped At a Glance with the short pointer table. When tagged **`optional-todo-kit-coverage`**, Step B may add covering TODOs from the **live spec** (Completed counts; or one research TODO if Overview says wrap-the-API but the spec lists no leftovers) — it does **not** fetch vendor APIs. Todo-warden adds covering items for **named** leftovers; it does not replace the thin-spec research pass. Entry: [`TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md) (in the pack since **1.2**; A/B split in **2.6.8**).
+Agent overwrites `docs/templates/` ([`TEMPLATE_SYNC_A.md`](../agent/TEMPLATE_SYNC_A.md)), then follows the top [`CHANGELOG.md`](../CHANGELOG.md) entry via [`TEMPLATE_SYNC_B.md`](../agent/TEMPLATE_SYNC_B.md) (usually versions + Master Index — not every feature file). When tagged **`optional-assumption-cleanout`** (2.7.28+), Step B **offers** a lock-gate clean-out of live Understandings (obvious defaults locked; invented quizzes removed; reference examples are not the target unless clearly set). When tagged **`optional-live-reshape`** (2.7.27+), Step B may strip copied instruction sermons from live Understanding / spec / TODO and leave a short pointer to [`SCAFFOLDS.md`](SCAFFOLDS.md) — it does **not** rewrite your fill-in. `master-index` may replace a dumped At a Glance with the short pointer table. When tagged **`optional-todo-kit-coverage`**, Step B may add covering TODOs from the **live spec** (Completed counts; or one research TODO if Overview says wrap-the-API but the spec lists no leftovers) — it does **not** fetch vendor APIs. Todo-warden adds covering items for **named** leftovers; it does not replace the thin-spec research pass. Entry: [`TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md) (in the pack since **1.2**; A/B split in **2.6.8**).
 
 **Before 1.2:** If `docs/templates/agent/TEMPLATE_SYNC.md` is missing, copy/replace `docs/templates/` from this repo once (or ask the agent to), then use the sync ask for later updates.
 
@@ -158,7 +158,7 @@ Optional roles (opt-in, never always-on): [`../agent/roles/README.md`](../agent/
 | Path | Role |
 |------|------|
 | `docs/Master_Index.md` | Entry point + Document Map |
-| `docs/features/FeatureName-Understanding.md` | Shape only — is / is not, Relationship, Assumptions (not full-spec review) |
+| `docs/features/FeatureName-Understanding.md` | Shape only — is / is not, Relationship, real-fork Assumptions (not full-spec review) |
 | `docs/features/FeatureName.md` | Durable contract after shape confirm |
 | `docs/features/FeatureName-TODO.md` | Tasks + **Current focus** |
 | `docs/_shared/…` | Only for truly shared project pieces (may be empty) |

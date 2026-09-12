@@ -87,7 +87,7 @@ If `docs_profile` is unset at bootstrap / first build-from-reference / sync: sug
 - Feature TODOs only **link** to shared TODOs when blocked or integrating (dependency note), they do not duplicate foundation tasks.
 
 **Before implementation:**
-- **`prevent`:** **Draft `-Understanding.md` first** when scoping — agent writes; user confirms **shape** only (Workflow §4). `draft` blocks **coding**, not creating the file. Shape-only sections — not a second spec. Capture **product-defining surface/architecture identity** in is / is not when stated (module/API detail → spec). Tell the user confirmation is **is / is not + Assumptions**, not a full spec review.
+- **`prevent`:** **Draft `-Understanding.md` first** when scoping — agent writes; user confirms **shape** only (Workflow §4). `draft` blocks **coding**, not creating the file. Shape-only sections — not a second spec. Capture **product-defining surface/architecture identity** in is / is not when stated (module/API detail → spec). Lock obvious defaults; **Assumptions = real forks only** (empty is fine). Do not treat reference-doc examples as the target unless clearly set as the target. Tell the user confirmation is **is / is not + remaining real-fork Assumptions**, not a full spec review.
 - **`balanced`:** Draft Understanding when identity is ambiguous / multi-surface / split / user asked; otherwise thin spec + TODO is enough to start.
 - **`ship-first`:** No Understanding required; implement from Current focus + thin spec. Offer *lock shape for [Stem]* when identity fights start.
 - Do not treat as greenfield if Understanding says it extends/reuses existing work.

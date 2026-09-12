@@ -2,7 +2,7 @@
 
 You do not need to be a software developer to use these templates well. Agents guess when details are missing — and guesses drift from what you actually want. The fix is not “learn to code first”; it is **describing the idea in plain language** using the kinds of details below.
 
-Your answers in chat feed the agent's draft of [`Feature_Understanding_Template.md`](Feature_Understanding_Template.md) — the file **the agent writes first** and **you confirm for shape / guardrails** (is / is not + Assumptions) before building. That is **not** a full-spec review. You describe the idea; you do not need to write this file yourself.
+Your answers in chat feed the agent's draft of [`Feature_Understanding_Template.md`](Feature_Understanding_Template.md) — the file **the agent writes first** and **you confirm for shape / guardrails** (is / is not + real-fork Assumptions) before building. That is **not** a full-spec review. You describe the idea; you do not need to write this file yourself. Examples in chat or `docs/reference/` are not the target unless you clearly set them as the target.
 
 ---
 
@@ -214,7 +214,7 @@ The **agent** drafts `FeatureName-Understanding.md` (or `_shared/ComponentName-U
 | What *kind of thing* it is (identity, metaphors, defining constraints, brief “feels like,” product surface) | Understanding **What this is** |
 | Wrong category / product surface / identity (not “not built yet”) | Understanding **What this is NOT** |
 | Existing app pieces | Understanding **Relationship to existing work** |
-| Things the agent guessed | Understanding **Assumptions** |
+| Real forks only (two live choices, no obvious winner) | Understanding **Assumptions** — empty is fine. Not invented defaults or examples |
 | Rough happy path / flows | **spec** **Behavior** *(not on Understanding)* |
 | Module/API architecture, durable contract | **spec** *(not on Understanding)* |
 | Screenshots + similar/different | **spec** **Visual references** |
@@ -225,7 +225,7 @@ Product-defining surface (“feels like one document”) is **shape**. Module di
 
 Prompt the agent:
 
-> Read `IDEA_CAPTURE_TIPS.md`, interview me briefly if needed, then **draft** `[Feature]-Understanding.md` for my review of **shape** (is / is not). Mark unknowns as assumptions.
+> Read `IDEA_CAPTURE_TIPS.md`, interview me briefly if needed, then **draft** `[Feature]-Understanding.md` for my review of **shape** (is / is not). Lock obvious defaults; mark only real forks as assumptions.
 
 If you already answered the buckets in chat:
 
@@ -237,7 +237,7 @@ If you already answered the buckets in chat:
 
 - Rough answers in chat beat silence — the agent turns them into a draft Understanding.
 - The **whole** messy thread beats a polished one-page rewrite when you have it ([Recommended: export idea chats](#recommended-export-idea-chats-into-docsreference)).
-- “I’m not sure about X” is useful — the agent puts it under **Assumptions** for you to confirm.
+- “I’m not sure about X” is useful — if X is a real fork, the agent puts it under **Assumptions**. Obvious defaults should already be locked; you should not get a quiz of invented decisions or examples.
 - You can review **shape** in a few minutes — you are not signing off the full contract here.
 
 ---
@@ -247,8 +247,8 @@ If you already answered the buckets in chat:
 When the user describes a feature vaguely:
 
 1. Read this file and [`Feature_Understanding_Template.md`](Feature_Understanding_Template.md). If they pointed at `docs/reference/` chat exports, **read those first** — prefer raw threads over polished-only summaries. When exports include **timestamps**, use them to order decisions **across different conversation files**: newer timestamps supersede older ones unless the user says otherwise.
-2. Ask **short, plain-language questions** from the buckets above — not a twenty-question form. Prioritize: identity (is / is not *as a finished feature*), product surface when relevant, and relationship to existing work. Do not put phased or deferred work under **What this is NOT**.
-3. Write or update `-Understanding.md` with status `draft` — **only** What this is / is NOT, Relationship, Assumptions, Confirmed notes. Keep identity-defining user detail **including product-defining surface/architecture**; do not pad into a mini-spec. No How it should work, UI/UX, Visual references, or Done when on Understanding. List gaps in **Assumptions**. Size TODOs for that target shape (agent timescale). On updates: re-check that stem’s TODO vs code/spec; **uncheck** anything that no longer matches; relocate trim overflow into the spec.
+2. Ask **short, plain-language questions** from the buckets above — not a twenty-question form. Prioritize: identity (is / is not *as a finished feature*), product surface when relevant, and relationship to existing work. Do not put phased or deferred work under **What this is NOT**. Do **not** interview obvious defaults. Do **not** treat examples in `docs/reference/` as the target unless clearly set as the target (Workflow §4 lock gate).
+3. Write or update `-Understanding.md` with status `draft` — **only** What this is / is NOT, Relationship, Assumptions, Confirmed notes. Keep identity-defining user detail **including product-defining surface/architecture**; do not pad into a mini-spec. No How it should work, UI/UX, Visual references, or Done when on Understanding. **Lock obvious defaults** in is / is not. **Assumptions = real forks only** (empty is success). If the design is already clear, **zero Assumption asks is correct**. Do not invent quizzes or treat reference examples as the target unless clearly set. Size TODOs for that target shape (agent timescale). On updates: re-check that stem’s TODO vs code/spec; **uncheck** anything that no longer matches; relocate trim overflow into the spec.
 4. Tell the user confirmation is for **shape / guardrails**, not a full spec review. After they confirm, **graduate** durable contract content to the spec (`Feature_Spec_Template.md`) — Decisions, module/API architecture, Acceptance, shared Maturity. Spec may hold detail that was never in Understanding. Do not ask them to remind you to plan ambitiously.
 5. If the user provides screenshots, persist under `docs/features/assets/` or `docs/_shared/assets/` (or `docs/reference/visuals/`): **copy/move from a workspace path** when the file is attached or `@`-mentioned; if only a pasted chat image (vision-only), ask the user to save into `assets/` or document similar/different from what you saw and note that a file copy was not available. Link in the **spec** **Visual references** — see [Saving chat attachments](#saving-chat-attachments-to-the-repo).
 6. If the user does not know stack or architecture, propose options **after** Understanding shape sections are drafted, with a one-line rationale each — durable choices land in the **spec**.
@@ -257,7 +257,7 @@ When the user describes a feature vaguely:
 
 **Terse + documented contract is not vague.** “Fully support this vendor’s public API” (library wrap, match the SDK/docs) is **actionable without further information** — read those docs, diff against current code, expand spec + covering TODOs on **existing** stems (Workflow §5.4). Do **not** interview through each uncovered method. Do **not** add Document Map rows for vague planned-only extras (playground, “maybe later”) — Workflow §0 inventory.
 
-When the user **is** experienced, do not over-interview — still fill **What this is NOT** and **Relationship to existing work**; skip obvious questions.
+When the user **is** experienced, do not over-interview — still fill **What this is NOT** and **Relationship to existing work**; skip obvious questions. Do **not** treat examples in `docs/reference/` as the target unless clearly set as the target. Do **not** offer an MVP / half-measure to go faster. Ask about a lesser path only when a **real non-timescale reason** exists (Workflow §4).
 
 ---
 

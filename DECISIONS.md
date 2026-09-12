@@ -24,6 +24,7 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 | D14 | Release zip is pack-only `docs/templates/`; maintainer dirs stay upstream | accepted | 2.7.17 |
 | D15 | Workflow is an index + one module; not a monolith | accepted | 2.7.15 |
 | D16 | Roles never always-on; orchestrator is parent-session only | accepted | 2.7.7 |
+| D17 | Assumptions = real forks only; lock obvious defaults; examples are not identity | accepted | 2.7.28 |
 
 ---
 
@@ -53,7 +54,7 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 
 **Decision:** `python3 eval/run_eval.py` (no model) stays on `.github/workflows/pack-checks.yml`. Cases include **fail-snapshots** a wrong agent output must fail. Grow from integrity; prepare/verify remains the behavioral loop.
 
-**Named fail modes to keep covered:** wrong-engine build; operable-gap marked done; ship-first skipping Understanding under **prevent**; inventing Understanding under **ship-first**.
+**Named fail modes to keep covered:** wrong-engine build; operable-gap marked done; ship-first skipping Understanding under **prevent**; inventing Understanding under **ship-first**; invented-decision Assumptions / example-as-identity.
 
 ## D6 — Standing is not a notes pad
 
@@ -98,6 +99,12 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 ## D16 — Roles are opt-in; orchestrator stays parent
 
 **Decision:** Doc-role adapters are never always-on. Orchestrate runs in the parent session only — never install/spawn an `orchestrator` subagent type.
+
+## D17 — Lock obvious; Assumptions are real forks
+
+**Decision:** Full lock-gate prose lives only in `workflow/understanding.md` §4. Agents lock the obvious best default into **is / is not** without asking. **Assumptions** hold only real forks (no obvious winner). Empty Assumptions is success. If the design is already clear, **zero Assumption asks is correct** — do not invent a quiz. Do **not** treat examples in `docs/reference/` / chat as the target unless the user **clearly set them as the target**. Ask about a **lesser path** only when a **real non-timescale reason** exists (hard blocker, legal, missing credential) — not to offer an MVP / half-measure that lands 10 minutes faster (agent timescale). Offer an **`optional-assumption-cleanout`** pass on existing Understandings. Elsewhere: one-line pointers.
+
+**Do not:** Treat “needs user confirmation” as a license to invent quizzes. Do not promote a reference example into identity or a spec constraint. Do not offer a lesser path to save sprint time.
 
 ---
 
