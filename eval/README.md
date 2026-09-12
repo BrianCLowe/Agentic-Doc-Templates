@@ -72,6 +72,6 @@ python3 eval/run_eval.py verify additive-keeps-confirmed --workdir /tmp/adt-eval
 3. For a trap the model must lose: add `fail_snapshot` pointing at a known-bad `fail-snapshots/<id>/docs/` tree. Integrity overlays it after `prepare` and **requires VERIFY FAIL**.
 4. Run `python3 eval/run_eval.py` (integrity) and a prepare→agent→verify loop once.
 
-Named fail modes to keep covered: wrong-engine build · operable-gap marked done · prevent skipping Understanding · ship-first inventing Understanding · live instruction-footer left in place after sync · invented-decision Assumptions / example-as-identity.
+Named fail modes to keep covered: wrong-engine build · operable-gap marked done · prevent skipping Understanding · ship-first inventing Understanding · live instruction-footer left in place after sync · invented-decision Assumptions / example-as-identity · sync summary listing catalog optional tags as skipped.
 
 Correctness for this pack ≈ case coverage. Prefer a new golden case over another paragraph of prose when a field bug shows up.
