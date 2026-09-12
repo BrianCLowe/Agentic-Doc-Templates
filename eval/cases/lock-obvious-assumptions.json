@@ -1,0 +1,91 @@
+{
+  "id": "lock-obvious-assumptions",
+  "title": "Understanding locks obvious defaults; Assumptions are real forks only; examples are not identity",
+  "role": "understanding-author",
+  "user": "Draft Understanding for HomeStudio. I want an app for designing homes — for example I might design a timber-frame place in the Blue Ridge. Maybe use something like Rodin for 3D later. Appliances should be Energy Star.",
+  "fixture": "fixtures/lock-obvious-assumptions",
+  "fail_snapshot": "fail-snapshots/invented-decision-understanding",
+  "expect": {
+    "understanding_status": "draft",
+    "understanding_path": "docs/features/HomeStudio-Understanding.md",
+    "understanding_must_contain": [
+      "home-design",
+      "real forks only"
+    ],
+    "understanding_must_not_contain": [
+      "timber-frame home design app",
+      "Rodin is the 3D vendor",
+      "VA / DPOR / mountain snow tables as the default?",
+      "Energy Star vs other efficiency labels?",
+      "Should defaults be user-editable?"
+    ]
+  },
+  "pack_contract": {
+    "source_must_include": [
+      {
+        "file": "docs/templates/agent/workflow/understanding.md",
+        "patterns": [
+          "Lock gate",
+          "real forks only",
+          "Empty Assumptions is success",
+          "Examples are not identity",
+          "lesser path",
+          "Lock the obvious"
+        ]
+      }
+    ],
+    "summaries_must_point": [
+      {
+        "file": "docs/templates/agent/roles/understanding-author.md",
+        "must_contain": [
+          "workflow/understanding.md",
+          "real forks only"
+        ],
+        "must_not_contain": [
+          "A walkthrough, sample project, named vendor, or place the user used to explain the idea"
+        ]
+      },
+      {
+        "file": "docs/templates/Feature_Understanding_Template.md",
+        "must_contain": [
+          "real forks only",
+          "workflow/understanding.md"
+        ],
+        "must_not_contain": [
+          "Empty Assumptions is success"
+        ]
+      },
+      {
+        "file": "docs/templates/help/SCAFFOLDS.md",
+        "must_contain": [
+          "real forks only",
+          "Empty is correct"
+        ]
+      },
+      {
+        "file": "docs/templates/help/IDEA_CAPTURE_TIPS.md",
+        "must_contain": [
+          "real forks only",
+          "lesser path"
+        ],
+        "must_not_contain": [
+          "List gaps in **Assumptions**"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/Modular_Documentation_Rule.mdc",
+        "must_contain": [
+          "real forks only",
+          "Examples are not identity"
+        ]
+      },
+      {
+        "file": "docs/templates/CHANGELOG.md",
+        "must_contain": [
+          "2.7.28",
+          "lock gate"
+        ]
+      }
+    ]
+  }
+}

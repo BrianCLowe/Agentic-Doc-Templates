@@ -10,7 +10,7 @@ Depends on **docs profile** in `docs/ADT-settings.yaml` — a first-class choice
 
 1. You capture ideas (recommended: chat exports in `docs/reference/`, or a mid-build correction in chat).
 2. **`prevent` (default):** agent drafts `-Understanding.md` (shape / guardrails). **`ship-first`:** agent drafts thin **spec + TODO** only. **`balanced`:** Understanding when identity is ambiguous.
-3. When Understanding is used: **you confirm shape** — is / is *not* + **Assumptions** (not a full-spec review).
+3. When Understanding is used: **you confirm shape** — is / is *not* + any remaining **real-fork** Assumptions (empty is fine; not a full-spec review). Agents should lock obvious defaults and not treat your examples as the product.
 4. Durable contract lives on the **spec**; work continues from TODOs (**Current focus** for session handoff). Under ship-first, grow the spec as you build; use *lock shape for X* if identity fights start.
 
 ### Recommended practice — chat exports in `reference/`
@@ -158,7 +158,7 @@ Optional roles (opt-in, never always-on): [`../agent/roles/README.md`](../agent/
 | Path | Role |
 |------|------|
 | `docs/Master_Index.md` | Entry point + Document Map |
-| `docs/features/FeatureName-Understanding.md` | Shape only — is / is not, Relationship, Assumptions (not full-spec review) |
+| `docs/features/FeatureName-Understanding.md` | Shape only — is / is not, Relationship, real-fork Assumptions (not full-spec review) |
 | `docs/features/FeatureName.md` | Durable contract after shape confirm |
 | `docs/features/FeatureName-TODO.md` | Tasks + **Current focus** |
 | `docs/_shared/…` | Only for truly shared project pieces (may be empty) |

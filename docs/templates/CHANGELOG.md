@@ -21,6 +21,20 @@
 
 ---
 
+## 2.7.28
+
+- **Live impact:** `versions-only`, `process-docs-only`, `rules`
+- **Files:**
+  - `VERSION` — 2.7.27 → 2.7.28
+  - `agent/workflow/understanding.md` §4 — **lock gate** (source of truth): lock obvious defaults in is / is not; **Assumptions = real forks only** (empty is success); examples are not identity; ask only for a **lesser path**. Teaching examples stay here
+  - `Feature_Understanding_Template.md` — heading `Assumptions (real forks only)`; one optional bullet
+  - `roles/understanding-author.md` + adapter-src / cursor|grok|copilot adapters — pointer: lock obvious; do not invent quizzes or encode examples as the product
+  - `help/SCAFFOLDS.md`, `IDEA_CAPTURE_TIPS.md`, `USAGE.md` — empty Assumptions is correct; examples are illustrations
+  - Modular rules + timescale rule + workflow index — one-line pointers (do not restate the gate)
+  - Root `DECISIONS.md` **D17** — do not silently undo
+  - Root `eval/` — `lock-obvious-assumptions` pack contract + fail-snapshot of an invented-decision Understanding
+- **Step B:** Bump Master Index **Pack version** to 2.7.28 from local `VERSION`. Refresh installed modular rules (**no ask** unless `customized: true`). If `optional_rules.doc-roles` is **enabled** → refresh **understanding-author** adapters. **Do not** invent Assumptions on live Understandings. **Do not** rewrite user fill-in. No live feature/shared scan.
+
 ## 2.7.27
 
 - **Live impact:** `versions-only`, `master-index`, `content-templates`, `optional-live-reshape`, `process-docs-only`, `rules`

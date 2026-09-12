@@ -29,12 +29,12 @@
 ## Steps
 
 1. From the sources, identify **stem(s)** — one Document Map identity each. If material clearly describes **two+ finished-feature identities** (different jobs / category / surface / ownership), plan a **split** (Workflow §0) — do not force one Understanding because they appeared in one chat or one vague sentence.
-2. If identity count is ambiguous, ask brief questions from `IDEA_CAPTURE_TIPS.md` (cap **5**), then draft — prioritize identity (is / is not), including **product-defining surface** when relevant. Prefer one clarifying split question over silently merging. **Skip the facet interview** when the goal is terse but actionable (wrap a documented public API / match the upstream SDK) — expand covering TODOs from those docs (Workflow §5.4); do not add map rows for vague planned-only extras (Workflow §0 inventory).
-3. For **each** stem: write or update `-Understanding.md` from the Understanding template + **Workflow §4** (shape sections only; human review banner; no How-it-should-work / UI / Visual references / Done when). Put product-defining surface/architecture identity in is / is not (or Assumptions) — not module diagrams. Screenshots → spec **Visual references**.
+2. If identity count is ambiguous, ask brief questions from `IDEA_CAPTURE_TIPS.md` (cap **5**), then draft — prioritize identity (is / is not), including **product-defining surface** when relevant. Prefer one clarifying split question over silently merging. **Skip the facet interview** when the goal is terse but actionable (wrap a documented public API / match the upstream SDK) — expand covering TODOs from those docs (Workflow §5.4); do not add map rows for vague planned-only extras (Workflow §0 inventory). Do **not** interview obvious defaults (Workflow §4 lock gate).
+3. For **each** stem: write or update `-Understanding.md` from the Understanding template + **Workflow §4** (shape sections only; human review banner; no How-it-should-work / UI / Visual references / Done when). Put product-defining surface/architecture identity **and obvious defaults** in is / is not — not module diagrams. **Assumptions = real forks only** (empty is success). Examples are illustrations, not identity. Screenshots → spec **Visual references**. Full lock gate: [`../workflow/understanding.md`](../workflow/understanding.md) §4.
 4. When drafting the core TODO in the same turn: size High Priority for the **target shape**, not an interim that fights it (Workflow §5; [`../Agent_Timescale_Planning_Rule.mdc`](../Agent_Timescale_Planning_Rule.mdc)). Disposable spikes stay labeled exploration — not the paved path. For **user/operator-facing** stems, **dual-track** High Priority: domain **and** ≥1 exercise path (UI / CLI / product API / documented smoke), **or** a loud **phased bridge** (`library foundation first · exercise path: …`). Label pure foundation stems **library-only** when there is no operator surface on that stem. Product-shaped Master Index / is-is-not without dual-track, phase, or library-only = under-authored (Workflow §5.3). **No UI specs:** still put **scaffold + wire** (minimal boring surface) on High Priority — do **not** invent “await UI design” / Human-TODO for blank canvas unless the user explicitly gates design-first. **Kit leftovers (Workflow §5.4):** in-scope spec surfaces get TODO items on **this** stem (or the owning stem on the map) — do not omit them “until someone picks one up”; do not create empty map rows for every method (Workflow §0 inventory).
 5. **New row:** add Document Map row **and** create the **profile default file set** in the **same turn** (Workflow §0 / §0.1 — always spec + TODO; Understanding per profile). When this role runs, you are locking shape → create/update Understanding even under ship-first for **named** stems. **Split:** create the new stem’s file set; move misplaced shape/contract content out of the old stem; update both TODOs / Current focus; relocate + TODO uncheck (Workflow §4).
 6. **On update (no split):** relocate + TODO uncheck for that stem (Workflow §4). Skip TODO re-check only for a brand-new Understanding with no prior `[x]` marks.
-7. Status **`draft`** on new/changed Understandings. Show the user the path(s). Ask them to correct **shape** — say this is **not** a full spec review. If you split or relocated, say so in one line. **Stop.**
+7. Status **`draft`** on new/changed Understandings. Show the user the path(s). Ask them to correct **shape** — say this is **not** a full spec review. List **locks** in one line; leave only real forks in Assumptions. If you split or relocated, say so in one line. **Stop.**
 
 ## Stop when
 
@@ -42,7 +42,7 @@
 - Splits created full default file sets + Document Map rows, and
 - Contract trim was relocated into the correct stem’s spec when missing (or there was none), and
 - On updates: TODO marks for touched stems match code vs destination, and
-- You asked the user to review **shape**
+- You asked the user to review **shape**, listed locks, and left only real forks in Assumptions
 
 ## Do not
 
@@ -57,6 +57,8 @@
 - Author user-facing High Priority as domain/library-only with no exercise path, no **library-only** label, and no phased bridge (Workflow §5.3)
 - Defer UI / exercise path solely because mockups or UI copy were never provided — scaffold + wire a minimal default instead
 - Pad Understanding into a mini-spec; park relocated prose under **Confirmed with user**
+- Invent Assumption checkboxes or encode an example as the product / vendor / jurisdiction (Workflow §4 lock gate)
+- Ask how to handle an obvious best default; silently take a lesser path without asking
 - Leave premature `[x]` on TODO when code no longer matches
 - Glue two unlike identities into one Understanding to avoid new files, “stay tight,” or because the user mentioned them together
 - Wait for the user to invent paths after they said two things are different features — split and propose names

@@ -13,7 +13,7 @@
 
 **Workflow *(when Understanding is in play)*:**
 
-1. Agent drafts `-Understanding.md` → user confirms **shape** (`confirmed`) — is / is not + Assumptions. **Not** a full spec sign-off.
+1. Agent drafts `-Understanding.md` → user confirms **shape** (`confirmed`) — is / is not + any remaining **real-fork** Assumptions (empty is fine). **Not** a full spec sign-off. Lock obvious defaults; do not invent quizzes (lock gate in §4).
 2. Agent **graduates** durable contract into the spec: overview, architecture/contract, Behavior, **Acceptance**, **Visual references**, **Decisions**, dependencies, maturity (shared). Synthesize from Understanding **plus** conversation / decisions — do **not** only copy thin Understanding. A short Understanding is **not** permission to write a short spec. Do **not** omit confirmed Behavior / Acceptance / Visuals to “keep the pack lean” — lean is Understanding shape + no padding, not dropping contract callers need. Acceptance is usually **3–7** coarse outcomes, not a High Priority twin (§5.3). User-facing stems: Acceptance includes ≥1 **operable** outcome (§5.3).
 3. After graduation, Understanding keeps only shape sections (§4). Spec = contract truth; **TODO** = living work checklist. **Same turn:** if Overview/Acceptance are product-shaped and High Priority is domain-only, apply §5.3 bridge (dual-track exercise path, phased note, or **library-only**) — do not leave product Acceptance with silent package TODOs. **In-scope spec surfaces** (kit leftovers on this stem) need covering TODOs on an **existing** stem (§5.4) — a complete spec is **not** permission to omit the backlog “until someone picks it up,” and is **not** a reason to add empty map rows (§0 inventory).
 4. If implementation diverges, update the spec **or** set Understanding to `superseded` and revise (§4) — do not leave both stale.
@@ -44,7 +44,7 @@ Under **`prevent`**, each **feature** and substantial **shared component** gets 
 | **What this is** | Identity-defining user detail: category, metaphors, naming, “feels like,” ownership, product-defining constraints **and surface/architecture identity** (e.g. one continuous surface). Prefer user’s words. Brief feel/layout only if it defines the product. | Flows, module/API diagrams, edge matrices, acceptance lists, How-it-should-work, Core Behavior rewrite, padding/speculation |
 | **What this is NOT** | Finished-feature **identity** boundaries (wrong category, wrong product surface/architecture, ownership) | Deferred phases, “not built yet,” backlog, or “NOT the final architecture yet” excuses — those → TODO / Current focus / spec roadmap |
 | **Relationship** | Extends / wraps / reuses vs greenfield | Foundation task lists |
-| **Assumptions** | Unchecked items needing shape confirmation | Full-spec open questions |
+| **Assumptions** | **Real forks only** — two live alternatives with no obvious winner | Invented decisions, obvious defaults, examples-as-picks, full-spec open questions |
 | **Confirmed with user** | Short correction notes + date | Relocated contract prose |
 
 Work queue → **TODO**. Durable contract (Behavior, **Acceptance**, Visual references, architecture) → **spec** (§2).
@@ -67,7 +67,43 @@ Identity boundaries for the **finished** feature. Do **not** list work that is s
 - *Good:* “NOT a freeform multi-window desktop OS — Main Workspace is a document-centric layout (panels / side-by-side), not overlapping OS windows.” *(Only if that is truly never what this feature is meant to be.)*
 - *Wrong-engine:* “NOT a second editor engine — same editing core as BlockEditor; this stem is role chrome / a different surface on that core.”
 
-**Tell the user:** Confirming Understanding = **is / is not** + **Assumptions** (shape). Spec-level detail may be missing on purpose.
+### Lock gate — obvious defaults vs real forks
+
+**Source of truth** for this gate — rules and roles summarize; **this subsection wins on conflict**. Compaction / thin context: re-open this module; do not reconstruct from the scaffold.
+
+Agents invent decisions, then either lock the invention as identity or dump it into **Assumptions** so the user has boxes to check. That is the failure. **Empty Assumptions is success** when every default was the obvious best.
+
+| Do | Do not |
+|----|--------|
+| **Lock the obvious** into **What this is / is NOT** (identity) or a one-line lock on review | Put an obvious best default under **Assumptions** and ask “how should this be handled?” |
+| Leave **Assumptions** for **real forks only** | Invent a vendor, jurisdiction, schema, comparison row, or label set the user did not pick — then quiz it |
+| Treat walkthroughs, sample projects, named tools, and places as **illustrations** | Encode an example as the product category, the picked vendor, or the default jurisdiction |
+| Ask only when you want a **lesser path** (narrower, costlier, more complex, or category-wrong than the obvious default) | Silently take the lesser path, or quiz the obvious path as if it were a fork |
+
+**Lock the obvious.** A default is obvious when it is the standard for the product category, an already-stated constraint, or the cheaper/simpler path that still hits the target — and the user did not contradict it. Write it into **is / is not**. Do **not** ask. On shape review, list what you locked in **one line** so they can override.
+
+**Real fork.** Two (or more) live alternatives with **no** obvious winner from the conversation, the category, or the constraints (paid data vs free tables; which third-party API family; journey order when both placements are plausible). Those stay unchecked **Assumptions**. Spec-level open questions still do **not** belong here.
+
+**Examples are not identity.** A walkthrough, sample project, named vendor, or place the user used to explain the idea is an illustration — not the product, not a pick, not the default jurisdiction.
+
+- *Bad (example → identity):* User: “I want an app for designing homes — for example a timber-frame place in the Blue Ridge; maybe something like Rodin for 3D later.” Agent writes: “A timber-frame home design app for Virginia,” and Assumptions: “Use Rodin as the 3D vendor?”
+- *Good:* “A home-design app. Timber-frame is one example project, not the product. No named 3D vendor (optional stand-in later). US residential; the user’s location sets jurisdiction — not a VA-first product.”
+- *Bad (invented quiz):* “Energy Star vs other efficiency labels?” when Energy Star is the obvious US residential catalog flag. “Should defaults be user-editable?” when editable is the obvious consumer path.
+- *Good (lock):* Energy Star locked in **is / is not**. Defaults are user-editable. Assumptions stay empty unless a real fork remains.
+- *Good (real fork):* “Cost tables: free/manual vs paid RSMeans-class.” “Utility tables vs live APIs.” Those have no obvious winner without a budget or integration choice.
+- *Lesser-path ask (do this):* “You mentioned Blue Ridge — I locked US-wide + user location (obvious). Do you want a VA-first product instead (narrower)?”
+- *Do not ask:* “Which jurisdiction should we use?” / “How should Energy Star be handled?” / “Should I treat timber-frame as the flagship?”
+
+**Do not:**
+
+- Fill **Assumptions** so the user has boxes to tick
+- Treat “needs user confirmation” as “quiz every default”
+- Encode an example as **is / is not**
+- Ask about the obvious path
+- Silently take the lesser path
+- Invent a later-phase vendor/GIS/API as a shape fork — that is TODO / spec, not Understanding
+
+**Tell the user:** Confirming Understanding = **is / is not** + any remaining **real-fork** Assumptions (empty Assumptions is fine). Spec-level detail may be missing on purpose. On review, list **locks** in one line so they can override — do not dump those locks as unchecked Assumptions.
 
 **Status**:
 
@@ -78,7 +114,7 @@ Identity boundaries for the **finished** feature. Do **not** list work that is s
 | `confirmed` | User approved **shape** — safe to implement without re-asking Understanding review; **graduate** contract to spec (§2). Not sign-off on every spec detail |
 | `superseded` | No longer accurate — revise or reconcile |
 
-**When `confirmed`:** Read for guardrails; proceed from TODO/spec. **Do not** re-surface for review unless shape/scope changes, conflict with code, or status returns to `draft` / `superseded`. Unchecked **Assumptions** after confirm → ask those items only.
+**When `confirmed`:** Read for guardrails; proceed from TODO/spec. **Do not** re-surface for review unless shape/scope changes, conflict with code, or status returns to `draft` / `superseded`. Unchecked **Assumptions** after confirm → ask those **real forks** only — do not invent new quizzes.
 
 **De-confirm gate (`confirmed` → `draft` / `superseded`):** Flip status **only** when a **significant shape change** is outlined — the **is / is not** identity, product surface, ownership, or a stated guardrail actually changes (a genuinely new identity → §0 **split**, not a de-confirm). An **additive** request is **not** a shape change: a new research angle, an extra behavior, an edge case, or added detail that still fits the confirmed **is / is not** → record it in the **spec** (Behavior / Acceptance / Decisions) and/or a **TODO** item and **keep `confirmed`**. Do **not** revert a confirmed Understanding, rewrite **is / is not**, or re-open shape review just to capture an addition. If genuinely unsure, ask one question — *does this change what the feature is, or just add to it?* — and **default to additive**.
 
@@ -99,7 +135,7 @@ Identity boundaries for the **finished** feature. Do **not** list work that is s
 - User corrects you → update immediately (including split/move when they clarify separate features)
 - After any update → run relocate + TODO check for that stem
 
-**When planning:** Include the Understanding path; state confirmation is for **shape / guardrails**, not the full spec. Once shape implies a product surface/architecture, **lock it in is / is not** (or Assumptions) and default TODOs/plans to that **target** (agent timescale — not MVP → interim → rewrite). Stepped bullets = build/verify order inside one cut. Do not ask the user to remind you.
+**When planning:** Include the Understanding path; state confirmation is for **shape / guardrails**, not the full spec. Once shape implies a product surface/architecture, **lock it in is / is not** and default TODOs/plans to that **target** (agent timescale — not MVP → interim → rewrite). Obvious defaults lock the same way (lock gate above). **Assumptions** only for real forks. Stepped bullets = build/verify order inside one cut. Do not ask the user to remind you.
 
 **Acceptance** lives on the **spec** (usually 3–7 coarse outcomes) — not on Understanding. **Visual references:** save under `docs/features/assets/`, `docs/_shared/assets/`, or `docs/reference/visuals/`; link from the **spec** with similar vs different — not from `-Understanding.md`. See [`../help/IDEA_CAPTURE_TIPS.md`](../../help/IDEA_CAPTURE_TIPS.md#visual-references-screenshots).
 

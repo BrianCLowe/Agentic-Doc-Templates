@@ -20,5 +20,5 @@ Ask your agent (or follow yourself):
 ## Rules
 
 - Hard rules stay short. Full procedure lives in `../<role>.md` and `../../workflow/`.
-- De-confirm / additive-vs-shape: **one pointer** to `workflow/understanding.md` §4 — do not restate the gate prose here.
+- De-confirm / additive-vs-shape and lock-gate / real-fork Assumptions: **one pointer** to `workflow/understanding.md` §4 — do not restate the gate prose here.
 - Never add an `orchestrator` adapter (parent-only).

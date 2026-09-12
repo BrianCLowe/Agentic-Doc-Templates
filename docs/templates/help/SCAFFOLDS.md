@@ -22,13 +22,13 @@ The agent drafts this file. You confirm **general feature shape**:
 1. **What this is** — category, metaphor, “feels like,” ownership, product-defining surface.
 2. **What this is NOT** — wrong category / wrong architecture identity. Not a backlog of “not built yet.”
 3. **Relationship** — extends / wraps / reuses vs greenfield.
-4. **Assumptions** — check or correct; answering these is part of shape confirm.
+4. **Assumptions** — **real forks only.** Empty is correct when obvious defaults were locked in is / is not. Do not expect a quiz of invented decisions or examples (agent lock gate: [`workflow/understanding.md`](../agent/workflow/understanding.md) §4).
 
 You are **not** signing off flows, API tables, acceptance, or the TODO. Missing spec detail here is normal.
 
 When shape looks right, set **Status** to `confirmed` (or tell the agent to). If a TODO is marked done but the build is the wrong *kind of thing*, say so — the agent should uncheck and reopen.
 
-Worked examples (too thin / right size / mini-spec, good vs bad is-not): [`workflow/understanding.md`](../agent/workflow/understanding.md) §4.
+Worked examples (too thin / right size / mini-spec, good vs bad is-not, lock vs invented assumption): [`workflow/understanding.md`](../agent/workflow/understanding.md) §4.
 
 ---
 
