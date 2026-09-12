@@ -14,7 +14,7 @@
     "file_must_contain": [
       {
         "path": "docs/features/RoleEditor-Understanding.md",
-        "patterns": ["same editing core", "NOT a second editor engine"]
+        "patterns": ["Same editing core", "NOT a second editor engine"]
       }
     ],
     "file_must_not_contain": [
