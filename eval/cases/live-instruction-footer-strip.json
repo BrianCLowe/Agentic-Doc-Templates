@@ -9,7 +9,8 @@
     "files_must_change": [
       "docs/features/RoleEditor-Understanding.md",
       "docs/features/RoleEditor.md",
-      "docs/features/RoleEditor-TODO.md"
+      "docs/features/RoleEditor-TODO.md",
+      "docs/Master_Index.md"
     ],
     "file_must_contain": [
       {
@@ -37,13 +38,22 @@
       {
         "path": "docs/features/RoleEditor.md",
         "patterns": [
-          "Do not thin Architecture to match Understanding"
+          "Do not thin Architecture to match Understanding",
+          "Contract completeness here"
         ]
       },
       {
         "path": "docs/features/RoleEditor-TODO.md",
         "patterns": [
-          "Operable done. Dual-write"
+          "Operable done. Dual-write",
+          "User-facing stems: dual-track"
+        ]
+      },
+      {
+        "path": "docs/Master_Index.md",
+        "patterns": [
+          "**Simplicity:** users give",
+          "if you prefer less ceremony"
         ]
       }
     ]

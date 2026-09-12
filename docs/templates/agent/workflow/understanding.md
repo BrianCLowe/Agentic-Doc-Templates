@@ -4,7 +4,7 @@
 
 ## 2. Understanding → Spec graduation
 
-**Source of truth:** This module (§2 + §4) is the canonical shape-vs-contract procedure. Rules, roles, and template Instruction blocks summarize; **this file wins on conflict**. Applies fully under **`prevent`**, and for any stem that **has** an Understanding under other profiles. Under **`ship-first`** (no Understanding), grow the **spec** directly as contract home — skip steps 1 and the Understanding half of step 3.
+**Source of truth:** This module (§2 + §4) is the canonical shape-vs-contract procedure. Rules and roles summarize; live scaffolds are fill-in blanks. **This file wins on conflict**. Applies fully under **`prevent`**, and for any stem that **has** an Understanding under other profiles. Under **`ship-first`** (no Understanding), grow the **spec** directly as contract home — skip steps 1 and the Understanding half of step 3.
 
 | File | Role | When to update |
 |------|------|----------------|
@@ -14,7 +14,7 @@
 **Workflow *(when Understanding is in play)*:**
 
 1. Agent drafts `-Understanding.md` → user confirms **shape** (`confirmed`) — is / is not + Assumptions. **Not** a full spec sign-off.
-2. Agent **graduates** durable contract into the spec: overview, architecture/contract, Behavior, **Acceptance**, **Visual references**, **Decisions**, dependencies, maturity (shared). Synthesize from Understanding **plus** conversation / decisions — do **not** only copy thin Understanding. A short Understanding is **not** permission to write a short spec. User-facing stems: Acceptance includes ≥1 **operable** outcome (§5.3).
+2. Agent **graduates** durable contract into the spec: overview, architecture/contract, Behavior, **Acceptance**, **Visual references**, **Decisions**, dependencies, maturity (shared). Synthesize from Understanding **plus** conversation / decisions — do **not** only copy thin Understanding. A short Understanding is **not** permission to write a short spec. Do **not** omit confirmed Behavior / Acceptance / Visuals to “keep the pack lean” — lean is Understanding shape + no padding, not dropping contract callers need. Acceptance is usually **3–7** coarse outcomes, not a High Priority twin (§5.3). User-facing stems: Acceptance includes ≥1 **operable** outcome (§5.3).
 3. After graduation, Understanding keeps only shape sections (§4). Spec = contract truth; **TODO** = living work checklist. **Same turn:** if Overview/Acceptance are product-shaped and High Priority is domain-only, apply §5.3 bridge (dual-track exercise path, phased note, or **library-only**) — do not leave product Acceptance with silent package TODOs. **In-scope spec surfaces** (kit leftovers on this stem) need covering TODOs on an **existing** stem (§5.4) — a complete spec is **not** permission to omit the backlog “until someone picks it up,” and is **not** a reason to add empty map rows (§0 inventory).
 4. If implementation diverges, update the spec **or** set Understanding to `superseded` and revise (§4) — do not leave both stale.
 

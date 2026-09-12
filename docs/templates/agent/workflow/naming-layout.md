@@ -46,4 +46,6 @@
 
 **Do not** split each leftover into its own map row “for completeness” — that is empty spec+TODO files with nothing to implement this turn. **Split** when the user names it as its own finished-feature identity, or it is the **next** unlike winner and you are about to build it. Methods of one kit stay one identity until a surface becomes its own product.
 
+**Master Index §2.2** is a pointer table, not a second playbook. Do not paste this module (or §0.1 / §5 / §13) into At a Glance.
+
 ---

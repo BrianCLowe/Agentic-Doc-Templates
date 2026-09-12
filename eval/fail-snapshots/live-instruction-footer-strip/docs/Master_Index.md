@@ -2,6 +2,15 @@
 
 **Pack version**: 2.7.27
 
+## 2. Key Locations & At a Glance
+
+### 2.2 At a Glance *(policy summary — full rules in Workflow)*
+
+- **Simplicity:** users give short doc actions; agents follow this pack — no complex prompts required.
+- **Idea sources:** prefer raw **chat exports** in `docs/reference/` over polished-only design docs.
+- **Docs profile:** if you prefer less ceremony you can use ship-first.
+- **Orchestrator git:** `current-push` (never silent-default) or the other modes.
+
 ## 3. Document Map
 
 | Feature | Spec | Understanding | TODO |

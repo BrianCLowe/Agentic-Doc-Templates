@@ -192,7 +192,7 @@ Versions:
 ### Gated checklist
 
 1. **Versions** — Set **Pack version** in live `Master_Index.md` from local `VERSION`. Remove obsolete Template/Workflow version lines when present. Update `<!-- pack-version -->` if present (or replace `<!-- template-version -->`).
-2. **Master Index** *(if `master-index`)* — Read local `Master_Index_Template.md` + live `Master_Index.md`. Compare **headings / Key Locations / Document Map columns** only — not project prose. **Preserve** overview, Project Profile, Document Map rows (§3.0–3.4), user §3.0 exceptions, custom sections. **Adopt** new index sections, renumbers, Quick Start pointer, Key Locations row for `docs/ADT-settings.yaml` (remove stale `rule-install-status.yaml` / `upstream-status.yaml` rows if present). Update links from `templates/Modular_Docs_Workflow.md` → `templates/agent/Modular_Docs_Workflow.md` if still on the old path. §3.0: record only **user-stated** exceptions.
+2. **Master Index** *(if `master-index`)* — Read local `Master_Index_Template.md` + live `Master_Index.md`. Compare **headings / Key Locations / Document Map columns / At a Glance** only — not project prose. **Preserve** overview, Project Profile, Document Map rows (§3.0–3.4), user §3.0 exceptions, custom sections. **Adopt** new index sections, renumbers, Quick Start pointer, Key Locations row for `docs/ADT-settings.yaml` (remove stale `rule-install-status.yaml` / `upstream-status.yaml` rows if present). If §2.2 At a Glance is still a policy dump (Simplicity / Idea sources / full git-mode list / Understanding essay), replace it with the template’s short pointer table (keep first-class docs profile + host-worktrees one-liner). Update links from `templates/Modular_Docs_Workflow.md` → `templates/agent/Modular_Docs_Workflow.md` if still on the old path. §3.0: record only **user-stated** exceptions.
 3. **Content templates** *(if `content-templates`)* — Add **missing** sections/structure from local templates into live Understanding / Spec / TODO / Tooling / Human-TODO. Do **not** remove or reshape existing sections here. Create `Tooling.md` / `Human-TODO.md` from templates when missing and link from Master Index.
 4. **Live Understanding reshape** *(if `optional-live-reshape`)* —
    - **`sync.mode: auto` or `auto-all`:** execute for **all Document Map Understanding stems** (no ask). After pack/stamp hygiene commit (B0.3) when applicable; reshape gets its own commit after execute (B0.3).
@@ -218,9 +218,28 @@ Run only when selected catch-up includes **2.7.27** and reshape is executing. Op
 
 **Then** if the file has no short pointer to `help/SCAFFOLDS.md` and `workflow/understanding.md`, add the two-line human/agent banner from current [`Feature_Understanding_Template.md`](../Feature_Understanding_Template.md) (do not paste the old sermon).
 
-**Spec / core TODO** — delete only the long **Instructions for AI Agents** / **Instructions for Humans** footers that restate Workflow. Keep Overview, Architecture, Behavior, Acceptance, Decisions, Current focus, and the work lists. Replace a removed footer with the short pointer from the current spec/TODO template (SCAFFOLDS + re-open the playbook if context is thin).
+**Spec** — delete these pack phrases if present (they are teaching — **not** contract; do **not** relocate):
 
-**Do not:** rewrite What this is; invent stems; strip Human-TODO / Tooling instruction sections (those stay human-facing); treat `content-templates` as this strip (that tag only **adds** missing sections).
+- Section sermons: `Contract completeness here`, `Lives here, not in Understanding`, `Lives here (the contract)`, `Bridge to TODOs`, `Acceptance must be **operable**`, `Do not thin Architecture`, `Graduation / anti-compression`
+- `## Instructions for AI Agents` / `**Instructions for Humans**` footers that restate Workflow
+
+**Keep:** Overview, Architecture, Behavior *user content*, Acceptance *checkbox items*, Decisions *rows*, Visual *table rows*, Dependencies, Current status.
+
+**Then** if the spec has no short pointer to `help/SCAFFOLDS.md` and `workflow/understanding.md`, add the two-line human/agent banner from current [`Feature_Spec_Template.md`](../Feature_Spec_Template.md).
+
+**Core TODO** — delete these pack phrases if present:
+
+- High Priority italic dual-track sermon (`User-facing stems: dual-track`, `library foundation first · exercise path` as a preamble — keep a real **Exercise path** work item)
+- Cross-Feature `Use the right pattern` / dual-write essay / `You are building the shared foundation itself`
+- `## Instructions for AI Agents` / `**Instructions for Humans**` / `**Instructions for AI Agents**` footers that restate Workflow
+
+**Keep:** Current focus, High/Medium/Low lists, user dependency notes, Completed.
+
+**Then** if the TODO has no short pointer to `help/SCAFFOLDS.md` and `workflow/todos.md`, add the two-line banner from current [`TODO_Template.md`](../TODO_Template.md).
+
+**Master Index** is **not** this strip — adopt slimmer At a Glance under the `master-index` tag (step 2).
+
+**Do not:** rewrite What this is / user Behavior / Acceptance items; invent stems; strip Human-TODO human kinds / chat phrases or Tooling tables (those stay human-facing); treat `content-templates` as this strip (that tag only **adds** missing sections).
 5. **Live TODO ambition** *(if `optional-todo-ambition`)* —
    - **`sync.mode: auto` or `auto-all`:** execute for **all Document Map `*-TODO.md` stems** (no ask); commit per B0.3 after.
    - **`sync.mode: choose`:** present + ask once (default all stems / named / no); suggest separate commit; commit only if they ask.
@@ -265,7 +284,7 @@ Run only when selected catch-up includes **2.7.27** and reshape is executing. Op
 - Auto-commit **pre-sync** WIP (A0) or push without an explicit grant
 - Ask before refreshing installed rules unless `customized: true`
 - On reshape execute: add template headings only and leave obsolete Understanding sections **or** copied instruction sermons in place
-- On 2.7.27 instruction-footer strip: relocate sermons into the spec; delete user What this is / Assumptions; skip spec/TODO footers when those files still have the long playbook restatement
+- On 2.7.27 instruction-footer strip: relocate sermons into the spec; delete user What this is / Assumptions; skip spec/TODO footers or inline section sermons when those files still have the long playbook restatement; leave a dumped At a Glance when `master-index` is tagged
 - On TODO ambition execute: invent work, expand scope, or collapse real human/shared blockers
 - On TODO operable execute: invent unrelated backlog, force UI onto **library-only** stems, or rewrite domain items beyond adding exercise-path / library-only labels
 - On TODO kit-coverage execute: fetch vendor APIs, create new map rows, split stems, invent playground/out-of-kit surfaces, implement code, or re-open leftovers that already have **Completed** covering items

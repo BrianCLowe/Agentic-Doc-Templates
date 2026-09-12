@@ -29,6 +29,4 @@
 
 ## Instructions for AI Agents
 
-- Create only for **cross-cutting** choices (stack, auth model, repo layout). Feature-local choices (including polish preferences) → that stem’s **spec** Decisions table, same turn (Workflow §2 / §10) — not a new file here.
-- Link from affected specs and Master_Index Section 3.4 when added.
-- If superseded, set status and link to the replacing decision — do not delete history.
+Fill the sections. Cross-cutting vs spec-local, same-turn capture: [`workflow/decisions.md`](agent/workflow/decisions.md).

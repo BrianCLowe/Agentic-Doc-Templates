@@ -134,6 +134,87 @@ UNDERSTANDING_SERMONS = (
     "Feature shape, not the spec",
 )
 
+SCAFFOLD_CHECKS = (
+    {
+        "path": "docs/templates/Feature_Understanding_Template.md",
+        "sermons": UNDERSTANDING_SERMONS,
+        "must": ("workflow/understanding.md", "help/SCAFFOLDS.md"),
+        "label": "Understanding",
+    },
+    {
+        "path": "docs/templates/Feature_Spec_Template.md",
+        "sermons": (
+            "Contract completeness here",
+            "Bridge to TODOs",
+            "Lives here, not in Understanding",
+            "Lives here (the contract)",
+            "Graduation / anti-compression",
+            "Do not thin Architecture",
+            "## Instructions for AI Agents",
+        ),
+        "must": ("workflow/understanding.md", "help/SCAFFOLDS.md"),
+        "label": "Spec",
+    },
+    {
+        "path": "docs/templates/TODO_Template.md",
+        "sermons": (
+            "User-facing stems: dual-track",
+            "Use the right pattern",
+            "You are building the shared foundation",
+            "## Instructions for AI Agents",
+        ),
+        "must": ("workflow/todos.md", "help/SCAFFOLDS.md"),
+        "label": "TODO",
+    },
+    {
+        "path": "docs/templates/Master_Index_Template.md",
+        "sermons": (
+            "**Simplicity:** users give",
+            "prefer raw **chat exports**",
+            "never silent-default",
+            "Do **not** invent shared rows",
+        ),
+        "must": ("ship-first", "prevent", "pointers — full rules"),
+        "label": "Master Index",
+    },
+    {
+        "path": "docs/templates/Decision_Template.md",
+        "sermons": (
+            "Create only for **cross-cutting**",
+            "Feature-local choices",
+        ),
+        "must": ("workflow/decisions.md",),
+        "label": "Decision",
+    },
+    {
+        "path": "docs/templates/Feature_Catalog_Template.md",
+        "sermons": (
+            "Do **not** put catalog rows",
+            "Do **not** treat this file as the work queue",
+        ),
+        "must": ("workflow/extensions.md",),
+        "label": "Catalog",
+    },
+    {
+        "path": "docs/templates/Human_TODO_Template.md",
+        "sermons": (
+            "Dual-write (mandatory)",
+            "If it is not on this list, it does **not** exist",
+        ),
+        "must": ("workflow/human-todo.md", "Instructions for Humans"),
+        "label": "Human-TODO",
+    },
+    {
+        "path": "docs/templates/Tooling_Template.md",
+        "sermons": (
+            "set up this machine",
+            "get this project working on a new PC",
+        ),
+        "must": ("workflow/tooling.md", "## Required"),
+        "label": "Tooling",
+    },
+)
+
 
 def check_version_single_source() -> list[str]:
     errors: list[str] = []
@@ -166,22 +247,24 @@ def check_version_single_source() -> list[str]:
     return errors
 
 
-def check_understanding_skeleton() -> list[str]:
+def check_scaffold_skeletons() -> list[str]:
     errors: list[str] = []
-    path = ROOT / "docs/templates/Feature_Understanding_Template.md"
-    if not path.exists():
-        return ["missing Feature_Understanding_Template.md"]
-    text = path.read_text()
-    for marker in UNDERSTANDING_SERMONS:
-        if marker in text:
-            errors.append(
-                f"Understanding template still has sermon {marker!r} "
-                f"(keep teaching in workflow/understanding.md + help/SCAFFOLDS.md)"
-            )
-    if "workflow/understanding.md" not in text:
-        errors.append("Understanding template must point at workflow/understanding.md")
-    if "help/SCAFFOLDS.md" not in text:
-        errors.append("Understanding template must point at help/SCAFFOLDS.md")
+    for item in SCAFFOLD_CHECKS:
+        path = ROOT / item["path"]
+        if not path.exists():
+            errors.append(f"missing {item['path']}")
+            continue
+        text = path.read_text()
+        label = item["label"]
+        for marker in item["sermons"]:
+            if marker in text:
+                errors.append(
+                    f"{label} template still has sermon {marker!r} "
+                    f"(keep teaching in help/ + workflow/)"
+                )
+        for needle in item["must"]:
+            if needle not in text:
+                errors.append(f"{label} template must point at {needle!r}")
     return errors
 
 
@@ -293,8 +376,8 @@ def run_integrity() -> int:
     errors.extend(check_deconfirm_sot())
     print("== version single source ==")
     errors.extend(check_version_single_source())
-    print("== Understanding skeleton ==")
-    errors.extend(check_understanding_skeleton())
+    print("== scaffold skeletons ==")
+    errors.extend(check_scaffold_skeletons())
     print("== pack DECISIONS.md ==")
     errors.extend(check_pack_decisions())
     print("== cases ==")

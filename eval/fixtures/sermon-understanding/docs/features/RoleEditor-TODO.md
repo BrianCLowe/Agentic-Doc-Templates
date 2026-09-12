@@ -5,6 +5,7 @@
 - Next: wire chrome
 
 ## High Priority
+*(User-facing stems: dual-track — domain **and** exercise path. Workflow §5.3.)*
 
 - [ ] Wire RoleEditor chrome to BlockEditor
 

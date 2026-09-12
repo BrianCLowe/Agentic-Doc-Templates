@@ -9,6 +9,8 @@ Role chrome on the shared editor.
 
 ## Behavior
 
+**Contract completeness here — not in Understanding.** Put durable flows here.
+
 - Opens a manuscript through BlockEditor.
 
 ## Acceptance

@@ -1,6 +1,6 @@
 # [Feature or Shared Component Name] — Catalog
 
-> Never edit this template unless the user asks you to. Optional sibling for **list-heavy** stems (Workflow §7.1). Create from this file under `docs/features/` or `docs/_shared/`. Spec owns rules/identity; this file owns **design-intent rows**.
+> Never edit this template unless the user asks you to. Optional sibling for **list-heavy** stems. Create under `docs/features/` or `docs/_shared/`. Spec owns rules/identity; this file owns **design-intent rows**. Humans: [`help/SCAFFOLDS.md`](help/SCAFFOLDS.md). Agents: [`agent/workflow/extensions.md`](agent/workflow/extensions.md) §7.1.
 
 **Last Updated**: [YYYY-MM-DD]  
 **Related Spec**: [FeatureName.md](FeatureName.md)  
@@ -8,8 +8,6 @@
 **Related TODO**: [FeatureName-TODO.md](FeatureName-TODO.md)
 
 ---
-
-> **Not Understanding. Not TODO. Not Acceptance.** Row registry only. Prefer stable **ids** for cross-links. Runtime/code-first projects: mark `in-code` when implemented; docs stay design intent until then.
 
 ## Readiness legend
 
@@ -38,11 +36,7 @@
 
 ## Instructions for AI Agents
 
-- Do **not** put catalog rows in `-Understanding.md`.
-- Do **not** treat this file as the work queue — tasks stay in `-TODO.md`.
-- When adding a Document Map **Catalog** cell, create this file the same turn.
-- Prefer updating an existing row’s **readiness** over inventing parallel lists in the spec.
-- Code-first: after implementing a row, set readiness `in-code` and optionally note source path — do not silently diverge.
+Fill the row table. Procedure: [`workflow/extensions.md`](agent/workflow/extensions.md) §7.1.
 
 **Instructions for Humans**
 

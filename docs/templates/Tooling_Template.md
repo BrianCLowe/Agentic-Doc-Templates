@@ -119,13 +119,7 @@ Track which boxes are set up so gaps are obvious. Delete this section if unused.
 
 ## Instructions for AI Agents
 
-- **“Install tooling” / “set up this machine” / “get this project working on a new PC”:** read **this file** (`docs/Tooling.md`) → install **Required** tools for the current OS → refresh PATH / new shell if needed → run every **Verify** → install **Agent skills** rows if present → run **After tools are installed** → report a pass/fail table. Install **Optional** only if the user asked for optional tools or “everything.”
-- Prefer the install hints in the table; fall back to official docs. Prefer non-interactive package managers when available (`winget`, `brew`, etc.). Prefer **user-level** installs when possible.
-- **Ask first** before admin-required installs, full Visual Studio / large SDKs, or anything that broadly rewrites system PATH beyond a normal package manager entry.
-- **Do not invent tools.** Only install what is listed (or what the user explicitly adds in this conversation — then **add a row here** in the same session).
-- **Do not** write secrets, tokens, or license keys into this file.
-- If `docs/Tooling.md` is missing: create it from [`templates/Tooling_Template.md`](templates/Tooling_Template.md) by inferring from Project Profile / README / existing scripts — mark uncertain rows and ask the user to confirm before large installs.
-- Keep this file updated when the project adopts a new required CLI/skill or drops one. Update **Machines** when the user cares about multi-machine status.
+Install from the tables above. Procedure: [`workflow/tooling.md`](agent/workflow/tooling.md). Do not invent tools or write secrets.
 
 ## Instructions for Humans
 
