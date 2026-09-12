@@ -34,6 +34,7 @@ Compare semver `X.Y.Z` numerically (major, minor, patch).
 - If the union includes any of `content-templates`, `optional-live-reshape`, `optional-assumption-cleanout`, `optional-todo-ambition`, `optional-todo-operable`, or `optional-todo-kit-coverage`, run those steps even when newer selected entries also list `process-docs-only` (`process-docs-only` on one release does not cancel live passes from skipped releases).
 - Skim Step B lines from selected entries for tips / one-shots not expressed by tags (e.g. Human-TODO tip refresh). Do **not** invent a broader audit than the unioned tags + those lines.
 - Do **not** bump Pack version through intermediate numbers — set it once to **to**.
+- The Live impact table below is a **lasting catalog**. A tag fires only when it appears in this union. **Summarize the union only** — do not name catalog optional tags that were not selected as “skipped.”
 
 | Live impact tag | Do in Step B |
 |-----------------|--------------|
@@ -72,7 +73,7 @@ Read `sync.mode` from `docs/ADT-settings.yaml`.
 | Mode | Behavior |
 |------|----------|
 | **`auto`** | Apply all changelog-gated live work without mid-sync optionals quiz: versions, master-index, content-templates (missing only), **optional-live-reshape** / **optional-assumption-cleanout** (all Document Map Understanding stems when tagged), **optional-todo-ambition** / **optional-todo-operable** / **optional-todo-kit-coverage** (all Document Map `*-TODO.md` when tagged), rules refresh, upstream stamp. **Also** perform **post-sync hygiene commits** (below) without asking. Still **ask once** for brand-new unset `optional_rules.*`. Summarize at end (include commit subjects). |
-| **`auto-all`** | Same as **`auto`**, and also **enable + install** any unset `optional_rules.*` (doc-roles, update-check, future optionals) without asking. Never re-enable **`declined`**. New update-check → `check_mode: always` + record cadence (skip B0.4 ask). Summarize what was auto-enabled. |
+| **`auto-all`** | Same as **`auto`**, and also **enable + install** any unset `optional_rules.*` (doc-roles, update-check, future optionals) without asking. Never re-enable **`declined`**. New update-check → `check_mode: always` + record cadence (skip B0.4 ask). Summarize what was auto-enabled. Does **not** mean run every optional pass in the tag table — only unioned tagged passes, on all Document Map stems, without asking. |
 | **`choose`** | Present reshape / assumption clean-out / TODO ambition / TODO operable / TODO kit-coverage (and similar future optional live tags) each sync — ask once per tagged pass. Suggest (do not force) separate commits; commit only if they explicitly ask. |
 | **missing / unset** | **Ask once** before the first optional live pass (or before stopping if none tagged): *Recommended live updates automatically (`auto`), everything including new pack optionals (`auto-all`), or ask each sync (`choose`)?* Record `sync.mode` + `sync.recorded`. Then continue under that mode. Do **not** silent-default. |
 
@@ -270,7 +271,18 @@ Run only when selected catch-up includes **2.7.27** and reshape is executing. Op
    - Remove any stale `.cursor/skills/modular-docs-*` leftovers from older pack drafts (ask first only if deleting user-looking paths outside known leftovers).
 7. **Upstream stamp** *(if `optional-upstream-check` or update-check enabled)* — If `optional_rules.template-update-check.status` is `enabled`: ensure `upstream:` exists; set `local_pack_version` from local `VERSION`, `last_checked` today, clear `update_available` / stale `upstream_pack_version`. Do **not** delete `ADT-settings.yaml`. Refresh optional update-check rules if tagged `rules` / body changed (same customized rule as above).
 8. **Layout migration** — Run [`BOOTSTRAP.md`](BOOTSTRAP.md) Step 0b **only** if layout markers show older layout (`docs/help/` or `docs/agent/` at docs root, or flat setup files in `templates/`). Skip on a normal modern pack refresh.
-9. **Summarize** pack refresh + live-doc updates + sync mode used + catch-up **from→to** (or top-entry-only) + reshape / assumption clean-out / TODO ambition / TODO operable / TODO kit-coverage executed or (choose) offered/declined + settings migration if any + **git** (A0 preflight outcome; hygiene commits made or skipped; push status — default not pushed).
+9. **Summarize from the union only:**
+   - sync mode used
+   - catch-up **from→to** (or top-entry-only) + the **unioned** Live impact tags (+ skimmed Step B one-shots)
+   - of those **unioned** optional live passes: executed / offered / declined (`choose`)
+   - settings migration if any
+   - **git** (A0 preflight outcome; hygiene commits made or skipped; push status — default not pushed)
+
+   **Do not** name optional tags that were **not** in the union as “skipped.” They were not this jump’s instructions — listing them sounds like missed work. The tag table is a lasting catalog; a tag fires only when selected changelog entries tag it.
+
+   **“Skipped”** is reserved for: a **unioned** tagged pass that was in scope but not executed (`choose`: user declined); or a path check that did not apply (B8 modern layout — no old `docs/help/` / `docs/agent/` leftovers).
+
+   `auto-all` does **not** mean “run every optional pass every sync.” It means: when a tagged pass is **in the union**, execute it on all Document Map stems without asking.
 10. **Present / apply unset options** *(every sync — before stopping)* — Users cannot ask for what they were never told exists. Read `docs/ADT-settings.yaml`. For each known pack optional (`optional_rules.template-update-check`, `optional_rules.doc-roles`, plus any **new** optional named in selected catch-up entries / Step B):
    - **`declined`** → do not re-ask or re-enable; a one-line “still off” note is enough.
    - **`enabled`** → already handled by refresh steps above; no re-pitch of the feature — but if update-check is enabled and cadence was never recorded, **B0.4** still applies.
@@ -313,6 +325,8 @@ Run only when selected catch-up includes **2.7.27** and reshape is executing. Op
 - Under **`auto-all`:** flip **`declined`** optionals back to enabled
 - Read **only the top** changelog entry when **from** < **to** and intermediate `##` entries exist — **union** those entries (Catch-up above)
 - Let a newer entry’s `process-docs-only` cancel `content-templates` / reshape / assumption-cleanout / ambition / operable / kit-coverage tags from skipped releases in the same jump
+- Name catalog optional tags that were **not** in the union as “skipped” (they were not this jump’s instructions)
+- Treat `auto-all` as license to run every pass in the Live impact tag table
 - Walk each catch-up version as its own full sync or bump Pack version through intermediate numbers
 - Rewrite an already-set `orchestrator.git.mode` because the pack now recommends `milestone-pr`, because At a Glance wording changed, or because a Cloud Agent this-runs `milestone-pr`
 - Fail, revert, or treat as a forbidden migrate a durable `orchestrator.git.mode` change that stamps **`source: user`** (or the user asked to change that setting on this PR) — that is user-directed

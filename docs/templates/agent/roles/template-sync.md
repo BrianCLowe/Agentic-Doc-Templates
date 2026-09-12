@@ -26,7 +26,7 @@
 3. Run Step B from B + **unioned** catch-up changelog tags (including B0 settings migrate + sync.mode + B0.3 hygiene commits under `auto` / `auto-all` + **B0.4** cadence when due + **B0.5** docs_profile when unset + **B0.6** orchestrator.git when unset — **always ask git**, even under auto-all).
 4. **Rules** when tagged: refresh installed tools via each `tools/<key>.md` — **no ask** unless `customized: true`.
 5. **Reshape / assumption clean-out / TODO ambition / operable / kit-coverage** when tagged in the union: if `sync.mode: auto` or `auto-all` → execute all Document Map stems + hygiene commits; if `choose` → explain + ask once; if mode unset → B0.2 ask once then continue. Shape trim and assumption clean-out (Workflow §4) only apply to stems that **have** Understanding files. **2.7.27 in catch-up:** reshape includes the **instruction-footer strip** on **every** Document Map spec / core TODO (including stems with no Understanding — delete copied sermons and inline section essays; keep fill-in). **`master-index` when tagged** adopts slimmer At a Glance even if reshape is declined. Kit-coverage is spec→TODO on existing stems (Workflow §5.4) — no vendor-doc fetch, no new map rows. Assumption clean-out = lock-gate (obvious defaults; real forks only; reference examples are not the target unless clearly set).
-6. Summarize what changed (sync mode, docs_profile if set/asked, catch-up from→to if a jump, what executed, settings migration, git / commits).
+6. Summarize **from the union only**: mode, from→to, unioned tags, executed / offered / declined **of those tags**, settings migration, git / commits. Do **not** name catalog optional tags that were not in the union as skipped. `auto-all` = execute unioned tagged passes on all stems — not “run every tag in the table.”
 7. Run B’s **Present / apply unset options** for missing `optional_rules.*` (`auto-all` enables + installs; `auto`/`choose` ask once).
 8. **Stop.**
 
@@ -61,3 +61,5 @@
 - Implement application features
 - Rewrite an already-set `orchestrator.git.mode` unless the user asked this turn (then stamp `source: user`)
 - Treat a `source: user` git-mode change as a forbidden pack migrate (reviewers / Bugbot: do not fail it)
+- Name optional live tags that were not in the union as “skipped” (they were not this jump’s instructions)
+- Treat `auto-all` as license to run every pass in the Live impact tag table

@@ -19,7 +19,8 @@ Hard rules:
 - Open A only first — A0 dirty-tree hard stop before download; do not auto-commit their WIP
 - After A: open pack `TEMPLATE_SYNC_B.md` from disk (+ catch-up CHANGELOG union) — not a pre-overwrite sync playbook; on version jumps union tags from all skipped entries, not top-only
 - Migrate legacy status files into `docs/ADT-settings.yaml` when needed (B0.1)
-- Honor `sync.mode`: `auto` executes reshape/assumption-cleanout/ambition/operable/kit-coverage + hygiene commits (still asks for new unset optionals); `auto-all` same + enable/install unset optionals; `choose` asks once; unset → ask mode once
+- Honor `sync.mode`: `auto` executes reshape/assumption-cleanout/ambition/operable/kit-coverage + hygiene commits (still asks for new unset optionals); `auto-all` same + enable/install unset optionals; `choose` asks once; unset → ask mode once. `auto-all` executes **unioned** tagged passes on all stems — it does not run every row in the tag table
+- Summarize from the **union only** (from→to + unioned tags + executed/offered/declined of those). Do **not** name catalog optional tags that were not in the union as “skipped”
 - When catch-up includes **2.7.27** and reshape executes: **instruction-footer strip** — delete copied sermons / long Instructions / inline section essays from live Understanding / spec / TODO **including stems with no Understanding**; keep user fill-in; leave SCAFFOLDS + playbook pointer
 - When `master-index` is in the union: adopt slimmer At a Glance (required when tagged — not gated on reshape / `optional-live-reshape`)
 - If `docs_profile.mode` unset → B0.5 ask once (`auto-all` → record `prevent`)

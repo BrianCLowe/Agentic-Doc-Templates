@@ -1,10 +1,10 @@
 # Template pack changelog
 
-> **Agents:** After [`agent/TEMPLATE_SYNC_A.md`](agent/TEMPLATE_SYNC_A.md), open [`agent/TEMPLATE_SYNC_B.md`](agent/TEMPLATE_SYNC_B.md). Select catch-up entries from **from** → **to** (B0 Catch-up) — not top-only on version jumps. **Union** Live impact tags; skim Step B lines for one-shots; do not invent a broader audit.
+> **Agents:** After [`agent/TEMPLATE_SYNC_A.md`](agent/TEMPLATE_SYNC_A.md), open [`agent/TEMPLATE_SYNC_B.md`](agent/TEMPLATE_SYNC_B.md). Select catch-up entries from **from** → **to** (B0 Catch-up) — not top-only on version jumps. **Union** Live impact tags; skim Step B lines for one-shots; do not invent a broader audit. **Summarize the union only** — do not name catalog optional tags that were not selected as “skipped.” `auto-all` executes unioned tagged passes on all stems; it is not “run every row in this table.”
 >
 > **Maintainers:** Every `VERSION` bump must update this file in the same commit (newest entry on top). Keep bullets brief. When editing agent playbooks, write for thorough “off-road” models — explicit scope gates and Do-not lists, not open “as needed” language (see root [`CONTRIBUTING.md`](../../CONTRIBUTING.md)).
 
-**Live impact tags** (use only these):
+**Live impact tags** (use only these — lasting catalog; a tag fires only when a selected catch-up entry lists it):
 
 | Tag | Meaning for Step B |
 |-----|--------------------|
@@ -21,6 +21,18 @@
 | `process-docs-only` | Pack process/help/agent docs only — no live feature/shared content scan |
 
 ---
+
+## 2.7.29
+
+- **Live impact:** `versions-only`, `process-docs-only`, `rules`
+- **Files:**
+  - `VERSION` — 2.7.28 → 2.7.29
+  - `agent/TEMPLATE_SYNC_B.md` — **Summarize** reports **from→to** + **unioned** tags + executed / offered / declined **from that union only**. Do **not** name catalog optional tags that were not in the union as “skipped.” `auto-all` = execute unioned tagged passes on all stems, not every row in the tag table. “Skipped” is reserved for a unioned tagged pass the user declined (`choose`) or a path check that did not apply (B8 modern layout)
+  - `roles/template-sync.md` + adapter-src / cursor|grok|copilot adapters — same summarize rule
+  - `help/USAGE.md` — sync summary lists the union, not the full catalog
+  - Root `DECISIONS.md` **D18** — do not silently undo
+  - Root `eval/` — `sync-summary-union-only` pack contract
+- **Step B:** Bump Master Index **Pack version** to 2.7.29 from local `VERSION`. Refresh installed modular rules (**no ask** unless `customized: true`). If `optional_rules.doc-roles` is **enabled** → refresh **docs-template-sync** adapters. No live feature/shared scan. No optional live pass unless its tag is in this jump’s union (this entry adds none).
 
 ## 2.7.28
 

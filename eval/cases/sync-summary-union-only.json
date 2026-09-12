@@ -1,0 +1,67 @@
+{
+  "id": "sync-summary-union-only",
+  "title": "Sync summary reports the catch-up union only — catalog optional tags are not “skipped”",
+  "role": "docs-template-sync",
+  "user": "Update the doc templates from Agentic Doc Templates and sync our live docs. We are on 2.7.24 going to a later pack; sync.mode is auto-all.",
+  "fixture": "fixtures/ship-first-crud",
+  "expect": {},
+  "pack_contract": {
+    "source_must_include": [
+      {
+        "file": "docs/templates/agent/TEMPLATE_SYNC_B.md",
+        "patterns": [
+          "Summarize from the union only",
+          "Do not** name optional tags that were **not** in the union as “skipped.”",
+          "lasting catalog",
+          "auto-all` does **not** mean “run every optional pass every sync.”",
+          "when a tagged pass is **in the union**",
+          "choose`: user declined",
+          "B8 modern layout"
+        ]
+      },
+      {
+        "file": "docs/templates/CHANGELOG.md",
+        "patterns": [
+          "2.7.29",
+          "Summarize the union only",
+          "lasting catalog",
+          "auto-all` executes unioned tagged passes"
+        ]
+      }
+    ],
+    "summaries_must_point": [
+      {
+        "file": "docs/templates/agent/roles/template-sync.md",
+        "must_contain": [
+          "from the union only",
+          "not in the union as skipped",
+          "not “run every tag in the table.”"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/roles/adapter-src/bodies/docs-template-sync.md",
+        "must_contain": [
+          "Summarize from the **union only**",
+          "not in the union as “skipped”",
+          "does not run every row in the tag table"
+        ]
+      },
+      {
+        "file": "docs/templates/help/USAGE.md",
+        "must_contain": [
+          "unioned** tags that ran",
+          "not “skipped instructions.”",
+          "not run every catalog row"
+        ]
+      },
+      {
+        "file": "DECISIONS.md",
+        "must_contain": [
+          "D18",
+          "union only",
+          "auto-all` means"
+        ]
+      }
+    ]
+  }
+}

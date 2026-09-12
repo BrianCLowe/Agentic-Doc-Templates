@@ -25,6 +25,7 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 | D15 | Workflow is an index + one module; not a monolith | accepted | 2.7.15 |
 | D16 | Roles never always-on; orchestrator is parent-session only | accepted | 2.7.7 |
 | D17 | Assumptions = real forks only; lock obvious defaults; examples are not identity | accepted | 2.7.28 |
+| D18 | Sync summaries report the catch-up union only; `auto-all` ≠ every catalog tag | accepted | 2.7.29 |
 
 ---
 
@@ -105,6 +106,12 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 **Decision:** Full lock-gate prose lives only in `workflow/understanding.md` §4. Agents lock the obvious best default into **is / is not** without asking. **Assumptions** hold only real forks (no obvious winner). Empty Assumptions is success. If the design is already clear, **zero Assumption asks is correct** — do not invent a quiz. Do **not** treat examples in `docs/reference/` / chat as the target unless the user **clearly set them as the target**. Ask about a **lesser path** only when a **real non-timescale reason** exists (hard blocker, legal, missing credential) — not to offer an MVP / half-measure that lands 10 minutes faster (agent timescale). Offer an **`optional-assumption-cleanout`** pass on existing Understandings. Elsewhere: one-line pointers.
 
 **Do not:** Treat “needs user confirmation” as a license to invent quizzes. Do not promote a reference example into identity or a spec constraint. Do not offer a lesser path to save sprint time.
+
+## D18 — Sync summary is the union, not the catalog
+
+**Decision:** A sync summary reports **from→to**, the **unioned** Live impact tags, and executed / offered / declined **of those tags**. The CHANGELOG / Step B tag table is a lasting capability catalog. A tag fires only when a selected catch-up entry lists it. Do **not** name catalog optional tags that were not in the union as “skipped” — that reads as missed instructions. `auto-all` means: when a tagged pass is in the union, execute it on all Document Map stems without asking. It does **not** mean run every optional pass every sync. Reserve “skipped” for a unioned tagged pass the user declined (`choose`) or a path check that did not apply (B8 modern layout).
+
+**Do not:** Treat the tag table as a per-sync checklist. Do not invent a broader audit than the union to “cover” catalog rows that sit behind the old stamp.
 
 ---
 
