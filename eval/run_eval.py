@@ -17,6 +17,7 @@ import re
 import shutil
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -118,6 +119,120 @@ def check_deconfirm_sot() -> list[str]:
     return errors
 
 
+CLAIMED_PACK_VERSION = [
+    re.compile(r"<!--\s*pack-version:\s*\d+\.\d+(?:\.\d+)?\s*-->"),
+    re.compile(r"\*\*Pack version\*\*\s*:\s*\d+\.\d+(?:\.\d+)?"),
+    re.compile(r"local_pack_version:\s*\"\d+\.\d+(?:\.\d+)?\""),
+    re.compile(r"badge/Pack-\d+\.\d+(?:\.\d+)?"),
+]
+
+UNDERSTANDING_SERMONS = (
+    "*Too thin",
+    "*Right size",
+    "*Wrong size",
+    "*Bad example",
+    "Feature shape, not the spec",
+)
+
+
+def check_version_single_source() -> list[str]:
+    errors: list[str] = []
+    ver_path = ROOT / "docs/templates/VERSION"
+    if not ver_path.exists():
+        return ["missing docs/templates/VERSION"]
+    if not re.search(r"^pack-version:\s*\d+\.\d+\.\d+\s*$", ver_path.read_text(), re.M):
+        errors.append("docs/templates/VERSION must contain `pack-version: X.Y.Z`")
+
+    allow = {
+        ver_path.resolve(),
+        (ROOT / "docs/templates/CHANGELOG.md").resolve(),
+    }
+    scan = [ROOT / "README.md", ROOT / "CONTRIBUTING.md", ROOT / "docs/templates"]
+    for root in scan:
+        paths = [root] if root.is_file() else root.rglob("*")
+        for path in paths:
+            if not path.is_file() or path.suffix not in {".md", ".mdc", ".yaml", ".yml"}:
+                continue
+            if path.resolve() in allow or path.name == "CHANGELOG.md":
+                continue
+            text = path.read_text()
+            for pat in CLAIMED_PACK_VERSION:
+                if pat.search(text):
+                    errors.append(
+                        f"pack version duplicated in {path.relative_to(ROOT)} "
+                        f"(only docs/templates/VERSION may claim the number)"
+                    )
+                    break
+    return errors
+
+
+def check_understanding_skeleton() -> list[str]:
+    errors: list[str] = []
+    path = ROOT / "docs/templates/Feature_Understanding_Template.md"
+    if not path.exists():
+        return ["missing Feature_Understanding_Template.md"]
+    text = path.read_text()
+    for marker in UNDERSTANDING_SERMONS:
+        if marker in text:
+            errors.append(
+                f"Understanding template still has sermon {marker!r} "
+                f"(keep teaching in workflow/understanding.md + help/SCAFFOLDS.md)"
+            )
+    if "workflow/understanding.md" not in text:
+        errors.append("Understanding template must point at workflow/understanding.md")
+    if "help/SCAFFOLDS.md" not in text:
+        errors.append("Understanding template must point at help/SCAFFOLDS.md")
+    return errors
+
+
+def check_pack_decisions() -> list[str]:
+    errors: list[str] = []
+    path = ROOT / "DECISIONS.md"
+    if not path.exists():
+        return ["missing root DECISIONS.md (pack decision log)"]
+    text = path.read_text()
+    for needle in (
+        "Agentic Doc Templates — Pack decisions",
+        "D1",
+        "D3",
+        "ship-first",
+        "docs/templates/VERSION",
+        "Step 1d",
+    ):
+        if needle not in text:
+            errors.append(f"DECISIONS.md missing {needle!r}")
+    boot = (ROOT / "docs/templates/agent/BOOTSTRAP.md").read_text()
+    if "DECISIONS.md" not in boot:
+        errors.append("BOOTSTRAP.md must delete root DECISIONS.md on whole-repo copies")
+    return errors
+
+
+def check_fail_snapshot(case: dict) -> list[str]:
+    rel = case.get("fail_snapshot")
+    if not rel:
+        return []
+    snap = EVAL / rel
+    if not snap.is_dir():
+        return [f"{case['id']}: missing fail_snapshot {rel}"]
+    with tempfile.TemporaryDirectory() as tmp:
+        work = Path(tmp) / "work"
+        prepare(case["id"], work, quiet=True)
+        docs_src = snap / "docs"
+        if docs_src.is_dir():
+            for src in docs_src.rglob("*"):
+                if src.is_file():
+                    dest = work / "docs" / src.relative_to(docs_src)
+                    dest.parent.mkdir(parents=True, exist_ok=True)
+                    shutil.copy2(src, dest)
+        rc = verify(case["id"], work, quiet=True)
+        if rc == 0:
+            return [
+                f"{case['id']}: fail_snapshot unexpectedly VERIFY PASS — "
+                f"expect must reject this wrong-agent tree"
+            ]
+    return []
+
+
 def check_case_schema(case: dict) -> list[str]:
     errors: list[str] = []
     for key in ("id", "title", "user", "fixture", "expect"):
@@ -128,9 +243,9 @@ def check_case_schema(case: dict) -> list[str]:
         errors.append(f"{case['id']}: missing fixture dir {fixture.relative_to(ROOT)}")
     expect = case.get("expect") or {}
     up = expect.get("understanding_path")
-    if up and case.get("fixture"):
+    creating = up in (expect.get("files_must_exist") or [])
+    if up and case.get("fixture") and not creating:
         if not (fixture / up).exists() and "files_must_not_exist" not in expect:
-            # shape/additive fixtures should have the understanding
             if "understanding_status" in expect or "understanding_status_one_of" in expect:
                 if not (fixture / up).exists():
                     errors.append(f"{case['id']}: fixture missing {up}")
@@ -176,6 +291,12 @@ def run_integrity() -> int:
     errors.extend(check_adapters())
     print("== de-confirm source of truth ==")
     errors.extend(check_deconfirm_sot())
+    print("== version single source ==")
+    errors.extend(check_version_single_source())
+    print("== Understanding skeleton ==")
+    errors.extend(check_understanding_skeleton())
+    print("== pack DECISIONS.md ==")
+    errors.extend(check_pack_decisions())
     print("== cases ==")
     ids = list_cases()
     if not ids:
@@ -185,19 +306,29 @@ def run_integrity() -> int:
         errors.extend(check_case_schema(case))
         errors.extend(check_pack_contract(case))
         print(f"  ok schema/contract: {cid}")
+    print("== fail-snapshots (verify must fail) ==")
+    for cid in ids:
+        case = load_case(cid)
+        snap_errs = check_fail_snapshot(case)
+        errors.extend(snap_errs)
+        if case.get("fail_snapshot") and not snap_errs:
+            print(f"  ok reject: {cid}")
     if errors:
         print("\nFAIL")
         for e in errors:
             print(f"  - {e}")
         return 1
-    print(f"\nPASS — {len(ids)} cases, adapters clean, de-confirm SoT unique")
+    print(
+        f"\nPASS — {len(ids)} cases, adapters clean, de-confirm SoT unique, "
+        f"VERSION unique, skeleton + DECISIONS.md ok"
+    )
     return 0
 
 
 # ----- prepare / verify ----------------------------------------------------
 
 
-def prepare(case_id: str, out: Path) -> int:
+def prepare(case_id: str, out: Path, quiet: bool = False) -> int:
     case = load_case(case_id)
     fixture = EVAL / case["fixture"]
     if out.exists():
@@ -253,9 +384,10 @@ python3 eval/run_eval.py verify {case_id} --workdir {out}
 ```
 """
     )
-    print(f"Prepared {out}")
-    print(f"User message: {case['user']}")
-    print(f"Brief: {brief}")
+    if not quiet:
+        print(f"Prepared {out}")
+        print(f"User message: {case['user']}")
+        print(f"Brief: {brief}")
     return 0
 
 
@@ -264,7 +396,7 @@ def read_status(text: str) -> str | None:
     return m.group(1) if m else None
 
 
-def verify(case_id: str, workdir: Path) -> int:
+def verify(case_id: str, workdir: Path, quiet: bool = False) -> int:
     case = load_case(case_id)
     meta_path = workdir / ".eval-meta.json"
     if not meta_path.exists():
@@ -360,11 +492,13 @@ def verify(case_id: str, workdir: Path) -> int:
             errors.append(f"missing Understanding file {up}")
 
     if errors:
-        print("VERIFY FAIL")
-        for e in errors:
-            print(f"  - {e}")
+        if not quiet:
+            print("VERIFY FAIL")
+            for e in errors:
+                print(f"  - {e}")
         return 1
-    print(f"VERIFY PASS — {case_id}")
+    if not quiet:
+        print(f"VERIFY PASS — {case_id}")
     return 0
 
 

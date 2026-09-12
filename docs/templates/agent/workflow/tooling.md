@@ -1,5 +1,3 @@
-<!-- pack-version: 2.7.17 -->
-
 > **Workflow module.** Open from the [workflow index](../Modular_Docs_Workflow.md) when installing machine tools or filling Project verify handoff.
 
 # Tooling

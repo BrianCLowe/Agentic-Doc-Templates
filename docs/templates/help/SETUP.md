@@ -18,9 +18,11 @@ You need **`docs/templates/`** in your project (scaffolds, [`help/`](.), [`agent
 | **Clone → rename → change remote** | New local app from a full clone; point `origin` at your empty repo |
 | Git submodule | Awkward path; still prefer copying or sparse-checkout of `docs/templates/` |
 
-Whole-repo / template installs: bootstrap auto-moves clearly upstream root files into `docs/templates/agent/upstream/` and deletes Agentic-only `.github/ISSUE_TEMPLATE/`, `.github/FUNDING.yml`, `.github/workflows/release.yml` / `pack-checks.yml`, root `eval/`, root `scripts/gen_role_adapters.py`, and any leftover `docs/templates/agent/scripts/*.py`. Short acquisition table also on the [upstream README — Get started](https://github.com/BrianCLowe/Agentic-Doc-Templates#get-started).
+Whole-repo / template installs: bootstrap auto-moves clearly upstream root files into `docs/templates/agent/upstream/` and deletes Agentic-only `.github/ISSUE_TEMPLATE/`, `.github/FUNDING.yml`, `.github/workflows/release.yml` / `pack-checks.yml`, root `eval/`, root `scripts/gen_role_adapters.py`, leftover `docs/templates/agent/scripts/*.py`, and maintainer root **`DECISIONS.md`**. Short acquisition table also on the [upstream README — Get started](https://github.com/BrianCLowe/Agentic-Doc-Templates#get-started).
 
-**Inside the pack:** `help/` (this guide), `agent/` (bootstrap, rules, sync), plus `VERSION`, `CHANGELOG.md`, and the scaffold templates at the pack root.
+**Inside the pack:** `help/` (this guide), `agent/` (bootstrap, rules, sync), plus `VERSION`, `CHANGELOG.md`, and the scaffold templates at the pack root. Pack version number lives **only** in `VERSION`.
+
+Public example of a project that used this pack: [xAIkit](https://github.com/BrianCLowe/xAIkit) (typed API — a natural **ship-first** fit).
 
 ---
 
@@ -74,6 +76,7 @@ Naming: [`../agent/workflow/naming-layout.md`](../agent/workflow/naming-layout.m
 | Goal | Go here |
 |------|---------|
 | Day-to-day (chat → docs, mid-build ideas, design docs) | [`USAGE.md`](USAGE.md) |
+| What to put in Understanding / spec / TODO (fill-in blanks) | [`SCAFFOLDS.md`](SCAFFOLDS.md) |
 | Optional roles (intent-first Understanding, implement, sync) | [`../agent/roles/README.md`](../agent/roles/README.md) |
 | Describing UI / scope (esp. if new to software) | [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md) |
 | Rule / harness install (Cursor, Grok Build, …) | [`../agent/tools/README.md`](../agent/tools/README.md) · human TOC: [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md) |

@@ -1,12 +1,12 @@
 # How to Use These Templates
 
-Day-to-day workflows after setup. First-time install: [`SETUP.md`](SETUP.md). Describing ideas in plain language: [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md).
+Day-to-day workflows after setup. First-time install: [`SETUP.md`](SETUP.md). What each live file is for: [`SCAFFOLDS.md`](SCAFFOLDS.md). Describing ideas in plain language: [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md).
 
 ---
 
 ## The loop
 
-Depends on **docs profile** in `docs/ADT-settings.yaml` (`prevent` default if unset — [Workflow §0.1](../agent/workflow/profile-standing.md#01-docs-profile-ceremony-modes)):
+Depends on **docs profile** in `docs/ADT-settings.yaml` — a first-class choice ([Workflow §0.1](../agent/workflow/profile-standing.md#01-docs-profile-ceremony-modes)). **`ship-first`** is the right default for typed APIs / CRUD. **`prevent`** is the right default for editors / games / multi-surface (and the fallback if unset):
 
 1. You capture ideas (recommended: chat exports in `docs/reference/`, or a mid-build correction in chat).
 2. **`prevent` (default):** agent drafts `-Understanding.md` (shape / guardrails). **`ship-first`:** agent drafts thin **spec + TODO** only. **`balanced`:** Understanding when identity is ambiguous.

@@ -1,5 +1,3 @@
-<!-- pack-version: 2.7.17 -->
-
 # Generate role adapters — Agent Instructions
 
 > **Maintainers / pack editors.** Use when editing [`roles/adapter-src/`](roles/adapter-src/README.md) or when cursor/grok/copilot adapters drift. **No Python required** — write the markdown files directly. Do not invent a local script.

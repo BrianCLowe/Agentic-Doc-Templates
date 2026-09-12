@@ -55,7 +55,7 @@ When an ask matches a row below, look for that role under a known agents folder 
 |------|-------------------|-------------|
 | **`prevent`** | Spec + Understanding (`draft`) + core TODO | No code while Understanding is `draft` (unless waived) |
 | **`balanced`** | Spec + TODO; + Understanding when identity ambiguous / multi-surface / split / user asked | Draft gate only if that stem **has** Understanding |
-| **`ship-first`** | Spec + core TODO | No Understanding gate; implement from TODO + thin spec |
+| **`ship-first`** | Spec + core TODO | No Understanding gate; implement from TODO + thin spec. Right default for typed APIs / CRUD. |
 If `docs_profile` is unset at bootstrap / first build-from-reference / sync: suggest once from `docs/reference/` (cite 2–3 snippets) → ask → record. Never silent-downgrade a project full of Understandings.
 
 **Standing workflow** *(read `docs/ADT-settings.yaml` → `standing.instructions` when present — Workflow §0.2)*:
@@ -74,7 +74,7 @@ If `docs_profile` is unset at bootstrap / first build-from-reference / sync: sug
 5. If the user asks to install tooling: follow **`docs/Tooling.md`** (Workflow §11) — Required (+ skills if listed); Optional only if asked; verify all; ask before admin/large SDKs.
 6. If work needs a **human** (procure, playtest/feel, decide/sign-off, or external waiting): **dual-write** in the same edit — owner `*-TODO.md` item **and** an Open row on **`docs/Human-TODO.md`** (Workflow §13). Never store secrets in docs. Do not bury human asks only in feature TODOs.
 
-**Open `Modular_Docs_Workflow.md` (index) only when:** creating files, choosing Path A vs Path B, graduating Understanding → spec, docs-profile or standing-capture questions, or the user asks about procedure. Then open **only the one module** the index router names (e.g. `workflow/understanding.md` for shape/de-confirm). Do **not** load the whole `workflow/` folder or re-read the index every turn.
+**Open `Modular_Docs_Workflow.md` (index) only when:** creating files, choosing Path A vs Path B, graduating Understanding → spec, docs-profile or standing-capture questions, the user asks about procedure, **or context is thin** (new session, compaction, memory loss). Then open **only the one module** the index router names (e.g. `workflow/understanding.md` for shape/de-confirm). Live scaffolds are fill-in blanks — do not treat them as the tutorial. Do **not** load the whole `workflow/` folder or re-read the index every turn.
 
 **Shared foundation (critical):**
 - **Do not invent `_shared/` docs.** Only add §3.1 / `_shared/` when a **project-owned** piece is (or will be) used by **two or more features**, or the user named it as shared. Empty `_shared/` / empty §3.1 is fine. Never park engine/framework primers (e.g. generic Unreal notes) in `_shared/` because nothing else fit — use `features/` or `docs/reference/` (Workflow §1).

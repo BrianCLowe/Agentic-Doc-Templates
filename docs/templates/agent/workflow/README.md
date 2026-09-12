@@ -1,5 +1,3 @@
-<!-- pack-version: 2.7.17 -->
-
 # Workflow modules
 
 > **Agents:** Start at [`../Modular_Docs_Workflow.md`](../Modular_Docs_Workflow.md) (index + paved path). Open **one** module from that routing table — do not scan this folder.

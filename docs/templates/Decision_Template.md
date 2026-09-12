@@ -1,6 +1,6 @@
 # [Short decision title]
 
-> Optional cross-cutting decision file under `docs/decisions/`. Use for project-wide choices; local decisions go in the feature/shared **spec** Decisions table instead.
+> Optional cross-cutting decision file under `docs/decisions/`. Use for project-wide choices; local decisions go in the feature/shared **spec** Decisions table instead. Teaching: [`help/SCAFFOLDS.md`](help/SCAFFOLDS.md). Agents: [`agent/workflow/decisions.md`](agent/workflow/decisions.md).
 
 **Date**: YYYY-MM-DD  
 **Status**: accepted | superseded  

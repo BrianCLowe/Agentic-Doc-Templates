@@ -90,7 +90,7 @@ When the whole template repo was cloned/copied into a project (or “Use this te
 
 ## Step 1d — Remove upstream maintainer tooling (user projects)
 
-**This pack's** root `eval/`, root `scripts/` (CI helper), and any leftover `docs/templates/agent/scripts/*.py` are for maintaining [Agentic-Doc-Templates](https://github.com/BrianCLowe/Agentic-Doc-Templates) itself. They must **not** stay in a user’s app repo. Adapter regeneration for pack editors is the markdown playbook [`GENERATE_ROLE_ADAPTERS.md`](GENERATE_ROLE_ADAPTERS.md) — **no Python**.
+**This pack's** root `eval/`, root `scripts/` (CI helper), root **`DECISIONS.md`**, and any leftover `docs/templates/agent/scripts/*.py` are for maintaining [Agentic-Doc-Templates](https://github.com/BrianCLowe/Agentic-Doc-Templates) itself. They must **not** stay in a user’s app repo. Adapter regeneration for pack editors is the markdown playbook [`GENERATE_ROLE_ADAPTERS.md`](GENERATE_ROLE_ADAPTERS.md) — **no Python**.
 
 When the whole template repo was cloned/copied into a project (or “Use this template” left these behind):
 
@@ -98,9 +98,10 @@ When the whole template repo was cloned/copied into a project (or “Use this te
 2. If project-root **`scripts/gen_role_adapters.py`** exists (upstream CI helper) → **delete that file**. Remove root `scripts/` if it is empty afterward.
 3. If **`docs/templates/agent/scripts/`** exists with pack Python helpers (e.g. `gen_role_adapters.py`) from an older pack zip → **delete that directory** (the playbook replaced it).
 4. If `.github/workflows/pack-checks.yml` exists **and** is this pack’s integrity workflow (e.g. workflow `name: Pack checks`, runs `gen_role_adapters.py --check` and/or `eval/run_eval.py`) → **delete that file**. Remove `.github/workflows/` / `.github/` if empty afterward (same care as Step 1b — do not delete the user’s other workflows).
-5. Do **not** delete `docs/templates/agent/roles/adapter-src/` or [`GENERATE_ROLE_ADAPTERS.md`](GENERATE_ROLE_ADAPTERS.md) — those are pack files.
-6. Do **not** delete a user’s own `eval/` or `scripts/` that are clearly for their app (different README / no Agentic Doc Templates markers).
-7. Prefer copying only `docs/templates/` next time so maintainer folders never land in the project.
+5. If project-root **`DECISIONS.md`** exists **and** is this pack’s decision log (e.g. heading **Agentic Doc Templates — Pack decisions**, or it says bootstrap Step 1d deletes it) → **delete that file**. Do **not** delete the user’s own `docs/decisions/` or a project `DECISIONS.md` that is about *their* app.
+6. Do **not** delete `docs/templates/agent/roles/adapter-src/` or [`GENERATE_ROLE_ADAPTERS.md`](GENERATE_ROLE_ADAPTERS.md) — those are pack files.
+7. Do **not** delete a user’s own `eval/` or `scripts/` that are clearly for their app (different README / no Agentic Doc Templates markers).
+8. Prefer copying only `docs/templates/` next time so maintainer folders never land in the project.
 
 ## Step 2 — Create docs layout
 
@@ -212,9 +213,9 @@ If it already exists → add newly discovered human-gated needs (procure / playt
 
 | Mode | Tell the user |
 |------|----------------|
-| **`prevent`** *(suggested default if unclear)* | Agent drafts `-Understanding.md` first; **you confirm shape** (is / is not) before code. Best when wrong product identity is expensive. |
+| **`prevent`** *(suggested if identity-risky / unclear)* | Agent drafts `-Understanding.md` first; **you confirm shape** (is / is not) before code. Right default for **editors, games, multi-surface** apps — wrong identity is expensive. Unset → this mode. |
 | **`balanced`** | Spec + TODO always; Understanding **only when** product identity is fuzzy (competing surfaces, “not X”, multi-feature mush, or you ask to lock shape). You are choosing “judgment call,” not “no docs.” |
-| **`ship-first`** | Spec + TODO only; no shape-confirm gate. Faster; fix-forward via verify + Human-TODO. *Lock shape for X* anytime. |
+| **`ship-first`** | Spec + TODO only; no shape-confirm gate. **Right default for typed APIs / CRUD / clear contracts** — not a concession. Also prototypes / fix-forward. *Lock shape for X* anytime. |
 
 Suggest with citations when possible (prevent / balanced / ship-first signals — Workflow §0.1).
 

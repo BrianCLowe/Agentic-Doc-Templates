@@ -1,5 +1,3 @@
-<!-- pack-version: 2.7.17 -->
-
 > **Workflow module — source of truth** for shape vs contract (Understanding + graduation + de-confirm gate). Open from the [workflow index](../Modular_Docs_Workflow.md) when drafting/confirming Understanding, graduating to spec, or deciding additive vs shape change. Rules and roles summarize; **this file wins on conflict**.
 
 # Understanding & graduation
@@ -28,7 +26,7 @@ See [`Feature_Spec_Template.md`](../../Feature_Spec_Template.md) and [`Feature_U
 
 ## 4. Understanding (Features & Shared)
 
-**Source of truth** with §2 — other pack files summarize; this section wins on conflict. Drafting examples: [`Feature_Understanding_Template.md`](../../Feature_Understanding_Template.md). **When required:** §0.1 docs profile.
+**Source of truth** with §2 — other pack files summarize; this section wins on conflict. Live `-Understanding.md` files are **fill-in blanks** ([`Feature_Understanding_Template.md`](../../Feature_Understanding_Template.md)). Teaching examples live **here**, not in the scaffold. Human review: [`../../help/SCAFFOLDS.md`](../../help/SCAFFOLDS.md). **When required:** §0.1 docs profile. **Compaction / thin context:** re-open this module before drafting or editing Understanding — do not reconstruct the gate from memory.
 
 Under **`prevent`**, each **feature** and substantial **shared component** gets a `-Understanding.md` — the agent’s model of **feature shape** (guardrails). **Not** a second durable spec. Under **`balanced`**, create when identity is ambiguous / multi-surface / split pressure / user asked. Under **`ship-first`**, only when user asks *lock shape* or the file already exists.
 
@@ -50,6 +48,24 @@ Under **`prevent`**, each **feature** and substantial **shared component** gets 
 | **Confirmed with user** | Short correction notes + date | Relocated contract prose |
 
 Work queue → **TODO**. Durable contract (Behavior, **Acceptance**, Visual references, architecture) → **spec** (§2).
+
+**Drafting size — What this is**
+
+Length matches the shape detail the user gave — not a telegram summary, and not a parallel feature narrative.
+
+- *Too thin (drops shape):* “A role-specific view of the existing text editor.”
+- *Right size (shape):* Same framing **plus** identity they actually gave — e.g. same editing core (not a second engine); one continuous surface vs N separate editors; chrome differs for this workflow; metaphors / “feels like”; product-defining constraints. Not implementation steps, prop tables, happy-path numbered flows, or a full behavior rewrite.
+- *Wrong size (mini-spec):* Restating Core Behavior, API/prop tables, scene-break matrices, acceptance checklists, How-it-should-work flows, or every edge case — that belongs in the **spec** / **TODO**.
+
+Product-defining surface / architecture belongs in **What this is** when it decides identity — e.g. “one continuous manuscript surface; seams are visual; notes stay separate storage.” Once confirmed, plan/build that **target** — do not park a fighting interim as the paved path.
+
+**Drafting size — What this is NOT**
+
+Identity boundaries for the **finished** feature. Do **not** list work that is still planned, phased later, or “not implemented yet.”
+
+- *Bad (do not write):* “NOT freeform multi-window Desktop Mode — that is long-term in the spec.” That is deferred work for the same feature, not an identity boundary.
+- *Good:* “NOT a freeform multi-window desktop OS — Main Workspace is a document-centric layout (panels / side-by-side), not overlapping OS windows.” *(Only if that is truly never what this feature is meant to be.)*
+- *Wrong-engine:* “NOT a second editor engine — same editing core as BlockEditor; this stem is role chrome / a different surface on that core.”
 
 **Tell the user:** Confirming Understanding = **is / is not** + **Assumptions** (shape). Spec-level detail may be missing on purpose.
 

@@ -1,0 +1,46 @@
+{
+  "id": "operable-gap-marked-done",
+  "title": "User-facing stem is not done when only library/tests landed",
+  "role": "todo-warden",
+  "user": "Tests passed. Mark VideoGeneration done and move on.",
+  "fixture": "fixtures/multi-stem-studio",
+  "fail_snapshot": "fail-snapshots/operable-gap-marked-done",
+  "expect": {
+    "file_must_contain": [
+      {
+        "path": "docs/features/VideoGeneration-TODO.md",
+        "patterns": ["- [ ]", "Exercise path"]
+      },
+      {
+        "path": "docs/features/VideoGeneration.md",
+        "patterns": ["[ ] Operator can run"]
+      }
+    ],
+    "file_must_not_contain": [
+      {
+        "path": "docs/features/VideoGeneration.md",
+        "patterns": ["[x] Operator can run"]
+      },
+      {
+        "path": "docs/features/VideoGeneration-TODO.md",
+        "patterns": ["Marked stem done"]
+      }
+    ]
+  },
+  "pack_contract": {
+    "source_must_include": [
+      {
+        "file": "docs/templates/agent/workflow/todos.md",
+        "patterns": [
+          "Operable done",
+          "exercise path",
+          "incomplete"
+        ]
+      },
+      {
+        "file": "DECISIONS.md",
+        "patterns": ["D11", "exercise path"]
+      }
+    ]
+  }
+}

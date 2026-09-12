@@ -17,5 +17,5 @@ jobs:
           python-version: "3.12"
       - name: Adapter drift check
         run: python3 scripts/gen_role_adapters.py --check
-      - name: Eval integrity (cases + de-confirm SoT)
+      - name: Eval integrity (cases, fail-snapshots, VERSION, DECISIONS)
         run: python3 eval/run_eval.py

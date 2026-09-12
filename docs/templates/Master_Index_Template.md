@@ -1,5 +1,3 @@
-<!-- pack-version: 2.7.20 -->
-
 > **Template reference.** Do not put project-specific content in this file. Copy to `docs/Master_Index.md` for initial setup, or diff against it when syncing template improvements into the live index. Never edit this template unless the user asks you to.
 >
 > **Agent workflow** (paved path + router into thin modules) lives in [`Modular_Docs_Workflow.md`](templates/agent/Modular_Docs_Workflow.md) — do not duplicate it here.
@@ -8,7 +6,7 @@
 
 **Purpose**: Single entry point for **this project's** documentation — overview, locations, and Document Map. Read only the files relevant to the current task.
 
-**Pack version**: 2.7.20 *(from [`templates/VERSION`](templates/VERSION) — update on sync)*
+**Pack version**: *(set from [`templates/VERSION`](templates/VERSION) on bootstrap / TEMPLATE_SYNC — do not bump this template)*
 
 ## 1. Project Overview
 
@@ -53,7 +51,7 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 - **Mermaid:** optional — agent may add a small diagram when it beats prose for structure/flow; do not splash charts everywhere.
 - **Tooling:** `docs/Tooling.md` lists machine tools (not package deps); on a new machine, user can ask to install them ([`Tooling_Template.md`](templates/Tooling_Template.md)).
 - **Human TODO:** `docs/Human-TODO.md` — one inbox for procure / playtest / decide / waiting; index + owner dual-write ([`Human_TODO_Template.md`](templates/Human_TODO_Template.md); [Workflow §13](templates/agent/workflow/human-todo.md#13-human-todo-inbox--needs-a-human)).
-- **Docs profile:** `docs/ADT-settings.yaml` → `docs_profile.mode` — **`prevent`** (default if unset: Understanding + shape confirm), **`balanced`**, or **`ship-first`** (Spec+TODO core). See [Workflow §0.1](templates/agent/workflow/profile-standing.md#01-docs-profile-ceremony-modes).
+- **Docs profile:** `docs/ADT-settings.yaml` → `docs_profile.mode` — **first-class choice**, not a concession. **`prevent`** (identity-risky: editors, games, multi-surface — Understanding + shape confirm; default if unset). **`ship-first`** (typed APIs, CRUD, clear contracts — Spec+TODO; the right default there). **`balanced`** (Understanding only when identity is fuzzy). See [Workflow §0.1](templates/agent/workflow/profile-standing.md#01-docs-profile-ceremony-modes).
 - **Orchestrator git:** `orchestrator.git.mode` — recommend **`milestone-pr`** (overnight: per-milestone PR — several related TODOs + concurrent implementers when they do not overlap **and** the host can isolate them → squash before ready → CI/Bugbot → merge → next branch), or **`branch-pr-squash`** (one morning PR, no merge), **`branch-pr`**, **`branch-push`**, **`local`**, **`current-push`** (never silent-default), or **`none`**. Asked if unset even under sync `auto-all`. **Cloud Agent** orchestration this-runs **`milestone-pr`** when durable mode is local-oriented or `branch-pr*` (does not rewrite settings). **Host worktrees** are not a setting — already-in-a-worktree → stay; pack does not `git worktree add`; no host isolation → serial. See [orchestrator-git](templates/agent/roles/orchestrator-git.md).
 - **File layout:** flat sibling files — always `features/FeatureName.md` + `FeatureName-TODO.md`; **Understanding** per docs profile; optional `FeatureName-Catalog.md` for list-heavy stems (same for `_shared/`) — [Workflow §0](templates/agent/workflow/naming-layout.md#0-naming--file-layout-read-before-creating-files) / [§7.1](templates/agent/workflow/extensions.md#71-catalog-companions-list-heavy-content).
 - No file should exceed ~800–1000 lines; split when bloated ([Workflow §8](templates/agent/workflow/extensions.md#8-how-to-split-a-large-document)).

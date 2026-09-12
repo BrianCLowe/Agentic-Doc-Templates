@@ -8,7 +8,7 @@
 > Modular Understanding / spec / TODO docs plus tool-agnostic agent playbooks — so Cursor, Grok Build, Claude Code, OpenClaw, and friends stay aligned across chats, not just one clever session.
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-![Pack](https://img.shields.io/badge/Pack-2.7.24-blue)
+![Pack](https://img.shields.io/badge/Pack-docs%2Ftemplates%2FVERSION-blue)
 ![Built for](https://img.shields.io/badge/Built%20for-Cursor%20%7C%20Grok%20Build%20%7C%20OpenClaw%20%7C%20Claude%20Code-5865F2)
 
 ---
@@ -33,22 +33,36 @@ Use this pack when any of these keep happening:
 | Repo-owned **modular docs** + short **agent playbooks** agents open on demand | Another **coding agent runtime** (not a Cursor/Claude/Prime-Agent replacement) |
 | A small `docs/` map: Master Index, features, Understandings, specs, TODOs, Human-TODO | Notion / Linear / a hosted PM product |
 | Tool-agnostic install (Cursor rules, Grok agents, Claude, Copilot, `AGENTS.md`, …) | One mega always-on rule file that tries to be the whole process |
-| Optional **docs profiles** (prevent wrong builds vs ship-first) and **orchestrate** loops | A memory OS, vector DB, or self-improving harness product |
+| **Docs profiles** (`prevent` · `ship-first` · `balanced`) and **orchestrate** loops | A memory OS, vector DB, or self-improving harness product |
 
 You still pick your agent. This pack is what that agent **reads and updates** so intent survives the next session.
 
 ---
 
+## Pick a docs profile — first-class, not a concession
+
+**`ship-first` is a real default for the right products.** `prevent` is the right default when identity is expensive to get wrong. Unset still treats as `prevent` so existing identity-risky repos do not silently drop the gate. Bootstrap suggests a mode from your `docs/reference/` and asks once.
+
+| Your product | Profile | Why |
+|--------------|---------|-----|
+| **Typed APIs, CRUD services, clear contracts** | **`ship-first`** | Spec + TODO from day one. Shape is already the types / routes. This is the *correct* default here — not “ceremony off for people in a hurry.” |
+| **Editors, games, multi-surface apps** | **`prevent`** | Understanding + you confirm is / is *not* before code. A “helpful” agent will otherwise build the wrong engine, the wrong surface, or a second product. |
+| Mid-size / mixed signals | **`balanced`** | Understanding only when identity is fuzzy (competing surfaces, “not X”, split pressure, or you say *lock shape*). |
+
+Public example of this pack on a typed API: **[xAIkit](https://github.com/BrianCLowe/xAIkit)**.
+
+---
+
 ## How it works
 
-AI coding agents drift when intent lives only in chat. This pack gives them a small, consistent `docs/` layout. **Default is prevent-wrong-builds** (Understanding + shape confirm); **ship-first** is there if you prefer Spec+TODO only and fix-forward — pick a **docs profile** at bootstrap.
+AI coding agents drift when intent lives only in chat. This pack gives them a small, consistent `docs/` layout. You pick a **docs profile** at bootstrap (table above) — that choice is the product, not an afterthought.
 
 1. You capture ideas — **recommended:** export chat threads (Grok.com, ChatGPT, …) to markdown and drop them in `docs/reference/` (often many files; they keep whys that polished design docs lose). Or talk the idea through with your **coding agent** in the IDE and have it **build or update live docs as you go**.
 2. At bootstrap the agent asks **project preferences in one batch** (docs profile, sync mode, orchestrator git, optionals) — not a drip of five separate quizzes.
 3. Under **prevent**, **you confirm shape** (is / is *not* + Assumptions) before code. Under **ship-first**, implement from TODOs and grow the spec; *lock shape* anytime identity gets sharp.
 4. Work continues from TODOs and specs. For a single slice: *Continue from Current focus.* For a long run: **orchestrate** — *Orchestrate — clear ready TODOs until blocked.* The parent session loops implement → verify → next milestone (git via **`orchestrator.git.mode`**: recommend **milestone-pr** so overnight work lands as reviewable PRs — several related TODOs and concurrent implementers when they do not overlap **and** the host can isolate them, squash before ready, CI/Bugbot, then merge — or **branch-pr-squash** for one morning PR, or **current-push** if you set “push the branch I’m on”). The pack does not create git worktrees; already-in-a-host-worktree stays put.
 
-Short asks are enough: *bootstrap*, *draft Understanding for X*, *orchestrate*, *update the doc templates*. The agent routes to the matching playbook inside `docs/templates/`. Tips: [`docs/templates/help/IDEA_CAPTURE_TIPS.md`](docs/templates/help/IDEA_CAPTURE_TIPS.md). Orchestrator: [`docs/templates/agent/roles/orchestrator.md`](docs/templates/agent/roles/orchestrator.md).
+Short asks are enough: *bootstrap*, *draft Understanding for X*, *orchestrate*, *update the doc templates*. The agent routes to the matching playbook inside `docs/templates/`. Tips: [`docs/templates/help/IDEA_CAPTURE_TIPS.md`](docs/templates/help/IDEA_CAPTURE_TIPS.md). Scaffolds vs teaching: [`docs/templates/help/SCAFFOLDS.md`](docs/templates/help/SCAFFOLDS.md). Orchestrator: [`docs/templates/agent/roles/orchestrator.md`](docs/templates/agent/roles/orchestrator.md).
 
 ---
 
@@ -107,7 +121,7 @@ Everything ships under **`docs/templates/`**. Live project docs stay at `docs/` 
 | Area | Role |
 |------|------|
 | **Scaffolds** | Master Index, Understanding, Spec, TODO, Tooling, Human-TODO, Decision templates |
-| **[`help/`](docs/templates/help/)** | Human guides — [SETUP](docs/templates/help/SETUP.md), [USAGE](docs/templates/help/USAGE.md), [IDEA_CAPTURE_TIPS](docs/templates/help/IDEA_CAPTURE_TIPS.md), [USING_WITH_AGENTS](docs/templates/help/USING_WITH_AGENTS.md) |
+| **[`help/`](docs/templates/help/)** | Human guides — [SETUP](docs/templates/help/SETUP.md), [USAGE](docs/templates/help/USAGE.md), [SCAFFOLDS](docs/templates/help/SCAFFOLDS.md), [IDEA_CAPTURE_TIPS](docs/templates/help/IDEA_CAPTURE_TIPS.md), [USING_WITH_AGENTS](docs/templates/help/USING_WITH_AGENTS.md) |
 | **[`agent/`](docs/templates/agent/)** | [`Modular_Docs_Workflow.md`](docs/templates/agent/Modular_Docs_Workflow.md), bootstrap, [`RULE_INSTALL`](docs/templates/agent/RULE_INSTALL.md) → per-tool [`tools/`](docs/templates/agent/tools/README.md), template sync; optional [`roles/`](docs/templates/agent/roles/README.md) (Cursor/Grok subagents — never always-on) |
 | **[`VERSION`](docs/templates/VERSION)** / **[`CHANGELOG.md`](docs/templates/CHANGELOG.md)** | Cheap upstream compare + sync scope after a pack refresh |
 
@@ -165,7 +179,9 @@ More: [`USAGE.md`](docs/templates/help/USAGE.md).
 
 ## Contributing
 
-PRs that improve the templates or workflows are welcome. Prefer focused changes; when bumping [`VERSION`](docs/templates/VERSION), update [`CHANGELOG.md`](docs/templates/CHANGELOG.md) in the same commit.
+PRs that improve the templates or workflows are welcome. Prefer focused changes; when bumping [`VERSION`](docs/templates/VERSION), update [`CHANGELOG.md`](docs/templates/CHANGELOG.md) in the same commit. **`VERSION` is the only place the pack version number lives** — do not copy it into scaffolds, badges, or examples.
+
+Pack-maintainer decisions (so we cannot silently undo one): root [`DECISIONS.md`](DECISIONS.md) — bootstrap deletes it from user copies.
 
 **Feedback:** [Open an issue](https://github.com/BrianCLowe/Agentic-Doc-Templates/issues/new/choose). Discussions for open-ended questions. See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
