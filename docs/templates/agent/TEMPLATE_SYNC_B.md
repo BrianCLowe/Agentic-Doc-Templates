@@ -211,7 +211,7 @@ Versions:
      1. **Commit hygiene *(suggest)*:** Recommend committing pack sync first so clean-out can be a separate commit. Ask; never `git commit` unless they explicitly ask.
      2. **Explain briefly:** Older live Understandings may hold invented Assumption quizzes, obvious defaults left unchecked, or `docs/reference/` / chat **examples treated as the target**. **Yes (recommended)** = lock-gate clean-out (Workflow §4): lock obvious defaults into is / is not; delete invented quizzes; un-target reference examples that were **not** clearly set as the target; leave only real forks (empty Assumptions is success). **No** = leave bodies.
      3. **Ask once — default toward yes:** all Document Map Understanding stems / named / no.
-   - **On execute** (`auto` / `auto-all` or yes): for each chosen stem that **has** `-Understanding.md`, follow Workflow §4 **Clean-out pass**. Open that Understanding (and that stem’s spec only if a reference example was copied there as a constraint). Do **not** invent new Assumptions; do **not** invent Understanding on `ship-first`; do **not** silent-scan stems the user did not choose; stop after chosen stems.
+   - **On execute** (`auto` / `auto-all` or yes): for each chosen stem that **has** `-Understanding.md`, follow Workflow §4 **Clean-out pass**. Open that Understanding (and that stem’s spec only if a reference example was copied there as a constraint). **Keep status** — do **not** de-confirm `confirmed` → `draft`; do **not** inject a mid-sync shape quiz. List identity corrections in the sync summary. Do **not** invent new Assumptions; do **not** invent Understanding on `ship-first`; do **not** silent-scan stems the user did not choose; stop after chosen stems.
 
 ### 2.7.27 Instruction-footer strip *(optional-live-reshape one-shot)*
 
@@ -303,7 +303,7 @@ Run only when selected catch-up includes **2.7.27** and reshape is executing. Op
 - Reconstruct whether a missing section is “new in this version” vs “never adopted” when content templates are unchanged — the changelog already answered
 - Treat a missing or empty `docs/templates/agent/upstream/` as an error or reason to re-download attribution files
 - Open Workflow, help guides, or the whole pack catalog during sync (open Workflow §4 only while executing reshape or assumption clean-out; Workflow §5 / timescale rule only while executing TODO ambition, TODO operable, or TODO kit-coverage; Workflow §0.2 Sync relocate only when the 2.7.25 standing-relocate one-shot is in catch-up)
-- On assumption clean-out execute: invent new Assumption quizzes; treat a `docs/reference/` example as the target unless it was clearly set as the target; invent Understanding on `ship-first`; rewrite user fill-in that is already category-correct
+- On assumption clean-out execute: invent new Assumption quizzes; treat a `docs/reference/` example as the target unless it was clearly set as the target; invent Understanding on `ship-first`; rewrite user fill-in that is already category-correct; **de-confirm** a `confirmed` Understanding or inject a mid-sync shape quiz
 - Keep pulling from GitHub — work from the **local** `docs/templates/` copy
 - Under **`auto` / `choose`:** skip presenting unset `optional_rules.*` because “do not auto-enable” — that means ask, not stay silent
 - Under **`auto-all`:** leave unset `optional_rules.*` unset — enable + install them (except **`declined`**)

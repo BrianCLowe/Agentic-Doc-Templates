@@ -103,10 +103,10 @@ On execute (chosen stems that **have** Understanding):
 
 1. Lock obvious defaults that sit as unchecked Assumptions into **is / is not**.
 2. Delete Assumption bullets that are invented quizzes, obvious defaults, or reference examples treated as forks.
-3. If **is / is not** (or the spec) treated a reference example as the target and it was **not** clearly set as the target → restore category-level identity; set `draft` and ask shape confirm. If you only deleted quizzes / locked defaults that already fit is / is not → keep status.
+3. If **is / is not** (or the spec) treated a reference example as the target and it was **not** clearly set as the target → restore category-level identity. **Keep status** — do **not** de-confirm (`confirmed` → `draft`) and do **not** inject a mid-sync shape quiz. Record the correction under **Confirmed with user** and in the sync / review summary.
 4. Leave **real forks** unchecked. Empty Assumptions is success. One-line lock list under **Confirmed with user**.
 5. Heading → `Assumptions (real forks only)` if it still says “needs user confirmation.”
-6. Do **not** invent new Assumptions, new stems, Understanding on `ship-first`, or lesser-path asks that re-offer a reference example.
+6. Do **not** invent new Assumptions, new stems, Understanding on `ship-first`, lesser-path asks that re-offer a reference example, or flip status.
 
 **Do not:**
 
@@ -117,6 +117,7 @@ On execute (chosen stems that **have** Understanding):
 - Ask about the obvious path
 - Silently take a lesser path, or **offer** a lesser path to go faster (no real reason)
 - Invent a later-phase vendor/GIS/API as a shape fork — that is TODO / spec, not Understanding
+- De-confirm a `confirmed` Understanding as part of clean-out (sync or role) — keep status; list corrections
 
 **Tell the user:** Confirming Understanding = **is / is not** + any remaining **real-fork** Assumptions (empty Assumptions is fine). Spec-level detail may be missing on purpose. On review, list **locks** in one line so they can override — do not dump those locks as unchecked Assumptions.
 

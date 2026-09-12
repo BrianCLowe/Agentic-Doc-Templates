@@ -34,6 +34,8 @@
           "zero Assumption asks is correct",
           "Clean-out pass",
           "optional-assumption-cleanout",
+          "Keep status",
+          "do **not** de-confirm",
           "lesser path",
           "real non-timescale reason",
           "half-measure",
@@ -45,7 +47,9 @@
         "patterns": [
           "optional-assumption-cleanout",
           "Live Assumption clean-out",
-          "clearly set as the target"
+          "clearly set as the target",
+          "Keep status",
+          "do **not** de-confirm"
         ]
       }
     ],
@@ -57,7 +61,8 @@
           "real forks only",
           "clearly set as the target",
           "clean-out",
-          "zero Assumption asks is correct"
+          "zero Assumption asks is correct",
+          "keep status"
         ],
         "must_not_contain": [
           "A walkthrough, sample project, named vendor, or place the user used to explain the idea"
