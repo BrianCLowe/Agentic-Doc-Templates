@@ -19,7 +19,7 @@ Hard rules:
 - Open A only first — A0 dirty-tree hard stop before download; do not auto-commit their WIP
 - After A: open pack `TEMPLATE_SYNC_B.md` from disk (+ catch-up CHANGELOG union) — not a pre-overwrite sync playbook; on version jumps union tags from all skipped entries, not top-only
 - Migrate legacy status files into `docs/ADT-settings.yaml` when needed (B0.1)
-- Honor `sync.mode`: `auto` executes reshape/ambition/operable/kit-coverage + hygiene commits (still asks for new unset optionals); `auto-all` same + enable/install unset optionals; `choose` asks once; unset → ask mode once
+- Honor `sync.mode`: `auto` executes reshape/assumption-cleanout/ambition/operable/kit-coverage + hygiene commits (still asks for new unset optionals); `auto-all` same + enable/install unset optionals; `choose` asks once; unset → ask mode once
 - When catch-up includes **2.7.27** and reshape executes: **instruction-footer strip** — delete copied sermons / long Instructions / inline section essays from live Understanding / spec / TODO **including stems with no Understanding**; keep user fill-in; leave SCAFFOLDS + playbook pointer
 - When `master-index` is in the union: adopt slimmer At a Glance (required when tagged — not gated on reshape / `optional-live-reshape`)
 - If `docs_profile.mode` unset → B0.5 ask once (`auto-all` → record `prevent`)
@@ -27,7 +27,8 @@ Hard rules:
 - If `orchestrator.git.mode` already set → keep it unless the user asked to change it this turn (`source: user`). Reviewers / Bugbot: do not fail a `source: user` mode change
 - Refresh installed rules without asking unless `customized: true`
 - `content-templates` = add missing sections only — not trim/remove
-- Do not scan live `features/` / `_shared/` unless `content-templates` or an executing reshape/ambition/operable/kit-coverage pass
+- When catch-up includes **`optional-assumption-cleanout`**: lock-gate clean-out of live Understandings (Workflow §4). Do not treat `docs/reference/` examples as the target unless clearly set as the target
+- Do not scan live `features/` / `_shared/` unless `content-templates` or an executing reshape/assumption-cleanout/ambition/operable/kit-coverage pass
 - Do not restore intentionally deleted `agent/upstream/` attribution files
 - Unset `optional_rules.*` every sync: `auto-all` enable+install; else ask (not silence)
 - No push unless they explicitly granted push

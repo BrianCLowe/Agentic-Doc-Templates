@@ -17,7 +17,7 @@
 2. After A finishes: **only** [`../TEMPLATE_SYNC_B.md`](../TEMPLATE_SYNC_B.md) from disk + selected catch-up [`../../CHANGELOG.md`](../../CHANGELOG.md) entries (B0 Catch-up — not top-only on version jumps)
 3. `docs/ADT-settings.yaml` (migrate legacy status files per B0.1 if needed; capture `from` before stamp)
 4. Live files that Step B / Live impact tags name (usually `Master_Index.md`, versions — not every feature file)
-5. On reshape / TODO ambition / operable / kit-coverage **execute**: Understanding/spec/TODO for stems in scope (spec/TODO-only stems included on the 2.7.27 strip)
+5. On reshape / assumption clean-out / TODO ambition / operable / kit-coverage **execute**: Understanding/spec/TODO for stems in scope (spec/TODO-only stems included on the 2.7.27 strip)
 
 ## Steps
 
@@ -25,7 +25,7 @@
 2. When A’s handoff says so: open **local** [`TEMPLATE_SYNC_B.md`](../TEMPLATE_SYNC_B.md) from disk — discard any pre-overwrite sync procedure.
 3. Run Step B from B + **unioned** catch-up changelog tags (including B0 settings migrate + sync.mode + B0.3 hygiene commits under `auto` / `auto-all` + **B0.4** cadence when due + **B0.5** docs_profile when unset + **B0.6** orchestrator.git when unset — **always ask git**, even under auto-all).
 4. **Rules** when tagged: refresh installed tools via each `tools/<key>.md` — **no ask** unless `customized: true`.
-5. **Reshape / TODO ambition / operable / kit-coverage** when tagged in the union: if `sync.mode: auto` or `auto-all` → execute all Document Map stems + hygiene commits; if `choose` → explain + ask once; if mode unset → B0.2 ask once then continue. Shape trim (Workflow §4) only applies to stems that **have** Understanding files. **2.7.27 in catch-up:** reshape includes the **instruction-footer strip** on **every** Document Map spec / core TODO (including stems with no Understanding — delete copied sermons and inline section essays; keep fill-in). **`master-index` when tagged** adopts slimmer At a Glance even if reshape is declined. Kit-coverage is spec→TODO on existing stems (Workflow §5.4) — no vendor-doc fetch, no new map rows.
+5. **Reshape / assumption clean-out / TODO ambition / operable / kit-coverage** when tagged in the union: if `sync.mode: auto` or `auto-all` → execute all Document Map stems + hygiene commits; if `choose` → explain + ask once; if mode unset → B0.2 ask once then continue. Shape trim and assumption clean-out (Workflow §4) only apply to stems that **have** Understanding files. **2.7.27 in catch-up:** reshape includes the **instruction-footer strip** on **every** Document Map spec / core TODO (including stems with no Understanding — delete copied sermons and inline section essays; keep fill-in). **`master-index` when tagged** adopts slimmer At a Glance even if reshape is declined. Kit-coverage is spec→TODO on existing stems (Workflow §5.4) — no vendor-doc fetch, no new map rows. Assumption clean-out = lock-gate (obvious defaults; real forks only; reference examples are not the target unless clearly set).
 6. Summarize what changed (sync mode, docs_profile if set/asked, catch-up from→to if a jump, what executed, settings migration, git / commits).
 7. Run B’s **Present / apply unset options** for missing `optional_rules.*` (`auto-all` enables + installs; `auto`/`choose` ask once).
 8. **Stop.**
@@ -37,7 +37,7 @@
 - Unset optionals were presented (`auto`/`choose`), auto-enabled (`auto-all`), or already `enabled` / `declined`,
 - `docs_profile` was set or left intentionally unset only if B0.5 was not yet due,
 - `orchestrator.git.mode` was set or left intentionally unset only if B0.6 was not yet due, and
-- You have not scanned live `features/` / `_shared/` unless `content-templates` or an executing reshape/ambition/operable/kit-coverage pass required it
+- You have not scanned live `features/` / `_shared/` unless `content-templates` or an executing reshape/assumption-cleanout/ambition/operable/kit-coverage pass required it
 
 ## Do not
 
@@ -49,8 +49,8 @@
 - Read **only the top** changelog entry when jumping versions — union all entries with **from** < version ≤ **to**
 - Re-download / restore intentionally deleted `agent/upstream/` attribution files
 - Treat `content-templates` as reshape permission — add missing structure only
-- Under **`choose`:** silently skip reshape / TODO ambition / operable / kit-coverage asks when tagged
-- Under **`auto` / `auto-all`:** re-ask for reshape / ambition / operable / kit-coverage / rules refresh / B0.3 hygiene commits
+- Under **`choose`:** silently skip reshape / assumption clean-out / TODO ambition / operable / kit-coverage asks when tagged
+- Under **`auto` / `auto-all`:** re-ask for reshape / assumption clean-out / ambition / operable / kit-coverage / rules refresh / B0.3 hygiene commits
 - Under **`auto-all`:** leave unset `optional_rules.*` unset, or flip **`declined`** back to enabled
 - Ask before refreshing installed rules unless `customized: true`
 - Push unless the user explicitly granted push

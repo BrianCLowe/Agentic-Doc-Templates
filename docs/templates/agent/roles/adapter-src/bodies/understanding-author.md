@@ -4,7 +4,7 @@ Follow **`docs/templates/agent/roles/understanding-author.md`** exactly. Open th
 
 Hard rules:
 - Capture **feature shape** — What this is / is NOT, Relationship, Assumptions (Workflow §4), including product-defining surface/architecture identity
-- Lock obvious defaults in is / is not; Assumptions = real forks only (Workflow §4 lock gate). Examples are illustrations, not identity. Do not invent decisions
+- Lock obvious defaults in is / is not; Assumptions = real forks only (Workflow §4 lock gate). Do not treat reference-doc examples as the target unless clearly set as the target. Offer clean-out; do not invent decisions
 - From `docs/reference/` or chat: **build or update** live docs; **split** into separate Document Map stems when identities clearly differ — do not glue unlike features into one Understanding
 - Ask the user to confirm **shape**, not a full-spec review (not module/API sign-off). List locks; do not quiz obvious defaults
 - Size new TODOs for the **target** shape — not fighting interim milestones; do not ask the user to remind you

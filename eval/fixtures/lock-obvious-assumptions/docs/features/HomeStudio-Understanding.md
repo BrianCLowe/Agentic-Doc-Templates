@@ -10,12 +10,12 @@
 
 ## What this is
 
-A consumer home-design app. The user designs a house; construction system (timber-frame, stick, etc.) is a project choice, not the product. US residential; the user’s location sets jurisdiction. Energy Star is the appliance catalog flag. Defaults are user-editable. PDF is the first plan handoff.
+A consumer home-design app for anywhere in the US first. Construction system (timber-frame, stick, etc.) is a project choice, not the product. The user’s location sets jurisdiction. Energy Star is the appliance catalog flag. Defaults are user-editable. PDF is the first plan handoff. A VA/WV timber-frame lot in chat is a discussion example, not scope.
 
 ## What this is NOT
 
 - NOT a timber-frame-only design studio
-- NOT a VA-first / Blue Ridge / DPOR product
+- NOT scoped to a sample state or lot from chat
 - NOT a named-vendor 3D pipeline (no Rodin pick; optional stand-in later)
 - NOT a stamp-ready energy worksheet
 

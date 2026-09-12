@@ -73,32 +73,46 @@ Identity boundaries for the **finished** feature. Do **not** list work that is s
 
 Agents invent decisions, then either lock the invention as identity or dump it into **Assumptions** so the user has boxes to check. That is the failure. **Empty Assumptions is success** when every default was the obvious best.
 
+**No-ask proviso:** If the design is already clear (conversation / `docs/reference/` already gives category, is / is not, and the obvious defaults), **zero Assumption asks is correct.** Do not invent a quiz so the user has something to confirm. Shape review may be is / is not only.
+
 | Do | Do not |
 |----|--------|
 | **Lock the obvious** into **What this is / is NOT** (identity) or a one-line lock on review | Put an obvious best default under **Assumptions** and ask “how should this be handled?” |
 | Leave **Assumptions** for **real forks only** | Invent a vendor, jurisdiction, schema, comparison row, or label set the user did not pick — then quiz it |
-| Treat walkthroughs, sample projects, named tools, and places as **illustrations** | Encode an example as the product category, the picked vendor, or the default jurisdiction |
+| Treat chat / `docs/reference/` walkthroughs as **examples**, not the target, unless the user **clearly set them as the target** | Encode a reference example as identity, a vendor pick, a jurisdiction, or a spec constraint |
 | Ask only when you want a **lesser path** (narrower, costlier, more complex, or category-wrong than the obvious default) | Silently take the lesser path, or quiz the obvious path as if it were a fork |
 
 **Lock the obvious.** A default is obvious when it is the standard for the product category, an already-stated constraint, or the cheaper/simpler path that still hits the target — and the user did not contradict it. Write it into **is / is not**. Do **not** ask. On shape review, list what you locked in **one line** so they can override.
 
 **Real fork.** Two (or more) live alternatives with **no** obvious winner from the conversation, the category, or the constraints (paid data vs free tables; which third-party API family; journey order when both placements are plausible). Those stay unchecked **Assumptions**. Spec-level open questions still do **not** belong here.
 
-**Examples are not identity.** A walkthrough, sample project, named vendor, or place the user used to explain the idea is an illustration — not the product, not a pick, not the default jurisdiction.
+**Examples are not the target** unless the user **clearly set them as the target**. A walkthrough, sample project, named vendor, or place in chat / `docs/reference/` is how they explained the idea — not product identity, not a pick, not a jurisdiction. Do **not** write it into **is / is not** or the spec. Do **not** offer it back as a fork. Only lock it if they said this *is* the product, the pick, or the scope.
 
-- *Bad (example → identity):* User: “I want an app for designing homes — for example a timber-frame place in the Blue Ridge; maybe something like Rodin for 3D later.” Agent writes: “A timber-frame home design app for Virginia,” and Assumptions: “Use Rodin as the 3D vendor?”
-- *Good:* “A home-design app. Timber-frame is one example project, not the product. No named 3D vendor (optional stand-in later). US residential; the user’s location sets jurisdiction — not a VA-first product.”
+- *Bad (example → target):* Reference docs walk a timber-frame lot in VA/WV to explain home design. Agent writes a timber-frame / Virginia product, or asks whether that sample is the flagship.
+- *Good:* “A home-design app for anywhere in the US first. User location sets jurisdiction.” The timber-frame VA/WV lot stays an example. No named 3D vendor unless they clearly picked one.
 - *Bad (invented quiz):* “Energy Star vs other efficiency labels?” when Energy Star is the obvious US residential catalog flag. “Should defaults be user-editable?” when editable is the obvious consumer path.
 - *Good (lock):* Energy Star locked in **is / is not**. Defaults are user-editable. Assumptions stay empty unless a real fork remains.
 - *Good (real fork):* “Cost tables: free/manual vs paid RSMeans-class.” “Utility tables vs live APIs.” Those have no obvious winner without a budget or integration choice.
-- *Lesser-path ask (do this):* “You mentioned Blue Ridge — I locked US-wide + user location (obvious). Do you want a VA-first product instead (narrower)?”
-- *Do not ask:* “Which jurisdiction should we use?” / “How should Energy Star be handled?” / “Should I treat timber-frame as the flagship?”
+- *Lesser-path ask (do this):* Agent wants IFC/BIM as the first plan export because it looks more complete. Ask: “PDF-first is the obvious consumer handoff. Do you want IFC/BIM-first instead (heavier, not the first cut)?”
+- *Do not ask:* “Which jurisdiction should we use?” / “How should Energy Star be handled?” / “Is the reference walkthrough the product?” Those quiz the obvious path or promote an example into a target.
+
+**Clean-out pass:** Existing Understandings (and specs that copied a reference example as a constraint) get the same gate. **Offer** it — all Document Map Understanding stems / named / no; default yes. Sync tag `optional-assumption-cleanout` ([`TEMPLATE_SYNC_B.md`](../TEMPLATE_SYNC_B.md)). Mid-session: if the user is correcting invented decisions or you already see dirty Assumptions on open stems, offer the same pass. Do **not** silent-scan the whole map without that offer or the tagged sync execute.
+
+On execute (chosen stems that **have** Understanding):
+
+1. Lock obvious defaults that sit as unchecked Assumptions into **is / is not**.
+2. Delete Assumption bullets that are invented quizzes, obvious defaults, or reference examples treated as forks.
+3. If **is / is not** (or the spec) treated a reference example as the target and it was **not** clearly set as the target → restore category-level identity; set `draft` and ask shape confirm. If you only deleted quizzes / locked defaults that already fit is / is not → keep status.
+4. Leave **real forks** unchecked. Empty Assumptions is success. One-line lock list under **Confirmed with user**.
+5. Heading → `Assumptions (real forks only)` if it still says “needs user confirmation.”
+6. Do **not** invent new Assumptions, new stems, Understanding on `ship-first`, or lesser-path asks that re-offer a reference example.
 
 **Do not:**
 
 - Fill **Assumptions** so the user has boxes to tick
+- Invent Assumption asks because the design already looked clear
 - Treat “needs user confirmation” as “quiz every default”
-- Encode an example as **is / is not**
+- Treat a reference-doc example as the target unless it was clearly set as the target
 - Ask about the obvious path
 - Silently take the lesser path
 - Invent a later-phase vendor/GIS/API as a shape fork — that is TODO / spec, not Understanding
@@ -128,7 +142,8 @@ Agents invent decisions, then either lock the invention as identity or dump it i
 **When to create or update:**
 
 - New feature/change → draft or update Understanding — set **`draft` only if the is / is not or a guardrail changed**; an **additive** item or research angle that fits the confirmed shape → **spec + TODO**, keep `confirmed` (de-confirm gate above)
-- `docs/reference/` (or chat) → **build or update** live docs; create missing Document Map rows + file sets when material implies new stems
+- `docs/reference/` (or chat) → **build or update** live docs; create missing Document Map rows + file sets when material implies new stems. Do **not** treat examples in those files as the target unless clearly set as the target
+- User asks to **clean out Assumptions** / lock obvious defaults → **offer** the clean-out pass (lock gate above)
 - Plan / “how should we build this” → if `confirmed`, use as guardrails + read spec; if `draft`/missing, draft shape first
 - Identity assumption becomes clear → update **What this is NOT** (identity, not backlog)
 - Two unlike identities were merged into one stem → **split** (§0 one-identity rule): new row + files; move content; do not leave a frankenstein Understanding

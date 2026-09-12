@@ -45,7 +45,7 @@ Use when the stem is already **ready** under the docs profile and scope is uncha
 | Standing / playbook-override LOOKOUT | [`workflow/profile-standing.md`](workflow/profile-standing.md) (§0.2) |
 | Creating files / new Document Map row / split stem / inventory vs new row | [`workflow/naming-layout.md`](workflow/naming-layout.md) (§0) |
 | `_shared/` vs feature / foundation task placement | [`workflow/shared-components.md`](workflow/shared-components.md) (§1) |
-| Draft / revise Understanding · de-confirm gate · lock gate · relocate | [`workflow/understanding.md`](workflow/understanding.md) (§4) |
+| Draft / revise Understanding · de-confirm gate · lock gate · assumption clean-out · relocate | [`workflow/understanding.md`](workflow/understanding.md) (§4) |
 | Graduate confirmed shape → durable spec | [`workflow/understanding.md`](workflow/understanding.md) (§2) |
 | Path A vs Path B unclear · readiness table detail | [`workflow/implement.md`](workflow/implement.md) (§3) |
 | TODO layout · Current focus · operable done · exploration · kit covering TODOs | [`workflow/todos.md`](workflow/todos.md) (§5) |
