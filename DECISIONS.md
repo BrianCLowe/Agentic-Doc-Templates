@@ -35,9 +35,9 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 
 ## D2 — Skeleton scaffolds, sermons in help / playbooks
 
-**Decision:** Understanding (and other live scaffolds) are fill-in blanks. Teaching examples live in `docs/templates/agent/workflow/understanding.md` and `docs/templates/help/SCAFFOLDS.md`. After compaction / a new session, agents re-open the [workflow index](docs/templates/agent/Modular_Docs_Workflow.md) then one module — they do not reconstruct procedure from the scaffold.
+**Decision:** Understanding (and other live scaffolds) are fill-in blanks. Teaching examples live in `docs/templates/agent/workflow/understanding.md` and `docs/templates/help/SCAFFOLDS.md`. After compaction / a new session, agents re-open the [workflow index](docs/templates/agent/Modular_Docs_Workflow.md) then one module — they do not reconstruct procedure from the scaffold. **Sync:** when 2.7.27 is in catch-up, `optional-live-reshape` **strips** copied sermons / long Instructions footers from live Understanding / spec / TODO (keep user fill-in; leave a short pointer).
 
-**Do not:** Paste “too thin / right size / mini-spec” sermons back into `Feature_Understanding_Template.md`.
+**Do not:** Paste “too thin / right size / mini-spec” sermons back into `Feature_Understanding_Template.md`. Do not ship a pack bump that changes the live scaffold without a Step B strip for existing copies.
 
 ## D3 — Ship-first is first-class
 

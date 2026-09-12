@@ -1,0 +1,84 @@
+{
+  "id": "live-instruction-footer-strip",
+  "title": "2.7.27 sync strips copied instruction sermons from live Understanding/spec/TODO",
+  "role": "docs-template-sync",
+  "user": "Update the doc templates from Agentic Doc Templates and sync our live docs.",
+  "fixture": "fixtures/sermon-understanding",
+  "fail_snapshot": "fail-snapshots/live-instruction-footer-strip",
+  "expect": {
+    "files_must_change": [
+      "docs/features/RoleEditor-Understanding.md",
+      "docs/features/RoleEditor.md",
+      "docs/features/RoleEditor-TODO.md"
+    ],
+    "file_must_contain": [
+      {
+        "path": "docs/features/RoleEditor-Understanding.md",
+        "patterns": [
+          "Same editing core",
+          "one continuous manuscript",
+          "workflow/understanding.md",
+          "help/SCAFFOLDS.md"
+        ]
+      }
+    ],
+    "file_must_not_contain": [
+      {
+        "path": "docs/features/RoleEditor-Understanding.md",
+        "patterns": [
+          "*Too thin",
+          "*Right size",
+          "*Wrong size",
+          "*Bad example",
+          "Feature shape, not the spec",
+          "## Instructions for AI Agents"
+        ]
+      },
+      {
+        "path": "docs/features/RoleEditor.md",
+        "patterns": [
+          "Do not thin Architecture to match Understanding"
+        ]
+      },
+      {
+        "path": "docs/features/RoleEditor-TODO.md",
+        "patterns": [
+          "Operable done. Dual-write"
+        ]
+      }
+    ]
+  },
+  "pack_contract": {
+    "source_must_include": [
+      {
+        "file": "docs/templates/CHANGELOG.md",
+        "patterns": [
+          "2.7.27",
+          "optional-live-reshape",
+          "instruction-footer strip"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/TEMPLATE_SYNC_B.md",
+        "patterns": [
+          "2.7.27 Instruction-footer strip",
+          "help/SCAFFOLDS.md",
+          "do **not** relocate into the spec"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/roles/template-sync.md",
+        "patterns": [
+          "instruction-footer strip"
+        ]
+      },
+      {
+        "file": "DECISIONS.md",
+        "patterns": [
+          "optional-live-reshape",
+          "strips"
+        ]
+      }
+    ]
+  }
+}
