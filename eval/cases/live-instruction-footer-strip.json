@@ -10,6 +10,8 @@
       "docs/features/RoleEditor-Understanding.md",
       "docs/features/RoleEditor.md",
       "docs/features/RoleEditor-TODO.md",
+      "docs/features/ItemsApi.md",
+      "docs/features/ItemsApi-TODO.md",
       "docs/Master_Index.md"
     ],
     "file_must_contain": [
@@ -20,6 +22,12 @@
           "one continuous manuscript",
           "workflow/understanding.md",
           "help/SCAFFOLDS.md"
+        ]
+      },
+      {
+        "path": "docs/features/ItemsApi-TODO.md",
+        "patterns": [
+          "library foundation first · exercise path: curl GET /items"
         ]
       }
     ],
@@ -55,6 +63,20 @@
           "**Simplicity:** users give",
           "if you prefer less ceremony"
         ]
+      },
+      {
+        "path": "docs/features/ItemsApi.md",
+        "patterns": [
+          "Do not thin Architecture to match Understanding",
+          "Contract completeness here"
+        ]
+      },
+      {
+        "path": "docs/features/ItemsApi-TODO.md",
+        "patterns": [
+          "Operable done. Dual-write",
+          "User-facing stems: dual-track"
+        ]
       }
     ]
   },
@@ -73,13 +95,18 @@
         "patterns": [
           "2.7.27 Instruction-footer strip",
           "help/SCAFFOLDS.md",
-          "do **not** relocate into the spec"
+          "do **not** relocate into the spec",
+          "including stems with no Understanding",
+          "Do **not** delete a loud phased-bridge",
+          "not gated on reshape"
         ]
       },
       {
         "file": "docs/templates/agent/roles/template-sync.md",
         "patterns": [
-          "instruction-footer strip"
+          "instruction-footer strip",
+          "including stems with no Understanding",
+          "even if reshape is declined"
         ]
       },
       {

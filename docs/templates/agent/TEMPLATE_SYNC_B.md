@@ -192,19 +192,19 @@ Versions:
 ### Gated checklist
 
 1. **Versions** — Set **Pack version** in live `Master_Index.md` from local `VERSION`. Remove obsolete Template/Workflow version lines when present. Update `<!-- pack-version -->` if present (or replace `<!-- template-version -->`).
-2. **Master Index** *(if `master-index`)* — Read local `Master_Index_Template.md` + live `Master_Index.md`. Compare **headings / Key Locations / Document Map columns / At a Glance** only — not project prose. **Preserve** overview, Project Profile, Document Map rows (§3.0–3.4), user §3.0 exceptions, custom sections. **Adopt** new index sections, renumbers, Quick Start pointer, Key Locations row for `docs/ADT-settings.yaml` (remove stale `rule-install-status.yaml` / `upstream-status.yaml` rows if present). If §2.2 At a Glance is still a policy dump (Simplicity / Idea sources / full git-mode list / Understanding essay), replace it with the template’s short pointer table (keep first-class docs profile + host-worktrees one-liner). Update links from `templates/Modular_Docs_Workflow.md` → `templates/agent/Modular_Docs_Workflow.md` if still on the old path. §3.0: record only **user-stated** exceptions.
+2. **Master Index** *(if `master-index`)* — Required when tagged — not gated on reshape / `optional-live-reshape`. Read local `Master_Index_Template.md` + live `Master_Index.md`. Compare **headings / Key Locations / Document Map columns / At a Glance** only — not project prose. **Preserve** overview, Project Profile, Document Map rows (§3.0–3.4), user §3.0 exceptions, custom sections. **Adopt** new index sections, renumbers, Quick Start pointer, Key Locations row for `docs/ADT-settings.yaml` (remove stale `rule-install-status.yaml` / `upstream-status.yaml` rows if present). If §2.2 At a Glance is still a policy dump (Simplicity / Idea sources / full git-mode list / Understanding essay), replace it with the template’s short pointer table (keep first-class docs profile + host-worktrees one-liner). Update links from `templates/Modular_Docs_Workflow.md` → `templates/agent/Modular_Docs_Workflow.md` if still on the old path. §3.0: record only **user-stated** exceptions.
 3. **Content templates** *(if `content-templates`)* — Add **missing** sections/structure from local templates into live Understanding / Spec / TODO / Tooling / Human-TODO. Do **not** remove or reshape existing sections here. Create `Tooling.md` / `Human-TODO.md` from templates when missing and link from Master Index.
 4. **Live Understanding reshape** *(if `optional-live-reshape`)* —
    - **`sync.mode: auto` or `auto-all`:** execute for **all Document Map Understanding stems** (no ask). After pack/stamp hygiene commit (B0.3) when applicable; reshape gets its own commit after execute (B0.3).
    - **`sync.mode: choose`:** **Present before stopping** (explain + ask once; **do not** report “skipped by design” without asking). **Highly recommended.**
      1. **Commit hygiene *(suggest)*:** Recommend committing pack sync first so reshape can be a separate commit. Ask; never `git commit` unless they explicitly ask.
-     2. **Explain briefly:** Older live Understandings may still hold contract sections **and** copied pack sermons / long Instructions footers. **Yes (recommended)** = trim to shape (Workflow §4), relocate overflow into that stem’s spec, **and** run the **2.7.27 instruction-footer strip** (below) on Understanding / spec / TODO. **No** = leave bodies.
-     3. **Ask once — default toward yes:** all Document Map Understanding stems / named / no.
-   - **On execute** (`auto` / `auto-all` or yes): for each chosen stem only — open Understanding + matching spec (+ TODO). **(a)** If 2.7.27 is in catch-up → run **Instruction-footer strip** first. **(b)** If How-it-should-work / Done when / other non-shape sections remain → **relocate, then remove** (Workflow §4). Do not invent contract detail; stop after chosen stems.
+     2. **Explain briefly:** Older live Understandings may still hold contract sections **and** copied pack sermons / long Instructions footers. Spec / TODO sermons also sit on stems with **no** Understanding (`ship-first` / excepted / balanced skip). **Yes (recommended)** = trim Understanding to shape (Workflow §4), relocate overflow into that stem’s spec, **and** run the **2.7.27 instruction-footer strip** (below) on **every** Document Map spec / core TODO (Understanding too when present). **No** = leave bodies.
+     3. **Ask once — default toward yes:** all Document Map stems (reshape Understanding where present; strip spec/TODO on every stem, even without Understanding) / named / no.
+   - **On execute** (`auto` / `auto-all` or yes): **(a)** If 2.7.27 is in catch-up → run **Instruction-footer strip** first on **every** chosen stem that has a spec and/or core TODO — **including stems with no Understanding**. **(b)** For chosen stems that **have** Understanding: if How-it-should-work / Done when / other non-shape sections remain → **relocate, then remove** (Workflow §4). Do not invent contract detail; do not invent Understanding on `ship-first` stems; stop after chosen stems.
 
 ### 2.7.27 Instruction-footer strip *(optional-live-reshape one-shot)*
 
-Run only when selected catch-up includes **2.7.27** and reshape is executing. Open **only** Document Map Understanding / spec / core TODO for chosen stems (not Human-TODO, not Tooling, not `docs/decisions/`).
+Run only when selected catch-up includes **2.7.27** and reshape is executing. Open Document Map spec + core TODO for **every** stem in scope (Understanding too when it exists). **Do not skip a stem because Understanding is absent.** Not Human-TODO, not Tooling, not `docs/decisions/`.
 
 **Goal:** Live files are fill-in blanks. Pack sermons and long instruction footers copied from older templates go away. User content stays. Teaching lives in [`help/SCAFFOLDS.md`](../help/SCAFFOLDS.md) + the matching workflow module.
 
@@ -229,15 +229,15 @@ Run only when selected catch-up includes **2.7.27** and reshape is executing. Op
 
 **Core TODO** — delete these pack phrases if present:
 
-- High Priority italic dual-track sermon (`User-facing stems: dual-track`, `library foundation first · exercise path` as a preamble — keep a real **Exercise path** work item)
+- High Priority italic dual-track sermon (`User-facing stems: dual-track` as a preamble — keep a real **Exercise path** work item)
 - Cross-Feature `Use the right pattern` / dual-write essay / `You are building the shared foundation itself`
 - `## Instructions for AI Agents` / `**Instructions for Humans**` / `**Instructions for AI Agents**` footers that restate Workflow
 
-**Keep:** Current focus, High/Medium/Low lists, user dependency notes, Completed.
+**Keep:** Current focus, High/Medium/Low lists, user dependency notes, Completed. Do **not** delete a loud phased-bridge note (`library foundation first · exercise path: …`) — that is Workflow §5.3, not the italic sermon.
 
 **Then** if the TODO has no short pointer to `help/SCAFFOLDS.md` and `workflow/todos.md`, add the two-line banner from current [`TODO_Template.md`](../TODO_Template.md).
 
-**Master Index** is **not** this strip — adopt slimmer At a Glance under the `master-index` tag (step 2).
+**Master Index** is **not** this strip — adopt slimmer At a Glance under the `master-index` tag (step 2). That tag is **required when present**, even if reshape is declined.
 
 **Do not:** rewrite What this is / user Behavior / Acceptance items; invent stems; strip Human-TODO human kinds / chat phrases or Tooling tables (those stay human-facing); treat `content-templates` as this strip (that tag only **adds** missing sections).
 5. **Live TODO ambition** *(if `optional-todo-ambition`)* —
@@ -276,7 +276,7 @@ Run only when selected catch-up includes **2.7.27** and reshape is executing. Op
 - Open or follow this file before Step A / pack refresh completes
 - Run Step B from a pre–Step A in-memory copy of any sync playbook
 - Capture versions before Step A overwrite
-- Scan every live Understanding / Spec / TODO unless `content-templates` or (`optional-live-reshape` and executing) or (`optional-todo-ambition` and executing) or (`optional-todo-operable` and executing) or (`optional-todo-kit-coverage` and executing) or the **2.7.25 standing relocate** one-shot (then only the **one** destination a misplaced standing bullet names — Workflow §0.2 Sync relocate) or the **2.7.27 instruction-footer strip** (then only chosen stems’ Understanding / spec / core TODO)
+- Scan every live Understanding / Spec / TODO unless `content-templates` or (`optional-live-reshape` and executing) or (`optional-todo-ambition` and executing) or (`optional-todo-operable` and executing) or (`optional-todo-kit-coverage` and executing) or the **2.7.25 standing relocate** one-shot (then only the **one** destination a misplaced standing bullet names — Workflow §0.2 Sync relocate) or the **2.7.27 instruction-footer strip** (then every in-scope stem’s spec / core TODO, and Understanding when present — including stems with no Understanding)
 - Treat `content-templates` as permission to trim/remove Understanding sections — that requires `optional-live-reshape` + execute
 - Under **`choose`:** omit the reshape / TODO ambition / TODO operable / TODO kit-coverage ask when those tags are present
 - Under **`auto` / `auto-all`:** re-ask for reshape / ambition / operable / kit-coverage / rules refresh when tags say to run them
@@ -284,7 +284,7 @@ Run only when selected catch-up includes **2.7.27** and reshape is executing. Op
 - Auto-commit **pre-sync** WIP (A0) or push without an explicit grant
 - Ask before refreshing installed rules unless `customized: true`
 - On reshape execute: add template headings only and leave obsolete Understanding sections **or** copied instruction sermons in place
-- On 2.7.27 instruction-footer strip: relocate sermons into the spec; delete user What this is / Assumptions; skip spec/TODO footers or inline section sermons when those files still have the long playbook restatement; leave a dumped At a Glance when `master-index` is tagged
+- On 2.7.27 instruction-footer strip: relocate sermons into the spec; delete user What this is / Assumptions; skip spec/TODO-only stems; skip spec/TODO footers or inline section sermons when those files still have the long playbook restatement; delete a loud phased-bridge note; leave a dumped At a Glance when `master-index` is tagged
 - On TODO ambition execute: invent work, expand scope, or collapse real human/shared blockers
 - On TODO operable execute: invent unrelated backlog, force UI onto **library-only** stems, or rewrite domain items beyond adding exercise-path / library-only labels
 - On TODO kit-coverage execute: fetch vendor APIs, create new map rows, split stems, invent playground/out-of-kit surfaces, implement code, or re-open leftovers that already have **Completed** covering items

@@ -247,6 +247,24 @@ def check_version_single_source() -> list[str]:
     return errors
 
 
+def check_read_status_accepts_template() -> list[str]:
+    path = ROOT / "docs/templates/Feature_Understanding_Template.md"
+    if not path.exists():
+        return ["missing Feature_Understanding_Template.md"]
+    got = read_status(path.read_text())
+    if got != "draft":
+        return [
+            f"read_status({path.name}) = {got!r}; "
+            "unfilled Status enum must count as draft "
+            "(prevent-skips-understanding copies this scaffold)"
+        ]
+    if read_status("**Status**: draft\n") != "draft":
+        return ["read_status must accept bare Status: draft"]
+    if read_status("**Status**: `confirmed`\n") != "confirmed":
+        return ["read_status must still accept backticked Status"]
+    return []
+
+
 def check_scaffold_skeletons() -> list[str]:
     errors: list[str] = []
     for item in SCAFFOLD_CHECKS:
@@ -378,6 +396,8 @@ def run_integrity() -> int:
     errors.extend(check_version_single_source())
     print("== scaffold skeletons ==")
     errors.extend(check_scaffold_skeletons())
+    print("== Understanding Status parse ==")
+    errors.extend(check_read_status_accepts_template())
     print("== pack DECISIONS.md ==")
     errors.extend(check_pack_decisions())
     print("== cases ==")
@@ -475,8 +495,16 @@ python3 eval/run_eval.py verify {case_id} --workdir {out}
 
 
 def read_status(text: str) -> str | None:
+    """Parse Understanding Status. Accepts `draft`, bare `draft`, or the
+    unfilled template enum (`draft | reviewed | confirmed | superseded`)."""
     m = re.search(r"\*\*Status\*\*\s*:\s*`([^`]+)`", text)
-    return m.group(1) if m else None
+    if m:
+        return m.group(1).strip()
+    m = re.search(r"\*\*Status\*\*\s*:\s*([^\n]+)", text)
+    if not m:
+        return None
+    token = m.group(1).split("|", 1)[0].strip().strip("`")
+    return token or None
 
 
 def verify(case_id: str, workdir: Path, quiet: bool = False) -> int:

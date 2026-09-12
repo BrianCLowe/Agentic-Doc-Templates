@@ -16,3 +16,4 @@
 | Feature | Spec | Understanding | TODO |
 |---------|------|---------------|------|
 | RoleEditor | [RoleEditor.md](features/RoleEditor.md) | [RoleEditor-Understanding.md](features/RoleEditor-Understanding.md) | [RoleEditor-TODO.md](features/RoleEditor-TODO.md) |
+| ItemsApi | [ItemsApi.md](features/ItemsApi.md) | — | [ItemsApi-TODO.md](features/ItemsApi-TODO.md) |
