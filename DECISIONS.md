@@ -31,7 +31,7 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 
 **Decision:** The current pack version number exists only in `docs/templates/VERSION` (`pack-version:`). CHANGELOG records history. Live Master Index is **stamped** from VERSION on bootstrap / TEMPLATE_SYNC. Do not copy the number into scaffolds, workflow comments, README badges, or `ADT-settings.example.yaml`.
 
-**Do not:** Re-introduce `<!-- pack-version: X.Y.Z -->` or a hardcoded **Pack version** on templates.
+**Do not:** Re-introduce `<!-- pack-version: X.Y.Z -->`, a hardcoded **Pack version** on templates, or a README Pack badge (number or `docs/templates/VERSION` stand-in).
 
 ## D2 — Skeleton scaffolds, sermons in help / playbooks
 
