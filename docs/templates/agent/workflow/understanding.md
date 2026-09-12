@@ -80,7 +80,7 @@ Agents invent decisions, then either lock the invention as identity or dump it i
 | **Lock the obvious** into **What this is / is NOT** (identity) or a one-line lock on review | Put an obvious best default under **Assumptions** and ask “how should this be handled?” |
 | Leave **Assumptions** for **real forks only** | Invent a vendor, jurisdiction, schema, comparison row, or label set the user did not pick — then quiz it |
 | Treat chat / `docs/reference/` walkthroughs as **examples**, not the target, unless the user **clearly set them as the target** | Encode a reference example as identity, a vendor pick, a jurisdiction, or a spec constraint |
-| Ask only when you want a **lesser path** (narrower, costlier, more complex, or category-wrong than the obvious default) | Silently take the lesser path, or quiz the obvious path as if it were a fork |
+| Ask about a **lesser path** only when a **real non-timescale reason** exists (hard blocker, legal, missing credential, named constraint) | Propose an MVP / half-measure / interim cut “to land 10 minutes faster,” or silently take a lesser path |
 
 **Lock the obvious.** A default is obvious when it is the standard for the product category, an already-stated constraint, or the cheaper/simpler path that still hits the target — and the user did not contradict it. Write it into **is / is not**. Do **not** ask. On shape review, list what you locked in **one line** so they can override.
 
@@ -93,8 +93,9 @@ Agents invent decisions, then either lock the invention as identity or dump it i
 - *Bad (invented quiz):* “Energy Star vs other efficiency labels?” when Energy Star is the obvious US residential catalog flag. “Should defaults be user-editable?” when editable is the obvious consumer path.
 - *Good (lock):* Energy Star locked in **is / is not**. Defaults are user-editable. Assumptions stay empty unless a real fork remains.
 - *Good (real fork):* “Cost tables: free/manual vs paid RSMeans-class.” “Utility tables vs live APIs.” Those have no obvious winner without a budget or integration choice.
-- *Lesser-path ask (do this):* Agent wants IFC/BIM as the first plan export because it looks more complete. Ask: “PDF-first is the obvious consumer handoff. Do you want IFC/BIM-first instead (heavier, not the first cut)?”
-- *Do not ask:* “Which jurisdiction should we use?” / “How should Energy Star be handled?” / “Is the reference walkthrough the product?” Those quiz the obvious path or promote an example into a target.
+- *Lesser path ≠ faster MVP.* Do **not** offer a thinner cut, interim architecture, or half-measure to save a human sprint or “land something in 10 minutes.” That is agent-timescale ([`Agent_Timescale_Planning_Rule.mdc`](../Agent_Timescale_Planning_Rule.mdc)) — lock the obvious **full** target; stepped bullets are build/verify order, not permission to ship a known-wrong intermediate. PDF-first as the consumer handoff is a **lock**; IFC stays a covering TODO. Do not ask “PDF-only MVP first?”
+- *Lesser-path ask (only with a real reason):* A hard external constraint, not speed — e.g. “A claimed-passing energy worksheet needs a licensed stamp we do not have. I locked not-stamp-ready flags. Do you actually want a claimed-passing worksheet (legally worse)?”
+- *Do not ask:* “Which jurisdiction should we use?” / “How should Energy Star be handled?” / “Is the reference walkthrough the product?” / “Ship a thinner MVP so we finish faster?” Those quiz the obvious path, promote an example into a target, or apply human-sprint sizing to agent work.
 
 **Clean-out pass:** Existing Understandings (and specs that copied a reference example as a constraint) get the same gate. **Offer** it — all Document Map Understanding stems / named / no; default yes. Sync tag `optional-assumption-cleanout` ([`TEMPLATE_SYNC_B.md`](../TEMPLATE_SYNC_B.md)). Mid-session: if the user is correcting invented decisions or you already see dirty Assumptions on open stems, offer the same pass. Do **not** silent-scan the whole map without that offer or the tagged sync execute.
 
@@ -114,7 +115,7 @@ On execute (chosen stems that **have** Understanding):
 - Treat “needs user confirmation” as “quiz every default”
 - Treat a reference-doc example as the target unless it was clearly set as the target
 - Ask about the obvious path
-- Silently take the lesser path
+- Silently take a lesser path, or **offer** a lesser path to go faster (no real reason)
 - Invent a later-phase vendor/GIS/API as a shape fork — that is TODO / spec, not Understanding
 
 **Tell the user:** Confirming Understanding = **is / is not** + any remaining **real-fork** Assumptions (empty Assumptions is fine). Spec-level detail may be missing on purpose. On review, list **locks** in one line so they can override — do not dump those locks as unchecked Assumptions.

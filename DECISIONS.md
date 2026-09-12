@@ -102,9 +102,9 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 
 ## D17 — Lock obvious; Assumptions are real forks
 
-**Decision:** Full lock-gate prose lives only in `workflow/understanding.md` §4. Agents lock the obvious best default into **is / is not** without asking. **Assumptions** hold only real forks (no obvious winner). Empty Assumptions is success. If the design is already clear, **zero Assumption asks is correct** — do not invent a quiz. Do **not** treat examples in `docs/reference/` / chat as the target unless the user **clearly set them as the target**. Question the user only when the *agent* wants a **lesser path** than the obvious default (e.g. BIM-first vs PDF-first). Offer an **`optional-assumption-cleanout`** pass on existing Understandings. Elsewhere: one-line pointers.
+**Decision:** Full lock-gate prose lives only in `workflow/understanding.md` §4. Agents lock the obvious best default into **is / is not** without asking. **Assumptions** hold only real forks (no obvious winner). Empty Assumptions is success. If the design is already clear, **zero Assumption asks is correct** — do not invent a quiz. Do **not** treat examples in `docs/reference/` / chat as the target unless the user **clearly set them as the target**. Ask about a **lesser path** only when a **real non-timescale reason** exists (hard blocker, legal, missing credential) — not to offer an MVP / half-measure that lands 10 minutes faster (agent timescale). Offer an **`optional-assumption-cleanout`** pass on existing Understandings. Elsewhere: one-line pointers.
 
-**Do not:** Treat “needs user confirmation” as a license to invent quizzes. Do not promote a reference example into identity, a spec constraint, or a lesser-path ask.
+**Do not:** Treat “needs user confirmation” as a license to invent quizzes. Do not promote a reference example into identity or a spec constraint. Do not offer a lesser path to save sprint time.
 
 ---
 

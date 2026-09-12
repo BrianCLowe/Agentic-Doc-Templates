@@ -257,7 +257,7 @@ When the user describes a feature vaguely:
 
 **Terse + documented contract is not vague.** “Fully support this vendor’s public API” (library wrap, match the SDK/docs) is **actionable without further information** — read those docs, diff against current code, expand spec + covering TODOs on **existing** stems (Workflow §5.4). Do **not** interview through each uncovered method. Do **not** add Document Map rows for vague planned-only extras (playground, “maybe later”) — Workflow §0 inventory.
 
-When the user **is** experienced, do not over-interview — still fill **What this is NOT** and **Relationship to existing work**; skip obvious questions. Do **not** treat examples in `docs/reference/` as the target unless clearly set as the target. Question the user only if *you* want a **lesser path** than the obvious default.
+When the user **is** experienced, do not over-interview — still fill **What this is NOT** and **Relationship to existing work**; skip obvious questions. Do **not** treat examples in `docs/reference/` as the target unless clearly set as the target. Do **not** offer an MVP / half-measure to go faster. Ask about a lesser path only when a **real non-timescale reason** exists (Workflow §4).
 
 ---
 

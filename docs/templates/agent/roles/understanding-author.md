@@ -59,7 +59,7 @@
 - Pad Understanding into a mini-spec; park relocated prose under **Confirmed with user**
 - Invent Assumption checkboxes or treat a reference-doc example as the target unless it was clearly set as the target (Workflow §4 lock gate)
 - Invent Assumption asks when the design is already clear (zero asks is correct)
-- Ask how to handle an obvious best default; silently take a lesser path without asking
+- Ask how to handle an obvious best default; silently take a lesser path; or offer an MVP / half-measure “to finish faster” (agent timescale — only ask with a real non-timescale reason)
 - Leave premature `[x]` on TODO when code no longer matches
 - Glue two unlike identities into one Understanding to avoid new files, “stay tight,” or because the user mentioned them together
 - Wait for the user to invent paths after they said two things are different features — split and propose names

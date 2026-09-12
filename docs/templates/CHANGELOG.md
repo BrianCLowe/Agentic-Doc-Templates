@@ -28,7 +28,7 @@
 - **Files:**
   - `VERSION` — 2.7.27 → 2.7.28
   - `CHANGELOG.md` — new Live impact tag `optional-assumption-cleanout`
-  - `agent/workflow/understanding.md` §4 — **lock gate** (source of truth): lock obvious defaults in is / is not; **Assumptions = real forks only** (empty is success); **no-ask proviso** (design already clear → zero Assumption asks is correct); do **not** treat examples in `docs/reference/` / chat as the target unless clearly set as the target; ask only when the *agent* wants a **lesser path** (e.g. BIM-first vs PDF-first). **Clean-out pass** procedure lives here
+  - `agent/workflow/understanding.md` §4 — **lock gate** (source of truth): lock obvious defaults in is / is not; **Assumptions = real forks only** (empty is success); **no-ask proviso** (design already clear → zero Assumption asks is correct); do **not** treat examples in `docs/reference/` / chat as the target unless clearly set as the target; lesser-path ask only with a **real non-timescale reason** (not an MVP / half-measure to finish faster). **Clean-out pass** procedure lives here
   - `Feature_Understanding_Template.md` — heading `Assumptions (real forks only)`; one optional bullet
   - `roles/understanding-author.md` + adapter-src / cursor|grok|copilot adapters — pointer: lock obvious; offer clean-out; reference examples are not the target unless clearly set
   - `roles/template-sync.md` + adapter-src / cursor|grok|copilot adapters + `TEMPLATE_SYNC_B.md` — honor **`optional-assumption-cleanout`**
