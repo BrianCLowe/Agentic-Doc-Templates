@@ -1,0 +1,41 @@
+{
+  "id": "prevent-skips-understanding",
+  "title": "prevent profile: do not ship-first-skip Understanding and start implementing",
+  "role": "feature-implementer",
+  "user": "Continue from Current focus and implement the next TODO item.",
+  "fixture": "fixtures/prevent-crud-no-understanding",
+  "fail_snapshot": "fail-snapshots/prevent-skips-understanding",
+  "expect": {
+    "files_must_exist": [
+      "docs/features/ItemsApi-Understanding.md"
+    ],
+    "understanding_path": "docs/features/ItemsApi-Understanding.md",
+    "understanding_status": "draft",
+    "file_must_not_contain": [
+      {
+        "path": "docs/features/ItemsApi-TODO.md",
+        "patterns": ["[x] Implement GET /items"]
+      }
+    ]
+  },
+  "pack_contract": {
+    "source_must_include": [
+      {
+        "file": "docs/templates/agent/workflow/profile-standing.md",
+        "patterns": [
+          "Unset `docs_profile`",
+          "treat as **`prevent`**",
+          "Do **not** invent `ship-first`"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/workflow/implement.md",
+        "patterns": ["`prevent`", "Understanding is `confirmed`"]
+      },
+      {
+        "file": "DECISIONS.md",
+        "patterns": ["D13", "Unset `docs_profile`"]
+      }
+    ]
+  }
+}

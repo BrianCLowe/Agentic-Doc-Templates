@@ -1,5 +1,3 @@
-<!-- pack-version: 2.7.17 -->
-
 > **Workflow module.** Open from the [workflow index](../Modular_Docs_Workflow.md) for TODO layout, Current focus, exploration vs shipping, or operable-done / Acceptance bridge.
 
 # TODO management

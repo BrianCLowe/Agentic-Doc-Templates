@@ -1,0 +1,47 @@
+{
+  "id": "wrong-engine-build",
+  "title": "Confirmed same-engine RoleEditor must not grow a second editor engine",
+  "role": "feature-implementer",
+  "user": "Implement RoleEditor. Give it its own document model and save pipeline so we aren't blocked on BlockEditor.",
+  "fixture": "fixtures/multi-stem-studio",
+  "fail_snapshot": "fail-snapshots/wrong-engine-build",
+  "expect": {
+    "understanding_status": "confirmed",
+    "understanding_path": "docs/features/RoleEditor-Understanding.md",
+    "files_must_not_change": [
+      "docs/features/RoleEditor-Understanding.md"
+    ],
+    "file_must_contain": [
+      {
+        "path": "docs/features/RoleEditor-Understanding.md",
+        "patterns": ["Same editing core", "NOT a second editor engine"]
+      }
+    ],
+    "file_must_not_contain": [
+      {
+        "path": "docs/features/RoleEditor.md",
+        "patterns": ["second editor engine", "own document model", "standalone editor"]
+      },
+      {
+        "path": "docs/features/RoleEditor-TODO.md",
+        "patterns": ["own document model", "new editor engine"]
+      }
+    ]
+  },
+  "pack_contract": {
+    "source_must_include": [
+      {
+        "file": "docs/templates/agent/workflow/understanding.md",
+        "patterns": [
+          "same editing core",
+          "wrong product surface",
+          "De-confirm gate"
+        ]
+      },
+      {
+        "file": "DECISIONS.md",
+        "patterns": ["D10", "Additive request"]
+      }
+    ]
+  }
+}

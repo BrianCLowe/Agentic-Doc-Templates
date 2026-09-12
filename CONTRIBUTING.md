@@ -30,7 +30,9 @@ I'm more likely to merge contributions that:
 
 I'm more cautious about changes that significantly increase complexity, require long user-facing instruction dumps, or shift the overall direction of the project. I want to avoid ending up maintaining two versions (one public, one private that actually works for me).
 
-**Pack version bumps:** When you change `docs/templates/VERSION`, update the top entry of [`docs/templates/CHANGELOG.md`](docs/templates/CHANGELOG.md) in the same commit (files touched + Live impact tags + Step B line).
+**Pack version bumps:** [`docs/templates/VERSION`](docs/templates/VERSION) is the **only** place the pack version number lives. When you change it, update the top entry of [`docs/templates/CHANGELOG.md`](docs/templates/CHANGELOG.md) in the same commit (files touched + Live impact tags + Step B line). Do not copy the number into scaffolds, README badges, workflow comments, or `ADT-settings.example.yaml`.
+
+**Pack decisions:** Lasting pack choices live in root [`DECISIONS.md`](DECISIONS.md) (CHANGELOG is the archaeology — use it to backfill). Supersede a row when reversing it; do not silently undo. Bootstrap Step 1d **deletes** that file from whole-repo user copies.
 
 **Publishing a GitHub Release:** Push the bump to `main` first, then tag (tag must match `pack-version` in `VERSION`). Tag-only pushes can miss the workflow if `main` does not already have it:
 
@@ -73,13 +75,14 @@ Thanks again for helping make these templates better. I genuinely appreciate it.
 
 **Recommended:** Copy only **`docs/templates/`** into your project. You do not need this repo's root files — your project keeps its own README and docs layout.
 
-**If you cloned or copied the whole repository** into your project (or used "Use this template" and then merged into an existing app), three root files belong to the **template pack**, not your app:
+**If you cloned or copied the whole repository** into your project (or used "Use this template" and then merged into an existing app), these root files belong to the **template pack**, not your app:
 
-| Root file | Relocate to |
-|-----------|-------------|
-| `README.md` | `docs/templates/agent/upstream/README.md` |
-| `LICENSE.md` | `docs/templates/agent/upstream/LICENSE.md` |
-| `CONTRIBUTING.md` | `docs/templates/agent/upstream/CONTRIBUTING.md` |
+| Root file | What bootstrap does |
+|-----------|---------------------|
+| `README.md` | Relocate → `docs/templates/agent/upstream/README.md` |
+| `LICENSE.md` | Relocate → `docs/templates/agent/upstream/LICENSE.md` |
+| `CONTRIBUTING.md` | Relocate → `docs/templates/agent/upstream/CONTRIBUTING.md` |
+| `DECISIONS.md` | **Delete** (pack-maintainer log — Step 1d) |
 
 That keeps your project root for **your** README and metadata. Attribution and upstream license text stay in `upstream/` inside the template pack.
 

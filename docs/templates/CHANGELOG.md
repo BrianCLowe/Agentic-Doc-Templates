@@ -21,6 +21,21 @@
 
 ---
 
+## 2.7.27
+
+- **Live impact:** `versions-only`, `master-index`, `content-templates`, `optional-live-reshape`, `process-docs-only`, `rules`
+- **Files:**
+  - `VERSION` — 2.7.26 → 2.7.27
+  - Root `DECISIONS.md` — **(new)** pack decision log (CHANGELOG is archaeology; this file is “do not silently undo”). Bootstrap Step 1d **deletes** it on whole-repo copies. Not in the release zip
+  - `VERSION` is the **only** pack-version number — dropped `<!-- pack-version -->` comments, hardcoded **Pack version** on templates / workflow index, README badge number, and example `local_pack_version`
+  - `Feature_Understanding_Template.md` — fill-in blanks; teaching examples stay in `workflow/understanding.md`. New `help/SCAFFOLDS.md`. Compaction: re-open the workflow index then one module
+  - `Feature_Spec_Template.md`, `TODO_Template.md`, `Master_Index_Template.md` §2.2, `Decision_Template.md`, `Feature_Catalog_Template.md` — same: fill-in + pointers. Human-TODO keeps inbox kinds / chat phrases; Tooling keeps tables; only the **agent** dual-write / install essays moved to playbooks
+  - `agent/TEMPLATE_SYNC_B.md` — **2.7.27 instruction-footer strip** (this version’s reshape): delete copied sermons / long Instructions / inline section essays from live Understanding / spec / TODO **including stems with no Understanding**; keep user fill-in and loud phased-bridge notes; leave a short help/playbook pointer. `master-index` adopts slimmer At a Glance even if reshape is declined
+  - Root `README.md` — **ship-first is first-class** (typed APIs / CRUD); `prevent` for editors / games / multi-surface. Public example: [xAIkit](https://github.com/BrianCLowe/xAIkit)
+  - `workflow/profile-standing.md`, `BOOTSTRAP.md`, `ADT-settings.example.yaml`, `help/USAGE.md`, Master Index At a Glance, modular rules — same profile framing
+  - Root `eval/` — fail-snapshots a wrong tree must fail (wrong-engine build, operable-gap marked done, prevent skipping Understanding, ship-first inventing Understanding, live instruction-footer left in place); `fixtures/multi-stem-studio/`; integrity grows (VERSION uniqueness, scaffold skeletons, `read_status` accepts unfilled Status enum, `DECISIONS.md`). Still what pack-checks runs
+- **Step B:** Bump Master Index **Pack version** to 2.7.27 from local `VERSION` (do not copy a number into the template). If At a Glance **docs profile** still frames ship-first as a concession / “if you prefer,” adopt first-class wording (`ship-first` = typed APIs / CRUD; `prevent` = editors / games / multi-surface; unset → prevent). Refresh installed modular rules (**no ask** unless `customized: true`). **Do not** add root `DECISIONS.md` to consumer repos. If a whole-repo copy left pack `DECISIONS.md` at the project root → delete it (bootstrap Step 1d). **`master-index`:** If live At a Glance is still a policy dump (Simplicity / Idea sources / full git-mode list / Understanding essay), replace with the template’s short pointer table (keep first-class `ship-first` / `prevent` + host-worktrees one-liner). Required when tagged — **even if reshape is declined**. **`optional-live-reshape` (2.7.27 instruction-footer strip):** present/execute per `sync.mode`. **`auto` / `auto-all`:** all Document Map stems that have spec / core TODO (**including stems with no Understanding**). **`choose`:** present + ask once (default yes). On execute → [`TEMPLATE_SYNC_B.md`](agent/TEMPLATE_SYNC_B.md) **2.7.27 Instruction-footer strip**: delete pack sermons, inline section essays, and long Instructions footers; keep What this is / contract / TODOs / loud phased-bridge notes; add the short SCAFFOLDS + playbook pointer if missing. Also run usual §4 relocate if How-it-should-work / Done when still sit on Understanding. Do **not** rewrite user fill-in. Do **not** invent stems or Understanding on `ship-first`.
+
 ## 2.7.26
 
 - **Live impact:** `versions-only`, `process-docs-only`

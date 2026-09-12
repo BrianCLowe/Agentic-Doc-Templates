@@ -20,6 +20,8 @@ Hard rules:
 - After A: open pack `TEMPLATE_SYNC_B.md` from disk (+ catch-up CHANGELOG union) — not a pre-overwrite sync playbook; on version jumps union tags from all skipped entries, not top-only
 - Migrate legacy status files into `docs/ADT-settings.yaml` when needed (B0.1)
 - Honor `sync.mode`: `auto` executes reshape/ambition/operable/kit-coverage + hygiene commits (still asks for new unset optionals); `auto-all` same + enable/install unset optionals; `choose` asks once; unset → ask mode once
+- When catch-up includes **2.7.27** and reshape executes: **instruction-footer strip** — delete copied sermons / long Instructions / inline section essays from live Understanding / spec / TODO **including stems with no Understanding**; keep user fill-in; leave SCAFFOLDS + playbook pointer
+- When `master-index` is in the union: adopt slimmer At a Glance (required when tagged — not gated on reshape / `optional-live-reshape`)
 - If `docs_profile.mode` unset → B0.5 ask once (`auto-all` → record `prevent`)
 - If `orchestrator.git.mode` unset → B0.6 **always ask** (including auto-all); never invent `current-push` or silent-write
 - If `orchestrator.git.mode` already set → keep it unless the user asked to change it this turn (`source: user`). Reviewers / Bugbot: do not fail a `source: user` mode change

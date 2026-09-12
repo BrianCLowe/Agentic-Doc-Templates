@@ -17,14 +17,13 @@ sync:
   mode: auto
   recorded: 2026-08-06
 
-# Docs ceremony profile — how heavy the pre-build gate is.
-# prevent   = default. Understanding + shape confirm before code (blocks wrong builds).
-# balanced  = Understanding only when identity is ambiguous / multi-surface / split pressure;
-#             clear single-identity stems may be Spec + TODO only.
-# ship-first = Spec + TODO core only; no draft coding gate; fix-forward via verify + Human-TODO.
+# Docs ceremony profile — first-class choice, not a concession.
+# prevent    = editors / games / multi-surface / identity-risky. Understanding + shape confirm.
+#              Unset → prevent (do not silent-downgrade those repos).
+# ship-first = typed APIs / CRUD / clear contracts. Spec + TODO only. The right default there.
+# balanced   = Understanding only when identity is ambiguous / multi-surface / split / user asked.
 # Bootstrap / first “build from reference” may suggest a mode from docs/reference/ (cite 2–3
-# snippets) then ask once. Unset → treat as prevent (no silent downgrade of existing projects).
-# Re-ask only on explicit *Set docs profile to …* / *Change docs ceremony*.
+# snippets) then ask once. Re-ask only on explicit *Set docs profile to …* / *Change docs ceremony*.
 docs_profile:
   mode: prevent
   recorded: 2026-08-08
@@ -146,6 +145,8 @@ upstream:
   # check_mode: interval
   # check_interval_days: 7
   last_checked: 2026-07-16
-  local_pack_version: "2.7.13"
-  # upstream_pack_version: "2.7.13"
+  # Stamp from docs/templates/VERSION on bootstrap / TEMPLATE_SYNC — never copy a
+  # number from this example. VERSION is the only pack-version source.
+  # local_pack_version: "X.Y.Z"
+  # upstream_pack_version: "X.Y.Z"
   # update_available: true

@@ -1,5 +1,3 @@
-<!-- pack-version: 2.7.17 -->
-
 > **Workflow module.** Open from the [workflow index](../Modular_Docs_Workflow.md) only when docs profile or standing-instructions procedure is needed. Do not load other modules unless the index routes you there.
 
 # Docs profile & standing instructions
@@ -10,9 +8,9 @@
 
 | Mode | Default file set on new map row | Coding gate | When to use |
 |------|----------------------------------|-------------|-------------|
-| **`prevent`** | Spec + **Understanding** (`draft`) + core TODO | **Do not code** while Understanding is `draft` unless user waives | Identity-sensitive products; you prefer prevent wrong builds (pack default) |
-| **`balanced`** | Spec + core TODO; **+ Understanding** when identity is ambiguous / multi-surface / split pressure / user asked | Same draft gate **only for stems that have** an Understanding | Mid-size apps; you accept agent judgment on “needs shape file?” |
-| **`ship-first`** | Spec + core TODO only (Understanding **not** required) | No Understanding draft gate — implement from TODO + thin spec | Prototypes, clear CRUD, “fix-forward” teams |
+| **`prevent`** | Spec + **Understanding** (`draft`) + core TODO | **Do not code** while Understanding is `draft` unless user waives | **Editors, games, multi-surface / identity-risky products.** Unset → this mode (do not silent-downgrade those repos). |
+| **`balanced`** | Spec + core TODO; **+ Understanding** when identity is ambiguous / multi-surface / split pressure / user asked | Same draft gate **only for stems that have** an Understanding | Mid-size / mixed; you accept agent judgment on “needs shape file?” |
+| **`ship-first`** | Spec + core TODO only (Understanding **not** required) | No Understanding draft gate — implement from TODO + thin spec | **Typed APIs, CRUD, clear contracts.** First-class default for those products — not a concession or “ceremony off.” Also prototypes / fix-forward teams. |
 
 **Always required (all modes):** Master Index + Document Map, **spec**, **core TODO**, Human-TODO dual-write rules (§13). Catalog / decisions remain optional per their own sections.
 
@@ -22,8 +20,8 @@
 
 1. Skim `docs/reference/` (if any) + conversation — do not inventory the whole repo.
 2. Recommend a mode with **2–3 short citations** (export path + quote or paraphrase). **Explain each option in plain language** so the user is not guessing labels:
-   - **prevent** — “You confirm is/is-not before code” — competing product identities; “not X”; multi-surface / editor / game systems
-   - **ship-first** — “Spec+TODO only; no shape gate” — clear CRUD/API; prototype/spike; tiny map
+   - **prevent** — “You confirm is/is-not before code” — competing product identities; “not X”; **editors, games, multi-surface**
+   - **ship-first** — “Spec+TODO only; no shape gate” — **typed API / CRUD / clear contract** (the right default there); also prototype/spike; tiny map
    - **balanced** — “Understanding only when identity is fuzzy (multi-surface, not-X, split, or you say lock shape)” — mid-size / mixed signals
 3. **Ask once** (bootstrap: inside Step 3p preference batch). Record `docs_profile.mode`, `recorded`, and `source: agent-suggested` or `user`.
 4. Re-ask only on explicit *Set docs profile to prevent|balanced|ship-first*.

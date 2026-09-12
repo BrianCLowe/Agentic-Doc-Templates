@@ -95,24 +95,8 @@ Move finished items here (as `- [x]`) so **Open** stays short.
 
 ## Instructions for AI Agents
 
-- **Keep section order:** Open → Done at the top; Instructions for Humans next; agent sections last. Never put instructions above the task lists.
-- **Dual-write (mandatory):** When Understanding, planning, Current focus, or implementation creates a task only a human can close → in the **same edit**:
-  1. Add/update the item on the **owner** `*-TODO.md` (for `playtest` / `decide`: full text + outcome space; for `procure` / `waiting`: a short “Blocked by Human-TODO — [Need]” link).
-  2. Add/update a `- [ ]` **list item** in **Open** here (never a markdown table cell — preview cannot toggle those). Include kind in backticks, Owner, Blocks, Notes on following lines under the same list item.
-- If it is not on this list, it does **not** exist as a human ask — do not bury playtest/feel/sign-off only in feature TODOs or chat.
-- Prefer **one project inbox** — do not duplicate long checklists here; link to the owner item for steps.
-- Never write API keys, passwords, connection strings, or tokens into this file (or any docs file).
-- Do **not** mark **done** from assumptions (“they probably playtested”) — only when the user confirms in chat or clearly checked the item and told you.
-- When the user reports progress or feedback:
-  1. Update the **owner** TODO (`[x]` + date; capture feel/decision notes on that item).
-  2. Move the Human-TODO item to **Done** as `- [x]` (or check it off) and refresh **Last Updated**.
-  3. Unblock / refresh Current focus on affected feature TODOs if needed.
-- Distinguish from [`Tooling.md`](Tooling.md): installable CLIs/SDKs go there; human portal/account **and** judgment work goes here.
-- If the user asks “what’s left that I need to do?” / “what’s on the human TODO?” — summarize **Open** from **this file only**. If you find human-gated items on feature TODOs missing here, **add them here** (repair dual-write — owner TODO → this inbox only; never copy this inbox onto feature TODOs), then summarize.
-- On bootstrap: create this file (can start nearly empty). Add checklist items as soon as conversation or Document Map implies human-gated work.
-- If live `Human-TODO.md` still uses a **table** for Open: convert to `- [ ]` list items (preserve Need/Kind/Owner/Blocks/Notes content).
-- If live `Human-TODO.md` has instructions or dual-write tables **above** Open: reorder to match this template (preserve all Open/Done items).
+Keep Open → Done first. Dual-write, done-only-on-confirm, and inbox repair: [`workflow/human-todo.md`](agent/workflow/human-todo.md). Do not reconstruct procedure from this file after compaction.
 
 ---
 
-*Part of the Lean Modular Documentation system. Keep Open short — one row per real human need.*
+*Keep Open short — one row per real human need.*

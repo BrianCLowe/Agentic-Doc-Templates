@@ -1,5 +1,3 @@
-<!-- pack-version: 2.7.17 -->
-
 > **Workflow module.** Open from the [workflow index](../Modular_Docs_Workflow.md) when creating files or Document Map rows. Do not load other modules unless the index routes you there.
 
 # Naming & file layout
@@ -47,5 +45,7 @@
 **Terse ≠ vague.** If the idea is **actionable without further information** — e.g. a **library** whose job is to fully wrap a **documented public API** / upstream SDK — do **not** treat it as a stub idea and do **not** interview the user through each uncovered facet. Diff current code against those docs and put covering TODOs on the **existing** inventory/owning stem ([`todos.md`](todos.md) §5.4). One inventory stem may list many unordered in-scope surfaces until a slice is actually next.
 
 **Do not** split each leftover into its own map row “for completeness” — that is empty spec+TODO files with nothing to implement this turn. **Split** when the user names it as its own finished-feature identity, or it is the **next** unlike winner and you are about to build it. Methods of one kit stay one identity until a surface becomes its own product.
+
+**Master Index §2.2** is a pointer table, not a second playbook. Do not paste this module (or §0.1 / §5 / §13) into At a Glance.
 
 ---

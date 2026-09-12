@@ -1,14 +1,14 @@
-<!-- pack-version: 2.7.17 -->
-
 > **Agent workflow index.** Paved path + router into thin modules under [`workflow/`](workflow/README.md). Sync from upstream; do **not** copy wholesale into `docs/Master_Index.md`. The live index links here; agent rules summarize and point here — then open **one** module when needed.
 
 # Modular Documentation — Agent Workflow
 
-**Pack version**: 2.7.17 *(same as `docs/templates/VERSION` / live Master Index **Pack version**)*
+**Pack version:** read [`VERSION`](../VERSION) (`pack-version`). Do not copy the number into this file. Live Master Index is stamped on bootstrap / TEMPLATE_SYNC.
 
-**Design intent:** Short user asks → **one** playbook (`BOOTSTRAP`, `TEMPLATE_SYNC`, `TEMPLATE_UPDATE_CHECK`, `RULE_INSTALL` → `tools/<key>.md`, roles, or this index → **one** workflow module). Do not scan the pack catalog. **Tight scope** = paved path only (not “audit every alternate”). Edge cases live in modules — load them only when the router says so.
+**Design intent:** Short user asks → **one** playbook (`BOOTSTRAP`, `TEMPLATE_SYNC`, `TEMPLATE_UPDATE_CHECK`, `RULE_INSTALL` → `tools/<key>.md`, roles, or this index → **one** workflow module). Do not scan the pack catalog. **Tight scope** = paved path only (not “audit every alternate”). Edge cases live in modules — load them only when the router says so. Live scaffolds are fill-in blanks — teaching lives in [`../help/SCAFFOLDS.md`](../help/SCAFFOLDS.md) and the module you open.
 
-**Docs profile:** `docs/ADT-settings.yaml` → `docs_profile.mode` — **`prevent`** (default if unset) · **`balanced`** · **`ship-first`**. Full rules → [`workflow/profile-standing.md`](workflow/profile-standing.md). Never silent-downgrade a project full of Understandings.
+**Compaction / new session / memory loss:** If you cannot recall the paved path, **re-open this index**, then only the matching router module. Do not reconstruct procedure from a live Understanding/spec/TODO or from chat memory.
+
+**Docs profile:** `docs/ADT-settings.yaml` → `docs_profile.mode` — first-class choice. **`ship-first`** = typed APIs / CRUD. **`prevent`** = editors / games / multi-surface (default if unset). **`balanced`** = mixed. Full rules → [`workflow/profile-standing.md`](workflow/profile-standing.md). Never silent-downgrade a project full of Understandings.
 
 **Optional roles:** [`roles/`](roles/README.md) — never always-on; parent spawns when adapters exist, else playbook in-session. **Orchestrator** = parent only ([`roles/orchestrator.md`](roles/orchestrator.md) + git [`roles/orchestrator-git.md`](roles/orchestrator-git.md)). Single-slice implement → [`roles/feature-implementer.md`](roles/feature-implementer.md).
 

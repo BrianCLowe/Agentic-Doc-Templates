@@ -1,0 +1,9 @@
+docs_profile:
+  mode: prevent
+  recorded: 2026-08-20
+  source: eval-fixture
+orchestrator:
+  git:
+    mode: local
+    recorded: 2026-08-20
+    source: eval-fixture

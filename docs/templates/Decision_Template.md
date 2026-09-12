@@ -1,6 +1,6 @@
 # [Short decision title]
 
-> Optional cross-cutting decision file under `docs/decisions/`. Use for project-wide choices; local decisions go in the feature/shared **spec** Decisions table instead.
+> Optional cross-cutting decision file under `docs/decisions/`. Use for project-wide choices; local decisions go in the feature/shared **spec** Decisions table instead. Teaching: [`help/SCAFFOLDS.md`](help/SCAFFOLDS.md). Agents: [`agent/workflow/decisions.md`](agent/workflow/decisions.md).
 
 **Date**: YYYY-MM-DD  
 **Status**: accepted | superseded  
@@ -29,6 +29,4 @@
 
 ## Instructions for AI Agents
 
-- Create only for **cross-cutting** choices (stack, auth model, repo layout). Feature-local choices (including polish preferences) → that stem’s **spec** Decisions table, same turn (Workflow §2 / §10) — not a new file here.
-- Link from affected specs and Master_Index Section 3.4 when added.
-- If superseded, set status and link to the replacing decision — do not delete history.
+Fill the sections. Cross-cutting vs spec-local, same-turn capture: [`workflow/decisions.md`](agent/workflow/decisions.md).

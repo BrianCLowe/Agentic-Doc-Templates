@@ -7,7 +7,7 @@
 
 | Mode | Command | Needs a model? |
 |------|---------|----------------|
-| **Pack integrity** (always) | `python3 eval/run_eval.py` | No — adapter drift, de-confirm source-of-truth uniqueness, case schema |
+| **Pack integrity** (always; this is what pack-checks runs) | `python3 eval/run_eval.py` | No — adapters, de-confirm SoT, VERSION uniqueness, Understanding skeleton, `DECISIONS.md`, case schema, **fail-snapshots must VERIFY FAIL** |
 | **Prepare + verify** | `prepare` / `verify` | No for verify; an agent (or human) applies the turn between them |
 
 Golden cases encode failures we have already seen in the field (e.g. additive idea → wrongly de-confirm Understanding).
@@ -67,8 +67,11 @@ python3 eval/run_eval.py verify additive-keeps-confirmed --workdir /tmp/adt-eval
 
 ## Adding a case
 
-1. Copy a fixture under `fixtures/<id>/` (minimal Master Index + one stem).
+1. Copy a fixture under `fixtures/<id>/` (or grow `fixtures/multi-stem-studio/` when the bug needs a real-looking map).
 2. Add `cases/<id>.json` with `expect` + `pack_contract`.
-3. Run `python3 eval/run_eval.py` (integrity) and a prepare→agent→verify loop once.
+3. For a trap the model must lose: add `fail_snapshot` pointing at a known-bad `fail-snapshots/<id>/docs/` tree. Integrity overlays it after `prepare` and **requires VERIFY FAIL**.
+4. Run `python3 eval/run_eval.py` (integrity) and a prepare→agent→verify loop once.
+
+Named fail modes to keep covered: wrong-engine build · operable-gap marked done · prevent skipping Understanding · ship-first inventing Understanding · live instruction-footer left in place after sync.
 
 Correctness for this pack ≈ case coverage. Prefer a new golden case over another paragraph of prose when a field bug shows up.

@@ -1,5 +1,3 @@
-<!-- pack-version: 2.7.20 -->
-
 > **Template reference.** Do not put project-specific content in this file. Copy to `docs/Master_Index.md` for initial setup, or diff against it when syncing template improvements into the live index. Never edit this template unless the user asks you to.
 >
 > **Agent workflow** (paved path + router into thin modules) lives in [`Modular_Docs_Workflow.md`](templates/agent/Modular_Docs_Workflow.md) — do not duplicate it here.
@@ -8,7 +6,7 @@
 
 **Purpose**: Single entry point for **this project's** documentation — overview, locations, and Document Map. Read only the files relevant to the current task.
 
-**Pack version**: 2.7.20 *(from [`templates/VERSION`](templates/VERSION) — update on sync)*
+**Pack version**: *(set from [`templates/VERSION`](templates/VERSION) on bootstrap / TEMPLATE_SYNC — do not bump this template)*
 
 ## 1. Project Overview
 
@@ -45,22 +43,19 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 | `docs/ADT-settings.yaml` | Pack preferences — **docs profile**, **orchestrator git**, **standing.instructions** (playbook overrides, not a notes pad), sync mode, tools, optionals, upstream stamps ([`ADT-settings.example.yaml`](templates/agent/ADT-settings.example.yaml); Workflow [§0.1](templates/agent/workflow/profile-standing.md#01-docs-profile-ceremony-modes) · [§0.2](templates/agent/workflow/profile-standing.md#02-standing-workflow-instructions-user-workflow-not-pack-enums); [orchestrator Git](templates/agent/roles/orchestrator.md)) |
 | `src/` / `backend/` / `frontend/` | Actual code (reference only) |
 
-### 2.2 At a Glance *(policy summary — full rules in Workflow)*
+### 2.2 At a Glance *(pointers — full rules in the workflow)*
 
-- **Simplicity:** users give short doc actions; agents follow this pack — no complex prompts required.
-- **Idea sources:** prefer raw **chat exports** in `docs/reference/` over polished-only design docs — they keep whys/motives for Understanding drafts ([`IDEA_CAPTURE_TIPS.md`](templates/help/IDEA_CAPTURE_TIPS.md)). Ask: *build or update live docs from reference.* Agents keep **one identity per stem** (split unlike features — no user reminder required). Kit leftovers stay as TODOs on the inventory stem until that slice is next; **no map rows for vague planned-only items**; a terse wrap-the-public-API goal is actionable ([Workflow §0](templates/agent/workflow/naming-layout.md#0-naming--file-layout-read-before-creating-files) · [§5.4](templates/agent/workflow/todos.md#54-finished-kit-contract--covering-todos-not-wait-for-pickup)).
-- **Tight scope:** paved path for the current ask only — no “just in case” audits of unrelated files or alternate interpretations before acting.
-- **Mermaid:** optional — agent may add a small diagram when it beats prose for structure/flow; do not splash charts everywhere.
-- **Tooling:** `docs/Tooling.md` lists machine tools (not package deps); on a new machine, user can ask to install them ([`Tooling_Template.md`](templates/Tooling_Template.md)).
-- **Human TODO:** `docs/Human-TODO.md` — one inbox for procure / playtest / decide / waiting; index + owner dual-write ([`Human_TODO_Template.md`](templates/Human_TODO_Template.md); [Workflow §13](templates/agent/workflow/human-todo.md#13-human-todo-inbox--needs-a-human)).
-- **Docs profile:** `docs/ADT-settings.yaml` → `docs_profile.mode` — **`prevent`** (default if unset: Understanding + shape confirm), **`balanced`**, or **`ship-first`** (Spec+TODO core). See [Workflow §0.1](templates/agent/workflow/profile-standing.md#01-docs-profile-ceremony-modes).
-- **Orchestrator git:** `orchestrator.git.mode` — recommend **`milestone-pr`** (overnight: per-milestone PR — several related TODOs + concurrent implementers when they do not overlap **and** the host can isolate them → squash before ready → CI/Bugbot → merge → next branch), or **`branch-pr-squash`** (one morning PR, no merge), **`branch-pr`**, **`branch-push`**, **`local`**, **`current-push`** (never silent-default), or **`none`**. Asked if unset even under sync `auto-all`. **Cloud Agent** orchestration this-runs **`milestone-pr`** when durable mode is local-oriented or `branch-pr*` (does not rewrite settings). **Host worktrees** are not a setting — already-in-a-worktree → stay; pack does not `git worktree add`; no host isolation → serial. See [orchestrator-git](templates/agent/roles/orchestrator-git.md).
-- **File layout:** flat sibling files — always `features/FeatureName.md` + `FeatureName-TODO.md`; **Understanding** per docs profile; optional `FeatureName-Catalog.md` for list-heavy stems (same for `_shared/`) — [Workflow §0](templates/agent/workflow/naming-layout.md#0-naming--file-layout-read-before-creating-files) / [§7.1](templates/agent/workflow/extensions.md#71-catalog-companions-list-heavy-content).
-- No file should exceed ~800–1000 lines; split when bloated ([Workflow §8](templates/agent/workflow/extensions.md#8-how-to-split-a-large-document)).
-- **Shared** only when something is actually shared across features — empty §3.1 / `_shared/` is fine. Do **not** invent shared rows or park engine/framework primers there ([Workflow §1](templates/agent/workflow/shared-components.md#1-shared-components--foundation-vs-consumption)). Real shared components get the **same note types as features** (for the profile) unless the **user** excepted them — record omissions in **§3.0** only after an explicit user request. Agents must not invent §3.0 or filler §3.1 rows.
-- **Understanding** *(when profile requires / user locks shape)*: agent drafts **shape / guardrails** first (`draft`); user confirms is / is not + Assumptions (not a full-spec review); **`confirmed`** = shape approved — agents continue without re-asking ([Workflow §4](templates/agent/workflow/understanding.md#4-understanding-features--shared)).
-- **Spec**: durable contract (after shape confirm when Understanding is used; or grown as you build under ship-first) — may hold detail that was never in Understanding ([Workflow §2](templates/agent/workflow/understanding.md#2-understanding--spec-graduation)).
-- **Shared maturity** on spec + Document Map: `draft` \| `usable` \| `stable`.
+| Topic | Where the rule lives |
+|-------|----------------------|
+| **Docs profile** | `docs/ADT-settings.yaml` → `docs_profile.mode`. **`prevent`** = editors / games / multi-surface (default if unset). **`ship-first`** = typed APIs / CRUD. **`balanced`** = mixed. [§0.1](templates/agent/workflow/profile-standing.md#01-docs-profile-ceremony-modes) |
+| **Orchestrator git** | `orchestrator.git.mode` — ask if unset. Host worktrees: already-in-a-worktree → stay; pack does not `git worktree add`. [orchestrator-git](templates/agent/roles/orchestrator-git.md) |
+| **File layout / kit leftovers** | Flat sibling files; no map-only planned rows; leftovers stay as TODOs on an existing stem. [§0](templates/agent/workflow/naming-layout.md#0-naming--file-layout-read-before-creating-files) · [§5.4](templates/agent/workflow/todos.md#54-finished-kit-contract--covering-todos-not-wait-for-pickup) |
+| **Understanding / Spec** | Shape vs contract. [§4](templates/agent/workflow/understanding.md#4-understanding-features--shared) · [§2](templates/agent/workflow/understanding.md#2-understanding--spec-graduation) |
+| **Shared** | Only when actually shared. Same note types as features unless the user excepted them in §3.0. [§1](templates/agent/workflow/shared-components.md#1-shared-components--foundation-vs-consumption) |
+| **Human inbox / Tooling** | [`Human-TODO.md`](Human-TODO.md) · [`Tooling.md`](Tooling.md) |
+| **Size / split** | Split when a file is bloated. [§8](templates/agent/workflow/extensions.md#8-how-to-split-a-large-document) |
+
+Do **not** paste playbook procedure into this table. Compaction: re-open the [workflow index](templates/agent/Modular_Docs_Workflow.md), then one module.
 
 ## 3. Document Map
 
@@ -73,7 +68,7 @@ Record **only** omissions the **user explicitly requested**. Agents must **not**
 | *(example)* BlockEditor | InEditor-TODO, Asset-TODO | 2026-06-15 — **user said** “no asset or in-editor work for BlockEditor” |
 | [Add rows only after user excepts] | | |
 
-**Default file set** (create on disk when you add a row — map-only “planned” rows are not allowed): **always** Spec + core TODO; **Understanding** per `docs_profile` ([Workflow §0.1](templates/agent/workflow/profile-standing.md#01-docs-profile-ceremony-modes)). InEditor / Asset TODOs when that work applies. Optional **Catalog** for list-heavy stems ([Workflow §7.1](templates/agent/workflow/extensions.md#71-catalog-companions-list-heavy-content)) — create the file the same turn you add a Catalog map cell. Under **`prevent`**, never omit Understanding unless the user explicitly excepted that item (§3.0). Understanding may be `draft`; that still requires the file when the profile requires it.
+**Default file set** when adding a row (same turn, on disk — no map-only “planned” rows): Spec + core TODO; **Understanding** per `docs_profile`; InEditor / Asset / Catalog when that work applies. [§0](templates/agent/workflow/naming-layout.md#0-naming--file-layout-read-before-creating-files) · [§0.1](templates/agent/workflow/profile-standing.md#01-docs-profile-ceremony-modes).
 
 ### 3.1 Shared / Core Components
 
