@@ -154,12 +154,27 @@ upstream:
 # Optional team inbox routing — omit this entire key = human-only inbox (legacy).
 # Do not copy this block into live ADT-settings.yaml "to have something."
 # Unset / missing / enabled: false = today's behavior: everything waits on the
-# human. Not a mandatory multi-bot org chart. Do not force a project into
+# human. No auto-stamp. Not a mandatory multi-bot org chart. Do not force a project into
 # Brian's (or any other team's) workflow — each user/team works out who gets what.
-# kind_defaults are hints, not a rigid map. Role ids are free-form strings the
-# project defines, or "human". Never paste secrets or bot credentials here.
+# Role ids are free-form strings the project defines, or "human".
+# Never paste secrets or bot credentials here.
 #
-# Example hint map some teams use (not pack-required defaults):
+# Enabling team_inbox opts into assign-all-at-once:
+#   1. Stamp-on-dual-write — new Open rows get Assignee from kind_defaults in
+#      the same edit (e.g. all new playtest → qa). No claim PR / no per-row
+#      human click for the first fill.
+#   2. One-shot backfill — after enable + roster/kind_defaults, run
+#      “apply defaults to Open” once: fill unassigned Open rows from
+#      kind_defaults. Do not re-stamp rows that already have an explicit
+#      assignee (claimed / reassigned).
+#   3. Claim / reassign is override only (human or allowed bot) — not the
+#      bulk path.
+#   4. Bot discovery — bots watch “my open rows” / one digest ping. Not one
+#      PR per claim.
+# kind_defaults are the stamp map when enabled — still project-owned, not a
+# pack-required org chart.
+#
+# Example stamp map some teams use (not pack-required defaults):
 #   playtest → qa; placement / YTF feel notes → ux (if they have one);
 #   procure / decide / secrets → human;
 #   code implement → implementer (usually feature *-TODO.md, not Human-TODO);
@@ -167,10 +182,10 @@ upstream:
 #   nightly audit → report-only unless green-lit.
 #
 # team_inbox:
-#   enabled: false   # set true only when this project uses bot assignees
+#   enabled: false   # set true only when this project uses bot assignees (opts into stamp-on-dual-write)
 #   # source: user
 #   recorded: YYYY-MM-DD
-#   # Suggested defaults by Human-TODO kind — project overrides freely.
+#   # Stamp map by Human-TODO kind — project overrides freely.
 #   kind_defaults:
 #     playtest: qa
 #     decide: human
@@ -178,7 +193,7 @@ upstream:
 #     waiting: human
 #   # claim_mode: open | kind_defaults_only
 #   #   open = any listed role may claim kinds in its may_claim; human always may assign/claim
-#   #   kind_defaults_only = first assign follows kind_defaults unless a human reassigns
+#   #   kind_defaults_only = stamp + override only via explicit claim/reassign
 #   # assignee_closes: false   # default: bot reports; human or assignee confirms. true = assignee confirm report may close that kind
 #   # roles: free-form map role_id → { label, may_claim: [kinds...], may_assign: true|false }
 #   #   qa:

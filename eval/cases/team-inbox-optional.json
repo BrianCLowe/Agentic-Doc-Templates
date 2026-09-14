@@ -17,7 +17,9 @@
           "team_inbox",
           "omit this entire key = human-only inbox",
           "Do not force a project into",
-          "kind_defaults are hints",
+          "Stamp-on-dual-write",
+          "apply defaults to Open",
+          "Claim / reassign is override only",
           "Never paste secrets or bot credentials"
         ]
       },
@@ -25,9 +27,12 @@
         "file": "docs/templates/agent/workflow/human-todo.md",
         "patterns": [
           "team_inbox",
-          "Claim / reassign",
+          "Claim / reassign is override only",
           "do not force",
           "human-only inbox (legacy)",
+          "stamp Assignee from `kind_defaults`",
+          "apply defaults to Open",
+          "one digest ping",
           "no silent agent close",
           "assign playtest to QA"
         ]
@@ -38,6 +43,7 @@
           "Assignee:",
           "claim",
           "reassign",
+          "Apply defaults to Open",
           "not forced into a bot team",
           "Assign playtest to QA"
         ]
@@ -48,7 +54,9 @@
           "2.8.0",
           "team_inbox",
           "claim / reassign",
-          "no silent force"
+          "assign-all-at-once",
+          "no silent force",
+          "no auto-stamp"
         ]
       }
     ],
@@ -89,6 +97,7 @@
           "D19",
           "non-forcing",
           "human-only inbox",
+          "assign-all-at-once",
           "Do not silent-enable"
         ]
       }

@@ -19,12 +19,12 @@ Keep this list short — **one `- [ ]` list item per human action** (not a table
 
 **Owner:** link to the feature/shared TODO item title for `playtest` / `decide`; `this file` for `procure` / `waiting`.  
 **Kinds:** `procure` · `playtest` · `decide` · `waiting`  
-**Assignee** *(optional):* `human` · `<role_id>` · `unassigned` — omit or leave `unassigned` unless the project uses team inbox routing.  
-**Claim:** a human or an allowed team bot may claim; reassign in chat (*assign playtest to QA* / *I’ll take it*).
+**Assignee** *(optional):* `human` · `<role_id>` · `unassigned` — omit when team inbox is unset. When `team_inbox` is enabled, new rows **stamp from `kind_defaults`** (e.g. `playtest` → `qa`); no per-row click for the first fill.  
+**Claim / reassign:** override only (*assign playtest to QA* / *I’ll take it*) — not the bulk path. One-shot *apply defaults to Open* fills leftover unassigned rows after enable.
 
 - [ ] **[e.g. Score Target feel — is 10k short/right/swingy?]** (`playtest`)  
   Owner: [ScoreTarget-TODO.md](features/ScoreTarget-TODO.md) — "Tune win target" · Blocks: ScoreTarget  
-  Assignee: unassigned  
+  Assignee: qa  
   Notes: Agent: capture feel notes on owner TODO
 
 - [ ] **[e.g. Entra app registration + client secret]** (`procure`)  
@@ -64,12 +64,13 @@ Move finished items here (as `- [x]`) so **Open** stays short.
   - *Still waiting on Steam; leave it open.*
   - *I’ll take the Score Target playtest.*
   - *Assign playtest to QA.*
+  - *Apply defaults to Open.*
   - *What’s left on the human TODO?*
 
 - Keep secrets out of git; use `.env.example` for variable *names* only.
 - Optional: check the box in **Open** yourself; still tell the agent so they sync the owner TODO and archive the row.
-- You can **claim** or **reassign** any Open item (*I’ll take the Score Target playtest.* / *Assign playtest to QA.*). You are not forced into a bot team.
-- If this project enabled optional team inbox routing, a team bot may pick up kinds its role allows. Unset settings = this inbox waits on you, same as always.
+- You can **claim** or **reassign** any Open item (*I’ll take the Score Target playtest.* / *Assign playtest to QA.*). That is an **override** — first fill is stamp-on-create (or one-shot *apply defaults to Open*). You are not forced into a bot team.
+- If this project enabled optional team inbox routing, new Open rows stamp Assignee from the project’s kind defaults (e.g. playtest → QA) and a team bot may pick up kinds its role allows (watch “my open rows” / one digest — not one PR per claim). Unset settings = this inbox waits on you, same as always; no auto-stamp.
 
 **Kinds:**
 
@@ -97,7 +98,7 @@ Move finished items here (as `- [x]`) so **Open** stays short.
 | `playtest` · `decide` | Thin pointer + checkbox | Owner feature/shared `*-TODO.md` item |
 | `procure` · `waiting` | Row holds how-to / status | This file; features **link here** (do not copy portal steps into every TODO) |
 
-**Agent role:** Dual-write when creating a human-gated task (owner TODO item **and** a checkbox item here). Do **not** mark done unless the user (or an allowed team-inbox assignee) said so. Do **not** invent procure/waiting items the project does not need.
+**Agent role:** Dual-write when creating a human-gated task (owner TODO item **and** a checkbox item here). When `team_inbox` is enabled, stamp Assignee from `kind_defaults` in that same edit. Do **not** mark done unless the user (or an allowed team-inbox assignee) said so. Do **not** invent procure/waiting items the project does not need.
 
 **Human role:** Work **Open**; tell the agent in chat when you finish or have feedback (phrases above). Agent syncs the owner doc and this list.
 

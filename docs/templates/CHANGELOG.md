@@ -27,15 +27,15 @@
 - **Live impact:** `versions-only`, `process-docs-only`, `content-templates`
 - **Files:**
   - `VERSION` — 2.7.29 → 2.8.0
-  - `agent/ADT-settings.example.yaml` — optional **`team_inbox`** (omit / unset / `enabled: false` = human-only inbox). Suggested kind→role defaults are **hints**, not a mandatory bot org chart. Do not force a project into another team’s workflow
-  - `workflow/human-todo.md` — team assignees / **claim / reassign**; dual-write + done-only-on-confirm still apply (assignee chat report may check playtest; no silent close)
-  - `Human_TODO_Template.md` — optional **Assignee** / **Claim** lines; humans may claim/reassign; not forced into a bot team
+  - `agent/ADT-settings.example.yaml` — optional **`team_inbox`** (omit / unset / `enabled: false` = human-only inbox; **no auto-stamp**). Enabling opts into **assign-all-at-once**: stamp Assignee from `kind_defaults` on dual-write; one-shot *apply defaults to Open* backfill. Suggested kind→role defaults are the stamp map, not a mandatory bot org chart. Do not force a project into another team’s workflow
+  - `workflow/human-todo.md` — team assignees / **claim / reassign** as **override only**; stamp-on-dual-write + one-shot backfill are the bulk path; bot discovery = “my open rows” / one digest ping (not one PR per claim). Dual-write + done-only-on-confirm still apply (assignee chat report may check playtest; no silent close)
+  - `Human_TODO_Template.md` — optional **Assignee** / **Claim** lines; first fill stamps from kind defaults when enabled; claim/reassign is override only; not forced into a bot team
   - `Modular_Docs_Workflow.md` — one-line `team_inbox` pointer on §13
   - `roles/todo-warden.md` — do not mark Human-TODO done without a confirm; allowed assignee bots count only when `team_inbox.enabled`
   - `TEMPLATE_SYNC_B.md` B0.1 — do not copy `team_inbox` from the example unless the user already enabled team routing
   - Root `DECISIONS.md` **D19** — do not silently undo
   - Root `eval/` — `team-inbox-optional` pack contract
-- **Step B:** Bump Master Index **Pack version** to 2.8.0 from local `VERSION`. **Do not** add `team_inbox` to live `ADT-settings.yaml` from the example (omit / unset stays human-only — **no silent force** into team routing). If `content-templates`: add missing optional Assignee / Claim *shape* and the human claim/reassign bullets on live Human-TODO (leave `unassigned`; do **not** invent role ids or enable routing). Refresh installed modular rules (**no ask** unless `customized: true`). No live feature/shared scan. No optional live pass unless its tag is in this jump’s union (this entry adds none beyond content-templates).
+- **Step B:** Bump Master Index **Pack version** to 2.8.0 from local `VERSION`. **Do not** add `team_inbox` to live `ADT-settings.yaml` from the example (omit / unset stays human-only — **no silent force** into team routing; **no auto-stamp**). If live `team_inbox.enabled` + `kind_defaults` already exist, agents may run *apply defaults to Open* **once** (fill unassigned only; do not re-stamp explicit assignees). If `content-templates`: add missing optional Assignee / Claim *shape* and the human claim/reassign / *apply defaults to Open* bullets on live Human-TODO (leave `unassigned` unless live settings are enabled and this is that one-shot backfill; do **not** invent role ids or enable routing). Refresh installed modular rules (**no ask** unless `customized: true`). No live feature/shared scan. No optional live pass unless its tag is in this jump’s union (this entry adds none beyond content-templates).
 
 ## 2.7.29
 
