@@ -64,7 +64,7 @@ Compare semver `X.Y.Z` numerically (major, minor, patch).
    - **Do not** invent `check_mode` or `check_mode_recorded` here — B0.4 asks (legacy weekly days are a hint only).
    - If `sync.mode` missing → leave unset (B0.2 will ask).
    - Write `ADT-settings.yaml`, then **delete** the old status file(s). Note migration in the end summary.
-3. Else → create `ADT-settings.yaml` from the example when first recording a tool/optional/sync decision (do not invent installs). Do **not** copy a `standing:` key from the example — omit it unless the user already stated a playbook override.
+3. Else → create `ADT-settings.yaml` from the example when first recording a tool/optional/sync decision (do not invent installs). Do **not** copy a `standing:` key from the example — omit it unless the user already stated a playbook override. Do **not** copy a `team_inbox:` key from the example — omit it unless the user already enabled team routing (unset = human-only inbox; do not silent-enable).
 
 ### B0.2 — Sync mode *(ask once if unset)*
 

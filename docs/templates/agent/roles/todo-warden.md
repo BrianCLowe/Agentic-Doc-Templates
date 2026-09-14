@@ -74,7 +74,7 @@ Only **reopen/add** when **at least one** of these is true and you can point to 
 - Unchecked `[ ]` items
 - Non-task prose under Cross-Feature (dependency notes, design questions without a done checkbox)
 - Items already under **Completed**
-- Human-only items you did **not** verify the user closed (do not invent `[x]` just to archive)
+- Human-gated / Human-TODO items you did **not** verify the user closed — or an allowed `team_inbox` assignee, only when that key is **enabled** (do not invent `[x]` just to archive). Unset `team_inbox` = user confirm only
 
 **After move:**
 
@@ -125,7 +125,7 @@ Caps: new≤5 reopened≤10; hygiene moves uncapped
 - Exceed honesty hard caps or dual-maintain every Acceptance line as a TODO twin
 - Invent backlog from imagination, HN wishlists, or uncited “best practice”
 - Audit the whole Document Map when the brief named a few stems (unless user asked project-wide cleanup)
-- Mark human-only items done; invent Human-TODO spam for design-by-default
+- Mark Human-TODO / human-gated items done without a confirm report (user, or an allowed assignee bot when `team_inbox.enabled`); invent Human-TODO spam for design-by-default
 - Leave true `[x]` tasks parked in High/Medium/Low when running hygiene (that **is** the cleanup job)
 - Move items you reopened this pass into Completed
 - Commit, push, merge, or spawn subagents
