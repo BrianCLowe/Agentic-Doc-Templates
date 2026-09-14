@@ -1,0 +1,97 @@
+{
+  "id": "team-inbox-optional",
+  "title": "team_inbox is optional — unset stays human-only; claim/reassign is not a forced bot org chart",
+  "role": "feature-implementer",
+  "user": "What’s left on the human TODO?",
+  "fixture": "fixtures/ship-first-crud",
+  "expect": {
+    "files_must_not_change": [
+      "docs/ADT-settings.yaml"
+    ]
+  },
+  "pack_contract": {
+    "source_must_include": [
+      {
+        "file": "docs/templates/agent/ADT-settings.example.yaml",
+        "patterns": [
+          "team_inbox",
+          "omit this entire key = human-only inbox",
+          "Do not force a project into",
+          "kind_defaults are hints",
+          "Never paste secrets or bot credentials"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/workflow/human-todo.md",
+        "patterns": [
+          "team_inbox",
+          "Claim / reassign",
+          "do not force",
+          "human-only inbox (legacy)",
+          "no silent agent close",
+          "assign playtest to QA"
+        ]
+      },
+      {
+        "file": "docs/templates/Human_TODO_Template.md",
+        "patterns": [
+          "Assignee:",
+          "claim",
+          "reassign",
+          "not forced into a bot team",
+          "Assign playtest to QA"
+        ]
+      },
+      {
+        "file": "docs/templates/CHANGELOG.md",
+        "patterns": [
+          "2.8.0",
+          "team_inbox",
+          "claim / reassign",
+          "no silent force"
+        ]
+      }
+    ],
+    "summaries_must_point": [
+      {
+        "file": "docs/templates/agent/Modular_Docs_Workflow.md",
+        "must_contain": [
+          "team_inbox",
+          "human-only"
+        ],
+        "must_not_contain": [
+          "enabled: true"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/roles/todo-warden.md",
+        "must_contain": [
+          "team_inbox.enabled",
+          "confirm report"
+        ],
+        "must_not_contain": [
+          "Mark human-only items done; invent Human-TODO spam"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/TEMPLATE_SYNC_B.md",
+        "must_contain": [
+          "Do **not** copy a `team_inbox:` key",
+          "do not silent-enable"
+        ],
+        "must_not_contain": [
+          "team_inbox.enabled: true"
+        ]
+      },
+      {
+        "file": "DECISIONS.md",
+        "must_contain": [
+          "D19",
+          "non-forcing",
+          "human-only inbox",
+          "Do not silent-enable"
+        ]
+      }
+    ]
+  }
+}

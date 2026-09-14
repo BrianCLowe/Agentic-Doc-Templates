@@ -58,7 +58,7 @@ orchestrator:
 
 # standing: — omit this entire key unless the user has actually overridden an
 # ADT playbook and no first-class key fits (docs_profile, orchestrator.git.mode,
-# sync.mode, optionals). Missing / empty is the correct default. Do not invent
+# sync.mode, team_inbox, optionals). Missing / empty is the correct default. Do not invent
 # bullets. Do not copy an empty standing block into live ADT-settings.yaml
 # "to have something." Not a notes pad — prompt style, other-product API,
 # Tooling verify commands, and restating a git mode do not belong here
@@ -150,3 +150,42 @@ upstream:
   # local_pack_version: "X.Y.Z"
   # upstream_pack_version: "X.Y.Z"
   # update_available: true
+
+# Optional team inbox routing — omit this entire key = human-only inbox (legacy).
+# Do not copy this block into live ADT-settings.yaml "to have something."
+# Unset / missing / enabled: false = today's behavior: everything waits on the
+# human. Not a mandatory multi-bot org chart. Do not force a project into
+# Brian's (or any other team's) workflow — each user/team works out who gets what.
+# kind_defaults are hints, not a rigid map. Role ids are free-form strings the
+# project defines, or "human". Never paste secrets or bot credentials here.
+#
+# Example hint map some teams use (not pack-required defaults):
+#   playtest → qa; placement / YTF feel notes → ux (if they have one);
+#   procure / decide / secrets → human;
+#   code implement → implementer (usually feature *-TODO.md, not Human-TODO);
+#   Understanding drain → understanding-author;
+#   nightly audit → report-only unless green-lit.
+#
+# team_inbox:
+#   enabled: false   # set true only when this project uses bot assignees
+#   # source: user
+#   recorded: YYYY-MM-DD
+#   # Suggested defaults by Human-TODO kind — project overrides freely.
+#   kind_defaults:
+#     playtest: qa
+#     decide: human
+#     procure: human
+#     waiting: human
+#   # claim_mode: open | kind_defaults_only
+#   #   open = any listed role may claim kinds in its may_claim; human always may assign/claim
+#   #   kind_defaults_only = first assign follows kind_defaults unless a human reassigns
+#   # assignee_closes: false   # default: bot reports; human or assignee confirms. true = assignee confirm report may close that kind
+#   # roles: free-form map role_id → { label, may_claim: [kinds...], may_assign: true|false }
+#   #   qa:
+#   #     label: QA
+#   #     may_claim: [playtest]
+#   #     may_assign: false
+#   #   ux:
+#   #     label: UX
+#   #     may_claim: [playtest]
+#   #     may_assign: false

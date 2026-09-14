@@ -47,7 +47,7 @@
 
 | Prefer | Use for |
 |--------|---------|
-| **First-class ADT-settings key** | When an enum/key already exists — set `docs_profile` / `orchestrator.git.mode` / `sync.mode` / optionals (do **not** only put it in standing). **Not a key:** `orchestrator.git.worktrees` — host isolation is playbook-only ([`../roles/orchestrator-git.md`](../roles/orchestrator-git.md) **Host worktrees**) |
+| **First-class ADT-settings key** | When an enum/key already exists — set `docs_profile` / `orchestrator.git.mode` / `sync.mode` / `team_inbox` / optionals (do **not** only put it in standing). **Not a key:** `orchestrator.git.worktrees` — host isolation is playbook-only ([`../roles/orchestrator-git.md`](../roles/orchestrator-git.md) **Host worktrees**) |
 | **`standing.instructions`** | Lasting **overrides of this pack’s playbooks** (docs ceremony, git delivery, orchestrate / verify / re-ask, file-create) that no key expresses |
 | **Spec Decisions (§10)** | Product/UI/interaction prefs for **one stem** (could be “improved away”) |
 | **This-turn only** | One-off overrides the user does **not** want durable — apply now; **do not** write standing |

@@ -26,6 +26,7 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 | D16 | Roles never always-on; orchestrator is parent-session only | accepted | 2.7.7 |
 | D17 | Assumptions = real forks only; lock obvious defaults; examples are not identity | accepted | 2.7.28 |
 | D18 | Sync summaries report the catch-up union only; `auto-all` ≠ every catalog tag | accepted | 2.7.29 |
+| D19 | Optional `team_inbox` is opt-in; unset = human-only inbox; do not force a bot org chart | accepted | 2.8.0 |
 
 ---
 
@@ -112,6 +113,12 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 **Decision:** A sync summary reports **from→to**, the **unioned** Live impact tags, and executed / offered / declined **of those tags**. The CHANGELOG / Step B tag table is a lasting capability catalog. A tag fires only when a selected catch-up entry lists it. Do **not** name catalog optional tags that were not in the union as “skipped” — that reads as missed instructions. `auto-all` means: when a tagged pass is in the union, execute it on all Document Map stems without asking. It does **not** mean run every optional pass every sync. Reserve “skipped” for a unioned tagged pass the user declined (`choose`) or a path check that did not apply (B8 modern layout).
 
 **Do not:** Treat the tag table as a per-sync checklist. Do not invent a broader audit than the union to “cover” catalog rows that sit behind the old stamp.
+
+## D19 — Team inbox is optional and non-forcing
+
+**Decision:** `team_inbox` is an optional ADT-settings key for projects that want a human *or* a designated team-bot assignee on Human-TODO (and optionally human-gated feature TODO rows). Omit / unset / `enabled: false` = today’s human-only inbox. Suggested kind→role defaults are **hints**, not a mandatory org chart. Humans may always claim or reassign. Bots may claim only kinds their role allows. Do not silent-enable, do not copy Brian’s (or any team’s) bot roster as pack-required defaults, do not auto-close without the assignee’s confirm report.
+
+**Do not:** Treat team routing as the new default. Do not paste secrets or bot credentials into docs. Do not replace feature `*-TODO.md` ownership of code work.
 
 ---
 
