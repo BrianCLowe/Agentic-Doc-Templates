@@ -5,10 +5,10 @@
 </p>
 
 > **Stop coding agents from losing intent or building the wrong product shape.**  
-> Modular Understanding / spec / TODO docs plus tool-agnostic agent playbooks — so Cursor, Grok Build, Claude Code, OpenClaw, and friends stay aligned across chats, not just one clever session.
+> Modular Understanding / spec / TODO docs plus tool-agnostic agent playbooks — so Cursor, Grok Build, Claude Code, Copilot, OpenClaw, and friends stay aligned across chats, not just one clever session.
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-![Built for](https://img.shields.io/badge/Built%20for-Cursor%20%7C%20Grok%20Build%20%7C%20OpenClaw%20%7C%20Claude%20Code-5865F2)
+![Built for](https://img.shields.io/badge/Built%20for-Cursor%20%7C%20Grok%20Build%20%7C%20Copilot%20%7C%20Claude%20Code%20%7C%20OpenClaw-5865F2)
 
 ---
 
@@ -121,7 +121,7 @@ Everything ships under **`docs/templates/`**. Live project docs stay at `docs/` 
 |------|------|
 | **Scaffolds** | Master Index, Understanding, Spec, TODO, Tooling, Human-TODO, Decision templates |
 | **[`help/`](docs/templates/help/)** | Human guides — [SETUP](docs/templates/help/SETUP.md), [USAGE](docs/templates/help/USAGE.md), [SCAFFOLDS](docs/templates/help/SCAFFOLDS.md), [IDEA_CAPTURE_TIPS](docs/templates/help/IDEA_CAPTURE_TIPS.md), [USING_WITH_AGENTS](docs/templates/help/USING_WITH_AGENTS.md) |
-| **[`agent/`](docs/templates/agent/)** | [`Modular_Docs_Workflow.md`](docs/templates/agent/Modular_Docs_Workflow.md), bootstrap, [`RULE_INSTALL`](docs/templates/agent/RULE_INSTALL.md) → per-tool [`tools/`](docs/templates/agent/tools/README.md), template sync; optional [`roles/`](docs/templates/agent/roles/README.md) (Cursor/Grok subagents — never always-on) |
+| **[`agent/`](docs/templates/agent/)** | [`Modular_Docs_Workflow.md`](docs/templates/agent/Modular_Docs_Workflow.md), bootstrap, [`RULE_INSTALL`](docs/templates/agent/RULE_INSTALL.md) → per-tool [`tools/`](docs/templates/agent/tools/README.md), template sync; optional [`roles/`](docs/templates/agent/roles/README.md) (Cursor/Grok/Copilot adapters shipped 2.7.23+ — never always-on) |
 | **[`VERSION`](docs/templates/VERSION)** / **[`CHANGELOG.md`](docs/templates/CHANGELOG.md)** | Cheap upstream compare + sync scope after a pack refresh |
 
 ---
@@ -135,6 +135,7 @@ docs/
 ├── Master_Index.md              ← project map (you maintain)
 ├── Tooling.md                   ← machine tools (not package deps)
 ├── Human-TODO.md                ← human inbox (procure, playtest, decide, waiting)
+├── ADT-settings.yaml            ← pack prefs (profile, git, standing playbook overrides, tools, optionals, sync, upstream)
 ├── reference/                   ← design docs, chat exports, PRDs, legacy specs
 │   └── visuals/                 ← optional inspiration screenshots
 ├── _shared/                     ← reusable components (same note types as features)
