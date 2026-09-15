@@ -5,7 +5,7 @@
 > **Section order (human-facing doc):** **Open** → **Done** at the top; how-to for humans then agent dual-write / sync last. Do not put instructions above the task lists.
 
 **Last Updated**: [YYYY-MM-DD]  
-**Related**: [Master_Index.md](Master_Index.md) · [Tooling.md](Tooling.md) · [workflow/human-todo.md](agent/workflow/human-todo.md) §13
+**Related**: [Master_Index.md](Master_Index.md) · [Tooling.md](Tooling.md) · [workflow/human-todo.md](templates/agent/workflow/human-todo.md) §13
 
 ---
 
@@ -22,24 +22,28 @@ Keep this list short — **one `- [ ]` list item per human action** (not a table
 **Assignee** *(optional):* `human` · `<role_id>` · `unassigned` — omit when team inbox is unset. When `team_inbox` is enabled, new rows **stamp from `kind_defaults`** (e.g. `playtest` → `qa`); no per-row click for the first fill.  
 **Claim / reassign:** override only (*assign playtest to QA* / *I’ll take it*) — not the bulk path. One-shot *apply defaults to Open* fills leftover unassigned rows after enable.
 
+Enabled-mode row shape *(only when `team_inbox` is on — do not copy Assignee onto default / unset-inbox rows)*:
+
+```
+- [ ] **[e.g. Score Target feel]** (`playtest`)
+  Owner: … · Blocks: …
+  Assignee: qa
+```
+
 - [ ] **[e.g. Score Target feel — is 10k short/right/swingy?]** (`playtest`)  
   Owner: [ScoreTarget-TODO.md](features/ScoreTarget-TODO.md) — "Tune win target" · Blocks: ScoreTarget  
-  Assignee: qa  
   Notes: Agent: capture feel notes on owner TODO
 
 - [ ] **[e.g. Entra app registration + client secret]** (`procure`)  
   Owner: this file · Blocks: [GraphAuth-TODO.md](features/GraphAuth-TODO.md)  
-  Assignee: human  
   Notes: Secret → `.env` / Key Vault — **not** this file
 
 - [ ] **[e.g. Steam private beta — App ID]** (`waiting`)  
   Owner: this file · Blocks: Release  
-  Assignee: human  
   Notes: Partner portal
 
 - [ ] **[Add items as discovered]** (`kind`)  
   Owner: … · Blocks: …  
-  Assignee: unassigned  
   Notes: …
 
 ---
@@ -106,7 +110,7 @@ Move finished items here (as `- [x]`) so **Open** stays short.
 
 ## Instructions for AI Agents
 
-Keep Open → Done first. Dual-write, done-only-on-confirm, and inbox repair: [`workflow/human-todo.md`](agent/workflow/human-todo.md). Do not reconstruct procedure from this file after compaction.
+Keep Open → Done first. Dual-write, done-only-on-confirm, and inbox repair: [`workflow/human-todo.md`](templates/agent/workflow/human-todo.md). Do not reconstruct procedure from this file after compaction.
 
 ---
 
