@@ -214,6 +214,16 @@ SCAFFOLD_CHECKS = (
         "label": "Team-Roster",
     },
     {
+        "path": "docs/templates/Product_Vision_Template.md",
+        "sermons": (
+            "Dual-write (mandatory)",
+            "How-it-should-work",
+            "Core Behavior",
+        ),
+        "must": ("workflow/product-vision.md", "End-state picture"),
+        "label": "Product-Vision",
+    },
+    {
         "path": "docs/templates/Tooling_Template.md",
         "sermons": (
             "set up this machine",

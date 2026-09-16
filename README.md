@@ -119,7 +119,7 @@ Everything ships under **`docs/templates/`**. Live project docs stay at `docs/` 
 
 | Area | Role |
 |------|------|
-| **Scaffolds** | Master Index, Understanding, Spec, TODO, Tooling, Human-TODO, Decision templates |
+| **Scaffolds** | Master Index, Product vision, Understanding, Spec, TODO, Tooling, Human-TODO, Decision templates |
 | **[`help/`](docs/templates/help/)** | Human guides — [SETUP](docs/templates/help/SETUP.md), [USAGE](docs/templates/help/USAGE.md), [SCAFFOLDS](docs/templates/help/SCAFFOLDS.md), [IDEA_CAPTURE_TIPS](docs/templates/help/IDEA_CAPTURE_TIPS.md), [USING_WITH_AGENTS](docs/templates/help/USING_WITH_AGENTS.md) |
 | **[`agent/`](docs/templates/agent/)** | [`Modular_Docs_Workflow.md`](docs/templates/agent/Modular_Docs_Workflow.md), bootstrap, [`RULE_INSTALL`](docs/templates/agent/RULE_INSTALL.md) → per-tool [`tools/`](docs/templates/agent/tools/README.md), template sync; optional [`roles/`](docs/templates/agent/roles/README.md) (Cursor/Grok/Copilot adapters shipped 2.7.23+ — never always-on) |
 | **[`VERSION`](docs/templates/VERSION)** / **[`CHANGELOG.md`](docs/templates/CHANGELOG.md)** | Cheap upstream compare + sync scope after a pack refresh |
@@ -133,6 +133,7 @@ After bootstrap, a typical project looks like:
 ```
 docs/
 ├── Master_Index.md              ← project map (you maintain)
+├── Product-Vision.md            ← whole-product end-state (**prevent**; skip on ship-first unless you lock product shape)
 ├── Tooling.md                   ← machine tools (not package deps)
 ├── Human-TODO.md                ← human inbox (procure, playtest, decide, waiting)
 ├── ADT-settings.yaml            ← pack prefs (profile, git, standing playbook overrides, tools, optionals, sync, upstream)
@@ -154,6 +155,7 @@ Flat sibling files per feature/shared component. Naming: [`Modular_Docs_Workflow
 
 - **Simplicity** — Short user asks; agents follow one playbook.
 - **Understanding before code** — Agent drafts shape/guardrails; you confirm is / is not (not the full contract).
+- **Product vision** — One end-state picture the feature map must fit (prevent). A complete map is not identity.
 - **Modular map** — Small files + Document Map; not one giant spec.
 - **Tight scope** — Paved path for the current ask; no “just in case” audits.
 - **One folder to copy** — `docs/templates/` holds setup, workflow, and rules so your `docs/` root stays yours.

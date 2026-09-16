@@ -22,6 +22,18 @@
 
 ---
 
+## 2.9.0
+
+- **Live impact:** `versions-only`, `process-docs-only`, `content-templates`, `master-index`
+- **Files:**
+  - `VERSION` — 2.8.1 → 2.9.0
+  - `Product_Vision_Template.md` — **(new)** live `docs/Product-Vision.md`: whole-product is / is not + **end-state picture** + how the map fits. Not a feature checklist. Not a second spec
+  - `workflow/product-vision.md` — **§4.5:** create under **prevent** (bootstrap / first live-docs); **balanced** when 2+ stems or fuzzy whole; **do not** silent-create on **ship-first**. Draft does not add a second coding gate; **confirmed** vision: do not implement a fighting feature. Lock gate stays Workflow §4
+  - `Master_Index_Template.md` / bootstrap / sync / help / paved path / understanding + implement pointers
+  - Root `DECISIONS.md` **D21** — do not silently undo
+  - Root `eval/` — `product-vision-end-state` pack contract + scaffold skeleton
+- **Step B:** Bump Master Index **Pack version** to 2.9.0 from local `VERSION`. **`master-index`:** add Key Locations / §3.4 / At a Glance row for Product-Vision. **`content-templates`:** if `docs_profile` is **`prevent`** (or unset) and `docs/Product-Vision.md` is missing → create from the template and draft from conversation / reference (lock obvious; empty Assumptions OK; fill How the map fits from **existing** map rows only). **`balanced`:** create only if 2+ feature stems or whole-product identity is already fuzzy. **`ship-first`:** **do not** create. Do not invent stems. Do not copy sermons into the live file. No live feature/shared scan. No `rules` tag — do not refresh installed modular rules from 2.9.0 alone.
+
 ## 2.8.1
 
 - **Live impact:** `versions-only`, `process-docs-only`, `content-templates`, `master-index`

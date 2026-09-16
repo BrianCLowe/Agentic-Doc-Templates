@@ -10,13 +10,13 @@
 
 - New idea, vague idea, or mid-build correction of **what it is**
 - Chat / `docs/reference/` material → **build or update** live docs (Understanding first under **prevent** / when locking shape)
-- User says: *draft Understanding*, *Understanding author*, *capture intent for X*, *lock shape for X*, *build/update live docs from reference*, *clean out Assumptions*, *lock obvious assumptions*
+- User says: *draft Understanding*, *Understanding author*, *capture intent for X*, *lock shape for X*, *lock product shape*, *draft the product vision / end-state picture*, *build/update live docs from reference*, *clean out Assumptions*, *lock obvious assumptions*
 - Under **ship-first** / clear **balanced** stems: only when the user asks to lock shape or identity fights require it — do not invent Understandings for every map row
 - **Not** for a purely **additive** ask on a `confirmed` stem — that is **spec + TODO** work; keep `confirmed`. Invoke only on a **significant shape change**. Full gate: [`../workflow/understanding.md`](../workflow/understanding.md) §4.
 
 ## Inputs *(open only these)*
 
-1. `docs/Master_Index.md` Sections 1–3 (Document Map + overview)
+1. `docs/Master_Index.md` Sections 1–3 (Document Map + overview). `docs/Product-Vision.md` if it exists — if **prevent** and missing, draft it (Workflow §4.5) before or with the first Understanding. Do not invent a second product.
 2. Named feature/shared row paths — or create the default file set per Workflow §0 for each **new** stem you identify
 3. Source the user pointed at: this conversation, and/or files under `docs/reference/` (all named exports, or the folder when they said “from reference”)
 4. Existing `-Understanding.md` for each stem you touch (if any)

@@ -28,6 +28,7 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 | D18 | Sync summaries report the catch-up union only; `auto-all` ≠ every catalog tag | accepted | 2.7.29 |
 | D19 | Optional `team_inbox` is opt-in; unset = human-only inbox; do not force a bot org chart | accepted | 2.8.0 |
 | D20 | Team roster is two-stage (read vs self-ID); Name / Jobs / Anti-jobs if defined; one initial PR for a full team | accepted | 2.8.1 |
+| D21 | Product vision is the whole-product end-state picture; feature map alone is not identity | accepted | 2.9.0 |
 
 ---
 
@@ -130,6 +131,16 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 **One initial PR:** standing up `team_inbox` or adding a **full team** is **one scribe / one PR** that creates the roster (plus settings if needed). Other bots do **not** open competing `Team-Roster.md` PRs — join the open roster PR or wait for merge, then self-ID. Later one-bot updates may be their own PR, one writer at a time.
 
 **Do not:** Silent-create `Team-Roster.md` on a human-only inbox. Do not treat pack adapters as roster bots. Do not paste secrets or bot credentials. Do not copy Brian’s (or any team’s) roster into the template as live defaults. Do not invent anti-jobs. Do not race N roster-create PRs.
+
+---
+
+## D21 — Product vision is the whole-product end-state
+
+**Decision:** Live **`docs/Product-Vision.md`** (from `Product_Vision_Template.md`) is the cohesive **end-state picture** for the product — what it is / is not as **one** thing, plus how existing Document Map stems fit that whole. Per-feature Understandings and the Document Map stay the inventory of pieces. Master Index §1 stays a short overview. A complete feature map without this file can still be the wrong product.
+
+**Create:** **`prevent`** (and unset → prevent) at bootstrap / first live-docs build. **`balanced`** when 2+ feature stems or whole-product identity is fuzzy. **`ship-first`:** omit unless *lock product shape* / identity fight / file already exists. **Draft does not add a second hard coding gate.** **Confirmed** vision: do not implement a feature that fights it. Lock gate and real-fork Assumptions are Workflow §4 (do not restate). Empty Assumptions is success. Do not invent anti-product quizzes. Do not treat `docs/reference/` examples as the target unless clearly set. End-state picture is **not** a feature checklist or a phased roadmap.
+
+**Do not:** Silent-create on `ship-first`. Paste the vision into every Understanding. Turn Master Index into the end-state essay. De-confirm on an additive feature that still fits the picture.
 
 ---
 

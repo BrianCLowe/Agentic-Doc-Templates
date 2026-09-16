@@ -19,8 +19,8 @@
 Use when the stem is already **ready** under the docs profile and scope is unchanged:
 
 1. Read `docs/ADT-settings.yaml` → `docs_profile.mode` (else **prevent**); `orchestrator.git.mode` when relevant; **`standing.instructions` if non-empty**
-2. [`Master_Index.md`](../../Master_Index.md) — Sections 1–3 only
-3. Active TODO **Current focus** → that item’s Understanding *(if any — read-only)* → spec → code
+2. [`Master_Index.md`](../../Master_Index.md) — Sections 1–3 only. If [`Product-Vision.md`](../../Product-Vision.md) exists, read it (especially when `confirmed`)
+3. Active TODO **Current focus** → that item’s Understanding *(if any — read-only)* → spec → code. Do **not** implement a fight with a **confirmed** product vision
 4. **Stop.** Do **not** open workflow modules unless a row in the router below matches.
 
 **Ready when:**
@@ -46,6 +46,7 @@ Use when the stem is already **ready** under the docs profile and scope is uncha
 | Creating files / new Document Map row / split stem / inventory vs new row | [`workflow/naming-layout.md`](workflow/naming-layout.md) (§0) |
 | `_shared/` vs feature / foundation task placement | [`workflow/shared-components.md`](workflow/shared-components.md) (§1) |
 | Draft / revise Understanding · de-confirm gate · lock gate · assumption clean-out · relocate | [`workflow/understanding.md`](workflow/understanding.md) (§4) |
+| Whole-product vision / end-state picture / product vs feature fight | [`workflow/product-vision.md`](workflow/product-vision.md) (§4.5) |
 | Graduate confirmed shape → durable spec | [`workflow/understanding.md`](workflow/understanding.md) (§2) |
 | Path A vs Path B unclear · readiness table detail | [`workflow/implement.md`](workflow/implement.md) (§3) |
 | TODO layout · Current focus · operable done · exploration · kit covering TODOs | [`workflow/todos.md`](workflow/todos.md) (§5) |
@@ -117,6 +118,10 @@ See [`workflow/decisions.md`](workflow/decisions.md#10-decisions-lightweight).
 
 See [`workflow/tooling.md`](workflow/tooling.md#11-tooling-new-machine-setup).
 
+### 4.5 Product vision *(whole-product end-state)*
+
+See [`workflow/product-vision.md`](workflow/product-vision.md#45-product-vision). Optional on **ship-first**; create under **prevent**.
+
 ### 13. Human TODO *(inbox — needs a human)*
 
 See [`workflow/human-todo.md`](workflow/human-todo.md#13-human-todo-inbox--needs-a-human). Optional `team_inbox` in `ADT-settings.yaml` (omit / unset = human-only). Optional `docs/Team-Roster.md` only when enabled — handoff agents read; bots self-ID (Name / Jobs / Anti-jobs if defined); one initial PR for a full team.
@@ -126,6 +131,7 @@ See [`workflow/human-todo.md`](workflow/human-todo.md#13-human-todo-inbox--needs
 ## Instructions for AI Agents
 
 - **Master_Index.md** = *what this project is* and *where files live*.
+- **Product-Vision.md** = *the whole-product end-state* (when present) — [`workflow/product-vision.md`](workflow/product-vision.md). Feature map alone is not identity.
 - **This file** = *how to work* — paved path first; then **one** module from the router.
 - **Tooling.md** = *what to install on a new machine* (not package deps) — [`workflow/tooling.md`](workflow/tooling.md).
 - **Human-TODO.md** = *what only a human can close* — [`workflow/human-todo.md`](workflow/human-todo.md). Optional `team_inbox` assignees: same module (unset = human-only). **Team-Roster.md** = who exists + handoff (create only when enabled; do not invent bots).

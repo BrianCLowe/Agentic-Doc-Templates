@@ -10,7 +10,7 @@
 
 ## 1. Project Overview
 
-[1–3 short paragraphs describing what the project is, its core architecture, and primary goals. Keep it high-level — details live in feature files.]
+[1–3 short paragraphs describing what the project is, its core architecture, and primary goals. Keep it high-level — details live in feature files. Whole-product end-state: [`Product-Vision.md`](Product-Vision.md) when that file exists.]
 
 ### 1.1 Project Profile *(optional — fill once)*
 
@@ -37,6 +37,7 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 | `docs/reference/` | **Recommended:** chat exports (md) of idea threads — also design docs / PRDs / legacy specs. Not living modular docs ([Workflow](templates/agent/Modular_Docs_Workflow.md); tips: [`help/IDEA_CAPTURE_TIPS.md`](templates/help/IDEA_CAPTURE_TIPS.md)) |
 | `docs/reference/visuals/` | Optional inspiration screenshots before a feature exists |
 | `docs/Tooling.md` | Machine / workflow tools (not package deps) — install on a new machine ([`Tooling_Template.md`](templates/Tooling_Template.md)) |
+| `docs/Product-Vision.md` | Whole-product end-state picture — is / is not + how the map fits. **`prevent`:** create. **`ship-first`:** omit unless *lock product shape* ([`Product_Vision_Template.md`](templates/Product_Vision_Template.md)) |
 | `docs/Human-TODO.md` | Human inbox — procure, playtest, decide, waiting (agent cannot close from assumptions) ([`Human_TODO_Template.md`](templates/Human_TODO_Template.md)) |
 | `docs/Team-Roster.md` | Optional team inbox roster — Name, Jobs, Anti-jobs *(if defined)*, handoff. **Create only when `team_inbox` is enabled.** Handoff agents read; bots self-ID; one initial PR for a full team ([`Team_Roster_Template.md`](templates/Team_Roster_Template.md)) |
 | `docs/decisions/` | Optional cross-cutting decisions ([`Decision_Template.md`](templates/Decision_Template.md)) |
@@ -53,6 +54,7 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 | **File layout / kit leftovers** | Flat sibling files; no map-only planned rows; leftovers stay as TODOs on an existing stem. [§0](templates/agent/workflow/naming-layout.md#0-naming--file-layout-read-before-creating-files) · [§5.4](templates/agent/workflow/todos.md#54-finished-kit-contract--covering-todos-not-wait-for-pickup) |
 | **Understanding / Spec** | Shape vs contract. [§4](templates/agent/workflow/understanding.md#4-understanding-features--shared) · [§2](templates/agent/workflow/understanding.md#2-understanding--spec-graduation) |
 | **Shared** | Only when actually shared. Same note types as features unless the user excepted them in §3.0. [§1](templates/agent/workflow/shared-components.md#1-shared-components--foundation-vs-consumption) |
+| **Product vision** | [`Product-Vision.md`](Product-Vision.md) when present — whole-product end-state; feature Understandings must fit a **confirmed** vision. [§4.5](templates/agent/workflow/product-vision.md) |
 | **Human inbox / Tooling** | [`Human-TODO.md`](Human-TODO.md) · [`Tooling.md`](Tooling.md). Optional [`Team-Roster.md`](Team-Roster.md) when `team_inbox` is on |
 | **Size / split** | Split when a file is bloated. [§8](templates/agent/workflow/extensions.md#8-how-to-split-a-large-document) |
 
@@ -103,6 +105,7 @@ Leave this table **empty** (or with a single “*(none yet)*” note) unless a p
 
 | Document | Description |
 |----------|-------------|
+| [Product-Vision.md](Product-Vision.md) | Whole-product end-state — is / is not + one picture the map must fit ([`Product_Vision_Template.md`](templates/Product_Vision_Template.md)) |
 | [Human-TODO.md](Human-TODO.md) | Human inbox — agent dual-writes rows; you complete / give feedback in chat ([`Human_TODO_Template.md`](templates/Human_TODO_Template.md)) |
 | [Team-Roster.md](Team-Roster.md) | Optional — who can take follow-ups when `team_inbox` is on. Do not invent bots ([`Team_Roster_Template.md`](templates/Team_Roster_Template.md)) |
 | [Tooling.md](Tooling.md) | Machine / workflow tools — install on a new machine ([`Tooling_Template.md`](templates/Tooling_Template.md)) |

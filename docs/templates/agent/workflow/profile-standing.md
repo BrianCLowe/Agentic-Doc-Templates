@@ -14,6 +14,8 @@
 
 **Always required (all modes):** Master Index + Document Map, **spec**, **core TODO**, Human-TODO dual-write rules (§13). Catalog / decisions remain optional per their own sections.
 
+**Product vision** (`docs/Product-Vision.md` — whole-product end-state): **`prevent`** (and unset) → create at bootstrap. **`balanced`** → when 2+ feature stems or the whole is fuzzy. **`ship-first`** → omit unless *lock product shape*. Draft does **not** add a second coding gate. Confirmed → feature work must not fight it. [`product-vision.md`](product-vision.md) §4.5.
+
 **Unset `docs_profile`:** treat as **`prevent`**. Do **not** invent `ship-first` because files are missing.
 
 **Suggest once** *(bootstrap Step 3p preference batch / first “build from reference” / sync B0.5 if still unset)*:

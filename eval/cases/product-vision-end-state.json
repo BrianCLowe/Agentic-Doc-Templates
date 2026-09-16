@@ -1,0 +1,71 @@
+{
+  "id": "product-vision-end-state",
+  "title": "Product vision is the whole-product end-state; do not silent-create on ship-first",
+  "role": "feature-implementer",
+  "user": "Continue from Current focus.",
+  "fixture": "fixtures/ship-first-crud",
+  "expect": {
+    "files_must_not_exist": [
+      "docs/Product-Vision.md"
+    ]
+  },
+  "pack_contract": {
+    "source_must_include": [
+      {
+        "file": "docs/templates/Product_Vision_Template.md",
+        "patterns": [
+          "End-state picture",
+          "How the map fits",
+          "whole product",
+          "Not a feature checklist"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/workflow/product-vision.md",
+        "patterns": [
+          "4.5",
+          "end-state picture",
+          "Do **not** silent-create on `ship-first`",
+          "does **not** add a second hard coding gate",
+          "fights",
+          "Lock gate"
+        ]
+      },
+      {
+        "file": "docs/templates/CHANGELOG.md",
+        "patterns": [
+          "2.9.0",
+          "Product_Vision_Template.md",
+          "**do not** create",
+          "end-state picture"
+        ]
+      }
+    ],
+    "summaries_must_point": [
+      {
+        "file": "docs/templates/agent/BOOTSTRAP.md",
+        "must_contain": [
+          "Step 3v",
+          "Product-Vision.md",
+          "**Do not** create unless they asked *lock product shape*"
+        ],
+        "must_not_contain": []
+      },
+      {
+        "file": "docs/templates/agent/TEMPLATE_SYNC_B.md",
+        "must_contain": [
+          "Product-Vision.md",
+          "**`ship-first`:** do **not** create `Product-Vision.md`"
+        ]
+      },
+      {
+        "file": "DECISIONS.md",
+        "must_contain": [
+          "D21",
+          "end-state picture",
+          "Silent-create on `ship-first`"
+        ]
+      }
+    ]
+  }
+}

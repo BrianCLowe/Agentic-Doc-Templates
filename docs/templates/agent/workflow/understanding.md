@@ -30,6 +30,8 @@ See [`Feature_Spec_Template.md`](../../Feature_Spec_Template.md) and [`Feature_U
 
 Under **`prevent`**, each **feature** and substantial **shared component** gets a `-Understanding.md` — the agent’s model of **feature shape** (guardrails). **Not** a second durable spec. Under **`balanced`**, create when identity is ambiguous / multi-surface / split pressure / user asked. Under **`ship-first`**, only when user asks *lock shape* or the file already exists.
 
+**Whole product:** Feature is / is not is **one stem**. The cohesive end-state lives in `docs/Product-Vision.md` when that file exists — [`product-vision.md`](product-vision.md) §4.5. A feature that fights a **confirmed** product vision is a shape fight — do not implement it. Do not paste the product vision into every Understanding.
+
 - Features: `features/FeatureName-Understanding.md`
 - Shared: `_shared/ComponentName-Understanding.md`
 
