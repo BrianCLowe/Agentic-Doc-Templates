@@ -56,7 +56,7 @@ docs/
 ├── Tooling.md                   ← machine tools (not package deps)
 ├── Product-Vision.md            ← whole-product end-state (**prevent**; skip on ship-first unless you lock product shape)
 ├── Human-TODO.md                ← human inbox (procure, playtest, decide, waiting)
-├── Team-Roster.md               ← optional — only when team inbox is on (bots self-ID; do not invent)
+├── Team-Roster.md               ← optional — only when team inbox is on (named humans and bots self-ID; do not invent)
 ├── ADT-settings.yaml            ← pack prefs (profile, git, standing playbook overrides, tools, optionals, sync, upstream)
 ├── reference/                   ← design docs, chat exports, PRDs, legacy specs
 │   └── visuals/                 ← optional inspiration screenshots

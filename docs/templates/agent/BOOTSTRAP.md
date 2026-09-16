@@ -113,7 +113,7 @@ docs/
 ├── Tooling.md               ← from Tooling_Template.md (Step 3b — machine tools)
 ├── Product-Vision.md        ← from Product_Vision_Template.md (Step 3v — **prevent**; not ship-first)
 ├── Human-TODO.md            ← from Human_TODO_Template.md (Step 3c — human inbox)
-├── Team-Roster.md           ← from Team_Roster_Template.md **only if** team_inbox is already enabled (do not invent bots)
+├── Team-Roster.md           ← from Team_Roster_Template.md **only if** team_inbox is already enabled (do not invent teammates)
 ├── ADT-settings.yaml        ← pack prefs (tools, optionals, sync mode, upstream) when first recorded
 ├── _shared/
 │   └── assets/
@@ -189,9 +189,9 @@ If `docs/Human-TODO.md` does not exist:
 
 If it already exists → add newly discovered human-gated needs (procure / playtest / decide / waiting); do not wipe user-completed rows.
 
-**Do not** create `docs/Team-Roster.md` here. Unset `team_inbox` = human-only inbox, no roster file. If they **already** enabled team routing this turn, create the roster from [`Team_Roster_Template.md`](../Team_Roster_Template.md) (**human** fill-in only; do not invent bot rows). Bots self-ID later — [`workflow/human-todo.md`](workflow/human-todo.md).
+**Do not** create `docs/Team-Roster.md` here. Unset `team_inbox` = human-only inbox, no roster file. If they **already** enabled team routing this turn, create the roster from [`Team_Roster_Template.md`](../Team_Roster_Template.md) (named-human fill-in **only** if they self-IDed this turn; do not invent bot or human-name rows). Named humans and bots self-ID later — [`workflow/human-todo.md`](workflow/human-todo.md).
 
-## Step 3p — Project preferences *(one batch ask — before Step 3d)*
+## Step 3p — Project preferences *(one batch ask — before Step 3v / 3d)*
 
 **Mandatory:** Present **and explain** every still-unset preference below in **one** user-facing message. Do **not** drip-feed separate quizzes across later steps for the same keys. Skip only keys already set in `docs/ADT-settings.yaml`. Create/update that file from [`ADT-settings.example.yaml`](ADT-settings.example.yaml) when recording. Do **not** copy a `standing:` key from the example — omit it unless they already stated a playbook override. Do **not** copy a `team_inbox:` key from the example — omit it unless they already enabled team routing (unset = human-only inbox; do not silent-enable).
 
@@ -210,8 +210,8 @@ If it already exists → add newly discovered human-gated needs (procure / playt
 1. Skim conversation + `docs/reference/` if present (do not inventory the whole repo) for docs-profile + git recommendations only.
 2. Lead with: *“I need a few project preferences once — all in this message. Pick each or say ‘defaults’ / accept suggestions.”*
 3. For **each** unset row: short plain-language **what it does**, the **options**, and your **suggestion** (with 1–3 citations for docs profile when reference exists).
-4. Wait for answers (or “use your suggestions”) → record all chosen keys + `recorded` today + `source` where applicable → continue to Step 3d.
-5. If they only answer some rows, re-ask **only** the missing ones before 3d (docs profile is blocking for 3d).
+4. Wait for answers (or “use your suggestions”) → record all chosen keys + `recorded` today + `source` where applicable → continue to Step 3v.
+5. If they only answer some rows, re-ask **only** the missing ones before 3v (docs profile is blocking for 3d).
 
 ### A — Docs profile *(options to explain)*
 

@@ -124,7 +124,7 @@ See [`workflow/product-vision.md`](workflow/product-vision.md#45-product-vision)
 
 ### 13. Human TODO *(inbox — needs a human)*
 
-See [`workflow/human-todo.md`](workflow/human-todo.md#13-human-todo-inbox--needs-a-human). Optional `team_inbox` in `ADT-settings.yaml` (omit / unset = human-only). Optional `docs/Team-Roster.md` only when enabled — handoff agents read; bots self-ID (Name / Jobs / Anti-jobs if defined); one initial PR for a full team.
+See [`workflow/human-todo.md`](workflow/human-todo.md#13-human-todo-inbox--needs-a-human). Optional `team_inbox` in `ADT-settings.yaml` (omit / unset = human-only). Optional `docs/Team-Roster.md` only when enabled — handoff agents read; named humans and bots self-ID (Name / Jobs / Anti-jobs if defined); one initial PR for a full team.
 
 ---
 
@@ -134,5 +134,5 @@ See [`workflow/human-todo.md`](workflow/human-todo.md#13-human-todo-inbox--needs
 - **Product-Vision.md** = *the whole-product end-state* (when present) — [`workflow/product-vision.md`](workflow/product-vision.md). Feature map alone is not identity.
 - **This file** = *how to work* — paved path first; then **one** module from the router.
 - **Tooling.md** = *what to install on a new machine* (not package deps) — [`workflow/tooling.md`](workflow/tooling.md).
-- **Human-TODO.md** = *what only a human can close* — [`workflow/human-todo.md`](workflow/human-todo.md). Optional `team_inbox` assignees: same module (unset = human-only). **Team-Roster.md** = who exists + handoff (create only when enabled; do not invent bots).
+- **Human-TODO.md** = *what only a human can close* — [`workflow/human-todo.md`](workflow/human-todo.md). Optional `team_inbox` assignees: same module (unset = human-only). **Team-Roster.md** = who exists + handoff (named humans and bots; create only when enabled; do not invent teammates).
 - The installed agent rule ([`Modular_Documentation_Rule.mdc`](Modular_Documentation_Rule.mdc)) is a short checklist — open this index when creating files, Path A/B, graduation, profile/standing questions, or the user asks about procedure; then open only the named module.

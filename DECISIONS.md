@@ -29,6 +29,7 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 | D19 | Optional `team_inbox` is opt-in; unset = human-only inbox; do not force a bot org chart | accepted | 2.8.0 |
 | D20 | Team roster is two-stage (read vs self-ID); Name / Jobs / Anti-jobs if defined; one initial PR for a full team | accepted | 2.8.1 |
 | D21 | Product vision is the whole-product end-state picture; feature map alone is not identity | accepted | 2.9.0 |
+| D22 | Named humans self-ID onto the roster with their own slug; generic `human` is leftover bucket, not a teammate | accepted | 2.9.1 |
 
 ---
 
@@ -124,9 +125,9 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 
 ## D20 — Team roster is two-stage (read vs self-ID)
 
-**Decision:** When `team_inbox` is enabled, live **`docs/Team-Roster.md`** (from `Team_Roster_Template.md`) is the project-owned directory of **who exists** (**Name**), their **Jobs**, **Anti-jobs** *(only if defined — empty / `—` is correct)*, and **how to hand off**. `kind_defaults` stay the stamp map — stamp a `role_id` only when that id is **Active** on the roster. **Unset `team_inbox` → do not create the file.** When Name / Jobs / Anti-jobs / Follow-ups / Handoff **change**, the owning bot updates **its** row the same turn (report-only asks the proxy). Do not leave a stale job on the roster.
+**Decision:** When `team_inbox` is enabled, live **`docs/Team-Roster.md`** (from `Team_Roster_Template.md`) is the project-owned directory of **who exists** (**Name**), their **Jobs**, **Anti-jobs** *(only if defined — empty / `—` is correct)*, and **how to hand off**. `kind_defaults` stay the stamp map — stamp a `role_id` only when that id is **Active** on the roster. **Unset `team_inbox` → do not create the file.** When Name / Jobs / Anti-jobs / Follow-ups / Handoff **change**, the owning teammate updates **their** row the same turn (report-only asks the proxy). Do not leave a stale job on the roster.
 
-**Two stages:** (1) A coding agent that received a **handoff** **reads** the roster and assigns only to Active ids. It must **not** invent bot rows, copy example/other-project rosters, or backfill Active from `kind_defaults` / pack doc-roles / installed harness agents. Empty Active (plus optional `human` fill-in) is correct. Missing default → `unassigned`. (2) **Bots identify themselves** — write or refresh **their own** row only (user said they are that bot, or they were spawned as that `role_id`). **Report-only** bots do not edit the roster; they ask another bot/agent or the human to add **one** requested row. A human naming a bot *this turn* may be written as that one row. That is user fill-in, not invention.
+**Two stages:** (1) A coding agent that received a **handoff** **reads** the roster and assigns only to Active ids. It must **not** invent bot rows or human names, copy example/other-project rosters, or backfill Active from `kind_defaults` / pack doc-roles / installed harness agents. Empty Active is correct. Missing default → `unassigned` (do not fallback-stamp leftover `human` for human-gated kinds). (2) **Teammates identify themselves** — named humans and bots write or refresh **their own** row only. **Report-only** bots do not edit the roster; they ask another bot/agent or the human to add **one** requested row. A human naming a teammate *this turn* may be written as that one row. That is user fill-in, not invention.
 
 **One initial PR:** standing up `team_inbox` or adding a **full team** is **one scribe / one PR** that creates the roster (plus settings if needed). Other bots do **not** open competing `Team-Roster.md` PRs — join the open roster PR or wait for merge, then self-ID. Later one-bot updates may be their own PR, one writer at a time.
 
@@ -141,6 +142,14 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 **Create:** **`prevent`** (and unset → prevent) at bootstrap / first live-docs build / 2.9.0 sync. **`balanced`** when 2+ feature stems or whole-product identity is fuzzy. **`ship-first`:** omit unless *lock product shape* / identity fight / file already exists. **Draft source:** peek `docs/reference/` first (idea/identity exports); then fit existing map rows. **Do not** reconstruct the picture from the Document Map / feature Understandings / specs. **Draft does not add a second hard coding gate.** **Confirmed** vision: do not implement a feature that fights it. Lock gate and real-fork Assumptions are Workflow §4 (do not restate). Empty Assumptions is success. Do not invent anti-product quizzes. Do not treat `docs/reference/` examples as the target unless clearly set. End-state picture is **not** a feature checklist or a phased roadmap.
 
 **Do not:** Silent-create on `ship-first`. Paste the vision into every Understanding. Turn Master Index into the end-state essay. De-confirm on an additive feature that still fits the picture. Skip `reference/` because the map looks complete.
+
+---
+
+## D22 — Named humans are first-class roster assignees
+
+**Decision:** When `team_inbox` is enabled, human teammates put **themselves** on `docs/Team-Roster.md` with **their own** `role_id` / Name (slug of their name — `alex`, not leftover `human`). Human-TODO stays the inbox of *work*. Assignee is the named person’s slug so follow-ups go to that person. Generic `human` is an **optional leftover bucket** for unsigned human work, and only stamps when that id is Active. Missing Active default → `unassigned` so later *apply defaults to Open* can move the row after a bot or named human self-IDs.
+
+**Do not:** Dump every human onto leftover `human` / treat Human-TODO as the people directory. Do not invent human names. Do not fallback-stamp `human` for human-gated kinds when no Active row matches. Do not silent-enable `team_inbox` so people can “have a roster.”
 
 ---
 

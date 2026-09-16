@@ -25,7 +25,8 @@
           "Claim / reassign is override only",
           "Never paste secrets or bot credentials",
           "Team-Roster.md",
-          "coding agents on a handoff READ"
+          "coding agents on a handoff READ",
+          "named humans"
         ]
       },
       {
@@ -46,7 +47,10 @@
           "Do not invent",
           "Anti-jobs",
           "One initial PR",
-          "competing"
+          "competing",
+          "Human self-ID",
+          "fallback-stamp `human`",
+          "Put me on the roster as Alex"
         ]
       },
       {
@@ -59,7 +63,9 @@
           "not a live bot",
           "Anti-jobs",
           "Stale row",
-          "One initial PR"
+          "One initial PR",
+          "your** slug",
+          "leftover `human`"
         ]
       },
       {
@@ -71,7 +77,10 @@
           "Apply defaults to Open",
           "not forced into a bot team",
           "Assign playtest to QA",
-          "must **not** invent roster bots"
+          "must **not** invent roster bots",
+          "Active on [`Team-Roster.md`]",
+          "Put me on the roster as Alex",
+          "do not fallback-stamp `human`"
         ]
       },
       {
@@ -79,13 +88,16 @@
         "patterns": [
           "2.8.0",
           "2.8.1",
+          "2.9.1",
           "team_inbox",
           "claim / reassign",
           "assign-all-at-once",
           "no silent force",
           "no auto-stamp",
           "two-stage roster",
-          "self-ID"
+          "self-ID",
+          "named humans",
+          "fallback-stamp `human`"
         ]
       }
     ],
@@ -106,7 +118,7 @@
         "must_contain": [
           "team_inbox.enabled",
           "confirm report",
-          "Invent `Team-Roster.md` bot rows"
+          "Invent `Team-Roster.md` bot or human-name rows"
         ],
         "must_not_contain": [
           "Mark human-only items done; invent Human-TODO spam"
@@ -135,7 +147,16 @@
           "two-stage",
           "self-ID",
           "Anti-jobs",
-          "One initial PR"
+          "One initial PR",
+          "D22",
+          "Named humans"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/BOOTSTRAP.md",
+        "must_contain": [
+          "continue to Step 3v",
+          "named-human fill-in"
         ]
       }
     ]

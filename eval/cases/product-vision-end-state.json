@@ -51,7 +51,8 @@
         "must_contain": [
           "Step 3v",
           "Product-Vision.md",
-          "**Do not** create unless they asked *lock product shape*"
+          "**Do not** create unless they asked *lock product shape*",
+          "continue to Step 3v"
         ],
         "must_not_contain": []
       },

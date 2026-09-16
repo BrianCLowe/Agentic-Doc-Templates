@@ -156,7 +156,8 @@ upstream:
 # Unset / missing / enabled: false = today's behavior: everything waits on the
 # human. No auto-stamp. Not a mandatory multi-bot org chart. Do not force a project into
 # Brian's (or any other team's) workflow — each user/team works out who gets what.
-# Role ids are free-form strings the project defines, or "human".
+# Role ids are free-form strings the project defines — named-human slugs
+# (alex) or bot ids (qa). Leftover "human" is a catch-all bucket, not a person.
 # Never paste secrets or bot credentials here.
 #
 # Enabling team_inbox opts into assign-all-at-once:
@@ -171,14 +172,16 @@ upstream:
 #      kind_defaults. Do not re-stamp rows that already have an explicit
 #      assignee (claimed / reassigned).
 #   Team roster (docs/Team-Roster.md) is who exists (Name) + Jobs +
-#   Anti-jobs (if defined) + handoff. Create the live file only when
-#   team_inbox is enabled (empty Active except human fill-in). Two-stage:
-#   coding agents on a handoff READ only — do not invent bot rows. Bots
-#   SELF-ID their own row. Report-only bots ask another agent or the
-#   human to add them. Full-team stand-up = one scribe / one initial PR
-#   (do not open competing Team-Roster PRs). Update the row when Name /
-#   Jobs / Anti-jobs change. Do not invent anti-jobs. Do not backfill
-#   Active from kind_defaults or from this example.
+#   Anti-jobs (if defined) + handoff — named humans and bots. Create
+#   the live file only when team_inbox is enabled (empty Active until
+#   someone self-IDs). Two-stage: coding agents on a handoff READ only
+#   — do not invent bot rows or human names. Named humans and bots
+#   SELF-ID their own row (humans use their slug, not leftover human).
+#   Report-only bots ask another agent or the human to add them.
+#   Full-team stand-up = one scribe / one initial PR (do not open
+#   competing Team-Roster PRs). Update the row when Name / Jobs /
+#   Anti-jobs change. Do not invent anti-jobs. Do not backfill Active
+#   from kind_defaults or from this example.
 #   3. Claim / reassign is override only (human or allowed bot) — not the
 #      bulk path.
 #   4. Bot discovery — bots watch “my open rows” / one digest ping. Not one
@@ -188,7 +191,8 @@ upstream:
 #
 # Example stamp map some teams use (not pack-required defaults):
 #   playtest → qa; placement / YTF feel notes → ux (if they have one);
-#   procure / decide / secrets → human;
+#   procure / decide / secrets → a named human slug if they self-IDed,
+#   or leftover human if that row is Active, or leave unassigned;
 #   code implement → implementer (usually feature *-TODO.md, not Human-TODO);
 #   Understanding drain → understanding-author;
 #   nightly audit → report-only unless green-lit.
@@ -200,9 +204,9 @@ upstream:
 #   # Stamp map by Human-TODO kind — project overrides freely.
 #   kind_defaults:
 #     playtest: qa
-#     decide: human
-#     procure: human
-#     waiting: human
+#     decide: alex          # named-human slug if Active; leftover human otherwise
+#     procure: alex
+#     waiting: human        # leftover bucket only if that id is Active
 #   # claim_mode: open | kind_defaults_only
 #   #   open = any listed role may claim kinds in its may_claim; human always may assign/claim
 #   #   kind_defaults_only = stamp + override only via explicit claim/reassign

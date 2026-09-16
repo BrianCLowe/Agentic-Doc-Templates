@@ -131,6 +131,10 @@ Anything only you can close → `docs/Human-TODO.md`: procure, playtest/feel, de
 
 > Add the team — you open the roster PR.
 
+> Put me on the roster as Alex.
+
+> I'm Sam — I take decide and procure.
+
 > You are the QA bot — add yourself to the team roster.
 
 > Add the nightly auditor as report-only.
@@ -169,7 +173,7 @@ Anything only you can close → `docs/Human-TODO.md`: procure, playtest/feel, de
 | Force a subagent | `/understanding-author` … *(optional; usually unnecessary)* |
 | Tooling | *Install the project tooling for this machine.* |
 | Human TODO | *What’s left on the human TODO?* / *Checked [item] — [feedback].* / *I’ll take [item].* / *Assign playtest to QA.* / *Apply defaults to Open.* |
-| Team roster | *Enable team inbox.* / *Add the team — you open the roster PR.* / *You are the QA bot.* / *Add [bot] as report-only.* / *Update [bot]’s jobs / anti-jobs.* / *What’s on the team roster?* |
+| Team roster | *Enable team inbox.* / *Add the team — you open the roster PR.* / *Put me on the roster as Alex.* / *I'm Sam — I take decide and procure.* / *You are the QA bot.* / *Add [bot] as report-only.* / *Update [bot]’s jobs / anti-jobs.* / *What’s on the team roster?* |
 
 Optional roles (opt-in, never always-on): [`../agent/roles/README.md`](../agent/roles/README.md). Tool install paths: [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md).
 
@@ -186,7 +190,7 @@ Optional roles (opt-in, never always-on): [`../agent/roles/README.md`](../agent/
 | `docs/features/FeatureName-TODO.md` | Tasks + **Current focus** |
 | `docs/_shared/…` | Only for truly shared project pieces (may be empty) |
 | `docs/Tooling.md` / `docs/Human-TODO.md` | Machine tools / human inbox (procure · playtest · decide · waiting) |
-| `docs/Team-Roster.md` | Optional team inbox roster (Name / Jobs / Anti-jobs if defined; only when enabled — bots self-ID; one initial PR; coding agents do not invent) |
+| `docs/Team-Roster.md` | Optional team inbox roster (Name / Jobs / Anti-jobs if defined; only when enabled — named humans and bots self-ID; one initial PR; coding agents do not invent) |
 | `docs/reference/` | Source materials (not the living map) |
 | `docs/templates/` | Upstream pack — not live feature content |
 

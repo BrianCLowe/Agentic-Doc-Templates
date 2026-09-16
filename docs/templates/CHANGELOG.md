@@ -22,6 +22,20 @@
 
 ---
 
+## 2.9.1
+
+- **Live impact:** `versions-only`, `process-docs-only`, `content-templates`, `master-index`
+- **Files:**
+  - `VERSION` — 2.9.0 → 2.9.1
+  - `Team_Roster_Template.md` — named humans self-ID with **their slug** (`alex`), not leftover `human`. Human-TODO stays the work inbox. Empty Active until someone self-IDs. Optional leftover `human` bucket only if that id is Active
+  - `workflow/human-todo.md` — **Human self-ID** write path; missing Active → `unassigned` (do **not** fallback-stamp `human` for human-gated kinds). Stamp only Active `role_id`s
+  - `Human_TODO_Template.md` — Assignee legend: stamp from `kind_defaults` **only if Active on Team-Roster**; else `unassigned`. *Put me on the roster as Alex*
+  - `BOOTSTRAP.md` — Step 3p continues to **Step 3v** (was skipping Product-Vision)
+  - `ADT-settings.example.yaml` / help / workflow index / Master Index / modular rule — named-human pointers
+  - Root `DECISIONS.md` **D22** — do not silently undo
+  - Root `eval/` — `team-inbox-optional` covers named-human self-ID + no fallback-stamp
+- **Step B:** Bump Master Index **Pack version** to 2.9.1 from local `VERSION`. **`master-index`:** Team-Roster Key Locations / §3.4 blurb may mention named humans (file exists only when `team_inbox` is on). **`content-templates`:** if live `team_inbox.enabled` and `docs/Team-Roster.md` is missing → create from the template (do **not** invent bot or human-name rows; do **not** copy Row shape into Active). If a live roster already has a leftover `human` row, leave it — do not rewrite people onto invented slugs. If live Human-TODO is missing the Active-gate Assignee legend or *Put me on the roster* phrase, add those. If `team_inbox` is unset / `enabled: false` → **do not** create `Team-Roster.md`. Do **not** add `team_inbox` to live settings from the example. No live feature/shared scan. No `rules` tag — do not refresh installed modular rules from 2.9.1 alone.
+
 ## 2.9.0
 
 - **Live impact:** `versions-only`, `process-docs-only`, `content-templates`, `master-index`
