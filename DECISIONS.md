@@ -27,6 +27,7 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 | D17 | Assumptions = real forks only; lock obvious defaults; examples are not identity | accepted | 2.7.28 |
 | D18 | Sync summaries report the catch-up union only; `auto-all` ≠ every catalog tag | accepted | 2.7.29 |
 | D19 | Optional `team_inbox` is opt-in; unset = human-only inbox; do not force a bot org chart | accepted | 2.8.0 |
+| D20 | Team roster is two-stage: handoff agents read only; bots self-ID (or a proxy adds report-only) | accepted | 2.8.1 |
 
 ---
 
@@ -119,6 +120,14 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 **Decision:** `team_inbox` is an optional ADT-settings key for projects that want a human *or* a designated team-bot assignee on Human-TODO (and optionally human-gated feature TODO rows). Omit / unset / `enabled: false` = today’s human-only inbox (**no auto-stamp**). Enabling opts into **assign-all-at-once**: stamp Assignee from `kind_defaults` on dual-write; one-shot *apply defaults to Open* backfill for leftover unassigned rows. Do not re-stamp an explicit (claimed / reassigned) assignee. Claim / reassign is **override only**, not the bulk path. Bots discover work via “my open rows” / one digest ping — not one PR per claim. `kind_defaults` are the stamp map, still project-owned — not a mandatory org chart. Do not silent-enable, do not copy Brian’s (or any team’s) bot roster as pack-required defaults, do not auto-close without the assignee’s confirm report.
 
 **Do not:** Treat team routing as the new default. Do not paste secrets or bot credentials into docs. Do not replace feature `*-TODO.md` ownership of code work. Do not require a per-row claim to fill Assignee when `team_inbox` is enabled.
+
+## D20 — Team roster is two-stage (read vs self-ID)
+
+**Decision:** When `team_inbox` is enabled, live **`docs/Team-Roster.md`** (from `Team_Roster_Template.md`) is the project-owned directory of **who exists**, their **job**, and **how to hand off**. `kind_defaults` stay the stamp map — stamp a `role_id` only when that id is **Active** on the roster. **Unset `team_inbox` → do not create the file.**
+
+**Two stages:** (1) A coding agent that received a **handoff** **reads** the roster and assigns only to Active ids. It must **not** invent bot rows, copy example/other-project rosters, or backfill Active from `kind_defaults` / pack doc-roles / installed harness agents. Empty Active (plus optional `human` fill-in) is correct. Missing default → `unassigned`. (2) **Bots identify themselves** — write or refresh **their own** row only (user said they are that bot, or they were spawned as that `role_id`). **Report-only** bots do not edit the roster; they ask another bot/agent or the human to add **one** requested row. A human naming a bot *this turn* may be written as that one row. That is user fill-in, not invention.
+
+**Do not:** Silent-create `Team-Roster.md` on a human-only inbox. Do not treat pack adapters as roster bots. Do not paste secrets or bot credentials. Do not copy Brian’s (or any team’s) roster into the template as live defaults.
 
 ---
 

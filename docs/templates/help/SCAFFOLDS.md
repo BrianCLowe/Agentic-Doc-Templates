@@ -9,6 +9,7 @@ Live files under `docs/` are **fill-in blanks**. Teaching, examples, and “how 
 | `*-TODO.md` | Current focus + work list (operable / kit coverage) | [`USAGE.md`](USAGE.md) | [`workflow/todos.md`](../agent/workflow/todos.md) |
 | `Master_Index.md` | Overview + Document Map | [`SETUP.md`](SETUP.md) | [`workflow/naming-layout.md`](../agent/workflow/naming-layout.md) |
 | `Human-TODO.md` / `Tooling.md` | Inbox / machine tools | This pack’s help | [`workflow/human-todo.md`](../agent/workflow/human-todo.md) · [`workflow/tooling.md`](../agent/workflow/tooling.md) |
+| `Team-Roster.md` | Who exists + job + handoff *(only when `team_inbox` is on)* | This pack’s help | [`workflow/human-todo.md`](../agent/workflow/human-todo.md) — bots self-ID; handoff agents do not invent rows |
 | `docs/decisions/` | Cross-cutting **why** | [`USAGE.md`](USAGE.md) | [`workflow/decisions.md`](../agent/workflow/decisions.md) |
 
 **Compaction / new session / memory loss:** Agents re-open the [workflow index](../agent/Modular_Docs_Workflow.md), then **only** the matching router module. Do not reconstruct procedure from the scaffold or from chat memory. Humans stay in `help/` — you do not need the playbooks.

@@ -78,7 +78,7 @@ Move finished items here (as `- [x]`) so **Open** stays short.
 - Keep secrets out of git; use `.env.example` for variable *names* only.
 - Optional: check the box in **Open** yourself; still tell the agent so they sync the owner TODO and archive the row.
 - You can **claim** or **reassign** any Open item (*I’ll take the Score Target playtest.* / *Assign playtest to QA.*). That is an **override** — first fill is stamp-on-create (or one-shot *apply defaults to Open*). You are not forced into a bot team.
-- If this project enabled optional team inbox routing, new Open rows stamp Assignee from the project’s kind defaults (e.g. playtest → QA) and a team bot may pick up kinds its role allows (watch “my open rows” / one digest — not one PR per claim). Unset settings = this inbox waits on you, same as always; no auto-stamp.
+- If this project enabled optional team inbox routing, new Open rows stamp Assignee from the project’s kind defaults **when that role is on [`Team-Roster.md`](Team-Roster.md)**. Bots add themselves to the roster (report-only bots ask someone to add them). A coding agent on a handoff must **not** invent roster bots. Unset settings = this inbox waits on you, same as always; no auto-stamp; no Team-Roster file.
 
 **Kinds:**
 
@@ -106,7 +106,7 @@ Move finished items here (as `- [x]`) so **Open** stays short.
 | `playtest` · `decide` | Thin pointer + checkbox | Owner feature/shared `*-TODO.md` item |
 | `procure` · `waiting` | Row holds how-to / status | This file; features **link here** (do not copy portal steps into every TODO) |
 
-**Agent role:** Dual-write when creating a human-gated task (owner TODO item **and** a checkbox item here). When `team_inbox` is enabled, stamp Assignee from `kind_defaults` in that same edit. Do **not** mark done unless the user (or an allowed team-inbox assignee) said so. Do **not** invent procure/waiting items the project does not need.
+**Agent role:** Dual-write when creating a human-gated task (owner TODO item **and** a checkbox item here). When `team_inbox` is enabled, stamp Assignee from `kind_defaults` only if that `role_id` is Active on `Team-Roster.md`. Do **not** invent roster bots on a handoff. Do **not** mark done unless the user (or an allowed team-inbox assignee) said so. Do **not** invent procure/waiting items the project does not need.
 
 **Human role:** Work **Open**; tell the agent in chat when you finish or have feedback (phrases above). Agent syncs the owner doc and this list.
 

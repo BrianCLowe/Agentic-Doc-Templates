@@ -22,6 +22,19 @@
 
 ---
 
+## 2.8.1
+
+- **Live impact:** `versions-only`, `process-docs-only`, `content-templates`, `master-index`
+- **Files:**
+  - `VERSION` — 2.8.0 → 2.8.1
+  - `Team_Roster_Template.md` — **(new)** live `docs/Team-Roster.md` scaffold (create **only** when `team_inbox` is enabled). Empty Active + optional `human` fill-in is correct. Row-shape example is **not** a live bot
+  - `workflow/human-todo.md` — **two-stage roster:** coding agent on a handoff **reads** only (do not invent rows; stamp `kind_defaults` only if that `role_id` is Active); bots **self-ID** their own row; report-only bots ask another agent or the human to add them
+  - `Human_TODO_Template.md` / `ADT-settings.example.yaml` / workflow index / help / bootstrap / `TEMPLATE_SYNC_B.md` — pointers; do not silent-create the live roster on a human-only inbox
+  - `Master_Index_Template.md` — optional Key Locations / §3.4 row for Team-Roster
+  - Root `DECISIONS.md` **D20** — do not silently undo
+  - Root `eval/` — `team-inbox-optional` contract covers the roster split
+- **Step B:** Bump Master Index **Pack version** to 2.8.1 from local `VERSION`. **`master-index`:** add the optional Team-Roster Key Locations / §3.4 row (file exists only when `team_inbox` is on). **`content-templates`:** if live `team_inbox.enabled` and `docs/Team-Roster.md` is missing → create from the template (**human** fill-in only; do **not** invent bot rows; do **not** copy Row shape into Active). If `team_inbox` is unset / `enabled: false` → **do not** create `Team-Roster.md`. Do **not** add `team_inbox` to live settings from the example. No live feature/shared scan. No `rules` tag — do not refresh installed modular rules from 2.8.1 alone.
+
 ## 2.8.0
 
 - **Live impact:** `versions-only`, `process-docs-only`, `content-templates`

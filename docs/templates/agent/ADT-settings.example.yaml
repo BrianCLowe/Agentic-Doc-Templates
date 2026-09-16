@@ -161,12 +161,21 @@ upstream:
 #
 # Enabling team_inbox opts into assign-all-at-once:
 #   1. Stamp-on-dual-write — new Open rows get Assignee from kind_defaults in
-#      the same edit (e.g. all new playtest → qa). No claim PR / no per-row
-#      human click for the first fill.
-#   2. One-shot backfill — after enable + roster/kind_defaults, run
+#      the same edit only when that role_id is Active on Team-Roster.md
+#      (e.g. playtest → qa after QA self-IDed). Else unassigned. No claim
+#      PR / no per-row human click for the first fill. Do not invent a
+#      roster row to make the stamp work.
+#   2. One-shot backfill — after enable + kind_defaults, and after a
+#      matching role_id is Active on docs/Team-Roster.md, run
 #      “apply defaults to Open” once: fill unassigned Open rows from
 #      kind_defaults. Do not re-stamp rows that already have an explicit
 #      assignee (claimed / reassigned).
+#   Team roster (docs/Team-Roster.md) is who exists + job + handoff.
+#   Create the live file only when team_inbox is enabled (empty Active
+#   except human fill-in). Two-stage: coding agents on a handoff READ
+#   only — do not invent bot rows. Bots SELF-ID their own row. Report-only
+#   bots ask another agent or the human to add them. Do not backfill
+#   Active from kind_defaults or from this example.
 #   3. Claim / reassign is override only (human or allowed bot) — not the
 #      bulk path.
 #   4. Bot discovery — bots watch “my open rows” / one digest ping. Not one

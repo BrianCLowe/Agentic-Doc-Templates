@@ -55,6 +55,7 @@ docs/
 ├── Master_Index.md              ← project map (you maintain)
 ├── Tooling.md                   ← machine tools (not package deps)
 ├── Human-TODO.md                ← human inbox (procure, playtest, decide, waiting)
+├── Team-Roster.md               ← optional — only when team inbox is on (bots self-ID; do not invent)
 ├── ADT-settings.yaml            ← pack prefs (profile, git, standing playbook overrides, tools, optionals, sync, upstream)
 ├── reference/                   ← design docs, chat exports, PRDs, legacy specs
 │   └── visuals/                 ← optional inspiration screenshots

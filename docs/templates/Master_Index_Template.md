@@ -38,6 +38,7 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 | `docs/reference/visuals/` | Optional inspiration screenshots before a feature exists |
 | `docs/Tooling.md` | Machine / workflow tools (not package deps) — install on a new machine ([`Tooling_Template.md`](templates/Tooling_Template.md)) |
 | `docs/Human-TODO.md` | Human inbox — procure, playtest, decide, waiting (agent cannot close from assumptions) ([`Human_TODO_Template.md`](templates/Human_TODO_Template.md)) |
+| `docs/Team-Roster.md` | Optional team inbox roster — who exists + job + handoff. **Create only when `team_inbox` is enabled.** Handoff agents read; bots self-ID ([`Team_Roster_Template.md`](templates/Team_Roster_Template.md)) |
 | `docs/decisions/` | Optional cross-cutting decisions ([`Decision_Template.md`](templates/Decision_Template.md)) |
 | `docs/templates/` | Upstream template pack — scaffolds, `help/`, `agent/` (incl. [`Modular_Docs_Workflow.md`](templates/agent/Modular_Docs_Workflow.md) index + [`workflow/`](templates/agent/workflow/README.md) modules, optional [`roles/`](templates/agent/roles/README.md), per-tool [`tools/`](templates/agent/tools/README.md)); also [`VERSION`](templates/VERSION) and [`CHANGELOG.md`](templates/CHANGELOG.md) (Step B scope after sync) |
 | `docs/ADT-settings.yaml` | Pack preferences — **docs profile**, **orchestrator git**, **standing.instructions** (playbook overrides, not a notes pad), sync mode, tools, optionals, upstream stamps ([`ADT-settings.example.yaml`](templates/agent/ADT-settings.example.yaml); Workflow [§0.1](templates/agent/workflow/profile-standing.md#01-docs-profile-ceremony-modes) · [§0.2](templates/agent/workflow/profile-standing.md#02-standing-workflow-instructions-user-workflow-not-pack-enums); [orchestrator Git](templates/agent/roles/orchestrator.md)) |
@@ -52,7 +53,7 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 | **File layout / kit leftovers** | Flat sibling files; no map-only planned rows; leftovers stay as TODOs on an existing stem. [§0](templates/agent/workflow/naming-layout.md#0-naming--file-layout-read-before-creating-files) · [§5.4](templates/agent/workflow/todos.md#54-finished-kit-contract--covering-todos-not-wait-for-pickup) |
 | **Understanding / Spec** | Shape vs contract. [§4](templates/agent/workflow/understanding.md#4-understanding-features--shared) · [§2](templates/agent/workflow/understanding.md#2-understanding--spec-graduation) |
 | **Shared** | Only when actually shared. Same note types as features unless the user excepted them in §3.0. [§1](templates/agent/workflow/shared-components.md#1-shared-components--foundation-vs-consumption) |
-| **Human inbox / Tooling** | [`Human-TODO.md`](Human-TODO.md) · [`Tooling.md`](Tooling.md) |
+| **Human inbox / Tooling** | [`Human-TODO.md`](Human-TODO.md) · [`Tooling.md`](Tooling.md). Optional [`Team-Roster.md`](Team-Roster.md) when `team_inbox` is on |
 | **Size / split** | Split when a file is bloated. [§8](templates/agent/workflow/extensions.md#8-how-to-split-a-large-document) |
 
 Do **not** paste playbook procedure into this table. Compaction: re-open the [workflow index](templates/agent/Modular_Docs_Workflow.md), then one module.
@@ -103,6 +104,7 @@ Leave this table **empty** (or with a single “*(none yet)*” note) unless a p
 | Document | Description |
 |----------|-------------|
 | [Human-TODO.md](Human-TODO.md) | Human inbox — agent dual-writes rows; you complete / give feedback in chat ([`Human_TODO_Template.md`](templates/Human_TODO_Template.md)) |
+| [Team-Roster.md](Team-Roster.md) | Optional — who can take follow-ups when `team_inbox` is on. Do not invent bots ([`Team_Roster_Template.md`](templates/Team_Roster_Template.md)) |
 | [Tooling.md](Tooling.md) | Machine / workflow tools — install on a new machine ([`Tooling_Template.md`](templates/Tooling_Template.md)) |
 | [decisions/](decisions/) | Optional cross-cutting decision files ([`Decision_Template.md`](templates/Decision_Template.md)) |
 | [reference/LegacySpec.md](reference/LegacySpec.md) | Older detailed spec (read only when needed) |

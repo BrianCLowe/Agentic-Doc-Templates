@@ -51,7 +51,7 @@ Use when the stem is already **ready** under the docs profile and scope is uncha
 | TODO layout · Current focus · operable done · exploration · kit covering TODOs | [`workflow/todos.md`](workflow/todos.md) (§5) |
 | Spec Decisions (product/UI) | [`workflow/decisions.md`](workflow/decisions.md) (§10) |
 | Install tooling / Project verify handoff | [`workflow/tooling.md`](workflow/tooling.md) (§11) |
-| Human inbox dual-write · optional `team_inbox` assignees | [`workflow/human-todo.md`](workflow/human-todo.md) (§13) |
+| Human inbox dual-write · optional `team_inbox` · team roster (read vs self-ID) | [`workflow/human-todo.md`](workflow/human-todo.md) (§13) |
 | Game extensions · Catalog · sub-index · split large doc · Mermaid | [`workflow/extensions.md`](workflow/extensions.md) (§6–9 · §12) |
 | User asks “how does the workflow work?” | This index — then one module if they need depth |
 
@@ -119,7 +119,7 @@ See [`workflow/tooling.md`](workflow/tooling.md#11-tooling-new-machine-setup).
 
 ### 13. Human TODO *(inbox — needs a human)*
 
-See [`workflow/human-todo.md`](workflow/human-todo.md#13-human-todo-inbox--needs-a-human). Optional `team_inbox` in `ADT-settings.yaml` (omit / unset = human-only).
+See [`workflow/human-todo.md`](workflow/human-todo.md#13-human-todo-inbox--needs-a-human). Optional `team_inbox` in `ADT-settings.yaml` (omit / unset = human-only). Optional `docs/Team-Roster.md` only when enabled — handoff agents read; bots self-ID.
 
 ---
 
@@ -128,5 +128,5 @@ See [`workflow/human-todo.md`](workflow/human-todo.md#13-human-todo-inbox--needs
 - **Master_Index.md** = *what this project is* and *where files live*.
 - **This file** = *how to work* — paved path first; then **one** module from the router.
 - **Tooling.md** = *what to install on a new machine* (not package deps) — [`workflow/tooling.md`](workflow/tooling.md).
-- **Human-TODO.md** = *what only a human can close* — [`workflow/human-todo.md`](workflow/human-todo.md). Optional `team_inbox` assignees: same module (unset = human-only).
+- **Human-TODO.md** = *what only a human can close* — [`workflow/human-todo.md`](workflow/human-todo.md). Optional `team_inbox` assignees: same module (unset = human-only). **Team-Roster.md** = who exists + handoff (create only when enabled; do not invent bots).
 - The installed agent rule ([`Modular_Documentation_Rule.mdc`](Modular_Documentation_Rule.mdc)) is a short checklist — open this index when creating files, Path A/B, graduation, profile/standing questions, or the user asks about procedure; then open only the named module.

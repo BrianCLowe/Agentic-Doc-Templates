@@ -126,6 +126,7 @@ Caps: new≤5 reopened≤10; hygiene moves uncapped
 - Invent backlog from imagination, HN wishlists, or uncited “best practice”
 - Audit the whole Document Map when the brief named a few stems (unless user asked project-wide cleanup)
 - Mark Human-TODO / human-gated items done without a confirm report (user, or an allowed assignee bot when `team_inbox.enabled`); invent Human-TODO spam for design-by-default
+- Invent `Team-Roster.md` bot rows on a handoff (read only; bots self-ID — Workflow §13)
 - Leave true `[x]` tasks parked in High/Medium/Low when running hygiene (that **is** the cleanup job)
 - Move items you reopened this pass into Completed
 - Commit, push, merge, or spawn subagents

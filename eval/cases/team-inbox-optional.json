@@ -1,12 +1,15 @@
 {
   "id": "team-inbox-optional",
-  "title": "team_inbox is optional — unset stays human-only; claim/reassign is not a forced bot org chart",
+  "title": "team_inbox is optional — unset stays human-only; roster is two-stage (read vs self-ID), not a forced bot org chart",
   "role": "feature-implementer",
   "user": "What’s left on the human TODO?",
   "fixture": "fixtures/ship-first-crud",
   "expect": {
     "files_must_not_change": [
       "docs/ADT-settings.yaml"
+    ],
+    "files_must_not_exist": [
+      "docs/Team-Roster.md"
     ]
   },
   "pack_contract": {
@@ -20,7 +23,9 @@
           "Stamp-on-dual-write",
           "apply defaults to Open",
           "Claim / reassign is override only",
-          "Never paste secrets or bot credentials"
+          "Never paste secrets or bot credentials",
+          "Team-Roster.md",
+          "coding agents on a handoff READ"
         ]
       },
       {
@@ -34,7 +39,21 @@
           "apply defaults to Open",
           "one digest ping",
           "no silent agent close",
-          "assign playtest to QA"
+          "assign playtest to QA",
+          "two-stage",
+          "self-ID",
+          "report-only",
+          "Do not invent"
+        ]
+      },
+      {
+        "file": "docs/templates/Team_Roster_Template.md",
+        "patterns": [
+          "Team roster",
+          "when this project enabled `team_inbox`",
+          "Empty Active is correct",
+          "Bots **write their own row**",
+          "not a live bot"
         ]
       },
       {
@@ -45,18 +64,22 @@
           "reassign",
           "Apply defaults to Open",
           "not forced into a bot team",
-          "Assign playtest to QA"
+          "Assign playtest to QA",
+          "must **not** invent roster bots"
         ]
       },
       {
         "file": "docs/templates/CHANGELOG.md",
         "patterns": [
           "2.8.0",
+          "2.8.1",
           "team_inbox",
           "claim / reassign",
           "assign-all-at-once",
           "no silent force",
-          "no auto-stamp"
+          "no auto-stamp",
+          "two-stage roster",
+          "self-ID"
         ]
       }
     ],
@@ -65,7 +88,8 @@
         "file": "docs/templates/agent/Modular_Docs_Workflow.md",
         "must_contain": [
           "team_inbox",
-          "human-only"
+          "human-only",
+          "self-ID"
         ],
         "must_not_contain": [
           "enabled: true"
@@ -75,7 +99,8 @@
         "file": "docs/templates/agent/roles/todo-warden.md",
         "must_contain": [
           "team_inbox.enabled",
-          "confirm report"
+          "confirm report",
+          "Invent `Team-Roster.md` bot rows"
         ],
         "must_not_contain": [
           "Mark human-only items done; invent Human-TODO spam"
@@ -85,7 +110,8 @@
         "file": "docs/templates/agent/TEMPLATE_SYNC_B.md",
         "must_contain": [
           "Do **not** copy a `team_inbox:` key",
-          "do not silent-enable"
+          "do not silent-enable",
+          "Create `Team-Roster.md` from the template **only**"
         ],
         "must_not_contain": [
           "team_inbox.enabled: true"
@@ -95,10 +121,13 @@
         "file": "DECISIONS.md",
         "must_contain": [
           "D19",
+          "D20",
           "non-forcing",
           "human-only inbox",
           "assign-all-at-once",
-          "Do not silent-enable"
+          "Do not silent-enable",
+          "two-stage",
+          "self-ID"
         ]
       }
     ]

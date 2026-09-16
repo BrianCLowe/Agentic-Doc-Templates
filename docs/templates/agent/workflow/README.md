@@ -12,7 +12,7 @@
 | [`todos.md`](todos.md) | §5 · §5.1–5.4 | TODO / operable / Current focus / kit covering TODOs |
 | [`decisions.md`](decisions.md) | §10 Decisions | Product/UI preference capture |
 | [`tooling.md`](tooling.md) | §11 Tooling | Machine setup / Project verify |
-| [`human-todo.md`](human-todo.md) | §13 Human-TODO | Dual-write human inbox · optional `team_inbox` |
+| [`human-todo.md`](human-todo.md) | §13 Human-TODO | Dual-write human inbox · optional `team_inbox` · two-stage roster |
 | [`extensions.md`](extensions.md) | §6–9 · §12 | Game / catalog / split / Mermaid |
 
 **Maintainers:** Edit the module that owns the rule. Keep the index paved path + routing table in sync. Roles and always-on rules **summarize and link** here — do not restate full procedure.
