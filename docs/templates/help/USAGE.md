@@ -115,9 +115,17 @@ Anything only you can close → `docs/Human-TODO.md`: procure, playtest/feel, de
 
 > Human TODO: done Tutorial walkthrough.
 
+> Decided Default theme — keep Dev for boot.
+
 > Still waiting on Steam; leave it open.
 
 > Add Azure Bot registration to Human-TODO — we’re blocked.
+
+> I’ll take the Score Target playtest.
+
+> Assign playtest to QA.
+
+> Apply defaults to Open.
 
 ---
 
@@ -147,7 +155,7 @@ Anything only you can close → `docs/Human-TODO.md`: procure, playtest/feel, de
 | Optional role — graduate | *Understanding confirmed — graduate to the spec.* |
 | Force a subagent | `/understanding-author` … *(optional; usually unnecessary)* |
 | Tooling | *Install the project tooling for this machine.* |
-| Human TODO | *What’s left on the human TODO?* / *Checked [item] — [feedback].* |
+| Human TODO | *What’s left on the human TODO?* / *Checked [item] — [feedback].* / *I’ll take [item].* / *Assign playtest to QA.* / *Apply defaults to Open.* |
 
 Optional roles (opt-in, never always-on): [`../agent/roles/README.md`](../agent/roles/README.md). Tool install paths: [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md).
 

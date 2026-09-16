@@ -86,7 +86,7 @@ Ask your agent:
 
 > Bootstrap modular docs using `docs/templates/agent/BOOTSTRAP.md`.
 
-That creates the live `docs/` layout (Master Index, `reference/`, feature folders, …). On whole-repo / template installs it also auto-moves this pack’s root README/LICENSE/CONTRIBUTING into `docs/templates/agent/upstream/` when those files are clearly from Agentic Doc Templates, and removes Agentic-only GitHub issue/release config.
+That creates the live `docs/` layout (Master Index, `reference/`, feature folders, …). On whole-repo / template installs it also auto-moves this pack’s root README/LICENSE/CONTRIBUTING into `docs/templates/agent/upstream/` when those files are clearly from Agentic Doc Templates, and **deletes pack-only leftovers** (issue forms, `FUNDING.yml`, `release.yml`, `pack-checks.yml`, `.cursor/environment.json`, root `eval/`, `scripts/gen_role_adapters.py`, leftover `docs/templates/agent/scripts/*.py`, maintainer `DECISIONS.md`) — bootstrap Steps 1b–1d. Prefer **copy `docs/templates/` only** so those files never land in your app.
 
 ### 3. Build live docs from ideas
 
@@ -109,7 +109,7 @@ The agent refreshes `docs/templates/`, then follows [`CHANGELOG.md`](docs/templa
 
 ### Cursor plugin note
 
-**Compound Engineering** and **Superpowers** often override the modular-docs Cursor rule. Disable them (or their always-on skills) for this workspace if you rely on this pack. Details: [`USING_WITH_AGENTS.md`](docs/templates/help/USING_WITH_AGENTS.md#cursor).
+**Compound Engineering** and **Superpowers** often override the modular-docs Cursor rule. Disable them (or their always-on skills) for this workspace if you rely on this pack. Details: [`USING_WITH_AGENTS.md`](docs/templates/help/USING_WITH_AGENTS.md#cursor-conflict-note).
 
 ---
 

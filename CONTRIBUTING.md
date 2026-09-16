@@ -17,7 +17,7 @@ Here are the most helpful ways to contribute:
 - **Discussions** — Open-ended ideas and “how do I…?” questions are still welcome.
 - **Pull Requests** — Welcome for small, focused improvements to existing templates. Please keep changes aligned with the current lightweight, modular style.
 
-**Note for people who copy this repo into an app:** `.github/ISSUE_TEMPLATE/`, `.github/workflows/release.yml`, and `.github/FUNDING.yml` belong to *this* template project only. If they appear in your app after a whole-repo copy, delete them (bootstrap Step 1b does this). Prefer copying only `docs/templates/`.
+**Note for people who copy this repo into an app:** pack-only leftovers belong to *this* template project only — `.github/ISSUE_TEMPLATE/`, `.github/FUNDING.yml`, `.github/workflows/release.yml` / `pack-checks.yml`, `.cursor/environment.json`, root `eval/`, `scripts/gen_role_adapters.py`, leftover `docs/templates/agent/scripts/*.py`, and maintainer `DECISIONS.md`. If they appear in your app after a whole-repo copy, delete them (bootstrap Steps 1b–1d). Prefer copying only `docs/templates/`.
 
 ## What I'm Looking For
 
@@ -83,6 +83,14 @@ Thanks again for helping make these templates better. I genuinely appreciate it.
 | `LICENSE.md` | Relocate → `docs/templates/agent/upstream/LICENSE.md` |
 | `CONTRIBUTING.md` | Relocate → `docs/templates/agent/upstream/CONTRIBUTING.md` |
 | `DECISIONS.md` | **Delete** (pack-maintainer log — Step 1d) |
+| `.github/ISSUE_TEMPLATE/` | **Delete** if pack forms (Step 1b) |
+| `.github/FUNDING.yml` | **Delete** if this pack’s (Step 1b) |
+| `.github/workflows/release.yml` | **Delete** if pack Release workflow (Step 1b) |
+| `.github/workflows/pack-checks.yml` | **Delete** if pack integrity workflow (Step 1d) |
+| `.cursor/environment.json` | **Delete** if pack Cloud Agent env (Step 1c) |
+| root `eval/` | **Delete** if pack harness (Step 1d) |
+| `scripts/gen_role_adapters.py` | **Delete** (upstream CI helper — Step 1d) |
+| leftover `docs/templates/agent/scripts/*.py` | **Delete** (Step 1d) |
 
 That keeps your project root for **your** README and metadata. Attribution and upstream license text stay in `upstream/` inside the template pack.
 
@@ -92,4 +100,4 @@ That keeps your project root for **your** README and metadata. Attribution and u
 
 Do **not** put `CONTRIBUTING.md`, `LICENSE.md`, or the template pack README at `docs/` root — only under `docs/templates/agent/upstream/` when you need them for attribution.
 
-If a whole-repo copy left **`.github/ISSUE_TEMPLATE/`**, **`.github/workflows/release.yml`**, or **`.github/FUNDING.yml`** in your app, delete them — those are for Agentic Doc Templates upstream, not for your product. Bootstrap Step 1b removes them automatically.
+If a whole-repo copy left **`.github/ISSUE_TEMPLATE/`**, **`.github/FUNDING.yml`**, **`.github/workflows/release.yml`** / **`pack-checks.yml`**, pack **`.cursor/environment.json`**, root **`eval/`**, **`scripts/gen_role_adapters.py`**, leftover **`docs/templates/agent/scripts/*.py`**, or maintainer **`DECISIONS.md`** in your app, delete them — those are for Agentic Doc Templates upstream, not for your product. Bootstrap Steps 1b–1d remove them automatically.
