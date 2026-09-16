@@ -20,7 +20,19 @@ The Document Map + per-feature Understandings can be complete and still miss **w
 
 **Unset profile → prevent** → create. Do **not** silent-create on `ship-first`.
 
-If the file should exist and is missing → create from the template and draft from conversation / `docs/reference/` (lock obvious; do not invent a quiz). Fill **How the map fits** from existing Document Map rows only — one line each. Do not invent stems to fill the table.
+If the file should exist and is missing → create from the template and draft per **Draft source** below.
+
+### Draft source *(sync / bootstrap — do not rebuild from the map)*
+
+The feature map is **what exists**, not **what the product is**. Building the end-state picture by summarizing Document Map rows / feature Understandings / specs is the miss this file exists to prevent.
+
+**When drafting or filling a missing `Product-Vision.md` (TEMPLATE_SYNC Step B, bootstrap Step 3v, *lock product shape*):**
+
+1. **Peek `docs/reference/` first** if that folder has files. List names. Open **idea / identity** sources — chat exports, PRDs, “what this is” notes. If there are many files, open the **newest 3–5** identity-ish files (or ones the user pointed at). Do **not** skip the folder because the map looks complete. Do **not** open every vendor/API dump as vision source. Do **not** inventory the whole repo.
+2. Draft **What this product is / is NOT** + **End-state picture** from those files + this-turn conversation. Lock obvious defaults. Examples in `reference/` are **not** the target unless the user clearly set them as the target (Workflow §4). Empty Assumptions is success.
+3. **Then** fill **How the map fits** from **existing** Document Map rows only (one line each). The map is the **fit** table, not the source of the picture. Do not invent stems.
+
+**Do not:** Reconstruct the vision from Master Index §3 + `*-Understanding.md` + specs alone. Do not write a feature-checklist “end-state.” Do not skip `reference/` when it has idea threads.
 
 ### Shape sections only
 

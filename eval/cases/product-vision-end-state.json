@@ -28,7 +28,9 @@
           "Do **not** silent-create on `ship-first`",
           "does **not** add a second hard coding gate",
           "fights",
-          "Lock gate"
+          "Lock gate",
+          "Peek `docs/reference/` first",
+          "Reconstruct the vision from Master Index"
         ]
       },
       {
@@ -37,7 +39,9 @@
           "2.9.0",
           "Product_Vision_Template.md",
           "**do not** create",
-          "end-state picture"
+          "end-state picture",
+          "Peek `docs/reference/` first",
+          "Do not** build the picture by summarizing"
         ]
       }
     ],
@@ -55,7 +59,9 @@
         "file": "docs/templates/agent/TEMPLATE_SYNC_B.md",
         "must_contain": [
           "Product-Vision.md",
-          "**`ship-first`:** do **not** create `Product-Vision.md`"
+          "**`ship-first`:** do **not** create `Product-Vision.md`",
+          "Peek `docs/reference/` first",
+          "Do not** build the picture by summarizing"
         ]
       },
       {

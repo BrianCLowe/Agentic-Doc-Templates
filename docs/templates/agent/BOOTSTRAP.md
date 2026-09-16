@@ -271,7 +271,7 @@ Read `docs_profile.mode` (unset → **prevent**). See [`workflow/product-vision.
 
 | Profile | Action |
 |---------|--------|
-| **`prevent`** | If `docs/Product-Vision.md` is missing → copy [`Product_Vision_Template.md`](../Product_Vision_Template.md). Draft **What this product is / is NOT** + **End-state picture** from this conversation / `docs/reference/` (lock obvious; empty Assumptions OK). **How the map fits** stays empty until Step 3d, then fill from **existing** map rows only (one line each). Link from Master Index Key Locations / §3.4. |
+| **`prevent`** | If `docs/Product-Vision.md` is missing → copy [`Product_Vision_Template.md`](../Product_Vision_Template.md). **Peek `docs/reference/` first** if it has files (newest 3–5 idea/identity exports, or user-pointed). Draft **What this product is / is NOT** + **End-state picture** from those + this conversation (lock obvious; empty Assumptions OK). **Do not** build the picture from the Document Map / feature files. **How the map fits** stays empty until Step 3d, then fill from **existing** map rows only (one line each). Link from Master Index Key Locations / §3.4. |
 | **`balanced`** | Create only if they already named **2+ features** or whole-product identity is fuzzy / they asked *lock product shape*. Otherwise skip. |
 | **`ship-first`** | **Do not** create unless they asked *lock product shape*. |
 
