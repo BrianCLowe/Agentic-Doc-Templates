@@ -22,6 +22,17 @@
 
 ---
 
+## 2.9.2
+
+- **Live impact:** `versions-only`, `process-docs-only`, `content-templates`
+- **Files:**
+  - `VERSION` — 2.9.1 → 2.9.2
+  - `workflow/human-todo.md` — one-shot *apply defaults to Open* fills unassigned rows from `kind_defaults` **only if that `role_id` is Active**; else leave `unassigned` (same gate as stamp-on-dual-write). Do not lock rows onto a missing id
+  - `Human_TODO_Template.md` — Claim / backfill legend: Active-roster gate on *apply defaults to Open*
+  - `ADT-settings.example.yaml` / `DECISIONS.md` D19 — backfill Active gate
+  - Root `eval/` — `team-inbox-optional` covers backfill Active gate
+- **Step B:** Bump Master Index **Pack version** to 2.9.2 from local `VERSION`. **`content-templates`:** if live Human-TODO has the *apply defaults to Open* bullet without the Active-roster gate, add **only if that `role_id` is Active on Team-Roster; else leave `unassigned`**. Do **not** run *apply defaults to Open* during this sync unless the user asked and the default ids are Active. Do **not** re-stamp explicit assignees. Do **not** add `team_inbox` from the example. No live feature/shared scan. No `rules` tag — do not refresh installed modular rules from 2.9.2 alone.
+
 ## 2.9.1
 
 - **Live impact:** `versions-only`, `process-docs-only`, `content-templates`, `master-index`

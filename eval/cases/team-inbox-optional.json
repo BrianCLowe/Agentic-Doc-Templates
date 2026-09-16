@@ -26,7 +26,8 @@
           "Never paste secrets or bot credentials",
           "Team-Roster.md",
           "coding agents on a handoff READ",
-          "named humans"
+          "named humans",
+          "only if that role_id is Active on Team-Roster.md"
         ]
       },
       {
@@ -50,7 +51,8 @@
           "competing",
           "Human self-ID",
           "fallback-stamp `human`",
-          "Put me on the roster as Alex"
+          "Put me on the roster as Alex",
+          "only if that `role_id` is Active on the roster"
         ]
       },
       {
@@ -80,7 +82,8 @@
           "must **not** invent roster bots",
           "Active on [`Team-Roster.md`]",
           "Put me on the roster as Alex",
-          "do not fallback-stamp `human`"
+          "do not fallback-stamp `human`",
+          "only if that `role_id` is Active on [`Team-Roster.md`]"
         ]
       },
       {
@@ -89,6 +92,7 @@
           "2.8.0",
           "2.8.1",
           "2.9.1",
+          "2.9.2",
           "team_inbox",
           "claim / reassign",
           "assign-all-at-once",
@@ -97,7 +101,8 @@
           "two-stage roster",
           "self-ID",
           "named humans",
-          "fallback-stamp `human`"
+          "fallback-stamp `human`",
+          "only if that `role_id` is Active"
         ]
       }
     ],

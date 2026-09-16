@@ -42,7 +42,7 @@ When `docs/ADT-settings.yaml` → `team_inbox.enabled: true` (opts into assign-a
 - Each Open item carries **Assignee:** `<role_id>` · `unassigned` · leftover `human` *(only if that id is Active)*. Named humans use **their slug** (`alex`), not a generic dump onto Human-TODO. Role ids are strings the project defines.
 - **Assign-all-at-once (bulk path):**
   1. **Stamp-on-dual-write** — new Open rows get Assignee from `kind_defaults` in the same edit **when that `role_id` is Active on the roster** (e.g. all new `playtest` → `qa` after QA self-IDed; `decide` → `alex` after Alex self-IDed). First fill does not wait on a claim or a per-row click. Missing Active row → `unassigned` (do not invent the bot or a human name).
-  2. **One-shot backfill** — after the project enables `team_inbox` + roster / `kind_defaults`, agents (or a human) may run *apply defaults to Open* **once**: fill **unassigned** Open rows from `kind_defaults`. Do **not** repeatedly re-stamp rows that already have an explicit assignee (claimed / reassigned).
+  2. **One-shot backfill** — after the project enables `team_inbox` + roster / `kind_defaults`, agents (or a human) may run *apply defaults to Open* **once**: fill **unassigned** Open rows from `kind_defaults` **only if that `role_id` is Active on the roster**. If the default id is not Active → leave `unassigned`. Do **not** repeatedly re-stamp rows that already have an explicit assignee (claimed / reassigned).
 - **`kind_defaults` are the stamp map**, still project-owned — not a pack-required org chart. Stamp only when the `role_id` is **Active** on the team roster (below). Example defaults *some* teams use (not required): `playtest` → `qa`; `procure` / `decide` / secrets → a **named human slug** if they self-IDed, or leftover `human` if that row is Active. Do not invent `qa` / `ux` / other bots or human names to match a default.
 - **Claim / reassign is override only** (human or allowed bot) — not the bulk path. A human in chat (*assign playtest to QA* / *I’ll take it*) may always override. A bot may claim only kinds listed in its role’s `may_claim` (and only when `claim_mode` allows: `open` or `kind_defaults_only`).
 - **Bot discovery:** bots watch “my open rows” / one digest ping — **not** one PR per claim.
@@ -104,7 +104,7 @@ When **`team_inbox` is first enabled** or a **full team** is added in one go (se
 
 **Do not:** N bots × N PRs for the first roster. Do not treat “I must self-ID now” as a license to fork a conflicting Team-Roster branch.
 
-**After a new Active row:** optional one-shot *apply defaults to Open* for leftover `unassigned` rows whose `kind_defaults` now match that `role_id`. Do not re-stamp explicit assignees.
+**After a new Active row:** optional one-shot *apply defaults to Open* for leftover `unassigned` rows whose `kind_defaults` now match that **Active** `role_id`. Skip kinds whose default id is still missing from Active. Do not re-stamp explicit assignees.
 
 **Phrases:** *Enable team inbox* (one PR: settings + empty roster; no invented bots or names) · *Add the team — you open the roster PR* (one scribe) · *Put me on the roster as Alex* / *I'm Sam — I take decide and procure* (named-human self-ID) · *You are the QA bot* (bot self-ID; join the open roster PR if one exists) · *Add the nightly auditor as report-only* (proxy) · *Update the QA bot’s jobs* (stale-row) · *What’s on the team roster?*
 

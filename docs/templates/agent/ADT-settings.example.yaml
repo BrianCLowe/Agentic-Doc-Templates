@@ -166,11 +166,13 @@ upstream:
 #      (e.g. playtest → qa after QA self-IDed). Else unassigned. No claim
 #      PR / no per-row human click for the first fill. Do not invent a
 #      roster row to make the stamp work.
-#   2. One-shot backfill — after enable + kind_defaults, and after a
-#      matching role_id is Active on docs/Team-Roster.md, run
+#   2. One-shot backfill — after enable + kind_defaults, run
 #      “apply defaults to Open” once: fill unassigned Open rows from
-#      kind_defaults. Do not re-stamp rows that already have an explicit
-#      assignee (claimed / reassigned).
+#      kind_defaults only if that role_id is Active on Team-Roster.md.
+#      Else leave unassigned. Do not re-stamp rows that already have
+#      an explicit assignee (claimed / reassigned). Do not stamp an
+#      id that is not Active — that locks the row against a later
+#      self-ID.
 #   Team roster (docs/Team-Roster.md) is who exists (Name) + Jobs +
 #   Anti-jobs (if defined) + handoff — named humans and bots. Create
 #   the live file only when team_inbox is enabled (empty Active until
