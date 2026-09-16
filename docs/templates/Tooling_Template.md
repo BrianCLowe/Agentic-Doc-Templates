@@ -3,7 +3,7 @@
 > Never edit this template unless the user asks you to. Live file: `docs/Tooling.md` (copy from this template at bootstrap or when first needed).
 
 **Last Updated**: [YYYY-MM-DD]  
-**Related**: [Master_Index.md](Master_Index.md) · [workflow/tooling.md](agent/workflow/tooling.md) §11
+**Related**: [Master_Index.md](Master_Index.md) · [workflow/tooling.md](templates/agent/workflow/tooling.md) §11
 
 ---
 
@@ -119,7 +119,7 @@ Track which boxes are set up so gaps are obvious. Delete this section if unused.
 
 ## Instructions for AI Agents
 
-Install from the tables above. Procedure: [`workflow/tooling.md`](agent/workflow/tooling.md). Do not invent tools or write secrets.
+Install from the tables above. Procedure: [`workflow/tooling.md`](templates/agent/workflow/tooling.md). Do not invent tools or write secrets.
 
 ## Instructions for Humans
 

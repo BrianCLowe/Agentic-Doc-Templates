@@ -182,14 +182,14 @@ If it already exists → do not overwrite; offer to update rows when the stack c
 If `docs/Human-TODO.md` does not exist:
 
 1. Copy from `docs/templates/Human_TODO_Template.md`.
-2. Add Open rows for any human-gated needs implied by the conversation / Document Map — `procure` (keys/portals), `playtest`, `decide`, or `waiting`. Leave empty Open table if none yet.
+2. Add Open rows for any human-gated needs implied by the conversation / Document Map — `procure` (keys/portals), `playtest`, `decide`, or `waiting`. If none yet, leave the Open **list** empty (not a table — Workflow §13).
 3. Ensure Master Index §3.3 / §3.4 link to `Human-TODO.md`.
 
 If it already exists → add newly discovered human-gated needs (procure / playtest / decide / waiting); do not wipe user-completed rows.
 
 ## Step 3p — Project preferences *(one batch ask — before Step 3d)*
 
-**Mandatory:** Present **and explain** every still-unset preference below in **one** user-facing message. Do **not** drip-feed separate quizzes across later steps for the same keys. Skip only keys already set in `docs/ADT-settings.yaml`. Create/update that file from [`ADT-settings.example.yaml`](ADT-settings.example.yaml) when recording. Do **not** copy a `standing:` key from the example — omit it unless they already stated a playbook override.
+**Mandatory:** Present **and explain** every still-unset preference below in **one** user-facing message. Do **not** drip-feed separate quizzes across later steps for the same keys. Skip only keys already set in `docs/ADT-settings.yaml`. Create/update that file from [`ADT-settings.example.yaml`](ADT-settings.example.yaml) when recording. Do **not** copy a `standing:` key from the example — omit it unless they already stated a playbook override. Do **not** copy a `team_inbox:` key from the example — omit it unless they already enabled team routing (unset = human-only inbox; do not silent-enable).
 
 **You must include** (when unset):
 

@@ -34,6 +34,10 @@ Enabled-mode row shape *(only when `team_inbox` is on — do not copy Assignee o
   Owner: [ScoreTarget-TODO.md](features/ScoreTarget-TODO.md) — "Tune win target" · Blocks: ScoreTarget  
   Notes: Agent: capture feel notes on owner TODO
 
+- [ ] **[e.g. Default theme — keep Dev for boot?]** (`decide`)  
+  Owner: [Theme-TODO.md](features/Theme-TODO.md) — "Pick boot theme" · Blocks: Theme  
+  Notes: Agent: capture the pick on owner TODO
+
 - [ ] **[e.g. Entra app registration + client secret]** (`procure`)  
   Owner: this file · Blocks: [GraphAuth-TODO.md](features/GraphAuth-TODO.md)  
   Notes: Secret → `.env` / Key Vault — **not** this file

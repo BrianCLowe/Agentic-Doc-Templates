@@ -16,6 +16,7 @@ body:
         - README
         - docs/templates/help/SETUP.md
         - docs/templates/help/USAGE.md
+        - docs/templates/help/SCAFFOLDS.md
         - docs/templates/help/IDEA_CAPTURE_TIPS.md
         - docs/templates/help/USING_WITH_AGENTS.md
         - docs/templates/agent/BOOTSTRAP.md

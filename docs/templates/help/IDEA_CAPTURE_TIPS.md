@@ -2,7 +2,7 @@
 
 You do not need to be a software developer to use these templates well. Agents guess when details are missing — and guesses drift from what you actually want. The fix is not “learn to code first”; it is **describing the idea in plain language** using the kinds of details below.
 
-Your answers in chat feed the agent's draft of [`Feature_Understanding_Template.md`](../Feature_Understanding_Template.md) — the file **the agent writes first** and **you confirm for shape / guardrails** (is / is not + real-fork Assumptions) before building. That is **not** a full-spec review. You describe the idea; you do not need to write this file yourself. Examples in chat or `docs/reference/` are not the target unless you clearly set them as the target.
+Under **`prevent`** (or when an Understanding already exists), your answers in chat feed the agent's draft of [`Feature_Understanding_Template.md`](../Feature_Understanding_Template.md) — the file **the agent writes first** and **you confirm for shape / guardrails** (is / is not + real-fork Assumptions) before building. **`ship-first`** is first-class for typed APIs / CRUD: spec + TODO from day one; Understanding only if you *lock shape*. That is **not** a full-spec review. You describe the idea; you do not need to write this file yourself. Examples in chat or `docs/reference/` are not the target unless you clearly set them as the target.
 
 ---
 
