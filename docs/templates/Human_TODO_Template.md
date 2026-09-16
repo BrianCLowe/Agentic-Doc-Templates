@@ -73,12 +73,14 @@ Move finished items here (as `- [x]`) so **Open** stays short.
   - *I’ll take the Score Target playtest.*
   - *Assign playtest to QA.*
   - *Apply defaults to Open.*
+  - *Add the team — you open the roster PR.*
+  - *Update [bot]’s jobs / anti-jobs.*
   - *What’s left on the human TODO?*
 
 - Keep secrets out of git; use `.env.example` for variable *names* only.
 - Optional: check the box in **Open** yourself; still tell the agent so they sync the owner TODO and archive the row.
 - You can **claim** or **reassign** any Open item (*I’ll take the Score Target playtest.* / *Assign playtest to QA.*). That is an **override** — first fill is stamp-on-create (or one-shot *apply defaults to Open*). You are not forced into a bot team.
-- If this project enabled optional team inbox routing, new Open rows stamp Assignee from the project’s kind defaults **when that role is on [`Team-Roster.md`](Team-Roster.md)**. Bots add themselves to the roster (report-only bots ask someone to add them). A coding agent on a handoff must **not** invent roster bots. Unset settings = this inbox waits on you, same as always; no auto-stamp; no Team-Roster file.
+- If this project enabled optional team inbox routing, new Open rows stamp Assignee from the project’s kind defaults **when that role is on [`Team-Roster.md`](Team-Roster.md)**. Bots add themselves (Name, Jobs, Anti-jobs if defined). Report-only bots ask someone to add them. Standing up a full team: **one** agent opens the roster PR — do not race competing PRs. A coding agent on a handoff must **not** invent roster bots. Unset settings = this inbox waits on you, same as always; no auto-stamp; no Team-Roster file.
 
 **Kinds:**
 

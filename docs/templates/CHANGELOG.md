@@ -27,8 +27,8 @@
 - **Live impact:** `versions-only`, `process-docs-only`, `content-templates`, `master-index`
 - **Files:**
   - `VERSION` — 2.8.0 → 2.8.1
-  - `Team_Roster_Template.md` — **(new)** live `docs/Team-Roster.md` scaffold (create **only** when `team_inbox` is enabled). Empty Active + optional `human` fill-in is correct. Row-shape example is **not** a live bot
-  - `workflow/human-todo.md` — **two-stage roster:** coding agent on a handoff **reads** only (do not invent rows; stamp `kind_defaults` only if that `role_id` is Active); bots **self-ID** their own row; report-only bots ask another agent or the human to add them
+  - `Team_Roster_Template.md` — **(new)** live `docs/Team-Roster.md` scaffold (create **only** when `team_inbox` is enabled). Columns: **Name**, **Jobs**, **Anti-jobs** *(if defined)*, Follow-ups, Handoff, Roster write. Empty Active + optional `human` fill-in is correct. Row-shape example is **not** a live bot. Update the row when jobs change
+  - `workflow/human-todo.md` — **two-stage roster:** coding agent on a handoff **reads** only (do not invent rows; stamp `kind_defaults` only if that `role_id` is Active); bots **self-ID** their own row (Name / Jobs / Anti-jobs if defined); report-only bots ask another agent or the human to add them. **One initial PR** when standing up a full team — do not open competing roster PRs. Stale-row: update same turn when duties change
   - `Human_TODO_Template.md` / `ADT-settings.example.yaml` / workflow index / help / bootstrap / `TEMPLATE_SYNC_B.md` — pointers; do not silent-create the live roster on a human-only inbox
   - `Master_Index_Template.md` — optional Key Locations / §3.4 row for Team-Roster
   - Root `DECISIONS.md` **D20** — do not silently undo

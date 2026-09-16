@@ -27,7 +27,7 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 | D17 | Assumptions = real forks only; lock obvious defaults; examples are not identity | accepted | 2.7.28 |
 | D18 | Sync summaries report the catch-up union only; `auto-all` ≠ every catalog tag | accepted | 2.7.29 |
 | D19 | Optional `team_inbox` is opt-in; unset = human-only inbox; do not force a bot org chart | accepted | 2.8.0 |
-| D20 | Team roster is two-stage: handoff agents read only; bots self-ID (or a proxy adds report-only) | accepted | 2.8.1 |
+| D20 | Team roster is two-stage (read vs self-ID); Name / Jobs / Anti-jobs if defined; one initial PR for a full team | accepted | 2.8.1 |
 
 ---
 
@@ -123,11 +123,13 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 
 ## D20 — Team roster is two-stage (read vs self-ID)
 
-**Decision:** When `team_inbox` is enabled, live **`docs/Team-Roster.md`** (from `Team_Roster_Template.md`) is the project-owned directory of **who exists**, their **job**, and **how to hand off**. `kind_defaults` stay the stamp map — stamp a `role_id` only when that id is **Active** on the roster. **Unset `team_inbox` → do not create the file.**
+**Decision:** When `team_inbox` is enabled, live **`docs/Team-Roster.md`** (from `Team_Roster_Template.md`) is the project-owned directory of **who exists** (**Name**), their **Jobs**, **Anti-jobs** *(only if defined — empty / `—` is correct)*, and **how to hand off**. `kind_defaults` stay the stamp map — stamp a `role_id` only when that id is **Active** on the roster. **Unset `team_inbox` → do not create the file.** When Name / Jobs / Anti-jobs / Follow-ups / Handoff **change**, the owning bot updates **its** row the same turn (report-only asks the proxy). Do not leave a stale job on the roster.
 
 **Two stages:** (1) A coding agent that received a **handoff** **reads** the roster and assigns only to Active ids. It must **not** invent bot rows, copy example/other-project rosters, or backfill Active from `kind_defaults` / pack doc-roles / installed harness agents. Empty Active (plus optional `human` fill-in) is correct. Missing default → `unassigned`. (2) **Bots identify themselves** — write or refresh **their own** row only (user said they are that bot, or they were spawned as that `role_id`). **Report-only** bots do not edit the roster; they ask another bot/agent or the human to add **one** requested row. A human naming a bot *this turn* may be written as that one row. That is user fill-in, not invention.
 
-**Do not:** Silent-create `Team-Roster.md` on a human-only inbox. Do not treat pack adapters as roster bots. Do not paste secrets or bot credentials. Do not copy Brian’s (or any team’s) roster into the template as live defaults.
+**One initial PR:** standing up `team_inbox` or adding a **full team** is **one scribe / one PR** that creates the roster (plus settings if needed). Other bots do **not** open competing `Team-Roster.md` PRs — join the open roster PR or wait for merge, then self-ID. Later one-bot updates may be their own PR, one writer at a time.
+
+**Do not:** Silent-create `Team-Roster.md` on a human-only inbox. Do not treat pack adapters as roster bots. Do not paste secrets or bot credentials. Do not copy Brian’s (or any team’s) roster into the template as live defaults. Do not invent anti-jobs. Do not race N roster-create PRs.
 
 ---
 

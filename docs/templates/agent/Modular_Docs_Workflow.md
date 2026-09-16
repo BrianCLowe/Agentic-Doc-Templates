@@ -119,7 +119,7 @@ See [`workflow/tooling.md`](workflow/tooling.md#11-tooling-new-machine-setup).
 
 ### 13. Human TODO *(inbox — needs a human)*
 
-See [`workflow/human-todo.md`](workflow/human-todo.md#13-human-todo-inbox--needs-a-human). Optional `team_inbox` in `ADT-settings.yaml` (omit / unset = human-only). Optional `docs/Team-Roster.md` only when enabled — handoff agents read; bots self-ID.
+See [`workflow/human-todo.md`](workflow/human-todo.md#13-human-todo-inbox--needs-a-human). Optional `team_inbox` in `ADT-settings.yaml` (omit / unset = human-only). Optional `docs/Team-Roster.md` only when enabled — handoff agents read; bots self-ID (Name / Jobs / Anti-jobs if defined); one initial PR for a full team.
 
 ---
 

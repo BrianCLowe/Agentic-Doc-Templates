@@ -54,7 +54,20 @@ When `docs/ADT-settings.yaml` → `team_inbox.enabled: true` (opts into assign-a
 
 Live file: **`docs/Team-Roster.md`** (from [`Team_Roster_Template.md`](../../Team_Roster_Template.md)). **Create only when `team_inbox` is enabled.** Unset inbox → do **not** create the file.
 
-`kind_defaults` is the stamp map (kind → `role_id`). The roster is **who that id is**, their **job**, and **how to hand off**. A coding agent cannot discover bots from pack doc-roles, `.grok/agents/`, or another team’s settings.
+`kind_defaults` is the stamp map (kind → `role_id`). The roster is **who that id is** (**Name**), their **Jobs**, **Anti-jobs** *(if defined)*, and **how to hand off**. A coding agent cannot discover bots from pack doc-roles, `.grok/agents/`, or another team’s settings.
+
+**Row fields:**
+
+| Field | Fill with | Do not |
+|-------|-----------|--------|
+| **Name** | Display name / handle / spawn name (no secrets) | Invent a teammate |
+| **Jobs** | Duties they actually take (plural OK, short) | Copy another team’s jobs |
+| **Anti-jobs** | Real “must not” only. `—` / empty if none defined | Invent anti-jobs to look complete |
+| **Follow-ups** | Kinds / follow-up types they take | Guess kinds they never claimed |
+| **Handoff** | How a coding agent gives them work | Paste credentials |
+| **Roster write** | `self` · `report-only` · `—` (human) | |
+
+**Stale row:** if Name, Jobs, Anti-jobs, Follow-ups, or Handoff **change**, the bot updates **its** row the same turn (report-only asks the proxy). Handoff coding agents do **not** rewrite another bot’s duties. Do not leave yesterday’s job on the roster.
 
 **Stage 1 — coding agent on a handoff (read only):**
 
@@ -75,12 +88,23 @@ You may write the roster **only** when **one** of these is true:
 | **User-stated this turn** | The human named the bot (*we have a QA grok bot called X*) — add **that** row only |
 | **Report-only proxy** | A report-only bot (or the human) asked you to add/update **their** row — add **that** row only |
 
-**Self-ID steps:** create `docs/Team-Roster.md` from the template if missing → add or refresh **your** Active row (`role_id`, Who, Job, Follow-ups, Handoff, `Roster write: self`) → match `team_inbox.roles` / `kind_defaults` if those keys already name you → **stop**. Do **not** add teammates. Do **not** invent duties you were not given.
+**Self-ID steps:** create `docs/Team-Roster.md` from the template if missing → add or refresh **your** Active row (`role_id`, Name, Jobs, Anti-jobs if defined else `—`, Follow-ups, Handoff, `Roster write: self`) → match `team_inbox.roles` / `kind_defaults` if those keys already name you → **stop**. Do **not** add teammates. Do **not** invent jobs or anti-jobs you were not given.
 
-**Report-only bots:** do **not** edit the roster (and do not invent a coding-agent row for yourself). Ask another bot/agent or the human: *add me to Team-Roster as `role_id` … job … follow-ups … handoff … (`report-only`)*. One digest ping is enough. The helper writes **only** the requested row, sets `Roster write: report-only`, and stops.
+**Report-only bots:** do **not** edit the roster (and do not invent a coding-agent row for yourself). Ask another bot/agent or the human: *add me to Team-Roster as `role_id` … Name … Jobs … Anti-jobs (or —) … follow-ups … handoff … (`report-only`)*. One digest ping is enough. The helper writes **only** the requested row, sets `Roster write: report-only`, and stops.
+
+### One initial PR *(full-team stand-up — no competing roster PRs)*
+
+When **`team_inbox` is first enabled** or a **full team** is added in one go (several bots named, *add the team*, *stand up the roster*):
+
+1. **One scribe** opens **one** PR that creates `docs/Team-Roster.md` (+ `team_inbox` settings if not already recorded). The scribe is the agent that received *Enable team inbox* / *add the team*, or the first bot asked to stand up the roster — not every bot at once.
+2. That PR may include **user-stated** rows from this turn (Name / Jobs / Anti-jobs if the human defined them). Do not invent the rest of the org chart.
+3. **Other bots do not open a second PR** that creates or rebases `Team-Roster.md`. If an open PR already touches the roster or `team_inbox` → add your self-ID on **that** PR if asked, or **wait for merge**, then self-ID. Do not race two “create Team-Roster” branches.
+4. After the file exists on the default branch, later one-bot self-ID / stale-row updates may be their own small PR — still **one file writer at a time**. Check for an open roster PR first.
+
+**Do not:** N bots × N PRs for the first roster. Do not treat “I must self-ID now” as a license to fork a conflicting Team-Roster branch.
 
 **After a new Active row:** optional one-shot *apply defaults to Open* for leftover `unassigned` rows whose `kind_defaults` now match that `role_id`. Do not re-stamp explicit assignees.
 
-**Phrases:** *Enable team inbox* (settings + empty roster; no invented bots) · *You are the QA bot* (self-ID) · *Add the nightly auditor as report-only* (proxy) · *What’s on the team roster?*
+**Phrases:** *Enable team inbox* (one PR: settings + empty roster; no invented bots) · *Add the team — you open the roster PR* (one scribe) · *You are the QA bot* (self-ID; join the open roster PR if one exists) · *Add the nightly auditor as report-only* (proxy) · *Update the QA bot’s jobs* (stale-row) · *What’s on the team roster?*
 
 ---

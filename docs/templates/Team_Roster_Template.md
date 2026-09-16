@@ -11,16 +11,20 @@
 
 **Humans:** [`help/SCAFFOLDS.md`](help/SCAFFOLDS.md). Inbox: [`Human-TODO.md`](Human-TODO.md).
 
-**Agents:** Fill-in blanks. Two-stage roster (read vs self-ID / report-only proxy): [`agent/workflow/human-todo.md`](agent/workflow/human-todo.md).
+**Agents:** Fill-in blanks. Two-stage roster (read vs self-ID / report-only proxy · one initial PR · update when jobs change): [`agent/workflow/human-todo.md`](agent/workflow/human-todo.md).
 
 ---
 
 ## Active
 
-| role_id | Who | Job | Follow-ups | Handoff | Roster write |
-|---------|-----|-----|------------|---------|--------------|
-| human | [name or "project owner"] | Sign-off / inbox owner | procure · decide · waiting | chat | — |
-| [add only by self-ID, user-stated this turn, or report-only proxy] | | | | | |
+| role_id | Name | Jobs | Anti-jobs | Follow-ups | Handoff | Roster write |
+|---------|------|------|-----------|------------|---------|--------------|
+| human | [name or "project owner"] | Sign-off / inbox owner | [— unless defined] | procure · decide · waiting | chat | — |
+| [add only by self-ID, user-stated this turn, or report-only proxy] | | | | | | |
+
+**Anti-jobs:** only real “must not” duties. `—` / empty is correct. Do not invent some to look complete.
+
+**Stale row:** when Name, Jobs, Anti-jobs, Follow-ups, or Handoff change → the bot updates **its** row the same turn (report-only asks the proxy). Do not leave yesterday’s job on the roster.
 
 **Roster write:** `self` = this bot updates its own row. `report-only` = another agent or the human adds/updates the row when asked. `—` = human.
 
@@ -31,9 +35,9 @@
 Do **not** copy this into Active unless that bot exists and is self-IDing / user-named / proxy-requested.
 
 ```
-| [role_id] | [handle or spawn name] | [one-line job] | [kinds or follow-up types] | [how a coding agent hands work off] | self or report-only |
+| [role_id] | [Name — handle or spawn name] | [Jobs — duties they take] | [Anti-jobs — or —] | [follow-up kinds] | [how a coding agent hands work off] | self or report-only |
 ```
 
 ---
 
-*Keep Active honest — missing bots stay missing. Do not invent a team.*
+*Keep Active honest — missing bots stay missing. Do not invent a team. One initial PR when standing up a full team — do not open competing roster PRs.*

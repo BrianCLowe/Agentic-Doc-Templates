@@ -43,7 +43,10 @@
           "two-stage",
           "self-ID",
           "report-only",
-          "Do not invent"
+          "Do not invent",
+          "Anti-jobs",
+          "One initial PR",
+          "competing"
         ]
       },
       {
@@ -53,7 +56,10 @@
           "when this project enabled `team_inbox`",
           "Empty Active is correct",
           "Bots **write their own row**",
-          "not a live bot"
+          "not a live bot",
+          "Anti-jobs",
+          "Stale row",
+          "One initial PR"
         ]
       },
       {
@@ -127,7 +133,9 @@
           "assign-all-at-once",
           "Do not silent-enable",
           "two-stage",
-          "self-ID"
+          "self-ID",
+          "Anti-jobs",
+          "One initial PR"
         ]
       }
     ]

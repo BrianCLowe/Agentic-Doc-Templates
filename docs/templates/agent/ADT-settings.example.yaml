@@ -170,11 +170,14 @@ upstream:
 #      “apply defaults to Open” once: fill unassigned Open rows from
 #      kind_defaults. Do not re-stamp rows that already have an explicit
 #      assignee (claimed / reassigned).
-#   Team roster (docs/Team-Roster.md) is who exists + job + handoff.
-#   Create the live file only when team_inbox is enabled (empty Active
-#   except human fill-in). Two-stage: coding agents on a handoff READ
-#   only — do not invent bot rows. Bots SELF-ID their own row. Report-only
-#   bots ask another agent or the human to add them. Do not backfill
+#   Team roster (docs/Team-Roster.md) is who exists (Name) + Jobs +
+#   Anti-jobs (if defined) + handoff. Create the live file only when
+#   team_inbox is enabled (empty Active except human fill-in). Two-stage:
+#   coding agents on a handoff READ only — do not invent bot rows. Bots
+#   SELF-ID their own row. Report-only bots ask another agent or the
+#   human to add them. Full-team stand-up = one scribe / one initial PR
+#   (do not open competing Team-Roster PRs). Update the row when Name /
+#   Jobs / Anti-jobs change. Do not invent anti-jobs. Do not backfill
 #   Active from kind_defaults or from this example.
 #   3. Claim / reassign is override only (human or allowed bot) — not the
 #      bulk path.
