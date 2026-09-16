@@ -9,8 +9,8 @@ Day-to-day workflows after setup. First-time install: [`SETUP.md`](SETUP.md). Wh
 Depends on **docs profile** in `docs/ADT-settings.yaml` — a first-class choice ([Workflow §0.1](../agent/workflow/profile-standing.md#01-docs-profile-ceremony-modes)). **`ship-first`** is the right default for typed APIs / CRUD. **`prevent`** is the right default for editors / games / multi-surface (and the fallback if unset):
 
 1. You capture ideas (recommended: chat exports in `docs/reference/`, or a mid-build correction in chat).
-2. **`prevent` (default):** agent drafts `-Understanding.md` (shape / guardrails). **`ship-first`:** agent drafts thin **spec + TODO** only. **`balanced`:** Understanding when identity is ambiguous.
-3. When Understanding is used: **you confirm shape** — is / is *not* + any remaining **real-fork** Assumptions (empty is fine; not a full-spec review). Agents should lock obvious defaults and not treat examples in `docs/reference/` as the target unless you clearly set them as the target.
+2. **`prevent` (default):** agent drafts `Product-Vision.md` (whole-product end-state) **and** `-Understanding.md` (per-feature shape). **`ship-first`:** agent drafts thin **spec + TODO** only (no Product-Vision unless you *lock product shape*). **`balanced`:** Understanding when identity is ambiguous; Product-Vision when 2+ stems or the whole is fuzzy.
+3. When Understanding is used: **you confirm shape** — is / is *not* + any remaining **real-fork** Assumptions (empty is fine; not a full-spec review). Confirm **Product-Vision** as one product (end-state picture), not a feature list. Agents should lock obvious defaults and not treat examples in `docs/reference/` as the target unless you clearly set them as the target.
 4. Durable contract lives on the **spec**; work continues from TODOs (**Current focus** for session handoff). Under ship-first, grow the spec as you build; use *lock shape for X* if identity fights start.
 
 ### Recommended practice — chat exports in `reference/`
@@ -127,6 +127,22 @@ Anything only you can close → `docs/Human-TODO.md`: procure, playtest/feel, de
 
 > Apply defaults to Open.
 
+> Enable team inbox.
+
+> Add the team — you open the roster PR.
+
+> Put me on the roster as Alex.
+
+> I'm Sam — I take decide and procure.
+
+> You are the QA bot — add yourself to the team roster.
+
+> Add the nightly auditor as report-only.
+
+> Update the QA bot’s jobs — they don’t close playtest.
+
+> What’s on the team roster?
+
 ---
 
 ## Prompt cheat sheet
@@ -135,6 +151,7 @@ Anything only you can close → `docs/Human-TODO.md`: procure, playtest/feel, de
 |------|-------------------|
 | Chat → docs | *Build or update the live docs from `docs/reference/`.* *(export threads there first)* |
 | New idea | *Add [idea] to the docs — draft Understanding + TODO; I'll review.* *(ship-first: spec + TODO; or *lock shape for X*)* |
+| Product vision | *Lock product shape.* / *Draft the end-state picture.* / *What’s the product vision?* |
 | Fix misunderstanding | *Update [Feature]-Understanding.md — especially What this is NOT.* |
 | UI screenshot | *Save to `docs/features/assets/`, add Visual references on the **spec** (similar vs different).* |
 | Vague idea | *Interview me using IDEA_CAPTURE_TIPS.md, then draft [Feature]-Understanding.md.* |
@@ -156,6 +173,7 @@ Anything only you can close → `docs/Human-TODO.md`: procure, playtest/feel, de
 | Force a subagent | `/understanding-author` … *(optional; usually unnecessary)* |
 | Tooling | *Install the project tooling for this machine.* |
 | Human TODO | *What’s left on the human TODO?* / *Checked [item] — [feedback].* / *I’ll take [item].* / *Assign playtest to QA.* / *Apply defaults to Open.* |
+| Team roster | *Enable team inbox.* / *Add the team — you open the roster PR.* / *Put me on the roster as Alex.* / *I'm Sam — I take decide and procure.* / *You are the QA bot.* / *Add [bot] as report-only.* / *Update [bot]’s jobs / anti-jobs.* / *What’s on the team roster?* |
 
 Optional roles (opt-in, never always-on): [`../agent/roles/README.md`](../agent/roles/README.md). Tool install paths: [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md).
 
@@ -166,11 +184,13 @@ Optional roles (opt-in, never always-on): [`../agent/roles/README.md`](../agent/
 | Path | Role |
 |------|------|
 | `docs/Master_Index.md` | Entry point + Document Map |
+| `docs/Product-Vision.md` | Whole-product end-state picture (prevent; skip on ship-first unless *lock product shape*) |
 | `docs/features/FeatureName-Understanding.md` | Shape only — is / is not, Relationship, real-fork Assumptions (not full-spec review) |
 | `docs/features/FeatureName.md` | Durable contract after shape confirm |
 | `docs/features/FeatureName-TODO.md` | Tasks + **Current focus** |
 | `docs/_shared/…` | Only for truly shared project pieces (may be empty) |
 | `docs/Tooling.md` / `docs/Human-TODO.md` | Machine tools / human inbox (procure · playtest · decide · waiting) |
+| `docs/Team-Roster.md` | Optional team inbox roster (Name / Jobs / Anti-jobs if defined; only when enabled — named humans and bots self-ID; one initial PR; coding agents do not invent) |
 | `docs/reference/` | Source materials (not the living map) |
 | `docs/templates/` | Upstream pack — not live feature content |
 

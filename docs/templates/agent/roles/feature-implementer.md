@@ -14,7 +14,7 @@
 ## Inputs *(open only these)*
 
 1. `docs/ADT-settings.yaml` → `docs_profile.mode` if present (unset = prevent); **`standing.instructions`** if non-empty (Workflow §0.2); parent brief may already name these. If the brief names a **host cwd / worktree path** → work **only** there. Do **not** create or remove worktrees; do **not** checkout default.
-2. `docs/Master_Index.md` Sections 1–3
+2. `docs/Master_Index.md` Sections 1–3. `docs/Product-Vision.md` if it exists — do **not** implement a fight with a **confirmed** end-state picture (Workflow §4.5)
 3. Active TODO — read **Current focus** first (§5.1)
 4. That item’s linked spec; `-Understanding.md` **if it exists** (**read-only** for context)
 5. Shared docs **only** when linked from this feature’s Understanding, spec, or TODO dependency notes (or the one shared piece you are integrating now)

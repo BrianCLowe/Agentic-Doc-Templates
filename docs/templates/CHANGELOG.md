@@ -22,6 +22,56 @@
 
 ---
 
+## 2.9.2
+
+- **Live impact:** `versions-only`, `process-docs-only`, `content-templates`
+- **Files:**
+  - `VERSION` — 2.9.1 → 2.9.2
+  - `workflow/human-todo.md` — one-shot *apply defaults to Open* fills unassigned rows from `kind_defaults` **only if that `role_id` is Active**; else leave `unassigned` (same gate as stamp-on-dual-write). Do not lock rows onto a missing id
+  - `Human_TODO_Template.md` — Claim / backfill legend: Active-roster gate on *apply defaults to Open*
+  - `ADT-settings.example.yaml` / `DECISIONS.md` D19 — backfill Active gate
+  - Root `eval/` — `team-inbox-optional` covers backfill Active gate
+- **Step B:** Bump Master Index **Pack version** to 2.9.2 from local `VERSION`. **`content-templates`:** if live Human-TODO has the *apply defaults to Open* bullet without the Active-roster gate, add **only if that `role_id` is Active on Team-Roster; else leave `unassigned`**. Do **not** run *apply defaults to Open* during this sync unless the user asked and the default ids are Active. Do **not** re-stamp explicit assignees. Do **not** add `team_inbox` from the example. No live feature/shared scan. No `rules` tag — do not refresh installed modular rules from 2.9.2 alone.
+
+## 2.9.1
+
+- **Live impact:** `versions-only`, `process-docs-only`, `content-templates`, `master-index`
+- **Files:**
+  - `VERSION` — 2.9.0 → 2.9.1
+  - `Team_Roster_Template.md` — named humans self-ID with **their slug** (`alex`), not leftover `human`. Human-TODO stays the work inbox. Empty Active until someone self-IDs. Optional leftover `human` bucket only if that id is Active
+  - `workflow/human-todo.md` — **Human self-ID** write path; missing Active → `unassigned` (do **not** fallback-stamp `human` for human-gated kinds). Stamp only Active `role_id`s
+  - `Human_TODO_Template.md` — Assignee legend: stamp from `kind_defaults` **only if Active on Team-Roster**; else `unassigned`. *Put me on the roster as Alex*
+  - `BOOTSTRAP.md` — Step 3p continues to **Step 3v** (was skipping Product-Vision)
+  - `ADT-settings.example.yaml` / help / workflow index / Master Index / modular rule — named-human pointers
+  - Root `DECISIONS.md` **D22** — do not silently undo
+  - Root `eval/` — `team-inbox-optional` covers named-human self-ID + no fallback-stamp
+- **Step B:** Bump Master Index **Pack version** to 2.9.1 from local `VERSION`. **`master-index`:** Team-Roster Key Locations / §3.4 blurb may mention named humans (file exists only when `team_inbox` is on). **`content-templates`:** if live `team_inbox.enabled` and `docs/Team-Roster.md` is missing → create from the template (do **not** invent bot or human-name rows; do **not** copy Row shape into Active). If a live roster already has a leftover `human` row, leave it — do not rewrite people onto invented slugs. If live Human-TODO is missing the Active-gate Assignee legend or *Put me on the roster* phrase, add those. If `team_inbox` is unset / `enabled: false` → **do not** create `Team-Roster.md`. Do **not** add `team_inbox` to live settings from the example. No live feature/shared scan. No `rules` tag — do not refresh installed modular rules from 2.9.1 alone.
+
+## 2.9.0
+
+- **Live impact:** `versions-only`, `process-docs-only`, `content-templates`, `master-index`
+- **Files:**
+  - `VERSION` — 2.8.1 → 2.9.0
+  - `Product_Vision_Template.md` — **(new)** live `docs/Product-Vision.md`: whole-product is / is not + **end-state picture** + how the map fits. Not a feature checklist. Not a second spec
+  - `workflow/product-vision.md` — **§4.5:** create under **prevent** (bootstrap / first live-docs / sync); **balanced** when 2+ stems or fuzzy whole; **do not** silent-create on **ship-first**. **Draft source:** peek `docs/reference/` first — do **not** rebuild the picture from the feature map. Draft does not add a second coding gate; **confirmed** vision: do not implement a fighting feature. Lock gate stays Workflow §4
+  - `Master_Index_Template.md` / bootstrap / sync / help / paved path / understanding + implement pointers
+  - Root `DECISIONS.md` **D21** — do not silently undo
+  - Root `eval/` — `product-vision-end-state` pack contract + scaffold skeleton
+- **Step B:** Bump Master Index **Pack version** to 2.9.0 from local `VERSION`. **`master-index`:** add Key Locations / §3.4 / At a Glance row for Product-Vision. **`content-templates`:** if `docs_profile` is **`prevent`** (or unset) and `docs/Product-Vision.md` is missing → create from the template. **Peek `docs/reference/` first** (newest 3–5 idea/identity exports, or user-pointed files) + this-turn conversation; draft is / is not + end-state picture from **that** (lock obvious; empty Assumptions OK; examples ≠ target unless clearly set). **Then** fill How the map fits from **existing** map rows only. **Do not** build the picture by summarizing the Document Map / feature Understandings / specs. **`balanced`:** create only if 2+ feature stems or whole-product identity is already fuzzy (same peek). **`ship-first`:** **do not** create. Do not invent stems. Do not copy sermons into the live file. Do not skip `reference/` because the map looks complete. No live feature/shared scan beyond that peek + the map-fit table. No `rules` tag — do not refresh installed modular rules from 2.9.0 alone.
+
+## 2.8.1
+
+- **Live impact:** `versions-only`, `process-docs-only`, `content-templates`, `master-index`
+- **Files:**
+  - `VERSION` — 2.8.0 → 2.8.1
+  - `Team_Roster_Template.md` — **(new)** live `docs/Team-Roster.md` scaffold (create **only** when `team_inbox` is enabled). Columns: **Name**, **Jobs**, **Anti-jobs** *(if defined)*, Follow-ups, Handoff, Roster write. Empty Active + optional `human` fill-in is correct. Row-shape example is **not** a live bot. Update the row when jobs change
+  - `workflow/human-todo.md` — **two-stage roster:** coding agent on a handoff **reads** only (do not invent rows; stamp `kind_defaults` only if that `role_id` is Active); bots **self-ID** their own row (Name / Jobs / Anti-jobs if defined); report-only bots ask another agent or the human to add them. **One initial PR** when standing up a full team — do not open competing roster PRs. Stale-row: update same turn when duties change
+  - `Human_TODO_Template.md` / `ADT-settings.example.yaml` / workflow index / help / bootstrap / `TEMPLATE_SYNC_B.md` — pointers; do not silent-create the live roster on a human-only inbox
+  - `Master_Index_Template.md` — optional Key Locations / §3.4 row for Team-Roster
+  - Root `DECISIONS.md` **D20** — do not silently undo
+  - Root `eval/` — `team-inbox-optional` contract covers the roster split
+- **Step B:** Bump Master Index **Pack version** to 2.8.1 from local `VERSION`. **`master-index`:** add the optional Team-Roster Key Locations / §3.4 row (file exists only when `team_inbox` is on). **`content-templates`:** if live `team_inbox.enabled` and `docs/Team-Roster.md` is missing → create from the template (**human** fill-in only; do **not** invent bot rows; do **not** copy Row shape into Active). If `team_inbox` is unset / `enabled: false` → **do not** create `Team-Roster.md`. Do **not** add `team_inbox` to live settings from the example. No live feature/shared scan. No `rules` tag — do not refresh installed modular rules from 2.8.1 alone.
+
 ## 2.8.0
 
 - **Live impact:** `versions-only`, `process-docs-only`, `content-templates`
