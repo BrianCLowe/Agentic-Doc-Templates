@@ -8,9 +8,9 @@
 
 ---
 
-**Humans:** Confirm **whole-product shape** — is / is not + the **end-state picture** + any real-fork Assumptions. Not a feature list. How to review: [`help/SCAFFOLDS.md`](help/SCAFFOLDS.md).
+**Humans:** Confirm **whole-product shape** — is / is not + the **end-state picture** + any real-fork Assumptions. Not a feature list. How to review: [`help/SCAFFOLDS.md`](templates/help/SCAFFOLDS.md).
 
-**Agents:** Fill-in blanks. If context is thin, re-open [`agent/workflow/product-vision.md`](agent/workflow/product-vision.md). Lock gate: [`agent/workflow/understanding.md`](agent/workflow/understanding.md) §4. Feature shape stays on each `-Understanding.md`.
+**Agents:** Fill-in blanks. If context is thin, re-open [`agent/workflow/product-vision.md`](templates/agent/workflow/product-vision.md). Lock gate: [`agent/workflow/understanding.md`](templates/agent/workflow/understanding.md) §4. Feature shape stays on each `-Understanding.md`.
 
 ---
 

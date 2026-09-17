@@ -46,7 +46,7 @@ The modular rule guards itself: *"If `docs/Master_Index.md` does not exist, igno
 | **Team inbox** | Optional Human-TODO assignees. **Omit / unset / `enabled: false` = human-only** (no auto-stamp; do not silent-enable). Claim / reassign is override only | `team_inbox` · Workflow [§13](../agent/workflow/human-todo.md#13-human-todo-inbox--needs-a-human) · [`Human_TODO_Template.md`](../Human_TODO_Template.md) |
 | **Team roster** | Name, Jobs, Anti-jobs *(if defined)*, handoff. Create `docs/Team-Roster.md` **only** when team inbox is on. Coding agents on a handoff **read** (do not invent rows). Named humans and bots **self-ID** (humans use their slug, not leftover `human`); report-only bots ask another agent to add them. Full-team stand-up = **one initial PR**. Update the row when jobs change | [`Team_Roster_Template.md`](../Team_Roster_Template.md) · same §13 |
 
-Parent agents **orchestrate** role delegation when asks match; `/` commands are optional. Role playbooks stay under `roles/*.md` — never paste them into always-on rules. *Orchestrate / drive the backlog* stays in the parent session and dispatches leaf workers. Settings live in **`docs/ADT-settings.yaml`** (docs profile, orchestrator git, **standing.instructions**, tools, optionals, sync mode, upstream stamps).
+Parent agents **orchestrate** role delegation when asks match; `/` commands are optional. Role playbooks stay under `roles/*.md` — never paste them into always-on rules. *Orchestrate / drive the backlog* stays in the parent session and dispatches leaf workers. Settings live in **`docs/ADT-settings.yaml`** (docs profile, orchestrator git, **standing.instructions**, tools, optionals, team_inbox, sync mode, upstream stamps).
 
 ## Cursor conflict note
 

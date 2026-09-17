@@ -78,7 +78,7 @@ Naming: [`../agent/workflow/naming-layout.md`](../agent/workflow/naming-layout.m
 | Goal | Go here |
 |------|---------|
 | Day-to-day (chat → docs, mid-build ideas, design docs) | [`USAGE.md`](USAGE.md) |
-| What to put in Understanding / spec / TODO (fill-in blanks) | [`SCAFFOLDS.md`](SCAFFOLDS.md) |
+| What to put in Understanding / spec / TODO / Product-Vision / Team-Roster (fill-in blanks) | [`SCAFFOLDS.md`](SCAFFOLDS.md) |
 | Optional roles (intent-first Understanding, implement, sync) | [`../agent/roles/README.md`](../agent/roles/README.md) |
 | Describing UI / scope (esp. if new to software) | [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md) |
 | Rule / harness install (Cursor, Grok Build, …) | [`../agent/tools/README.md`](../agent/tools/README.md) · human TOC: [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md) |
