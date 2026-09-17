@@ -22,6 +22,17 @@
 
 ---
 
+## 2.9.3
+
+- **Live impact:** `versions-only`, `process-docs-only`, `content-templates`, `master-index`
+- **Files:**
+  - `VERSION` — 2.9.2 → 2.9.3
+  - `workflow/product-vision.md` — **§4.5:** create destination file on **all** profiles; **`ship-first`** is **not a gate**. *Lock product shape* starts confirm. Draft source unchanged
+  - `BOOTSTRAP.md` / `TEMPLATE_SYNC_B.md` / Master Index / help / modular rule — always create lightweight Product-Vision; ship-first does not wait
+  - Root `DECISIONS.md` **D23** — supersedes D21 create-omit; end-state-picture job stays
+  - Root `eval/` — `product-vision-end-state` must create, must not gate
+- **Step B:** Bump Master Index **Pack version** to 2.9.3 from local `VERSION`. **`master-index`:** Key Locations Product-Vision row: all profiles create; `ship-first` is destination-only. **`content-templates`:** if `docs/Product-Vision.md` is missing → create from the template (**all** profiles, including `ship-first`). **Peek `docs/reference/` first** (newest 3–5 idea/identity exports, or user-pointed files) + this-turn conversation; lightweight draft is / is not + end-state picture from **that** (lock obvious; empty Assumptions OK; examples ≠ target unless clearly set). **Then** fill How the map fits from **existing** map rows only. **Do not** build the picture by summarizing the Document Map / feature Understandings / specs. **`ship-first`:** do **not** treat `draft` as a coding gate. *Lock product shape* only starts the confirm gate. Do not invent stems. Do not copy sermons into the live file. Do not skip `reference/` because the map looks complete. No live feature/shared scan beyond that peek + the map-fit table. No `rules` tag — do not refresh installed modular rules from 2.9.3 alone.
+
 ## 2.9.2
 
 - **Live impact:** `versions-only`, `process-docs-only`, `content-templates`

@@ -32,7 +32,7 @@ Ask your agent:
 
 > Bootstrap modular docs using `docs/templates/agent/BOOTSTRAP.md`.
 
-That creates `Master_Index.md`, `Tooling.md`, `Human-TODO.md`, **`Product-Vision.md` under prevent** (whole-product end-state — skip on ship-first unless you *lock product shape*), `reference/` (for **chat exports** / design docs), feature/shared folders, records **project preferences in one batch** (docs profile, sync mode, orchestrator git, optional update-check / doc-roles — agent must present and explain each), and the **profile default file set** for every Document Map row named in the bootstrap conversation (always spec + TODO; Understanding when the profile requires it — skip file creation if you named no features yet).
+That creates `Master_Index.md`, `Tooling.md`, `Human-TODO.md`, **`Product-Vision.md`** (whole-product end-state — always created; **ship-first** is destination-only until you *lock product shape*), `reference/` (for **chat exports** / design docs), feature/shared folders, records **project preferences in one batch** (docs profile, sync mode, orchestrator git, optional update-check / doc-roles — agent must present and explain each), and the **profile default file set** for every Document Map row named in the bootstrap conversation (always spec + TODO; Understanding when the profile requires it — skip file creation if you named no features yet).
 
 **Recommended habit** *(after bootstrap creates `docs/reference/`):* export idea conversations (Grok.com, ChatGPT, …) to markdown and drop them there — often many threads. Then ask: *Build or update the live docs from `docs/reference/`.* That preserves whys/motives better than a polished design doc alone ([`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md)). Bootstrap alone does not require exports first; building from `reference/` is the follow-up that fills rich Understandings (or thin specs under **ship-first**).
 
@@ -54,7 +54,7 @@ Then you:
 docs/
 ├── Master_Index.md              ← project map (you maintain)
 ├── Tooling.md                   ← machine tools (not package deps)
-├── Product-Vision.md            ← whole-product end-state (**prevent**; skip on ship-first unless you lock product shape)
+├── Product-Vision.md            ← whole-product end-state (all profiles; ship-first = destination, not a gate)
 ├── Human-TODO.md                ← human inbox (procure, playtest, decide, waiting)
 ├── Team-Roster.md               ← optional — only when team inbox is on (named humans and bots self-ID; do not invent)
 ├── ADT-settings.yaml            ← pack prefs (profile, git, standing playbook overrides, tools, optionals, sync, upstream)
@@ -86,7 +86,7 @@ Naming: [`../agent/workflow/naming-layout.md`](../agent/workflow/naming-layout.m
 | Later: refresh the pack | *Update the doc templates…* — [`TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md) / [`CHANGELOG.md`](../CHANGELOG.md). If your pack is pre-**1.2** (no sync file), copy `docs/templates/` once first. |
 | Version-only ping | *Check for template updates* — [`TEMPLATE_UPDATE_CHECK.md`](../agent/TEMPLATE_UPDATE_CHECK.md) |
 
-After bootstrap, skim `docs/Human-TODO.md` — your inbox for keys, playtests, decisions, and external waiting. Under **prevent**, also skim `docs/Product-Vision.md` — one end-state picture the feature map must fit.
+After bootstrap, skim `docs/Human-TODO.md` — your inbox for keys, playtests, decisions, and external waiting. Also skim `docs/Product-Vision.md` — one end-state picture the feature map must fit. Under **prevent**, confirm product shape. Under **ship-first**, it is destination-only until you *lock product shape*.
 
 ---
 

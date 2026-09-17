@@ -9,9 +9,9 @@ Day-to-day workflows after setup. First-time install: [`SETUP.md`](SETUP.md). Wh
 Depends on **docs profile** in `docs/ADT-settings.yaml` — a first-class choice ([Workflow §0.1](../agent/workflow/profile-standing.md#01-docs-profile-ceremony-modes)). **`ship-first`** is the right default for typed APIs / CRUD. **`prevent`** is the right default for editors / games / multi-surface (and the fallback if unset):
 
 1. You capture ideas (recommended: chat exports in `docs/reference/`, or a mid-build correction in chat).
-2. **`prevent` (default):** agent drafts `Product-Vision.md` (whole-product end-state) **and** `-Understanding.md` (per-feature shape). **`ship-first`:** agent drafts thin **spec + TODO** only (no Product-Vision unless you *lock product shape*). **`balanced`:** Understanding when identity is ambiguous; Product-Vision when 2+ stems or the whole is fuzzy.
-3. When Understanding is used: **you confirm shape** — is / is *not* + any remaining **real-fork** Assumptions (empty is fine; not a full-spec review). Confirm **Product-Vision** as one product (end-state picture), not a feature list. Agents should lock obvious defaults and not treat examples in `docs/reference/` as the target unless you clearly set them as the target.
-4. Durable contract lives on the **spec**; work continues from TODOs (**Current focus** for session handoff). Under ship-first, grow the spec as you build; use *lock shape for X* if identity fights start.
+2. **`prevent` (default):** agent drafts `Product-Vision.md` (whole-product end-state) **and** `-Understanding.md` (per-feature shape); you confirm both before code. **`ship-first`:** agent drafts thin **spec + TODO** plus a lightweight `Product-Vision.md` (destination, **not a gate**). **`balanced`:** always a lightweight Product-Vision; Understanding when identity is ambiguous; deepen the vision when 2+ stems, the whole is fuzzy, or you *lock product shape*.
+3. When Understanding is used: **you confirm shape** — is / is *not* + any remaining **real-fork** Assumptions (empty is fine; not a full-spec review). Under **prevent**, confirm **Product-Vision** as one product (end-state picture), not a feature list. Under **ship-first**, confirm vision only after *lock product shape*. Agents should lock obvious defaults and not treat examples in `docs/reference/` as the target unless you clearly set them as the target.
+4. Durable contract lives on the **spec**; work continues from TODOs (**Current focus** for session handoff). Under ship-first, grow the spec as you build; use *lock shape for X* if identity fights start. *Lock product shape* only when the whole product needs a confirm gate.
 
 ### Recommended practice — chat exports in `reference/`
 
@@ -184,7 +184,7 @@ Optional roles (opt-in, never always-on): [`../agent/roles/README.md`](../agent/
 | Path | Role |
 |------|------|
 | `docs/Master_Index.md` | Entry point + Document Map |
-| `docs/Product-Vision.md` | Whole-product end-state picture (prevent; skip on ship-first unless *lock product shape*) |
+| `docs/Product-Vision.md` | Whole-product end-state picture (always created; ship-first = destination until *lock product shape*) |
 | `docs/features/FeatureName-Understanding.md` | Shape only — is / is not, Relationship, real-fork Assumptions (not full-spec review) |
 | `docs/features/FeatureName.md` | Durable contract after shape confirm |
 | `docs/features/FeatureName-TODO.md` | Tasks + **Current focus** |

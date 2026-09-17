@@ -37,7 +37,7 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 | `docs/reference/` | **Recommended:** chat exports (md) of idea threads — also design docs / PRDs / legacy specs. Not living modular docs ([Workflow](templates/agent/Modular_Docs_Workflow.md); tips: [`help/IDEA_CAPTURE_TIPS.md`](templates/help/IDEA_CAPTURE_TIPS.md)) |
 | `docs/reference/visuals/` | Optional inspiration screenshots before a feature exists |
 | `docs/Tooling.md` | Machine / workflow tools (not package deps) — install on a new machine ([`Tooling_Template.md`](templates/Tooling_Template.md)) |
-| `docs/Product-Vision.md` | Whole-product end-state picture — is / is not + how the map fits. **`prevent`:** create. **`ship-first`:** omit unless *lock product shape* ([`Product_Vision_Template.md`](templates/Product_Vision_Template.md)) |
+| `docs/Product-Vision.md` | Whole-product end-state picture — is / is not + how the map fits. **Always create** (lightweight on `balanced` / `ship-first`). **`ship-first`:** destination, not a gate until *lock product shape* ([`Product_Vision_Template.md`](templates/Product_Vision_Template.md)) |
 | `docs/Human-TODO.md` | Human inbox — procure, playtest, decide, waiting (agent cannot close from assumptions) ([`Human_TODO_Template.md`](templates/Human_TODO_Template.md)) |
 | `docs/Team-Roster.md` | Optional team inbox roster — Name, Jobs, Anti-jobs *(if defined)*, handoff. **Create only when `team_inbox` is enabled.** Handoff agents read; named humans and bots self-ID; one initial PR for a full team ([`Team_Roster_Template.md`](templates/Team_Roster_Template.md)) |
 | `docs/decisions/` | Optional cross-cutting decisions ([`Decision_Template.md`](templates/Decision_Template.md)) |

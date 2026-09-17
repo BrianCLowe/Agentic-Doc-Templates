@@ -16,7 +16,7 @@
 
 ## Inputs *(open only these)*
 
-1. `docs/Master_Index.md` Sections 1–3 (Document Map + overview). `docs/Product-Vision.md` if it exists — if **prevent** and missing, draft it (Workflow §4.5) before or with the first Understanding. Do not invent a second product.
+1. `docs/Master_Index.md` Sections 1–3 (Document Map + overview). `docs/Product-Vision.md` if it exists — if missing, draft a lightweight file (Workflow §4.5). Under **ship-first**, do not wait for confirm. Do not invent a second product.
 2. Named feature/shared row paths — or create the default file set per Workflow §0 for each **new** stem you identify
 3. Source the user pointed at: this conversation, and/or files under `docs/reference/` (all named exports, or the folder when they said “from reference”)
 4. Existing `-Understanding.md` for each stem you touch (if any)

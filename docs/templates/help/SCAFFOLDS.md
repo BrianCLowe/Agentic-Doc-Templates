@@ -19,13 +19,13 @@ Live files under `docs/` are **fill-in blanks**. Teaching, examples, and “how 
 
 ## Reviewing Product vision *(the whole, not the map)*
 
-The agent drafts `docs/Product-Vision.md` under **prevent** (and sometimes **balanced**). You confirm **one product**:
+The agent always drafts `docs/Product-Vision.md` (lightweight under **balanced** / **ship-first**). Under **prevent**, you confirm **one product**:
 
 1. **What this product is / is NOT** — category and whole-product identity. Not each feature’s is-not.
 2. **End-state picture** — when it is whole, what is it? One sitting, one product feel. A feature list is the wrong confirm.
 3. **How the map fits** — each stem’s one-line role in that whole. Do not invent stems to fill the table.
 
-Empty Assumptions is correct when obvious defaults were locked. **`ship-first`** projects usually skip this file unless you *lock product shape*.
+Empty Assumptions is correct when obvious defaults were locked. **`ship-first`:** the file is destination-only until you *lock product shape* — it does not block spec/TODO work.
 
 A confirmed vision is the target the feature Understandings must fit. Procedure: [`workflow/product-vision.md`](../agent/workflow/product-vision.md).
 
