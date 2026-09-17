@@ -44,7 +44,7 @@ You still pick your agent. This pack is what that agent **reads and updates** so
 
 | Your product | Profile | Why |
 |--------------|---------|-----|
-| **Typed APIs, CRUD services, clear contracts** | **`ship-first`** | Spec + TODO from day one. Shape is already the types / routes. This is the *correct* default here — not “ceremony off for people in a hurry.” |
+| **Typed APIs, CRUD services, clear contracts** | **`ship-first`** | Spec + TODO from day one, plus a lightweight Product-Vision (destination, not a gate). Shape is already the types / routes. This is the *correct* default here — not “ceremony off for people in a hurry.” |
 | **Editors, games, multi-surface apps** | **`prevent`** | Understanding + you confirm is / is *not* before code. A “helpful” agent will otherwise build the wrong engine, the wrong surface, or a second product. |
 | Mid-size / mixed signals | **`balanced`** | Understanding only when identity is fuzzy (competing surfaces, “not X”, split pressure, or you say *lock shape*). |
 
@@ -93,7 +93,7 @@ That creates the live `docs/` layout (Master Index, `reference/`, feature folder
 1. Work ideas out in Grok.com / ChatGPT / etc. and **export** threads to markdown ([tips](docs/templates/help/IDEA_CAPTURE_TIPS.md#recommended-export-idea-chats-into-docsreference)).
 2. Drop exports (and any design docs) into **`docs/reference/`**.
 3. Ask: *Build or update the live docs from `docs/reference/`.*
-4. Review draft Understandings before coding. Under **prevent**, also skim `docs/Product-Vision.md` — one end-state picture the feature map must fit.
+4. Review draft Understandings before coding. Skim `docs/Product-Vision.md` — one end-state picture the feature map must fit. Under **prevent**, confirm it. Under **ship-first**, it does not block coding until you *lock product shape*.
 
 You can brainstorm before the repo exists — export now, drop into `reference/` after bootstrap.
 
@@ -133,7 +133,7 @@ After bootstrap, a typical project looks like:
 ```
 docs/
 ├── Master_Index.md              ← project map (you maintain)
-├── Product-Vision.md            ← whole-product end-state (**prevent**; skip on ship-first unless you lock product shape)
+├── Product-Vision.md            ← whole-product end-state (all profiles; ship-first = destination, not a gate)
 ├── Tooling.md                   ← machine tools (not package deps)
 ├── Human-TODO.md                ← human inbox (procure, playtest, decide, waiting)
 ├── Team-Roster.md               ← optional — only when team inbox is on (named humans and bots self-ID; do not invent)

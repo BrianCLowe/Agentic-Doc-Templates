@@ -28,8 +28,9 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 | D18 | Sync summaries report the catch-up union only; `auto-all` ≠ every catalog tag | accepted | 2.7.29 |
 | D19 | Optional `team_inbox` is opt-in; unset = human-only inbox; do not force a bot org chart | accepted | 2.8.0 |
 | D20 | Team roster is two-stage (read vs self-ID); Name / Jobs / Anti-jobs if defined; one initial PR for a full team | accepted | 2.8.1 |
-| D21 | Product vision is the whole-product end-state picture; feature map alone is not identity | accepted | 2.9.0 |
+| D21 | Product vision is the whole-product end-state picture; feature map alone is not identity | superseded | 2.9.0 |
 | D22 | Named humans self-ID onto the roster with their own slug; generic `human` is leftover bucket, not a teammate | accepted | 2.9.1 |
+| D23 | Destination file always; implementation gate only after *lock product shape* + confirm (or prevent’s confirm) | accepted | 2.9.3 |
 
 ---
 
@@ -137,11 +138,13 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 
 ## D21 — Product vision is the whole-product end-state
 
+**Status:** superseded by **D23** (2.9.3). Create-on-`prevent`-only / omit-on-`ship-first` is reversed. End-state-picture job stays.
+
 **Decision:** Live **`docs/Product-Vision.md`** (from `Product_Vision_Template.md`) is the cohesive **end-state picture** for the product — what it is / is not as **one** thing, plus how existing Document Map stems fit that whole. Per-feature Understandings and the Document Map stay the inventory of pieces. Master Index §1 stays a short overview. A complete feature map without this file can still be the wrong product.
 
-**Create:** **`prevent`** (and unset → prevent) at bootstrap / first live-docs build / 2.9.0 sync. **`balanced`** when 2+ feature stems or whole-product identity is fuzzy. **`ship-first`:** omit unless *lock product shape* / identity fight / file already exists. **Draft source:** peek `docs/reference/` first (idea/identity exports); then fit existing map rows. **Do not** reconstruct the picture from the Document Map / feature Understandings / specs. **Draft does not add a second hard coding gate.** **Confirmed** vision: do not implement a feature that fights it. Lock gate and real-fork Assumptions are Workflow §4 (do not restate). Empty Assumptions is success. Do not invent anti-product quizzes. Do not treat `docs/reference/` examples as the target unless clearly set. End-state picture is **not** a feature checklist or a phased roadmap.
+**Create (2.9.0):** **`prevent`** (and unset → prevent) at bootstrap / first live-docs build / 2.9.0 sync. **`balanced`** when 2+ feature stems or whole-product identity is fuzzy. **`ship-first`:** omit unless *lock product shape* / identity fight / file already exists. **Draft source:** peek `docs/reference/` first (idea/identity exports); then fit existing map rows. **Do not** reconstruct the picture from the Document Map / feature Understandings / specs. **Draft does not add a second hard coding gate.** **Confirmed** vision: do not implement a feature that fights it. Lock gate and real-fork Assumptions are Workflow §4 (do not restate). Empty Assumptions is success. Do not invent anti-product quizzes. Do not treat `docs/reference/` examples as the target unless clearly set. End-state picture is **not** a feature checklist or a phased roadmap.
 
-**Do not:** Silent-create on `ship-first`. Paste the vision into every Understanding. Turn Master Index into the end-state essay. De-confirm on an additive feature that still fits the picture. Skip `reference/` because the map looks complete.
+**Do not (2.9.0):** Silent-create on `ship-first`. Paste the vision into every Understanding. Turn Master Index into the end-state essay. De-confirm on an additive feature that still fits the picture. Skip `reference/` because the map looks complete.
 
 ---
 
@@ -150,6 +153,14 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 **Decision:** When `team_inbox` is enabled, human teammates put **themselves** on `docs/Team-Roster.md` with **their own** `role_id` / Name (slug of their name — `alex`, not leftover `human`). Human-TODO stays the inbox of *work*. Assignee is the named person’s slug so follow-ups go to that person. Generic `human` is an **optional leftover bucket** for unsigned human work, and only stamps when that id is Active. Missing Active default → `unassigned` so later *apply defaults to Open* can move the row after a bot or named human self-IDs.
 
 **Do not:** Dump every human onto leftover `human` / treat Human-TODO as the people directory. Do not invent human names. Do not fallback-stamp `human` for human-gated kinds when no Active row matches. Do not silent-enable `team_inbox` so people can “have a roster.”
+
+---
+
+## D23 — Destination file always; gate only after lock + confirm
+
+**Decision:** Documenting the destination and gating implementation are **two jobs**. **Always create** a lightweight `docs/Product-Vision.md` (bootstrap / first live-docs / TEMPLATE_SYNC if missing) on **every** profile, including `ship-first`. **`prevent`:** status `draft`; user confirms product shape; Understanding confirm still gates that stem. **`balanced`:** always the file; deepen when 2+ stems / fuzzy whole / *lock product shape*; Understanding rules unchanged. **`ship-first`:** file is informative and evolving — **not a gate**. Agents read it for destination; they do **not** wait for confirm before spec/TODO work. *Lock product shape* is the only ship-first path that starts a confirm gate (identity fight / whole-product fork). After lock + confirm, do not implement a fighting feature. Unset profile still treats as prevent. Draft source unchanged (D21): peek `docs/reference/` first; do not rebuild from the map. Empty Assumptions is success.
+
+**Do not:** Omit the file on `ship-first`. Treat `draft` vision as a coding blocker on `ship-first`. Invent Understandings under `ship-first`. Invent anti-product quizzes. Rebuild the picture from the Document Map. Turn Master Index §1 into the vision essay. Paste the vision into every Understanding. De-confirm on an additive feature that still fits.
 
 ---
 

@@ -29,7 +29,7 @@ Use when the stem is already **ready** under the docs profile and scope is uncha
 |---------|----------------|
 | **`prevent`** | Understanding is `confirmed` (or user waived) and scope unchanged |
 | **`balanced`** | If stem has Understanding → same as prevent; if none → thin spec + TODO exist and identity is clear |
-| **`ship-first`** | Spec + TODO exist for the stem; no Understanding required |
+| **`ship-first`** | Spec + TODO exist for the stem; no Understanding required. Draft Product-Vision is not a blocker |
 
 **Additive vs shape (one line):** On a `confirmed` Understanding, a new research angle / extra behavior / edge case that still fits **is / is not** → **spec + TODO**, keep `confirmed`. De-confirm / re-draft **only** on a significant shape change — full rule in [`workflow/understanding.md`](workflow/understanding.md#4-understanding-features--shared).
 
@@ -120,7 +120,7 @@ See [`workflow/tooling.md`](workflow/tooling.md#11-tooling-new-machine-setup).
 
 ### 4.5 Product vision *(whole-product end-state)*
 
-See [`workflow/product-vision.md`](workflow/product-vision.md#45-product-vision). Optional on **ship-first**; create under **prevent**.
+See [`workflow/product-vision.md`](workflow/product-vision.md#45-product-vision). Create on **all** profiles (lightweight on `balanced` / `ship-first`). **`ship-first`:** not a gate until *lock product shape*.
 
 ### 13. Human TODO *(inbox — needs a human)*
 
@@ -131,7 +131,7 @@ See [`workflow/human-todo.md`](workflow/human-todo.md#13-human-todo-inbox--needs
 ## Instructions for AI Agents
 
 - **Master_Index.md** = *what this project is* and *where files live*.
-- **Product-Vision.md** = *the whole-product end-state* (when present) — [`workflow/product-vision.md`](workflow/product-vision.md). Feature map alone is not identity.
+- **Product-Vision.md** = *the whole-product end-state* — [`workflow/product-vision.md`](workflow/product-vision.md). Feature map alone is not identity. **`ship-first`:** destination, not a gate.
 - **This file** = *how to work* — paved path first; then **one** module from the router.
 - **Tooling.md** = *what to install on a new machine* (not package deps) — [`workflow/tooling.md`](workflow/tooling.md).
 - **Human-TODO.md** = *what only a human can close* — [`workflow/human-todo.md`](workflow/human-todo.md). Optional `team_inbox` assignees: same module (unset = human-only). **Team-Roster.md** = who exists + handoff (named humans and bots; create only when enabled; do not invent teammates).

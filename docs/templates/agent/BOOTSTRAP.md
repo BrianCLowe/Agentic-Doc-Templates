@@ -111,7 +111,7 @@ Create if missing:
 docs/
 ├── Master_Index.md          ← from Master_Index_Template.md (Step 3)
 ├── Tooling.md               ← from Tooling_Template.md (Step 3b — machine tools)
-├── Product-Vision.md        ← from Product_Vision_Template.md (Step 3v — **prevent**; not ship-first)
+├── Product-Vision.md        ← from Product_Vision_Template.md (Step 3v — all profiles; ship-first = destination, not a gate)
 ├── Human-TODO.md            ← from Human_TODO_Template.md (Step 3c — human inbox)
 ├── Team-Roster.md           ← from Team_Roster_Template.md **only if** team_inbox is already enabled (do not invent teammates)
 ├── ADT-settings.yaml        ← pack prefs (tools, optionals, sync mode, upstream) when first recorded
@@ -219,7 +219,7 @@ If it already exists → add newly discovered human-gated needs (procure / playt
 |------|----------------|
 | **`prevent`** *(suggested if identity-risky / unclear)* | Agent drafts `-Understanding.md` first; **you confirm shape** (is / is not) before code. Right default for **editors, games, multi-surface** apps — wrong identity is expensive. Unset → this mode. |
 | **`balanced`** | Spec + TODO always; Understanding **only when** product identity is fuzzy (competing surfaces, “not X”, multi-feature mush, or you ask to lock shape). You are choosing “judgment call,” not “no docs.” |
-| **`ship-first`** | Spec + TODO only; no shape-confirm gate. **Right default for typed APIs / CRUD / clear contracts** — not a concession. Also prototypes / fix-forward. *Lock shape for X* anytime. |
+| **`ship-first`** | Spec + TODO only; no Understanding / shape-confirm gate. Lightweight `Product-Vision.md` is created as destination (**not a gate**). **Right default for typed APIs / CRUD / clear contracts** — not a concession. Also prototypes / fix-forward. *Lock shape for X* anytime. *Lock product shape* only when the whole product needs a confirm gate. |
 
 Suggest with citations when possible (prevent / balanced / ship-first signals — Workflow §0.1).
 
@@ -271,11 +271,11 @@ Read `docs_profile.mode` (unset → **prevent**). See [`workflow/product-vision.
 
 | Profile | Action |
 |---------|--------|
-| **`prevent`** | If `docs/Product-Vision.md` is missing → copy [`Product_Vision_Template.md`](../Product_Vision_Template.md). **Peek `docs/reference/` first** if it has files (newest 3–5 idea/identity exports, or user-pointed). Draft **What this product is / is NOT** + **End-state picture** from those + this conversation (lock obvious; empty Assumptions OK). **Do not** build the picture from the Document Map / feature files. **How the map fits** stays empty until Step 3d, then fill from **existing** map rows only (one line each). Link from Master Index Key Locations / §3.4. |
-| **`balanced`** | Create only if they already named **2+ features** or whole-product identity is fuzzy / they asked *lock product shape*. Otherwise skip. |
-| **`ship-first`** | **Do not** create unless they asked *lock product shape*. |
+| **`prevent`** | If `docs/Product-Vision.md` is missing → copy [`Product_Vision_Template.md`](../Product_Vision_Template.md). **Peek `docs/reference/` first** if it has files (newest 3–5 idea/identity exports, or user-pointed). Draft **What this product is / is NOT** + **End-state picture** from those + this conversation (lock obvious; empty Assumptions OK). Status `draft`; user confirms product shape. **Do not** build the picture from the Document Map / feature files. **How the map fits** stays empty until Step 3d, then fill from **existing** map rows only (one line each). Link from Master Index Key Locations / §3.4. |
+| **`balanced`** | **Always create** a lightweight file if missing (same peek + draft). Deepen when they named **2+ features**, whole-product identity is fuzzy, or they asked *lock product shape*. |
+| **`ship-first`** | **Always create** a lightweight file if missing (same peek + draft). **Not a gate** — do not wait for confirm before coding. Leave **Confirmed with user** empty until *lock product shape*. |
 
-Do **not** invent a feature checklist as the end-state picture. Do **not** invent stems. After Step 3d, return here once to fill **How the map fits** if the file exists.
+Do **not** invent a feature checklist as the end-state picture. Do **not** invent stems. After Step 3d, return here once to fill **How the map fits**.
 
 If the file already exists → do not overwrite; offer to update the picture / map-fit table when the whole product changed.
 
@@ -310,7 +310,7 @@ After 3d: if `docs/Product-Vision.md` exists, fill **How the map fits** from the
 
 ## Step 4 — Tell the user what's next
 
-1. Confirm or correct Section 1 (Project Overview), Document Map, `docs/Tooling.md`, and `docs/Human-TODO.md`. Confirm **preferences** recorded in Step 3p (docs profile, sync, git, optionals). If `docs/Product-Vision.md` is `draft` — user reviews **whole-product** shape (is / is not + end-state picture), not a feature list.
+1. Confirm or correct Section 1 (Project Overview), Document Map, `docs/Tooling.md`, and `docs/Human-TODO.md`. Confirm **preferences** recorded in Step 3p (docs profile, sync, git, optionals). If `docs/Product-Vision.md` is `draft` under **prevent** — user reviews **whole-product** shape (is / is not + end-state picture), not a feature list. Under **ship-first**, the file is destination-only — do **not** wait for confirm before coding.
 2. If draft `-Understanding.md` files exist — user reviews / corrects **shape** before implementation (**prevent** / those stems). Under **ship-first**, point at specs + TODOs instead.
 3. Point at **Open** items on `Human-TODO.md` — things only the human can close (procure, playtest, decide, waiting).
 4. After they confirm an Understanding (when used), graduate durable content into the spec and continue from TODOs ([`../help/SETUP.md`](../help/SETUP.md)). Under ship-first, continue from TODOs and grow the spec as you build.

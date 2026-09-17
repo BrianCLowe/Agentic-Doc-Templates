@@ -12,7 +12,7 @@
 |---------|----------------|
 | **`prevent`** | Understanding is `confirmed` (or user waived) and scope unchanged |
 | **`balanced`** | If stem has Understanding → same as prevent; if none → thin spec + TODO exist and identity is clear |
-| **`ship-first`** | Spec + TODO exist for the stem; no Understanding required |
+| **`ship-first`** | Spec + TODO exist for the stem; no Understanding required. Draft `Product-Vision.md` is **not** a blocker |
 
 1. Read `docs_profile` (if set) + `Master_Index.md` — Sections 1–3. If `docs/Product-Vision.md` exists, read it
 2. Active TODO **Current focus** → that TODO → Understanding *(if present — read-only)* → spec → code. Do **not** implement a fight with a **confirmed** product vision

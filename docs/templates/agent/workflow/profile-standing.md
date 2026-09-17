@@ -14,7 +14,7 @@
 
 **Always required (all modes):** Master Index + Document Map, **spec**, **core TODO**, Human-TODO dual-write rules (§13). Catalog / decisions remain optional per their own sections.
 
-**Product vision** (`docs/Product-Vision.md` — whole-product end-state): **`prevent`** (and unset) → create at bootstrap. **`balanced`** → when 2+ feature stems or the whole is fuzzy. **`ship-first`** → omit unless *lock product shape*. Draft does **not** add a second coding gate. Confirmed → feature work must not fight it. [`product-vision.md`](product-vision.md) §4.5.
+**Product vision** (`docs/Product-Vision.md` — whole-product end-state): **always create** (all profiles; unset → prevent). **`prevent`** → `draft` + user confirms product shape. **`balanced`** → lightweight; deepen when 2+ stems / fuzzy whole / *lock product shape*. **`ship-first`** → lightweight destination; **not a gate** until *lock product shape* + confirm. Confirmed → feature work must not fight it. [`product-vision.md`](product-vision.md) §4.5.
 
 **Unset `docs_profile`:** treat as **`prevent`**. Do **not** invent `ship-first` because files are missing.
 

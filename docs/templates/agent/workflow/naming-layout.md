@@ -18,7 +18,7 @@
 | Shared Catalog *(optional)* | `docs/_shared/ComponentName-Catalog.md` |
 | Sub-index *(large feature only)* | `docs/features/FeatureName-Index.md` |
 | Screenshots | `docs/features/assets/…` or `docs/_shared/assets/…` |
-| Product vision *(whole-product end-state)* | `docs/Product-Vision.md` — **`prevent`:** create. **`ship-first`:** omit unless *lock product shape*. [`product-vision.md`](product-vision.md) §4.5 |
+| Product vision *(whole-product end-state)* | `docs/Product-Vision.md` — **always create** (lightweight on `balanced` / `ship-first`). **`ship-first`:** not a gate until *lock product shape*. [`product-vision.md`](product-vision.md) §4.5 |
 | Team roster *(optional — team inbox)* | `docs/Team-Roster.md` — create **only** when `team_inbox` is enabled. Named humans and bots self-ID; do not invent. [`human-todo.md`](human-todo.md) §13 |
 
 **Use the same name stem** across the set (`MainWorkspace`, `BlockEditor`, …). Copy spelling from the Document Map when adding to an existing project.
