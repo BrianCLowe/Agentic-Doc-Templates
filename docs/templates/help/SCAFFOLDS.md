@@ -1,6 +1,6 @@
 # Scaffolds vs teaching
 
-Live files under `docs/` are **fill-in blanks**. Teaching, examples, and “how to write this” live here in `help/` (humans) and in [`../agent/workflow/`](../agent/workflow/README.md) (agents). Do not copy sermons into a live Understanding, spec, TODO, or Master Index At a Glance.
+Live files under `docs/` are **fill-in blanks**. Teaching, examples, and “how to write this” live here in `help/` (humans) and in [`../agent/workflow/`](../agent/workflow/README.md) (agents). Do not copy sermons into a live Understanding, spec, TODO, Product-Vision, or Master Index At a Glance.
 
 | Live file | What you fill in | Humans read | Agents re-open when context is thin |
 |-----------|------------------|-------------|-------------------------------------|

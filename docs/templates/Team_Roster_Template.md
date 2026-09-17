@@ -9,9 +9,9 @@
 
 **Who exists** for Human-TODO / human-gated follow-ups. Coding agents **read** this before assigning work. Named humans and bots **write their own row**. Empty Active is correct until someone self-IDs.
 
-**Humans:** put yourself on Active with **your** slug (`alex`, not `human`) so assignments go to you. Human-TODO is the inbox of work, not a person. Optional leftover `human` bucket only if the project wants unsigned human work on that id. Help: [`help/SCAFFOLDS.md`](help/SCAFFOLDS.md). Inbox: [`Human-TODO.md`](Human-TODO.md).
+**Humans:** put yourself on Active with **your** slug (`alex`, not `human`) so assignments go to you. Human-TODO is the inbox of work, not a person. Optional leftover `human` bucket only if the project wants unsigned human work on that id. Help: [`help/SCAFFOLDS.md`](templates/help/SCAFFOLDS.md). Inbox: [`Human-TODO.md`](Human-TODO.md).
 
-**Agents:** Fill-in blanks. Two-stage roster (read vs self-ID / report-only proxy · one initial PR · update when jobs change): [`agent/workflow/human-todo.md`](agent/workflow/human-todo.md). Bots **write their own row**.
+**Agents:** Fill-in blanks. Two-stage roster (read vs self-ID / report-only proxy · one initial PR · update when jobs change): [`agent/workflow/human-todo.md`](templates/agent/workflow/human-todo.md). Bots **write their own row**.
 
 ---
 
