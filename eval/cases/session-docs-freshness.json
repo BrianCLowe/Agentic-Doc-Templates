@@ -28,7 +28,10 @@
           "Do **not** auto-commit",
           "Docs-overlapping PRs",
           "docs overlap ≠ code overlap",
-          "gh pr list --state open"
+          "gh pr list --state open",
+          "git diff --quiet HEAD",
+          "authoritative",
+          "name-only"
         ]
       },
       {
@@ -40,7 +43,9 @@
           "session-freshness.md",
           "Do **not** edit `docs/templates/`",
           "Successive issues / Grok parent",
-          "add to that PR"
+          "add to that PR",
+          "git diff --quiet HEAD",
+          "is **not** drift"
         ]
       },
       {
@@ -48,16 +53,18 @@
         "patterns": [
           "Docs freshness",
           "session-freshness.md",
-          "Sibling `docs/` drift"
+          "not ancestry-only"
         ]
       },
       {
         "file": "docs/templates/CHANGELOG.md",
         "patterns": [
           "2.9.4",
+          "2.9.5",
           "session-freshness.md",
           "Stay ≠ current",
-          "`rules`"
+          "`rules`",
+          "git diff --quiet HEAD"
         ]
       }
     ],
@@ -66,20 +73,34 @@
         "file": "docs/templates/agent/Modular_Documentation_Rule.mdc",
         "must_contain": [
           "Docs freshness",
-          "session-freshness.md"
+          "session-freshness.md",
+          "git diff --quiet HEAD"
         ],
         "must_not_contain": [
-          "Sibling probe *(only when"
+          "Sibling probe *(only when",
+          "commits this HEAD lacks"
         ]
       },
       {
         "file": "docs/templates/agent/Modular_Documentation_Rule.instructions.md",
         "must_contain": [
           "Docs freshness",
-          "session-freshness.md"
+          "session-freshness.md",
+          "git diff --quiet HEAD"
         ],
         "must_not_contain": [
-          "Sibling probe *(only when"
+          "Sibling probe *(only when",
+          "commits this HEAD lacks"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/workflow/session-freshness.md",
+        "must_contain": [
+          "git diff --quiet HEAD",
+          "authoritative"
+        ],
+        "must_not_contain": [
+          "This `HEAD` **lacks `docs/` commits**"
         ]
       },
       {

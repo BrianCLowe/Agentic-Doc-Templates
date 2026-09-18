@@ -22,6 +22,17 @@
 
 ---
 
+## 2.9.5
+
+- **Live impact:** `versions-only`, `process-docs-only`, `master-index`, `rules`
+- **Files:**
+  - `VERSION` — 2.9.4 → 2.9.5
+  - `workflow/session-freshness.md` — sibling probe: **`git diff --quiet HEAD <other-HEAD> -- docs` is the drift verdict**. `git log HEAD..<other> -- docs` only **names** commits on a real stop. Squash-merge / rebase severs ancestry (GitHub default; `branch-pr-squash`) — graph-only “behind” with identical `docs/` is **not** drift. Pre-merge re-check does not cover the next-session miss the squash **creates**; the content check does
+  - `Modular_Documentation_Rule.*` / Workflow index / `Master_Index_Template.md` / `help/USING_WITH_AGENTS.md` — same verdict on the session-default path (was “`docs/` commits this HEAD lacks”)
+  - Root `DECISIONS.md` **D26** — do not silently undo
+  - Root `eval/` — `session-docs-freshness` covers content-first sibling probe
+- **Step B:** Bump Master Index **Pack version** to 2.9.5 from local `VERSION`. **`master-index`:** At a Glance **Docs freshness**: sibling drift = content (`git diff`), not ancestry after squash-merge. **`rules`:** refresh installed modular-rule copies so session default step 0 uses the content verdict — the gate still false-stops after squash-merge if only the pack copy updates. No live feature/shared scan.
+
 ## 2.9.4
 
 - **Live impact:** `versions-only`, `process-docs-only`, `master-index`, `rules`

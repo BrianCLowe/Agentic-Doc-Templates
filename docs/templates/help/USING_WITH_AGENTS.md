@@ -68,7 +68,7 @@ OpenClaw loads workspace bootstrap files (especially `AGENTS.md`), not `.cursor/
 
 | Expectation | Reality |
 |-------------|---------|
-| Agent always reads Master_Index first | Usually, if the rule is loaded — not guaranteed. **Docs freshness** (`git status` + worktrees) first; sibling `docs/` drift → stop |
+| Agent always reads Master_Index first | Usually, if the rule is loaded — not guaranteed. **Docs freshness** (`git status` + worktrees) first; sibling `docs/` drift = content, not ancestry after squash-merge |
 | Agent treats this worktree’s docs as current | After §0.3 freshness. Stay-in-worktree ≠ current — a sibling tree may have newer uncommitted `docs/` |
 | Grok / successive issues each get their own PR | Same-stem live docs (TODO/spec) on an open PR → add there. Docs overlap ≠ code overlap |
 | Agent always updates TODOs | Best when the rule is active *and* you remind at session end |
