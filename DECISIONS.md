@@ -33,6 +33,7 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 | D23 | Destination file always; implementation gate only after *lock product shape* + confirm (or prevent’s confirm) | accepted | 2.9.3 |
 | D24 | Session-default docs freshness; pack lessons live on the routed path, not only the discovery playbook | accepted | 2.9.4 |
 | D25 | Bugbot reads the PR until ready; squash-before-ready is not required (HEAD-only reviewers use standing) | accepted | 2.9.4 |
+| D26 | Sibling `docs/` drift is content (`git diff`), not ancestry (`git log` after squash-merge) | accepted | 2.9.5 |
 
 ---
 
@@ -174,7 +175,7 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 
 **Where it must live:**
 
-- **Docs as source of truth** depend on this checkout’s `docs/` being current. Session default (always-loaded rule + paved path) runs a cheap `git status` + `git worktree list` **before** treating Master Index / TODOs as current. Sibling worktree with newer `docs/` → hard stop. Dirty **this** tree is a note, not an implement hard stop (A0 stays the overwrite hard stop). Full procedure: `workflow/session-freshness.md`. Host worktrees “stay” is isolation — stay ≠ current.
+- **Docs as source of truth** depend on this checkout’s `docs/` being current. Session default (always-loaded rule + paved path) runs a cheap `git status` + `git worktree list` **before** treating Master Index / TODOs as current. Sibling worktree with **newer `docs/` content** (`git diff`) or uncommitted sibling `docs/` → hard stop. Ancestry-only (`git log HEAD..<other> -- docs` after squash-merge) is not drift (D26). Dirty **this** tree is a note, not an implement hard stop (A0 stays the overwrite hard stop). Full procedure: `workflow/session-freshness.md`. Host worktrees “stay” is isolation — stay ≠ current.
 - **Pack-owned `docs/templates/`** warning lives at `docs/templates/README.md` (where an agent wanders to “fix a rule”), not only in install/sync playbooks.
 - **Bootstrap is parent-only** — same as orchestrator. A `docs-bootstrap` harness adapter is installed *by* bootstrap / rule-install, so it cannot exist for the first (and usual) bootstrap ask. Keep `roles/bootstrap.md` as an in-session wrapper; never generate or install `docs-bootstrap` adapters. Sync B deletes leftovers.
 - **Docs-overlapping PRs** — live TODO/spec/Understanding are rewritten every session. Two PRs on the same stem conflict even when `src/` files differ. Session default + Grok parent spawn path: list open PRs; add to the PR that already owns that stem’s docs. Do not leave this only in `tools/grok-build.md` (install-only). Orchestrator “do not share files” includes docs.
@@ -188,6 +189,14 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 **Decision:** Squash-before-ready is **not** required for Bugbot. Bugbot reviews the **PR** (all commits) until the PR is marked ready. Commits that follow ready are tip-only. `milestone-pr` marks ready on the milestone’s existing commits, waits CI/Bugbot, then squash-merges at the forge. **`branch-pr-squash`** stays the one-morning-PR option. A reviewer that **only ever reads HEAD** (another product, or a standing preference) is a write-in: *always squash before mark ready*.
 
 **Do not:** Restore mandatory squash-before-ready “so tip-only bots see the whole cut.” Do not add an eighth git mode for HEAD-only reviewers. Do not treat forge squash-merge (how the slice lands on default) as the same as rewriting the PR branch before ready.
+
+---
+
+## D26 — Sibling docs drift is content, not ancestry
+
+**Decision:** The session-freshness sibling probe hard-stops on **uncommitted sibling `docs/`** or **`git diff --quiet HEAD <other-HEAD> -- docs` failing**. `git log HEAD..<other-HEAD> -- docs` only **names** commits in a real stop message. Squash-merge (GitHub default; `branch-pr-squash`; standing squash-before-ready) severs ancestry: the worktree is “behind” on the graph and **identical** on `docs/` content. That is not drift. A pre-merge re-check does not catch the state the squash **creates**; the content verdict does.
+
+**Do not:** Verdict sibling drift from `git log HEAD..<other> -- docs` alone. Do not restore “this HEAD lacks `docs/` commits the other tree has” as a hard stop.
 
 ---
 

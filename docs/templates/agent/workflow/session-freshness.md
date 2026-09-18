@@ -33,20 +33,20 @@ git worktree list
 
 ## Sibling probe *(only when `git worktree list` has more than one entry)*
 
-For **each other** worktree path:
+For **each other** worktree path (`<other-HEAD>` = `git -C <other> rev-parse HEAD`):
 
 ```bash
 git -C <other> status --porcelain -- docs
+git diff --quiet HEAD <other-HEAD> -- docs    # authoritative
+# name-only — do not verdict from this:
 git log --oneline HEAD..<other-HEAD> -- docs
 ```
-
-(`<other-HEAD>` = `git -C <other> rev-parse HEAD`.)
 
 | Finding | Action |
 |---------|--------|
 | Other tree has **uncommitted `docs/`** | **Hard stop.** |
-| This `HEAD` **lacks `docs/` commits** the other tree has | **Hard stop.** |
-| Neither | Continue. One line: *docs freshness: no sibling docs drift*. |
+| `git diff --quiet HEAD <other-HEAD> -- docs` **fails** (`docs/` trees differ) | **Hard stop.** Use `git log HEAD..<other-HEAD> -- docs` only to **name** commits in the stop message. |
+| `git diff --quiet` **succeeds** | **No drift.** Continue even if `git log HEAD..<other-HEAD> -- docs` lists commits. Squash-merge / rebase severs ancestry (GitHub’s default green button; `branch-pr-squash`; standing squash-before-ready). Graph-only “behind” is not lost work. One line: *docs freshness: no sibling docs drift*. |
 
 On **hard stop**:
 
@@ -61,7 +61,9 @@ Re-run the cheap check after they say continue.
 
 ## Before merge / overwrite that touches live docs
 
-Re-run the cheap check (and sibling probe if multiple worktrees) **again** before merging a branch or replacing `docs/` files. A tree that was clean at session start can still be behind a sibling that received new `docs/` work mid-session.
+Re-run the cheap check (and sibling probe if multiple worktrees) **again** before merging a branch or replacing `docs/` files. A tree that was clean at session start can still be behind a sibling that received new `docs/` **content** mid-session.
+
+A squash-merge **onto the other tree** is what creates the next-session graph-only miss (`git log HEAD..<other> -- docs` lists the squash; `git diff --quiet HEAD <other-HEAD> -- docs` is clean). A pre-merge re-check does not cover that. The content verdict does: *your branch was squash-merged; this tree’s `docs/` match — current.*
 
 TEMPLATE_SYNC overwrite still uses **A0** (hard stop on dirty **this** tree) — this module does not replace A0.
 
@@ -104,7 +106,8 @@ Project-wide files (Human-TODO, Master Index, Product-Vision): if an open PR alr
 - Auto-commit / stash / merge to “fix” freshness
 - `git worktree add` / remove a host worktree
 - Checkout default in a host/linked worktree
-- Scan every file under every worktree — porcelain + `git log -- docs` is enough
+- Scan every file under every worktree — porcelain + `git diff --quiet HEAD <other-HEAD> -- docs` is enough; `git log -- docs` only names commits on a real stop
+- Hard-stop because `git log HEAD..<other> -- docs` lists a squash-merge (or rebase) when `git diff --quiet HEAD <other-HEAD> -- docs` is clean
 - Open this module when the cheap freshness check is clean **and** you are not opening a new PR
 - Open a second PR because the **code** files differ while the same `*-TODO.md` / spec / Understanding would change
 - Spawn a new Grok/coding agent + new PR for a successive complaint on a stem that already has an open PR
