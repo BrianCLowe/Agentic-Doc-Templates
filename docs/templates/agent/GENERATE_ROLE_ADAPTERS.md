@@ -65,7 +65,7 @@ Same as Cursor, but:
 
 - Write **all three** harnesses for every role in the manifest.
 - Delete `roles/cursor/<name>.md`, `roles/grok/<name>.md`, or `roles/copilot/<name>.agent.md` only if that role was **removed** from the manifest (ask before deleting if unsure).
-- **Never** create an `orchestrator` adapter.
+- **Never** create an `orchestrator` or `docs-bootstrap` adapter (parent-only).
 
 ## Stop when
 

@@ -4,7 +4,7 @@
 
 **Job:** Implement from **Current focus** when the stem is **ready** under the project docs profile (Workflow §0.1 / §3) and scope is unchanged. Keep docs in sync for *this* TODO only.
 
-**Canonical procedure:** Index paved path [`../Modular_Docs_Workflow.md`](../Modular_Docs_Workflow.md) · [`../workflow/profile-standing.md`](../workflow/profile-standing.md) (§0.1) · [`../workflow/implement.md`](../workflow/implement.md) (§3) · [`../workflow/todos.md`](../workflow/todos.md) (§5). Shared vs feature: [`../workflow/shared-components.md`](../workflow/shared-components.md). Additive vs shape / de-confirm: [`../workflow/understanding.md`](../workflow/understanding.md) §4.
+**Canonical procedure:** Index paved path [`../Modular_Docs_Workflow.md`](../Modular_Docs_Workflow.md) · [`../workflow/session-freshness.md`](../workflow/session-freshness.md) (§0.3) · [`../workflow/profile-standing.md`](../workflow/profile-standing.md) (§0.1) · [`../workflow/implement.md`](../workflow/implement.md) (§3) · [`../workflow/todos.md`](../workflow/todos.md) (§5). Shared vs feature: [`../workflow/shared-components.md`](../workflow/shared-components.md). Additive vs shape / de-confirm: [`../workflow/understanding.md`](../workflow/understanding.md) §4.
 
 ## When to invoke
 
@@ -13,14 +13,15 @@
 
 ## Inputs *(open only these)*
 
-1. `docs/ADT-settings.yaml` → `docs_profile.mode` if present (unset = prevent); **`standing.instructions`** if non-empty (Workflow §0.2); parent brief may already name these. If the brief names a **host cwd / worktree path** → work **only** there. Do **not** create or remove worktrees; do **not** checkout default.
-2. `docs/Master_Index.md` Sections 1–3. `docs/Product-Vision.md` if it exists — do **not** implement a fight with a **confirmed** end-state picture (Workflow §4.5)
-3. Active TODO — read **Current focus** first (§5.1)
-4. That item’s linked spec; `-Understanding.md` **if it exists** (**read-only** for context)
-5. Shared docs **only** when linked from this feature’s Understanding, spec, or TODO dependency notes (or the one shared piece you are integrating now)
-6. `docs/Tooling.md` / `docs/Human-TODO.md` only if install or a human-gated item blocks this focus item
+1. **Docs freshness** (Workflow §0.3): `git status --porcelain` + `git worktree list` before treating Master Index / TODOs as current. Sibling `docs/` drift → **stop**. Dirty **this** tree: one line, continue. If the brief names a **host cwd / worktree path** → work **only** there. Do **not** create or remove worktrees; do **not** checkout default.
+2. `docs/ADT-settings.yaml` → `docs_profile.mode` if present (unset = prevent); **`standing.instructions`** if non-empty (Workflow §0.2); parent brief may already name these.
+3. `docs/Master_Index.md` Sections 1–3. `docs/Product-Vision.md` if it exists — do **not** implement a fight with a **confirmed** end-state picture (Workflow §4.5)
+4. Active TODO — read **Current focus** first (§5.1)
+5. That item’s linked spec; `-Understanding.md` **if it exists** (**read-only** for context)
+6. Shared docs **only** when linked from this feature’s Understanding, spec, or TODO dependency notes (or the one shared piece you are integrating now)
+7. `docs/Tooling.md` / `docs/Human-TODO.md` only if install or a human-gated item blocks this focus item
 
-**Do not** open the workflow index/modules unless creating files, Path A vs B is unclear, additive-vs-shape is unclear, or the user asks about procedure — then open **one** module from the index router.
+**Do not** open the workflow index/modules unless creating files, Path A vs B is unclear, additive-vs-shape is unclear, **docs freshness flagged**, or the user asks about procedure — then open **one** module from the index router.
 
 ## Preconditions
 
@@ -62,3 +63,4 @@
 - Audit code vs docs for unrelated features; invent `_shared/` components; duplicate foundation tasks into a feature TODO
 - Scan the whole repo “just in case”; switch into bootstrap or template sync
 - `git worktree add` / `git worktree remove` / host-delete a worktree; work outside a cwd the parent briefed
+- Treat Master Index / TODOs as current when a sibling worktree has newer uncommitted `docs/` (Workflow §0.3)

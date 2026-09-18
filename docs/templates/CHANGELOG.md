@@ -22,6 +22,20 @@
 
 ---
 
+## 2.9.4
+
+- **Live impact:** `versions-only`, `process-docs-only`, `master-index`, `rules`
+- **Files:**
+  - `VERSION` — 2.9.3 → 2.9.4
+  - `README.md` *(templates root, new)* — pack-owned; replaced in full on sync; edits vanish; change upstream; project-owned docs live elsewhere
+  - `workflow/session-freshness.md` *(new, §0.3)* — session-start `git status` + `git worktree list`; sibling `docs/` drift → hard stop; Stay ≠ current. A0 remains the overwrite gate
+  - `Modular_Documentation_Rule.*` — session default step 0 is the cheap check (so it is on the routed path); Shared / Before implementation slimmed to module pointers; bootstrap is **parent only** (no `docs-bootstrap` spawn)
+  - `roles/adapter-src/` — **removed** `docs-bootstrap` (bootstrap installs adapters; the adapter could not exist until after the job). Keep in-session [`roles/bootstrap.md`](agent/roles/bootstrap.md) as a thin parent wrapper
+  - Workflow index / implement / todos / Master Index / roles / tools / help / `TEMPLATE_SYNC_A` / `TEMPLATE_SYNC_B` / `RULE_INSTALL` / `BOOTSTRAP` — route the same lesson; do not leave it only in sync/install playbooks
+  - Root `DECISIONS.md` **D24** — do not silently undo
+  - Root `eval/` — `session-docs-freshness` pack contract
+- **Step B:** Bump Master Index **Pack version** to 2.9.4 from local `VERSION`. **`master-index`:** Key Locations `docs/templates/` row: pack-owned / do not edit / see `templates/README.md`. At a Glance: add **Docs freshness** pointer (Stay ≠ current). Quick Start step 1: freshness first. **`rules`:** refresh installed modular-rule copies so session default step 0 is live — the gate does nothing if only the pack copy updates. If doc-roles enabled: refresh **six** adapters; **delete leftover** `docs-bootstrap.md` / `docs-bootstrap.agent.md`. No live feature/shared scan.
+
 ## 2.9.3
 
 - **Live impact:** `versions-only`, `process-docs-only`, `content-templates`, `master-index`

@@ -10,7 +10,7 @@
 
 **Docs profile:** `docs/ADT-settings.yaml` → `docs_profile.mode` — first-class choice. **`ship-first`** = typed APIs / CRUD. **`prevent`** = editors / games / multi-surface (default if unset). **`balanced`** = mixed. Full rules → [`workflow/profile-standing.md`](workflow/profile-standing.md). Never silent-downgrade a project full of Understandings.
 
-**Optional roles:** [`roles/`](roles/README.md) — never always-on; parent spawns when adapters exist, else playbook in-session. **Orchestrator** = parent only ([`roles/orchestrator.md`](roles/orchestrator.md) + git [`roles/orchestrator-git.md`](roles/orchestrator-git.md)). Single-slice implement → [`roles/feature-implementer.md`](roles/feature-implementer.md).
+**Optional roles:** [`roles/`](roles/README.md) — never always-on; parent spawns when adapters exist, else playbook in-session. **Orchestrator** and **bootstrap** = parent only ([`roles/orchestrator.md`](roles/orchestrator.md) + git [`roles/orchestrator-git.md`](roles/orchestrator-git.md); [`BOOTSTRAP.md`](BOOTSTRAP.md)). Single-slice implement → [`roles/feature-implementer.md`](roles/feature-implementer.md).
 
 ---
 
@@ -18,10 +18,11 @@
 
 Use when the stem is already **ready** under the docs profile and scope is unchanged:
 
-1. Read `docs/ADT-settings.yaml` → `docs_profile.mode` (else **prevent**); `orchestrator.git.mode` when relevant; **`standing.instructions` if non-empty**
-2. [`Master_Index.md`](../../Master_Index.md) — Sections 1–3 only. If [`Product-Vision.md`](../../Product-Vision.md) exists, read it (especially when `confirmed`)
-3. Active TODO **Current focus** → that item’s Understanding *(if any — read-only)* → spec → code. Do **not** implement a fight with a **confirmed** product vision
-4. **Stop.** Do **not** open workflow modules unless a row in the router below matches.
+1. **Docs freshness** (cheap): `git status --porcelain` + `git worktree list`. Clean + one worktree → continue. Sibling `docs/` drift → **stop** — open [`workflow/session-freshness.md`](workflow/session-freshness.md). Dirty **this** tree: one line, continue (do not auto-commit)
+2. Read `docs/ADT-settings.yaml` → `docs_profile.mode` (else **prevent**); `orchestrator.git.mode` when relevant; **`standing.instructions` if non-empty**
+3. [`Master_Index.md`](../../Master_Index.md) — Sections 1–3 only. If [`Product-Vision.md`](../../Product-Vision.md) exists, read it (especially when `confirmed`)
+4. Active TODO **Current focus** → that item’s Understanding *(if any — read-only)* → spec → code. Do **not** implement a fight with a **confirmed** product vision
+5. **Stop.** Do **not** open workflow modules unless a row in the router below matches.
 
 **Ready when:**
 
@@ -43,6 +44,7 @@ Use when the stem is already **ready** under the docs profile and scope is uncha
 |-----------|-----------|
 | Docs profile unset / suggest / upgrade | [`workflow/profile-standing.md`](workflow/profile-standing.md) (§0.1) |
 | Standing / playbook-override LOOKOUT | [`workflow/profile-standing.md`](workflow/profile-standing.md) (§0.2) |
+| Session start / dirty sibling worktree / docs may be stale / about to merge live docs | [`workflow/session-freshness.md`](workflow/session-freshness.md) (§0.3) |
 | Creating files / new Document Map row / split stem / inventory vs new row | [`workflow/naming-layout.md`](workflow/naming-layout.md) (§0) |
 | `_shared/` vs feature / foundation task placement | [`workflow/shared-components.md`](workflow/shared-components.md) (§1) |
 | Draft / revise Understanding · de-confirm gate · lock gate · assumption clean-out · relocate | [`workflow/understanding.md`](workflow/understanding.md) (§4) |
@@ -73,6 +75,10 @@ Full procedure: [`workflow/profile-standing.md`](workflow/profile-standing.md#01
 ### 0.2 Standing workflow instructions *(user workflow, not pack enums)*
 
 Full procedure: [`workflow/profile-standing.md`](workflow/profile-standing.md#02-standing-workflow-instructions-user-workflow-not-pack-enums).
+
+### 0.3 Session freshness *(docs as source of truth)*
+
+Full procedure: [`workflow/session-freshness.md`](workflow/session-freshness.md). Cheap `git status` + worktree list on the paved path; open the module only when sibling `docs/` drift flags.
 
 ### 0. Naming & file layout *(read before creating files)*
 
@@ -130,6 +136,7 @@ See [`workflow/human-todo.md`](workflow/human-todo.md#13-human-todo-inbox--needs
 
 ## Instructions for AI Agents
 
+- **Docs freshness** = *are this tree’s docs the ones the user means?* — [`workflow/session-freshness.md`](workflow/session-freshness.md). Run before treating Master Index as current.
 - **Master_Index.md** = *what this project is* and *where files live*.
 - **Product-Vision.md** = *the whole-product end-state* — [`workflow/product-vision.md`](workflow/product-vision.md). Feature map alone is not identity. **`ship-first`:** destination, not a gate.
 - **This file** = *how to work* — paved path first; then **one** module from the router.

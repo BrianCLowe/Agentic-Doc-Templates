@@ -48,9 +48,9 @@ Only if `optional_rules.doc-roles.status` is `enabled`. These are [Cursor subage
 | **Parent delegates** | If `.cursor/agents/<name>.md` exists → launch that subagent with a self-contained prompt |
 | **Do not** | Install under `.cursor/skills/`; add “use proactively” / “always use for” to descriptions |
 
-Files: `understanding-author.md`, `doc-graduate.md`, `feature-implementer.md`, `work-verifier.md`, `todo-warden.md`, `docs-bootstrap.md`, `docs-template-sync.md`.
+Files: `understanding-author.md`, `doc-graduate.md`, `feature-implementer.md`, `work-verifier.md`, `todo-warden.md`, `docs-template-sync.md`.
 
-**Do not** install an `orchestrator` adapter — orchestration runs in the **parent** session via `docs/templates/agent/roles/orchestrator.md` (spawns leaf workers only).
+**Do not** install an `orchestrator` or `docs-bootstrap` adapter — those run in the **parent** session (`roles/orchestrator.md` / `BOOTSTRAP.md`). Bootstrap *installs* adapters, so a bootstrap adapter cannot exist until after the job it was meant to do. Delete leftover `docs-bootstrap.md` if present.
 
 ## Host isolation *(orchestrator parallel implementers)*
 
@@ -73,7 +73,7 @@ Parent opens this only when spawning concurrent implementers ([`../roles/orchest
 - `.cursor/rules/modular-documentation.mdc` exists
 - `.cursor/rules/agent-timescale-planning.mdc` exists
 - `.cursor/rules/agent-build-verify.mdc` exists
-- If doc-roles enabled: seven files under `.cursor/agents/` (no `orchestrator.md`; includes `todo-warden.md`)
+- If doc-roles enabled: six files under `.cursor/agents/` (no `orchestrator.md` / `docs-bootstrap.md`; includes `todo-warden.md`)
 - Remind user: short asks are enough; parent rule delegates; `/name` optional
 
 ## For humans

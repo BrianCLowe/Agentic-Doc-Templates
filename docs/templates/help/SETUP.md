@@ -20,7 +20,7 @@ You need **`docs/templates/`** in your project (scaffolds, [`help/`](.), [`agent
 
 Whole-repo / template installs: bootstrap auto-moves clearly upstream root files into `docs/templates/agent/upstream/` and deletes Agentic-only `.github/ISSUE_TEMPLATE/`, `.github/FUNDING.yml`, `.github/workflows/release.yml` / `pack-checks.yml`, pack `.cursor/environment.json`, root `eval/`, root `scripts/gen_role_adapters.py`, leftover `docs/templates/agent/scripts/*.py`, and maintainer root **`DECISIONS.md`** (Steps 1b–1d). Short acquisition table also on the [upstream README — Get started](https://github.com/BrianCLowe/Agentic-Doc-Templates#get-started).
 
-**Inside the pack:** `help/` (this guide), `agent/` (bootstrap, rules, sync), plus `VERSION`, `CHANGELOG.md`, and the scaffold templates at the pack root. Pack version number lives **only** in `VERSION`.
+**Inside the pack:** `README.md` (do not edit — overwritten on sync), `help/` (this guide), `agent/` (bootstrap, rules, sync), plus `VERSION`, `CHANGELOG.md`, and the scaffold templates at the pack root. Pack version number lives **only** in `VERSION`.
 
 Public example of a project that used this pack: [xAIkit](https://github.com/BrianCLowe/xAIkit) (typed API — a natural **ship-first** fit).
 
@@ -64,6 +64,7 @@ docs/
 ├── features/ + assets/
 ├── decisions/                   ← optional
 └── templates/                   ← this pack (overwrite on sync; not live content)
+    ├── README.md                ← pack-owned; do not edit; edits vanish on sync
     ├── VERSION / CHANGELOG.md
     ├── help/ · agent/
     └── … scaffolds + agent/Modular_Docs_Workflow.md (index) + agent/workflow/

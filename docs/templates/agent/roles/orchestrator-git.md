@@ -87,6 +87,7 @@ Cloud isolation is a **VM + branch**, not a git worktree. Local `/worktree` / `g
 |-------|--------|
 | Not a git repo | Treat as **`none`** this run |
 | **Host / linked worktree** (below) | **Stay** (`branch_origin: host-worktree`; keep `platform` on Cloud). Do **not** checkout default in this tree. Host/platform tree created **for this run** → continue the effective mode (do not degrade solely because the branch is non-default). Unsure whether this tree is the user’s pre-existing feature → treat as **pre-existing** (degrade `milestone-pr` to `branch-pr-squash` this run; still do not checkout default here) |
+| **Docs freshness** | Before trusting Master Index / TODOs or merging: [`../workflow/session-freshness.md`](../workflow/session-freshness.md). Sibling worktree with newer `docs/` → **hard stop** (stay ≠ current) |
 | Dirty **unrelated** WIP | **Hard stop** — commit/stash/waive (TEMPLATE_SYNC A0 spirit). **Exception:** this cwd is a **linked/host worktree** and **this tree is clean** — do not hard-stop for dirty files in the **main** checkout. Unrelated dirty **in this tree** still hard-stops |
 | `milestone-pr` | **Cloud this-run** already on a non-default branch → **stay**, continue **`milestone-pr`** (record `branch_origin: platform`) — that branch is the platform workspace, not “someone else’s feature.” Non-cloud, non-default **intentional** user feature branch → **stay** and **degrade this run to `branch-pr-squash`** (one PR, **no merge** onto default — do not slice-merge someone else’s feature branch). Else create first `orchestrate/YYYY-MM-DD-<stem-or-scope>` (record `branch_origin: created`) |
 | `branch-pr` / `branch-pr-squash` / `branch-push` | Non-default **intentional** feature branch → **stay** (record `branch_origin: pre-existing`). Else create `orchestrate/YYYY-MM-DD-<scope>` (record `branch_origin: created`) |
@@ -108,7 +109,7 @@ Cloud isolation is a **VM + branch**, not a git worktree. Local `/worktree` / `g
 - Session started via Cursor `/worktree` / Agents Window worktree, `grok -w`, Copilot New Worktree / CLI `/worktree`, or `claude --worktree`
 - Cloud Agent workspace → **Cloud Agent path** (VM + branch; not a git worktree)
 
-**Already in one:** stay. One line: *Git: host worktree; staying.* Do **not** nest another tree. Do **not** checkout default **in this tree** (return-to-default is for the **main** checkout only).
+**Already in one:** stay. One line: *Git: host worktree; staying.* Do **not** nest another tree. Do **not** checkout default **in this tree** (return-to-default is for the **main** checkout only). **Stay ≠ current** — session-start docs staleness is [`../workflow/session-freshness.md`](../workflow/session-freshness.md) (sibling uncommitted `docs/` → hard stop). This file is isolation / delivery only.
 
 **Parallel implementers** require **host isolation** (file-overlap is not enough — two writers still share `HEAD` / index on one checkout):
 

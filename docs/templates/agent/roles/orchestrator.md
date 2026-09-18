@@ -6,7 +6,7 @@
 
 **Job:** Clear ready TODO work — implement → verify → milestone git — until budget/block, without waiting for “next.” **`milestone-pr`:** each **milestone** is its own PR (wait CI/Bugbot → merge → next branch). A milestone may be **several related TODOs**; spawn **concurrent implementers** when work does not overlap **and** the host can isolate them ([`orchestrator-git.md`](orchestrator-git.md) **Host worktrees**); **squash the whole milestone before mark ready** (tip-only checks). Do not stop at mark-ready and do not squash the whole night into one commit. End: human verify map + git close-out (`branch-pr*`: build-verify → todo-warden → squash? → mark ready, no merge → **return to default** when this run created the branch **in the main checkout**).
 
-**Canonical:** This file (loop). **Git delivery:** [`orchestrator-git.md`](orchestrator-git.md). Workers: [`feature-implementer.md`](feature-implementer.md), [`work-verifier.md`](work-verifier.md), [`todo-warden.md`](todo-warden.md). Workflow modules (open only if needed): [`../workflow/profile-standing.md`](../workflow/profile-standing.md) · [`../workflow/implement.md`](../workflow/implement.md) · [`../workflow/todos.md`](../workflow/todos.md) · [`../workflow/human-todo.md`](../workflow/human-todo.md). Index: [`../Modular_Docs_Workflow.md`](../Modular_Docs_Workflow.md). Timescale: [`../Agent_Timescale_Planning_Rule.mdc`](../Agent_Timescale_Planning_Rule.mdc). Settings: `docs/ADT-settings.yaml` → `docs_profile` + `orchestrator.git.mode` + **`standing.instructions`**.
+**Canonical:** This file (loop). **Git delivery:** [`orchestrator-git.md`](orchestrator-git.md). Workers: [`feature-implementer.md`](feature-implementer.md), [`work-verifier.md`](work-verifier.md), [`todo-warden.md`](todo-warden.md). Workflow modules (open only if needed): [`../workflow/session-freshness.md`](../workflow/session-freshness.md) · [`../workflow/profile-standing.md`](../workflow/profile-standing.md) · [`../workflow/implement.md`](../workflow/implement.md) · [`../workflow/todos.md`](../workflow/todos.md) · [`../workflow/human-todo.md`](../workflow/human-todo.md). Index: [`../Modular_Docs_Workflow.md`](../Modular_Docs_Workflow.md). Timescale: [`../Agent_Timescale_Planning_Rule.mdc`](../Agent_Timescale_Planning_Rule.mdc). Settings: `docs/ADT-settings.yaml` → `docs_profile` + `orchestrator.git.mode` + **`standing.instructions`**.
 
 ## When to invoke
 
@@ -15,15 +15,16 @@
 
 ## Inputs *(open only these)*
 
-1. `docs/ADT-settings.yaml` → `docs_profile.mode` (unset = **prevent**); `orchestrator.git.mode` → open [`orchestrator-git.md`](orchestrator-git.md) when resolving/running git (includes **Host worktrees** — not a settings key); **`standing.instructions`** if non-empty (Workflow §0.2) — apply as durable process prefs
-2. `docs/Master_Index.md` Sections 1–3
-3. In-scope `*-TODO.md` (Current focus + agreed tiers)
-4. Linked specs; `-Understanding.md` when present
-5. `docs/Human-TODO.md` for gates / dual-write
-6. `docs/Tooling.md` only if install blocks
-7. This file + worker paths when dispatching
+1. **Docs freshness** (Workflow §0.3) before trusting Master Index / TODOs — `git status --porcelain` + `git worktree list`. Sibling `docs/` drift → **hard stop**. Stay in a host worktree ≠ this tree’s docs are current.
+2. `docs/ADT-settings.yaml` → `docs_profile.mode` (unset = **prevent**); `orchestrator.git.mode` → open [`orchestrator-git.md`](orchestrator-git.md) when resolving/running git (includes **Host worktrees** — not a settings key); **`standing.instructions`** if non-empty (Workflow §0.2) — apply as durable process prefs
+3. `docs/Master_Index.md` Sections 1–3
+4. In-scope `*-TODO.md` (Current focus + agreed tiers)
+5. Linked specs; `-Understanding.md` when present
+6. `docs/Human-TODO.md` for gates / dual-write
+7. `docs/Tooling.md` only if install blocks
+8. This file + worker paths when dispatching
 
-**Do not** open the pack catalog, out-of-scope stems, or full Workflow unless Path A/B / profile / standing-capture / file-create is unclear.
+**Do not** open the pack catalog, out-of-scope stems, or full Workflow unless Path A/B / profile / standing-capture / file-create / **docs freshness flagged** is unclear.
 
 **Standing lookout (parent):** If the user wants to **override an ADT playbook** mid-run (always/never squash, merge after CI, PR readiness, ceremony) → same turn update first-class key or append `standing.instructions` (Workflow §0.2). This-run-only overrides do not rewrite settings unless they want them durable. **Do not jot random notes** or prompt-engineering into standing.
 

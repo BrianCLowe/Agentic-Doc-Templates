@@ -57,7 +57,7 @@
 
 **Precedence (highest wins):**
 
-1. Hard pack **safety** (dirty-tree hard stop before sync; no silent `current-push`; no force-push / protected-main surprises; no secrets in docs)
+1. Hard pack **safety** (dirty-tree hard stop before sync; session-start docs freshness / sibling `docs/` drift — Workflow §0.3; no silent `current-push`; no force-push / protected-main surprises; no secrets in docs)
 2. **This-turn** explicit user instruction
 3. **`standing.instructions`** (when non-empty)
 4. Structured ADT-settings enums + pack defaults

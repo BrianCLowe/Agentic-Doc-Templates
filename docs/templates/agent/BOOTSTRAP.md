@@ -147,13 +147,13 @@ Optional: `visuals/` for inspiration screenshots before a feature folder exists.
 
 **Pack spot-check** (enough to proceed — do not inventory every file):
 
-- `VERSION`, `CHANGELOG.md`, `agent/Modular_Docs_Workflow.md`, `agent/BOOTSTRAP.md`, `help/SETUP.md`
+- `README.md`, `VERSION`, `CHANGELOG.md`, `agent/Modular_Docs_Workflow.md`, `agent/BOOTSTRAP.md`, `help/SETUP.md`
 
 If any of those are missing, expand the inventory below and run Step 0b if layout looks old. Otherwise continue.
 
 **Full inventory** *(only if spot-check fails):*
 
-- **Root:** `VERSION`, `CHANGELOG.md`, `Master_Index_Template.md`, `Feature_Spec_Template.md`, `Feature_Understanding_Template.md`, `TODO_Template.md`, `Decision_Template.md`, `Tooling_Template.md`, `Human_TODO_Template.md`, `Team_Roster_Template.md`, `Product_Vision_Template.md`
+- **Root:** `README.md` (pack-owned warning), `VERSION`, `CHANGELOG.md`, `Master_Index_Template.md`, `Feature_Spec_Template.md`, `Feature_Understanding_Template.md`, `TODO_Template.md`, `Decision_Template.md`, `Tooling_Template.md`, `Human_TODO_Template.md`, `Team_Roster_Template.md`, `Product_Vision_Template.md`
 - **`help/`:** `SETUP.md`, `USAGE.md`, `SCAFFOLDS.md`, `IDEA_CAPTURE_TIPS.md`, `USING_WITH_AGENTS.md`
 - **`agent/`:** `Modular_Docs_Workflow.md`, `workflow/` (modules), `roles/` (+ `adapter-src/`), `GENERATE_ROLE_ADAPTERS.md`, `BOOTSTRAP.md`, `RULE_INSTALL.md`, `TEMPLATE_SYNC.md`, `TEMPLATE_SYNC_A.md`, `TEMPLATE_SYNC_B.md`, `TEMPLATE_UPDATE_CHECK.md`, `Modular_Documentation_Rule.mdc`, `Modular_Documentation_Rule.instructions.md`, `Agent_Timescale_Planning_Rule.mdc`, `Agent_Timescale_Planning_Rule.instructions.md`, `Agent_Build_Verify_Rule.mdc`, `Agent_Build_Verify_Rule.instructions.md`, `Template_Update_Check_Rule.mdc`, `Template_Update_Check_Rule.instructions.md`, `ADT-settings.example.yaml`
 
