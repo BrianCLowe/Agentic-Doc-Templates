@@ -10,7 +10,7 @@
 
 ## 1. Project Overview
 
-[1–3 short paragraphs describing what the project is, its core architecture, and primary goals. Keep it high-level — details live in feature files. Whole-product end-state: [`Product-Vision.md`](Product-Vision.md) when that file exists.]
+[1–3 short paragraphs describing what the project is, its core architecture, and primary goals. Keep it high-level — details live in feature files. Whole-product end-state: [`Product-Vision.md`](Product-Vision.md).]
 
 ### 1.1 Project Profile *(optional — fill once)*
 
@@ -55,7 +55,7 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 | **File layout / kit leftovers** | Flat sibling files; no map-only planned rows; leftovers stay as TODOs on an existing stem. [§0](templates/agent/workflow/naming-layout.md#0-naming--file-layout-read-before-creating-files) · [§5.4](templates/agent/workflow/todos.md#54-finished-kit-contract--covering-todos-not-wait-for-pickup) |
 | **Understanding / Spec** | Shape vs contract. [§4](templates/agent/workflow/understanding.md#4-understanding-features--shared) · [§2](templates/agent/workflow/understanding.md#2-understanding--spec-graduation) |
 | **Shared** | Only when actually shared. Same note types as features unless the user excepted them in §3.0. [§1](templates/agent/workflow/shared-components.md#1-shared-components--foundation-vs-consumption) |
-| **Product vision** | [`Product-Vision.md`](Product-Vision.md) when present — whole-product end-state; feature Understandings must fit a **confirmed** vision. [§4.5](templates/agent/workflow/product-vision.md) |
+| **Product vision** | [`Product-Vision.md`](Product-Vision.md) — whole-product end-state; feature Understandings must fit a **confirmed** vision. [§4.5](templates/agent/workflow/product-vision.md) |
 | **Human inbox / Tooling** | [`Human-TODO.md`](Human-TODO.md) · [`Tooling.md`](Tooling.md). Optional [`Team-Roster.md`](Team-Roster.md) when `team_inbox` is on |
 | **Size / split** | Split when a file is bloated. [§8](templates/agent/workflow/extensions.md#8-how-to-split-a-large-document) |
 

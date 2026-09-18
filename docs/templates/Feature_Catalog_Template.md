@@ -1,6 +1,6 @@
 # [Feature or Shared Component Name] — Catalog
 
-> Never edit this template unless the user asks you to. Optional sibling for **list-heavy** stems. Create under `docs/features/` or `docs/_shared/`. Spec owns rules/identity; this file owns **design-intent rows**. Humans: [`help/SCAFFOLDS.md`](help/SCAFFOLDS.md). Agents: [`agent/workflow/extensions.md`](agent/workflow/extensions.md) §7.1.
+> Never edit this template unless the user asks you to. Optional sibling for **list-heavy** stems. Create under `docs/features/` or `docs/_shared/`. Spec owns rules/identity; this file owns **design-intent rows**. Humans: [`help/SCAFFOLDS.md`](../templates/help/SCAFFOLDS.md). Agents: [`agent/workflow/extensions.md`](../templates/agent/workflow/extensions.md) §7.1.
 
 **Last Updated**: [YYYY-MM-DD]  
 **Related Spec**: [FeatureName.md](FeatureName.md)  
@@ -36,7 +36,7 @@
 
 ## Instructions for AI Agents
 
-Fill the row table. Procedure: [`workflow/extensions.md`](agent/workflow/extensions.md) §7.1.
+Fill the row table. Procedure: [`workflow/extensions.md`](../templates/agent/workflow/extensions.md) §7.1.
 
 **Instructions for Humans**
 
