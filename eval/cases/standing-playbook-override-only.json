@@ -20,7 +20,8 @@
           "How to prompt",
           "playbook overrides only",
           "Sync relocate",
-          "Move then delete"
+          "Move then delete",
+          "Write-in (not a quiz, not an eighth mode)"
         ]
       },
       {
@@ -35,7 +36,27 @@
         "patterns": [
           "omit this entire key",
           "Missing / empty is the correct default",
-          "Do not invent"
+          "Do not invent",
+          "Write-in (not a quiz, not an eighth mode)"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/BOOTSTRAP.md",
+        "patterns": [
+          "Write-in (not a quiz, not an eighth mode)",
+          "do not quiz"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/TEMPLATE_SYNC_B.md",
+        "patterns": [
+          "Write-in (not a quiz, not an eighth mode)"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/roles/orchestrator-git.md",
+        "patterns": [
+          "Write-in (not a quiz, not an eighth mode)"
         ]
       },
       {
@@ -110,10 +131,29 @@
       {
         "file": "docs/templates/agent/BOOTSTRAP.md",
         "must_contain": [
-          "do not quiz"
+          "do not quiz",
+          "Write-in (not a quiz, not an eighth mode)"
         ],
         "must_not_contain": [
           "Any standing playbook overrides to save"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/TEMPLATE_SYNC_B.md",
+        "must_contain": [
+          "Write-in (not a quiz, not an eighth mode)"
+        ],
+        "must_not_contain": [
+          "Any standing playbook overrides to save"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/roles/orchestrator-git.md",
+        "must_contain": [
+          "Write-in (not a quiz, not an eighth mode)"
+        ],
+        "must_not_contain": [
+          "invent an eighth git mode"
         ]
       }
     ]

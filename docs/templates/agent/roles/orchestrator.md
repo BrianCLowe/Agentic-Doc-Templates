@@ -4,7 +4,7 @@
 >
 > **Parent session only.** Do **not** spawn an `orchestrator` subagent. Leaf workers: `feature-implementer`, `work-verifier`, `todo-warden`. Do **not** install this file into harness `agents/` folders.
 
-**Job:** Clear ready TODO work — implement → verify → milestone git — until budget/block, without waiting for “next.” **`milestone-pr`:** each **milestone** is its own PR (wait CI/Bugbot → merge → next branch). A milestone may be **several related TODOs**; spawn **concurrent implementers** when work does not overlap **and** the host can isolate them ([`orchestrator-git.md`](orchestrator-git.md) **Host worktrees**); **squash the whole milestone before mark ready** (tip-only checks). Do not stop at mark-ready and do not squash the whole night into one commit. End: human verify map + git close-out (`branch-pr*`: build-verify → todo-warden → squash? → mark ready, no merge → **return to default** when this run created the branch **in the main checkout**).
+**Job:** Clear ready TODO work — implement → verify → milestone git — until budget/block, without waiting for “next.” **`milestone-pr`:** each **milestone** is its own PR (wait CI/Bugbot → merge → next branch). A milestone may be **several related TODOs**; spawn **concurrent implementers** when work does not overlap **and** the host can isolate them ([`orchestrator-git.md`](orchestrator-git.md) **Host worktrees**). **Do not** squash before ready for Bugbot (it reads the **PR** until ready; commits after ready are tip-only). Do not stop at mark-ready and do not dump the whole night into one PR. End: human verify map + git close-out (`branch-pr*`: build-verify → todo-warden → squash? → mark ready, no merge → **return to default** when this run created the branch **in the main checkout**).
 
 **Canonical:** This file (loop). **Git delivery:** [`orchestrator-git.md`](orchestrator-git.md). Workers: [`feature-implementer.md`](feature-implementer.md), [`work-verifier.md`](work-verifier.md), [`todo-warden.md`](todo-warden.md). Workflow modules (open only if needed): [`../workflow/session-freshness.md`](../workflow/session-freshness.md) · [`../workflow/profile-standing.md`](../workflow/profile-standing.md) · [`../workflow/implement.md`](../workflow/implement.md) · [`../workflow/todos.md`](../workflow/todos.md) · [`../workflow/human-todo.md`](../workflow/human-todo.md). Index: [`../Modular_Docs_Workflow.md`](../Modular_Docs_Workflow.md). Timescale: [`../Agent_Timescale_Planning_Rule.mdc`](../Agent_Timescale_Planning_Rule.mdc). Settings: `docs/ADT-settings.yaml` → `docs_profile` + `orchestrator.git.mode` + **`standing.instructions`**.
 
@@ -26,7 +26,7 @@
 
 **Do not** open the pack catalog, out-of-scope stems, or full Workflow unless Path A/B / profile / standing-capture / file-create / **docs freshness flagged** is unclear.
 
-**Standing lookout (parent):** If the user wants to **override an ADT playbook** mid-run (always/never squash, merge after CI, PR readiness, ceremony) → same turn update first-class key or append `standing.instructions` (Workflow §0.2). This-run-only overrides do not rewrite settings unless they want them durable. **Do not jot random notes** or prompt-engineering into standing.
+**Standing lookout (parent):** If the user wants to **override an ADT playbook** mid-run (always squash before ready for a HEAD-only reviewer, merge commit, rebase-merge, merge after CI, PR readiness, ceremony) → same turn update first-class key or append `standing.instructions` (Workflow §0.2). This-run-only overrides do not rewrite settings unless they want them durable. **Do not jot random notes** or prompt-engineering into standing.
 
 ## Pre-run ask *(once)*
 
@@ -42,7 +42,7 @@ Skip dimensions already fixed in the same message:
 | Stems | Ask-implied; else all map stems with ready work |
 | Priorities | **All open tiers** |
 | Budget | Drain until cleared or blocked |
-| Git | From setting; else ask (recommend **milestone-pr** + forge: one PR per milestone — several related TODOs + concurrent implementers when they do not overlap **and** the host can isolate; squash before ready; wait CI/Bugbot; merge; next branch; offer **branch-pr-squash** for one morning PR / no merge). **Cloud Agent:** this-run **milestone-pr** when durable is local-oriented or `branch-pr*` — see orchestrator-git. **Host worktree:** stay. **Never** silent-default **current-push** |
+| Git | From setting; else ask (recommend **milestone-pr** + forge: one PR per milestone — several related TODOs + concurrent implementers when they do not overlap **and** the host can isolate; wait CI/Bugbot; merge; next branch; offer **branch-pr-squash** for one morning PR / no merge). **Write-in (not a quiz, not an eighth mode):** closest mode + standing for merge commit / rebase-merge / always squash before ready (HEAD-only reviewer) / custom close-out. **Cloud Agent:** this-run **milestone-pr** when durable is local-oriented or `branch-pr*` — see orchestrator-git. **Host worktree:** stay. **Never** silent-default **current-push** |
 
 Record policy internally. **No mid-loop re-asks** about scope/commits/“next.” Explicit limit in the ask **binds**. This-run-only / cloud git override does **not** rewrite ADT-settings unless they also set the default (or you capture a durable standing note / key per §0.2).
 
@@ -83,7 +83,7 @@ Until **stop condition**:
 5. **Verify fail** — one fix pass; second fail → stop item, continue others  
 6. **Bookkeep** — `[x]` + date, Current focus; dual-write human gates; defer new playtest  
 7. **Unit build green** — implementer should have run build-verify for code; re-dispatch if handoff implies runnable but never built  
-8. **Milestone git** — parent commits each verify-pass (mode ≠ `none`); serialize commits if several implementers return together; then push/PR per [`orchestrator-git.md`](orchestrator-git.md). **`milestone-pr`:** stay on this branch while the named milestone still has remaining grouped TODOs or in-flight parallel units. When that milestone is **complete** → that file’s **milestone PR cycle** (warden → **squash the whole milestone** → ready → wait CI/Bugbot → merge → new branch) **before** the next milestone. Do **not** start the cycle after the first TODO if more grouped work remains. Waiting is drain, not a stop. **One open PR at a time.**  
+8. **Milestone git** — parent commits each verify-pass (mode ≠ `none`); serialize commits if several implementers return together; then push/PR per [`orchestrator-git.md`](orchestrator-git.md). **`milestone-pr`:** stay on this branch while the named milestone still has remaining grouped TODOs or in-flight parallel units. When that milestone is **complete** → that file’s **milestone PR cycle** (warden → ready → wait CI/Bugbot → merge → new branch) **before** the next milestone. Do **not** start the cycle after the first TODO if more grouped work remains. Waiting is drain, not a stop. **One open PR at a time.**  
 
 **Current focus** is the next-work pointer — not a stop signal.
 
@@ -115,7 +115,7 @@ Cleared · still open · human verify map · other deferred human · hard-blocke
 - Skip todo-warden after a code-shipping run / milestone PR; mark PR ready on warden **gaps-found**  
 - Mark human playtest/decide done without user confirm  
 - Push/PR/current-push without mode (or this-run) grant; **merge** PRs except **`milestone-pr`** after that file’s merge gate; bare force-push; silent-default **current-push**  
-- Under **`milestone-pr`:** treat one TODO as one PR; force serial-only implementers **when the host can isolate**; spawn concurrent writers on a **shared** checkout; `git worktree add` / write a worktrees settings key; skip squash before mark ready; squash the whole overnight run into one PR; skip CI/Bugbot wait; merge on red **or pending** required checks; stack a second PR on an unmerged first PR; checkout default / start the next branch on **degrade**  
+- Under **`milestone-pr`:** treat one TODO as one PR; force serial-only implementers **when the host can isolate**; spawn concurrent writers on a **shared** checkout; `git worktree add` / write a worktrees settings key; squash before ready **for Bugbot**; dump the whole overnight run into one PR; skip CI/Bugbot wait; merge on red **or pending** required checks; stack a second PR on an unmerged first PR; checkout default / start the next branch on **degrade**  
 - Leave HEAD on an **orchestrator-created** run branch after a finished run without returning to default (unless user said stay / dirty tree / **host worktree**)  
 - Checkout default **inside** a host/linked worktree to “go home”
 - Invent `_shared`/map rows/backlog unrelated to shipped work or dual-write  

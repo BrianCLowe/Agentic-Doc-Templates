@@ -151,7 +151,7 @@ Read `orchestrator.git.mode` from `docs/ADT-settings.yaml`.
 
 | Mode | One-line |
 |------|----------|
-| **`milestone-pr`** | **Overnight:** each milestone (several related TODOs OK; concurrent implementers when they do not overlap **and** the host can isolate) → own PR → **squash before ready** → wait CI/Bugbot → **merge** → next branch |
+| **`milestone-pr`** | **Overnight:** each milestone (several related TODOs OK; concurrent implementers when they do not overlap **and** the host can isolate) → own PR → wait CI/Bugbot → **merge** → next branch. Bugbot reads the PR until ready — squash-before-ready is not required |
 | **`branch-pr-squash`** | One run branch → end: **build-verify → squash whole run → mark ready** (no merge; one morning PR) |
 | **`branch-pr`** | Same without squash (keeps milestone history; no merge) |
 | **`branch-push`** | Branch → commits → push; no PR |
@@ -159,7 +159,9 @@ Read `orchestrator.git.mode` from `docs/ADT-settings.yaml`.
 | **`current-push`** | Commit + push **whatever branch you are on** (often `main`); solo opt-in only |
 | **`none`** | No commits |
 
-Recommend: remote + forge CLI → **`milestone-pr`** (overnight drain: per-milestone PR — several related TODOs + concurrent implementers when they do not overlap **and** the host can isolate; squash before ready; CI/Bugbot; merge; next branch); offer **`branch-pr-squash`** for one PR / human merges in the morning; offer **`branch-pr`** to keep history on one PR; remote, no CLI → still offer **`milestone-pr`** (with install ask) or **`branch-push`**; else **`local`**. Record choice + `recorded` (+ `source`). Explicit later: *Set orchestrator git to …*. **Note (do not re-ask):** a later **Cloud Agent** orchestration this-runs **`milestone-pr`** if durable stays `local` / `none` / `branch-pr-squash` / etc. — see [`roles/orchestrator-git.md`](roles/orchestrator-git.md); sync does not need a second key. **Host worktrees** are not a key — do **not** write `orchestrator.git.worktrees`.
+**Write-in (not a quiz, not an eighth mode):** same user-facing line as bootstrap Step 3p **E**. Closest mode + *Add standing note: …* for merge commit / rebase-merge / always squash before ready (HEAD-only reviewer) / custom close-out. Do **not** invent a mode. Do **not** quiz for standing.
+
+Recommend: remote + forge CLI → **`milestone-pr`** (overnight drain: per-milestone PR — several related TODOs + concurrent implementers when they do not overlap **and** the host can isolate; CI/Bugbot; merge; next branch); offer **`branch-pr-squash`** for one PR / human merges in the morning; offer **`branch-pr`** to keep history on one PR; remote, no CLI → still offer **`milestone-pr`** (with install ask) or **`branch-push`**; else **`local`**. Record choice + `recorded` (+ `source`). Explicit later: *Set orchestrator git to …*. **Note (do not re-ask):** a later **Cloud Agent** orchestration this-runs **`milestone-pr`** if durable stays `local` / `none` / `branch-pr-squash` / etc. — see [`roles/orchestrator-git.md`](roles/orchestrator-git.md); sync does not need a second key. **Host worktrees** are not a key — do **not** write `orchestrator.git.worktrees`.
 
 **After the mode is recorded** → **Forge tooling probe** ([`roles/orchestrator-git.md`](roles/orchestrator-git.md)): if **`milestone-pr` / `branch-pr` / `branch-pr-squash`** and CLI missing → ask to install; if not authenticated → **ask to start login** (install alone is not enough). Fall back / switch mode if they decline. Do not silent-install or silent-login.
 

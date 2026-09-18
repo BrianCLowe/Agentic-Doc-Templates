@@ -32,8 +32,10 @@
   - `Modular_Documentation_Rule.*` — session default step 0 is the cheap check (so it is on the routed path); Shared / Before implementation slimmed to module pointers; bootstrap is **parent only** (no `docs-bootstrap` spawn); successive-issue / Grok parent: do not spawn a second PR that rewrites the same live docs
   - `roles/adapter-src/` — **removed** `docs-bootstrap` (bootstrap installs adapters; the adapter could not exist until after the job). Keep in-session [`roles/bootstrap.md`](agent/roles/bootstrap.md) as a thin parent wrapper
   - Workflow index / implement / todos / Master Index / roles / tools (`grok-build` successive-issues) / help / `TEMPLATE_SYNC_A` / `TEMPLATE_SYNC_B` / `RULE_INSTALL` / `BOOTSTRAP` — route the same lesson; do not leave it only in sync/install playbooks
-  - Root `DECISIONS.md` **D24** — do not silently undo
-  - Root `eval/` — `session-docs-freshness` pack contract
+  - Root `DECISIONS.md` **D24** — do not silently undo; **D6** — standing is the git-mode write-in (not an eighth mode); **D25** — Bugbot reads the PR until ready; squash-before-ready is not required
+  - `BOOTSTRAP.md` Step 3p **E**, `TEMPLATE_SYNC_B.md` B0.6, `orchestrator-git.md` / `orchestrator.md`, `profile-standing.md`, `ADT-settings.example.yaml`, `help/USING_WITH_AGENTS.md` — git-mode menu: **write-in (not a quiz, not an eighth mode)** — closest mode + `standing.instructions` for merge commit / rebase-merge / always squash before ready (HEAD-only reviewer) / custom close-out
+  - `orchestrator-git.md` / `orchestrator.md` / BOOTSTRAP / B0.6 / roles README / root README — **`milestone-pr` does not squash before ready** for Bugbot (PR review until ready; commits after ready are tip-only). `branch-pr-squash` stays the one-morning-PR option
+  - Root `eval/` — `session-docs-freshness` pack contract; `standing-playbook-override-only` covers the git-menu write-in; `milestone-pr-multi-todo` covers D25
 - **Step B:** Bump Master Index **Pack version** to 2.9.4 from local `VERSION`. **`master-index`:** Key Locations `docs/templates/` row: pack-owned / do not edit / see `templates/README.md`. At a Glance: add **Docs freshness** pointer (Stay ≠ current; same-stem open PR → add there). Quick Start step 1: freshness first. **`rules`:** refresh installed modular-rule copies so session default step 0 is live — the gate does nothing if only the pack copy updates. If doc-roles enabled: refresh **six** adapters; **delete leftover** `docs-bootstrap.md` / `docs-bootstrap.agent.md`. No live feature/shared scan.
 
 ## 2.9.3

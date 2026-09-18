@@ -32,6 +32,7 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 | D22 | Named humans self-ID onto the roster with their own slug; generic `human` is leftover bucket, not a teammate | accepted | 2.9.1 |
 | D23 | Destination file always; implementation gate only after *lock product shape* + confirm (or prevent’s confirm) | accepted | 2.9.3 |
 | D24 | Session-default docs freshness; pack lessons live on the routed path, not only the discovery playbook | accepted | 2.9.4 |
+| D25 | Bugbot reads the PR until ready; squash-before-ready is not required (HEAD-only reviewers use standing) | accepted | 2.9.4 |
 
 ---
 
@@ -65,7 +66,9 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 
 ## D6 — Standing is not a notes pad
 
-**Decision:** `standing.instructions` holds lasting **ADT playbook overrides** only. Missing / empty is correct. Do not quiz for standing. Do not copy example bullets into live settings.
+**Decision:** `standing.instructions` holds lasting **ADT playbook overrides** only. Missing / empty is correct. Do not quiz for standing. Do not copy example bullets into live settings. The seven `orchestrator.git.mode` values stay the menu; custom handling (merge commit, rebase-merge, always squash before ready for a HEAD-only reviewer, custom close-out) is a **write-in on that ask**, not an eighth mode.
+
+**Do not:** Add an eighth git mode for merge-commit / rebase-merge / HEAD-only squash. Do not quiz for standing on the git-mode ask — mention the write-in on that menu only.
 
 ## D7 — Host worktrees are playbook-only
 
@@ -73,7 +76,7 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 
 ## D8 — Milestone ≠ one TODO
 
-**Decision:** `milestone-pr` groups related TODOs, may spawn concurrent implementers when work does not overlap **and** the host can isolate, then squashes the whole milestone before ready.
+**Decision:** `milestone-pr` groups related TODOs and may spawn concurrent implementers when work does not overlap **and** the host can isolate. Squash-before-ready is not part of this cut (D25).
 
 ## D9 — Do not migrate a set git mode
 
@@ -177,6 +180,14 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 - **Docs-overlapping PRs** — live TODO/spec/Understanding are rewritten every session. Two PRs on the same stem conflict even when `src/` files differ. Session default + Grok parent spawn path: list open PRs; add to the PR that already owns that stem’s docs. Do not leave this only in `tools/grok-build.md` (install-only). Orchestrator “do not share files” includes docs.
 
 **Do not:** File the next field lesson only in the playbook that first hit it. Do not skip session freshness because Current focus “looks recent.” Do not treat already-in-a-worktree as proof the docs are current. Do not omit `rules` on a bump that changes the always-loaded session default (installed copies would not get the gate). Do not re-add a `docs-bootstrap` adapter “for completeness.” Do not spawn a new Grok coding agent + PR per successive complaint on a stem that already has an open PR.
+
+---
+
+## D25 — Bugbot reads the PR until ready
+
+**Decision:** Squash-before-ready is **not** required for Bugbot. Bugbot reviews the **PR** (all commits) until the PR is marked ready. Commits that follow ready are tip-only. `milestone-pr` marks ready on the milestone’s existing commits, waits CI/Bugbot, then squash-merges at the forge. **`branch-pr-squash`** stays the one-morning-PR option. A reviewer that **only ever reads HEAD** (another product, or a standing preference) is a write-in: *always squash before mark ready*.
+
+**Do not:** Restore mandatory squash-before-ready “so tip-only bots see the whole cut.” Do not add an eighth git mode for HEAD-only reviewers. Do not treat forge squash-merge (how the slice lands on default) as the same as rewriting the PR branch before ready.
 
 ---
 

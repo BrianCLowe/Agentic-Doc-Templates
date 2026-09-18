@@ -243,13 +243,15 @@ Explain: optional Understanding author, implementer, work verifier, etc. as harn
 
 | Mode | Tell the user |
 |------|----------------|
-| **`milestone-pr`** *(suggest if remote + forge CLI)* | **Overnight drain:** each **milestone** (one or more related TODOs; concurrent implementers when they do not overlap **and** the host can isolate) → own branch → draft PR → build-verify → **squash that milestone** → mark ready → **wait CI / accept Bugbot auto-fixes** → **merge** → new branch for the next milestone. Reviewable diffs; tip-only bots see the whole cut; work lands before morning. |
+| **`milestone-pr`** *(suggest if remote + forge CLI)* | **Overnight drain:** each **milestone** (one or more related TODOs; concurrent implementers when they do not overlap **and** the host can isolate) → own branch → draft PR → build-verify → mark ready → **wait CI / accept Bugbot auto-fixes** → **merge** → new branch for the next milestone. Reviewable diffs; Bugbot reads the **PR** until ready (squash-before-ready is not required); work lands before morning. |
 | **`branch-pr-squash`** | One run branch → milestone commits → draft PR mid-run → end: **build-verify → squash the whole run to one commit → mark ready** (no merge). Use when you want **one morning PR** to review yourself. |
 | **`branch-pr`** | Same without squash — keeps milestone history on the PR. Unattended CI after the run. No merge. |
 | **`branch-push`** *(suggest if remote, no forge CLI)* | Same without PR |
 | **`local`** *(suggest if no remote)* | Milestone commits only; nothing leaves the machine |
 | **`current-push`** | Commit + **push the branch you are on now** (often `main`). Solo / you own the remote. **Never** applied without you picking it. |
 | **`none`** | No commits during orchestration |
+
+**Write-in (not a quiz, not an eighth mode):** include this in the **same** user-facing menu: *If none of these match how you want git to run (merge commit, rebase-merge, always squash before ready for a HEAD-only reviewer, custom close-out), pick the closest and tell me the override — I’ll save it as a standing instruction.* That is `standing.instructions` (Workflow §0.2). Do **not** invent a mode. Do **not** follow with “any standing notes?”
 
 **Cloud Agents:** if they later orchestrate in Cursor Cloud (or similar) while this key stays `local` / `none` / `branch-pr-squash` / etc., the agent uses **`milestone-pr` for that run only** and does **not** rewrite this setting — see [`roles/orchestrator-git.md`](roles/orchestrator-git.md) **Cloud Agent path**.
 
