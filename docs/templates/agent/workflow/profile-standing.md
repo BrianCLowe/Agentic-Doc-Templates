@@ -45,7 +45,7 @@
 
 **Live setting:** `docs/ADT-settings.yaml` → `standing.instructions` (YAML multi-line string). Example: [`ADT-settings.example.yaml`](../ADT-settings.example.yaml).
 
-**Why:** Pack enums (`docs_profile`, `orchestrator.git.mode`, `sync.mode`, …) cover known forks. Standing is the escape hatch when the user wants to **override an ADT playbook** (how *this pack* would otherwise run) and no first-class key exists yet — e.g. “squash before mark ready” before that was a mode. It is **not a scratch pad** for random notes.
+**Why:** Pack enums (`docs_profile`, `orchestrator.git.mode`, `sync.mode`, …) cover known forks. Standing is the escape hatch when the user wants to **override an ADT playbook** (how *this pack* would otherwise run) and no first-class key exists yet — e.g. always squash before ready for a HEAD-only reviewer, or merge commit / rebase-merge / custom close-out that the seven git modes do not express. It is **not a scratch pad** for random notes. **Git-mode ask** (bootstrap 3p **E** / B0.6 / orchestrator resolve): **Write-in (not a quiz, not an eighth mode)** — mention it **on that menu**. Still do **not** quiz for standing. Do **not** invent an eighth mode.
 
 | Prefer | Use for |
 |--------|---------|
@@ -57,7 +57,7 @@
 
 **Precedence (highest wins):**
 
-1. Hard pack **safety** (dirty-tree hard stop before sync; no silent `current-push`; no force-push / protected-main surprises; no secrets in docs)
+1. Hard pack **safety** (dirty-tree hard stop before sync; session-start docs freshness / sibling `docs/` drift — Workflow §0.3; no silent `current-push`; no force-push / protected-main surprises; no secrets in docs)
 2. **This-turn** explicit user instruction
 3. **`standing.instructions`** (when non-empty)
 4. Structured ADT-settings enums + pack defaults

@@ -1,0 +1,158 @@
+{
+  "id": "session-docs-freshness",
+  "title": "Session-default docs freshness — A0 lesson on the routed path; templates README at temptation",
+  "role": "feature-implementer",
+  "user": "Continue from Current focus.",
+  "fixture": "fixtures/ship-first-crud",
+  "expect": {},
+  "pack_contract": {
+    "source_must_include": [
+      {
+        "file": "docs/templates/README.md",
+        "patterns": [
+          "do not edit",
+          "replaces it in full",
+          "Edits here vanish",
+          "Project-owned"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/workflow/session-freshness.md",
+        "patterns": [
+          "0.3",
+          "git status --porcelain",
+          "git worktree list",
+          "Sibling probe",
+          "Hard stop",
+          "Stay ≠ current",
+          "Do **not** auto-commit",
+          "Docs-overlapping PRs",
+          "docs overlap ≠ code overlap",
+          "gh pr list --state open"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/Modular_Documentation_Rule.mdc",
+        "patterns": [
+          "Docs freshness",
+          "git status --porcelain",
+          "git worktree list",
+          "session-freshness.md",
+          "Do **not** edit `docs/templates/`",
+          "Successive issues / Grok parent",
+          "add to that PR"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/Modular_Docs_Workflow.md",
+        "patterns": [
+          "Docs freshness",
+          "session-freshness.md",
+          "Sibling `docs/` drift"
+        ]
+      },
+      {
+        "file": "docs/templates/CHANGELOG.md",
+        "patterns": [
+          "2.9.4",
+          "session-freshness.md",
+          "Stay ≠ current",
+          "`rules`"
+        ]
+      }
+    ],
+    "summaries_must_point": [
+      {
+        "file": "docs/templates/agent/Modular_Documentation_Rule.mdc",
+        "must_contain": [
+          "Docs freshness",
+          "session-freshness.md"
+        ],
+        "must_not_contain": [
+          "Sibling probe *(only when"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/Modular_Documentation_Rule.instructions.md",
+        "must_contain": [
+          "Docs freshness",
+          "session-freshness.md"
+        ],
+        "must_not_contain": [
+          "Sibling probe *(only when"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/roles/orchestrator-git.md",
+        "must_contain": [
+          "Stay ≠ current",
+          "session-freshness.md",
+          "live docs count"
+        ],
+        "must_not_contain": [
+          "Sibling probe *(only when"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/TEMPLATE_SYNC_A.md",
+        "must_contain": [
+          "session-freshness.md",
+          "A0 stays the **overwrite** hard stop"
+        ],
+        "must_not_contain": [
+          "Skip A0 when the tree is dirty and the session looks clean"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/RULE_INSTALL.md",
+        "must_contain": [
+          "../README.md"
+        ],
+        "must_not_contain": [
+          "Sibling probe"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/roles/adapter-src/manifest.json",
+        "must_contain": [
+          "docs-template-sync",
+          "feature-implementer"
+        ],
+        "must_not_contain": [
+          "docs-bootstrap"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/Modular_Documentation_Rule.mdc",
+        "must_contain": [
+          "do **not** spawn a bootstrap subagent",
+          "docs-bootstrap"
+        ],
+        "must_not_contain": [
+          "| bootstrap / init modular docs | `docs-bootstrap.md`"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/tools/cursor.md",
+        "must_contain": [
+          "six files",
+          "docs-bootstrap"
+        ],
+        "must_not_contain": [
+          "docs-bootstrap.md`, `docs-template-sync.md`"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/tools/grok-build.md",
+        "must_contain": [
+          "Successive issues",
+          "do not spawn",
+          "Docs-overlapping PRs"
+        ],
+        "must_not_contain": [
+          "always open a new PR per complaint"
+        ]
+      }
+    ]
+  }
+}

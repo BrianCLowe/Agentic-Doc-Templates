@@ -21,4 +21,4 @@ Ask your agent (or follow yourself):
 
 - Hard rules stay short. Full procedure lives in `../<role>.md` and `../../workflow/`.
 - De-confirm / additive-vs-shape and lock-gate / real-fork Assumptions: **one pointer** to `workflow/understanding.md` §4 — do not restate the gate prose here.
-- Never add an `orchestrator` adapter (parent-only).
+- Never add an `orchestrator` or `docs-bootstrap` adapter (parent-only). Bootstrap installs doc-roles — a bootstrap adapter cannot exist until after the job it was meant to do.

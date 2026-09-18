@@ -48,9 +48,9 @@ Copilot does **not** load `.cursor/agents/` / `.grok/agents/` as named subagents
 | **Parent delegates** | If `.github/agents/<name>.agent.md` exists → delegate that custom agent with a self-contained prompt (CLI `/agent` or inference; Agents window / Chat dropdown). Else role playbook fallback |
 | **Do not** | Install under `.cursor/agents/`; copy Cursor `model: inherit` adapters into `.github/agents/`; use user-global `~/.copilot/agents/` as the pack target |
 
-Files: `understanding-author.agent.md`, `doc-graduate.agent.md`, `feature-implementer.agent.md`, `work-verifier.agent.md`, `todo-warden.agent.md`, `docs-bootstrap.agent.md`, `docs-template-sync.agent.md`.
+Files: `understanding-author.agent.md`, `doc-graduate.agent.md`, `feature-implementer.agent.md`, `work-verifier.agent.md`, `todo-warden.agent.md`, `docs-template-sync.agent.md`.
 
-**Do not** install an `orchestrator` adapter — orchestration runs in the **parent** session via `docs/templates/agent/roles/orchestrator.md` (spawns leaf workers only).
+**Do not** install an `orchestrator` or `docs-bootstrap` adapter — those run in the **parent** session (`roles/orchestrator.md` / `BOOTSTRAP.md`). Delete leftover `docs-bootstrap.agent.md` if present.
 
 ## Host isolation *(orchestrator parallel implementers)*
 
@@ -67,7 +67,7 @@ Parent opens this only when spawning concurrent implementers ([`../roles/orchest
 
 - Modular + agent-timescale + agent-build-verify instructions exist under `.github/instructions/` or `copilot-instructions.md`
 - Optional: `/init` then confirm modular docs section present
-- If doc-roles enabled: seven files under `.github/agents/` (no `orchestrator`; includes `todo-warden.agent.md`)
+- If doc-roles enabled: six files under `.github/agents/` (no `orchestrator` / `docs-bootstrap`; includes `todo-warden.agent.md`)
 - Custom agents appear in Chat **Configure Custom Agents** / CLI `/agent` (custom list) / Agents window Customizations
 
 ## For humans

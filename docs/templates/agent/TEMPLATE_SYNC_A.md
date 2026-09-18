@@ -40,6 +40,8 @@ On dirty tree:
 
 This gate is **not** skipped by `sync.mode: auto` or `auto-all`. Those modes cover pack/live-doc optionals and **post-sync** hygiene commits — not silently committing unknown WIP before overwrite.
 
+**Same lesson, session-default path:** ordinary implement / continue uses [`workflow/session-freshness.md`](workflow/session-freshness.md) (Workflow §0.3) — `git status` + worktrees before treating live docs as current. A0 stays the **overwrite** hard stop (dirty **this** tree). Session freshness additionally hard-stops when a **sibling worktree** has newer `docs/`.
+
 ---
 
 ## Download / replace `docs/templates/` *(full overwrite — no diffs)*

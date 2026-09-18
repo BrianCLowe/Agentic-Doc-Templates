@@ -1,6 +1,6 @@
 {
   "id": "milestone-pr-multi-todo",
-  "title": "milestone-pr groups related TODOs, allows concurrent implementers, and squashes before ready — not one-TODO serial PRs",
+  "title": "milestone-pr groups related TODOs and allows concurrent implementers — not one-TODO serial PRs; squash-before-ready is not required for Bugbot",
   "role": "orchestrator",
   "user": "Orchestrate — clear ready TODOs until blocked.",
   "fixture": "fixtures/additive-keeps-confirmed",
@@ -13,7 +13,8 @@
           "PR unit + concurrency",
           "Do not** treat “one TODO = one PR”",
           "Spawn concurrent implementers",
-          "squash before mark ready",
+          "Bugbot reads the PR until ready",
+          "squash-before-ready is not required",
           "whole milestone"
         ]
       },
@@ -22,14 +23,16 @@
         "patterns": [
           "does not force serial-only or one-TODO-per-PR",
           "Spawn **multiple** only when step 2 says they do not overlap",
-          "squash the whole milestone"
+          "Do not** squash before ready for Bugbot"
         ]
       },
       {
         "file": "docs/templates/CHANGELOG.md",
         "patterns": [
           "2.7.21",
-          "not** one TODO / one implementer"
+          "not** one TODO / one implementer",
+          "2.9.4",
+          "squash-before-ready is not required"
         ]
       }
     ],
@@ -41,16 +44,29 @@
         ],
         "must_not_contain": [
           "serial only — one implementer at a time",
-          "Serial implementers only"
+          "Serial implementers only",
+          "squash the whole milestone before mark ready"
         ]
       },
       {
         "file": "docs/templates/agent/BOOTSTRAP.md",
         "must_contain": [
-          "concurrent implementers when they do not overlap"
+          "concurrent implementers when they do not overlap",
+          "squash-before-ready is not required"
         ],
         "must_not_contain": [
-          "each verified slice → own branch"
+          "each verified slice → own branch",
+          "tip-only bots see the whole cut"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/roles/orchestrator-git.md",
+        "must_contain": [
+          "Bugbot reads the PR until ready"
+        ],
+        "must_not_contain": [
+          "tip-only bots would see only the last tip",
+          "squash before mark ready so tip-only"
         ]
       }
     ]

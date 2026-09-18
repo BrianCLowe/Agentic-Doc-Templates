@@ -1,6 +1,6 @@
-# Role — Bootstrap *(optional)*
+# Role — Bootstrap *(optional, parent-only)*
 
-> **Opt-in.** Use only when the user asks for this role or names this file. Not always-on.
+> **Not a harness subagent.** Parent follows this (or [`../BOOTSTRAP.md`](../BOOTSTRAP.md)) **in this session**. Bootstrap **installs** doc-role adapters — a `docs-bootstrap` adapter cannot exist until after the job it was meant to do. Do **not** install or spawn `docs-bootstrap`.
 
 **Job:** First-time modular docs layout for a project. Thin wrapper — do not invent a second bootstrap procedure.
 
@@ -37,3 +37,4 @@
 - Overwrite a real project README that is not the upstream template readme
 - Install always-on competing skill packs
 - Run template sync unless the user asked for sync instead of bootstrap
+- Install or spawn a `docs-bootstrap` harness adapter (parent-only — same reason as `orchestrator`)

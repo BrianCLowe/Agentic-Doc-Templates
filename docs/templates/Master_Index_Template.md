@@ -41,7 +41,7 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 | `docs/Human-TODO.md` | Human inbox — procure, playtest, decide, waiting (agent cannot close from assumptions) ([`Human_TODO_Template.md`](templates/Human_TODO_Template.md)) |
 | `docs/Team-Roster.md` | Optional team inbox roster — Name, Jobs, Anti-jobs *(if defined)*, handoff. **Create only when `team_inbox` is enabled.** Handoff agents read; named humans and bots self-ID; one initial PR for a full team ([`Team_Roster_Template.md`](templates/Team_Roster_Template.md)) |
 | `docs/decisions/` | Optional cross-cutting decisions ([`Decision_Template.md`](templates/Decision_Template.md)) |
-| `docs/templates/` | Upstream template pack — scaffolds, `help/`, `agent/` (incl. [`Modular_Docs_Workflow.md`](templates/agent/Modular_Docs_Workflow.md) index + [`workflow/`](templates/agent/workflow/README.md) modules, optional [`roles/`](templates/agent/roles/README.md), per-tool [`tools/`](templates/agent/tools/README.md)); also [`VERSION`](templates/VERSION) and [`CHANGELOG.md`](templates/CHANGELOG.md) (Step B scope after sync) |
+| `docs/templates/` | Upstream template pack — **pack-owned; do not edit; full overwrite on sync** ([`README.md`](templates/README.md)). Scaffolds, `help/`, `agent/` (incl. [`Modular_Docs_Workflow.md`](templates/agent/Modular_Docs_Workflow.md) index + [`workflow/`](templates/agent/workflow/README.md) modules, optional [`roles/`](templates/agent/roles/README.md), per-tool [`tools/`](templates/agent/tools/README.md)); also [`VERSION`](templates/VERSION) and [`CHANGELOG.md`](templates/CHANGELOG.md) (Step B scope after sync) |
 | `docs/ADT-settings.yaml` | Pack preferences — **docs profile**, **orchestrator git**, **standing.instructions** (playbook overrides, not a notes pad), sync mode, tools, optionals, upstream stamps ([`ADT-settings.example.yaml`](templates/agent/ADT-settings.example.yaml); Workflow [§0.1](templates/agent/workflow/profile-standing.md#01-docs-profile-ceremony-modes) · [§0.2](templates/agent/workflow/profile-standing.md#02-standing-workflow-instructions-user-workflow-not-pack-enums); [orchestrator Git](templates/agent/roles/orchestrator.md)) |
 | `src/` / `backend/` / `frontend/` | Actual code (reference only) |
 
@@ -50,7 +50,8 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 | Topic | Where the rule lives |
 |-------|----------------------|
 | **Docs profile** | `docs/ADT-settings.yaml` → `docs_profile.mode`. **`prevent`** = editors / games / multi-surface (default if unset). **`ship-first`** = typed APIs / CRUD. **`balanced`** = mixed. [§0.1](templates/agent/workflow/profile-standing.md#01-docs-profile-ceremony-modes) |
-| **Orchestrator git** | `orchestrator.git.mode` — ask if unset. Host worktrees: already-in-a-worktree → stay; pack does not `git worktree add`. [orchestrator-git](templates/agent/roles/orchestrator-git.md) |
+| **Orchestrator git** | `orchestrator.git.mode` — ask if unset. Host worktrees: already-in-a-worktree → stay; pack does not `git worktree add`. Stay ≠ current — session-start docs freshness: `git status` + worktrees. [orchestrator-git](templates/agent/roles/orchestrator-git.md) · [§0.3](templates/agent/workflow/session-freshness.md) |
+| **Docs freshness** | Once per session: `git status` + `git worktree list` before treating Master Index / TODOs as current. Sibling `docs/` drift → stop. Same-stem live docs on an open PR → add there (do not stack PRs). [§0.3](templates/agent/workflow/session-freshness.md) |
 | **File layout / kit leftovers** | Flat sibling files; no map-only planned rows; leftovers stay as TODOs on an existing stem. [§0](templates/agent/workflow/naming-layout.md#0-naming--file-layout-read-before-creating-files) · [§5.4](templates/agent/workflow/todos.md#54-finished-kit-contract--covering-todos-not-wait-for-pickup) |
 | **Understanding / Spec** | Shape vs contract. [§4](templates/agent/workflow/understanding.md#4-understanding-features--shared) · [§2](templates/agent/workflow/understanding.md#2-understanding--spec-graduation) |
 | **Shared** | Only when actually shared. Same note types as features unless the user excepted them in §3.0. [§1](templates/agent/workflow/shared-components.md#1-shared-components--foundation-vs-consumption) |
@@ -114,7 +115,7 @@ Leave this table **empty** (or with a single “*(none yet)*” note) unless a p
 
 ## 4. Quick Start
 
-1. Read this file — find the feature or shared component in **§3 Document Map**.
+1. Docs freshness first ([Workflow §0.3](templates/agent/workflow/session-freshness.md)) — then read this file; find the feature or shared component in **§3 Document Map**.
 2. Follow **[`templates/agent/Modular_Docs_Workflow.md`](templates/agent/Modular_Docs_Workflow.md)** (paved path) — Path A/B detail in [`workflow/implement.md`](templates/agent/workflow/implement.md) when needed.
 3. End the session by updating the active TODO **Current focus** ([Workflow §5.1](templates/agent/workflow/todos.md#51-session-handoff--current-focus)).
 

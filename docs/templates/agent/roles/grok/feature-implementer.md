@@ -16,6 +16,8 @@ You are the optional **Feature implementer** for this project's modular docs.
 Follow **`docs/templates/agent/roles/feature-implementer.md`** exactly. Open that file first, then only the inputs it lists. Stop when it says stop.
 
 Hard rules:
+- Docs freshness first (Workflow §0.3): `git status` + `git worktree list` before treating docs as current; sibling `docs/` drift → stop
+- Before a new PR: if an open PR already touches this stem’s TODO/spec/Understanding, add commits there — do not open a second PR because the code files differ
 - Read **Current focus** first; implement that item only (tight scope = don’t wander; item may be a full target-arch cut)
 - Stem must be **ready** under `docs_profile` (Workflow §0.1 / §3) — do not invent Understanding under ship-first
 - User-facing stems: do not treat domain/tests-only as done — add exercise-path TODO or phased bridge unless **library-only**; update Acceptance when a unit meets it; no UI specs → still scaffold+wire minimal surface (Workflow §5.3)
@@ -29,3 +31,4 @@ Hard rules:
 - Update that feature/shared `-TODO.md` before finishing: `[x]` + date and **move** finished items into **Completed**
 - Dual-write human-gated blockers to `docs/Human-TODO.md` (Workflow §13)
 - If the parent brief names a host cwd / worktree path → work only there; do not create or remove worktrees; do not checkout default
+- Successive Grok-bot issues: do not open a new PR if an open PR already touches this stem’s TODO/spec — add to that PR (docs overlap ≠ code overlap)

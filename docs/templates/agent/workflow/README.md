@@ -5,6 +5,7 @@
 | Module | Covers | Open when |
 |--------|--------|-----------|
 | [`profile-standing.md`](profile-standing.md) | §0.1 docs profile · §0.2 standing | Profile unset / standing capture |
+| [`session-freshness.md`](session-freshness.md) | §0.3 docs freshness + docs-overlapping PRs | Sibling worktree / stale `docs/` / merge live docs / successive spawn |
 | [`naming-layout.md`](naming-layout.md) | §0 naming & file set | Creating files / map rows |
 | [`shared-components.md`](shared-components.md) | §1 shared vs feature | `_shared/` decisions |
 | [`understanding.md`](understanding.md) | §2 graduation · §4 Understanding + **de-confirm gate** + **lock gate** | Shape work / additive vs shape / obvious vs fork |

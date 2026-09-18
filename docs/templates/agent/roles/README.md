@@ -11,10 +11,10 @@ Thin, playbook-bound roles for heavier moments (intent capture, graduation, boot
 | **Understanding author** | [`understanding-author.md`](understanding-author.md) | Capture **feature shape** first (is / is not); draft/revise `-Understanding.md` (required under **prevent**; on demand under ship-first via *lock shape*) | Ready for human **shape** review (`draft`) — **no code** |
 | **Doc graduate** | [`doc-graduate.md`](doc-graduate.md) | Confirmed shape → durable **contract** spec (when Understanding exists) | Spec updated — **no code** |
 | **Feature implementer** | [`feature-implementer.md`](feature-implementer.md) | Current focus → code when stem is ready under **docs profile**; update that TODO | Focus item done or blocked |
-| **Orchestrator** | [`orchestrator.md`](orchestrator.md) + [`orchestrator-git.md`](orchestrator-git.md) | **Parent-only** loop + git delivery (**`milestone-pr`:** per-milestone PR — several related TODOs + concurrent implementers when they do not overlap **and** the host can isolate → squash before ready → CI/Bugbot → merge → next branch; **host worktree:** stay, do not checkout default in that tree; **`branch-pr*`:** build-verify → todo-warden → squash? → ready → **return to default** if run created the branch **in the main checkout**) | Agent work cleared / hard-blocked / budget — report + human verify inbox |
+| **Orchestrator** | [`orchestrator.md`](orchestrator.md) + [`orchestrator-git.md`](orchestrator-git.md) | **Parent-only** loop + git delivery (**`milestone-pr`:** per-milestone PR — several related TODOs + concurrent implementers when they do not overlap **and** the host can isolate → CI/Bugbot → merge → next branch; Bugbot reads the PR until ready — squash-before-ready is not required; **host worktree:** stay, do not checkout default in that tree; **`branch-pr*`:** build-verify → todo-warden → squash? → ready → **return to default** if run created the branch **in the main checkout**) | Agent work cleared / hard-blocked / budget — report + human verify inbox |
 | **Work verifier** | [`work-verifier.md`](work-verifier.md) | One unit vs spec + TODO (+ Understanding when present) | Pass or fail with reasons — **no code** |
 | **Todo warden** | [`todo-warden.md`](todo-warden.md) | Post-loop **docs-only** honesty + **hygiene**: reopen overclaims, cited gap TODOs (hard caps; named §5.4 leftovers get covering items, not a research stub), **move** finished `[x]` into Completed | Report clean / gaps-found — **no code**; hygiene-only stays **clean** |
-| **Bootstrap** | [`bootstrap.md`](bootstrap.md) | First-time modular docs layout | [`../BOOTSTRAP.md`](../BOOTSTRAP.md) complete |
+| **Bootstrap** | [`bootstrap.md`](bootstrap.md) | **Parent-only** first-time layout (no harness adapter — bootstrap *installs* the adapters) | [`../BOOTSTRAP.md`](../BOOTSTRAP.md) complete |
 | **Template sync** | [`template-sync.md`](template-sync.md) | Pack refresh (A) then live Step B | [`../TEMPLATE_SYNC.md`](../TEMPLATE_SYNC.md) → A → B |
 
 ## How to use *(no install required)*
@@ -42,6 +42,8 @@ Bootstrap Step 3p (doc-roles enable) / [`../RULE_INSTALL.md`](../RULE_INSTALL.md
 
 **Orchestrator is parent-only:** follow [`orchestrator.md`](orchestrator.md) (+ [`orchestrator-git.md`](orchestrator-git.md) for git) in the **current session**. Do **not** install or spawn an `orchestrator` harness adapter — it dispatches leaf workers (`feature-implementer`, `work-verifier`, `todo-warden`) that *are* installed when doc-roles are enabled.
 
+**Bootstrap is parent-only:** follow [`../BOOTSTRAP.md`](../BOOTSTRAP.md) (or [`bootstrap.md`](bootstrap.md)) in the **current session**. Do **not** install or spawn a `docs-bootstrap` adapter — that playbook is what *installs* doc-roles, so the adapter would not exist until after bootstrap finished.
+
 `/` commands (Cursor) remain optional overrides. Descriptions use gated **Use when …**, not “use proactively.”
 
 ## Disable / remove
@@ -56,5 +58,5 @@ Bootstrap Step 3p (doc-roles enable) / [`../RULE_INSTALL.md`](../RULE_INSTALL.md
 - Prefer links to [`../workflow/<module>.md`](../workflow/README.md) over the whole index when the role needs one topic.
 - **De-confirm / additive-vs-shape** lives only in [`../workflow/understanding.md`](../workflow/understanding.md) §4 — roles and adapters use **one-line pointers**.
 - Harness adapters are **generated** from [`adapter-src/`](adapter-src/README.md) via [`../GENERATE_ROLE_ADAPTERS.md`](../GENERATE_ROLE_ADAPTERS.md) — do not hand-edit `cursor/`, `grok/`, or `copilot/` as source of truth.
-- **Never** add a harness adapter for `orchestrator` — parent-only by design.
+- **Never** add a harness adapter for `orchestrator` or `docs-bootstrap` — parent-only by design (bootstrap installs the adapters).
 - Tool-specific install steps live in [`../tools/`](../tools/README.md), not here.

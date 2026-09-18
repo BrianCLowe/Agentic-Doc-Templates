@@ -8,13 +8,13 @@ applyTo: "**"
 
 First, check if `docs/Master_Index.md` exists. If it does not exist, ignore this entire rule and work normally.
 
-This project uses a lean modular documentation system. `docs/Master_Index.md` is the single entry point for **project context and the Document Map**. Procedure index: **`docs/templates/agent/Modular_Docs_Workflow.md`** (paved path + router) — open it only when the gates below say so, then open **one** named module under `docs/templates/agent/workflow/`.
+This project uses a lean modular documentation system. `docs/Master_Index.md` is the single entry point for **project context and the Document Map**. Procedure index: **`docs/templates/agent/Modular_Docs_Workflow.md`** (paved path + router) — open it only when the gates below say so, then open **one** named module under `docs/templates/agent/workflow/`. Do **not** edit `docs/templates/` (pack-owned; overwritten on sync — [`docs/templates/README.md`](../README.md)).
 
 **Route by ask** *(open only that playbook — do not scan the pack catalog)*:
 
 | User ask | Open only |
 |----------|-----------|
-| bootstrap / init modular docs | see **Optional subagents** → else `docs/templates/agent/BOOTSTRAP.md` |
+| bootstrap / init modular docs | **parent only** → `docs/templates/agent/BOOTSTRAP.md` (do **not** spawn a bootstrap subagent) |
 | update / sync doc templates | see **Optional subagents** → else `docs/templates/agent/TEMPLATE_SYNC.md` |
 | check for template updates | `docs/templates/agent/TEMPLATE_UPDATE_CHECK.md` |
 | install agent rules | `docs/templates/agent/RULE_INSTALL.md` → then only `docs/templates/agent/tools/<key>.md` for each tool |
@@ -36,7 +36,7 @@ When an ask matches a row below, look for that role under a known agents folder 
 
 - If found → **delegate / spawn** that type with a self-contained prompt (feature/component name, paths, user’s ask). On Grok Build: `spawn_subagent` with `subagent_type: <name>` when `.grok/agents/<name>.md` exists. Do **not** treat `.cursor/agents/` as Grok types. On Copilot: delegate `.github/agents/<name>.agent.md` (CLI `/agent` or inference). Do **not** treat `.cursor/agents/` as Copilot types. User-global `~/.copilot/agents/` is personal — prefer project `.github/agents/`.
 - If missing → follow the **Fallback** playbook/role **in this session** (or spawn a generic child with that playbook path).
-- **Orchestrator exception:** matching *orchestrate / drive backlog / …* → follow `docs/templates/agent/roles/orchestrator.md` **in this parent session** only. That playbook spawns leaf workers (`feature-implementer`, `work-verifier`, `todo-warden`). Never install or spawn `orchestrator` as a harness subagent type.
+- **Parent-only exception:** matching *orchestrate / drive backlog / …* → follow `docs/templates/agent/roles/orchestrator.md` **in this parent session** only (spawns leaf workers). Matching *bootstrap / init modular docs* → follow `docs/templates/agent/BOOTSTRAP.md` **in this parent session** only. Never install or spawn `orchestrator` or `docs-bootstrap` as harness subagent types — bootstrap **installs** the adapters, so a bootstrap adapter cannot exist until after the job it was meant to do.
 
 | When ask matches | Agent filename | Fallback |
 |------------------|----------------|----------|
@@ -44,12 +44,12 @@ When an ask matches a row below, look for that role under a known agents folder 
 | user confirmed Understanding → update durable spec | `doc-graduate.md` | `docs/templates/agent/roles/doc-graduate.md` |
 | implement / continue from Current focus | `feature-implementer.md` | session default below |
 | orchestrate / drive backlog / clear TODOs / until blocked | *(parent only — do not spawn)* | `docs/templates/agent/roles/orchestrator.md` |
+| bootstrap / init modular docs | *(parent only — do not spawn)* | `docs/templates/agent/BOOTSTRAP.md` |
 | verify completed unit vs Understanding/spec/TODO | `work-verifier.md` | `docs/templates/agent/roles/work-verifier.md` |
 | todo warden / reconcile TODOs / TODO honesty / gaps after orchestration / todo cleanup / archive completed | `todo-warden.md` | `docs/templates/agent/roles/todo-warden.md` |
-| bootstrap / init modular docs | `docs-bootstrap.md` | `docs/templates/agent/BOOTSTRAP.md` |
 | update / sync doc templates | `docs-template-sync.md` | `docs/templates/agent/TEMPLATE_SYNC.md` |
 
-**Do not** delegate every message — only when a row above matches. Stay in this session for tiny follow-ups, clarifying questions only, or when the user says to stay here / skip subagents. Do **not** turn a single-slice Current focus ask into full orchestration unless the user said orchestrate / drive backlog / clear TODOs. These must not replace this rule or compete like always-on skill packs. Roles: `docs/templates/agent/roles/README.md`. Tool install paths: `docs/templates/agent/tools/README.md`.
+**Do not** delegate every message — only when a row above matches. Stay in this session for tiny follow-ups, clarifying questions only, or when the user says to stay here / skip subagents. Do **not** turn a single-slice Current focus ask into full orchestration unless the user said orchestrate / drive backlog / clear TODOs. **Successive issues / Grok parent:** do **not** spawn another coding agent + new PR if an open PR already touches this stem’s live docs (`*-TODO.md` / spec / Understanding) — add to that PR (Workflow §0.3). Code in different files does not make a second PR safe. These must not replace this rule or compete like always-on skill packs. Roles: `docs/templates/agent/roles/README.md`. Tool install paths: `docs/templates/agent/tools/README.md`.
 
 **Docs profile** *(read `docs/ADT-settings.yaml` → `docs_profile.mode`; unset = **`prevent`** — Workflow §0.1)*:
 | Mode | New map-row files | Coding gate |
@@ -65,6 +65,7 @@ If `docs_profile` is unset at bootstrap / first build-from-reference / sync: sug
 - Product/UI prefs for one stem → spec **Decisions** (§10), not standing. One-off “just this run” → do not write standing. Never invent standing notes.
 
 **Session default** *(implement / continue when ready under docs profile and scope unchanged)*:
+0. **Docs freshness** *(once per session, before treating docs as current)*: if a git repo, run `git status --porcelain` and `git worktree list`. Clean + one worktree → continue. **Sibling worktree** with uncommitted `docs/` or `docs/` commits this HEAD lacks → **stop** — open `docs/templates/agent/workflow/session-freshness.md`. Dirty **this** tree: one line, continue (do not auto-commit). Re-check before merge/overwrite that touches live docs. **Before a new PR or successive spawn:** `gh pr list --state open` (or forge equivalent). Open PR already touches this stem’s TODO/spec/Understanding → **add to that PR**; do not open a second (docs overlap ≠ code overlap — Workflow §0.3).
 1. Read `docs_profile` if present; read non-empty `standing.instructions`; read `docs/Master_Index.md` Sections 1–3.
 2. Open the active TODO — read **Current focus** first (Workflow §5.1):
    - Shared foundation → `_shared/ComponentName-TODO.md`
@@ -72,44 +73,25 @@ If `docs_profile` is unset at bootstrap / first build-from-reference / sync: sug
    - InEditor / Asset TODOs: only when Project Profile **Game extensions** / user indicates game-style work — default is **core TODO only**
 3. Read that item’s `-Understanding.md` **if it exists** (context) and spec as linked — do not re-ask for review unless scope changes (Workflow §4).
 4. Before integrating a **shared** piece, check its **Maturity** on the spec or Document Map (`draft` | `usable` | `stable`).
-5. If the user asks to install tooling: follow **`docs/Tooling.md`** (Workflow §11) — Required (+ skills if listed); Optional only if asked; verify all; ask before admin/large SDKs.
-6. If work needs a **human** (procure, playtest/feel, decide/sign-off, or external waiting): **dual-write** in the same edit — owner `*-TODO.md` item **and** an Open row on **`docs/Human-TODO.md`** (Workflow §13). Optional team roster: stamp only Active `role_id`s on `docs/Team-Roster.md`; handoff agents do **not** invent bot or human-name rows (named humans and bots self-ID). Never store secrets in docs. Do not bury human asks only in feature TODOs.
-7. If `docs/Product-Vision.md` is missing at bootstrap / first live-docs / sync → create a lightweight file (all profiles). **Confirmed** (after *lock product shape* + confirm, or prevent’s confirm): do not implement a feature that fights that end-state picture (Workflow §4.5). Under **ship-first**, `draft` is **not a gate**.
+5. If the user asks to install tooling: follow **`docs/Tooling.md`** (Workflow §11).
+6. If work needs a **human** (procure, playtest/feel, decide/sign-off, or external waiting): **dual-write** — owner `*-TODO.md` **and** an Open row on **`docs/Human-TODO.md`** (Workflow §13). Stamp only Active `role_id`s; do not invent roster rows. Never store secrets in docs.
+7. If `docs/Product-Vision.md` is missing at bootstrap / first live-docs / sync → create a lightweight file (all profiles). **Confirmed** vision: do not implement a fighting feature (Workflow §4.5). Under **ship-first**, `draft` is **not a gate**.
 
-**Open `Modular_Docs_Workflow.md` (index) only when:** creating files, choosing Path A vs Path B, graduating Understanding → spec, docs-profile or standing-capture questions, the user asks about procedure, **or context is thin** (new session, compaction, memory loss). Then open **only the one module** the index router names (e.g. `workflow/understanding.md` for shape/de-confirm). Live scaffolds are fill-in blanks — do not treat them as the tutorial. Do **not** load the whole `workflow/` folder or re-read the index every turn.
+**Open `Modular_Docs_Workflow.md` (index) only when:** creating files, choosing Path A vs Path B, graduating Understanding → spec, docs-profile or standing-capture questions, **docs freshness flagged** (sibling drift / stale `docs/` / docs-overlapping PR), the user asks about procedure, **or context is thin** (new session, compaction, memory loss). Then open **only the one module** the index router names. Live scaffolds are fill-in blanks. Do **not** load the whole `workflow/` folder or re-read the index every turn.
 
-**Shared foundation (critical):**
-- **Do not invent `_shared/` docs.** Only add §3.1 / `_shared/` when a **project-owned** piece is (or will be) used by **two or more features**, or the user named it as shared. Empty `_shared/` / empty §3.1 is fine. Never park engine/framework primers (e.g. generic Unreal notes) in `_shared/` because nothing else fit — use `features/` or `docs/reference/` (Workflow §1).
-- When a real shared component exists: same **profile default file set** as features (Workflow §0.1, §1). §3.0 exceptions are **user-requested only** — never invent them because files are missing or to “leave for later.” Project ceremony is `docs_profile`, not a fake §3.0 “no Understanding project-wide.”
-- **File layout:** create only paths from Workflow **§0** / Document Map — flat files in `features/` and `_shared/` (optional `-Catalog.md` for list-heavy stems — Workflow §7.1).
-- **Document Map = files on disk.** Adding a §3.1/§3.2 row requires creating the **profile default file set** in the same turn (always spec + core TODO; Understanding per §0.1). A **Catalog** map cell requires `*-Catalog.md` the same turn. Never leave map-only “planned” rows. Bootstrap Step 3d. **Do not add filler §3.1 rows.** Do **not** add map rows for vague planned-only items. Kit leftovers stay as TODOs on the **inventory/owning stem** until that slice is next (Workflow §0 inventory · §5.4) — do not spawn empty stems for every method. A terse wrap-the-public-API goal is **actionable** (expand TODOs from the docs), not a stub.
-- Real shared components get the **same note types as features** (for the profile) unless the user explicitly excepted specific files — record those in Master Index **§3.0** (Workflow §1). If core TODO or required Understanding is missing for a mapped row (and no user exception / profile skip), **create them**.
-- Tasks that **build or refactor** a shared component go in `_shared/ComponentName-TODO.md` (and related shared TODOs) — **not** in a consumer feature's TODO.
-- Feature TODOs only **link** to shared TODOs when blocked or integrating (dependency note), they do not duplicate foundation tasks.
+**Shared / files / shape** *(full procedure in the named module)*:
+- **Do not invent `_shared/`.** Only when a project-owned piece is used by two or more features, or the user named it. Empty §3.1 is fine. Workflow §1 · §0.
+- **Document Map = files on disk** the same turn (spec + core TODO; Understanding per §0.1). No map-only planned rows. Kit leftovers stay TODOs on an existing stem (§5.4).
+- **`prevent`:** draft Understanding first; `draft` blocks coding. Lock obvious defaults; **Assumptions = real forks only**. Do not treat reference-doc examples as the target unless clearly set as the target. **`balanced`:** Understanding when identity is fuzzy. **`ship-first`:** no Understanding required.
+- Do not code while an **existing** Understanding is `draft` unless waived. **`confirmed`** → continue from TODO/spec. Additive vs shape → Workflow §4. Vague ideas → `docs/templates/help/IDEA_CAPTURE_TIPS.md`. `docs/reference/` → live docs: understanding-author.
 
-**Before implementation:**
-- **`prevent`:** **Draft `-Understanding.md` first** when scoping — agent writes; user confirms **shape** only (Workflow §4). `draft` blocks **coding**, not creating the file. Shape-only sections — not a second spec. Capture **product-defining surface/architecture identity** in is / is not when stated (module/API detail → spec). Lock obvious defaults; **Assumptions = real forks only** (empty is fine). Do not treat reference-doc examples as the target unless clearly set as the target. Tell the user confirmation is **is / is not + remaining real-fork Assumptions**, not a full spec review.
-- **`balanced`:** Draft Understanding when identity is ambiguous / multi-surface / split / user asked; otherwise thin spec + TODO is enough to start.
-- **`ship-first`:** No Understanding required; implement from Current focus + thin spec. Offer *lock shape for [Stem]* when identity fights start.
-- Do not treat as greenfield if Understanding says it extends/reuses existing work.
-- Do not code while an **existing** Understanding is `draft` unless the user waives review (all modes).
-- **`confirmed`** → shape approved; continue from TODO/spec without re-asking Understanding review. Plans/TODOs target that shape at agent speed — no user reminder required.
-- Plans: under prevent (or when Understanding exists), include Understanding path + “confirm shape, not full spec” — unless already `confirmed` and unchanged. Stepped plans = verify order; exploration spikes stay labeled (Workflow §5.2).
-- Vague ideas → brief questions from `docs/templates/help/IDEA_CAPTURE_TIPS.md`, then draft Understanding (**prevent** / when locking shape) or thin spec + TODO (**ship-first** / clear **balanced**).
-- **`docs/reference/` → live docs:** when the user drops exports and asks to build/update — create missing Document Map rows + **profile default file sets**; draft/revise Understandings when the profile requires them. If material covers **two unlike identities**, **split** stems (Workflow §0) — do not glue them into one Understanding to stay “tight.” If `docs_profile` unset, suggest + ask once (Workflow §0.1) before bulk create.
-- After confirm → **graduate** contract to the spec when Understanding was used (Workflow §2). Under ship-first, grow the spec as you implement. Screenshots → spec **Visual references**. Row registries → optional `-Catalog.md`. Lasting tradeoffs → spec **Decisions** or `docs/decisions/` (Workflow §10) — including implement-time preference corrections (same turn).
-
-**While working:**
-- **Session start:** Read the active TODO's **Current focus** block first.
-- Treat the active TODO as the living task list; add items as discovered; use Cross-Feature Dependencies when features interact. Rewrite Current focus that fights confirmed Understanding (or clear product identity under ship-first) before coding.
-- **Operable (Workflow §5.3):** user-facing stems need exercise path (or library-only / loud phase); no UI specs → still scaffold+wire; open operable Acceptance without covering TODOs = incomplete.
-- **Kit coverage (Workflow §5.4):** in-scope spec surfaces need TODO items on an **existing** stem. Writing them is not inventing work. “Picked up” = start the unit, not create the backlog row. Terse + public API docs → expand from the docs; do not interview each facet.
+**While working:** Current focus first; rewrite focus that fights confirmed shape; user-facing stems need an exercise path (§5.3); in-scope spec leftovers need covering TODOs on an existing stem (§5.4).
 
 **After changes (mandatory):**
-- **Build & verify** on code changes before “you can test” (`docs/Tooling.md` Project verify / stack defaults — `Agent_Build_Verify_Rule`).
+- **Build & verify** on code changes before “you can test” (`docs/Tooling.md` Project verify — `Agent_Build_Verify_Rule`).
 - Update **Current focus** + `-TODO.md` (`[x]` + date; **move** finished items into **Completed**). Human-TODO feedback → sync owner + Human-TODO Done (§13); never mark human rows from assumptions.
 - Update Understanding/spec **only if this session** changed shape/contract. Preference corrections → same-turn Decisions + fix stale Behavior/Acceptance/Visual (§10). **ADT playbook overrides** → same-turn standing or first-class ADT-settings key (§0.2). Understanding update → relocate + TODO uncheck (§4). No session-start full reconcile.
 
 **Clarification** (*review spec* / *gaps* / *confidence* for a **named** stem): re-read **that** stem only; ≤5 questions; wait for confirm; no unrelated stems.
 
-**Philosophy:** Small accurate docs; short asks → one playbook; tight scope = paved path (not alternate audits). Pack playbook overrides stick via standing (§0.2) — not a notes pad. Not: human-sprint interim arch when shape is clear · library checklist = product done · ignore open operable Acceptance · finished-kit spec with no covering TODOs · wait-for-pickup instead of drain · let playbook overrides die with the chat. Mermaid only when it beats prose (§12). TODO Current focus = agent memory; Human-TODO = human inbox.
+**Philosophy:** Small accurate docs; short asks → one playbook; tight scope = paved path (not alternate audits). Pack playbook overrides stick via standing (§0.2) — not a notes pad. Not: human-sprint interim arch when shape is clear · library checklist = product done · ignore open operable Acceptance · finished-kit spec with no covering TODOs · wait-for-pickup instead of drain · let playbook overrides die with the chat · treat uncommitted sibling `docs/` as if this tree were current. TODO Current focus = agent memory; Human-TODO = human inbox.

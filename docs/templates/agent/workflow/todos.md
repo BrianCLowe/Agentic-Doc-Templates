@@ -29,7 +29,7 @@ When a feature depends on shared foundation work, the feature TODO gets a **depe
 - **High Priority sizing:** Prefer one item (or a tight cluster) that lands the **confirmed target architecture**. Sub-bullets / Medium Priority = verify slices or follow-ups — not “ship the wrong architecture first.” If Current focus fights confirmed Understanding, rewrite the TODO before coding ([`Agent_Timescale_Planning_Rule.mdc`](../Agent_Timescale_Planning_Rule.mdc)).
 - **Operable done / dual track:** See §5.3 — user-facing stems need domain **and** exercise-path rows; library-only stems must say so.
 - **Exploration vs shipping:** See §5.2.
-- **Session start:** Read the active TODO's **Current focus** block first (§5.1) — then High Priority.
+- **Session start:** Docs freshness first (Workflow §0.3 — `git status` + worktrees; sibling `docs/` drift → stop). Then read the active TODO's **Current focus** block (§5.1) — then High Priority.
 - While working: Add new items as you discover them (including exercise-path rows when domain work reveals a missing run path — §5.3).
 - After finishing a task: Mark `[x]`, add completion date/note, and **move** the item into **## Completed** (do not leave long `[x]` lists under High/Medium/Low).
 - **Session end:** Update **Current focus** for the next session.

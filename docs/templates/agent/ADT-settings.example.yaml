@@ -30,16 +30,20 @@ docs_profile:
   # source: user | agent-suggested
 
 # Orchestrator git delivery — how unattended backlog runs land in git.
-# milestone-pr     = recommend when remote + forge — each milestone (several related TODOs OK; concurrent implementers when they do not overlap): branch → PR → squash → ready → wait CI/Bugbot → merge → next branch
+# milestone-pr     = recommend when remote + forge — each milestone (several related TODOs OK; concurrent implementers when they do not overlap): branch → PR → ready → wait CI/Bugbot → merge → next branch
+#                    Bugbot reads the PR until ready — squash-before-ready is not required (standing if a reviewer only ever reads HEAD)
 # local            = milestone commits only; no push / PR
 # branch-pr-squash = one run branch → milestone commits → push → draft PR mid-run → end: build-verify → squash whole run → mark ready (no merge)
 # branch-pr        = same without squash (keeps milestone history on the PR; no merge)
 # branch-push      = same without PR (remote but no gh/glab, or no PR culture)
 # current-push     = milestone commits on the branch you are already on → push (solo opt-in; often main). Never silent-default
 # none             = no commits
-# milestone-pr cycle: per milestone — final push → build verify → warden → squash whole milestone → mark ready → wait CI/Bugbot → merge → default → next branch
+# milestone-pr cycle: per milestone — final push → build verify → warden → mark ready → wait CI/Bugbot → merge → default → next branch
 # branch-pr / branch-pr-squash close-out: final push → build verify → squash(if squash mode) → mark ready (no merge)
 # Unset → always ask (bootstrap Step 3p / sync B0.6 / orchestrator pre-run) — even under sync.mode auto-all; never invent current-push
+# Write-in (not a quiz, not an eighth mode): closest mode + standing.instructions for
+#   merge commit / rebase-merge / always squash before ready (HEAD-only reviewer) / custom close-out.
+#   Do not invent a mode.
 # Cloud Agent path: if a remote Cloud Agent orchestrates while this key is local/none/branch-push/current-push/branch-pr/branch-pr-squash,
 #   it uses milestone-pr for that run only (does not rewrite this file) — see agent/roles/orchestrator-git.md
 # After choose/change: forge tooling probe — see agent/roles/orchestrator-git.md
