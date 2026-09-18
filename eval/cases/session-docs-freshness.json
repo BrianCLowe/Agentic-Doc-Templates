@@ -25,7 +25,10 @@
           "Sibling probe",
           "Hard stop",
           "Stay ≠ current",
-          "Do **not** auto-commit"
+          "Do **not** auto-commit",
+          "Docs-overlapping PRs",
+          "docs overlap ≠ code overlap",
+          "gh pr list --state open"
         ]
       },
       {
@@ -35,7 +38,9 @@
           "git status --porcelain",
           "git worktree list",
           "session-freshness.md",
-          "Do **not** edit `docs/templates/`"
+          "Do **not** edit `docs/templates/`",
+          "Successive issues / Grok parent",
+          "add to that PR"
         ]
       },
       {
@@ -81,7 +86,8 @@
         "file": "docs/templates/agent/roles/orchestrator-git.md",
         "must_contain": [
           "Stay ≠ current",
-          "session-freshness.md"
+          "session-freshness.md",
+          "live docs count"
         ],
         "must_not_contain": [
           "Sibling probe *(only when"
@@ -134,6 +140,17 @@
         ],
         "must_not_contain": [
           "docs-bootstrap.md`, `docs-template-sync.md`"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/tools/grok-build.md",
+        "must_contain": [
+          "Successive issues",
+          "do not spawn",
+          "Docs-overlapping PRs"
+        ],
+        "must_not_contain": [
+          "always open a new PR per complaint"
         ]
       }
     ]

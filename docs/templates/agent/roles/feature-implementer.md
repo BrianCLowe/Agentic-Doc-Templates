@@ -13,7 +13,7 @@
 
 ## Inputs *(open only these)*
 
-1. **Docs freshness** (Workflow §0.3): `git status --porcelain` + `git worktree list` before treating Master Index / TODOs as current. Sibling `docs/` drift → **stop**. Dirty **this** tree: one line, continue. If the brief names a **host cwd / worktree path** → work **only** there. Do **not** create or remove worktrees; do **not** checkout default.
+1. **Docs freshness** (Workflow §0.3): `git status --porcelain` + `git worktree list` before treating Master Index / TODOs as current. Sibling `docs/` drift → **stop**. Dirty **this** tree: one line, continue. **Before a new PR:** if an open PR already touches this stem’s TODO/spec/Understanding → add commits there (docs overlap ≠ code overlap). If the brief names a **host cwd / worktree path** → work **only** there. Do **not** create or remove worktrees; do **not** checkout default.
 2. `docs/ADT-settings.yaml` → `docs_profile.mode` if present (unset = prevent); **`standing.instructions`** if non-empty (Workflow §0.2); parent brief may already name these.
 3. `docs/Master_Index.md` Sections 1–3. `docs/Product-Vision.md` if it exists — do **not** implement a fight with a **confirmed** end-state picture (Workflow §4.5)
 4. Active TODO — read **Current focus** first (§5.1)
@@ -64,3 +64,4 @@
 - Scan the whole repo “just in case”; switch into bootstrap or template sync
 - `git worktree add` / `git worktree remove` / host-delete a worktree; work outside a cwd the parent briefed
 - Treat Master Index / TODOs as current when a sibling worktree has newer uncommitted `docs/` (Workflow §0.3)
+- Open a second PR that would rewrite this stem’s TODO/spec/Understanding while another open PR already does (add to that PR — Workflow §0.3 **Docs-overlapping PRs**)

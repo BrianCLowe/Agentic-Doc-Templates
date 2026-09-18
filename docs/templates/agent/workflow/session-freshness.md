@@ -1,4 +1,4 @@
-> **Workflow module.** Open from the [workflow index](../Modular_Docs_Workflow.md) when session-start **docs freshness** flags a dirty sibling worktree, stale `docs/`, or you are about to merge/overwrite live docs. Cheap check lives on the **session-default** path — do not open this file when `git status` + one worktree are clean.
+> **Workflow module.** Open from the [workflow index](../Modular_Docs_Workflow.md) when session-start **docs freshness** flags a dirty sibling worktree, stale `docs/`, you are about to merge/overwrite live docs, or you would open a **new PR / spawn another coding agent** for a successive issue. Cheap checks live on the **session-default** path — do not open this file when `git status` + one worktree are clean **and** you are not opening a new PR.
 
 # 0.3 Session freshness — docs as source of truth
 
@@ -67,6 +67,34 @@ TEMPLATE_SYNC overwrite still uses **A0** (hard stop on dirty **this** tree) —
 
 ---
 
+## Docs-overlapping PRs *(before a new PR or a successive spawn)*
+
+Live docs (`*-TODO.md` **Current focus**, spec Decisions, Understanding, Human-TODO, Master Index) are rewritten every implement session. Two open PRs that touch the **same stem’s docs** conflict when the first merges — even if their **code** files do not overlap. That is the Grok-bot / successive-issue failure: a new coding agent + new PR per complaint, all rewriting the same TODO.
+
+**Cheap check** (when you would open a new PR, spawn another coding agent, or the user filed another issue/complaint in this parent session):
+
+```bash
+gh pr list --state open
+# or glab / the inferred forge CLI
+```
+
+If an open PR already lists this stem’s `*-TODO.md`, spec, or Understanding (or Human-TODO / Master Index you would also edit):
+
+| Who | Action |
+|-----|--------|
+| This session | **Add commits to that PR.** Checkout its branch (main checkout) or keep working in this host worktree **on that branch**. Do **not** open a second PR. |
+| Grok / parent that `spawn_subagent`s coding agents | Do **not** spawn a new agent+branch+PR for this successive issue. Re-brief the in-flight agent or add to its PR. Remember **stem → open PR** for the rest of this parent session. |
+
+**Overlap test is docs, not only code** (docs overlap ≠ code overlap). Different `src/` files + same `features/Foo-TODO.md` = overlap. Same-stem default is **one PR**.
+
+**Not overlap:** different stems, and you will not edit the other PR’s TODO / spec / Understanding / Human-TODO / Master Index.
+
+Project-wide files (Human-TODO, Master Index, Product-Vision): if an open PR already touches them → add there. If none does → keep the edit on **this** PR. Do **not** open a docs-only second PR.
+
+**Not this section:** orchestrator **milestone** sizing (do not dump the whole night into one PR) → [`../roles/orchestrator-git.md`](../roles/orchestrator-git.md). This gate is **do not stack PRs that will rebase-conflict on `docs/`**.
+
+---
+
 ## Do not
 
 - Skip the cheap check because Master Index / Current focus “looks recent”
@@ -77,4 +105,7 @@ TEMPLATE_SYNC overwrite still uses **A0** (hard stop on dirty **this** tree) —
 - `git worktree add` / remove a host worktree
 - Checkout default in a host/linked worktree
 - Scan every file under every worktree — porcelain + `git log -- docs` is enough
-- Open this module when the cheap check is clean
+- Open this module when the cheap freshness check is clean **and** you are not opening a new PR
+- Open a second PR because the **code** files differ while the same `*-TODO.md` / spec / Understanding would change
+- Spawn a new Grok/coding agent + new PR for a successive complaint on a stem that already has an open PR
+- Treat “items do not share code files” as permission to parallelize same-stem **docs**

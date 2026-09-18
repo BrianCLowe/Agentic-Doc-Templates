@@ -114,7 +114,7 @@ Cloud isolation is a **VM + branch**, not a git worktree. Local `/worktree` / `g
 **Parallel implementers** require **host isolation** (file-overlap is not enough — two writers still share `HEAD` / index on one checkout):
 
 1. Open **only** [`../tools/<current-tool>.md`](../tools/README.md) → **Host isolation** (current tool = this session; unknown → no manager).
-2. Host **can** isolate this spawn **and** items do not share files → spawn concurrent; brief each child with the host cwd/worktree path.
+2. Host **can** isolate this spawn **and** items do not share files — **live docs count** (same `*-TODO.md` / spec / Understanding = overlap even if `src/` differs) → spawn concurrent; brief each child with the host cwd/worktree path.
 3. Host **cannot** isolate / no manager → **serial** this cut. Do not invent `.adt-worktrees/` or `git worktree add`.
 4. Land isolated children onto **this** milestone branch (host apply / merge). **One PR.** Do not open a PR per worktree.
 
@@ -147,14 +147,14 @@ A **milestone** is the PR unit. Parent **names** it at partition (stem + short s
 
 **Spawn concurrent implementers when all of:**
 
-- Items do not share files (typical: **different stems**, including several stems named on this milestone)
+- Items do not share files — **including live docs** (typical: **different stems**, including several stems named on this milestone). Same stem’s TODO/spec = overlap even if code files differ. Before a **new** PR or a Grok successive spawn: if an open PR already touches that stem’s docs → **add to that PR** ([`../workflow/session-freshness.md`](../workflow/session-freshness.md) **Docs-overlapping PRs**)
 - **Host isolation** is available (**Host worktrees** above — open that tool’s **Host isolation**; no manager → stop here, run serial)
 - Shared foundation consumers need is already done (or is the unit in flight — consumers **wait**)
 - Each implementer has its **own** TODO (never two agents on the same Current-focus unit)
 
-**Do not parallelize:** host cannot isolate · same files · same Current-focus unit split across two agents · consumer stem blocked on in-flight shared work · a second **PR** (add commits to the open milestone PR instead) · pack-created worktrees.
+**Do not parallelize:** host cannot isolate · same files · **same stem docs** (TODO/spec/Understanding) · same Current-focus unit split across two agents · consumer stem blocked on in-flight shared work · a second **PR** that would rewrite the same live docs (add commits to the open PR instead — successive Grok/issue agents included) · pack-created worktrees.
 
-Same-stem default is **serial** (same files). Same-stem parallel only when the items clearly do not share files and are not one focus split.
+Same-stem default is **serial** (same files, including docs). Same-stem parallel only when the items clearly do not share **code or docs** and are not one focus split.
 
 After the last unit in the milestone: **squash** (tip-only bots / Bugbot must see the **whole milestone**) → mark ready → wait CI/Bugbot → merge. Do **not** stack a second PR on an unmerged first PR.
 

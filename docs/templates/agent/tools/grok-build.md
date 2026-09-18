@@ -62,6 +62,18 @@ Files: `understanding-author.md`, `doc-graduate.md`, `feature-implementer.md`, `
 
 **Do not** install an `orchestrator` or `docs-bootstrap` adapter — those run in the **parent** session (`roles/orchestrator.md` / `BOOTSTRAP.md`). Delete leftover `docs-bootstrap.md` if present.
 
+## Successive issues *(parent — do not fan out PRs)*
+
+Grok parents often `spawn_subagent` a new coding agent per complaint. Live docs (`*-TODO.md` Current focus, spec, Understanding) are rewritten every session — **docs overlap ≠ code overlap**.
+
+When the user files another issue / complaint in this parent session:
+
+1. `gh pr list --state open` (or forge equivalent).
+2. Open PR already touches this stem’s TODO/spec/Understanding → **do not spawn** a new agent+branch+PR. Re-brief the in-flight agent or add commits to that PR. Remember stem → PR for the rest of this session.
+3. Different stem **and** you will not edit the other PR’s live docs → a new PR is OK.
+
+Policy: [`../workflow/session-freshness.md`](../workflow/session-freshness.md) **Docs-overlapping PRs**. The always-loaded modular rule (installed into `AGENTS.md`) is what the parent sees at spawn time — do not leave this only in this install file.
+
 ## Host isolation *(orchestrator parallel implementers)*
 
 Parent opens this only when spawning concurrent implementers ([`../roles/orchestrator-git.md`](../roles/orchestrator-git.md) **Host worktrees**).

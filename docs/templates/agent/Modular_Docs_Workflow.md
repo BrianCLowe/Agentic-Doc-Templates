@@ -18,7 +18,7 @@
 
 Use when the stem is already **ready** under the docs profile and scope is unchanged:
 
-1. **Docs freshness** (cheap): `git status --porcelain` + `git worktree list`. Clean + one worktree → continue. Sibling `docs/` drift → **stop** — open [`workflow/session-freshness.md`](workflow/session-freshness.md). Dirty **this** tree: one line, continue (do not auto-commit)
+1. **Docs freshness** (cheap): `git status --porcelain` + `git worktree list`. Clean + one worktree → continue. Sibling `docs/` drift → **stop** — open [`workflow/session-freshness.md`](workflow/session-freshness.md). Dirty **this** tree: one line, continue (do not auto-commit). **New PR / successive spawn:** if an open PR already touches this stem’s TODO/spec → add there (docs overlap ≠ code overlap)
 2. Read `docs/ADT-settings.yaml` → `docs_profile.mode` (else **prevent**); `orchestrator.git.mode` when relevant; **`standing.instructions` if non-empty**
 3. [`Master_Index.md`](../../Master_Index.md) — Sections 1–3 only. If [`Product-Vision.md`](../../Product-Vision.md) exists, read it (especially when `confirmed`)
 4. Active TODO **Current focus** → that item’s Understanding *(if any — read-only)* → spec → code. Do **not** implement a fight with a **confirmed** product vision
@@ -44,7 +44,7 @@ Use when the stem is already **ready** under the docs profile and scope is uncha
 |-----------|-----------|
 | Docs profile unset / suggest / upgrade | [`workflow/profile-standing.md`](workflow/profile-standing.md) (§0.1) |
 | Standing / playbook-override LOOKOUT | [`workflow/profile-standing.md`](workflow/profile-standing.md) (§0.2) |
-| Session start / dirty sibling worktree / docs may be stale / about to merge live docs | [`workflow/session-freshness.md`](workflow/session-freshness.md) (§0.3) |
+| Session start / dirty sibling worktree / docs may be stale / about to merge live docs / new PR or successive spawn on same-stem docs | [`workflow/session-freshness.md`](workflow/session-freshness.md) (§0.3) |
 | Creating files / new Document Map row / split stem / inventory vs new row | [`workflow/naming-layout.md`](workflow/naming-layout.md) (§0) |
 | `_shared/` vs feature / foundation task placement | [`workflow/shared-components.md`](workflow/shared-components.md) (§1) |
 | Draft / revise Understanding · de-confirm gate · lock gate · assumption clean-out · relocate | [`workflow/understanding.md`](workflow/understanding.md) (§4) |
@@ -78,7 +78,7 @@ Full procedure: [`workflow/profile-standing.md`](workflow/profile-standing.md#02
 
 ### 0.3 Session freshness *(docs as source of truth)*
 
-Full procedure: [`workflow/session-freshness.md`](workflow/session-freshness.md). Cheap `git status` + worktree list on the paved path; open the module only when sibling `docs/` drift flags.
+Full procedure: [`workflow/session-freshness.md`](workflow/session-freshness.md). Cheap `git status` + worktree list on the paved path; open-PR check before a new PR / successive spawn. Open the module only when sibling `docs/` drift or docs-overlapping PRs flag.
 
 ### 0. Naming & file layout *(read before creating files)*
 
