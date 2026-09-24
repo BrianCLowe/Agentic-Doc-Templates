@@ -52,6 +52,17 @@ Files: `understanding-author.agent.md`, `doc-graduate.agent.md`, `feature-implem
 
 **Do not** install an `orchestrator` or `docs-bootstrap` adapter — those run in the **parent** session (`roles/orchestrator.md` / `BOOTSTRAP.md`). Delete leftover `docs-bootstrap.agent.md` if present.
 
+## Optional — Slash commands
+
+Only if `optional_rules.slash-commands.status` is `enabled`. Copilot prompt files are invoked with `/` in Chat.
+
+| | |
+|--|--|
+| **Source** | Body of `docs/templates/agent/commands/sync.md` and `commands/orchestrate.md` (drop the pack frontmatter) |
+| **Install to** | `.github/prompts/sync.prompt.md` and `orchestrate.prompt.md` |
+| **Frontmatter** | `mode: agent` and the same `description` as the source file |
+| **Do not** | Paste the sync or orchestrator playbook into the prompt file |
+
 ## Host isolation *(orchestrator parallel implementers)*
 
 Parent opens this only when spawning concurrent implementers ([`../roles/orchestrator-git.md`](../roles/orchestrator-git.md) **Host worktrees**).
@@ -68,6 +79,7 @@ Parent opens this only when spawning concurrent implementers ([`../roles/orchest
 - Modular + agent-timescale + agent-build-verify instructions exist under `.github/instructions/` or `copilot-instructions.md`
 - Optional: `/init` then confirm modular docs section present
 - If doc-roles enabled: six files under `.github/agents/` (no `orchestrator` / `docs-bootstrap`; includes `todo-warden.agent.md`)
+- If slash-commands enabled: `.github/prompts/sync.prompt.md` and `orchestrate.prompt.md`
 - Custom agents appear in Chat **Configure Custom Agents** / CLI `/agent` (custom list) / Agents window Customizations
 
 ## For humans

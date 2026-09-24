@@ -1,10 +1,10 @@
-# Eval Fixture — ship-first
+# Eval Fixture — build-first
 
 **Pack version**: eval
 
 ## 1. Project Overview
 
-CRUD API fixture under ship-first (no Understanding required).
+CRUD API fixture under build-first (no Understanding required).
 
 ## 3. Document Map
 

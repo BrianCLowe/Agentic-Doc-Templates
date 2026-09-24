@@ -12,7 +12,7 @@
 |---------|----------------|
 | **`prevent`** | Understanding is `confirmed` (or user waived) and scope unchanged |
 | **`balanced`** | If stem has Understanding → same as prevent; if none → thin spec + TODO exist and identity is clear |
-| **`ship-first`** | Spec + TODO exist for the stem; no Understanding required. Draft `Product-Vision.md` is **not** a blocker |
+| **`build-first`** | Spec + TODO exist for the stem; no Understanding required. Draft `Product-Vision.md` is **not** a blocker |
 
 1. **Docs freshness** — `git status --porcelain` + `git worktree list` (Workflow §0.3). Sibling `docs/` drift → **stop**. Dirty **this** tree: note it; continue
 2. Read `docs_profile` (if set) + `Master_Index.md` — Sections 1–3. If `docs/Product-Vision.md` exists, read it
@@ -30,13 +30,13 @@
 Use when building or changing a reusable component, API, or pattern in `_shared/`.
 
 1. Open `_shared/[ComponentName].md`
-2. **Understanding** — under **`prevent`**, or **`balanced`** when identity is unclear / multi-surface: open or draft `_shared/[ComponentName]-Understanding.md` first; show for shape review (§4). If already `confirmed` and scope unchanged, read only. Under **`ship-first`**, skip unless the file exists or user said *lock shape*.
+2. **Understanding** — under **`prevent`**, or **`balanced`** when identity is unclear / multi-surface: open or draft `_shared/[ComponentName]-Understanding.md` first; show for shape review (§4). If already `confirmed` and scope unchanged, read only. Under **`build-first`**, skip unless the file exists or user said *lock shape*.
 3. Open the relevant shared TODO file(s) (create from [`TODO_Template.md`](../../TODO_Template.md) if missing):
    - Core / foundation → `_shared/[ComponentName]-TODO.md`
    - In-Editor work → `_shared/[ComponentName]-InEditor-TODO.md` *(only if Project Profile game extensions apply, or user asked — unless excepted in Master Index §3.0)*
    - Assets & content → `_shared/[ComponentName]-Asset-TODO.md` *(same gate)*
 4. Do the work when **ready** under the table above (not blocked on a draft Understanding that exists)
-5. **Graduate** confirmed shape into the shared spec if Understanding was used and the spec is still placeholder (§2); under ship-first grow the spec as you go
+5. **Graduate** confirmed shape into the shared spec if Understanding was used and the spec is still placeholder (§2); under build-first grow the spec as you go
 6. **Update the shared TODO file(s)** before ending the session — refresh **Current focus** (§5.1)
 7. If consumer features are blocked, ensure their TODOs link here — do not copy foundation tasks into feature TODOs
 

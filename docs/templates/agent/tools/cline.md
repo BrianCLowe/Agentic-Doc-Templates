@@ -34,6 +34,10 @@ If enabled: `.clinerules/template-update-check.md`.
 
 No first-class Cline agents folder in this pack. Follow role playbooks in-session. Consider [`agents-md.md`](agents-md.md) for a shared baseline.
 
+## Optional — Slash commands
+
+No command folder. On enable, record `optional_rules.slash-commands` and do not invent files. The short asks stay the path.
+
 ## Host isolation *(orchestrator parallel implementers)*
 
 **No host worktree manager.** Parent stays **serial**. Do **not** `git worktree add` or invent `.adt-worktrees/`. Policy: [`../roles/orchestrator-git.md`](../roles/orchestrator-git.md) **Host worktrees**.

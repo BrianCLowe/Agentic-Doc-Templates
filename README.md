@@ -32,7 +32,7 @@ Use this pack when any of these keep happening:
 | Repo-owned **modular docs** + short **agent playbooks** agents open on demand | Another **coding agent runtime** (not a Cursor/Claude/Prime-Agent replacement) |
 | A small `docs/` map: Master Index, features, Understandings, specs, TODOs, Human-TODO | Notion / Linear / a hosted PM product |
 | Tool-agnostic install (Cursor rules, Grok agents, Claude, Copilot, `AGENTS.md`, …) | One mega always-on rule file that tries to be the whole process |
-| **Docs profiles** (`prevent` · `ship-first` · `balanced`) and **orchestrate** loops | A memory OS, vector DB, or self-improving harness product |
+| **Docs profiles** (`prevent` · `build-first` · `balanced`) and **orchestrate** loops | A memory OS, vector DB, or self-improving harness product |
 
 You still pick your agent. This pack is what that agent **reads and updates** so intent survives the next session.
 
@@ -40,11 +40,11 @@ You still pick your agent. This pack is what that agent **reads and updates** so
 
 ## Pick a docs profile — first-class, not a concession
 
-**`ship-first` is a real default for the right products.** `prevent` is the right default when identity is expensive to get wrong. Unset still treats as `prevent` so existing identity-risky repos do not silently drop the gate. Bootstrap suggests a mode from your `docs/reference/` and asks once.
+**`build-first` is a real default for the right products.** `prevent` is the right default when identity is expensive to get wrong. Unset still treats as `prevent` so existing identity-risky repos do not silently drop the gate. Bootstrap suggests a mode from your `docs/reference/` and asks once.
 
 | Your product | Profile | Why |
 |--------------|---------|-----|
-| **Typed APIs, CRUD services, clear contracts** | **`ship-first`** | Spec + TODO from day one, plus a lightweight Product-Vision (destination, not a gate). Shape is already the types / routes. This is the *correct* default here — not “ceremony off for people in a hurry.” |
+| **Typed APIs, CRUD services, clear contracts** | **`build-first`** | Spec + TODO from day one, plus a lightweight Product-Vision (destination, not a gate). Shape is already the types / routes. This is the *correct* default here — not “ceremony off for people in a hurry.” |
 | **Editors, games, multi-surface apps** | **`prevent`** | Understanding + you confirm is / is *not* before code. A “helpful” agent will otherwise build the wrong engine, the wrong surface, or a second product. |
 | Mid-size / mixed signals | **`balanced`** | Understanding only when identity is fuzzy (competing surfaces, “not X”, split pressure, or you say *lock shape*). |
 
@@ -58,7 +58,7 @@ AI coding agents drift when intent lives only in chat. This pack gives them a sm
 
 1. You capture ideas — **recommended:** export chat threads (Grok.com, ChatGPT, …) to markdown and drop them in `docs/reference/` (often many files; they keep whys that polished design docs lose). Or talk the idea through with your **coding agent** in the IDE and have it **build or update live docs as you go**.
 2. At bootstrap the agent asks **project preferences in one batch** (docs profile, sync mode, orchestrator git, optionals) — not a drip of five separate quizzes.
-3. Under **prevent**, **you confirm shape** (is / is *not* + Assumptions) before code. Under **ship-first**, implement from TODOs and grow the spec; *lock shape* anytime identity gets sharp.
+3. Under **prevent**, **you confirm shape** (is / is *not* + Assumptions) before code. Under **build-first**, implement from TODOs and grow the spec; *lock shape* anytime identity gets sharp.
 4. Work continues from TODOs and specs. For a single slice: *Continue from Current focus.* For a long run: **orchestrate** — *Orchestrate — clear ready TODOs until blocked.* The parent session loops implement → verify → next milestone (git via **`orchestrator.git.mode`**: recommend **milestone-pr** so overnight work lands as reviewable PRs — several related TODOs and concurrent implementers when they do not overlap **and** the host can isolate them, CI/Bugbot, then merge — or **branch-pr-squash** for one morning PR, or **current-push** if you set “push the branch I’m on”). The pack does not create git worktrees; already-in-a-host-worktree stays put.
 
 Short asks are enough: *bootstrap*, *draft Understanding for X*, *orchestrate*, *update the doc templates*. The agent routes to the matching playbook inside `docs/templates/`. Tips: [`docs/templates/help/IDEA_CAPTURE_TIPS.md`](docs/templates/help/IDEA_CAPTURE_TIPS.md). Scaffolds vs teaching: [`docs/templates/help/SCAFFOLDS.md`](docs/templates/help/SCAFFOLDS.md). Orchestrator: [`docs/templates/agent/roles/orchestrator.md`](docs/templates/agent/roles/orchestrator.md).
@@ -86,14 +86,14 @@ Ask your agent:
 
 > Bootstrap modular docs using `docs/templates/agent/BOOTSTRAP.md`.
 
-That creates the live `docs/` layout (Master Index, `reference/`, feature folders, …). On whole-repo / template installs it also auto-moves this pack’s root README/LICENSE/CONTRIBUTING into `docs/templates/agent/upstream/` when those files are clearly from Agentic Doc Templates, and **deletes pack-only leftovers** (issue forms, `FUNDING.yml`, `release.yml`, `pack-checks.yml`, `.cursor/environment.json`, root `eval/`, `scripts/gen_role_adapters.py`, leftover `docs/templates/agent/scripts/*.py`, maintainer `DECISIONS.md`) — bootstrap Steps 1b–1d. Prefer **copy `docs/templates/` only** so those files never land in your app.
+That creates the live `docs/` layout (Master Index, `reference/`, feature folders, …). On whole-repo / template installs it also auto-moves this pack’s root README/LICENSE/CONTRIBUTING into `docs/templates/agent/upstream/` when those files are clearly from Agentic Doc Templates, and **deletes pack-only leftovers** (issue forms, `FUNDING.yml`, `release.yml`, `pack-checks.yml`, `.cursor/environment.json`, root `eval/`, `scripts/gen_role_adapters.py`, leftover `docs/templates/agent/scripts/*.py`, maintainer `DECISIONS.md`, maintainer `VISION.md`) — bootstrap Steps 1b–1d. Prefer **copy `docs/templates/` only** so those files never land in your app.
 
 ### 3. Build live docs from ideas
 
 1. Work ideas out in Grok.com / ChatGPT / etc. and **export** threads to markdown ([tips](docs/templates/help/IDEA_CAPTURE_TIPS.md#recommended-export-idea-chats-into-docsreference)).
 2. Drop exports (and any design docs) into **`docs/reference/`**.
 3. Ask: *Build or update the live docs from `docs/reference/`.*
-4. Review draft Understandings before coding. Skim `docs/Product-Vision.md` — one end-state picture the feature map must fit. Under **prevent**, confirm it. Under **ship-first**, it does not block coding until you *lock product shape*.
+4. Review draft Understandings before coding. Skim `docs/Product-Vision.md` — one end-state picture the feature map must fit. Under **prevent**, confirm it. Under **build-first**, it does not block coding until you *lock product shape*.
 
 You can brainstorm before the repo exists — export now, drop into `reference/` after bootstrap.
 
@@ -133,7 +133,7 @@ After bootstrap, a typical project looks like:
 ```
 docs/
 ├── Master_Index.md              ← project map (you maintain)
-├── Product-Vision.md            ← whole-product end-state (all profiles; ship-first = destination, not a gate)
+├── Product-Vision.md            ← whole-product end-state (all profiles; build-first = destination, not a gate)
 ├── Tooling.md                   ← machine tools (not package deps)
 ├── Human-TODO.md                ← human inbox (procure, playtest, decide, waiting)
 ├── Team-Roster.md               ← optional — only when team inbox is on (named humans and bots self-ID; do not invent)
@@ -184,7 +184,7 @@ More: [`USAGE.md`](docs/templates/help/USAGE.md).
 
 PRs that improve the templates or workflows are welcome. Prefer focused changes; when bumping [`VERSION`](docs/templates/VERSION), update [`CHANGELOG.md`](docs/templates/CHANGELOG.md) in the same commit. **`VERSION` is the only place the pack version number lives** — do not copy it into scaffolds, README badges, or examples.
 
-Pack-maintainer decisions (so we cannot silently undo one): root [`DECISIONS.md`](DECISIONS.md) — bootstrap deletes it from user copies.
+Pack-maintainer decisions (so we cannot silently undo one): root [`DECISIONS.md`](DECISIONS.md). The ideal we are working toward: root [`VISION.md`](VISION.md). Bootstrap deletes both from user copies.
 
 **Feedback:** [Open an issue](https://github.com/BrianCLowe/Agentic-Doc-Templates/issues/new/choose). Discussions for open-ended questions. See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 

@@ -6,12 +6,12 @@ Day-to-day workflows after setup. First-time install: [`SETUP.md`](SETUP.md). Wh
 
 ## The loop
 
-Depends on **docs profile** in `docs/ADT-settings.yaml` — a first-class choice ([Workflow §0.1](../agent/workflow/profile-standing.md#01-docs-profile-ceremony-modes)). **`ship-first`** is the right default for typed APIs / CRUD. **`prevent`** is the right default for editors / games / multi-surface (and the fallback if unset):
+Depends on **docs profile** in `docs/ADT-settings.yaml` — a first-class choice ([Workflow §0.1](../agent/workflow/profile-standing.md#01-docs-profile-ceremony-modes)). **`build-first`** is the right default for typed APIs / CRUD. **`prevent`** is the right default for editors / games / multi-surface (and the fallback if unset):
 
 1. You capture ideas (recommended: chat exports in `docs/reference/`, or a mid-build correction in chat).
-2. **`prevent` (default):** agent drafts `Product-Vision.md` (whole-product end-state) **and** `-Understanding.md` (per-feature shape); you confirm both before code. **`ship-first`:** agent drafts thin **spec + TODO** plus a lightweight `Product-Vision.md` (destination, **not a gate**). **`balanced`:** always a lightweight Product-Vision; Understanding when identity is ambiguous; deepen the vision when 2+ stems, the whole is fuzzy, or you *lock product shape*.
-3. When Understanding is used: **you confirm shape** — is / is *not* + any remaining **real-fork** Assumptions (empty is fine; not a full-spec review). Under **prevent**, confirm **Product-Vision** as one product (end-state picture), not a feature list. Under **ship-first**, confirm vision only after *lock product shape*. Agents should lock obvious defaults and not treat examples in `docs/reference/` as the target unless you clearly set them as the target.
-4. Durable contract lives on the **spec**; work continues from TODOs (**Current focus** for session handoff). Under ship-first, grow the spec as you build; use *lock shape for X* if identity fights start. *Lock product shape* only when the whole product needs a confirm gate. A new session starts with **docs freshness** (`git status` + worktrees) before treating those files as current ([Workflow §0.3](../agent/workflow/session-freshness.md)).
+2. **`prevent` (default):** agent drafts `Product-Vision.md` (whole-product end-state) **and** `-Understanding.md` (per-feature shape); you confirm both before code. **`build-first`:** agent drafts thin **spec + TODO** plus a lightweight `Product-Vision.md` (destination, **not a gate**). **`balanced`:** always a lightweight Product-Vision; Understanding when identity is ambiguous; deepen the vision when 2+ stems, the whole is fuzzy, or you *lock product shape*.
+3. When Understanding is used: **you confirm shape** — is / is *not* + any remaining **real-fork** Assumptions (empty is fine; not a full-spec review). Under **prevent**, confirm **Product-Vision** as one product (end-state picture), not a feature list. Under **build-first**, confirm vision only after *lock product shape*. Agents should lock obvious defaults and not treat examples in `docs/reference/` as the target unless you clearly set them as the target.
+4. Durable contract lives on the **spec**; work continues from TODOs (**Current focus** for session handoff). Under build-first, grow the spec as you build; use *lock shape for X* if identity fights start. *Lock product shape* only when the whole product needs a confirm gate. A new session starts with **docs freshness** (`git status` + worktrees) before treating those files as current ([Workflow §0.3](../agent/workflow/session-freshness.md)).
 
 ### Recommended practice — chat exports in `reference/`
 
@@ -47,7 +47,7 @@ Your job is to correct wrong **identity** assumptions — not to write Understan
 
 > New idea: [brief]. Add it to the docs — draft Understanding + TODO; I'll review.
 
-*(Under **ship-first**, say *spec + TODO* instead of Understanding, or *lock shape* if you want the prevent gate for that stem.)*
+*(Under **build-first**, say *spec + TODO* instead of Understanding, or *lock shape* if you want the prevent gate for that stem.)*
 
 > Update `RoleEditor-Understanding.md` — fix What this is NOT: separate UI on the existing editor, not a new editor engine.
 
@@ -150,7 +150,7 @@ Anything only you can close → `docs/Human-TODO.md`: procure, playtest/feel, de
 | Goal | Say something like |
 |------|-------------------|
 | Chat → docs | *Build or update the live docs from `docs/reference/`.* *(export threads there first)* |
-| New idea | *Add [idea] to the docs — draft Understanding + TODO; I'll review.* *(ship-first: spec + TODO; or *lock shape for X*)* |
+| New idea | *Add [idea] to the docs — draft Understanding + TODO; I'll review.* *(build-first: spec + TODO; or *lock shape for X*)* |
 | Product vision | *Lock product shape.* / *Draft the end-state picture.* / *What’s the product vision?* |
 | Fix misunderstanding | *Update [Feature]-Understanding.md — especially What this is NOT.* |
 | UI screenshot | *Save to `docs/features/assets/`, add Visual references on the **spec** (similar vs different).* |
@@ -159,12 +159,12 @@ Anything only you can close → `docs/Human-TODO.md`: procure, playtest/feel, de
 | Design doc | *Convert `docs/reference/[file]` to modular docs; keep original (and any chat export) in reference/.* |
 | Bootstrap | *Bootstrap modular docs using `docs/templates/agent/BOOTSTRAP.md`.* |
 | Install rule | *Follow `docs/templates/agent/RULE_INSTALL.md` for [tool].* |
-| Sync pack | *Update the doc templates from Agentic Doc Templates and sync our live docs.* |
+| Sync pack | *Update the doc templates from Agentic Doc Templates and sync our live docs.* *(optional `/sync` if slash commands are enabled)* |
 | Sync mode | *Set sync to auto.* / *Set sync to auto-all.* / *Set sync to choose.* *(recorded in `docs/ADT-settings.yaml`)* |
 | Update-check cadence | *Check for template updates every session.* / *Only check every week.* |
 | Optional role — intent | *Draft Understanding for [Feature] from what I said — I’ll review.* (main agent delegates if subagents installed) |
 | Optional role — build | *Continue from Current focus.* *(single slice)* |
-| Optional role — orchestrate | *Orchestrate — clear ready TODOs until blocked.* *(parent loop; git from `orchestrator.git.mode` — recommend milestone-pr; Cloud Agent this-runs milestone-pr if durable is local-oriented or `branch-pr` / `branch-pr-squash`; per-milestone: several related TODOs + concurrent implementers when they do not overlap **and** the host can isolate → build-verify → warden → squash → ready → wait CI/Bugbot → merge → next branch; already-in-a-host-worktree → stay; Human-TODO verify map)* |
+| Optional role — orchestrate | *Orchestrate — clear ready TODOs until blocked.* *(optional `/orchestrate` if slash commands are enabled. Parent loop; git from `orchestrator.git.mode` — recommend milestone-pr; Cloud Agent this-runs milestone-pr if durable is local-oriented or `branch-pr` / `branch-pr-squash`; per-milestone: several related TODOs + concurrent implementers when they do not overlap **and** the host can isolate → build-verify → warden → squash → ready → wait CI/Bugbot → merge → next branch; already-in-a-host-worktree → stay; Human-TODO verify map)* |
 | Optional role — todo warden | *Todo warden — reconcile TODOs vs what shipped.* / *Todo cleanup — move completed items to Completed.* *(docs-only; honesty caps; hygiene moves finished `[x]`; named leftovers get covering TODOs — no vendor-doc fetch)* |
 | Set orchestrator git | *Set orchestrator git to milestone-pr* / *branch-pr-squash* / *branch-pr* / *current-push* / *local* |
 | Standing playbook override | *Add standing note: always squash before mark ready.* / *From now on, merge each slice after CI.* *(agent should save without being asked twice — only playbook overrides, not random notes)* |
@@ -184,7 +184,7 @@ Optional roles (opt-in, never always-on): [`../agent/roles/README.md`](../agent/
 | Path | Role |
 |------|------|
 | `docs/Master_Index.md` | Entry point + Document Map |
-| `docs/Product-Vision.md` | Whole-product end-state picture (always created; ship-first = destination until *lock product shape*) |
+| `docs/Product-Vision.md` | Whole-product end-state picture (always created; build-first = destination until *lock product shape*) |
 | `docs/features/FeatureName-Understanding.md` | Shape only — is / is not, Relationship, real-fork Assumptions (not full-spec review) |
 | `docs/features/FeatureName.md` | Durable contract after shape confirm |
 | `docs/features/FeatureName-TODO.md` | Tasks + **Current focus** |

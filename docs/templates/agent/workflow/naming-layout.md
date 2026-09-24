@@ -18,7 +18,7 @@
 | Shared Catalog *(optional)* | `docs/_shared/ComponentName-Catalog.md` |
 | Sub-index *(large feature only)* | `docs/features/FeatureName-Index.md` |
 | Screenshots | `docs/features/assets/…` or `docs/_shared/assets/…` |
-| Product vision *(whole-product end-state)* | `docs/Product-Vision.md` — **always create** (lightweight on `balanced` / `ship-first`). **`ship-first`:** not a gate until *lock product shape*. [`product-vision.md`](product-vision.md) §4.5 |
+| Product vision *(whole-product end-state)* | `docs/Product-Vision.md` — **always create** (lightweight on `balanced` / `build-first`). **`build-first`:** not a gate until *lock product shape*. [`product-vision.md`](product-vision.md) §4.5 |
 | Team roster *(optional — team inbox)* | `docs/Team-Roster.md` — create **only** when `team_inbox` is enabled. Named humans and bots self-ID; do not invent. [`human-todo.md`](human-todo.md) §13 |
 
 **Use the same name stem** across the set (`MainWorkspace`, `BlockEditor`, …). Copy spelling from the Document Map when adding to an existing project.
@@ -30,7 +30,7 @@
 1. Add a row to Master Index §3.1 or §3.2 with the exact paths (**working markdown links** — not “planned” placeholders with nowhere to click).
 2. Create the **default file set for the active docs profile** (§0.1) at those paths **in the same turn**:
    - **Always:** [`Feature_Spec_Template.md`](../../Feature_Spec_Template.md) + [`TODO_Template.md`](../../TODO_Template.md)
-   - **+ Understanding** ([`Feature_Understanding_Template.md`](../../Feature_Understanding_Template.md)): required under **`prevent`**; under **`balanced`** when identity is ambiguous / multi-surface / split / user asked; under **`ship-first`** only if user asked *lock shape* or an Understanding already exists for that stem
+   - **+ Understanding** ([`Feature_Understanding_Template.md`](../../Feature_Understanding_Template.md)): required under **`prevent`**; under **`balanced`** when identity is ambiguous / multi-surface / split / user asked; under **`build-first`** only if user asked *lock shape* or an Understanding already exists for that stem
    - Add [`Feature_Catalog_Template.md`](../../Feature_Catalog_Template.md) only when §7 / list-heavy rules apply
 3. All files for one feature live **directly** in `features/` (or `_shared/`), not in a subfolder named after the feature.
 

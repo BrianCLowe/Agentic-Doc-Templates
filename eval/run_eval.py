@@ -174,7 +174,7 @@ SCAFFOLD_CHECKS = (
             "never silent-default",
             "Do **not** invent shared rows",
         ),
-        "must": ("ship-first", "prevent", "pointers — full rules"),
+        "must": ("build-first", "prevent", "pointers — full rules"),
         "label": "Master Index",
     },
     {
@@ -315,7 +315,7 @@ def check_pack_decisions() -> list[str]:
         "Agentic Doc Templates — Pack decisions",
         "D1",
         "D3",
-        "ship-first",
+        "build-first",
         "docs/templates/VERSION",
         "Step 1d",
     ):
@@ -325,6 +325,26 @@ def check_pack_decisions() -> list[str]:
     if "DECISIONS.md" not in boot:
         errors.append("BOOTSTRAP.md must delete root DECISIONS.md on whole-repo copies")
     return errors
+
+
+def _rule_body(path: Path) -> str:
+    text = path.read_text(encoding="utf-8")
+    if text.startswith("---"):
+        end = text.find("---", 3)
+        if end != -1:
+            text = text[end + 3 :]
+    return text.lstrip("\n")
+
+
+def check_modular_rule_twins() -> list[str]:
+    """Cursor .mdc and Copilot .instructions.md are one instruction. Frontmatter may differ."""
+    mdc = ROOT / "docs/templates/agent/Modular_Documentation_Rule.mdc"
+    ins = ROOT / "docs/templates/agent/Modular_Documentation_Rule.instructions.md"
+    if _rule_body(mdc) != _rule_body(ins):
+        return [
+            "Modular_Documentation_Rule.mdc and .instructions.md bodies differ after frontmatter — edit both (one instruction)"
+        ]
+    return []
 
 
 def check_fail_snapshot(case: dict) -> list[str]:
@@ -419,6 +439,8 @@ def run_integrity() -> int:
     errors.extend(check_read_status_accepts_template())
     print("== pack DECISIONS.md ==")
     errors.extend(check_pack_decisions())
+    print("== modular rule twins ==")
+    errors.extend(check_modular_rule_twins())
     print("== cases ==")
     ids = list_cases()
     if not ids:

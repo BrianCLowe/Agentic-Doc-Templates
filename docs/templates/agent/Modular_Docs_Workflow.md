@@ -8,7 +8,7 @@
 
 **Compaction / new session / memory loss:** If you cannot recall the paved path, **re-open this index**, then only the matching router module. Do not reconstruct procedure from a live Understanding/spec/TODO or from chat memory.
 
-**Docs profile:** `docs/ADT-settings.yaml` → `docs_profile.mode` — first-class choice. **`ship-first`** = typed APIs / CRUD. **`prevent`** = editors / games / multi-surface (default if unset). **`balanced`** = mixed. Full rules → [`workflow/profile-standing.md`](workflow/profile-standing.md). Never silent-downgrade a project full of Understandings.
+**Docs profile:** `docs/ADT-settings.yaml` → `docs_profile.mode` — first-class choice. **`build-first`** = typed APIs / CRUD. **`prevent`** = editors / games / multi-surface (default if unset). **`balanced`** = mixed. Full rules → [`workflow/profile-standing.md`](workflow/profile-standing.md). Never silent-downgrade a project full of Understandings.
 
 **Optional roles:** [`roles/`](roles/README.md) — never always-on; parent spawns when adapters exist, else playbook in-session. **Orchestrator** and **bootstrap** = parent only ([`roles/orchestrator.md`](roles/orchestrator.md) + git [`roles/orchestrator-git.md`](roles/orchestrator-git.md); [`BOOTSTRAP.md`](BOOTSTRAP.md)). Single-slice implement → [`roles/feature-implementer.md`](roles/feature-implementer.md).
 
@@ -30,11 +30,11 @@ Use when the stem is already **ready** under the docs profile and scope is uncha
 |---------|----------------|
 | **`prevent`** | Understanding is `confirmed` (or user waived) and scope unchanged |
 | **`balanced`** | If stem has Understanding → same as prevent; if none → thin spec + TODO exist and identity is clear |
-| **`ship-first`** | Spec + TODO exist for the stem; no Understanding required. Draft Product-Vision is not a blocker |
+| **`build-first`** | Spec + TODO exist for the stem; no Understanding required. Draft Product-Vision is not a blocker |
 
 **Additive vs shape (one line):** On a `confirmed` Understanding, a new research angle / extra behavior / edge case that still fits **is / is not** → **spec + TODO**, keep `confirmed`. De-confirm / re-draft **only** on a significant shape change — full rule in [`workflow/understanding.md`](workflow/understanding.md#4-understanding-features--shared).
 
-**Same-turn prefs:** Product/UI correction that could be “improved away” → spec **Decisions** ([`workflow/decisions.md`](workflow/decisions.md)). **Override an ADT playbook** (no first-class key) → standing ([`workflow/profile-standing.md`](workflow/profile-standing.md)). Do not jot random notes into standing.
+**Same-turn prefs:** Product/UI correction that could be “improved away” → spec **Decisions** ([`workflow/decisions.md`](workflow/decisions.md)). **Override an ADT playbook** (no first-class key) → standing ([`workflow/profile-standing.md`](workflow/profile-standing.md)). How to act in this repo that is **not** a pack playbook → ask once: always-on rule/instruction, or a skill (§0.2). Do not jot that into standing. Do not jot random notes into standing.
 
 ---
 
@@ -126,7 +126,7 @@ See [`workflow/tooling.md`](workflow/tooling.md#11-tooling-new-machine-setup).
 
 ### 4.5 Product vision *(whole-product end-state)*
 
-See [`workflow/product-vision.md`](workflow/product-vision.md#45-product-vision). Create on **all** profiles (lightweight on `balanced` / `ship-first`). **`ship-first`:** not a gate until *lock product shape*.
+See [`workflow/product-vision.md`](workflow/product-vision.md#45-product-vision). Create on **all** profiles (lightweight on `balanced` / `build-first`). **`build-first`:** not a gate until *lock product shape*.
 
 ### 13. Human TODO *(inbox — needs a human)*
 
@@ -138,7 +138,7 @@ See [`workflow/human-todo.md`](workflow/human-todo.md#13-human-todo-inbox--needs
 
 - **Docs freshness** = *are this tree’s docs the ones the user means?* — [`workflow/session-freshness.md`](workflow/session-freshness.md). Run before treating Master Index as current.
 - **Master_Index.md** = *what this project is* and *where files live*.
-- **Product-Vision.md** = *the whole-product end-state* — [`workflow/product-vision.md`](workflow/product-vision.md). Feature map alone is not identity. **`ship-first`:** destination, not a gate.
+- **Product-Vision.md** = *the whole-product end-state* — [`workflow/product-vision.md`](workflow/product-vision.md). Feature map alone is not identity. **`build-first`:** destination, not a gate.
 - **This file** = *how to work* — paved path first; then **one** module from the router.
 - **Tooling.md** = *what to install on a new machine* (not package deps) — [`workflow/tooling.md`](workflow/tooling.md).
 - **Human-TODO.md** = *what only a human can close* — [`workflow/human-todo.md`](workflow/human-todo.md). Optional `team_inbox` assignees: same module (unset = human-only). **Team-Roster.md** = who exists + handoff (named humans and bots; create only when enabled; do not invent teammates).

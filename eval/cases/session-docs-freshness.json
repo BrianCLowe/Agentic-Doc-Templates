@@ -3,7 +3,7 @@
   "title": "Session-default docs freshness — A0 lesson on the routed path; templates README at temptation",
   "role": "feature-implementer",
   "user": "Continue from Current focus.",
-  "fixture": "fixtures/ship-first-crud",
+  "fixture": "fixtures/build-first-crud",
   "expect": {},
   "pack_contract": {
     "source_must_include": [

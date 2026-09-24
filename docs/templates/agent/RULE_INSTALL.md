@@ -41,6 +41,7 @@ Optional fields: `recorded` (YYYY-MM-DD), `path`, `note`, `customized` (true onl
 |-----|---------|
 | `template-update-check` | Ping for newer Agentic Doc Templates — see [`TEMPLATE_UPDATE_CHECK.md`](TEMPLATE_UPDATE_CHECK.md); default `upstream.check_mode: always` (interval optional) |
 | `doc-roles` | Optional playbook roles — see [`roles/README.md`](roles/README.md). **Not always-on.** Installed per tool file (`.cursor/agents/`, `.grok/agents/`, `.github/agents/`, …). |
+| `slash-commands` | Optional `/sync` and `/orchestrate` — see [`commands/README.md`](commands/README.md). Same playbooks as the short asks. Cursor, Claude Code, and Copilot get files; other tools have no command folder. |
 
 | Status | Meaning |
 |--------|---------|
@@ -59,7 +60,9 @@ Optional fields: `recorded` (YYYY-MM-DD), `path`, `note`, `customized` (true onl
 
 If `optional_rules.template-update-check` is missing: under **`sync.mode: auto-all`** enable + install (default `check_mode: always`); otherwise bootstrap should have asked — if you are mid–rule-install (or finishing a template sync) and it is still unset, ask once using the Step 3p **B** wording, then record `enabled` or `declined`.
 
-If `optional_rules.doc-roles` is missing: under **`sync.mode: auto-all`** enable + install adapters for each `tools.*.status: installed` tool that supports them; otherwise ask once using bootstrap Step 3p **C** for **any** rule-install or template-sync pass — not only when installing Cursor/Grok/Claude/Copilot. Explain what “yes” means for each installed tool (Cursor → `.cursor/agents/`; Grok → `.grok/agents/`; Claude → `.claude/agents/`; Copilot → `.github/agents/*.agent.md`; OpenClaw/Continue/Cline: no adapter files — parent follows `roles/*.md` in-session). Then record `enabled` or `declined`. Do **not** skip the ask because the current tool’s Install row is None.
+If `optional_rules.doc-roles` is missing: under **`sync.mode: auto-all`** enable + install adapters for each `tools.*.status: installed` tool that supports them; otherwise ask once using bootstrap Step 3p **C** (include the slim-parent reason) for **any** rule-install or template-sync pass — not only when installing Cursor/Grok/Claude/Copilot. Explain what “yes” means for each installed tool (Cursor → `.cursor/agents/`; Grok → `.grok/agents/`; Claude → `.claude/agents/`; Copilot → `.github/agents/*.agent.md`; OpenClaw/Continue/Cline: no adapter files — parent follows `roles/*.md` in-session). Then record `enabled` or `declined`. Do **not** skip the ask because the current tool’s Install row is None.
+
+If `optional_rules.slash-commands` is missing: under **`sync.mode: auto-all`** enable + install for each installed tool that has a command folder; otherwise ask once using bootstrap Step 3p **F**. **Decline** is the right answer if they would rather just ask. Cursor → `.cursor/commands/`; Claude → `.claude/commands/`; Copilot → `.github/prompts/` (`*.prompt.md`). Grok, OpenClaw, Continue, Cline, `AGENTS.md`: no files — the short ask stays the path. Then record `enabled` or `declined`.
 
 If `orchestrator.git.mode` is missing mid-sync: **B0.6 always ask** (even under `auto-all`) — never invent `current-push` or silent-write.
 
@@ -92,7 +95,7 @@ Do not proceed until they confirm for each tool you are installing.
 For **each** confirmed tool (or each `tools.*.status: installed` when refreshing on sync):
 
 1. Open **`docs/templates/agent/tools/<key>.md` only**.
-2. Execute that playbook end-to-end (modular rule → optional update-check if enabled → optional doc-roles if enabled and that tool supports them).
+2. Execute that playbook end-to-end (modular rule → optional update-check if enabled → optional doc-roles if enabled and that tool supports them → optional slash-commands if enabled and that tool has a command folder).
 3. Update `docs/ADT-settings.yaml` immediately (`status: installed`, `path`, `recorded`).
 4. Stop for that tool — do not open other `tools/*.md`.
 
@@ -123,7 +126,7 @@ Installing for one tool **does not remove or replace** another tool's files. Rec
 - If the modular rule is **already present** at the target path, set status to `installed` if missing from yaml — do not re-install blindly.
 - Do not edit files under `docs/templates/` except when copying **from** them. The warning also lives at [`../README.md`](../README.md) (pack-owned; full overwrite on sync).
 - After install, tell the user which file(s) were created or updated.
-- Optional artifacts (`template-update-check`, `doc-roles`) are installed **inside** each tool playbook when those optional_rules are `enabled` — not from a second global table in this file.
+- Optional artifacts (`template-update-check`, `doc-roles`, `slash-commands`) are installed **inside** each tool playbook when those optional_rules are `enabled` — not from a second global table in this file.
 
 ## Suggested prompt to the user
 
@@ -134,6 +137,7 @@ Installing for one tool **does not remove or replace** another tool's files. Rec
 > Sync mode: [auto | auto-all | choose | not asked — see bootstrap Step 3p].  
 > Template update checks: [enabled | declined | not asked — see bootstrap Step 3p].  
 > Optional doc roles: [enabled | declined | not asked — see bootstrap Step 3p].  
+> Slash commands: [enabled | declined | not asked — see bootstrap Step 3p F].  
 > Orchestrator git: [milestone-pr | branch-pr-squash | branch-pr | … | not asked — see bootstrap Step 3p / B0.6].
 >
 > Install the modular docs rule for **[tool]**? (I won't ask again for that tool after you answer.)  

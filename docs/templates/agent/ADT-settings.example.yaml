@@ -20,7 +20,7 @@ sync:
 # Docs ceremony profile — first-class choice, not a concession.
 # prevent    = editors / games / multi-surface / identity-risky. Understanding + shape confirm.
 #              Unset → prevent (do not silent-downgrade those repos).
-# ship-first = typed APIs / CRUD / clear contracts. Spec + TODO only. The right default there.
+# build-first = typed APIs / CRUD / clear contracts. Spec + TODO only. The right default there.
 # balanced   = Understanding only when identity is ambiguous / multi-surface / split / user asked.
 # Bootstrap / first “build from reference” may suggest a mode from docs/reference/ (cite 2–3
 # snippets) then ask once. Re-ask only on explicit *Set docs profile to …* / *Change docs ceremony*.
@@ -135,6 +135,14 @@ optional_rules:
     #   cursor: .cursor/agents/
     #   grok-build: .grok/agents/
     #   github-copilot: .github/agents/
+
+  # slash-commands: omit until the user answers (bootstrap Step 3p F / sync step 10).
+  # Do not copy this block into a live file as enabled. Missing is correct.
+  # Decline if they would rather just ask. Enable installs /sync and /orchestrate
+  # only where the tool playbook names a command folder.
+  # slash-commands:
+  #   status: declined
+  #   recorded: 2026-09-23
 
 # Upstream ping stamps — used when optional_rules.template-update-check is enabled.
 # Survives pack overwrite (this whole file lives under docs/, not docs/templates/).

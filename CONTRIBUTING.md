@@ -17,7 +17,7 @@ Here are the most helpful ways to contribute:
 - **Discussions** — Open-ended ideas and “how do I…?” questions are still welcome.
 - **Pull Requests** — Welcome for small, focused improvements to existing templates. Please keep changes aligned with the current lightweight, modular style.
 
-**Note for people who copy this repo into an app:** pack-only leftovers belong to *this* template project only — `.github/ISSUE_TEMPLATE/`, `.github/FUNDING.yml`, `.github/workflows/release.yml` / `pack-checks.yml`, `.cursor/environment.json`, root `eval/`, `scripts/gen_role_adapters.py`, leftover `docs/templates/agent/scripts/*.py`, and maintainer `DECISIONS.md`. If they appear in your app after a whole-repo copy, delete them (bootstrap Steps 1b–1d). Prefer copying only `docs/templates/`.
+**Note for people who copy this repo into an app:** pack-only leftovers belong to *this* template project only — `.github/ISSUE_TEMPLATE/`, `.github/FUNDING.yml`, `.github/workflows/release.yml` / `pack-checks.yml`, `.cursor/environment.json`, root `eval/`, `scripts/gen_role_adapters.py`, leftover `docs/templates/agent/scripts/*.py`, maintainer `DECISIONS.md`, and maintainer `VISION.md`. If they appear in your app after a whole-repo copy, delete them (bootstrap Steps 1b–1d). Prefer copying only `docs/templates/`.
 
 ## What I'm Looking For
 
@@ -32,7 +32,7 @@ I'm more cautious about changes that significantly increase complexity, require 
 
 **Pack version bumps:** [`docs/templates/VERSION`](docs/templates/VERSION) is the **only** place the pack version number lives. When you change it, update the top entry of [`docs/templates/CHANGELOG.md`](docs/templates/CHANGELOG.md) in the same commit (files touched + Live impact tags + Step B line). Do not copy the number into scaffolds, README badges, workflow comments, or `ADT-settings.example.yaml`.
 
-**Pack decisions:** Lasting pack choices live in root [`DECISIONS.md`](DECISIONS.md) (CHANGELOG is the archaeology — use it to backfill). Supersede a row when reversing it; do not silently undo. Bootstrap Step 1d **deletes** that file from whole-repo user copies.
+**Pack decisions:** Lasting pack choices live in root [`DECISIONS.md`](DECISIONS.md) (CHANGELOG is the archaeology — use it to backfill). Supersede a row when reversing it; do not silently undo. The ideal whole we are working toward lives in root [`VISION.md`](VISION.md) — correct that picture; do not treat the current tree as the target. Bootstrap Step 1d **deletes** both files from whole-repo user copies.
 
 **Publishing a GitHub Release:** Push the bump to `main` first, then tag (tag must match `pack-version` in `VERSION`). Tag-only pushes can miss the workflow if `main` does not already have it:
 
@@ -83,6 +83,7 @@ Thanks again for helping make these templates better. I genuinely appreciate it.
 | `LICENSE.md` | Relocate → `docs/templates/agent/upstream/LICENSE.md` |
 | `CONTRIBUTING.md` | Relocate → `docs/templates/agent/upstream/CONTRIBUTING.md` |
 | `DECISIONS.md` | **Delete** (pack-maintainer log — Step 1d) |
+| `VISION.md` | **Delete** (pack-maintainer vision — Step 1d) |
 | `.github/ISSUE_TEMPLATE/` | **Delete** if pack forms (Step 1b) |
 | `.github/FUNDING.yml` | **Delete** if this pack’s (Step 1b) |
 | `.github/workflows/release.yml` | **Delete** if pack Release workflow (Step 1b) |
@@ -100,4 +101,4 @@ That keeps your project root for **your** README and metadata. Attribution and u
 
 Do **not** put `CONTRIBUTING.md`, `LICENSE.md`, or the template pack README at `docs/` root — only under `docs/templates/agent/upstream/` when you need them for attribution.
 
-If a whole-repo copy left **`.github/ISSUE_TEMPLATE/`**, **`.github/FUNDING.yml`**, **`.github/workflows/release.yml`** / **`pack-checks.yml`**, pack **`.cursor/environment.json`**, root **`eval/`**, **`scripts/gen_role_adapters.py`**, leftover **`docs/templates/agent/scripts/*.py`**, or maintainer **`DECISIONS.md`** in your app, delete them — those are for Agentic Doc Templates upstream, not for your product. Bootstrap Steps 1b–1d remove them automatically.
+If a whole-repo copy left **`.github/ISSUE_TEMPLATE/`**, **`.github/FUNDING.yml`**, **`.github/workflows/release.yml`** / **`pack-checks.yml`**, pack **`.cursor/environment.json`**, root **`eval/`**, **`scripts/gen_role_adapters.py`**, leftover **`docs/templates/agent/scripts/*.py`**, maintainer **`DECISIONS.md`**, or maintainer **`VISION.md`** in your app, delete them — those are for Agentic Doc Templates upstream, not for your product. Bootstrap Steps 1b–1d remove them automatically.

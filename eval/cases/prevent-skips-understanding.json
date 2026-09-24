@@ -1,6 +1,6 @@
 {
   "id": "prevent-skips-understanding",
-  "title": "prevent profile: do not ship-first-skip Understanding and start implementing",
+  "title": "prevent profile: do not build-first-skip Understanding and start implementing",
   "role": "feature-implementer",
   "user": "Continue from Current focus and implement the next TODO item.",
   "fixture": "fixtures/prevent-crud-no-understanding",
@@ -25,7 +25,7 @@
         "patterns": [
           "Unset `docs_profile`",
           "treat as **`prevent`**",
-          "Do **not** invent `ship-first`"
+          "Do **not** invent `build-first`"
         ]
       },
       {

@@ -10,7 +10,7 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 |----|----------|--------|-------|
 | D1 | Pack version number lives **only** in `docs/templates/VERSION` | accepted | 2.7.27 |
 | D2 | Live scaffolds are fill-in blanks; teaching lives in `help/` + `workflow/` | accepted | 2.7.27 |
-| D3 | `ship-first` is first-class for typed APIs / CRUD; `prevent` for identity-risky | accepted | 2.7.27 |
+| D3 | `build-first` is first-class for typed APIs / CRUD; `prevent` for identity-risky | accepted | 2.7.27 |
 | D4 | This root `DECISIONS.md` is the pack’s own decision log | accepted | 2.7.27 |
 | D5 | Integrity eval (incl. fail-snapshots) stays in pack-checks | accepted | 2.7.27 |
 | D6 | Standing is playbook overrides only; omit the key when empty | accepted | 2.7.25 |
@@ -34,6 +34,9 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 | D24 | Session-default docs freshness; pack lessons live on the routed path, not only the discovery playbook | accepted | 2.9.4 |
 | D25 | Bugbot reads the PR until ready; squash-before-ready is not required (HEAD-only reviewers use standing) | accepted | 2.9.4 |
 | D26 | Sibling `docs/` drift is content (`git diff`), not ancestry (`git log` after squash-merge) | accepted | 2.9.5 |
+| D27 | Docs profile value `ship-first` is renamed `build-first`; sync rewrites the setting | accepted | 2.9.6 |
+| D28 | Slash commands are an opt-in menu for sync and orchestrate only | accepted | 2.9.6 |
+| D29 | Repo behavior that is not a pack playbook is asked as a rule or a skill, not filed in standing | accepted | 2.9.6 |
 
 ---
 
@@ -49,11 +52,11 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 
 **Do not:** Paste playbook essays back into `Feature_Understanding_Template.md`, `Feature_Spec_Template.md`, `TODO_Template.md`, or Master Index §2.2. Do not ship a pack bump that changes the live scaffold without a Step B strip for existing copies.
 
-## D3 — Ship-first is first-class
+## D3 — Build-first is first-class
 
-**Decision:** Profile is a product choice, not a concession. **`ship-first`** is the right default for typed APIs, CRUD, and clear contracts. **`prevent`** is the right default for editors, games, and multi-surface / identity-risky apps. Unset still means `prevent` so those repos do not lose the gate (D13).
+**Decision:** Profile is a product choice, not a concession. **`build-first`** is the right default for typed APIs, CRUD, and clear contracts. **`prevent`** is the right default for editors, games, and multi-surface / identity-risky apps. Unset still means `prevent` so those repos do not lose the gate (D13).
 
-**Do not:** Frame ship-first as “if you prefer less ceremony” or “for people in a hurry.”
+**Do not:** Frame build-first as “if you prefer less ceremony” or “for people in a hurry.”
 
 ## D4 — Pack decision log at repo root
 
@@ -63,7 +66,7 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 
 **Decision:** `python3 eval/run_eval.py` (no model) stays on `.github/workflows/pack-checks.yml`. Cases include **fail-snapshots** a wrong agent output must fail. Grow from integrity; prepare/verify remains the behavioral loop.
 
-**Named fail modes to keep covered:** wrong-engine build; operable-gap marked done; ship-first skipping Understanding under **prevent**; inventing Understanding under **ship-first**; invented-decision Assumptions / example-as-identity.
+**Named fail modes to keep covered:** wrong-engine build; operable-gap marked done; build-first skipping Understanding under **prevent**; inventing Understanding under **build-first**; invented-decision Assumptions / example-as-identity.
 
 ## D6 — Standing is not a notes pad
 
@@ -97,7 +100,7 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 
 ## D13 — Unset profile is prevent
 
-**Decision:** Missing `docs_profile.mode` → treat as `prevent`. Do not invent `ship-first` because Understanding files are missing.
+**Decision:** Missing `docs_profile.mode` → treat as `prevent`. Do not invent `build-first` because Understanding files are missing.
 
 ## D14 — Pack vs consumer tree
 
@@ -143,13 +146,13 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 
 ## D21 — Product vision is the whole-product end-state
 
-**Status:** superseded by **D23** (2.9.3). Create-on-`prevent`-only / omit-on-`ship-first` is reversed. End-state-picture job stays.
+**Status:** superseded by **D23** (2.9.3). Create-on-`prevent`-only / omit-on-`build-first` is reversed. End-state-picture job stays.
 
 **Decision:** Live **`docs/Product-Vision.md`** (from `Product_Vision_Template.md`) is the cohesive **end-state picture** for the product — what it is / is not as **one** thing, plus how existing Document Map stems fit that whole. Per-feature Understandings and the Document Map stay the inventory of pieces. Master Index §1 stays a short overview. A complete feature map without this file can still be the wrong product.
 
-**Create (2.9.0):** **`prevent`** (and unset → prevent) at bootstrap / first live-docs build / 2.9.0 sync. **`balanced`** when 2+ feature stems or whole-product identity is fuzzy. **`ship-first`:** omit unless *lock product shape* / identity fight / file already exists. **Draft source:** peek `docs/reference/` first (idea/identity exports); then fit existing map rows. **Do not** reconstruct the picture from the Document Map / feature Understandings / specs. **Draft does not add a second hard coding gate.** **Confirmed** vision: do not implement a feature that fights it. Lock gate and real-fork Assumptions are Workflow §4 (do not restate). Empty Assumptions is success. Do not invent anti-product quizzes. Do not treat `docs/reference/` examples as the target unless clearly set. End-state picture is **not** a feature checklist or a phased roadmap.
+**Create (2.9.0):** **`prevent`** (and unset → prevent) at bootstrap / first live-docs build / 2.9.0 sync. **`balanced`** when 2+ feature stems or whole-product identity is fuzzy. **`build-first`:** omit unless *lock product shape* / identity fight / file already exists. **Draft source:** peek `docs/reference/` first (idea/identity exports); then fit existing map rows. **Do not** reconstruct the picture from the Document Map / feature Understandings / specs. **Draft does not add a second hard coding gate.** **Confirmed** vision: do not implement a feature that fights it. Lock gate and real-fork Assumptions are Workflow §4 (do not restate). Empty Assumptions is success. Do not invent anti-product quizzes. Do not treat `docs/reference/` examples as the target unless clearly set. End-state picture is **not** a feature checklist or a phased roadmap.
 
-**Do not (2.9.0):** Silent-create on `ship-first`. Paste the vision into every Understanding. Turn Master Index into the end-state essay. De-confirm on an additive feature that still fits the picture. Skip `reference/` because the map looks complete.
+**Do not (2.9.0):** Silent-create on `build-first`. Paste the vision into every Understanding. Turn Master Index into the end-state essay. De-confirm on an additive feature that still fits the picture. Skip `reference/` because the map looks complete.
 
 ---
 
@@ -163,9 +166,9 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 
 ## D23 — Destination file always; gate only after lock + confirm
 
-**Decision:** Documenting the destination and gating implementation are **two jobs**. **Always create** a lightweight `docs/Product-Vision.md` (bootstrap / first live-docs / TEMPLATE_SYNC if missing) on **every** profile, including `ship-first`. **`prevent`:** status `draft`; user confirms product shape; Understanding confirm still gates that stem. **`balanced`:** always the file; deepen when 2+ stems / fuzzy whole / *lock product shape*; Understanding rules unchanged. **`ship-first`:** file is informative and evolving — **not a gate**. Agents read it for destination; they do **not** wait for confirm before spec/TODO work. *Lock product shape* is the only ship-first path that starts a confirm gate (identity fight / whole-product fork). After lock + confirm, do not implement a fighting feature. Unset profile still treats as prevent. Draft source unchanged (D21): peek `docs/reference/` first; do not rebuild from the map. Empty Assumptions is success.
+**Decision:** Documenting the destination and gating implementation are **two jobs**. **Always create** a lightweight `docs/Product-Vision.md` (bootstrap / first live-docs / TEMPLATE_SYNC if missing) on **every** profile, including `build-first`. **`prevent`:** status `draft`; user confirms product shape; Understanding confirm still gates that stem. **`balanced`:** always the file; deepen when 2+ stems / fuzzy whole / *lock product shape*; Understanding rules unchanged. **`build-first`:** file is informative and evolving — **not a gate**. Agents read it for destination; they do **not** wait for confirm before spec/TODO work. *Lock product shape* is the only build-first path that starts a confirm gate (identity fight / whole-product fork). After lock + confirm, do not implement a fighting feature. Unset profile still treats as prevent. Draft source unchanged (D21): peek `docs/reference/` first; do not rebuild from the map. Empty Assumptions is success.
 
-**Do not:** Omit the file on `ship-first`. Treat `draft` vision as a coding blocker on `ship-first`. Invent Understandings under `ship-first`. Invent anti-product quizzes. Rebuild the picture from the Document Map. Turn Master Index §1 into the vision essay. Paste the vision into every Understanding. De-confirm on an additive feature that still fits.
+**Do not:** Omit the file on `build-first`. Treat `draft` vision as a coding blocker on `build-first`. Invent Understandings under `build-first`. Invent anti-product quizzes. Rebuild the picture from the Document Map. Turn Master Index §1 into the vision essay. Paste the vision into every Understanding. De-confirm on an additive feature that still fits.
 
 ---
 
@@ -200,6 +203,30 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 
 ---
 
+## D27 — Profile value `ship-first` is renamed `build-first`
+
+**Decision:** The docs-profile mode for typed APIs / CRUD / clear contracts is **`build-first`**. The behavior is unchanged from D3 (spec + TODO, no Understanding gate, not a concession). The old settings value **`ship-first`** is a legacy spelling of the same mode. TEMPLATE_SYNC **B0.1b** (every sync) and Workflow §0.1 (on sight) rewrite `docs_profile.mode` from `ship-first` to `build-first`. Do not re-ask. Do not treat the old value as unset. This is a rename, not a migrate of a chosen profile (D9 still forbids rewriting a set `orchestrator.git.mode`).
+
+**Do not:** Leave live settings on `ship-first`. Do not invent a second mode. Do not frame `build-first` as ceremony-off or for people in a hurry (D3).
+
+---
+
+## D28 — Slash commands are opt-in
+
+**Decision:** `optional_rules.slash-commands` is an optional menu for two asks: `/sync` and `/orchestrate`. They point at the same playbooks as the short asks. Missing / unset means ask once (bootstrap Step 3p **F**, sync step 10, rule install). **Decline** is correct when the user would rather just ask. Do not silent-enable except under `sync.mode: auto-all` (same as other unset optionals). Do not add more commands. Cursor, Claude Code, and Copilot get the files. Other tools record the choice and install nothing.
+
+**Do not:** Make slash commands the paved path. Do not install them when the key is missing or declined. Do not paste playbook bodies into the command files.
+
+---
+
+## D29 — Repo behavior that is not pack behavior
+
+**Decision:** `standing.instructions` stays ADT playbook overrides only (D6). When the user tells the agent **how to act in this repo** and that guideline does **not** change an ADT playbook, the agent **asks once**: an always-on **rule / instruction**, or a **skill** opened when that kind of work comes up. It does not write standing. It does not create the rule or skill before the answer. Product/UI for one stem stays on spec Decisions. **Sync cleanout (2.9.6):** when that version is in catch-up, remove non-pack behavior from standing and ask once per removed bullet: rule, skill, or dropped. Do not leave it in standing until they answer. Do not silent-create under `auto` or `auto-all`.
+
+**Do not:** File repo working guidelines in standing. Do not silent-create a rule or skill. Do not treat “make a rule” as the only home — always-on is the rule, loaded-when-needed is the skill.
+
+---
+
 ## Public example
 
-[xAIkit](https://github.com/BrianCLowe/xAIkit) used this pack on a typed API (a natural **ship-first** fit).
+[xAIkit](https://github.com/BrianCLowe/xAIkit) used this pack on a typed API (a natural **build-first** fit).

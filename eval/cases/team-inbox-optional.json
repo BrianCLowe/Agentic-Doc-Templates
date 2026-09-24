@@ -3,7 +3,7 @@
   "title": "team_inbox is optional — unset stays human-only; roster is two-stage (read vs self-ID), not a forced bot org chart",
   "role": "feature-implementer",
   "user": "What’s left on the human TODO?",
-  "fixture": "fixtures/ship-first-crud",
+  "fixture": "fixtures/build-first-crud",
   "expect": {
     "files_must_not_change": [
       "docs/ADT-settings.yaml"

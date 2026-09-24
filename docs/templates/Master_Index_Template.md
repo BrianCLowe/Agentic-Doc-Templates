@@ -37,7 +37,7 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 | `docs/reference/` | **Recommended:** chat exports (md) of idea threads — also design docs / PRDs / legacy specs. Not living modular docs ([Workflow](templates/agent/Modular_Docs_Workflow.md); tips: [`help/IDEA_CAPTURE_TIPS.md`](templates/help/IDEA_CAPTURE_TIPS.md)) |
 | `docs/reference/visuals/` | Optional inspiration screenshots before a feature exists |
 | `docs/Tooling.md` | Machine / workflow tools (not package deps) — install on a new machine ([`Tooling_Template.md`](templates/Tooling_Template.md)) |
-| `docs/Product-Vision.md` | Whole-product end-state picture — is / is not + how the map fits. **Always create** (lightweight on `balanced` / `ship-first`). **`ship-first`:** destination, not a gate until *lock product shape* ([`Product_Vision_Template.md`](templates/Product_Vision_Template.md)) |
+| `docs/Product-Vision.md` | Whole-product end-state picture — is / is not + how the map fits. **Always create** (lightweight on `balanced` / `build-first`). **`build-first`:** destination, not a gate until *lock product shape* ([`Product_Vision_Template.md`](templates/Product_Vision_Template.md)) |
 | `docs/Human-TODO.md` | Human inbox — procure, playtest, decide, waiting (agent cannot close from assumptions) ([`Human_TODO_Template.md`](templates/Human_TODO_Template.md)) |
 | `docs/Team-Roster.md` | Optional team inbox roster — Name, Jobs, Anti-jobs *(if defined)*, handoff. **Create only when `team_inbox` is enabled.** Handoff agents read; named humans and bots self-ID; one initial PR for a full team ([`Team_Roster_Template.md`](templates/Team_Roster_Template.md)) |
 | `docs/decisions/` | Optional cross-cutting decisions ([`Decision_Template.md`](templates/Decision_Template.md)) |
@@ -49,7 +49,7 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 
 | Topic | Where the rule lives |
 |-------|----------------------|
-| **Docs profile** | `docs/ADT-settings.yaml` → `docs_profile.mode`. **`prevent`** = editors / games / multi-surface (default if unset). **`ship-first`** = typed APIs / CRUD. **`balanced`** = mixed. [§0.1](templates/agent/workflow/profile-standing.md#01-docs-profile-ceremony-modes) |
+| **Docs profile** | `docs/ADT-settings.yaml` → `docs_profile.mode`. **`prevent`** = editors / games / multi-surface (default if unset). **`build-first`** = typed APIs / CRUD. **`balanced`** = mixed. [§0.1](templates/agent/workflow/profile-standing.md#01-docs-profile-ceremony-modes) |
 | **Orchestrator git** | `orchestrator.git.mode` — ask if unset. Host worktrees: already-in-a-worktree → stay; pack does not `git worktree add`. Stay ≠ current — session-start docs freshness: `git status` + worktrees. [orchestrator-git](templates/agent/roles/orchestrator-git.md) · [§0.3](templates/agent/workflow/session-freshness.md) |
 | **Docs freshness** | Once per session: `git status` + `git worktree list` before treating Master Index / TODOs as current. Sibling `docs/` drift = content (`git diff`), not ancestry after squash-merge. Same-stem live docs on an open PR → add there (do not stack PRs). [§0.3](templates/agent/workflow/session-freshness.md) |
 | **File layout / kit leftovers** | Flat sibling files; no map-only planned rows; leftovers stay as TODOs on an existing stem. [§0](templates/agent/workflow/naming-layout.md#0-naming--file-layout-read-before-creating-files) · [§5.4](templates/agent/workflow/todos.md#54-finished-kit-contract--covering-todos-not-wait-for-pickup) |

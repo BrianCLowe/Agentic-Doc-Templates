@@ -1,9 +1,9 @@
 {
   "id": "product-vision-end-state",
-  "title": "Product vision is the whole-product end-state; ship-first must create, must not gate",
+  "title": "Product vision is the whole-product end-state; build-first must create, must not gate",
   "role": "feature-implementer",
   "user": "Continue from Current focus.",
-  "fixture": "fixtures/ship-first-crud",
+  "fixture": "fixtures/build-first-crud",
   "expect": {
     "files_must_exist": [
       "docs/Product-Vision.md"
@@ -85,7 +85,7 @@
           "Do not** build the picture by summarizing"
         ],
         "must_not_contain": [
-          "**`ship-first`:** do **not** create `Product-Vision.md`"
+          "**`build-first`:** do **not** create `Product-Vision.md`"
         ]
       },
       {

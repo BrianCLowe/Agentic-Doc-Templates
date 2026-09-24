@@ -25,14 +25,14 @@
 
 ## Preconditions
 
-- Stem is **ready** (Workflow §3 ready table): prevent → Understanding `confirmed` or waived; balanced without Understanding / ship-first → spec + TODO exist.
+- Stem is **ready** (Workflow §3 ready table): prevent → Understanding `confirmed` or waived; balanced without Understanding / build-first → spec + TODO exist.
 - If an **existing** Understanding is `draft` → **stop** (or get waiver); do not code.
 - Scope unchanged. Additive vs shape / de-confirm → [`../workflow/understanding.md`](../workflow/understanding.md) §4 (**source of truth**). Additive → spec + TODO, keep `confirmed`, continue. Significant shape change → **stop** → [`understanding-author.md`](understanding-author.md) (or *lock shape*).
 
 ## Steps
 
 1. Read Current focus; pick the next unchecked item on that TODO.
-2. If that item (or High Priority) encodes an **interim architecture** that fights confirmed Understanding (or clear identity on the spec under ship-first), rewrite the TODO toward the **target** first — then implement ([`../Agent_Timescale_Planning_Rule.mdc`](../Agent_Timescale_Planning_Rule.mdc)). Do not ask the user to remind you.
+2. If that item (or High Priority) encodes an **interim architecture** that fights confirmed Understanding (or clear identity on the spec under build-first), rewrite the TODO toward the **target** first — then implement ([`../Agent_Timescale_Planning_Rule.mdc`](../Agent_Timescale_Planning_Rule.mdc)). Do not ask the user to remind you.
 3. Before integrating a **shared** piece, check Maturity on its spec or Document Map.
 4. Implement that focus item only (tight scope = don’t wander unrelated; a focus item may still be a full target-arch cut).
 5. **Operable gap (Workflow §5.3):** If this stem is user/operator-facing (not **library-only** / not phased with a later exercise path) and finishing the item leaves **no** exercise path (UI / CLI / product API / documented smoke) while High Priority is only domain/library or empty — **add** surface/wire/smoke TODO item(s) (or a loud phase note + later items) and set Current focus when appropriate. Do not treat domain-only clearance as “feature done.” **No UI specs** is not a stop: scaffold a **minimal boring** surface and **wire** domain into it (or CLI/smoke); do not dual-write Human-TODO “design the UI” for a blank canvas unless the user explicitly gated design-first.
@@ -52,7 +52,7 @@
 ## Do not
 
 - Draft or re-open Understanding for an additive ask on `confirmed` — see [`../workflow/understanding.md`](../workflow/understanding.md) §4
-- Invent Understanding files under **ship-first** unless the user asked to lock shape
+- Invent Understanding files under **build-first** unless the user asked to lock shape
 - Graduate Understanding → spec (use [`doc-graduate.md`](doc-graduate.md))
 - Implement a known-wrong interim architecture because the honest cut “looks multi-concern”
 - Call a user-facing stem done after domain/tests only with no exercise path, no **library-only**/phased bridge, or open operable Acceptance and no TODO that addresses it (Workflow §5.3)

@@ -90,7 +90,7 @@ When the whole template repo was cloned/copied into a project (or “Use this te
 
 ## Step 1d — Remove upstream maintainer tooling (user projects)
 
-**This pack's** root `eval/`, root `scripts/` (CI helper), root **`DECISIONS.md`**, and any leftover `docs/templates/agent/scripts/*.py` are for maintaining [Agentic-Doc-Templates](https://github.com/BrianCLowe/Agentic-Doc-Templates) itself. They must **not** stay in a user’s app repo. Adapter regeneration for pack editors is the markdown playbook [`GENERATE_ROLE_ADAPTERS.md`](GENERATE_ROLE_ADAPTERS.md) — **no Python**.
+**This pack's** root `eval/`, root `scripts/` (CI helper), root **`DECISIONS.md`**, root **`VISION.md`**, and any leftover `docs/templates/agent/scripts/*.py` are for maintaining [Agentic-Doc-Templates](https://github.com/BrianCLowe/Agentic-Doc-Templates) itself. They must **not** stay in a user’s app repo. Adapter regeneration for pack editors is the markdown playbook [`GENERATE_ROLE_ADAPTERS.md`](GENERATE_ROLE_ADAPTERS.md) — **no Python**.
 
 When the whole template repo was cloned/copied into a project (or “Use this template” left these behind):
 
@@ -99,9 +99,10 @@ When the whole template repo was cloned/copied into a project (or “Use this te
 3. If **`docs/templates/agent/scripts/`** exists with pack Python helpers (e.g. `gen_role_adapters.py`) from an older pack zip → **delete that directory** (the playbook replaced it).
 4. If `.github/workflows/pack-checks.yml` exists **and** is this pack’s integrity workflow (e.g. workflow `name: Pack checks`, runs `gen_role_adapters.py --check` and/or `eval/run_eval.py`) → **delete that file**. Remove `.github/workflows/` / `.github/` if empty afterward (same care as Step 1b — do not delete the user’s other workflows).
 5. If project-root **`DECISIONS.md`** exists **and** is this pack’s decision log (e.g. heading **Agentic Doc Templates — Pack decisions**, or it says bootstrap Step 1d deletes it) → **delete that file**. Do **not** delete the user’s own `docs/decisions/` or a project `DECISIONS.md` that is about *their* app.
-6. Do **not** delete `docs/templates/agent/roles/adapter-src/` or [`GENERATE_ROLE_ADAPTERS.md`](GENERATE_ROLE_ADAPTERS.md) — those are pack files.
-7. Do **not** delete a user’s own `eval/` or `scripts/` that are clearly for their app (different README / no Agentic Doc Templates markers).
-8. Prefer copying only `docs/templates/` next time so maintainer folders never land in the project.
+6. If project-root **`VISION.md`** exists **and** is this pack’s vision (e.g. heading **Agentic Doc Templates — Pack vision**, or it says bootstrap Step 1d deletes it) → **delete that file**. Do **not** delete the user’s `docs/Product-Vision.md` or a project vision that is about *their* app.
+7. Do **not** delete `docs/templates/agent/roles/adapter-src/` or [`GENERATE_ROLE_ADAPTERS.md`](GENERATE_ROLE_ADAPTERS.md) — those are pack files.
+8. Do **not** delete a user’s own `eval/` or `scripts/` that are clearly for their app (different README / no Agentic Doc Templates markers).
+9. Prefer copying only `docs/templates/` next time so maintainer folders never land in the project.
 
 ## Step 2 — Create docs layout
 
@@ -111,7 +112,7 @@ Create if missing:
 docs/
 ├── Master_Index.md          ← from Master_Index_Template.md (Step 3)
 ├── Tooling.md               ← from Tooling_Template.md (Step 3b — machine tools)
-├── Product-Vision.md        ← from Product_Vision_Template.md (Step 3v — all profiles; ship-first = destination, not a gate)
+├── Product-Vision.md        ← from Product_Vision_Template.md (Step 3v — all profiles; build-first = destination, not a gate)
 ├── Human-TODO.md            ← from Human_TODO_Template.md (Step 3c — human inbox)
 ├── Team-Roster.md           ← from Team_Roster_Template.md **only if** team_inbox is already enabled (do not invent teammates)
 ├── ADT-settings.yaml        ← pack prefs (tools, optionals, sync mode, upstream) when first recorded
@@ -201,9 +202,10 @@ If it already exists → add newly discovered human-gated needs (procure / playt
 |---|------------|-----|----------------|
 | A | **Docs profile** (ceremony) | `docs_profile.mode` | Controls whether Understanding + shape-confirm block code. **Required before Step 3d** file create. |
 | B | **Template update checks** | `optional_rules.template-update-check` | Optional upstream VERSION ping |
-| C | **Doc roles** | `optional_rules.doc-roles` | Optional subagent adapters (orchestrator stays parent-only) |
+| C | **Doc roles** | `optional_rules.doc-roles` | Optional. If installed, heavier moments leave the parent session so it stays slim. Orchestrator stays parent-only. |
 | D | **Pack sync mode** | `sync.mode` | How TEMPLATE_SYNC handles live optionals |
 | E | **Orchestrator git** | `orchestrator.git.mode` | How long unattended runs land in git — **important**; never silent-default |
+| F | **Slash commands** | `optional_rules.slash-commands` | Optional menu for sync and orchestrate. Decline if you would rather just ask. |
 
 ### How to present *(agent requirements)*
 
@@ -215,13 +217,7 @@ If it already exists → add newly discovered human-gated needs (procure / playt
 
 ### A — Docs profile *(options to explain)*
 
-| Mode | Tell the user |
-|------|----------------|
-| **`prevent`** *(suggested if identity-risky / unclear)* | Agent drafts `-Understanding.md` first; **you confirm shape** (is / is not) before code. Right default for **editors, games, multi-surface** apps — wrong identity is expensive. Unset → this mode. |
-| **`balanced`** | Spec + TODO always; Understanding **only when** product identity is fuzzy (competing surfaces, “not X”, multi-feature mush, or you ask to lock shape). You are choosing “judgment call,” not “no docs.” |
-| **`ship-first`** | Spec + TODO only; no Understanding / shape-confirm gate. Lightweight `Product-Vision.md` is created as destination (**not a gate**). **Right default for typed APIs / CRUD / clear contracts** — not a concession. Also prototypes / fix-forward. *Lock shape for X* anytime. *Lock product shape* only when the whole product needs a confirm gate. |
-
-Suggest with citations when possible (prevent / balanced / ship-first signals — Workflow §0.1).
+**Words home:** open [`workflow/profile-standing.md`](workflow/profile-standing.md) §0.1 and present the mode table **When to use** column plus the **Suggest once** plain-language lines. Do **not** restate the three modes here. Ask once inside this batch. Required before Step 3d. Unset still means **`prevent`** until they answer. Suggest with citations when `docs/reference/` has them.
 
 ### B — Template update checks
 
@@ -229,7 +225,7 @@ Explain: optional rule pings upstream `VERSION` only; then they can TEMPLATE_SYN
 
 ### C — Doc roles
 
-Explain: optional Understanding author, implementer, work verifier, etc. as harness adapters; short asks still work without install; orchestrator is never a subagent. Options: **enable** / **decline**.
+Explain: optional Understanding author, implementer, work verifier, etc. as harness adapters. **Why enable:** heavier moments run in a role, so the parent session stays slim instead of holding that work. Short asks still work without install — the same work then stays in the parent. Orchestrator is never a subagent. Options: **enable** / **decline**.
 
 ### D — Pack sync mode
 
@@ -241,15 +237,7 @@ Explain: optional Understanding author, implementer, work verifier, etc. as harn
 
 ### E — Orchestrator git *(always explain fully when unset)*
 
-| Mode | Tell the user |
-|------|----------------|
-| **`milestone-pr`** *(suggest if remote + forge CLI)* | **Overnight drain:** each **milestone** (one or more related TODOs; concurrent implementers when they do not overlap **and** the host can isolate) → own branch → draft PR → build-verify → mark ready → **wait CI / accept Bugbot auto-fixes** → **merge** → new branch for the next milestone. Reviewable diffs; Bugbot reads the **PR** until ready (squash-before-ready is not required); work lands before morning. |
-| **`branch-pr-squash`** | One run branch → milestone commits → draft PR mid-run → end: **build-verify → squash the whole run to one commit → mark ready** (no merge). Use when you want **one morning PR** to review yourself. |
-| **`branch-pr`** | Same without squash — keeps milestone history on the PR. Unattended CI after the run. No merge. |
-| **`branch-push`** *(suggest if remote, no forge CLI)* | Same without PR |
-| **`local`** *(suggest if no remote)* | Milestone commits only; nothing leaves the machine |
-| **`current-push`** | Commit + **push the branch you are on now** (often `main`). Solo / you own the remote. **Never** applied without you picking it. |
-| **`none`** | No commits during orchestration |
+**Menu home:** open [`roles/orchestrator-git.md`](roles/orchestrator-git.md) **Modes** and present that table. Do **not** restate the seven modes here. Suggest **`milestone-pr`** when remote + forge CLI (concurrent implementers when they do not overlap; squash-before-ready is not required). Suggest **`branch-push`** when remote and no forge CLI. Suggest **`local`** when there is no remote. **Never** apply **`current-push`** unless they pick it.
 
 **Write-in (not a quiz, not an eighth mode):** include this in the **same** user-facing menu: *If none of these match how you want git to run (merge commit, rebase-merge, always squash before ready for a HEAD-only reviewer, custom close-out), pick the closest and tell me the override — I’ll save it as a standing instruction.* That is `standing.instructions` (Workflow §0.2). Do **not** invent a mode. Do **not** follow with “any standing notes?”
 
@@ -259,11 +247,15 @@ Explain: optional Understanding author, implementer, work verifier, etc. as harn
 
 **Never** silent-default **`current-push`**. Git strategy is high-impact — if they shrug, restate the suggestion and get an explicit pick (or “use suggestion”).
 
+### F — Slash commands
+
+Explain: optional `/sync` and `/orchestrate` for people who want a menu instead of remembering the sentence. They run the same playbooks as the short asks. **Decline** is the right answer if you would rather just ask. Options: **enable** / **decline**. Where files land is in each `tools/<key>.md` (Cursor, Claude Code, Copilot). Other tools have no command folder — the short ask stays the path.
+
 **After they pick a git mode** → run **Forge tooling probe** ([`roles/orchestrator-git.md`](roles/orchestrator-git.md)): infer forge from remote; if **`milestone-pr` / `branch-pr` / `branch-pr-squash`** and CLI missing → **ask to install**; if CLI present but not logged in (or just installed) → **ask to start auth** (install ≠ ready for PRs). Fall back to push + human PR / switch mode if they decline. Do not silent-install or silent-login.
 
 ### Standing — do not quiz
 
-Do **not** ask “any standing notes?” after A–E. Missing `standing:` is correct. Write `standing.instructions` only if they **already** stated a playbook override this conversation and no first-class key fits (Workflow §0.2). Do **not** invent bullets.
+Do **not** ask “any standing notes?” after A–F. Missing `standing:` is correct. Write `standing.instructions` only if they **already** stated a playbook override this conversation and no first-class key fits (Workflow §0.2). Do **not** invent bullets.
 
 Explicit later (any preference): *Set docs profile to …* / *Set sync to …* / *Set orchestrator git to …* / *Add standing note: …* / enable-decline optionals.
 
@@ -275,7 +267,7 @@ Read `docs_profile.mode` (unset → **prevent**). See [`workflow/product-vision.
 |---------|--------|
 | **`prevent`** | If `docs/Product-Vision.md` is missing → copy [`Product_Vision_Template.md`](../Product_Vision_Template.md). **Peek `docs/reference/` first** if it has files (newest 3–5 idea/identity exports, or user-pointed). Draft **What this product is / is NOT** + **End-state picture** from those + this conversation (lock obvious; empty Assumptions OK). Status `draft`; user confirms product shape. **Do not** build the picture from the Document Map / feature files. **How the map fits** stays empty until Step 3d, then fill from **existing** map rows only (one line each). Link from Master Index Key Locations / §3.4. |
 | **`balanced`** | **Always create** a lightweight file if missing (same peek + draft). Deepen when they named **2+ features**, whole-product identity is fuzzy, or they asked *lock product shape*. |
-| **`ship-first`** | **Always create** a lightweight file if missing (same peek + draft). **Not a gate** — do not wait for confirm before coding. Leave **Confirmed with user** empty until *lock product shape*. |
+| **`build-first`** | **Always create** a lightweight file if missing (same peek + draft). **Not a gate** — do not wait for confirm before coding. Leave **Confirmed with user** empty until *lock product shape*. |
 
 Do **not** invent a feature checklist as the end-state picture. Do **not** invent stems. After Step 3d, return here once to fill **How the map fits**.
 
@@ -285,7 +277,7 @@ If the file already exists → do not overwrite; offer to update the picture / m
 
 **A Document Map row is not documentation.** If you put a feature or shared component in §3.1 / §3.2, you **must** create the **profile default file set** in the same session (Workflow §0 / §0.1). Read `docs_profile.mode` (unset → **prevent**).
 
-| File | `prevent` | `balanced` | `ship-first` |
+| File | `prevent` | `balanced` | `build-first` |
 |------|-----------|------------|--------------|
 | `*.md` spec | always (stub OK) | always | always |
 | `*-TODO.md` | always | always | always |
@@ -297,7 +289,7 @@ Add InEditor/Asset TODOs when Project Profile / game extensions apply.
 
 - Leave map-only “planned” rows with broken or missing links “until the user picks one”
 - Under **`prevent`**: treat the Understanding `draft` gate as a reason to **skip creating** Understanding files — `draft` blocks **coding**, not **writing docs**
-- Under **`ship-first`**: invent Understanding files “just in case”
+- Under **`build-first`**: invent Understanding files “just in case”
 - Create nine fully graduated specs before the user confirms — stubs (+ draft Understandings when required) are correct
 
 **When many features were named** (e.g. 5+):
@@ -312,12 +304,12 @@ After 3d: if `docs/Product-Vision.md` exists, fill **How the map fits** from the
 
 ## Step 4 — Tell the user what's next
 
-1. Confirm or correct Section 1 (Project Overview), Document Map, `docs/Tooling.md`, and `docs/Human-TODO.md`. Confirm **preferences** recorded in Step 3p (docs profile, sync, git, optionals). If `docs/Product-Vision.md` is `draft` under **prevent** — user reviews **whole-product** shape (is / is not + end-state picture), not a feature list. Under **ship-first**, the file is destination-only — do **not** wait for confirm before coding.
-2. If draft `-Understanding.md` files exist — user reviews / corrects **shape** before implementation (**prevent** / those stems). Under **ship-first**, point at specs + TODOs instead.
+1. Confirm or correct Section 1 (Project Overview), Document Map, `docs/Tooling.md`, and `docs/Human-TODO.md`. Confirm **preferences** recorded in Step 3p (docs profile, sync, git, optionals). If `docs/Product-Vision.md` is `draft` under **prevent** — user reviews **whole-product** shape (is / is not + end-state picture), not a feature list. Under **build-first**, the file is destination-only — do **not** wait for confirm before coding.
+2. If draft `-Understanding.md` files exist — user reviews / corrects **shape** before implementation (**prevent** / those stems). Under **build-first**, point at specs + TODOs instead.
 3. Point at **Open** items on `Human-TODO.md` — things only the human can close (procure, playtest, decide, waiting).
-4. After they confirm an Understanding (when used), graduate durable content into the spec and continue from TODOs ([`../help/SETUP.md`](../help/SETUP.md)). Under ship-first, continue from TODOs and grow the spec as you build.
+4. After they confirm an Understanding (when used), graduate durable content into the spec and continue from TODOs ([`../help/SETUP.md`](../help/SETUP.md)). Under build-first, continue from TODOs and grow the spec as you build.
 5. **Preference catch-up:** if any Step 3p key is still unset, re-present **only** the missing rows (same explanations as 3p) before finishing — do not invent defaults for **orchestrator git** or **current-push**.
-6. Optional: run [`RULE_INSTALL.md`](RULE_INSTALL.md) for agent rules (asks per tool, records in `docs/ADT-settings.yaml`). If doc-roles or update-check were **enabled** in 3p, RULE_INSTALL also installs those optional artifacts.
+6. Optional: run [`RULE_INSTALL.md`](RULE_INSTALL.md) for agent rules (asks per tool, records in `docs/ADT-settings.yaml`). If doc-roles, slash-commands, or update-check were **enabled** in 3p, RULE_INSTALL also installs those optional artifacts.
 
 ### Preference detail (reference — already covered in Step 3p)
 
@@ -325,8 +317,9 @@ After 3d: if `docs/Product-Vision.md` exists, fill **How the map fits** from the
 |-------|--------------------|
 | Template update-check **yes** | Set `optional_rules.template-update-check` enabled; `upstream:` + `local_pack_version`; `check_mode` always or interval + `check_mode_recorded` |
 | Doc roles **yes** | `optional_rules.doc-roles` enabled; install adapters via each `tools/<key>.md` on RULE_INSTALL |
-| Update-check / roles **no** | Record `declined` |
-| Explicit later | *Enable template update checks* / *Enable optional doc roles* / *Set sync to …* / *Set docs profile to …* / *Set orchestrator git to …* |
+| Slash commands **yes** | `optional_rules.slash-commands` enabled; copy `commands/sync.md` and `commands/orchestrate.md` via each `tools/<key>.md` on RULE_INSTALL |
+| Update-check / roles / commands **no** | Record `declined` |
+| Explicit later | *Enable template update checks* / *Enable optional doc roles* / *Enable slash commands* / *Set sync to …* / *Set docs profile to …* / *Set orchestrator git to …* |
 
 ## Do not
 

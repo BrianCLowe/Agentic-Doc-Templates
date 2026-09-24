@@ -49,6 +49,10 @@ Only if `optional_rules.template-update-check.status` is `enabled`.
 | **Runtime** | Orchestration text in the modular rule section tells the parent to look for harness agent folders (`.cursor/agents/`, `.grok/agents/`, `.github/agents/`, …) or fall back to role playbooks |
 | **Adapters** | Install via [`cursor.md`](cursor.md), [`grok-build.md`](grok-build.md), [`claude-code.md`](claude-code.md), or [`github-copilot.md`](github-copilot.md) when those tools are `installed` |
 
+## Optional — Slash commands
+
+No command folder in `AGENTS.md`. On enable, record `optional_rules.slash-commands` and do not invent files. The short asks stay the path.
+
 ## Host isolation *(orchestrator parallel implementers)*
 
 `AGENTS.md` is **not** a worktree manager. Isolation follows the **running** harness’s `tools/<key>.md` **Host isolation**. If this session has no other installed harness with a manager → parent stays **serial**. Do **not** `git worktree add`. Policy: [`../roles/orchestrator-git.md`](../roles/orchestrator-git.md) **Host worktrees**.

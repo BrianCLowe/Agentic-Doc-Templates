@@ -62,6 +62,10 @@ Files: `understanding-author.md`, `doc-graduate.md`, `feature-implementer.md`, `
 
 **Do not** install an `orchestrator` or `docs-bootstrap` adapter — those run in the **parent** session (`roles/orchestrator.md` / `BOOTSTRAP.md`). Delete leftover `docs-bootstrap.md` if present.
 
+## Optional — Slash commands
+
+No pack command folder for Grok. Still present `optional_rules.slash-commands` when unset (bootstrap Step 3p **F**). On enable, record it and do not invent files. `/sync` and `/orchestrate` are not installed here — the short asks stay the path. Cursor, Claude Code, and Copilot installs own the files.
+
 ## Successive issues *(parent — do not fan out PRs)*
 
 Grok parents often `spawn_subagent` a new coding agent per complaint. Live docs (`*-TODO.md` Current focus, spec, Understanding) are rewritten every session — **docs overlap ≠ code overlap**.

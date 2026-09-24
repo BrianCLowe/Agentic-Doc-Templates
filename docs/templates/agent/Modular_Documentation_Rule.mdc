@@ -55,12 +55,12 @@ When an ask matches a row below, look for that role under a known agents folder 
 |------|-------------------|-------------|
 | **`prevent`** | Spec + Understanding (`draft`) + core TODO | No code while Understanding is `draft` (unless waived) |
 | **`balanced`** | Spec + TODO; + Understanding when identity ambiguous / multi-surface / split / user asked | Draft gate only if that stem **has** Understanding |
-| **`ship-first`** | Spec + core TODO | No Understanding gate; implement from TODO + thin spec. Right default for typed APIs / CRUD. |
+| **`build-first`** | Spec + core TODO | No Understanding gate; implement from TODO + thin spec. Right default for typed APIs / CRUD. |
 If `docs_profile` is unset at bootstrap / first build-from-reference / sync: suggest once from `docs/reference/` (cite 2–3 snippets) → ask → record. Never silent-downgrade a project full of Understandings.
 
 **Standing workflow** *(read `docs/ADT-settings.yaml` → `standing.instructions` when present — Workflow §0.2)*:
 - Non-empty bullets = durable **ADT playbook overrides**. Apply after hard safety + this-turn user ask; before pack defaults.
-- **LOOKOUT (every turn):** user wants to **override an ADT playbook** going forward (git/ceremony/orchestrate/verify/re-ask) → **same turn** set the first-class ADT-settings key if one fits, else **append** a short bullet under `standing.instructions` and say you saved it. Do not wait for wrap-up. **Do not jot random notes**, prompt-engineering, or other-product API style into standing.
+- **LOOKOUT (every turn):** user wants to **override an ADT playbook** going forward (git/ceremony/orchestrate/verify/re-ask) → **same turn** set the first-class ADT-settings key if one fits, else **append** a short bullet under `standing.instructions` and say you saved it. Do not wait for wrap-up. **Do not jot random notes**, prompt-engineering, or other-product API style into standing. If they told you **how to act in this repo** and it is **not** a pack playbook override → do **not** write standing. **Ask once:** always-on **rule/instruction**, or a **skill** loaded when that work comes up? Do not create either before they answer. Full split: Workflow §0.2.
 - Product/UI prefs for one stem → spec **Decisions** (§10), not standing. One-off “just this run” → do not write standing. Never invent standing notes.
 
 **Session default** *(implement / continue when ready under docs profile and scope unchanged)*:
@@ -74,14 +74,14 @@ If `docs_profile` is unset at bootstrap / first build-from-reference / sync: sug
 4. Before integrating a **shared** piece, check its **Maturity** on the spec or Document Map (`draft` | `usable` | `stable`).
 5. If the user asks to install tooling: follow **`docs/Tooling.md`** (Workflow §11).
 6. If work needs a **human** (procure, playtest/feel, decide/sign-off, or external waiting): **dual-write** — owner `*-TODO.md` **and** an Open row on **`docs/Human-TODO.md`** (Workflow §13). Stamp only Active `role_id`s; do not invent roster rows. Never store secrets in docs.
-7. If `docs/Product-Vision.md` is missing at bootstrap / first live-docs / sync → create a lightweight file (all profiles). **Confirmed** vision: do not implement a fighting feature (Workflow §4.5). Under **ship-first**, `draft` is **not a gate**.
+7. If `docs/Product-Vision.md` is missing at bootstrap / first live-docs / sync → create a lightweight file (all profiles). **Confirmed** vision: do not implement a fighting feature (Workflow §4.5). Under **build-first**, `draft` is **not a gate**.
 
 **Open `Modular_Docs_Workflow.md` (index) only when:** creating files, choosing Path A vs Path B, graduating Understanding → spec, docs-profile or standing-capture questions, **docs freshness flagged** (sibling drift / stale `docs/` / docs-overlapping PR), the user asks about procedure, **or context is thin** (new session, compaction, memory loss). Then open **only the one module** the index router names. Live scaffolds are fill-in blanks. Do **not** load the whole `workflow/` folder or re-read the index every turn.
 
 **Shared / files / shape** *(full procedure in the named module)*:
 - **Do not invent `_shared/`.** Only when a project-owned piece is used by two or more features, or the user named it. Empty §3.1 is fine. Workflow §1 · §0.
 - **Document Map = files on disk** the same turn (spec + core TODO; Understanding per §0.1). No map-only planned rows. Kit leftovers stay TODOs on an existing stem (§5.4).
-- **`prevent`:** draft Understanding first; `draft` blocks coding. Lock obvious defaults; **Assumptions = real forks only**. Do not treat reference-doc examples as the target unless clearly set as the target. **`balanced`:** Understanding when identity is fuzzy. **`ship-first`:** no Understanding required.
+- **`prevent`:** draft Understanding first; `draft` blocks coding. Lock obvious defaults; **Assumptions = real forks only**. Do not treat reference-doc examples as the target unless clearly set as the target. **`balanced`:** Understanding when identity is fuzzy. **`build-first`:** no Understanding required.
 - Do not code while an **existing** Understanding is `draft` unless waived. **`confirmed`** → continue from TODO/spec. Additive vs shape → Workflow §4. Vague ideas → `docs/templates/help/IDEA_CAPTURE_TIPS.md`. `docs/reference/` → live docs: understanding-author.
 
 **While working:** Current focus first; rewrite focus that fights confirmed shape; user-facing stems need an exercise path (§5.3); in-scope spec leftovers need covering TODOs on an existing stem (§5.4).

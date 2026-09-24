@@ -4,12 +4,12 @@
 
 ## 2. Understanding → Spec graduation
 
-**Source of truth:** This module (§2 + §4) is the canonical shape-vs-contract procedure. Rules and roles summarize; live scaffolds are fill-in blanks. **This file wins on conflict**. Applies fully under **`prevent`**, and for any stem that **has** an Understanding under other profiles. Under **`ship-first`** (no Understanding), grow the **spec** directly as contract home — skip steps 1 and the Understanding half of step 3.
+**Source of truth:** This module (§2 + §4) is the canonical shape-vs-contract procedure. Rules and roles summarize; live scaffolds are fill-in blanks. **This file wins on conflict**. Applies fully under **`prevent`**, and for any stem that **has** an Understanding under other profiles. Under **`build-first`** (no Understanding), grow the **spec** directly as contract home — skip steps 1 and the Understanding half of step 3.
 
 | File | Role | When to update |
 |------|------|----------------|
 | `-Understanding.md` | **Feature shape / guardrails** — is / is not, Assumptions; user confirms **shape** (not the full contract) | When the profile requires it, or user locks shape / identity is ambiguous |
-| `.md` spec (feature or `_shared/`) | **Durable contract** — architecture, API, decisions, stable behavior, Acceptance, Visual references | After shape confirm (if Understanding exists); as you implement under `ship-first`; when code and docs must match |
+| `.md` spec (feature or `_shared/`) | **Durable contract** — architecture, API, decisions, stable behavior, Acceptance, Visual references | After shape confirm (if Understanding exists); as you implement under `build-first`; when code and docs must match |
 
 **Workflow *(when Understanding is in play)*:**
 
@@ -18,7 +18,7 @@
 3. After graduation, Understanding keeps only shape sections (§4). Spec = contract truth; **TODO** = living work checklist. **Same turn:** if Overview/Acceptance are product-shaped and High Priority is domain-only, apply §5.3 bridge (dual-track exercise path, phased note, or **library-only**) — do not leave product Acceptance with silent package TODOs. **In-scope spec surfaces** (kit leftovers on this stem) need covering TODOs on an **existing** stem (§5.4) — a complete spec is **not** permission to omit the backlog “until someone picks it up,” and is **not** a reason to add empty map rows (§0 inventory).
 4. If implementation diverges, update the spec **or** set Understanding to `superseded` and revise (§4) — do not leave both stale.
 
-**Workflow *(ship-first / no Understanding on stem)*:** Keep a thin-but-real spec + TODO; capture lasting preferences on the spec **Decisions** table same turn (§10). Offer *lock shape* (Understanding) when identity fights start.
+**Workflow *(build-first / no Understanding on stem)*:** Keep a thin-but-real spec + TODO; capture lasting preferences on the spec **Decisions** table same turn (§10). Offer *lock shape* (Understanding) when identity fights start.
 
 See [`Feature_Spec_Template.md`](../../Feature_Spec_Template.md) and [`Feature_Understanding_Template.md`](../../Feature_Understanding_Template.md).
 
@@ -28,7 +28,7 @@ See [`Feature_Spec_Template.md`](../../Feature_Spec_Template.md) and [`Feature_U
 
 **Source of truth** with §2 — other pack files summarize; this section wins on conflict. Live `-Understanding.md` files are **fill-in blanks** ([`Feature_Understanding_Template.md`](../../Feature_Understanding_Template.md)). Teaching examples live **here**, not in the scaffold. Human review: [`../../help/SCAFFOLDS.md`](../../help/SCAFFOLDS.md). **When required:** §0.1 docs profile. **Compaction / thin context:** re-open this module before drafting or editing Understanding — do not reconstruct the gate from memory.
 
-Under **`prevent`**, each **feature** and substantial **shared component** gets a `-Understanding.md` — the agent’s model of **feature shape** (guardrails). **Not** a second durable spec. Under **`balanced`**, create when identity is ambiguous / multi-surface / split pressure / user asked. Under **`ship-first`**, only when user asks *lock shape* or the file already exists.
+Under **`prevent`**, each **feature** and substantial **shared component** gets a `-Understanding.md` — the agent’s model of **feature shape** (guardrails). **Not** a second durable spec. Under **`balanced`**, create when identity is ambiguous / multi-surface / split pressure / user asked. Under **`build-first`**, only when user asks *lock shape* or the file already exists.
 
 **Whole product:** Feature is / is not is **one stem**. The cohesive end-state lives in `docs/Product-Vision.md` when that file exists — [`product-vision.md`](product-vision.md) §4.5. A feature that fights a **confirmed** product vision is a shape fight — do not implement it. Do not paste the product vision into every Understanding.
 
@@ -37,7 +37,7 @@ Under **`prevent`**, each **feature** and substantial **shared component** gets 
 
 **Who writes it:** Agent drafts first (`draft`) from conversation, design doc, or interview. User **reviews and corrects shape** — they do not author from scratch and are **not** approving the full contract here.
 
-**Default under prevent:** Same Understanding for shared components as features. **Only skip** when the user **explicitly** excepts it (Master Index §3.0) **or** project `docs_profile` is `ship-first` / `balanced` allows skip. Under prevent, missing files or convenience are not exceptions.
+**Default under prevent:** Same Understanding for shared components as features. **Only skip** when the user **explicitly** excepts it (Master Index §3.0) **or** project `docs_profile` is `build-first` / `balanced` allows skip. Under prevent, missing files or convenience are not exceptions.
 
 **Shape sections only** (keep these; nothing else):
 
@@ -108,7 +108,7 @@ On execute (chosen stems that **have** Understanding):
 3. If **is / is not** (or the spec) treated a reference example as the target and it was **not** clearly set as the target → restore category-level identity. **Keep status** — do **not** de-confirm (`confirmed` → `draft`) and do **not** inject a mid-sync shape quiz. Record the correction under **Confirmed with user** and in the sync / review summary.
 4. Leave **real forks** unchecked. Empty Assumptions is success. One-line lock list under **Confirmed with user**.
 5. Heading → `Assumptions (real forks only)` if it still says “needs user confirmation.”
-6. Do **not** invent new Assumptions, new stems, Understanding on `ship-first`, lesser-path asks that re-offer a reference example, or flip status.
+6. Do **not** invent new Assumptions, new stems, Understanding on `build-first`, lesser-path asks that re-offer a reference example, or flip status.
 
 **Do not:**
 

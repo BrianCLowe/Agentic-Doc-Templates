@@ -52,7 +52,7 @@ All of:
 
 | Gate | Rule |
 |------|------|
-| **Profile** | **prevent**/unset: Understanding `confirmed` or waived. **balanced:** same if Understanding exists; else spec+TODO + clear identity. **ship-first:** spec+TODO. |
+| **Profile** | **prevent**/unset: Understanding `confirmed` or waived. **balanced:** same if Understanding exists; else spec+TODO + clear identity. **build-first:** spec+TODO. |
 | **Item** | Unchecked, in agreed tiers |
 | **Human hard gate** | Not blocked by procure/waiting/explicit playtest-gate (below) |
 | **Shared maturity** | Enough to integrate; else shared TODO first when in scope |
@@ -60,7 +60,7 @@ All of:
 | **Operable (§5.3)** | User-facing stem with domain-only High Priority and no exercise path / library-only / phase → **add** surface/wire/smoke (**scaffold+wire** if no UI specs) or phase note **once**, then dispatch. Open operable Acceptance with no covering TODO → add work (or phase). Do not report “cleared/Layer done” without path. Library-only `_shared/` exempt; consumers own wire. |
 | **Kit coverage (§5.4)** | In-scope spec surface with **no** covering TODO (**open or Completed**) on that stem → **add** the item on the inventory/owning stem, then it is ready work. Do **not** skip it as “not picked up.” Do **not** create a new map row unless splitting per Workflow §0. Terse wrap-the-public-API → expand from the docs; do not interview each facet. |
 
-`draft` Understanding → **do not code** that stem; continue other ready stems. **ship-first:** do not invent Understanding to unblock.
+`draft` Understanding → **do not code** that stem; continue other ready stems. **build-first:** do not invent Understanding to unblock.
 
 ## Human gates
 

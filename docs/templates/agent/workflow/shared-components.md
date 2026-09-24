@@ -19,14 +19,14 @@ Only when a real shared piece exists: `_shared/` often needs **foundation work f
 **Each substantial shared component** (that passed the gate) gets the **same default file set as a feature** for the active docs profile (§0.1) — unless the user explicitly says otherwise for that component:
 
 - `_shared/ComponentName.md` — spec / contract / architecture **(always)**
-- `_shared/ComponentName-Understanding.md` — shape guardrails (§4) — **per profile** (required under `prevent`; situational under `balanced`; optional under `ship-first`)
+- `_shared/ComponentName-Understanding.md` — shape guardrails (§4) — **per profile** (required under `prevent`; situational under `balanced`; optional under `build-first`)
 - `_shared/ComponentName-TODO.md` — core / systems / foundation tasks **(always)**
 - `_shared/ComponentName-InEditor-TODO.md` — engine editor work *(game extensions / user asked)*
 - `_shared/ComponentName-Asset-TODO.md` — assets & content *(game extensions / user asked)*
 
 **Exceptions:** If the user **explicitly** says a component or feature does not need a particular note type (e.g. "BlockEditor has no asset work"), omit that file and record the exception in Master Index **§3.0** with who said it and when. Project-wide ceremony is **`docs_profile`**, not a §3.0 “no Understanding for the whole project” invention.
 
-**Do not invent exceptions** for rows that *should* exist under the active profile. Under **`prevent`**, missing files or “we’ll add Understanding later” are **not** reasons to skip Understanding — create the default set. Under **`ship-first` / `balanced`**, not creating Understanding when the profile allows is **correct**, not an exception. Do **not** invent §3.1 shared rows (or §3.0 excuses) to fill empty space.
+**Do not invent exceptions** for rows that *should* exist under the active profile. Under **`prevent`**, missing files or “we’ll add Understanding later” are **not** reasons to skip Understanding — create the default set. Under **`build-first` / `balanced`**, not creating Understanding when the profile allows is **correct**, not an exception. Do **not** invent §3.1 shared rows (or §3.0 excuses) to fill empty space.
 
 **Maturity** *(shared components only)*: Set on the shared **spec** (`draft` | `usable` | `stable`) so consumer features know whether integration is safe. Update when foundation work progresses — see [`Feature_Spec_Template.md`](../../Feature_Spec_Template.md).
 

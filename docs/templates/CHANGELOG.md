@@ -12,7 +12,7 @@
 | `master-index` | Adopt structural deltas in live `Master_Index.md` (headings, Key Locations, Document Map columns) |
 | `content-templates` | Add *missing* sections/structure from content templates into live Understanding / Spec / TODO / Tooling / Human-TODO — **not** trim/remove (see `optional-live-reshape`) |
 | `optional-live-reshape` | Live Understanding → shape trim + relocate into specs (Workflow §4). **`auto` / `auto-all`:** run all Document Map stems. **`choose`:** present + ask once (default yes). Do **not** silent-skip under choose |
-| `optional-assumption-cleanout` | Live Understanding lock-gate clean-out (Workflow §4). **`auto` / `auto-all`:** all Document Map Understanding stems. **`choose`:** present + ask once (default yes). Lock obvious defaults; delete invented quizzes; do not treat `docs/reference/` examples as the target unless clearly set as the target; leave only real forks. Do not invent new Assumptions or Understanding on `ship-first` |
+| `optional-assumption-cleanout` | Live Understanding lock-gate clean-out (Workflow §4). **`auto` / `auto-all`:** all Document Map Understanding stems. **`choose`:** present + ask once (default yes). Lock obvious defaults; delete invented quizzes; do not treat `docs/reference/` examples as the target unless clearly set as the target; leave only real forks. Do not invent new Assumptions or Understanding on `build-first` |
 | `optional-todo-ambition` | Live TODO ambition pass (agent timescale). **`auto` / `auto-all`:** all Document Map `*-TODO.md`. **`choose`:** present + ask once. Do not invent work |
 | `optional-todo-operable` | Live TODO operable dual-track (Workflow §5.3). **`auto` / `auto-all`:** all Document Map `*-TODO.md`. **`choose`:** present + ask once. Add exercise-path rows or **library-only** labels; do not invent unrelated backlog |
 | `optional-todo-kit-coverage` | Live TODO kit-coverage pass (Workflow §5.4). **`auto` / `auto-all`:** all Document Map `*-TODO.md`. **`choose`:** present + ask once. Add covering TODOs for spec-named in-scope leftovers on **existing** stems (**open or Completed** counts — do not resurrect); one research item if the spec is thin. No new map rows; no vendor-doc fetch in sync |
@@ -21,6 +21,26 @@
 | `process-docs-only` | Pack process/help/agent docs only — no live feature/shared content scan |
 
 ---
+
+## 2.9.6
+
+- **Live impact:** `versions-only`, `process-docs-only`, `master-index`, `rules`
+- **Files:**
+  - `VERSION` — 2.9.5 → 2.9.6
+  - Docs profile value **`ship-first` renamed `build-first`** (same mode: spec + TODO, no Understanding gate). Playbooks, scaffolds, help, rules, and the example settings use the new value
+  - `TEMPLATE_SYNC_B.md` **B0.1b** — every sync: if `docs_profile.mode` is `ship-first`, rewrite it to `build-first`. Do not re-ask. Do not treat it as unset
+  - `workflow/profile-standing.md` — on sight, the same rewrite
+  - `BOOTSTRAP.md` Step 3p **C**, `RULE_INSTALL.md`, `TEMPLATE_SYNC_B.md` step 10 — when doc-roles are offered, say why: if installed, heavier moments leave the parent session so it stays slim; without them that work stays in the parent
+  - Root `DECISIONS.md` **D27** — do not silently undo
+  - `agent/commands/` — optional `/sync` and `/orchestrate` (same playbooks as the short asks). Offered once; decline if they would rather just ask. Cursor, Claude Code, and Copilot install files; other tools record the choice and install nothing
+  - Root `DECISIONS.md` **D28** — do not silently undo
+  - `workflow/profile-standing.md` §0.2, modular rule LOOKOUT — repo behavior that is **not** an ADT playbook override is **not** standing. Ask once: always-on rule/instruction, or a skill. Do not create either before they answer
+  - `workflow/profile-standing.md` **Sync cleanout (2.9.6)** — remove non-pack behavior from `standing.instructions` and ask once: rule, skill, or dropped. Do not silent-create. Playbook overrides stay
+  - Root `DECISIONS.md` **D29** — do not silently undo
+  - Git menu lives only in `roles/orchestrator-git.md` **Modes**. Bootstrap Step 3p **E** and sync **B0.6** still ask (unset → ask; never silent `current-push`; write-in is not an eighth mode) and present that table — they do not restate the seven modes
+  - Docs-profile words live only in `workflow/profile-standing.md` §0.1. Bootstrap Step 3p **A** still asks once before Step 3d and presents that section. The always-on rule keeps the short coding-gate table
+  - `eval/run_eval.py` — modular rule `.mdc` and `.instructions.md` bodies must match after frontmatter
+- **Step B:** Bump Master Index **Pack version** to 2.9.6 from local `VERSION`. **B0.1b:** rewrite `docs_profile.mode: ship-first` → `build-first` (note it in the summary). **`master-index`:** At a Glance / Key Locations that still say `ship-first` adopt `build-first`. **`rules`:** refresh installed modular-rule copies so the session default names `build-first` and the LOOKOUT line asks rule-or-skill for non-pack repo behavior (standing stays pack playbooks only). **Present unset `slash-commands`** (step 10 / Step 3p **F**): explain `/sync` and `/orchestrate` are a menu; decline if they would rather just ask. If already `enabled`, refresh those command files from `agent/commands/`. **Standing cleanout (2.9.6):** open `standing.instructions` only. Keep ADT playbook overrides. Remove how-to-act bullets that are not pack playbooks, then ask once: always-on rule/instruction, skill, or dropped. Do not create a rule or skill before they answer. Do not silent-create under `auto` / `auto-all`. No live feature/shared scan.
 
 ## 2.9.5
 

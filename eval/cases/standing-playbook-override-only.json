@@ -3,7 +3,7 @@
   "title": "standing.instructions is for ADT playbook overrides — not a notes pad",
   "role": "feature-implementer",
   "user": "When prompting XaiBrain / the xAI API, give the task and expected response structure only. Grok 4.6+ is the model — no long role-play or over-explained prompt engineering.",
-  "fixture": "fixtures/ship-first-crud",
+  "fixture": "fixtures/build-first-crud",
   "expect": {
     "files_must_not_change": [
       "docs/ADT-settings.yaml"

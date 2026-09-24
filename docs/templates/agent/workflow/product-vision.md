@@ -16,7 +16,7 @@ The Document Map + per-feature Understandings can be complete and still miss **w
 |---------|----------------------------|---------------------|
 | **`prevent`** | **Always** at bootstrap / first live-docs (even one stem). Status starts `draft`; user confirms product shape. | Feature Understanding confirm still gates that stem. **Confirmed** vision: do not implement a fighting feature. |
 | **`balanced`** | **Always** create a **lightweight** file. Deepen when **2+ feature stems**, whole-product identity is fuzzy, or the user asked *lock product shape*. | Unchanged: Understanding only when identity is fuzzy / user locks a stem. Draft vision is **not** a coding gate. |
-| **`ship-first`** | **Always** create a **lightweight** file at bootstrap / first live-docs (and on TEMPLATE_SYNC if missing). | **Not a gate.** File is informative and evolving. Read it for destination; do **not** wait for confirm before coding. Spec + TODO remain the work path. *Lock product shape* only when a change needs explicit confirmation (identity fight, whole-product fork). After lock + confirm, do not implement a fighting feature. |
+| **`build-first`** | **Always** create a **lightweight** file at bootstrap / first live-docs (and on TEMPLATE_SYNC if missing). | **Not a gate.** File is informative and evolving. Read it for destination; do **not** wait for confirm before coding. Spec + TODO remain the work path. *Lock product shape* only when a change needs explicit confirmation (identity fight, whole-product fork). After lock + confirm, do not implement a fighting feature. |
 
 **Unset profile → prevent** → create + confirm gate. Destination file is created **without** *lock product shape*.
 
@@ -50,7 +50,7 @@ The feature map is **what exists**, not **what the product is**. Building the en
 ### Coding vs confirm
 
 - Feature Understanding `draft` still blocks **that stem’s** code (Workflow §0.1). Product vision `draft` does **not** add a second hard coding gate.
-- **`ship-first`:** `draft` vision is destination-only — do **not** wait for confirm before spec/TODO implementation.
+- **`build-first`:** `draft` vision is destination-only — do **not** wait for confirm before spec/TODO implementation.
 - **`confirmed` product vision** (after *lock product shape* + user confirm, or prevent’s confirm): do **not** implement a feature (or draft a feature Understanding) that **fights** it. Fix the fight first — update the feature, or de-confirm the vision if the **whole product** changed.
 - **`prevent` `draft` / missing:** draft the same turn you bootstrap / first live-docs. Ask the user to confirm **product** shape (is / is not + end-state picture). Do not invent Assumption quizzes.
 - **`balanced` `draft`:** deepen when 2+ stems / fuzzy whole / *lock product shape*. Do not invent quizzes.

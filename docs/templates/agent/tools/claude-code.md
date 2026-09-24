@@ -48,6 +48,16 @@ Only if `optional_rules.doc-roles.status` is `enabled`. Claude project subagents
 
 Copy the six `roles/cursor/*.md` adapters (including `work-verifier.md`, `todo-warden.md`). **Do not** invent an `orchestrator` or `docs-bootstrap` adapter — those are parent-only. Delete leftover `docs-bootstrap.md` if present.
 
+## Optional — Slash commands
+
+Only if `optional_rules.slash-commands.status` is `enabled`.
+
+| | |
+|--|--|
+| **Source** | `docs/templates/agent/commands/sync.md`, `commands/orchestrate.md` |
+| **Install to** | `.claude/commands/` (same filenames) |
+| **Do not** | Paste the sync or orchestrator playbook into the command file |
+
 ## Host isolation *(orchestrator parallel implementers)*
 
 Parent opens this only when spawning concurrent implementers ([`../roles/orchestrator-git.md`](../roles/orchestrator-git.md) **Host worktrees**).
@@ -66,6 +76,7 @@ Parent opens this only when spawning concurrent implementers ([`../roles/orchest
 - Agent build & verify rule or section exists
 - Optional: `/memory` shows the modular docs section
 - If doc-roles enabled: six files under `.claude/agents/` (no `orchestrator.md` / `docs-bootstrap.md`; includes `todo-warden.md`)
+- If slash-commands enabled: `.claude/commands/sync.md` and `orchestrate.md`
 
 ## For humans
 

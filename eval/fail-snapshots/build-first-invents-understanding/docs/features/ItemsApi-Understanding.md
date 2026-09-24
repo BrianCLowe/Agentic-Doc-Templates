@@ -4,7 +4,7 @@
 
 ## What this is
 
-REST CRUD for items. Invented under ship-first.
+REST CRUD for items. Invented under build-first.
 
 ## What this is NOT
 

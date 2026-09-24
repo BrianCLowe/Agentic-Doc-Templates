@@ -2,7 +2,7 @@
 
 ## Current focus
 
-- Implementing GET /items (skipped Understanding — ship-first style)
+- Implementing GET /items (skipped Understanding — build-first style)
 
 ## High Priority
 

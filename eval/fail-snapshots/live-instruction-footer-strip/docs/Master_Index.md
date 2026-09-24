@@ -8,7 +8,7 @@
 
 - **Simplicity:** users give short doc actions; agents follow this pack — no complex prompts required.
 - **Idea sources:** prefer raw **chat exports** in `docs/reference/` over polished-only design docs.
-- **Docs profile:** if you prefer less ceremony you can use ship-first.
+- **Docs profile:** if you prefer less ceremony you can use build-first.
 - **Orchestrator git:** `current-push` (never silent-default) or the other modes.
 
 ## 3. Document Map

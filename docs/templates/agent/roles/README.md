@@ -8,7 +8,7 @@ Thin, playbook-bound roles for heavier moments (intent capture, graduation, boot
 
 | Role | File | Job | Stop when |
 |------|------|-----|-----------|
-| **Understanding author** | [`understanding-author.md`](understanding-author.md) | Capture **feature shape** first (is / is not); draft/revise `-Understanding.md` (required under **prevent**; on demand under ship-first via *lock shape*) | Ready for human **shape** review (`draft`) — **no code** |
+| **Understanding author** | [`understanding-author.md`](understanding-author.md) | Capture **feature shape** first (is / is not); draft/revise `-Understanding.md` (required under **prevent**; on demand under build-first via *lock shape*) | Ready for human **shape** review (`draft`) — **no code** |
 | **Doc graduate** | [`doc-graduate.md`](doc-graduate.md) | Confirmed shape → durable **contract** spec (when Understanding exists) | Spec updated — **no code** |
 | **Feature implementer** | [`feature-implementer.md`](feature-implementer.md) | Current focus → code when stem is ready under **docs profile**; update that TODO | Focus item done or blocked |
 | **Orchestrator** | [`orchestrator.md`](orchestrator.md) + [`orchestrator-git.md`](orchestrator-git.md) | **Parent-only** loop + git delivery (**`milestone-pr`:** per-milestone PR — several related TODOs + concurrent implementers when they do not overlap **and** the host can isolate → CI/Bugbot → merge → next branch; Bugbot reads the PR until ready — squash-before-ready is not required; **host worktree:** stay, do not checkout default in that tree; **`branch-pr*`:** build-verify → todo-warden → squash? → ready → **return to default** if run created the branch **in the main checkout**) | Agent work cleared / hard-blocked / budget — report + human verify inbox |

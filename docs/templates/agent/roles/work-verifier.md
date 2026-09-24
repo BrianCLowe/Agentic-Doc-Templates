@@ -28,7 +28,7 @@
 ## Steps
 
 1. Read the claimed TODO item and the related spec Acceptance / Behavior (and Decisions if the unit touched preference/contract).
-2. If `-Understanding.md` exists — read shape; flag if the unit **fights** confirmed is / is not (wrong product surface/architecture). If no Understanding (ship-first / balanced skip) — skip this step; do **not** fail solely for a missing Understanding file.
+2. If `-Understanding.md` exists — read shape; flag if the unit **fights** confirmed is / is not (wrong product surface/architecture). If no Understanding (build-first / balanced skip) — skip this step; do **not** fail solely for a missing Understanding file.
 3. Inspect only the unit’s changes (diff, named files, or parent brief). Check:
    - Implements the TODO item’s intent
    - Does not violate Understanding is / is NOT **when Understanding exists**
@@ -54,5 +54,5 @@
 - Soft-pass on “looks fine” without checking spec + TODO item (and Understanding when present) against the unit’s changes
 - Soft-pass a claimed operable / “feature done” / stem-complete unit that is domain-only with no exercise path / phase bridge, or that leaves matching operable Acceptance open with no TODO (Workflow §5.3)
 - Treat “UI was unspecified” as a valid reason the exercise path never landed when the claim was product-facing
-- Fail only because Understanding is missing under **ship-first** / balanced skip
+- Fail only because Understanding is missing under **build-first** / balanced skip
 - Create or remove worktrees; checkout default; inspect a different tree than the briefed cwd

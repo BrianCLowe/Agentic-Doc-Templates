@@ -3,7 +3,7 @@
   "title": "Sync summary reports the catch-up union only — catalog optional tags are not “skipped”",
   "role": "docs-template-sync",
   "user": "Update the doc templates from Agentic Doc Templates and sync our live docs. We are on 2.7.24 going to a later pack; sync.mode is auto-all.",
-  "fixture": "fixtures/ship-first-crud",
+  "fixture": "fixtures/build-first-crud",
   "expect": {},
   "pack_contract": {
     "source_must_include": [

@@ -52,6 +52,18 @@ Files: `understanding-author.md`, `doc-graduate.md`, `feature-implementer.md`, `
 
 **Do not** install an `orchestrator` or `docs-bootstrap` adapter — those run in the **parent** session (`roles/orchestrator.md` / `BOOTSTRAP.md`). Bootstrap *installs* adapters, so a bootstrap adapter cannot exist until after the job it was meant to do. Delete leftover `docs-bootstrap.md` if present.
 
+## Optional — Slash commands
+
+Only if `optional_rules.slash-commands.status` is `enabled`. These are Cursor slash commands, not rules and not skills.
+
+| | |
+|--|--|
+| **Source** | `docs/templates/agent/commands/sync.md`, `commands/orchestrate.md` |
+| **Install to** | `.cursor/commands/` (same filenames) |
+| **Do not** | Paste the sync or orchestrator playbook into the command file |
+
+`/sync` and `/orchestrate` run the same playbooks as the short asks.
+
 ## Host isolation *(orchestrator parallel implementers)*
 
 Parent opens this only when spawning concurrent implementers ([`../roles/orchestrator-git.md`](../roles/orchestrator-git.md) **Host worktrees**).
@@ -74,6 +86,7 @@ Parent opens this only when spawning concurrent implementers ([`../roles/orchest
 - `.cursor/rules/agent-timescale-planning.mdc` exists
 - `.cursor/rules/agent-build-verify.mdc` exists
 - If doc-roles enabled: six files under `.cursor/agents/` (no `orchestrator.md` / `docs-bootstrap.md`; includes `todo-warden.md`)
+- If slash-commands enabled: `.cursor/commands/sync.md` and `orchestrate.md`
 - Remind user: short asks are enough; parent rule delegates; `/name` optional
 
 ## For humans

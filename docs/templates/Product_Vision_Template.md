@@ -8,9 +8,9 @@
 
 ---
 
-**Humans:** Confirm **whole-product shape** — is / is not + the **end-state picture** + any real-fork Assumptions. Not a feature list. How to review: [`help/SCAFFOLDS.md`](templates/help/SCAFFOLDS.md). Under **ship-first**, confirm only when you *lock product shape*.
+**Humans:** Confirm **whole-product shape** — is / is not + the **end-state picture** + any real-fork Assumptions. Not a feature list. How to review: [`help/SCAFFOLDS.md`](templates/help/SCAFFOLDS.md). Under **build-first**, confirm only when you *lock product shape*.
 
-**Agents:** Fill-in blanks. If context is thin, re-open [`agent/workflow/product-vision.md`](templates/agent/workflow/product-vision.md). Lock gate: [`agent/workflow/understanding.md`](templates/agent/workflow/understanding.md) §4. Feature shape stays on each `-Understanding.md`. Under **ship-first**, `draft` is destination-only — do **not** wait for confirm before coding. *Lock product shape* starts the confirm gate.
+**Agents:** Fill-in blanks. If context is thin, re-open [`agent/workflow/product-vision.md`](templates/agent/workflow/product-vision.md). Lock gate: [`agent/workflow/understanding.md`](templates/agent/workflow/understanding.md) §4. Feature shape stays on each `-Understanding.md`. Under **build-first**, `draft` is destination-only — do **not** wait for confirm before coding. *Lock product shape* starts the confirm gate.
 
 ---
 
