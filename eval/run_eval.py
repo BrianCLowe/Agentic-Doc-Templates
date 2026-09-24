@@ -210,7 +210,7 @@ SCAFFOLD_CHECKS = (
             "Dual-write (mandatory)",
             "Stamp-on-dual-write",
         ),
-        "must": ("workflow/human-todo.md", "Empty Active is correct"),
+        "must": ("workflow/team-roster.md", "Empty Active is correct"),
         "label": "Team-Roster",
     },
     {

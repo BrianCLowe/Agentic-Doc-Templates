@@ -199,7 +199,7 @@ If root `README.md` does **not** exist (Step 1 already moved a pack README aside
 
 If a project-owned root `README.md` exists → **do not overwrite**. Do not add a second readme.
 
-**Do not** create `docs/Team-Roster.md` here. Unset `team_inbox` = human-only inbox, no roster file. If they **already** enabled team routing this turn, create the roster from [`Team_Roster_Template.md`](../Team_Roster_Template.md) (named-human fill-in **only** if they self-IDed this turn; do not invent bot or human-name rows). Named humans and bots self-ID later — [`workflow/human-todo.md`](workflow/human-todo.md).
+**Do not** create `docs/Team-Roster.md` here. Unset `team_inbox` = human-only inbox, no roster file. If they **already** enabled team routing this turn, create the roster from [`Team_Roster_Template.md`](../Team_Roster_Template.md) (named-human fill-in **only** if they self-IDed this turn; do not invent bot or human-name rows). Named humans and bots self-ID later — [`workflow/team-roster.md`](workflow/team-roster.md).
 
 ## Step 3p — Project preferences *(one batch ask — before Step 3v / 3d)*
 

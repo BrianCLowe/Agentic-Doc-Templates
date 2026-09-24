@@ -31,7 +31,7 @@
         ]
       },
       {
-        "file": "docs/templates/agent/workflow/human-todo.md",
+        "file": "docs/templates/agent/workflow/team-roster.md",
         "patterns": [
           "team_inbox",
           "Claim / reassign is override only",

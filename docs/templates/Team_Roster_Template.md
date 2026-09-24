@@ -3,7 +3,7 @@
 > Copy to `docs/Team-Roster.md` **only** when this project enabled `team_inbox`. Do not create this live file for a human-only inbox. Never edit this template unless the user asks.
 
 **Last Updated**: [YYYY-MM-DD]  
-**Related**: [Human-TODO.md](Human-TODO.md) · [ADT-settings.yaml](ADT-settings.yaml) · [workflow/human-todo.md](templates/agent/workflow/human-todo.md) §13
+**Related**: [Human-TODO.md](Human-TODO.md) · [ADT-settings.yaml](ADT-settings.yaml) · [workflow/team-roster.md](templates/agent/workflow/team-roster.md)
 
 ---
 
@@ -11,7 +11,7 @@
 
 **Humans:** put yourself on Active with **your** slug (`alex`, not `human`) so assignments go to you. Human-TODO is the inbox of work, not a person. Optional leftover `human` bucket only if the project wants unsigned human work on that id. Help: [`help/SCAFFOLDS.md`](templates/help/SCAFFOLDS.md). Inbox: [`Human-TODO.md`](Human-TODO.md).
 
-**Agents:** Fill-in blanks. Two-stage roster (read vs self-ID / report-only proxy · one initial PR · update when jobs change): [`agent/workflow/human-todo.md`](templates/agent/workflow/human-todo.md). Bots **write their own row**.
+**Agents:** Fill-in blanks. Two-stage roster (read vs self-ID / report-only proxy · one initial PR · update when jobs change): [`agent/workflow/team-roster.md`](templates/agent/workflow/team-roster.md). Bots **write their own row**.
 
 ---
 

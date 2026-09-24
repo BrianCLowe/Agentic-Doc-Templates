@@ -22,6 +22,17 @@
 
 ---
 
+## 2.9.8
+
+- **Live impact:** `versions-only`, `process-docs-only`, `rules`
+- **Files:**
+  - `VERSION` — 2.9.7 → 2.9.8
+  - `workflow/team-roster.md` *(new)* — team inbox, two-stage roster, and one initial PR. Open only when `team_inbox.enabled`
+  - `workflow/human-todo.md` — solo dual-write only. One line: if team inbox is on, open `team-roster.md` for stamp and close
+  - Workflow index, scaffolds, roster template, bootstrap — point roster procedure at `team-roster.md`
+  - Modular rule — same one-line open
+- **Step B:** Bump Master Index **Pack version** to 2.9.8 from local `VERSION`. **`rules`:** refresh installed modular-rule copies so a `team_inbox.enabled` session opens `workflow/team-roster.md`. No live feature/shared scan. Do not create `Team-Roster.md` on a human-only inbox.
+
 ## 2.9.7
 
 - **Live impact:** `versions-only`, `process-docs-only`, `rules`, `content-templates`, `master-index`
