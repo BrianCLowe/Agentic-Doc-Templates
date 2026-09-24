@@ -55,6 +55,19 @@ Machine / workflow tools needed to **develop this project** — not package depe
 
 ---
 
+## Services this app consumes *(omit section if none)*
+
+External APIs and services the **running app** calls. Not CLIs or SDKs — those stay in Required / Optional. Not package dependencies. A successor should see this list without reading code.
+
+No secrets, tokens, or key values. Credential **name** only (`.env` variable or vault entry).
+
+| Service | Why the app calls it | Credential name | Docs |
+|---------|----------------------|-----------------|------|
+| [e.g. Contoso Billing API] | [e.g. invoices] | [e.g. `CONTOSO_API_KEY`] | [vendor docs URL] |
+| [Add rows or delete section] | | | |
+
+---
+
 ## Agent skills *(omit section if unused)*
 
 Skills and packs that live in the **user profile** (not in git), e.g. `~/.grok/skills/`, `~/.codex/skills/`. Same idea as editor extensions — install per machine.
@@ -119,10 +132,11 @@ Track which boxes are set up so gaps are obvious. Delete this section if unused.
 
 ## Instructions for AI Agents
 
-Install from the tables above. Procedure: [`workflow/tooling.md`](templates/agent/workflow/tooling.md). Do not invent tools or write secrets.
+Install from Required / Optional / Agent skills only. Skip **Services this app consumes**. Procedure: [`workflow/tooling.md`](templates/agent/workflow/tooling.md). Do not invent tools or services. Do not write secrets.
 
 ## Instructions for Humans
 
 - Keep this lean — only what a new machine needs.
 - When you adopt a new tool or agent skill the project depends on, add a row (or tell the agent to).
+- When the app will call an external API, add a **Services this app consumes** row (or tell the agent). That list stays after the key is procured.
 - Simple ask on a fresh clone: *Install the project tooling for this machine.*

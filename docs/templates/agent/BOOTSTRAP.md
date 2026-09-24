@@ -190,6 +190,15 @@ If `docs/Human-TODO.md` does not exist:
 
 If it already exists → add newly discovered human-gated needs (procure / playtest / decide / waiting); do not wipe user-completed rows.
 
+## Step 3r — Project README *(human entry point)*
+
+If root `README.md` does **not** exist (Step 1 already moved a pack README aside):
+
+1. Copy [`../Project_README_Template.md`](../Project_README_Template.md) to root `README.md`.
+2. Replace `[Project name]` and the one-or-two-sentence line from this conversation or Master Index §1. Leave the sentence as a blank if you do not know it. Do **not** paste Product-Vision, the Document Map, or the services table.
+
+If a project-owned root `README.md` exists → **do not overwrite**. Do not add a second readme.
+
 **Do not** create `docs/Team-Roster.md` here. Unset `team_inbox` = human-only inbox, no roster file. If they **already** enabled team routing this turn, create the roster from [`Team_Roster_Template.md`](../Team_Roster_Template.md) (named-human fill-in **only** if they self-IDed this turn; do not invent bot or human-name rows). Named humans and bots self-ID later — [`workflow/human-todo.md`](workflow/human-todo.md).
 
 ## Step 3p — Project preferences *(one batch ask — before Step 3v / 3d)*

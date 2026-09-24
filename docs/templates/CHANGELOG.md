@@ -22,6 +22,18 @@
 
 ---
 
+## 2.9.7
+
+- **Live impact:** `versions-only`, `process-docs-only`, `rules`, `content-templates`, `master-index`
+- **Files:**
+  - `VERSION` — 2.9.6 → 2.9.7
+  - `Modular_Documentation_Rule.mdc` / `.instructions.md` — one route table (ask, playbook, adapter) names the short asks (*Bootstrap the doc templates*, *Bootstrap modular docs*, *Please update ADT*, *update ADT*, *sync ADT*, *sync the doc templates*, *check for ADT updates*, *drain unblocked TODOs*, reference files). Same playbooks. Profile modes stay in the coding-gate table only. Closing line keeps the scars that are not already in the session checklist. Session default: a `procure` for an API the running app will call also writes **Services this app consumes** on Tooling
+  - `Tooling_Template.md` / `workflow/tooling.md` — **Services this app consumes** (service, why, credential name, docs link). Not a Required/Optional row. Install skips it. No secrets
+  - `workflow/human-todo.md` — same turn as that `procure` row, add or update the Services row. The Human-TODO item stays the errand
+  - `Project_README_Template.md` / `BOOTSTRAP.md` **Step 3r** — if root `README.md` is missing, create the human entry point (what this is, link to Master Index, Tooling, Human-TODO). Do not overwrite a project README. Do not paste the services table or the Document Map
+  - `Master_Index_Template.md` — Key Locations row for root `README.md`
+- **Step B:** Bump Master Index **Pack version** to 2.9.7 from local `VERSION`. **`rules`:** refresh installed modular-rule copies so the route table is the single one, including those short asks, and session default names the Services row. **`content-templates`:** if live `docs/Tooling.md` has no **Services this app consumes** section, add the empty section from the template. Do not invent services. Do not scan the codebase for APIs. If root `README.md` is missing, copy `Project_README_Template.md` and fill the name from Master Index §1 when that heading is already a real project name. Do not overwrite an existing README. **`master-index`:** Key Locations gains the root `README.md` row when that row is missing. No live feature/shared scan.
+
 ## 2.9.6
 
 - **Live impact:** `versions-only`, `process-docs-only`, `master-index`, `rules`

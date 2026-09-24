@@ -8,10 +8,12 @@ Live file: **`docs/Tooling.md`** (from [`Tooling_Template.md`](../../Tooling_Tem
 
 Lists **machine / workflow tools** (CLIs, SDKs, runtimes, engines, profile-installed agent skills) — **not** package-manager dependencies.
 
+**Services this app consumes** *(same file, not an install row)*: external APIs and services the running app calls. Columns: service, why, credential **name** only, docs link. No secrets. Omit the section when the app calls none. Do **not** put these in Required / Optional. A `procure` errand for one of these still belongs on Human-TODO (Workflow §13); this section is the list that stays after that errand is done.
+
 When the user asks to install tooling / set up this machine / get the project working on a new PC:
 
 1. Read `docs/Tooling.md`.
-2. Install **Required** for the current OS (prefer user-level / non-interactive package managers).
+2. Install **Required** for the current OS (prefer user-level / non-interactive package managers). Skip **Services this app consumes** — do not try to install those.
 3. Refresh PATH or use a new shell if needed; run every **Verify** command.
 4. Install **Agent skills** rows if that section exists; new session may be required for skills to load.
 5. Run **After tools are installed** (env files, package restore, start commands).

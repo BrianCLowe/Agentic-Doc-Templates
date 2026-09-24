@@ -29,6 +29,7 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 
 | Path              | Purpose |
 |-------------------|---------|
+| `README.md`       | Human entry point (what this is, how to run, links here). Agents start at this index, not the README |
 | `docs/`           | All specs, architecture, and tracking |
 | `docs/_shared/`   | Reusable **project** components used by multiple features (may be empty — do not invent filler) |
 | `docs/_shared/assets/` | Screenshots for shared components (linked from the shared **spec** **Visual references**) |
