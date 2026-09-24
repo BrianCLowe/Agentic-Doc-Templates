@@ -168,13 +168,12 @@ Deeper day-to-day patterns: [`docs/templates/help/USAGE.md`](docs/templates/help
 
 ## Example prompts
 
-- *Bootstrap modular docs using `docs/templates/agent/BOOTSTRAP.md`.*
-- *Draft Understanding for [feature] from what I said — I’ll review.* *(main agent delegates to Understanding author subagent if installed)*
-- *Orchestrate — clear ready TODOs until blocked.* *(parent-session loop: implement → verify → next)*
-- *Update the doc templates from Agentic Doc Templates and sync our live docs.*
-- *Check for template updates.*
-- *Build or update the live docs from `docs/reference/`.*
-- *Todo cleanup — move completed items to Completed.*
+- *Bootstrap modular docs.*
+- *Draft (or update) docs from what we just discussed.* *(main agent delegates to Understanding author subagent if installed)*
+- *Orchestrate to drain unblocked TODOs, or orchestrate implementation of [feature].*
+- *Update (or sync) ADT.*
+- *Check for ADT updates.*
+- *Build (or update) the live docs from the reference files.*
 
 More: [`USAGE.md`](docs/templates/help/USAGE.md).
 
