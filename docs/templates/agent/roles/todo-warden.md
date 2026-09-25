@@ -95,10 +95,10 @@ A **passing exercise note** is a **Completed** item for that slug whose text cit
 
 **Who runs this section.** This is the parent-outcome check: did the scenario hold, and what single blank is next. Doc-roles are optional. Declining them does not skip the audit. Orchestration close-out spawns `todo-warden` when that adapter is installed and follows this file in the parent session when it is not. Any other session (one-off change, no orchestrator) runs **this section only** for the stems Workflow §5.5 names. A project-wide honesty sweep stays an explicit *todo warden* ask or orchestration close-out.
 
-**Checks** run on every outcome. They are not first-match.
+**Checks** are not first-match. An outcome already `[x]` with a passing note stays `[x]`. That is not a new check, and it does not add another human-verify playtest.
 
-- **Passing note** → set that outcome `[x]` and check the matching operable Acceptance line, even when open children remain. Those children stay open as their own work. Then the **human look** below.
-- **No passing note** and operable Acceptance is `[x]` → uncheck that Acceptance line even when an add-branch already matched. Leave the outcome `[ ]`.
+- **Passing note and the outcome is still `[ ]`** → set that outcome `[x]` and check the matching operable Acceptance line, even when open children remain. Those children stay open as their own work. Then the **human look** below.
+- **No passing note** and the outcome or operable Acceptance is `[x]` → uncheck those lines even when an add-branch already matched. Leave the outcome `[ ]`. Do not add a playtest.
 
 **Adds** — first match wins, and only for an outcome still `[ ]` after the checks:
 
@@ -113,7 +113,7 @@ A Completed break note is not “no exercise item.” Do **not** add another Exe
 
 **Human look** (same pass, in-scope stems only). Only this audit creates a human-verify playtest. Open `docs/Human-TODO.md` (create from the template if the audit checks an outcome and the file is missing).
 
-- **Worth a look:** the audit just checked an outcome (passing note) and Open has no `playtest` for that stem + slug → add one thin Open row: kind `playtest`, the scenario sentence, Owner link, outcome slug, exercise date. Dedup.
+- **Worth a look:** this pass changed that outcome from `[ ]` to `[x]`, and neither Open nor Done already has a `playtest` for that stem + slug → add one thin Open row: kind `playtest`, the scenario sentence, Owner link, outcome slug, exercise date. A Done playtest is not a missing row.
 - **Not a human look:** an Open `playtest` names that stem (or its outcome slug) while that outcome is still `[ ]` → move the row to Done as `- [x]` with `(warden YYYY-MM-DD: withdrawn — outcome still open; not a human look)`. The human did not check it. Do this for a generic orchestration look-list on that stem when any of its outcomes are still `[ ]`. Leave `procure` / `decide` / `waiting` alone. Leave a playtest that names a slug already `[x]`.
 
 These audit adds, the Acceptance checkbox edit, and the human-look edit do **not** by themselves make the report `gaps-found`. Report them as **Outcomes open** and **Human looks**. `gaps-found` still fires when this run **claimed** the feature, stem, or outcome done while an outcome is `[ ]`, or when a non-audit honesty add/reopen was written. Open operable Acceptance and a missing exercise path are the audit’s Exercise row, not a separate honesty add.

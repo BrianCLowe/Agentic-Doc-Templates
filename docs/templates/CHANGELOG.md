@@ -26,7 +26,7 @@
 ## 2.9.9
 
 - **Live impact:** `versions-only`, `rules`, `content-templates`, `optional-todo-outcomes`
-- **Summary:** Sticky outcomes. A drained child list is not capability-done. `## Outcomes` stays open until a passing exercise note. A break note does not add a second Exercise. Slices do not check operable Acceptance. The outcome audit checks the parent row and fills the next blank. Doc-roles are optional: declining them, or a one-off change with no orchestrator, still runs that audit in the parent session. The audit is the only creator of a human-verify playtest, and only after that note. Sync pass `optional-todo-outcomes` retrofits existing stems and withdraws premature look-rows.
+- **Summary:** Sticky outcomes. A drained child list is not capability-done. `## Outcomes` stays open until a passing exercise note. A break note does not add a second Exercise. Slices do not check operable Acceptance. The outcome audit checks the parent row and fills the next blank. Doc-roles are optional: declining them, or a one-off change with no orchestrator, still runs that audit in the parent session. The check runs after work-verifier pass when that step exists. An outcome already checked does not get another human-verify playtest. The audit is the only creator of a human-verify playtest, and only after that note. Sync pass `optional-todo-outcomes` retrofits existing stems and withdraws premature look-rows.
 - **Changes:**
   - `VERSION` — 2.9.8 → 2.9.9
   - `agent/workflow/todos.md` §5.5 — outcome rows, flat `outcome:` labels, exercise task, who may check

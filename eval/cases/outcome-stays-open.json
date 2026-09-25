@@ -50,7 +50,9 @@
           "not a human look",
           "Only this audit creates a human-verify playtest",
           "even when open children remain",
-          "even when an add-branch already matched"
+          "even when an add-branch already matched",
+          "An outcome already `[x]`",
+          "neither Open nor Done"
         ]
       },
       {
@@ -70,6 +72,12 @@
         "file": "docs/templates/agent/roles/orchestrator.md",
         "patterns": [
           "Declining doc-roles does not skip the outcome audit"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/roles/feature-implementer.md",
+        "patterns": [
+          "Work-verifier fails a unit that checks"
         ]
       }
     ]
