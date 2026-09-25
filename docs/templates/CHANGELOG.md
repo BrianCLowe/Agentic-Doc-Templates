@@ -24,31 +24,19 @@
 
 ---
 
-## 2.9.11
-
-- **Live impact:** `versions-only`, `rules`
-- **Summary:** A passing exercise note names each observable clause on the stem’s exercise path. A unit-test path does not check the outcome. A code change that alters an observable the outcome names, or a human report that the scenario did not hold, unchecks the outcome and adds one Exercise. Work-verifier compares one claimed TODO item to that unit’s diff. Warden honesty reopens a checked item the code does not implement. Declining doc-roles does not skip either compare.
-- **Changes:**
-  - `VERSION` — 2.9.10 → 2.9.11
-  - `agent/workflow/todos.md` §5.5 — passing note, reopen, code versus the checklist
-  - `agent/roles/work-verifier.md` — one unit’s diff; fail a thin exercise note
-  - `agent/roles/todo-warden.md` — reopen on observable change or “scenario did not hold”; overclaim skim on audit stems
-  - `agent/roles/orchestrator.md`, `feature-implementer.md`, `agent/workflow/human-todo.md`, modular rule
-  - `DECISIONS.md` D30, D31
-- **Step B:** Bump Master Index **Pack version** to 2.9.11 from local `VERSION`. **`rules`:** refresh installed modular-rule copies so a passing note must name each observable clause, a checked outcome reopens when an observable it names changes or a human says the scenario did not hold, and a claimed TODO item is compared to that unit’s diff before mark-done.
-
 ## 2.9.10
 
 - **Live impact:** `versions-only`, `rules`, `optional-todo-completed-cleanout`
-- **Summary:** Completed is not a repair log. A Completed row is a plotted slice or the exercise note that proves an Outcome. An incidental fix stays in git. If the fix changes what an Outcome means, one sentence goes on that Outcome. Sync pass `optional-todo-completed-cleanout` removes a Completed checkbox that was never an open task.
+- **Summary:** Completed is not a repair log. A Completed row is a plotted slice or the exercise note that proves an Outcome. An incidental fix stays in git. Sync pass `optional-todo-completed-cleanout` removes a Completed checkbox that was never an open task. A passing exercise note names each observable clause on the stem’s exercise path. A unit-test path does not check the outcome. A code change that alters an observable the outcome names, or a human report that the scenario did not hold, unchecks the outcome and adds one Exercise. Work-verifier compares one claimed TODO item to that unit’s diff. Warden honesty reopens a checked item the code does not implement. Declining doc-roles does not skip either compare.
 - **Changes:**
   - `VERSION` — 2.9.9 → 2.9.10
-  - `agent/workflow/todos.md` — Completed rows
-  - modular rule, `feature-implementer.md`, `todo-warden.md` — do not add a Completed row for an incidental fix
+  - `agent/workflow/todos.md` §5.5 — Completed rows, passing note, reopen, code versus the checklist
+  - modular rule, `feature-implementer.md`, `todo-warden.md` — do not add a Completed row for an incidental fix; reopen when an observable changes or the scenario did not hold
+  - `work-verifier.md`, `orchestrator.md`, `human-todo.md` — one unit’s diff; thin exercise note fails; parent runs the compare when the adapter is absent
   - `TODO_Template.md` — one pointer under Completed
   - `agent/TEMPLATE_SYNC_B.md` — **`optional-todo-completed-cleanout`**
-  - `DECISIONS.md` D31
-- **Step B:** Bump Master Index **Pack version** to 2.9.10 from local `VERSION`. **`rules`:** refresh installed modular-rule copies so an incidental fix does not get a new Completed row. **`optional-todo-completed-cleanout`:** present/execute per `sync.mode` — for each Document Map `*-TODO.md`, under `## Completed` only, remove a `- [x]` row whose title never appears as `- [ ]` in `git log -p` for that file and whose text is an incidental fix (review patch, Bugbot finding, copy, typo). Keep a row that ever existed as an open task. Keep an exercise note. Unsure → leave the row. Do not remove open tasks. Do not check Outcomes. Under **`choose`:** ask once (default all stems). Under **`auto` / `auto-all`:** all Document Map `*-TODO.md`.
+  - `DECISIONS.md` D30, D31
+- **Step B:** Bump Master Index **Pack version** to 2.9.10 from local `VERSION`. **`rules`:** refresh installed modular-rule copies so an incidental fix does not get a new Completed row, a passing note names each observable clause, a checked outcome reopens when an observable it names changes or a human says the scenario did not hold, and a claimed TODO item is compared to that unit’s diff before mark-done. **`optional-todo-completed-cleanout`:** present/execute per `sync.mode` — for each Document Map `*-TODO.md`, under `## Completed` only, remove a `- [x]` row whose title never appears as `- [ ]` in `git log -p` for that file and whose text is an incidental fix (review patch, Bugbot finding, copy, typo). Keep a row that ever existed as an open task. Keep an exercise note. Unsure → leave the row. Do not remove open tasks. Do not check Outcomes. Under **`choose`:** ask once (default all stems). Under **`auto` / `auto-all`:** all Document Map `*-TODO.md`.
 
 ## 2.9.9
 
