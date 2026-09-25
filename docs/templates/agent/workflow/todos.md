@@ -115,7 +115,13 @@ When product shape is still unknown, a short **spike** (branch, throwaway protot
 - Orchestration close-out spawns `todo-warden` when that adapter is installed, and follows the playbook in the parent session when it is not.
 - Any other session — a one-off change, doc-roles declined, or staying in this session — runs **that section only** for stems this turn touched when this turn finished the last open non-exercise child of an outcome, finished an exercise item, or would claim the feature, stem, or outcome done. That is not full orchestration and not a project-wide honesty sweep. The check that sets the outcome `[x]` waits until after work-verifier **pass** when this turn has a verifier. The implementer unit leaves the outcome `[ ]`.
 
-**Who may check.** Only that audit. It may set the outcome `[x]` and check the matching Acceptance line only when a **Completed** exercise item for that slug cites a path, a date, and an observation that the scenario **held**, and the outcome is still `[ ]`. A passing note checks the outcome even when other children remain. An outcome already `[x]` stays `[x]`. A later pass does not check it again. A note that records the first break leaves both open. A slice that only looks close does not check either line. Work-verifier fails a unit that checks them.
+**Passing note.** A **Completed** exercise item for that slug. The path is that stem’s exercise path (UI, CLI, product API, or documented smoke), not a unit-test file. The observation states what happened for **each observable clause** in the outcome sentence. “Looks right,” a skipped clause, or a unit-test path is not passing. A break note names the first clause that failed and is not passing.
+
+**Who may check.** Only that audit. It may set the outcome `[x]` and check the matching Acceptance line only when a current passing note exists and the outcome is still `[ ]`. A passing note checks the outcome even when other children remain. An outcome already `[x]` stays `[x]` while that note is still current. A later pass does not check it again. A note that records the first break leaves both open. A slice that only looks close does not check either line. Work-verifier fails a unit that checks them, and fails an exercise item marked done when the note is not a passing note.
+
+**Reopen.** Uncheck the outcome and the matching Acceptance line, put one sentence on the outcome, and add one open **Exercise** when one is not already open. Do that when this turn’s code changes an observable the outcome names (a copy or typo fix does not), or when a human playtest report says the scenario did not hold. The old passing note stays in Completed. The new Exercise is the next unit. That reopen does not add a playtest.
+
+**Code versus the checklist.** Work-verifier compares one claimed TODO item to that unit’s diff. The diff does not implement the item → fail. It does not walk older checked rows. Warden honesty reopens a checked item whose code does not implement it. Declining doc-roles does not skip either compare: the parent runs that unit’s verifier steps before mark-done, and the outcome audit reopens a clear overclaim on the stems it already covers.
 
 **Exercise task.** Add one High item, and point Current focus at it, only when this outcome has **no exercise item yet** (none open, none Completed) and no passing note, and it is not waiting on open children or an intentional phase:
 
@@ -127,12 +133,12 @@ A Completed exercise that records a first break is not a passing note and is not
 
 Do not write the rest of the path from a reading of the code.
 
-**Human look.** Only the outcome audit creates a human-verify playtest ([`human-todo.md`](human-todo.md) §13), and only when this pass changed that outcome from `[ ]` to `[x]`. Dedup against Open and Done. An outcome already `[x]` does not get another row. The orchestrator, implementer, graduate, and sync do **not** write that row on their own. A parent that is running the audit does. While the outcome is `[ ]`, do not ask the human to look. An answer of “it doesn’t work” only restates agent work that should already be a TODO. The audit withdraws an Open playtest that asks for a look at an outcome still `[ ]` (move to Done with a warden note; the human did not check it). Leave `procure` / `decide` / `waiting` alone.
+**Human look.** Only the outcome audit creates a human-verify playtest ([`human-todo.md`](human-todo.md) §13), and only when this pass changed that outcome from `[ ]` to `[x]`. Dedup against Open and Done. An outcome already `[x]` does not get another row. The orchestrator, implementer, graduate, and sync do **not** write that row on their own. A parent that is running the audit does. While the outcome is `[ ]`, do not ask the human to look. An answer of “it doesn’t work” only restates agent work that should already be a TODO. The audit withdraws an Open playtest that asks for a look at an outcome still `[ ]` (move to Done with a warden note; the human did not check it). A playtest confirm that says the scenario did not hold moves that inbox row to Done with the report, then follows **Reopen**. Leave `procure` / `decide` / `waiting` alone.
 
 **Passing note** (on the exercise item, then move it to Completed):
 
 ```markdown
-- [x] **Exercise paper-auto-trade** — (exercised YYYY-MM-DD: `<path>`; scenario held — <what was observed>). `outcome: paper-auto-trade`
+- [x] **Exercise paper-auto-trade** — (exercised YYYY-MM-DD: `<smoke command or operator path>`; scenario held — orders: …; fills: …; P&L: …). `outcome: paper-auto-trade`
 ```
 
 **Library-only.** `## Outcomes` is one non-checkbox line: `library-only — consumers own the exercise path.` No outcome checkboxes. Children need no `outcome:` label.
@@ -145,6 +151,6 @@ Do not write the rest of the path from a reading of the code.
 
 **Not stem-drained.** An empty High / Medium / Low list while any Outcomes row is `[ ]` is not feature done. The next unit is the exercise task when none exists, or the cited-break follow-up when the latest exercise recorded a break. Milestone PRs of honest child work may still merge. Claiming feature / stem / outcome done while an outcome is open is a gap.
 
-**Do not:** nest children under a parent checkbox; check an outcome because its children are `[x]`; check operable Acceptance from a slice; add another Exercise because a break note is not a passing note; mint a task per architecture bullet to map the remaining path without a cited break; reopen Completed items just to relabel them; ask the human to look at an outcome that is still `[ ]`.
+**Do not:** nest children under a parent checkbox; check an outcome because its children are `[x]`; check operable Acceptance from a slice; treat a unit-test path or a skipped observable clause as a passing note; leave an outcome `[x]` after this turn changes an observable it names; leave an outcome `[x]` after a human report that the scenario did not hold; add another Exercise because a break note is not a passing note; mint a task per architecture bullet to map the remaining path without a cited break; reopen Completed items just to relabel them; ask the human to look at an outcome that is still `[ ]`.
 
 ---

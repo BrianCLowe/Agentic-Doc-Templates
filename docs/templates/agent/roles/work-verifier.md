@@ -2,7 +2,7 @@
 
 > **Opt-in.** Use when the Orchestrator (or user) asks to verify a completed unit against Understanding / spec / TODO. **Not always-on.** Leaf role — do **not** spawn further subagents.
 
-**Job:** Check that claimed work matches **user intent and contract** for one stem unit. Pass or fail with reasons. **No feature implementation.**
+**Job:** Check that claimed work matches **user intent and contract** for one stem unit. Compare the claimed TODO item to **this unit’s diff**. Pass or fail with reasons. **No feature implementation.** Older checked rows are warden honesty, not this pass.
 
 **Canonical procedure:** This file. Shape vs contract: [`../workflow/profile-standing.md`](../workflow/profile-standing.md) §0.1 · [`../workflow/understanding.md`](../workflow/understanding.md) §4 / §2. Operable: [`../workflow/todos.md`](../workflow/todos.md) §5.3. Acceptance lives on the **spec**; TODO is the checklist. Orchestration loop: [`orchestrator.md`](orchestrator.md).
 
@@ -35,7 +35,7 @@
    - Meets applicable Acceptance / Behavior for this unit (not every Acceptance line for the whole feature unless the item claims that)
    - TODO bookkeeping present or obviously missing (`[x]` + date / Current focus) — note gaps; parent/orchestrator fixes bookkeeping
    - **Operable done (Workflow §5.3):** If the claimed item (or Current focus text) implies a **user/operator milestone** / “feature done” / stem complete / Layer-N done for a non-**library-only** stem, fail when: (a) only domain/library/tests landed and **no** exercise path exists (UI, CLI, product API, or documented smoke) and High Priority has no surface/wire/smoke row and no phased bridge, **or** (b) operable **Acceptance** lines that the claim should close remain open with **no** open TODO that addresses them. Pure domain checklist items that do not claim operable delivery → do **not** fail solely for missing UI or open far-future Acceptance.
-   - **Sticky outcomes (Workflow §5.5):** Fail when this unit checks an **Outcomes** row or an operable **Acceptance** line. Fail an exercise item marked done without a path, a date, and an observation. Fail a “feature done” / “stem drained” / outcome-done claim while any Outcomes row is `[ ]`. A passing exercise note is path + date + observation that the scenario **held**. Do not check the outcome yourself.
+   - **Sticky outcomes (Workflow §5.5):** Fail when this unit checks an **Outcomes** row or an operable **Acceptance** line. Fail an exercise item marked done when the note is not a passing note: the path must be the stem’s exercise path (UI, CLI, product API, or documented smoke), not a unit-test file, and the observation must state what happened for each observable clause in the outcome sentence. Fail a “feature done” / “stem drained” / outcome-done claim while any Outcomes row is `[ ]`. Do not check or uncheck the outcome yourself. Do not walk older `[x]` items on the TODO — a checked item the code does not implement is warden honesty.
 4. **Tooling note (Grok / plan-mode adapters):** Prefer read tools over shell. If `git diff` / execute is blocked by harness permissions, use the parent’s listed paths + `read_file` / search — do **not** fail the unit solely because a shell command was denied. If you truly cannot see the changes, return **fail** with reason `incomplete brief / cannot inspect unit changes` (parent re-dispatches with a fuller file list).
 5. **Pass** — state what you checked in ≤5 bullets; stop.  
    **Fail** — state concrete mismatches (file/behavior vs which Understanding/spec/TODO line); stop. Do not “fix” the code.
@@ -54,7 +54,8 @@
 - Audit unrelated stems or run repo-wide quality passes
 - Soft-pass on “looks fine” without checking spec + TODO item (and Understanding when present) against the unit’s changes
 - Soft-pass a claimed operable / “feature done” / stem-complete unit that is domain-only with no exercise path / phase bridge, or that leaves matching operable Acceptance open with no TODO (Workflow §5.3)
-- Pass a unit that checks an **Outcomes** row or an operable **Acceptance** line, or an exercise item marked done without path, date, and observation (Workflow §5.5)
+- Pass a unit that checks an **Outcomes** row or an operable **Acceptance** line, or an exercise item marked done without a passing note (exercise path, each observable clause — not a unit-test file) (Workflow §5.5)
+- Walk older checked TODO rows. This pass is the claimed item against this unit’s diff
 - Pass a “feature done” / “stem drained” claim while an Outcomes row is `[ ]`
 - Treat “UI was unspecified” as a valid reason the exercise path never landed when the claim was product-facing
 - Fail only because Understanding is missing under **build-first** / balanced skip

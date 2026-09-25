@@ -40,7 +40,10 @@
           "Declining doc-roles does not skip the audit",
           "Only the outcome audit creates a human-verify playtest",
           "Completed is not a repair log",
-          "optional-todo-completed-cleanout"
+          "optional-todo-completed-cleanout",
+          "each observable clause",
+          "Work-verifier compares one claimed TODO item",
+          "scenario did not hold"
         ]
       },
       {
@@ -55,7 +58,9 @@
           "even when an add-branch already matched",
           "An outcome already `[x]`",
           "neither Open nor Done",
-          "Do not add a Completed row for an incidental fix"
+          "Do not add a Completed row for an incidental fix",
+          "scenario did not hold",
+          "not a unit-test file"
         ]
       },
       {
@@ -84,6 +89,14 @@
         "patterns": [
           "Work-verifier fails a unit that checks",
           "Do not add a Completed row for an incidental fix"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/roles/work-verifier.md",
+        "patterns": [
+          "this unit’s diff",
+          "each observable clause",
+          "not a unit-test file"
         ]
       }
     ]

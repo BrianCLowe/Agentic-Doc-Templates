@@ -24,6 +24,19 @@
 
 ---
 
+## 2.9.11
+
+- **Live impact:** `versions-only`, `rules`
+- **Summary:** A passing exercise note names each observable clause on the stem’s exercise path. A unit-test path does not check the outcome. A code change that alters an observable the outcome names, or a human report that the scenario did not hold, unchecks the outcome and adds one Exercise. Work-verifier compares one claimed TODO item to that unit’s diff. Warden honesty reopens a checked item the code does not implement. Declining doc-roles does not skip either compare.
+- **Changes:**
+  - `VERSION` — 2.9.10 → 2.9.11
+  - `agent/workflow/todos.md` §5.5 — passing note, reopen, code versus the checklist
+  - `agent/roles/work-verifier.md` — one unit’s diff; fail a thin exercise note
+  - `agent/roles/todo-warden.md` — reopen on observable change or “scenario did not hold”; overclaim skim on audit stems
+  - `agent/roles/orchestrator.md`, `feature-implementer.md`, `agent/workflow/human-todo.md`, modular rule
+  - `DECISIONS.md` D30, D31
+- **Step B:** Bump Master Index **Pack version** to 2.9.11 from local `VERSION`. **`rules`:** refresh installed modular-rule copies so a passing note must name each observable clause, a checked outcome reopens when an observable it names changes or a human says the scenario did not hold, and a claimed TODO item is compared to that unit’s diff before mark-done.
+
 ## 2.9.10
 
 - **Live impact:** `versions-only`, `rules`, `optional-todo-completed-cleanout`
