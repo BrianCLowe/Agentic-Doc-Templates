@@ -49,7 +49,7 @@
       ]
     },
     "todo-warden": {
-      "description": "Agentic Doc Templates — Todo warden. Docs-only: honesty (reopen overclaims, cited gap TODOs) and hygiene (move finished [x] out of High/Medium/Low into Completed). Use after orchestration / before PR ready, or for todo cleanup. Do not implement features or invent backlog.",
+      "description": "Agentic Doc Templates — Todo warden. Docs-only: honesty (reopen overclaims, cited gap TODOs), hygiene (move finished [x] out of High/Medium/Low into Completed), and outcome audit (an Outcomes row stays open until a passing exercise note). Use after orchestration / before PR ready, or for todo cleanup. Do not implement features or invent backlog.",
       "body": "bodies/todo-warden.md",
       "cursor": {
         "model": "inherit"

@@ -11,7 +11,7 @@
 
 **Humans:** [`help/SCAFFOLDS.md`](../templates/help/SCAFFOLDS.md). Inbox: [`Human-TODO.md`](../Human-TODO.md).
 
-**Agents:** Fill-in blanks. If context is thin, re-open [`agent/workflow/todos.md`](../templates/agent/workflow/todos.md) (Current focus §5.1 · operable §5.3 · kit coverage §5.4). Human dual-write: [`agent/workflow/human-todo.md`](../templates/agent/workflow/human-todo.md). Shared foundation: [`agent/workflow/shared-components.md`](../templates/agent/workflow/shared-components.md).
+**Agents:** Fill-in blanks. If context is thin, re-open [`agent/workflow/todos.md`](../templates/agent/workflow/todos.md) (Current focus §5.1 · operable §5.3 · outcomes §5.5 · kit coverage §5.4). Human dual-write: [`agent/workflow/human-todo.md`](../templates/agent/workflow/human-todo.md). Shared foundation: [`agent/workflow/shared-components.md`](../templates/agent/workflow/shared-components.md).
 
 ---
 
@@ -23,10 +23,14 @@
 
 ---
 
+## Outcomes
+
+- [ ] **outcome-slug** — [Who acts, what they do, what is observable]
+
 ## High Priority / Next Actions
-- [ ] **Task title** — short description of what needs to be done and why it matters
-- [ ] **Exercise path** — e.g. wire control plane / CLI so a human can run the happy path
-- [ ] Another high-priority item
+- [ ] **Task title** — short description of what needs to be done and why it matters `outcome: outcome-slug`
+- [ ] **Exercise path** — e.g. wire control plane / CLI so a human can run the happy path `outcome: outcome-slug`
+- [ ] Another high-priority item `outcome: outcome-slug`
 
 ## Medium Priority
 - [ ] Task that can wait a bit

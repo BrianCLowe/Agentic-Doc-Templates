@@ -107,7 +107,7 @@ Keep `docs/Tooling.md` accurate. On a new machine:
 
 ## Pattern 7 — Human inbox
 
-Anything only you can close → `docs/Human-TODO.md`: procure, playtest/feel, decide/sign-off, external waiting. Agent **dual-writes** (owner feature TODO + inbox row). You work the Open list; tell the agent in chat when done or with feedback.
+Anything only you can close → `docs/Human-TODO.md`: procure, decide/sign-off, external waiting. Agents **dual-write** those (owner feature TODO + inbox row). A human-verify playtest appears only after a passing exercise note. The outcome audit writes that row, including when doc roles are off and when the change was not an orchestrated run. You work the Open list; tell the agent in chat when done or with feedback.
 
 > What’s left on the human TODO?
 
@@ -165,7 +165,7 @@ Anything only you can close → `docs/Human-TODO.md`: procure, playtest/feel, de
 | Optional role — intent | *Draft Understanding for [Feature] from what I said — I’ll review.* (main agent delegates if subagents installed) |
 | Optional role — build | *Continue from Current focus.* *(single slice)* |
 | Optional role — orchestrate | *Orchestrate — clear ready TODOs until blocked.* *(optional `/orchestrate` if slash commands are enabled. Parent loop; git from `orchestrator.git.mode` — recommend milestone-pr; Cloud Agent this-runs milestone-pr if durable is local-oriented or `branch-pr` / `branch-pr-squash`; per-milestone: several related TODOs + concurrent implementers when they do not overlap **and** the host can isolate → build-verify → warden → squash → ready → wait CI/Bugbot → merge → next branch; already-in-a-host-worktree → stay; Human-TODO verify map)* |
-| Optional role — todo warden | *Todo warden — reconcile TODOs vs what shipped.* / *Todo cleanup — move completed items to Completed.* *(docs-only; honesty caps; hygiene moves finished `[x]`; named leftovers get covering TODOs — no vendor-doc fetch)* |
+| Optional role — todo warden | *Todo warden — reconcile TODOs vs what shipped.* / *Todo cleanup — move completed items to Completed.* / *Outcome audit — outcomes stay open until the scenario is exercised.* *(docs-only; honesty caps; hygiene moves finished `[x]`; named leftovers get covering TODOs — no vendor-doc fetch)* |
 | Set orchestrator git | *Set orchestrator git to milestone-pr* / *branch-pr-squash* / *branch-pr* / *current-push* / *local* |
 | Standing playbook override | *Add standing note: always squash before mark ready.* / *From now on, merge each slice after CI.* *(agent should save without being asked twice — only playbook overrides, not random notes)* |
 | Optional role — verify | *Verify that unit against Understanding and the spec.* |

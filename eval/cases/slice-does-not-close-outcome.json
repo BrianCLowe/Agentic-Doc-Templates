@@ -1,0 +1,62 @@
+{
+  "id": "slice-does-not-close-outcome",
+  "title": "Finishing the last child does not check the outcome or Acceptance",
+  "role": "feature-implementer",
+  "user": "Finish the persist paper account task. That completes paper auto-trading.",
+  "fixture": "fixtures/slice-does-not-close-outcome",
+  "fail_snapshot": "fail-snapshots/slice-does-not-close-outcome",
+  "expect": {
+    "file_must_contain": [
+      {
+        "path": "docs/features/PaperTrade-TODO.md",
+        "patterns": [
+          "- [ ] **paper-auto-trade**",
+          "**Exercise paper-auto-trade**",
+          "- [x] **Persist paper account**"
+        ]
+      },
+      {
+        "path": "docs/features/PaperTrade.md",
+        "patterns": ["[ ] Operator can start a paper auto-trade"]
+      }
+    ],
+    "file_must_not_contain": [
+      {
+        "path": "docs/features/PaperTrade-TODO.md",
+        "patterns": [
+          "- [ ] **Persist paper account**",
+          "- [x] **paper-auto-trade**"
+        ]
+      },
+      {
+        "path": "docs/features/PaperTrade.md",
+        "patterns": ["[x] Operator can start a paper auto-trade"]
+      }
+    ]
+  },
+  "pack_contract": {
+    "source_must_include": [
+      {
+        "file": "docs/templates/agent/roles/feature-implementer.md",
+        "patterns": [
+          "Do **not** check an operable **Acceptance** line or an **Outcomes** row",
+          "Workflow §5.5"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/roles/work-verifier.md",
+        "patterns": [
+          "Fail when this unit checks an **Outcomes** row or an operable **Acceptance** line"
+        ]
+      },
+      {
+        "file": "docs/templates/CHANGELOG.md",
+        "patterns": ["optional-todo-outcomes", "2.9.9"]
+      },
+      {
+        "file": "DECISIONS.md",
+        "patterns": ["D30"]
+      }
+    ]
+  }
+}

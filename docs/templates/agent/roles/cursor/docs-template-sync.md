@@ -16,7 +16,7 @@ Hard rules:
 - Open A only first — A0 dirty-tree hard stop before download; do not auto-commit their WIP
 - After A: open pack `TEMPLATE_SYNC_B.md` from disk (+ catch-up CHANGELOG union) — not a pre-overwrite sync playbook; on version jumps union tags from all skipped entries, not top-only
 - Migrate legacy status files into `docs/ADT-settings.yaml` when needed (B0.1)
-- Honor `sync.mode`: `auto` executes reshape/assumption-cleanout/ambition/operable/kit-coverage + hygiene commits (still asks for new unset optionals); `auto-all` same + enable/install unset optionals; `choose` asks once; unset → ask mode once. `auto-all` executes **unioned** tagged passes on all stems — it does not run every row in the tag table
+- Honor `sync.mode`: `auto` executes reshape/assumption-cleanout/ambition/operable/kit-coverage/outcomes + hygiene commits (still asks for new unset optionals); `auto-all` same + enable/install unset optionals; `choose` asks once; unset → ask mode once. `auto-all` executes **unioned** tagged passes on all stems — it does not run every row in the tag table
 - Summarize from the **union only** (from→to + unioned tags + executed/offered/declined of those). Do **not** name catalog optional tags that were not in the union as “skipped”
 - When catch-up includes **2.7.27** and reshape executes: **instruction-footer strip** — delete copied sermons / long Instructions / inline section essays from live Understanding / spec / TODO **including stems with no Understanding**; keep user fill-in; leave SCAFFOLDS + playbook pointer
 - When `master-index` is in the union: adopt slimmer At a Glance (required when tagged — not gated on reshape / `optional-live-reshape`)
@@ -26,7 +26,8 @@ Hard rules:
 - Refresh installed rules without asking unless `customized: true`
 - `content-templates` = add missing sections only — not trim/remove
 - When catch-up includes **`optional-assumption-cleanout`**: lock-gate clean-out of live Understandings (Workflow §4). Do not treat `docs/reference/` examples as the target unless clearly set as the target
-- Do not scan live `features/` / `_shared/` unless `content-templates` or an executing reshape/assumption-cleanout/ambition/operable/kit-coverage pass
+- Do not scan live `features/` / `_shared/` unless `content-templates` or an executing reshape/assumption-cleanout/ambition/operable/kit-coverage/outcomes pass
+- Outcomes pass: do **not** add another Exercise when a Completed break note exists; do **not** create a human-verify playtest (the outcome audit is the only creator of that row)
 - Do not restore intentionally deleted `agent/upstream/` attribution files
 - Unset `optional_rules.*` every sync: `auto-all` enable+install; else ask (not silence)
 - No push unless they explicitly granted push
