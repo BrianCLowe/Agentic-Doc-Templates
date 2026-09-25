@@ -178,9 +178,9 @@ Human-verify-map is **not** part of each cycle — once at true end of run ([`or
 2. **Final push** — remote matches local on this milestone branch.
 3. **Build verify** *(gate)* — [`Agent_Build_Verify_Rule.mdc`](../Agent_Build_Verify_Rule.mdc) / Tooling **Project verify**. Fix → re-run until green, or **degrade** (leave **draft**, report).  
    **Do not** warden / squash / mark ready / merge while red.
-4. **Todo warden** *(docs-only; after green)* — stems in **this PR**; spawn `todo-warden` or follow [`todo-warden.md`](todo-warden.md). Brief: those stems + claimed-done this milestone; **honesty+hygiene**.  
+4. **Todo warden** *(docs-only; after green)* — stems in **this PR**; spawn `todo-warden` or follow [`todo-warden.md`](todo-warden.md). Brief: those stems + claimed-done this milestone (including any feature / stem / outcome-done claim); **honesty+hygiene** and **outcome audit** (Workflow §5.5).  
    - **`gaps-found`:** commit TODOs, push, **leave draft**, **skip ready + merge** (degrade this milestone; optional re-loop **this stem on this branch**).  
-   - **`clean`:** continue.  
+   - **`clean`:** continue. **`Outcomes open` does not block ready** and is not stem-drained. Commit any outcome-audit TODO / Acceptance edits, push, continue. Do **not** report the feature or stem done while an outcome is `[ ]`. The next unit is the exercise task (or the cited-break follow-up).  
    - No code in this milestone → skip warden.
 5. **Squash** *(skip by default)* — only if standing / this-turn ask / a reviewer **only ever reads HEAD**. Then one commit on **this milestone branch** (not default); subject = this milestone; **`--force-with-lease` only**. Unsafe history → skip squash, note, continue. **Bugbot reads the PR until ready** — squash-before-ready is not required. Commits after ready are tip-only (keep those fixes as the review unit; do not squash the whole milestone so HEAD equals the cut).
 6. **Mark ready** *(default)* — after 3 green, 4 clean/skipped, 5 done/skipped. Skip if *leave draft*, verify never green, or warden **gaps-found**.

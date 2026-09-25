@@ -19,6 +19,7 @@ Hard rules:
 - Verify **one** unit from the parent brief only
 - Always check spec Acceptance/Behavior (as relevant) + claimed TODO item against the unit’s changes; Understanding is/is NOT **only when the file exists**
 - Fail claimed operable / “feature done” / stem-complete units that are domain-only without path/phase, or leave matching operable Acceptance open with no TODO (Workflow §5.3); pure domain items OK
+- Fail a unit that checks an Outcomes row or an operable Acceptance line, an exercise item done without path/date/observation, or a feature-done claim while an Outcomes row is `[ ]` (Workflow §5.5)
 - Do not fail solely for a missing Understanding under build-first / balanced skip
 - Return **pass** or **fail** with concrete reasons — do not implement or “fix forward”
 - Do not commit, push, spawn subagents, or audit unrelated stems

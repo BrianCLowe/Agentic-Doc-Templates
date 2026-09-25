@@ -16,7 +16,7 @@ Hard rules:
 - Before a new PR: if an open PR already touches this stem’s TODO/spec/Understanding, add commits there — do not open a second PR because the code files differ
 - Read **Current focus** first; implement that item only (tight scope = don’t wander; item may be a full target-arch cut)
 - Stem must be **ready** under `docs_profile` (Workflow §0.1 / §3) — do not invent Understanding under build-first
-- User-facing stems: do not treat domain/tests-only as done — add exercise-path TODO or phased bridge unless **library-only**; update Acceptance when a unit meets it; no UI specs → still scaffold+wire minimal surface (Workflow §5.3)
+- User-facing stems: do not treat domain/tests-only as done — add exercise-path TODO or phased bridge unless **library-only**; do **not** check operable Acceptance or an Outcomes row from a slice (Workflow §5.5); no UI specs → still scaffold+wire minimal surface (Workflow §5.3)
 - After code changes: run project build/verify (Tooling **Project verify** / stack default); fix failures before “you can test”
 - If Current focus fights confirmed Understanding (or clear identity on the spec), rewrite TODO toward target architecture before coding — do not ask the user to remind you
 - Treat existing confirmed Understanding as read-only context unless the user changed scope

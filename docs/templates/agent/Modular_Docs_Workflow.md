@@ -51,7 +51,7 @@ Use when the stem is already **ready** under the docs profile and scope is uncha
 | Whole-product vision / end-state picture / product vs feature fight | [`workflow/product-vision.md`](workflow/product-vision.md) (§4.5) |
 | Graduate confirmed shape → durable spec | [`workflow/understanding.md`](workflow/understanding.md) (§2) |
 | Path A vs Path B unclear · readiness table detail | [`workflow/implement.md`](workflow/implement.md) (§3) |
-| TODO layout · Current focus · operable done · exploration · kit covering TODOs | [`workflow/todos.md`](workflow/todos.md) (§5) |
+| TODO layout · Current focus · operable done · sticky outcomes · exploration · kit covering TODOs | [`workflow/todos.md`](workflow/todos.md) (§5) |
 | Spec Decisions (product/UI) | [`workflow/decisions.md`](workflow/decisions.md) (§10) |
 | Install tooling / Project verify handoff | [`workflow/tooling.md`](workflow/tooling.md) (§11) |
 | Human inbox dual-write | [`workflow/human-todo.md`](workflow/human-todo.md) (§13) |
@@ -61,7 +61,7 @@ Use when the stem is already **ready** under the docs profile and scope is uncha
 
 **Do not** open every module. **Do not** re-read this index every turn once you know the paved path. Module list for maintainers: [`workflow/README.md`](workflow/README.md).
 
-**Timescale / build green:** target architecture when shape is clear ([`Agent_Timescale_Planning_Rule.mdc`](Agent_Timescale_Planning_Rule.mdc)). Build green before “you can test” ([`Agent_Build_Verify_Rule.mdc`](Agent_Build_Verify_Rule.mdc)). Operable done detail → [`workflow/todos.md`](workflow/todos.md) §5.3.
+**Timescale / build green:** target architecture when shape is clear ([`Agent_Timescale_Planning_Rule.mdc`](Agent_Timescale_Planning_Rule.mdc)). Build green before “you can test” ([`Agent_Build_Verify_Rule.mdc`](Agent_Build_Verify_Rule.mdc)). Operable done → [`workflow/todos.md`](workflow/todos.md) §5.3. Sticky outcomes → §5.5.
 
 ---
 
@@ -103,7 +103,7 @@ Full procedure (incl. **de-confirm gate** + **lock gate**): [`workflow/understan
 
 ### 5. TODO Management
 
-Full procedure: [`workflow/todos.md`](workflow/todos.md#5-todo-management). Current focus §5.1 · exploration §5.2 · operable §5.3 · kit covering TODOs §5.4 live in that file.
+Full procedure: [`workflow/todos.md`](workflow/todos.md#5-todo-management). Current focus §5.1 · exploration §5.2 · operable §5.3 · sticky outcomes §5.5 · kit covering TODOs §5.4 live in that file.
 
 ### 5.1 Session handoff — Current focus
 

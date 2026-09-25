@@ -2,23 +2,23 @@
 
 > **Opt-in.** Use when the Orchestrator (close-out) or user asks to reconcile TODOs vs what actually shipped, **or** to tidy completed items into the Completed section. **Not always-on.** Leaf role — do **not** spawn further subagents. **Docs only — no application code.**
 
-**Job:** Keep the checklist honest **and** readable.
+**Job:** Keep the checklist honest **and** readable. On honesty close-out, also run the **outcome audit** (Workflow §5.5): an Outcomes row stays open until a passing exercise note exists.
 
 1. **Honesty** — Reopen overclaimed `[x]` items and add **only** tightly cited gap TODOs so Spec/Acceptance/shape claims are not silently “done.” Prefer **fewer** corrections over a flood of backlog. Do **not** invent polish, new features, or Oprah-style “you get a TODO, you get a TODO.”
 2. **Hygiene (cleanup)** — Move **true** finished items out of open priority sections into **Completed** so High/Medium/Low stay “what’s left,” not a graveyard of checked boxes. Projects often mark `[x]` in place and never archive — this pass fixes that.
 
-**Canonical procedure:** This file. Operable done / Acceptance bridge: [`../workflow/todos.md`](../workflow/todos.md) §5 / §5.3. Kit coverage: Workflow §5.4 — named leftovers get covering TODOs (not a research stub); thin wrap-the-API research is sync / planning unless this run claimed kit-complete. Unit-level code-vs-claim: [`work-verifier.md`](work-verifier.md) (different job — one unit; this role is **post-loop stem honesty + TODO layout hygiene**).
+**Canonical procedure:** This file. Operable done / Acceptance bridge: [`../workflow/todos.md`](../workflow/todos.md) §5 / §5.3. Sticky outcomes: §5.5. Kit coverage: Workflow §5.4 — named leftovers get covering TODOs (not a research stub); thin wrap-the-API research is sync / planning unless this run claimed kit-complete. Unit-level code-vs-claim: [`work-verifier.md`](work-verifier.md) (different job — one unit; this role is **post-loop stem honesty + TODO layout hygiene + outcome audit**).
 
 ## When to invoke
 
-- Orchestrator **`milestone-pr`** close-out **after each slice’s build verify** and **before** squash / mark ready / merge (stems in that PR) — **both** honesty and hygiene
-- Orchestrator **`branch-pr*`** close-out **after build verify** and **before** squash / mark ready (when this run cleared code work) — **both** honesty and hygiene
-- User says: *Todo warden*, *reconcile TODOs vs implementation*, *check TODO gaps after orchestration*, *honesty pass on the backlog*
+- Orchestrator **`milestone-pr`** close-out **after each slice’s build verify** and **before** squash / mark ready / merge (stems in that PR) — **honesty, hygiene, and outcome audit**
+- Orchestrator **`branch-pr*`** close-out **after build verify** and **before** squash / mark ready (when this run cleared code work) — **honesty, hygiene, and outcome audit**
+- User says: *Todo warden*, *reconcile TODOs vs implementation*, *check TODO gaps after orchestration*, *honesty pass on the backlog*, *Outcome audit*
 - User says: *Todo cleanup*, *archive completed TODOs*, *move done items to Completed*, *tidy the TODO completed sections* — **hygiene required**; honesty only if they also asked for gaps / after an implement run (or parent brief includes honesty)
 
 ## Inputs *(open only these)*
 
-1. Parent brief: **in-scope stems** for this pass (paths to `*-TODO.md` + matching specs; Understanding paths if any); which items this run claimed done (if known); docs_profile if known; optional flags: **hygiene-only** / **honesty+hygiene** (default after orchestration = both)
+1. Parent brief: **in-scope stems** for this pass (paths to `*-TODO.md` + matching specs; Understanding paths if any); which items this run claimed done (if known), including any claim that a feature, stem, or outcome is done; docs_profile if known; optional flags: **hygiene-only** / **honesty+hygiene** (default after orchestration = both, and honesty includes the outcome audit)
 2. Each in-scope stem’s `-TODO.md` (High / Medium / Low / Cross-Feature + **Completed** — create Completed if missing when moving)
 3. Each stem’s **spec** — Overview, Behavior, **Acceptance** (operable lines especially) — skip deep Acceptance when **hygiene-only** and no honesty asked
 4. Each stem’s `-Understanding.md` **if it exists** (is / is not) — read-only; skip when hygiene-only
@@ -30,7 +30,7 @@
 ## Preconditions
 
 - Parent named **one or more stems** (or “stems this orchestration touched” / “all map stems with open TODOs” if user asked project-wide cleanup). If scope is empty → return **clean** with “incomplete brief / no stems” and stop.
-- **Docs-only.** No implementation, no refactors, no commits (parent commits TODO edits if desired).
+- **Docs-only.** No implementation, no refactors, no commits (parent commits TODO edits if desired). Outcome audit may check or uncheck the **one** matching operable Acceptance line. No other spec edits.
 
 ## Hard caps *(anti-Oprah — honesty only)*
 
@@ -86,6 +86,23 @@ Only **reopen/add** when **at least one** of these is true and you can point to 
 
 **Hygiene alone does not mean gaps-found.** Moving done items is layout honesty, not new backlog.
 
+## Outcome audit *(honesty close-out — Workflow §5.5)*
+
+Skip when **hygiene-only**. Otherwise, after honesty edits, for each in-scope stem’s `## Outcomes` rows (create the section from operable Acceptance when it is missing — one unchecked row per operable line, slug in bold, scenario sentence). **Library-only** stems: one non-checkbox line `library-only — consumers own the exercise path.` No outcome checkboxes.
+
+A **passing exercise note** is a **Completed** item for that slug whose text cites a path, a date, and an observation that the scenario **held**. A note that records the first break is not passing.
+
+For each outcome still `[ ]`:
+
+1. **Open children** with that `` `outcome:` `` label remain → leave the outcome open. Do **not** add follow-ups.
+2. **Phased** and domain children for that phase are still open → leave the outcome open. Do **not** add the exercise task yet.
+3. **No open children, no passing note, no open exercise task** → add one High item: **Exercise** plus the slug — run the scenario and record the first break (path, date, observed result), labeled `` `outcome: <slug>` ``. Citation: the outcome slug + the Acceptance line. This add ranks **first** inside the honesty cap (≤5). Drop a weaker honesty add if needed to keep the cap. Point **Current focus** at it when that stem’s focus is empty or names finished work.
+4. **Break note** (exercise item records the first break) → add follow-ups that cite that break (path, date, what failed), still inside the cap. Do **not** write the rest of the path from a reading of the code. Leave the outcome open.
+5. **Passing note** → set that outcome `[x]` and check the matching operable Acceptance line.
+6. Operable Acceptance is `[x]` and there is **no** passing note → uncheck that Acceptance line. Leave the outcome `[ ]`.
+
+These audit adds and the Acceptance checkbox edit do **not** by themselves make the report `gaps-found`. Report them as **Outcomes open**. `gaps-found` still fires when this run **claimed** the feature, stem, or outcome done while an outcome is `[ ]`.
+
 ## Steps
 
 1. Resolve mode: **honesty+hygiene** (default for orchestrator close-out / *todo warden*) vs **hygiene-only** (*todo cleanup* / parent said so).
@@ -95,8 +112,9 @@ Only **reopen/add** when **at least one** of these is true and you can point to 
    - Reopen: `[ ]` + short note *(warden YYYY-MM-DD: overclaim — …)*
    - Add: short High Priority (or Medium if clearly not blocking) items with citation in the description
    - Refresh **Current focus** when the next honest work changed
-5. **Hygiene (always unless parent said honesty-only):** Scan open sections for remaining `[x]` tasks; **move** them to **Completed** per rules above. Create Completed / archive file if needed. Do **not** edit specs/Understanding (this role: TODO only).
-6. Return a structured report (below). **Stop.**
+5. **Hygiene (always unless parent said honesty-only):** Scan open sections for remaining `[x]` tasks; **move** them to **Completed** per rules above. Create Completed / archive file if needed. Do **not** edit specs/Understanding except the outcome-audit Acceptance checkbox below.
+6. **Outcome audit (if honesty, not hygiene-only):** Run the section above. Uncheck a falsely checked operable Acceptance line. Check an Acceptance line only together with its outcome, and only on a passing exercise note.
+7. Return a structured report (below). **Stop.**
 
 ## Report *(required)*
 
@@ -107,13 +125,14 @@ Mode: honesty+hygiene | hygiene-only | honesty-only
 Reopened (N): - item — citation
 Added (N): - item — citation
 Moved to Completed (N): - stem — count (optional: 1–2 examples)
+Outcomes open (N): - slug — children remain | needs exercise | break cited
 Deferred not written (N): - gap — citation  *(only if over honesty cap or soft)*
 Left alone: short note
 Caps: new≤5 reopened≤10; hygiene moves uncapped
 ```
 
-- **`clean`** — no **honesty** reopens/adds (hygiene moves are fine). Safe for PR ready from a backlog-honesty perspective.
-- **`gaps-found`** — honesty reopens and/or new TODO items written; parent must **not** treat the run as “stem drained / ready to mark PR ready” without handling new open work (leave draft, or re-loop if budget remains — parent decides; this role does not implement). **Hygiene-only moves never force `gaps-found`.**
+- **`clean`** — no **honesty** reopens/adds other than outcome-audit exercise / cited-break items (hygiene moves are fine). Safe for PR ready from a backlog-honesty perspective. **`Outcomes open` does not block ready** and is not stem-drained.
+- **`gaps-found`** — honesty reopens and/or new TODO items written (other than the outcome-audit exercise item and cited-break follow-ups), **or** this run claimed the feature, stem, or outcome done while an Outcomes row is `[ ]`. Parent must **not** treat the run as “stem drained / ready to mark PR ready” without handling new open work (leave draft, or re-loop if budget remains — parent decides; this role does not implement). **Hygiene-only moves never force `gaps-found`.** **`Outcomes open` alone never forces `gaps-found`.**
 
 ## Stop when
 
@@ -122,6 +141,10 @@ Caps: new≤5 reopened≤10; hygiene moves uncapped
 ## Do not
 
 - Write application code, run product refactors, or “fix” gaps in code
+- Check an Outcomes row because its children are `[x]`, or without a passing exercise note (path, date, scenario held)
+- Leave operable Acceptance `[x]` when there is no passing exercise note
+- Write a remaining-path plan from a reading of the code; follow-ups cite a recorded break
+- Treat an empty High/Medium/Low list as stem-drained while an Outcomes row is `[ ]`
 - Exceed honesty hard caps or dual-maintain every Acceptance line as a TODO twin
 - Invent backlog from imagination, HN wishlists, or uncited “best practice”
 - Audit the whole Document Map when the brief named a few stems (unless user asked project-wide cleanup)
@@ -131,5 +154,6 @@ Caps: new≤5 reopened≤10; hygiene moves uncapped
 - Move items you reopened this pass into Completed
 - Commit, push, merge, or spawn subagents
 - Soft-add TODOs “just in case” when the stem is honestly complete for this run’s claims
+- Edit the spec except the one matching operable Acceptance checkbox during outcome audit
 - Fetch vendor API docs or invent unnamed leftover facets (named spec leftovers get covering TODOs; thin wrap-the-API research is at most **one** item and only when this run claimed kit-complete)
 - Create new Document Map rows for leftovers

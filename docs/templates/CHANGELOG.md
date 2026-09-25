@@ -16,11 +16,25 @@
 | `optional-todo-ambition` | Live TODO ambition pass (agent timescale). **`auto` / `auto-all`:** all Document Map `*-TODO.md`. **`choose`:** present + ask once. Do not invent work |
 | `optional-todo-operable` | Live TODO operable dual-track (Workflow §5.3). **`auto` / `auto-all`:** all Document Map `*-TODO.md`. **`choose`:** present + ask once. Add exercise-path rows or **library-only** labels; do not invent unrelated backlog |
 | `optional-todo-kit-coverage` | Live TODO kit-coverage pass (Workflow §5.4). **`auto` / `auto-all`:** all Document Map `*-TODO.md`. **`choose`:** present + ask once. Add covering TODOs for spec-named in-scope leftovers on **existing** stems (**open or Completed** counts — do not resurrect); one research item if the spec is thin. No new map rows; no vendor-doc fetch in sync |
+| `optional-todo-outcomes` | Live TODO outcomes pass (Workflow §5.5). **`auto` / `auto-all`:** all Document Map `*-TODO.md`. **`choose`:** present + ask once. Mirror operable Acceptance into unchecked Outcomes rows; label children; one exercise task when an outcome has no path. Do not check outcomes. Do not mint a task per architecture bullet |
 | `rules` | Refresh installed agent rules/adapters from local pack (**no ask** unless tool has `customized: true`) |
 | `optional-upstream-check` | Stamp `upstream:` in `docs/ADT-settings.yaml` / offer enable update-check if unset |
 | `process-docs-only` | Pack process/help/agent docs only — no live feature/shared content scan |
 
 ---
+
+## 2.9.9
+
+- **Live impact:** `versions-only`, `rules`, `content-templates`, `optional-todo-outcomes`
+- **Summary:** Sticky outcomes. A drained child list is not capability-done. `## Outcomes` stays open until a passing exercise note. Slices do not check operable Acceptance. Sync pass `optional-todo-outcomes` retrofits existing stems.
+- **Changes:**
+  - `VERSION` — 2.9.8 → 2.9.9
+  - `agent/workflow/todos.md` §5.5 — outcome rows, flat `outcome:` labels, exercise task, who may check
+  - `TODO_Template.md` — Outcomes fill-in
+  - `agent/roles/feature-implementer.md`, `work-verifier.md`, `doc-graduate.md`, `todo-warden.md`, `orchestrator.md`, `orchestrator-git.md` — slice cannot close an outcome; warden outcome audit; empty list is not stem-drained
+  - `agent/TEMPLATE_SYNC_B.md` — **`optional-todo-outcomes`** live pass
+  - `DECISIONS.md` D30
+- **Step B:** Bump Master Index **Pack version** to 2.9.9 from local `VERSION`. **`content-templates`:** if a live `*-TODO.md` has no `## Outcomes` heading, add that heading from the template (empty fill-in). Do not check outcomes in that step. **`optional-todo-outcomes`:** present/execute per `sync.mode` — for each Document Map stem, mirror each operable Acceptance line into an unchecked Outcomes row (rewrite a non-scenario line from Overview / Behavior; defer when an observable needs a product decision); label open tasks that clearly serve one outcome; uncheck operable Acceptance that is `[x]` with no passing exercise note; add one exercise task when an outcome has no open child, no exercise task, and no passing note. Do not check outcomes. Do not diff the repo into a task per architecture bullet. Do not reopen Completed items. Named spec leftovers stay on kit-coverage. Under **`choose`:** ask once (default all stems). Under **`auto` / `auto-all`:** all Document Map `*-TODO.md`. **`rules`:** refresh installed modular-rule copies so an Outcomes row stays open until a passing exercise note. No Understanding reshape.
 
 ## 2.9.8
 

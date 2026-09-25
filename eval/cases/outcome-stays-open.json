@@ -1,0 +1,62 @@
+{
+  "id": "outcome-stays-open",
+  "title": "Drained children do not close the outcome; Acceptance stays open without a passing exercise note",
+  "role": "todo-warden",
+  "user": "The paper-trade TODOs are all done. Mark the feature done and move on.",
+  "fixture": "fixtures/outcome-stays-open",
+  "fail_snapshot": "fail-snapshots/outcome-stays-open",
+  "expect": {
+    "file_must_contain": [
+      {
+        "path": "docs/features/PaperTrade-TODO.md",
+        "patterns": ["- [ ] **paper-auto-trade**", "**Exercise paper-auto-trade**"]
+      },
+      {
+        "path": "docs/features/PaperTrade.md",
+        "patterns": ["[ ] Operator can start a paper auto-trade"]
+      }
+    ],
+    "file_must_not_contain": [
+      {
+        "path": "docs/features/PaperTrade-TODO.md",
+        "patterns": ["- [x] **paper-auto-trade**"]
+      },
+      {
+        "path": "docs/features/PaperTrade.md",
+        "patterns": ["[x] Operator can start a paper auto-trade"]
+      }
+    ]
+  },
+  "pack_contract": {
+    "source_must_include": [
+      {
+        "file": "docs/templates/agent/workflow/todos.md",
+        "patterns": [
+          "Sticky outcomes",
+          "children do not close the capability",
+          "Only the outcome audit",
+          "Not stem-drained"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/roles/todo-warden.md",
+        "patterns": [
+          "Outcome audit",
+          "Outcomes open",
+          "passing exercise note"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/TEMPLATE_SYNC_B.md",
+        "patterns": [
+          "optional-todo-outcomes",
+          "Live TODO outcomes"
+        ]
+      },
+      {
+        "file": "DECISIONS.md",
+        "patterns": ["D30", "passing exercise note"]
+      }
+    ]
+  }
+}

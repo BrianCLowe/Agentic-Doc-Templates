@@ -58,6 +58,7 @@ All of:
 | **Shared maturity** | Enough to integrate; else shared TODO first when in scope |
 | **Target arch** | Rewrite High Priority / focus that fights confirmed shape before dispatch ([timescale](../Agent_Timescale_Planning_Rule.mdc)) |
 | **Operable (§5.3)** | User-facing stem with domain-only High Priority and no exercise path / library-only / phase → **add** surface/wire/smoke (**scaffold+wire** if no UI specs) or phase note **once**, then dispatch. Open operable Acceptance with no covering TODO → add work (or phase). Do not report “cleared/Layer done” without path. Library-only `_shared/` exempt; consumers own wire. |
+| **Outcomes (§5.5)** | Do not check an Outcomes row or an operable Acceptance line from a slice. An empty High/Medium/Low list while an Outcomes row is `[ ]` is not stem-drained. Next unit is that outcome’s exercise task (add it when no open child and no passing note). |
 | **Kit coverage (§5.4)** | In-scope spec surface with **no** covering TODO (**open or Completed**) on that stem → **add** the item on the inventory/owning stem, then it is ready work. Do **not** skip it as “not picked up.” Do **not** create a new map row unless splitting per Workflow §0. Terse wrap-the-public-API → expand from the docs; do not interview each facet. |
 
 `draft` Understanding → **do not code** that stem; continue other ready stems. **build-first:** do not invent Understanding to unblock.
@@ -89,7 +90,9 @@ Until **stop condition**:
 
 ## Stop when *(any)*
 
-- In-scope agent items cleared (deferred playtest OK), or no ready agent work left, or budget hit, or second verify fail with no other ready work, or user cancel/skip subagents  
+- In-scope agent items cleared (deferred playtest OK) **and** no Outcomes row still `[ ]`, or no ready agent work left, or budget hit, or second verify fail with no other ready work, or user cancel/skip subagents
+
+An empty High/Medium/Low list while an Outcomes row is `[ ]` is not cleared. If that outcome has no open child and no passing exercise note, the next unit is its exercise task — add it if missing, then continue while budget remains. Do not report the feature or stem done.  
 
 **Do not** stop only for open deferred playtest. Then: **human verify map** → **git end/close-out** ([`orchestrator-git.md`](orchestrator-git.md)). **`milestone-pr`:** if the map dirties docs after the last code merge → one extra docs-only milestone cycle.
 
@@ -103,7 +106,7 @@ Per stem with pass work, owner-TODO bullets when applicable: **surfaces** to ope
 
 ## End-of-run report
 
-Cleared · still open · human verify map · other deferred human · hard-blocked · verify failures · **git** (mode, branches, commits, push, PR URLs, merged/degraded, verify, warden, ready/draft, **current HEAD after return-to-default**) · next (usually walk Human-TODO look-lists).
+Cleared · still open · **outcomes still `[ ]`** · human verify map · other deferred human · hard-blocked · verify failures · **git** (mode, branches, commits, push, PR URLs, merged/degraded, verify, warden, ready/draft, **current HEAD after return-to-default**) · next (usually walk Human-TODO look-lists; if an outcome is open, the exercise task).
 
 ## Do not
 
@@ -112,7 +115,8 @@ Cleared · still open · human verify map · other deferred human · hard-blocke
 - Stop for ordinary playtest — defer unless explicit hard-gate  
 - Skip human verify map when verify-pass work shipped  
 - Skip work-verifier; mark done on verifier fail  
-- Skip todo-warden after a code-shipping run / milestone PR; mark PR ready on warden **gaps-found**  
+- Skip todo-warden after a code-shipping run / milestone PR; mark PR ready on warden **gaps-found**
+- Report stem drained or feature done while an Outcomes row is `[ ]` (Workflow §5.5). **`Outcomes open` on a `clean` warden report does not block ready** — the exercise task is the next unit  
 - Mark human playtest/decide done without user confirm  
 - Push/PR/current-push without mode (or this-run) grant; **merge** PRs except **`milestone-pr`** after that file’s merge gate; bare force-push; silent-default **current-push**  
 - Under **`milestone-pr`:** treat one TODO as one PR; force serial-only implementers **when the host can isolate**; spawn concurrent writers on a **shared** checkout; `git worktree add` / write a worktrees settings key; squash before ready **for Bugbot**; dump the whole overnight run into one PR; skip CI/Bugbot wait; merge on red **or pending** required checks; stack a second PR on an unmerged first PR; checkout default / start the next branch on **degrade**  

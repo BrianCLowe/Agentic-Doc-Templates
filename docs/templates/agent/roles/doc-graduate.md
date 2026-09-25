@@ -17,15 +17,15 @@
 1. `docs/Master_Index.md` Sections 1–3 (as needed for paths)
 2. The confirmed `-Understanding.md`
 3. The matching spec (`.md` without `-Understanding` / `-TODO`)
-4. That stem’s `-TODO.md` (Workflow §5.3 bridge after product Acceptance lands)
+4. That stem’s `-TODO.md` (Workflow §5.3 bridge and §5.5 Outcomes after product Acceptance lands)
 5. Spec template only if the live spec is still a stub
-6. Workflow §2 / §5.3 if graduation or operable-bridge rules are unclear
+6. Workflow §2 / §5.3 / §5.5 if graduation, operable-bridge, or outcome rules are unclear
 
 ## Steps
 
 1. Verify Understanding status is **`confirmed`**. If still `draft` / `reviewed`, **stop** — do not graduate; point at [`understanding-author.md`](understanding-author.md) or ask for explicit confirm.
-2. Populate the spec as **contract home** per Workflow §2 + Spec template (overview, architecture, Behavior, Acceptance, Visual references, Decisions, dependencies, shared Maturity). Synthesize Understanding **plus** conversation / decisions — do not only copy thin Understanding; do not compress to match Understanding’s length. Move any leftover How-it-should-work / Done when / screenshot tables off Understanding into the spec. For user/operator-facing stems, Acceptance includes ≥1 **operable** outcome (Workflow §5.3).
-3. **TODO bridge (Workflow §5.3):** Open that stem’s `-TODO.md`. If Overview/Acceptance are product-shaped and High Priority is only packages/tests with no exercise path → **add** dual-track surface/wire/smoke items (include **scaffold + wire** minimal surface when UI was never specified) **or** a loud phased note (`library foundation first · exercise path: …`) only when domain-before-surface is intentional **or** **library-only** if the stem truly has no operator surface. Do not leave product Acceptance with silent domain-only TODOs. Do not invent “await UI design” for blank canvas. **§5.4:** in-scope spec surfaces with no covering TODO → **add** items on this stem (or the owning stem on the map). Do **not** create new map rows for leftovers.
+2. Populate the spec as **contract home** per Workflow §2 + Spec template (overview, architecture, Behavior, Acceptance, Visual references, Decisions, dependencies, shared Maturity). Synthesize Understanding **plus** conversation / decisions — do not only copy thin Understanding; do not compress to match Understanding’s length. Move any leftover How-it-should-work / Done when / screenshot tables off Understanding into the spec. For user/operator-facing stems, Acceptance includes ≥1 **operable** scenario: who acts, what they do, what is observable (Workflow §5.3). Leave those lines `[ ]`.
+3. **TODO bridge (Workflow §5.3 + §5.5):** Open that stem’s `-TODO.md`. If Overview/Acceptance are product-shaped and High Priority is only packages/tests with no exercise path → **add** dual-track surface/wire/smoke items (include **scaffold + wire** minimal surface when UI was never specified) **or** a loud phased note (`library foundation first · exercise path: …`) only when domain-before-surface is intentional **or** **library-only** if the stem truly has no operator surface. Do not leave product Acceptance with silent domain-only TODOs. Do not invent “await UI design” for blank canvas. **§5.4:** in-scope spec surfaces with no covering TODO → **add** items on this stem (or the owning stem on the map). Do **not** create new map rows for leftovers. **§5.5:** for each operable Acceptance line, add an unchecked `## Outcomes` row with a stable slug (the scenario sentence). Label tasks added in this pass with `` `outcome: <slug>` ``. A **library-only** stem gets the one non-checkbox Outcomes line and no outcome checkboxes. Do not check Outcomes or Acceptance.
 4. Leave shape-only sections on Understanding. Do not delete the Understanding file.
 5. Record lasting tradeoffs in the spec Decisions table, or `docs/decisions/` only if the user asked for a cross-cutting note.
 6. Update Document Map maturity/links only if shared maturity changed.
@@ -35,6 +35,7 @@
 
 - Spec holds a usable durable contract (not a stub that merely restates thin Understanding), and
 - User-facing stems have TODO dual-track, phase bridge, or library-only when Acceptance is operable, and
+- Each operable Acceptance line has a matching unchecked Outcomes row (Workflow §5.5), and
 - No code was written
 
 ## Do not
@@ -43,6 +44,8 @@
 - Copy only Understanding into the spec and stop
 - Thin Architecture / Behavior to “keep docs lean” when confirmed product rules or APIs exist
 - Leave product-shaped Acceptance with domain-only High Priority and no phase / library-only / exercise path (Workflow §5.3)
+- Check an Outcomes row or an operable Acceptance line in this pass (Workflow §5.5)
+- Leave a user-facing stem with operable Acceptance and no `## Outcomes` row
 - Implement features or rewrite High Priority beyond the §5.3 bridge (dual-track / phase / library-only) and an optional one-line “graduated to spec” note
 - Rewrite unrelated features; invent architecture/behavior the user never confirmed
 - Re-draft Understanding unless the user corrected identity during this pass (then set Understanding back to `draft` and stop — do not graduate)

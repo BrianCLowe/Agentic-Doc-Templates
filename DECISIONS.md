@@ -37,6 +37,7 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 | D27 | Docs profile value `ship-first` is renamed `build-first`; sync rewrites the setting | accepted | 2.9.6 |
 | D28 | Slash commands are an opt-in menu for sync and orchestrate only | accepted | 2.9.6 |
 | D29 | Repo behavior that is not a pack playbook is asked as a rule or a skill, not filed in standing | accepted | 2.9.6 |
+| D30 | Drained child tasks are not capability-done; an Outcomes row stays open until a passing exercise note | accepted | 2.9.9 |
 
 ---
 
@@ -224,6 +225,14 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 **Decision:** `standing.instructions` stays ADT playbook overrides only (D6). When the user tells the agent **how to act in this repo** and that guideline does **not** change an ADT playbook, the agent **asks once**: an always-on **rule / instruction**, or a **skill** opened when that kind of work comes up. It does not write standing. It does not create the rule or skill before the answer. Product/UI for one stem stays on spec Decisions. **Sync cleanout (2.9.6):** when that version is in catch-up, remove non-pack behavior from standing and ask once per removed bullet: rule, skill, or dropped. Do not leave it in standing until they answer. Do not silent-create under `auto` or `auto-all`.
 
 **Do not:** File repo working guidelines in standing. Do not silent-create a rule or skill. Do not treat “make a rule” as the only home — always-on is the rule, loaded-when-needed is the skill.
+
+---
+
+## D30 — Sticky outcomes
+
+**Decision:** D11 still requires an exercise path on a user-facing stem. D30 adds the sticky row. Each operable Acceptance line has an unchecked `## Outcomes` row. Child tasks stay flat and carry `outcome: <slug>`. Completing the children does not check the outcome or that Acceptance line. Only the outcome audit may check them, and only when a Completed exercise item cites a path, a date, and an observation that the scenario held. An empty High/Medium/Low list while an outcome is open is not stem-drained. The sync pass `optional-todo-outcomes` retrofits existing stems; it does not invent the remaining path from a code diff.
+
+**Do not:** Nest children under a parent checkbox. Do not let a slice check operable Acceptance. Do not treat warden `clean` plus an open outcome as feature done.
 
 ---
 

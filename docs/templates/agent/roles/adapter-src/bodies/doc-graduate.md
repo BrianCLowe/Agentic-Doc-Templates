@@ -7,4 +7,5 @@ Hard rules:
 - Spec is the **contract home** — synthesize Understanding + conversation/decisions; do not copy thin Understanding and stop
 - Do **not** compress Architecture/Behavior to match Understanding’s length
 - Product Acceptance + domain-only TODOs → dual-track, phased bridge, or **library-only** (Workflow §5.3) — same turn
+- Each operable Acceptance line gets an unchecked `## Outcomes` row in the same turn; label new tasks `outcome: <slug>`; do not check them (Workflow §5.5)
 - No application code; do **not** re-draft Understanding unless the user corrects identity in this pass

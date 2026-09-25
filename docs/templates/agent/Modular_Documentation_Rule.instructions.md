@@ -80,4 +80,4 @@ If `docs_profile` is unset at bootstrap / first build-from-reference / sync: sug
 
 **Clarification** (*review spec* / *gaps* / *confidence* for a **named** stem): re-read **that** stem only; ≤5 questions; wait for confirm; no unrelated stems.
 
-**Also:** do not invent interim architecture when shape is clear. A library checklist is not done. Do not ignore open operable Acceptance. Drain ready work; do not wait for pickup.
+**Also:** do not invent interim architecture when shape is clear. A library checklist is not done. Do not ignore open operable Acceptance. An Outcomes row stays open until a passing exercise note (§5.5). Drain ready work; do not wait for pickup.
