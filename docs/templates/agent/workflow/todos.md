@@ -32,7 +32,7 @@ When a feature depends on shared foundation work, the feature TODO gets a **depe
 - **Exploration vs shipping:** See §5.2.
 - **Session start:** Docs freshness first (Workflow §0.3 — `git status` + worktrees; sibling `docs/` drift → stop). Then read the active TODO's **Current focus** block (§5.1) — then High Priority.
 - While working: Add new items as you discover them (including exercise-path rows when domain work reveals a missing run path — §5.3).
-- After finishing a task: Mark `[x]`, add completion date/note, and **move** the item into **## Completed** (do not leave long `[x]` lists under High/Medium/Low).
+- After finishing a **plotted** task: Mark `[x]`, add completion date/note, and **move** the item into **## Completed** (do not leave long `[x]` lists under High/Medium/Low). **Completed is not a repair log.** Skip a new row for an incidental fix (review patch, Bugbot finding, copy or typo). Git already has that change. If the fix changes what an Outcome means, put one sentence on that Outcome row. Do not add a checkbox.
 - **Session end:** Update **Current focus** for the next session.
 - **Todo warden** ([`roles/todo-warden.md`](../roles/todo-warden.md)): post-loop honesty **and** hygiene — moves parked `[x]` items into Completed when agents forgot. Outcome audit on that same close-out (§5.5).
 

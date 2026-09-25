@@ -38,7 +38,8 @@
           "Not stem-drained",
           "Do **not** add another Exercise",
           "Declining doc-roles does not skip the audit",
-          "Only the outcome audit creates a human-verify playtest"
+          "Only the outcome audit creates a human-verify playtest",
+          "Completed is not a repair log"
         ]
       },
       {
@@ -52,7 +53,8 @@
           "even when open children remain",
           "even when an add-branch already matched",
           "An outcome already `[x]`",
-          "neither Open nor Done"
+          "neither Open nor Done",
+          "Do not add a Completed row for an incidental fix"
         ]
       },
       {
@@ -77,7 +79,8 @@
       {
         "file": "docs/templates/agent/roles/feature-implementer.md",
         "patterns": [
-          "Work-verifier fails a unit that checks"
+          "Work-verifier fails a unit that checks",
+          "Do not add a Completed row for an incidental fix"
         ]
       }
     ]

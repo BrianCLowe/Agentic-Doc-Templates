@@ -61,7 +61,7 @@ Only **reopen/add** when **at least one** of these is true and you can point to 
 
 ## Hygiene — move completed *(layout)*
 
-**Goal:** Open sections (High / Medium / Low / Cross-Feature Dependencies) hold **open work** (`[ ]`) and non-checkbox notes. Finished work lives under **`## Completed`**.
+**Goal:** Open sections (High / Medium / Low / Cross-Feature Dependencies) hold **open work** (`[ ]`) and non-checkbox notes. **`## Completed`** holds plotted work you finished, and the exercise note for an Outcome. **Completed is not a repair log.**
 
 **Eligible to move:**
 
@@ -75,6 +75,7 @@ Only **reopen/add** when **at least one** of these is true and you can point to 
 - Unchecked `[ ]` items
 - Non-task prose under Cross-Feature (dependency notes, design questions without a done checkbox)
 - Items already under **Completed**
+- A new Completed checkbox for an incidental fix that was never an open plotted task (review patch, Bugbot finding, copy or typo). Git already has that change. If this pass added one, delete that row. Do not purge an older Completed history unless the user asked. If the fix changes what an Outcome means, one sentence on that Outcome row, not a new checkbox.
 - Human-gated / Human-TODO items you did **not** verify the user closed — or an allowed `team_inbox` assignee, only when that key is **enabled** (do not invent `[x]` just to archive). Unset `team_inbox` = user confirm only
 
 **After move:**
@@ -169,6 +170,7 @@ Caps: new≤5 reopened≤10; hygiene moves uncapped
 - Dual-write a playtest while the outcome is `[ ]`
 - Invent `Team-Roster.md` bot or human-name rows on a handoff (read only; named humans and bots self-ID — [`workflow/team-roster.md`](../workflow/team-roster.md))
 - Leave true `[x]` tasks parked in High/Medium/Low when running hygiene (that **is** the cleanup job)
+- Do not add a Completed row for an incidental fix (review patch, Bugbot finding, copy or typo)
 - Move items you reopened this pass into Completed
 - Commit, push, merge, or spawn subagents
 - Soft-add TODOs “just in case” when the stem is honestly complete for this run’s claims

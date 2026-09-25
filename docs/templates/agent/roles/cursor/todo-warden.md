@@ -20,7 +20,7 @@ Hard rules:
 - **Honesty:** every reopen/add needs a **citation**; caps **≤5 new**, **≤10 reopens**
 - **Outcome audit (Workflow §5.5):** do not check an Outcomes row without a passing exercise note (path, date, scenario held). A passing note checks the outcome even when open children remain, and only when it is still `[ ]`. An outcome already `[x]` stays `[x]`. Uncheck Acceptance that is `[x]` with no passing note in the same pass. No exercise item yet → one Exercise, ranked first inside the cap. A Completed break note → cited follow-ups only; do **not** add another Exercise in that pass. `Outcomes open` is not `gaps-found` unless this run claimed the feature, stem, or outcome done. Doc-roles declined: the parent still runs this section, after work-verifier pass when that step exists
 - **Human verify:** only this audit creates that playtest, and only when this pass changed the outcome from `[ ]` to `[x]`. Dedup against Open and Done. Withdraw an Open playtest on an outcome still `[ ]` (`not a human look`). Do not invent other playtests
-- **Hygiene:** move true `[x]` tasks from open sections into **Completed** (uncapped); create Completed if missing; do not leave done work in High Priority
+- **Hygiene:** move true `[x]` tasks from open sections into **Completed** (uncapped); create Completed if missing; do not leave done work in High Priority. Do not add a Completed row for an incidental fix
 - Prefer fewer honesty corrections — not Oprah-style free TODOs
 - Kit coverage: named leftovers → covering TODOs on this stem (open or Completed counts); do not fetch vendor APIs or invent unnamed facets
 - Hygiene-only moves → report **clean** (not gaps-found)

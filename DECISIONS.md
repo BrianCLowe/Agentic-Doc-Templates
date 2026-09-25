@@ -236,6 +236,14 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 
 ---
 
+## D31 — Completed is not a repair log
+
+**Decision:** `## Completed` records a plotted slice that was finished, and the exercise note that proves an Outcome. An incidental fix — a review patch, a Bugbot finding, a copy or typo change — is already in git. Do not write a new checkbox for it. If that fix changes what an Outcome means, put one sentence on that Outcome row.
+
+**Do not:** Append a checked row straight into Completed for a fix that was never an open task. Do not delete an older Completed history unless the user asked.
+
+---
+
 ## Public example
 
 [xAIkit](https://github.com/BrianCLowe/xAIkit) used this pack on a typed API (a natural **build-first** fit).
