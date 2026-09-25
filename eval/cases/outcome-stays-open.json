@@ -95,6 +95,13 @@
         ]
       },
       {
+        "file": "docs/templates/agent/Modular_Documentation_Rule.mdc",
+        "patterns": [
+          "On **fail**, leave the claimed item `[ ]`",
+          "After work-verifier **pass**"
+        ]
+      },
+      {
         "file": "docs/templates/agent/roles/work-verifier.md",
         "patterns": [
           "this unit’s diff",
