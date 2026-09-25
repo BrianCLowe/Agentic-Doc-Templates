@@ -24,6 +24,7 @@
 4. Each stem’s `-Understanding.md` **if it exists** (is / is not) — read-only; skip when hygiene-only
 5. Code / tree **only as needed** to confirm overclaim or a cited gap (grep/read of paths implied by the stem or this run’s files) — **not** a whole-repo audit; skip when hygiene-only
 6. `docs/Master_Index.md` Sections 1–3 **only** if checking product-surface identity for operable/library-only (skim)
+7. `docs/Human-TODO.md` when running the outcome audit (human look). Create it from the template only if this pass checks an outcome and the file is missing
 
 **Do not** open unrelated stems, the pack catalog, or invent “while you’re in the area” features.
 
@@ -48,8 +49,8 @@ If more real **honesty** gaps remain after the cap → list them under **Deferre
 Only **reopen/add** when **at least one** of these is true and you can point to the evidence:
 
 1. **Overclaim** — TODO item is `[x]` but code/docs clearly do not implement it (name the item + what’s missing).
-2. **Operable Acceptance open** — user-facing stem has open **operable** Acceptance (or “feature done / Layer done” claim this run made) with **no** open TODO that addresses those lines (Workflow §5.3).
-3. **Missing exercise path** — user/operator-facing stem, not **library-only** / no phased bridge, High Priority empty or domain-only, no exercise path row (Workflow §5.3).
+2. **Operable Acceptance open** — do **not** add a separate honesty TODO for this. The outcome audit adds the one Exercise row and reports **Outcomes open** (not `gaps-found`). A claim this run that the feature, stem, or outcome is done while that outcome is `[ ]` still sets `gaps-found` (no extra TODO required for that).
+3. **Missing exercise path** — same handoff. The outcome audit owns that single Exercise row. Do **not** add a second exercise-path item that forces `gaps-found`.
 4. **Shape fight** — shipped work fights Understanding is / is not when Understanding exists (reopen or add a **targeted** fix TODO — not a redesign epic).
 5. **Master Index / Overview product claim** this stem owns, with **zero** covering open work and code clearly unfinished for that claim (cite the sentence).
 6. **Kit coverage hole (Workflow §5.4)** — covering = open **or Completed** `[x]` on **this** stem’s TODO (do not resurrect shipped methods; do not open other stems).
@@ -92,16 +93,25 @@ Skip when **hygiene-only**. Otherwise, after honesty edits, for each in-scope st
 
 A **passing exercise note** is a **Completed** item for that slug whose text cites a path, a date, and an observation that the scenario **held**. A note that records the first break is not passing.
 
-For each outcome still `[ ]`:
+First match wins for each outcome still `[ ]`:
 
-1. **Open children** with that `` `outcome:` `` label remain → leave the outcome open. Do **not** add follow-ups.
+1. **Open non-exercise children** with that `` `outcome:` `` label remain → leave the outcome open. Do **not** add an Exercise or follow-ups.
 2. **Phased** and domain children for that phase are still open → leave the outcome open. Do **not** add the exercise task yet.
-3. **No open children, no passing note, no open exercise task** → add one High item: **Exercise** plus the slug — run the scenario and record the first break (path, date, observed result), labeled `` `outcome: <slug>` ``. Citation: the outcome slug + the Acceptance line. This add ranks **first** inside the honesty cap (≤5). Drop a weaker honesty add if needed to keep the cap. Point **Current focus** at it when that stem’s focus is empty or names finished work.
-4. **Break note** (exercise item records the first break) → add follow-ups that cite that break (path, date, what failed), still inside the cap. Do **not** write the rest of the path from a reading of the code. Leave the outcome open.
-5. **Passing note** → set that outcome `[x]` and check the matching operable Acceptance line.
-6. Operable Acceptance is `[x]` and there is **no** passing note → uncheck that Acceptance line. Leave the outcome `[ ]`.
+3. **Passing note** → set that outcome `[x]` and check the matching operable Acceptance line. Then the **human look** below.
+4. **Exercise item still open** → leave it. Do **not** add a second Exercise.
+5. **Latest exercise is a Completed break note** and no open or Completed task cites that break → add follow-ups that cite the break (path, date, what failed), still inside the cap. Do **not** add another Exercise. Do **not** write the rest of the path from a reading of the code. Leave the outcome open.
+6. **Latest exercise is a Completed break note** and every task that cites that break is Completed → add **one** new Exercise to re-run. Do not repeat the old follow-ups. This add ranks **first** inside the honesty cap (≤5).
+7. **No exercise item** (none open, none Completed) and no passing note → add one High item: **Exercise** plus the slug — run the scenario and record the first break (path, date, observed result), labeled `` `outcome: <slug>` ``. Citation: the outcome slug + the Acceptance line. This add ranks **first** inside the honesty cap. Drop a weaker honesty add if needed to keep the cap. Point **Current focus** at it when that stem’s focus is empty or names finished work.
+8. Operable Acceptance is `[x]` and there is **no** passing note → uncheck that Acceptance line. Leave the outcome `[ ]`.
 
-These audit adds and the Acceptance checkbox edit do **not** by themselves make the report `gaps-found`. Report them as **Outcomes open**. `gaps-found` still fires when this run **claimed** the feature, stem, or outcome done while an outcome is `[ ]`.
+A Completed break note is not “no exercise item.” Do **not** add another Exercise in the same pass as the cited follow-ups.
+
+**Human look** (same pass, in-scope stems only). This role is the **only** creator of a human-verify playtest. Open `docs/Human-TODO.md` (create from the template if the audit checks an outcome and the file is missing).
+
+- **Worth a look:** the audit just checked an outcome (passing note) and Open has no `playtest` for that stem + slug → add one thin Open row: kind `playtest`, the scenario sentence, Owner link, outcome slug, exercise date. Dedup.
+- **Not a human look:** an Open `playtest` names that stem (or its outcome slug) while that outcome is still `[ ]` → move the row to Done as `- [x]` with `(warden YYYY-MM-DD: withdrawn — outcome still open; not a human look)`. The human did not check it. Do this for a generic orchestration look-list on that stem when any of its outcomes are still `[ ]`. Leave `procure` / `decide` / `waiting` alone. Leave a playtest that names a slug already `[x]`.
+
+These audit adds, the Acceptance checkbox edit, and the human-look edit do **not** by themselves make the report `gaps-found`. Report them as **Outcomes open** and **Human looks**. `gaps-found` still fires when this run **claimed** the feature, stem, or outcome done while an outcome is `[ ]`, or when a non-audit honesty add/reopen was written. Open operable Acceptance and a missing exercise path are the audit’s Exercise row, not a separate honesty add.
 
 ## Steps
 
@@ -113,7 +123,7 @@ These audit adds and the Acceptance checkbox edit do **not** by themselves make 
    - Add: short High Priority (or Medium if clearly not blocking) items with citation in the description
    - Refresh **Current focus** when the next honest work changed
 5. **Hygiene (always unless parent said honesty-only):** Scan open sections for remaining `[x]` tasks; **move** them to **Completed** per rules above. Create Completed / archive file if needed. Do **not** edit specs/Understanding except the outcome-audit Acceptance checkbox below.
-6. **Outcome audit (if honesty, not hygiene-only):** Run the section above. Uncheck a falsely checked operable Acceptance line. Check an Acceptance line only together with its outcome, and only on a passing exercise note.
+6. **Outcome audit (if honesty, not hygiene-only):** Run the section above, including the human look. Uncheck a falsely checked operable Acceptance line. Check an Acceptance line only together with its outcome, and only on a passing exercise note. Do **not** add a second Exercise when a break note already exists.
 7. Return a structured report (below). **Stop.**
 
 ## Report *(required)*
@@ -125,7 +135,8 @@ Mode: honesty+hygiene | hygiene-only | honesty-only
 Reopened (N): - item — citation
 Added (N): - item — citation
 Moved to Completed (N): - stem — count (optional: 1–2 examples)
-Outcomes open (N): - slug — children remain | needs exercise | break cited
+Outcomes open (N): - slug — children remain | needs exercise | break cited | re-run after follow-ups
+Human looks (N): - slug — playtest added | withdrawn premature
 Deferred not written (N): - gap — citation  *(only if over honesty cap or soft)*
 Left alone: short note
 Caps: new≤5 reopened≤10; hygiene moves uncapped
@@ -148,7 +159,9 @@ Caps: new≤5 reopened≤10; hygiene moves uncapped
 - Exceed honesty hard caps or dual-maintain every Acceptance line as a TODO twin
 - Invent backlog from imagination, HN wishlists, or uncited “best practice”
 - Audit the whole Document Map when the brief named a few stems (unless user asked project-wide cleanup)
-- Mark Human-TODO / human-gated items done without a confirm report (user, or an allowed assignee bot when `team_inbox.enabled`); invent Human-TODO spam for design-by-default
+- Mark Human-TODO / human-gated items done without a confirm report (user, or an allowed assignee bot when `team_inbox.enabled`); invent Human-TODO spam for design-by-default. The human-look withdraw is not a confirm — it records **not a human look**. The one playtest after a passing note is required, not spam
+- Add another Exercise in the same pass as a break note’s cited follow-ups
+- Dual-write a playtest while the outcome is `[ ]`
 - Invent `Team-Roster.md` bot or human-name rows on a handoff (read only; named humans and bots self-ID — [`workflow/team-roster.md`](../workflow/team-roster.md))
 - Leave true `[x]` tasks parked in High/Medium/Low when running hygiene (that **is** the cleanup job)
 - Move items you reopened this pass into Completed

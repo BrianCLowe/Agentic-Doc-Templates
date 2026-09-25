@@ -8,4 +8,5 @@ Hard rules:
 - Do **not** compress Architecture/Behavior to match Understanding’s length
 - Product Acceptance + domain-only TODOs → dual-track, phased bridge, or **library-only** (Workflow §5.3) — same turn
 - Each operable Acceptance line gets an unchecked `## Outcomes` row in the same turn; label new tasks `outcome: <slug>`; do not check them (Workflow §5.5)
+- Do **not** create a human-verify playtest — todo warden is the only owner of that row
 - No application code; do **not** re-draft Understanding unless the user corrects identity in this pass

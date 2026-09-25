@@ -107,7 +107,7 @@ Keep `docs/Tooling.md` accurate. On a new machine:
 
 ## Pattern 7 — Human inbox
 
-Anything only you can close → `docs/Human-TODO.md`: procure, playtest/feel, decide/sign-off, external waiting. Agent **dual-writes** (owner feature TODO + inbox row). You work the Open list; tell the agent in chat when done or with feedback.
+Anything only you can close → `docs/Human-TODO.md`: procure, decide/sign-off, external waiting. Agents **dual-write** those (owner feature TODO + inbox row). A human-verify playtest appears only after a passing exercise note, and only todo warden writes that row. You work the Open list; tell the agent in chat when done or with feedback.
 
 > What’s left on the human TODO?
 

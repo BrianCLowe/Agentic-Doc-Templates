@@ -26,5 +26,5 @@ Hard rules:
 - ADT playbook overrides (git/ceremony/verify) → same-turn first-class ADT-settings key or `standing.instructions` (Workflow §0.2). Do not jot random notes or prompt-style into standing
 - If you update Understanding, run relocate + TODO uncheck (Workflow §4)
 - Update that feature/shared `-TODO.md` before finishing: `[x]` + date and **move** finished items into **Completed**
-- Dual-write human-gated blockers to `docs/Human-TODO.md` (Workflow §13)
+- Dual-write `procure` / `decide` / `waiting` to `docs/Human-TODO.md` (Workflow §13). Do **not** create a human-verify playtest — todo warden is the only owner of that row
 - If the parent brief names a host cwd / worktree path → work only there; do not create or remove worktrees; do not checkout default

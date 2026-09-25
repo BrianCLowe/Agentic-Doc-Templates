@@ -230,9 +230,9 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 
 ## D30 — Sticky outcomes
 
-**Decision:** D11 still requires an exercise path on a user-facing stem. D30 adds the sticky row. Each operable Acceptance line has an unchecked `## Outcomes` row. Child tasks stay flat and carry `outcome: <slug>`. Completing the children does not check the outcome or that Acceptance line. Only the outcome audit may check them, and only when a Completed exercise item cites a path, a date, and an observation that the scenario held. An empty High/Medium/Low list while an outcome is open is not stem-drained. The sync pass `optional-todo-outcomes` retrofits existing stems; it does not invent the remaining path from a code diff.
+**Decision:** D11 still requires an exercise path on a user-facing stem. D30 adds the sticky row. Each operable Acceptance line has an unchecked `## Outcomes` row. Child tasks stay flat and carry `outcome: <slug>`. Completing the children does not check the outcome or that Acceptance line. Only the outcome audit may check them, and only when a Completed exercise item cites a path, a date, and an observation that the scenario held. A Completed break note does not spawn a second Exercise in that same pass; it spawns cited follow-ups. An empty High/Medium/Low list while an outcome is open is not stem-drained. The sync pass `optional-todo-outcomes` retrofits existing stems; it does not invent the remaining path from a code diff. Todo warden is the only role that creates a human-verify playtest, and only after that passing note.
 
-**Do not:** Nest children under a parent checkbox. Do not let a slice check operable Acceptance. Do not treat warden `clean` plus an open outcome as feature done.
+**Do not:** Nest children under a parent checkbox. Do not let a slice check operable Acceptance. Do not treat warden `clean` plus an open outcome as feature done. Do not let the orchestrator or implementer write a human-verify playtest. Do not ask the human to look at an outcome that is still open.
 
 ---
 

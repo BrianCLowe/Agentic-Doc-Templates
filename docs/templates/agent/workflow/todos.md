@@ -112,13 +112,17 @@ When product shape is still unknown, a short **spike** (branch, throwaway protot
 
 **Who may check.** Only the outcome audit ([`roles/todo-warden.md`](../roles/todo-warden.md)). It may set the outcome `[x]` and check the matching Acceptance line only when a **Completed** exercise item for that slug cites a path, a date, and an observation that the scenario **held**. A note that records the first break leaves both open.
 
-**Exercise task.** When an outcome has no open child with its label, no open exercise task, and no passing note, add one High item and point Current focus at it:
+**Exercise task.** Add one High item, and point Current focus at it, only when this outcome has **no exercise item yet** (none open, none Completed) and no passing note, and it is not waiting on open children or an intentional phase:
 
 ```markdown
 - [ ] **Exercise paper-auto-trade** — Run the scenario and record the first break (path, date, observed result). `outcome: paper-auto-trade`
 ```
 
-Do not write the rest of the path from a reading of the code. If the run breaks, later tasks cite that break.
+A Completed exercise that records a first break is not a passing note and is not “no exercise item.” Do **not** add another Exercise in that pass. Add follow-ups that cite the break. After those follow-ups are Completed, the next unit is **one** new Exercise to re-run, not a copy of the old follow-ups.
+
+Do not write the rest of the path from a reading of the code.
+
+**Human look.** Todo warden is the **only** role that creates a human-verify playtest ([`human-todo.md`](human-todo.md) §13). It does that only after a passing exercise note, one thin Open row for that slug. The orchestrator, implementer, graduate, and sync do **not** write that row. While the outcome is `[ ]`, do not ask the human to look. An answer of “it doesn’t work” only restates agent work that should already be a TODO. Warden withdraws an Open playtest that asks for a look at an outcome still `[ ]` (move to Done with a warden note; the human did not check it). Leave `procure` / `decide` / `waiting` alone.
 
 **Passing note** (on the exercise item, then move it to Completed):
 
@@ -134,8 +138,8 @@ Do not write the rest of the path from a reading of the code. If the run breaks,
 
 **New work.** A new task on a stem that has outcome rows names one existing outcome. A new operable scenario adds the Acceptance line and the unchecked Outcomes row in the same turn. Implementers do not check either.
 
-**Not stem-drained.** An empty High / Medium / Low list while any Outcomes row is `[ ]` is not feature done. The next unit is the exercise task. Milestone PRs of honest child work may still merge. Claiming feature / stem / outcome done while an outcome is open is a gap.
+**Not stem-drained.** An empty High / Medium / Low list while any Outcomes row is `[ ]` is not feature done. The next unit is the exercise task when none exists, or the cited-break follow-up when the latest exercise recorded a break. Milestone PRs of honest child work may still merge. Claiming feature / stem / outcome done while an outcome is open is a gap.
 
-**Do not:** nest children under a parent checkbox; check an outcome because its children are `[x]`; check operable Acceptance from a slice; mint a task per architecture bullet to map the remaining path without a cited break; reopen Completed items just to relabel them.
+**Do not:** nest children under a parent checkbox; check an outcome because its children are `[x]`; check operable Acceptance from a slice; add another Exercise because a break note is not a passing note; mint a task per architecture bullet to map the remaining path without a cited break; reopen Completed items just to relabel them; ask the human to look at an outcome that is still `[ ]`.
 
 ---

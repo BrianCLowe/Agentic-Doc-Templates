@@ -89,7 +89,7 @@ Move finished items here (as `- [x]`) so **Open** stays short.
 | Kind | Means | Examples |
 |------|--------|----------|
 | `procure` | Account, key, portal, purchase, org approval | Azure Bot, API key, App Store listing |
-| `playtest` | Human must run / feel / smoke-test | Score target timing; **post-orchestration look-list** (open these surfaces; question placement/copy; report adjustments) |
+| `playtest` | Human must run / feel / smoke-test | Score target timing. A human-verify row is added only by todo warden after a passing exercise — not a look at unfinished work |
 | `decide` | Human judgment or sign-off | Theme pick, piece colors, “ship this default” |
 | `waiting` | Blocked on someone/something outside the repo | Steam Partner App ID, vendor reply |
 

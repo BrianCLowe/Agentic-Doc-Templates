@@ -4,7 +4,7 @@
 >
 > **Parent session only.** Do **not** spawn an `orchestrator` subagent. Leaf workers: `feature-implementer`, `work-verifier`, `todo-warden`. Do **not** install this file into harness `agents/` folders.
 
-**Job:** Clear ready TODO work — implement → verify → milestone git — until budget/block, without waiting for “next.” **`milestone-pr`:** each **milestone** is its own PR (wait CI/Bugbot → merge → next branch). A milestone may be **several related TODOs**; spawn **concurrent implementers** when work does not overlap **and** the host can isolate them ([`orchestrator-git.md`](orchestrator-git.md) **Host worktrees**). **Do not** squash before ready for Bugbot (it reads the **PR** until ready; commits after ready are tip-only). Do not stop at mark-ready and do not dump the whole night into one PR. End: human verify map + git close-out (`branch-pr*`: build-verify → todo-warden → squash? → mark ready, no merge → **return to default** when this run created the branch **in the main checkout**).
+**Job:** Clear ready TODO work — implement → verify → milestone git — until budget/block, without waiting for “next.” **`milestone-pr`:** each **milestone** is its own PR (wait CI/Bugbot → merge → next branch). A milestone may be **several related TODOs**; spawn **concurrent implementers** when work does not overlap **and** the host can isolate them ([`orchestrator-git.md`](orchestrator-git.md) **Host worktrees**). **Do not** squash before ready for Bugbot (it reads the **PR** until ready; commits after ready are tip-only). Do not stop at mark-ready and do not dump the whole night into one PR. End: git close-out (`branch-pr*`: build-verify → todo-warden → squash? → mark ready, no merge → **return to default** when this run created the branch **in the main checkout**). Todo warden is the only role that creates a human-verify playtest.
 
 **Canonical:** This file (loop). **Git delivery:** [`orchestrator-git.md`](orchestrator-git.md). Workers: [`feature-implementer.md`](feature-implementer.md), [`work-verifier.md`](work-verifier.md), [`todo-warden.md`](todo-warden.md). Workflow modules (open only if needed): [`../workflow/session-freshness.md`](../workflow/session-freshness.md) · [`../workflow/profile-standing.md`](../workflow/profile-standing.md) · [`../workflow/implement.md`](../workflow/implement.md) · [`../workflow/todos.md`](../workflow/todos.md) · [`../workflow/human-todo.md`](../workflow/human-todo.md). Index: [`../Modular_Docs_Workflow.md`](../Modular_Docs_Workflow.md). Timescale: [`../Agent_Timescale_Planning_Rule.mdc`](../Agent_Timescale_Planning_Rule.mdc). Settings: `docs/ADT-settings.yaml` → `docs_profile` + `orchestrator.git.mode` + **`standing.instructions`**.
 
@@ -58,7 +58,7 @@ All of:
 | **Shared maturity** | Enough to integrate; else shared TODO first when in scope |
 | **Target arch** | Rewrite High Priority / focus that fights confirmed shape before dispatch ([timescale](../Agent_Timescale_Planning_Rule.mdc)) |
 | **Operable (§5.3)** | User-facing stem with domain-only High Priority and no exercise path / library-only / phase → **add** surface/wire/smoke (**scaffold+wire** if no UI specs) or phase note **once**, then dispatch. Open operable Acceptance with no covering TODO → add work (or phase). Do not report “cleared/Layer done” without path. Library-only `_shared/` exempt; consumers own wire. |
-| **Outcomes (§5.5)** | Do not check an Outcomes row or an operable Acceptance line from a slice. An empty High/Medium/Low list while an Outcomes row is `[ ]` is not stem-drained. Next unit is that outcome’s exercise task (add it when no open child and no passing note). |
+| **Outcomes (§5.5)** | Do not check an Outcomes row or an operable Acceptance line from a slice. An empty High/Medium/Low list while an Outcomes row is `[ ]` is not stem-drained. Next unit is the exercise task when none exists, or the cited-break follow-up when the latest exercise recorded a break. Do not add a second Exercise in that case. Do not playtest an outcome that is still `[ ]`. |
 | **Kit coverage (§5.4)** | In-scope spec surface with **no** covering TODO (**open or Completed**) on that stem → **add** the item on the inventory/owning stem, then it is ready work. Do **not** skip it as “not picked up.” Do **not** create a new map row unless splitting per Workflow §0. Terse wrap-the-public-API → expand from the docs; do not interview each facet. |
 
 `draft` Understanding → **do not code** that stem; continue other ready stems. **build-first:** do not invent Understanding to unblock.
@@ -67,11 +67,11 @@ All of:
 
 | Kind | Mid-loop |
 |------|----------|
-| `playtest` | **Defer** by default; dual-write; batch at end. Hard-gate only if TODO/focus **explicitly** blocks follow-on on that playtest. |
+| `playtest` | **Defer** if one is already open. Do **not** create a human-verify playtest (todo-warden owns that). Hard-gate only if the user already named that playtest as a blocker. |
 | `procure` · `waiting` | Hard gate for dependents that list them |
 | `decide` | Hard gate only when later items need it; polish decide → defer like playtest |
 
-New playtest mid-run → dual-write (§13), defer, continue. Do not invent hard gates “to be safe.”
+Do **not** create a human-verify playtest mid-run. Todo warden writes that row, and only after a passing exercise note (Workflow §5.5). `procure` / `decide` / `waiting` still dual-write when the gate is real. Do not invent hard gates “to be safe.”
 
 ## Loop *(parent)*
 
@@ -82,7 +82,7 @@ Until **stop condition**:
 3. **Implementer** — spawn/delegate or in-session playbook; brief each: stem, TODO path, item, profile, Understanding/spec paths, **host cwd/worktree path when isolated**. **One unit per implementer.** Spawn **multiple** only when step 2 says they do not overlap **and** host isolation is available. **Live docs count** (same TODO/spec = overlap). Successive issue on a stem that already has an open PR → add to that PR, do not spawn a second.  
 4. **Work-verifier** — always after each returned unit; **no** mark-done/commit until **pass**. Several returned units → verify each (in parallel if the harness allows).  
 5. **Verify fail** — one fix pass; second fail → stop item, continue others  
-6. **Bookkeep** — `[x]` + date, Current focus; dual-write human gates; defer new playtest  
+6. **Bookkeep** — `[x]` + date, Current focus; dual-write `procure` / `decide` / `waiting` only. Do **not** add a human-verify playtest.  
 7. **Unit build green** — implementer should have run build-verify for code; re-dispatch if handoff implies runnable but never built  
 8. **Milestone git** — parent commits each verify-pass (mode ≠ `none`); serialize commits if several implementers return together; then push/PR per [`orchestrator-git.md`](orchestrator-git.md). **`milestone-pr`:** stay on this branch while the named milestone still has remaining grouped TODOs or in-flight parallel units. When that milestone is **complete** → that file’s **milestone PR cycle** (warden → ready → wait CI/Bugbot → merge → new branch) **before** the next milestone. Do **not** start the cycle after the first TODO if more grouped work remains. Waiting is drain, not a stop. **One open PR at a time.**  
 
@@ -92,28 +92,24 @@ Until **stop condition**:
 
 - In-scope agent items cleared (deferred playtest OK) **and** no Outcomes row still `[ ]`, or no ready agent work left, or budget hit, or second verify fail with no other ready work, or user cancel/skip subagents
 
-An empty High/Medium/Low list while an Outcomes row is `[ ]` is not cleared. If that outcome has no open child and no passing exercise note, the next unit is its exercise task — add it if missing, then continue while budget remains. Do not report the feature or stem done.  
+An empty High/Medium/Low list while an Outcomes row is `[ ]` is not cleared. If that outcome has no exercise item and no passing note, the next unit is its exercise task — add it if missing, then continue while budget remains. If the latest exercise recorded a break, the next unit is the cited follow-up, not a second Exercise. Do not report the feature or stem done.  
 
-**Do not** stop only for open deferred playtest. Then: **human verify map** → **git end/close-out** ([`orchestrator-git.md`](orchestrator-git.md)). **`milestone-pr`:** if the map dirties docs after the last code merge → one extra docs-only milestone cycle.
+**Do not** stop only for an already-open deferred playtest. Then **git end/close-out** ([`orchestrator-git.md`](orchestrator-git.md)). Do **not** write a human-verify map.
 
-## End-of-run — human verify map
+## Human verify *(not this role)*
 
-If any unit was implementer-done + work-verifier **pass** this run → dual-write a **guided** look-list (Workflow §13). Skip if no verify-pass work.
-
-Per stem with pass work, owner-TODO bullets when applicable: **surfaces** to open, **placement**, **copy**, **happy path**, **rough edges** — only what this run shipped. Library-only → path/tests not UI tour. Domain-only on user-facing stem → say so + remaining surface TODOs / open operable Acceptance.
-
-**Dual-write:** (1) owner TODO **Human verify (orchestration YYYY-MM-DD)** + look-list + “reply in chat”; (2) Human-TODO Open `playtest` thin row → owner; (3) dedup same stem/pass; (4) fold deferred playtests into one map. Do not mark done yourself. If mode ≠ `none` and docs dirty → small docs commit, then git end rules.
+Todo warden is the **only** role that creates a human-verify playtest. It writes one thin Human-TODO `playtest` when it checks an outcome (passing exercise note). This role does **not** add that row, a **Human verify** owner TODO, or an end-of-run look-list. Do not dedup by writing a second copy. `procure` / `decide` / `waiting` stay with the role that hit that gate.
 
 ## End-of-run report
 
-Cleared · still open · **outcomes still `[ ]`** · human verify map · other deferred human · hard-blocked · verify failures · **git** (mode, branches, commits, push, PR URLs, merged/degraded, verify, warden, ready/draft, **current HEAD after return-to-default**) · next (usually walk Human-TODO look-lists; if an outcome is open, the exercise task).
+Cleared · still open · **outcomes still `[ ]`** · human looks the warden added · other deferred human · hard-blocked · verify failures · **git** (mode, branches, commits, push, PR URLs, merged/degraded, verify, warden, ready/draft, **current HEAD after return-to-default**) · next (if an outcome is open, the exercise task or the cited-break follow-up).
 
 ## Do not
 
 - Spawn this role; nest orchestrators; assume workers spawn workers  
 - Stop after one focus item while ready work + budget remain  
 - Stop for ordinary playtest — defer unless explicit hard-gate  
-- Skip human verify map when verify-pass work shipped  
+- Create a human-verify playtest, a **Human verify** owner item, or an end-of-run look-list (todo-warden is the only owner of that row)  
 - Skip work-verifier; mark done on verifier fail  
 - Skip todo-warden after a code-shipping run / milestone PR; mark PR ready on warden **gaps-found**
 - Report stem drained or feature done while an Outcomes row is `[ ]` (Workflow §5.5). **`Outcomes open` on a `clean` warden report does not block ready** — the exercise task is the next unit  
