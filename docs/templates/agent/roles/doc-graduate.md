@@ -45,7 +45,7 @@
 - Thin Architecture / Behavior to “keep docs lean” when confirmed product rules or APIs exist
 - Leave product-shaped Acceptance with domain-only High Priority and no phase / library-only / exercise path (Workflow §5.3)
 - Check an Outcomes row or an operable Acceptance line in this pass (Workflow §5.5)
-- Create a human-verify playtest (todo warden is the only owner of that row)
+- Create a human-verify playtest (the outcome audit is the only creator of that row)
 - Leave a user-facing stem with operable Acceptance and no `## Outcomes` row
 - Implement features or rewrite High Priority beyond the §5.3 bridge (dual-track / phase / library-only) and an optional one-line “graduated to spec” note
 - Rewrite unrelated features; invent architecture/behavior the user never confirmed

@@ -4,7 +4,7 @@
 >
 > **Parent session only.** Do **not** spawn an `orchestrator` subagent. Leaf workers: `feature-implementer`, `work-verifier`, `todo-warden`. Do **not** install this file into harness `agents/` folders.
 
-**Job:** Clear ready TODO work — implement → verify → milestone git — until budget/block, without waiting for “next.” **`milestone-pr`:** each **milestone** is its own PR (wait CI/Bugbot → merge → next branch). A milestone may be **several related TODOs**; spawn **concurrent implementers** when work does not overlap **and** the host can isolate them ([`orchestrator-git.md`](orchestrator-git.md) **Host worktrees**). **Do not** squash before ready for Bugbot (it reads the **PR** until ready; commits after ready are tip-only). Do not stop at mark-ready and do not dump the whole night into one PR. End: git close-out (`branch-pr*`: build-verify → todo-warden → squash? → mark ready, no merge → **return to default** when this run created the branch **in the main checkout**). Todo warden is the only role that creates a human-verify playtest.
+**Job:** Clear ready TODO work — implement → verify → milestone git — until budget/block, without waiting for “next.” **`milestone-pr`:** each **milestone** is its own PR (wait CI/Bugbot → merge → next branch). A milestone may be **several related TODOs**; spawn **concurrent implementers** when work does not overlap **and** the host can isolate them ([`orchestrator-git.md`](orchestrator-git.md) **Host worktrees**). **Do not** squash before ready for Bugbot (it reads the **PR** until ready; commits after ready are tip-only). Do not stop at mark-ready and do not dump the whole night into one PR. End: git close-out (`branch-pr*`: build-verify → todo-warden → squash? → mark ready, no merge → **return to default** when this run created the branch **in the main checkout**). Declining doc-roles does not skip the outcome audit: follow `todo-warden.md` in this session when that adapter is missing.
 
 **Canonical:** This file (loop). **Git delivery:** [`orchestrator-git.md`](orchestrator-git.md). Workers: [`feature-implementer.md`](feature-implementer.md), [`work-verifier.md`](work-verifier.md), [`todo-warden.md`](todo-warden.md). Workflow modules (open only if needed): [`../workflow/session-freshness.md`](../workflow/session-freshness.md) · [`../workflow/profile-standing.md`](../workflow/profile-standing.md) · [`../workflow/implement.md`](../workflow/implement.md) · [`../workflow/todos.md`](../workflow/todos.md) · [`../workflow/human-todo.md`](../workflow/human-todo.md). Index: [`../Modular_Docs_Workflow.md`](../Modular_Docs_Workflow.md). Timescale: [`../Agent_Timescale_Planning_Rule.mdc`](../Agent_Timescale_Planning_Rule.mdc). Settings: `docs/ADT-settings.yaml` → `docs_profile` + `orchestrator.git.mode` + **`standing.instructions`**.
 
@@ -67,11 +67,11 @@ All of:
 
 | Kind | Mid-loop |
 |------|----------|
-| `playtest` | **Defer** if one is already open. Do **not** create a human-verify playtest (todo-warden owns that). Hard-gate only if the user already named that playtest as a blocker. |
+| `playtest` | **Defer** if one is already open. Do **not** create a human-verify playtest here (the outcome audit owns that). Hard-gate only if the user already named that playtest as a blocker. |
 | `procure` · `waiting` | Hard gate for dependents that list them |
 | `decide` | Hard gate only when later items need it; polish decide → defer like playtest |
 
-Do **not** create a human-verify playtest mid-run. Todo warden writes that row, and only after a passing exercise note (Workflow §5.5). `procure` / `decide` / `waiting` still dual-write when the gate is real. Do not invent hard gates “to be safe.”
+Do **not** create a human-verify playtest mid-run. The outcome audit writes that row, and only after a passing exercise note (Workflow §5.5). `procure` / `decide` / `waiting` still dual-write when the gate is real. Do not invent hard gates “to be safe.”
 
 ## Loop *(parent)*
 
@@ -98,7 +98,7 @@ An empty High/Medium/Low list while an Outcomes row is `[ ]` is not cleared. If 
 
 ## Human verify *(not this role)*
 
-Todo warden is the **only** role that creates a human-verify playtest. It writes one thin Human-TODO `playtest` when it checks an outcome (passing exercise note). This role does **not** add that row, a **Human verify** owner TODO, or an end-of-run look-list. Do not dedup by writing a second copy. `procure` / `decide` / `waiting` stay with the role that hit that gate.
+The outcome audit is the only creator of a human-verify playtest. It writes one thin Human-TODO `playtest` when it checks an outcome (passing exercise note). Spawn `todo-warden` when that adapter is installed; otherwise follow [`todo-warden.md`](todo-warden.md) in this session. This role does **not** add that row, a **Human verify** owner TODO, or an end-of-run look-list. Do not dedup by writing a second copy. `procure` / `decide` / `waiting` stay with the role that hit that gate.
 
 ## End-of-run report
 
@@ -109,9 +109,9 @@ Cleared · still open · **outcomes still `[ ]`** · human looks the warden adde
 - Spawn this role; nest orchestrators; assume workers spawn workers  
 - Stop after one focus item while ready work + budget remain  
 - Stop for ordinary playtest — defer unless explicit hard-gate  
-- Create a human-verify playtest, a **Human verify** owner item, or an end-of-run look-list (todo-warden is the only owner of that row)  
+- Create a human-verify playtest, a **Human verify** owner item, or an end-of-run look-list (the outcome audit is the only creator of that row)  
 - Skip work-verifier; mark done on verifier fail  
-- Skip todo-warden after a code-shipping run / milestone PR; mark PR ready on warden **gaps-found**
+- Skip the outcome audit after a code-shipping run / milestone PR (no adapter → follow `todo-warden.md` here); mark PR ready on warden **gaps-found**
 - Report stem drained or feature done while an Outcomes row is `[ ]` (Workflow §5.5). **`Outcomes open` on a `clean` warden report does not block ready** — the exercise task is the next unit  
 - Mark human playtest/decide done without user confirm  
 - Push/PR/current-push without mode (or this-run) grant; **merge** PRs except **`milestone-pr`** after that file’s merge gate; bare force-push; silent-default **current-push**  

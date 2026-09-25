@@ -93,20 +93,25 @@ Skip when **hygiene-only**. Otherwise, after honesty edits, for each in-scope st
 
 A **passing exercise note** is a **Completed** item for that slug whose text cites a path, a date, and an observation that the scenario **held**. A note that records the first break is not passing.
 
-First match wins for each outcome still `[ ]`:
+**Who runs this section.** This is the parent-outcome check: did the scenario hold, and what single blank is next. Doc-roles are optional. Declining them does not skip the audit. Orchestration close-out spawns `todo-warden` when that adapter is installed and follows this file in the parent session when it is not. Any other session (one-off change, no orchestrator) runs **this section only** for the stems Workflow §5.5 names. A project-wide honesty sweep stays an explicit *todo warden* ask or orchestration close-out.
+
+**Checks** run on every outcome. They are not first-match.
+
+- **Passing note** → set that outcome `[x]` and check the matching operable Acceptance line, even when open children remain. Those children stay open as their own work. Then the **human look** below.
+- **No passing note** and operable Acceptance is `[x]` → uncheck that Acceptance line even when an add-branch already matched. Leave the outcome `[ ]`.
+
+**Adds** — first match wins, and only for an outcome still `[ ]` after the checks:
 
 1. **Open non-exercise children** with that `` `outcome:` `` label remain → leave the outcome open. Do **not** add an Exercise or follow-ups.
 2. **Phased** and domain children for that phase are still open → leave the outcome open. Do **not** add the exercise task yet.
-3. **Passing note** → set that outcome `[x]` and check the matching operable Acceptance line. Then the **human look** below.
-4. **Exercise item still open** → leave it. Do **not** add a second Exercise.
-5. **Latest exercise is a Completed break note** and no open or Completed task cites that break → add follow-ups that cite the break (path, date, what failed), still inside the cap. Do **not** add another Exercise. Do **not** write the rest of the path from a reading of the code. Leave the outcome open.
-6. **Latest exercise is a Completed break note** and every task that cites that break is Completed → add **one** new Exercise to re-run. Do not repeat the old follow-ups. This add ranks **first** inside the honesty cap (≤5).
-7. **No exercise item** (none open, none Completed) and no passing note → add one High item: **Exercise** plus the slug — run the scenario and record the first break (path, date, observed result), labeled `` `outcome: <slug>` ``. Citation: the outcome slug + the Acceptance line. This add ranks **first** inside the honesty cap. Drop a weaker honesty add if needed to keep the cap. Point **Current focus** at it when that stem’s focus is empty or names finished work.
-8. Operable Acceptance is `[x]` and there is **no** passing note → uncheck that Acceptance line. Leave the outcome `[ ]`.
+3. **Exercise item still open** → leave it. Do **not** add a second Exercise.
+4. **Latest exercise is a Completed break note** and no open or Completed task cites that break → add follow-ups that cite the break (path, date, what failed), still inside the cap. Do **not** add another Exercise. Do **not** write the rest of the path from a reading of the code. Leave the outcome open.
+5. **Latest exercise is a Completed break note** and every task that cites that break is Completed → add **one** new Exercise to re-run. Do not repeat the old follow-ups. This add ranks **first** inside the honesty cap (≤5).
+6. **No exercise item** (none open, none Completed) and no passing note → add one High item: **Exercise** plus the slug — run the scenario and record the first break (path, date, observed result), labeled `` `outcome: <slug>` ``. Citation: the outcome slug + the Acceptance line. This add ranks **first** inside the honesty cap. Drop a weaker honesty add if needed to keep the cap. Point **Current focus** at it when that stem’s focus is empty or names finished work.
 
 A Completed break note is not “no exercise item.” Do **not** add another Exercise in the same pass as the cited follow-ups.
 
-**Human look** (same pass, in-scope stems only). This role is the **only** creator of a human-verify playtest. Open `docs/Human-TODO.md` (create from the template if the audit checks an outcome and the file is missing).
+**Human look** (same pass, in-scope stems only). Only this audit creates a human-verify playtest. Open `docs/Human-TODO.md` (create from the template if the audit checks an outcome and the file is missing).
 
 - **Worth a look:** the audit just checked an outcome (passing note) and Open has no `playtest` for that stem + slug → add one thin Open row: kind `playtest`, the scenario sentence, Owner link, outcome slug, exercise date. Dedup.
 - **Not a human look:** an Open `playtest` names that stem (or its outcome slug) while that outcome is still `[ ]` → move the row to Done as `- [x]` with `(warden YYYY-MM-DD: withdrawn — outcome still open; not a human look)`. The human did not check it. Do this for a generic orchestration look-list on that stem when any of its outcomes are still `[ ]`. Leave `procure` / `decide` / `waiting` alone. Leave a playtest that names a slug already `[x]`.

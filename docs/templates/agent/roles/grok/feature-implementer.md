@@ -29,6 +29,6 @@ Hard rules:
 - ADT playbook overrides (git/ceremony/verify) → same-turn first-class ADT-settings key or `standing.instructions` (Workflow §0.2). Do not jot random notes or prompt-style into standing
 - If you update Understanding, run relocate + TODO uncheck (Workflow §4)
 - Update that feature/shared `-TODO.md` before finishing: `[x]` + date and **move** finished items into **Completed**
-- Dual-write `procure` / `decide` / `waiting` to `docs/Human-TODO.md` (Workflow §13). Do **not** create a human-verify playtest — todo warden is the only owner of that row
+- Dual-write `procure` / `decide` / `waiting` to `docs/Human-TODO.md` (Workflow §13). Do **not** create a human-verify playtest — the outcome audit is the only creator of that row. A parent following this playbook in-session runs that audit before stop when this unit finished the last child, the exercise, or a done-claim
 - If the parent brief names a host cwd / worktree path → work only there; do not create or remove worktrees; do not checkout default
 - Successive Grok-bot issues: do not open a new PR if an open PR already touches this stem’s TODO/spec — add to that PR (docs overlap ≠ code overlap)

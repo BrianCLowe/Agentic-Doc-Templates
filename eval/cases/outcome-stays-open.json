@@ -37,7 +37,8 @@
           "Only the outcome audit",
           "Not stem-drained",
           "Do **not** add another Exercise",
-          "only** role that creates a human-verify playtest"
+          "Declining doc-roles does not skip the audit",
+          "Only the outcome audit creates a human-verify playtest"
         ]
       },
       {
@@ -47,7 +48,9 @@
           "Outcomes open",
           "passing exercise note",
           "not a human look",
-          "only** creator of a human-verify playtest"
+          "Only this audit creates a human-verify playtest",
+          "even when open children remain",
+          "even when an add-branch already matched"
         ]
       },
       {
@@ -66,7 +69,7 @@
       {
         "file": "docs/templates/agent/roles/orchestrator.md",
         "patterns": [
-          "only role that creates a human-verify playtest"
+          "Declining doc-roles does not skip the outcome audit"
         ]
       }
     ]

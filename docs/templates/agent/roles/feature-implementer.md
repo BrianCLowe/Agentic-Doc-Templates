@@ -40,7 +40,7 @@
 7. Update the same `-TODO.md`: `[x]` + date, **move** finished items into **Completed** (do not leave `[x]` under High/Medium/Low); keep the `` `outcome:` `` label; refresh **Current focus**.
 8. Update Understanding / spec **only if this session** changed shape or contract. Operable Acceptance checkboxes are the outcome audit’s job (§5.5), not this step. **Preference corrections that could be “improved away” are contract** — same turn, append 1-line **Decisions** row(s) and fix contradicting Behavior / Acceptance / Visual refs (Workflow §10). **ADT playbook overrides** (user wants this pack to run git/ceremony/verify differently than the playbook) → same-turn first-class ADT-settings key or `standing.instructions` (Workflow §0.2). Do **not** park prompt-style or random notes in standing. Do **not** wait for the user to ask for a session wrap; do **not** put these in Current focus. If you update Understanding, run relocate + TODO uncheck (Workflow §4). Otherwise leave Understanding alone.
 9. **Build & verify** (code changes): run project handoff verify per [`../Agent_Build_Verify_Rule.mdc`](../Agent_Build_Verify_Rule.mdc) / `docs/Tooling.md` **Project verify** — fix failures before claiming the unit done or telling the user they can test. Skip only for pure docs/no-build edits.
-10. If blocked on a human (`procure` / `decide` / `waiting`): **dual-write** owner TODO + `docs/Human-TODO.md` Open row (Workflow §13) — never store secrets. Do **not** create a human-verify `playtest`. Todo warden is the only role that creates that row.
+10. If blocked on a human (`procure` / `decide` / `waiting`): **dual-write** owner TODO + `docs/Human-TODO.md` Open row (Workflow §13) — never store secrets. Do **not** create a human-verify `playtest`. The outcome audit is the only creator of that row (Workflow §5.5). When this playbook is followed in the parent session, run that audit section before stop if this unit was the last non-exercise child, the exercise, or the user asked to mark the feature, stem, or outcome done.
 11. Stop when the focus item is done, blocked, or the user redirects.
 
 ## Stop when
@@ -58,7 +58,7 @@
 - Call a user-facing stem done after domain/tests only with no exercise path, no **library-only**/phased bridge, or open operable Acceptance and no TODO that addresses it (Workflow §5.3)
 - Check an **Outcomes** row or an operable **Acceptance** line because a slice landed or every child is `[x]` (Workflow §5.5)
 - Report feature / stem / outcome done while an Outcomes row is `[ ]`
-- Create a human-verify `playtest` or a “please look” Human-TODO row (todo-warden owns that)
+- Create a human-verify `playtest` or a “please look” Human-TODO row (the outcome audit is the only creator of that row)
 - Defer scaffold/wire of the exercise path only because the user never specified UI (Workflow §5.3 **No UI specs**)
 - Hand off “you can test” after code changes without running project verify / fixing build errors ([`../Agent_Build_Verify_Rule.mdc`](../Agent_Build_Verify_Rule.mdc))
 - Defer Decisions or standing capture to a bedtime / session-wrap ask when the user already corrected a lasting product or process preference this turn

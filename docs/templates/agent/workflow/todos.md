@@ -110,7 +110,12 @@ When product shape is still unknown, a short **spike** (branch, throwaway protot
 
 **Children stay flat.** High / Medium / Low items are not indented under the outcome. Each child that serves an outcome ends with `` `outcome: paper-auto-trade` ``. Completing every child does not check the outcome or the matching Acceptance line.
 
-**Who may check.** Only the outcome audit ([`roles/todo-warden.md`](../roles/todo-warden.md)). It may set the outcome `[x]` and check the matching Acceptance line only when a **Completed** exercise item for that slug cites a path, a date, and an observation that the scenario **held**. A note that records the first break leaves both open.
+**Who runs the audit.** The procedure is the Outcome audit in [`roles/todo-warden.md`](../roles/todo-warden.md). It checks the parent outcome and fills the next blank (one Exercise, or cited follow-ups after a break). Doc-roles are optional. Declining doc-roles does not skip the audit.
+
+- Orchestration close-out spawns `todo-warden` when that adapter is installed, and follows the playbook in the parent session when it is not.
+- Any other session — a one-off change, doc-roles declined, or staying in this session — runs **that section only** for stems this turn touched, before it stops, when this turn finished the last open non-exercise child of an outcome, finished an exercise item, or would claim the feature, stem, or outcome done. That is not full orchestration and not a project-wide honesty sweep.
+
+**Who may check.** Only that audit. It may set the outcome `[x]` and check the matching Acceptance line only when a **Completed** exercise item for that slug cites a path, a date, and an observation that the scenario **held**. A passing note checks the outcome even when other children remain. A note that records the first break leaves both open. A slice that only looks close does not check either line.
 
 **Exercise task.** Add one High item, and point Current focus at it, only when this outcome has **no exercise item yet** (none open, none Completed) and no passing note, and it is not waiting on open children or an intentional phase:
 
@@ -122,7 +127,7 @@ A Completed exercise that records a first break is not a passing note and is not
 
 Do not write the rest of the path from a reading of the code.
 
-**Human look.** Todo warden is the **only** role that creates a human-verify playtest ([`human-todo.md`](human-todo.md) §13). It does that only after a passing exercise note, one thin Open row for that slug. The orchestrator, implementer, graduate, and sync do **not** write that row. While the outcome is `[ ]`, do not ask the human to look. An answer of “it doesn’t work” only restates agent work that should already be a TODO. Warden withdraws an Open playtest that asks for a look at an outcome still `[ ]` (move to Done with a warden note; the human did not check it). Leave `procure` / `decide` / `waiting` alone.
+**Human look.** Only the outcome audit creates a human-verify playtest ([`human-todo.md`](human-todo.md) §13), and only after a passing exercise note, one thin Open row for that slug. The orchestrator, implementer, graduate, and sync do **not** write that row on their own. A parent that is running the audit does. While the outcome is `[ ]`, do not ask the human to look. An answer of “it doesn’t work” only restates agent work that should already be a TODO. The audit withdraws an Open playtest that asks for a look at an outcome still `[ ]` (move to Done with a warden note; the human did not check it). Leave `procure` / `decide` / `waiting` alone.
 
 **Passing note** (on the exercise item, then move it to Completed):
 

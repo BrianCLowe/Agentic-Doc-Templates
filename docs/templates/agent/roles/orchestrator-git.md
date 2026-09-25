@@ -178,8 +178,8 @@ The orchestrator does **not** write a human-verify map. Todo warden creates that
 2. **Final push** — remote matches local on this milestone branch.
 3. **Build verify** *(gate)* — [`Agent_Build_Verify_Rule.mdc`](../Agent_Build_Verify_Rule.mdc) / Tooling **Project verify**. Fix → re-run until green, or **degrade** (leave **draft**, report).  
    **Do not** warden / squash / mark ready / merge while red.
-4. **Todo warden** *(docs-only; after green)* — stems in **this PR**; spawn `todo-warden` or follow [`todo-warden.md`](todo-warden.md). Brief: those stems + claimed-done this milestone (including any feature / stem / outcome-done claim); **honesty+hygiene** and **outcome audit** (Workflow §5.5).  
-   - **`gaps-found`:** commit TODOs, push, **leave draft**, **skip ready + merge** (degrade this milestone; optional re-loop **this stem on this branch**).  
+4. **Todo warden** *(docs-only; after green)* — stems in **this PR**; spawn `todo-warden` when that adapter is installed, otherwise follow [`todo-warden.md`](todo-warden.md) in this session. Doc-roles declined does not skip the outcome audit. Brief: those stems + claimed-done this milestone (including any feature / stem / outcome-done claim); **honesty+hygiene** and **outcome audit** (Workflow §5.5).  
+   - **`gaps-found`:** commit TODOs and any Acceptance / Human-TODO edits from this warden, push, **leave draft**, **skip ready + merge** (degrade this milestone; optional re-loop **this stem on this branch**).  
    - **`clean`:** continue. **`Outcomes open` does not block ready** and is not stem-drained. Commit any outcome-audit TODO / Acceptance / Human-TODO edits, push, continue. Do **not** report the feature or stem done while an outcome is `[ ]`. The next unit is the exercise task when none exists, or the cited-break follow-up — not a second Exercise.  
    - No code in this milestone → skip warden.
 5. **Squash** *(skip by default)* — only if standing / this-turn ask / a reviewer **only ever reads HEAD**. Then one commit on **this milestone branch** (not default); subject = this milestone; **`--force-with-lease` only**. Unsafe history → skip squash, note, continue. **Bugbot reads the PR until ready** — squash-before-ready is not required. Commits after ready are tip-only (keep those fixes as the review unit; do not squash the whole milestone so HEAD equals the cut).
@@ -211,7 +211,7 @@ After agent work done. **Do not reorder. Do not merge.** Do **not** add a human-
 1. **Final push** — remote matches local.
 2. **Build verify** *(gate)* — [`Agent_Build_Verify_Rule.mdc`](../Agent_Build_Verify_Rule.mdc) / Tooling **Project verify**. Fix → re-run until green, or stop (leave **draft**, report block).  
    **Do not** warden / squash / mark ready while red. If stopping here with a clean tree → still **return to default** (step 6), then report.
-3. **Todo warden** *(docs-only; after green)* — if this run cleared implementer units: spawn `todo-warden` or follow [`todo-warden.md`](todo-warden.md). Brief: in-scope stems + claimed-done list; mode **honesty+hygiene** (reopen/add gaps **and** move parked `[x]` into Completed).  
+3. **Todo warden** *(docs-only; after green)* — if this run cleared implementer units: spawn `todo-warden` when that adapter is installed, otherwise follow [`todo-warden.md`](todo-warden.md) in this session. Doc-roles declined does not skip the outcome audit. Brief: in-scope stems + claimed-done list; mode **honesty+hygiene** (reopen/add gaps **and** move parked `[x]` into Completed) and **outcome audit** (Workflow §5.5).  
    - **`gaps-found`:** commit TODOs (and any Acceptance / Human-TODO edits from this warden), push, **leave draft**, **skip squash + ready**; then **return to default** (run branch remains on remote). Optional re-loop if budget — if re-looping, **stay** on run branch until that loop’s close-out.  
    - **`clean`:** continue. **`Outcomes open` does not block ready.** If warden edited TODOs, Acceptance, or Human-TODO (exercise row, outcome check, premature-playtest withdraw), **commit those docs and push** before squash / ready. Do not return to default and leave them dirty. Do **not** report the feature or stem done while an outcome is `[ ]`.  
    - No code units this run → skip warden.
@@ -242,7 +242,7 @@ After agent work done. **Do not reorder. Do not merge.** Do **not** add a human-
 
 ### Non-PR + warden
 
-After the loop: if implementer units shipped → run **todo-warden** once (it owns human-verify rows). **gaps-found** → commit TODOs when mode allows commits; do not claim stem/Layer drained. **`clean` with warden file edits** (outcome audit, Acceptance checkbox, Human-TODO playtest or withdraw) → commit those docs too when mode allows commits, before return-to-default. A dirty tree of audit edits is not “clean enough to checkout away.” Then **return to default** when `branch_origin: created` **and** cwd is the **main** checkout (host / linked worktree → skip; see table).
+After the loop: if implementer units shipped → run the outcome audit once (spawn `todo-warden` when that adapter is installed; otherwise follow [`todo-warden.md`](todo-warden.md) here). **gaps-found** → commit TODOs and any Acceptance / Human-TODO edits from this audit when mode allows commits; do not claim stem/Layer drained. **`clean` with warden file edits** (outcome audit, Acceptance checkbox, Human-TODO playtest or withdraw) → commit those docs too when mode allows commits, before return-to-default. A dirty tree of audit edits is not “clean enough to checkout away.” Then **return to default** when `branch_origin: created` **and** cwd is the **main** checkout (host / linked worktree → skip; see table).
 
 ### Grants / do not
 
