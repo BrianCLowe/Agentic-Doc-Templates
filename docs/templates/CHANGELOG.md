@@ -24,17 +24,6 @@
 
 ---
 
-## 2.9.11
-
-- **Live impact:** `versions-only`, `process-docs-only`
-- **Summary:** Bootstrap deletes the pack release-tag skill when a whole-repo copy left it behind. Other skills in `.cursor/skills/` stay.
-- **Changes:**
-  - `VERSION` — 2.9.10 → 2.9.11
-  - `agent/BOOTSTRAP.md` Step 1c — delete `.cursor/skills/pack-release-tag/` when `name:` is `pack-release-tag`; remove `.cursor/skills/` only if that leaves it empty
-  - `help/SETUP.md`, root README — leftover list
-  - `DECISIONS.md` D14
-- **Step B:** Bump Master Index **Pack version** to 2.9.11 from local `VERSION`. If `.cursor/skills/pack-release-tag/SKILL.md` exists and its `name:` is `pack-release-tag`, delete that directory. If `.cursor/skills/` is empty afterward, remove it. Do not delete the user’s other skills or other `.cursor/` config. No live feature/shared scan.
-
 ## 2.9.10
 
 - **Live impact:** `versions-only`, `rules`, `optional-todo-completed-cleanout`
