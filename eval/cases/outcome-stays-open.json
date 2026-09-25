@@ -39,7 +39,8 @@
           "Do **not** add another Exercise",
           "Declining doc-roles does not skip the audit",
           "Only the outcome audit creates a human-verify playtest",
-          "Completed is not a repair log"
+          "Completed is not a repair log",
+          "optional-todo-completed-cleanout"
         ]
       },
       {
@@ -63,7 +64,9 @@
           "optional-todo-outcomes",
           "Live TODO outcomes",
           "not a human look",
-          "do **not** create a human-verify playtest"
+          "do **not** create a human-verify playtest",
+          "optional-todo-completed-cleanout",
+          "Live TODO completed cleanout"
         ]
       },
       {

@@ -75,7 +75,7 @@ Only **reopen/add** when **at least one** of these is true and you can point to 
 - Unchecked `[ ]` items
 - Non-task prose under Cross-Feature (dependency notes, design questions without a done checkbox)
 - Items already under **Completed**
-- A new Completed checkbox for an incidental fix that was never an open plotted task (review patch, Bugbot finding, copy or typo). Git already has that change. If this pass added one, delete that row. Do not purge an older Completed history unless the user asked. If the fix changes what an Outcome means, one sentence on that Outcome row, not a new checkbox.
+- A new Completed checkbox for an incidental fix that was never an open plotted task (review patch, Bugbot finding, copy or typo). Git already has that change. If this pass added one, delete that row. Older incidental rows are sync `optional-todo-completed-cleanout`, not this honesty pass. If the fix changes what an Outcome means, one sentence on that Outcome row, not a new checkbox.
 - Human-gated / Human-TODO items you did **not** verify the user closed — or an allowed `team_inbox` assignee, only when that key is **enabled** (do not invent `[x]` just to archive). Unset `team_inbox` = user confirm only
 
 **After move:**

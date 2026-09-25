@@ -240,7 +240,7 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 
 **Decision:** `## Completed` records a plotted slice that was finished, and the exercise note that proves an Outcome. An incidental fix — a review patch, a Bugbot finding, a copy or typo change — is already in git. Do not write a new checkbox for it. If that fix changes what an Outcome means, put one sentence on that Outcome row.
 
-**Do not:** Append a checked row straight into Completed for a fix that was never an open task. Do not delete an older Completed history unless the user asked.
+**Do not:** Append a checked row straight into Completed for a fix that was never an open task. Do not delete a plotted slice or an exercise note. Sync pass `optional-todo-completed-cleanout` is the cleanout: it removes a Completed checkbox that git shows was never an open task. A normal warden pass does not purge older rows.
 
 ---
 
