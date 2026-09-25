@@ -72,7 +72,8 @@
           "not a human look",
           "do **not** create a human-verify playtest",
           "optional-todo-completed-cleanout",
-          "Live TODO completed cleanout"
+          "Live TODO completed cleanout",
+          "outcomes / completed-cleanout tags from skipped"
         ]
       },
       {
