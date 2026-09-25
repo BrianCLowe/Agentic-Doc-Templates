@@ -31,7 +31,7 @@ Compare semver `X.Y.Z` numerically (major, minor, patch).
 **Union tags** from all selected entries. Then:
 
 - Apply the gated checklist **once** for the union (not once per release).
-- If the union includes any of `content-templates`, `optional-live-reshape`, `optional-assumption-cleanout`, `optional-todo-ambition`, `optional-todo-operable`, `optional-todo-kit-coverage`, or `optional-todo-outcomes`, run those steps even when newer selected entries also list `process-docs-only` (`process-docs-only` on one release does not cancel live passes from skipped releases).
+- If the union includes any of `content-templates`, `optional-live-reshape`, `optional-assumption-cleanout`, `optional-todo-ambition`, `optional-todo-operable`, `optional-todo-kit-coverage`, `optional-todo-outcomes`, or `optional-todo-completed-cleanout`, run those steps even when newer selected entries also list `process-docs-only` (`process-docs-only` on one release does not cancel live passes from skipped releases).
 - Skim Step B lines from selected entries for tips / one-shots not expressed by tags (e.g. Human-TODO tip refresh). Do **not** invent a broader audit than the unioned tags + those lines.
 - Do **not** bump Pack version through intermediate numbers — set it once to **to**.
 - The Live impact table below is a **lasting catalog**. A tag fires only when it appears in this union. **Summarize the union only** — do not name catalog optional tags that were not selected as “skipped.”
@@ -47,11 +47,12 @@ Compare semver `X.Y.Z` numerically (major, minor, patch).
 | `optional-todo-operable` | Live TODO operable dual-track pass — **`auto` / `auto-all`:** all Document Map TODO stems; **`choose`:** present + ask once |
 | `optional-todo-kit-coverage` | Live TODO kit-coverage pass (Workflow §5.4) — **`auto` / `auto-all`:** all Document Map TODO stems; **`choose`:** present + ask once |
 | `optional-todo-outcomes` | Live TODO outcomes pass (Workflow §5.5) — **`auto` / `auto-all`:** all Document Map TODO stems; **`choose`:** present + ask once. Mirror operable Acceptance into unchecked Outcomes rows; label children; one exercise task when an outcome has no path. Do not check outcomes |
+| `optional-todo-completed-cleanout` | Live TODO Completed cleanout — **`auto` / `auto-all`:** all Document Map TODO stems; **`choose`:** present + ask once. Remove a Completed checkbox that git shows was never an open `[ ]` task and is not an exercise note. Unsure → leave the row |
 | `rules` | Refresh installed rules/adapters from local `agent/` (see Rules step — **no ask** unless `customized: true`) |
 | `optional-upstream-check` | Stamp `upstream:` in `docs/ADT-settings.yaml` if update-check enabled; offer enable if unset |
 | `process-docs-only` | No live feature/shared content scan **for that release alone** — still honor live-content tags from other selected catch-up entries |
 
-**Default when `content-templates`, `optional-live-reshape`, `optional-assumption-cleanout`, `optional-todo-ambition`, `optional-todo-operable`, `optional-todo-kit-coverage`, and `optional-todo-outcomes` are absent from the union:** bump versions + Master Index structure if tagged → rules if tagged → summarize → **present unset options** (below). **Do not** open live `features/` or `_shared/` docs.
+**Default when `content-templates`, `optional-live-reshape`, `optional-assumption-cleanout`, `optional-todo-ambition`, `optional-todo-operable`, `optional-todo-kit-coverage`, `optional-todo-outcomes`, and `optional-todo-completed-cleanout` are absent from the union:** bump versions + Master Index structure if tagged → rules if tagged → summarize → **present unset options** (below). **Do not** open live `features/` or `_shared/` docs.
 
 ### B0.1 — Settings file *(migrate once, then use forever)*
 
@@ -79,9 +80,9 @@ Read `sync.mode` from `docs/ADT-settings.yaml`.
 
 | Mode | Behavior |
 |------|----------|
-| **`auto`** | Apply all changelog-gated live work without mid-sync optionals quiz: versions, master-index, content-templates (missing only), **optional-live-reshape** / **optional-assumption-cleanout** (all Document Map Understanding stems when tagged), **optional-todo-ambition** / **optional-todo-operable** / **optional-todo-kit-coverage** / **optional-todo-outcomes** (all Document Map `*-TODO.md` when tagged), rules refresh, upstream stamp. **Also** perform **post-sync hygiene commits** (below) without asking. Still **ask once** for brand-new unset `optional_rules.*`. Summarize at end (include commit subjects). |
+| **`auto`** | Apply all changelog-gated live work without mid-sync optionals quiz: versions, master-index, content-templates (missing only), **optional-live-reshape** / **optional-assumption-cleanout** (all Document Map Understanding stems when tagged), **optional-todo-ambition** / **optional-todo-operable** / **optional-todo-kit-coverage** / **optional-todo-outcomes** / **optional-todo-completed-cleanout** (all Document Map `*-TODO.md` when tagged), rules refresh, upstream stamp. **Also** perform **post-sync hygiene commits** (below) without asking. Still **ask once** for brand-new unset `optional_rules.*`. Summarize at end (include commit subjects). |
 | **`auto-all`** | Same as **`auto`**, and also **enable + install** any unset `optional_rules.*` (doc-roles, update-check, future optionals) without asking. Never re-enable **`declined`**. New update-check → `check_mode: always` + record cadence (skip B0.4 ask). Summarize what was auto-enabled. Does **not** mean run every optional pass in the tag table — only unioned tagged passes, on all Document Map stems, without asking. |
-| **`choose`** | Present reshape / assumption clean-out / TODO ambition / TODO operable / TODO kit-coverage / TODO outcomes (and similar future optional live tags) each sync — ask once per tagged pass. Suggest (do not force) separate commits; commit only if they explicitly ask. |
+| **`choose`** | Present reshape / assumption clean-out / TODO ambition / TODO operable / TODO kit-coverage / TODO outcomes / TODO completed cleanout (and similar future optional live tags) each sync — ask once per tagged pass. Suggest (do not force) separate commits; commit only if they explicitly ask. |
 | **missing / unset** | **Ask once** before the first optional live pass (or before stopping if none tagged): *Recommended live updates automatically (`auto`), everything including new pack optionals (`auto-all`), or ask each sync (`choose`)?* Record `sync.mode` + `sync.recorded`. Then continue under that mode. Do **not** silent-default. |
 
 Explicit later: *Set sync to auto* / *Set sync to auto-all* / *Set sync to choose*.
@@ -99,6 +100,7 @@ Explicit later: *Set sync to auto* / *Set sync to auto-all* / *Set sync to choos
 4. **TODO operable commit** — if `optional-todo-operable` ran, commit those dual-track / exercise-path TODO edits separately when dirty (may combine with ambition in one commit if both ran the same stems).
 5. **TODO kit-coverage commit** — if `optional-todo-kit-coverage` ran, commit those covering-TODO edits separately when dirty (may combine with other TODO live passes if the same stems).
 6. **TODO outcomes commit** — if `optional-todo-outcomes` ran, commit those Outcomes / label / exercise-task edits separately when dirty (may combine with other TODO live passes if the same stems). Acceptance unchecks from this pass belong in that commit.
+7. **TODO completed cleanout commit** — if `optional-todo-completed-cleanout` ran, commit those Completed-row removals separately when dirty (may combine with other TODO live passes if the same stems).
 
 Invoking sync with `auto` or `auto-all` is an **implicit grant** for these **local** hygiene commits for this run only. It does **not** authorize push or committing unrelated WIP.
 
@@ -180,6 +182,7 @@ Recommend: remote + forge CLI → **`milestone-pr`** (overnight drain: per-miles
 | `TODO_Template.md` + Workflow §5.3 | Chosen `*-TODO.md` (+ Understanding/spec for surface identity) — add exercise-path rows or **library-only** labels | `optional-todo-operable` **and** (`auto` / `auto-all` **or** user said yes) |
 | `TODO_Template.md` + Workflow §5.4 | Chosen `*-TODO.md` + matching spec — covering TODOs for spec-named leftovers; one research item if spec is thin | `optional-todo-kit-coverage` **and** (`auto` / `auto-all` **or** user said yes) |
 | `TODO_Template.md` + Workflow §5.5 | Chosen `*-TODO.md` + matching spec Acceptance — unchecked Outcomes rows, `outcome:` labels, one exercise task when an outcome has no path | `optional-todo-outcomes` **and** (`auto` / `auto-all` **or** user said yes) |
+| `TODO_Template.md` + Workflow §5 | Chosen `*-TODO.md` — under `## Completed` only, remove a checkbox that git shows was never an open task and is not an exercise note | `optional-todo-completed-cleanout` **and** (`auto` / `auto-all` **or** user said yes) |
 | `Tooling_Template.md` | `docs/Tooling.md` — create if missing; add sections only | `content-templates` |
 | `Human_TODO_Template.md` | `docs/Human-TODO.md` — create if missing; add columns/sections only | `content-templates` |
 | `Team_Roster_Template.md` | `docs/Team-Roster.md` — create **only** if live `team_inbox.enabled`; named-human fill-in if user-stated; do not invent bot or human-name rows | `content-templates` **and** team inbox on |
@@ -278,6 +281,15 @@ Run only when selected catch-up includes **2.7.27** and reshape is executing. Op
      5. If an outcome has no exercise item for its slug (none open, none Completed), no open child, and no passing note → add exactly one High item: **Exercise** plus the slug — run the scenario and record the first break (path, date, observed result), labeled `` `outcome: <slug>` ``. A Completed break note is an exercise item — do **not** add another Exercise. While a phased stem’s domain children are still open, do not add that exercise item.
      6. Named spec leftovers stay on `optional-todo-kit-coverage`. This pass does not mint them.
      7. **Do not create a human-verify playtest** (the outcome audit is the only creator of that row; this pass does not run it). If `docs/Human-TODO.md` exists, an Open `playtest` for a stem in this pass whose outcome is still `[ ]` — or a generic look at that stem while any of its outcomes are `[ ]` — → move that row to Done with `(sync YYYY-MM-DD: withdrawn — outcome still open; not a human look)`. Leave `procure` / `decide` / `waiting`. Leave a playtest that names a slug already `[x]`.
+5e. **Live TODO completed cleanout** *(if `optional-todo-completed-cleanout`)* —
+   - **`sync.mode: auto` or `auto-all`:** execute for **all Document Map `*-TODO.md` stems** (no ask); commit per B0.3 after.
+   - **`sync.mode: choose`:** present + ask once (default all stems / named / no); explain that this removes Completed checkboxes written straight in for incidental fixes; suggest separate commit; commit only if they ask.
+   - **On execute:** for each stem, open **this** `-TODO.md` only. Touch `## Completed` checkboxes only.
+     1. Keep an exercise note (title **Exercise** plus the slug, or the passing note an Outcomes row cites).
+     2. `git log -p --` that TODO file for the item title. Keep the row if any commit shows that title as `- [ ]`.
+     3. Remove the row only when the title never appears as `- [ ]` and the text is an incidental fix (review patch, Bugbot finding, copy, typo).
+     4. Unsure (rewritten title, no git history) → leave the row.
+     Do not remove open tasks. Do not check or uncheck Outcomes. Do not add rows.
 6. **Rules** *(if `rules`)* — For each tool with `tools.*.status: installed` in `docs/ADT-settings.yaml`, open **only** `docs/templates/agent/tools/<key>.md` and refresh that harness.
    - **Default:** refresh pack-managed modular + timescale + **build-verify** rules (and enabled optionals) **without asking** — installed means pack-owned.
    - **Ask before overwrite only if** that tool entry has `customized: true` (or an explicit note that pack rule bodies were hand-edited).
@@ -314,10 +326,10 @@ Run only when selected catch-up includes **2.7.27** and reshape is executing. Op
 - Open or follow this file before Step A / pack refresh completes
 - Run Step B from a pre–Step A in-memory copy of any sync playbook
 - Capture versions before Step A overwrite
-- Scan every live Understanding / Spec / TODO unless `content-templates` or (`optional-live-reshape` and executing) or (`optional-assumption-cleanout` and executing) or (`optional-todo-ambition` and executing) or (`optional-todo-operable` and executing) or (`optional-todo-kit-coverage` and executing) or (`optional-todo-outcomes` and executing) or the **2.7.25 standing relocate** one-shot (then only the **one** destination a misplaced standing bullet names — Workflow §0.2 Sync relocate) or the **2.9.6 standing cleanout** one-shot (then only `standing.instructions` — Workflow §0.2 Sync cleanout) or the **2.7.27 instruction-footer strip** (then every in-scope stem’s spec / core TODO, and Understanding when present — including stems with no Understanding)
+- Scan every live Understanding / Spec / TODO unless `content-templates` or (`optional-live-reshape` and executing) or (`optional-assumption-cleanout` and executing) or (`optional-todo-ambition` and executing) or (`optional-todo-operable` and executing) or (`optional-todo-kit-coverage` and executing) or (`optional-todo-outcomes` and executing) or (`optional-todo-completed-cleanout` and executing) or the **2.7.25 standing relocate** one-shot (then only the **one** destination a misplaced standing bullet names — Workflow §0.2 Sync relocate) or the **2.9.6 standing cleanout** one-shot (then only `standing.instructions` — Workflow §0.2 Sync cleanout) or the **2.7.27 instruction-footer strip** (then every in-scope stem’s spec / core TODO, and Understanding when present — including stems with no Understanding)
 - Treat `content-templates` as permission to trim/remove Understanding sections — that requires `optional-live-reshape` + execute
-- Under **`choose`:** omit the reshape / assumption clean-out / TODO ambition / TODO operable / TODO kit-coverage / TODO outcomes ask when those tags are present
-- Under **`auto` / `auto-all`:** re-ask for reshape / assumption clean-out / ambition / operable / kit-coverage / outcomes / rules refresh when tags say to run them
+- Under **`choose`:** omit the reshape / assumption clean-out / TODO ambition / TODO operable / TODO kit-coverage / TODO outcomes / TODO completed cleanout ask when those tags are present
+- Under **`auto` / `auto-all`:** re-ask for reshape / assumption clean-out / ambition / operable / kit-coverage / outcomes / completed cleanout / rules refresh when tags say to run them
 - Under **`auto` / `auto-all`:** skip B0.3 hygiene commits when sync produced a dirty tree (unless not a git repo)
 - Auto-commit **pre-sync** WIP (A0) or push without an explicit grant
 - Ask before refreshing installed rules unless `customized: true`
@@ -327,10 +339,11 @@ Run only when selected catch-up includes **2.7.27** and reshape is executing. Op
 - On TODO operable execute: invent unrelated backlog, force UI onto **library-only** stems, or rewrite domain items beyond adding exercise-path / library-only labels
 - On TODO kit-coverage execute: fetch vendor APIs, create new map rows, split stems, invent playground/out-of-kit surfaces, implement code, or re-open leftovers that already have **Completed** covering items
 - On TODO outcomes execute: check an Outcomes row; diff the repo into a task per architecture bullet; invent an outcome from code; invent an outcome to house an orphan; reopen Completed items; add the exercise task while a phased stem’s domain children are still open; add another Exercise when a Completed break note already exists; do **not** create a human-verify playtest (the outcome audit is the only creator of that row); mint kit leftovers (that is `optional-todo-kit-coverage`)
+- On TODO completed-cleanout execute: remove a plotted slice or an exercise note; remove a row whose title ever appeared as `- [ ]`; remove when unsure; remove open tasks; check or uncheck Outcomes; add rows
 - Keep writing `docs/rule-install-status.yaml` or `docs/upstream-status.yaml` after migration
 - Reconstruct whether a missing section is “new in this version” vs “never adopted” when content templates are unchanged — the changelog already answered
 - Treat a missing or empty `docs/templates/agent/upstream/` as an error or reason to re-download attribution files
-- Open Workflow, help guides, or the whole pack catalog during sync (open Workflow §4 only while executing reshape or assumption clean-out; Workflow §5 / timescale rule only while executing TODO ambition, TODO operable, TODO kit-coverage, or TODO outcomes; Workflow §0.2 Sync relocate only when the 2.7.25 standing-relocate one-shot is in catch-up; Workflow §0.2 Sync cleanout only when the 2.9.6 standing-cleanout one-shot is in catch-up)
+- Open Workflow, help guides, or the whole pack catalog during sync (open Workflow §4 only while executing reshape or assumption clean-out; Workflow §5 / timescale rule only while executing TODO ambition, TODO operable, TODO kit-coverage, TODO outcomes, or TODO completed cleanout; Workflow §0.2 Sync relocate only when the 2.7.25 standing-relocate one-shot is in catch-up; Workflow §0.2 Sync cleanout only when the 2.9.6 standing-cleanout one-shot is in catch-up)
 - On assumption clean-out execute: invent new Assumption quizzes; treat a `docs/reference/` example as the target unless it was clearly set as the target; invent Understanding on `build-first`; rewrite user fill-in that is already category-correct; **de-confirm** a `confirmed` Understanding or inject a mid-sync shape quiz
 - Keep pulling from GitHub — work from the **local** `docs/templates/` copy
 - Under **`auto` / `choose`:** skip presenting unset `optional_rules.*` because “do not auto-enable” — that means ask, not stay silent

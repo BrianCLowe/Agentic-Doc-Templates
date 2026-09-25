@@ -61,7 +61,7 @@ Only **reopen/add** when **at least one** of these is true and you can point to 
 
 ## Hygiene — move completed *(layout)*
 
-**Goal:** Open sections (High / Medium / Low / Cross-Feature Dependencies) hold **open work** (`[ ]`) and non-checkbox notes. Finished work lives under **`## Completed`**.
+**Goal:** Open sections (High / Medium / Low / Cross-Feature Dependencies) hold **open work** (`[ ]`) and non-checkbox notes. **`## Completed`** holds plotted work you finished, and the exercise note for an Outcome. **Completed is not a repair log.**
 
 **Eligible to move:**
 
@@ -75,6 +75,7 @@ Only **reopen/add** when **at least one** of these is true and you can point to 
 - Unchecked `[ ]` items
 - Non-task prose under Cross-Feature (dependency notes, design questions without a done checkbox)
 - Items already under **Completed**
+- A new Completed checkbox for an incidental fix that was never an open plotted task (review patch, Bugbot finding, copy or typo). Git already has that change. If this pass added one, delete that row. Older incidental rows are sync `optional-todo-completed-cleanout`, not this honesty pass. If the fix changes an observable an Outcome names, that is a **Reopen** (one sentence on the outcome, uncheck, one Exercise), not a new checkbox. A copy or typo fix stays checked.
 - Human-gated / Human-TODO items you did **not** verify the user closed — or an allowed `team_inbox` assignee, only when that key is **enabled** (do not invent `[x]` just to archive). Unset `team_inbox` = user confirm only
 
 **After move:**
@@ -91,12 +92,15 @@ Only **reopen/add** when **at least one** of these is true and you can point to 
 
 Skip when **hygiene-only**. Otherwise, after honesty edits, for each in-scope stem’s `## Outcomes` rows (create the section from operable Acceptance when it is missing — one unchecked row per operable line, slug in bold, scenario sentence). **Library-only** stems: one non-checkbox line `library-only — consumers own the exercise path.` No outcome checkboxes.
 
-A **passing exercise note** is a **Completed** item for that slug whose text cites a path, a date, and an observation that the scenario **held**. A note that records the first break is not passing.
+A **passing exercise note** is a **Completed** item for that slug. The path is that stem’s exercise path (UI, CLI, product API, or documented smoke), not a unit-test file. The observation states what happened for each observable clause in the outcome sentence. “Looks right,” a skipped clause, or a unit-test path is not passing. A note that records the first break is not passing. The latest exercise record for that slug is the current one: an older “scenario held” note does not stay current once this pass adds a new open Exercise.
 
 **Who runs this section.** This is the parent-outcome check: did the scenario hold, and what single blank is next. Doc-roles are optional. Declining them does not skip the audit. Orchestration close-out spawns `todo-warden` when that adapter is installed and follows this file in the parent session when it is not. Any other session (one-off change, no orchestrator) runs **this section only** for the stems Workflow §5.5 names. A project-wide honesty sweep stays an explicit *todo warden* ask or orchestration close-out.
 
-**Checks** are not first-match. An outcome already `[x]` with a passing note stays `[x]`. That is not a new check, and it does not add another human-verify playtest.
+**Overclaim on these stems.** Before the checks, for `[x]` children on stems this audit covers, skim the code those items name. Reopen a child the code clearly does not implement (`[ ]` + *(warden YYYY-MM-DD: overclaim — …)*), inside the reopen cap. This is the same overclaim rule as honesty. It is how a checked item that does not match the code gets opened again. Do not start a repo-wide audit. Work-verifier already judged the unit that created a `[x]` in this run; this skim catches a checked item that never went through that compare, or whose code no longer matches.
 
+**Checks** are not first-match. An outcome already `[x]` with a current passing note stays `[x]`. That is not a new check, and it does not add another human-verify playtest.
+
+- **Reopen** when the outcome is `[x]` and either this turn’s code changes an observable that sentence names (a copy or typo fix does not) or a human playtest report says the scenario did not hold. Uncheck the outcome and the matching Acceptance line. One sentence on the outcome says why. Add one open Exercise if none is open. Do not add a playtest. The old passing note stays in Completed.
 - **Passing note and the outcome is still `[ ]`** → set that outcome `[x]` and check the matching operable Acceptance line, even when open children remain. Those children stay open as their own work. Then the **human look** below.
 - **No passing note** and the outcome or operable Acceptance is `[x]` → uncheck those lines even when an add-branch already matched. Leave the outcome `[ ]`. Do not add a playtest.
 
@@ -115,6 +119,7 @@ A Completed break note is not “no exercise item.” Do **not** add another Exe
 
 - **Worth a look:** this pass changed that outcome from `[ ]` to `[x]`, and neither Open nor Done already has a `playtest` for that stem + slug → add one thin Open row: kind `playtest`, the scenario sentence, Owner link, outcome slug, exercise date. A Done playtest is not a missing row.
 - **Not a human look:** an Open `playtest` names that stem (or its outcome slug) while that outcome is still `[ ]` → move the row to Done as `- [x]` with `(warden YYYY-MM-DD: withdrawn — outcome still open; not a human look)`. The human did not check it. Do this for a generic orchestration look-list on that stem when any of its outcomes are still `[ ]`. Leave `procure` / `decide` / `waiting` alone. Leave a playtest that names a slug already `[x]`.
+- **Scenario did not hold:** a human confirm on that playtest says the scenario did not hold → move the inbox row to Done with the report, then run **Reopen** for that slug. Do not leave the outcome `[x]`. A confirm that the scenario held leaves the outcome `[x]` and moves the inbox row to Done.
 
 These audit adds, the Acceptance checkbox edit, and the human-look edit do **not** by themselves make the report `gaps-found`. Report them as **Outcomes open** and **Human looks**. `gaps-found` still fires when this run **claimed** the feature, stem, or outcome done while an outcome is `[ ]`, or when a non-audit honesty add/reopen was written. Open operable Acceptance and a missing exercise path are the audit’s Exercise row, not a separate honesty add.
 
@@ -159,6 +164,8 @@ Caps: new≤5 reopened≤10; hygiene moves uncapped
 - Write application code, run product refactors, or “fix” gaps in code
 - Check an Outcomes row because its children are `[x]`, or without a passing exercise note (path, date, scenario held)
 - Leave operable Acceptance `[x]` when there is no passing exercise note
+- Leave an outcome `[x]` when this turn changed an observable it names, or when a human report says the scenario did not hold
+- Treat a unit-test path or a skipped observable clause as a passing note
 - Write a remaining-path plan from a reading of the code; follow-ups cite a recorded break
 - Treat an empty High/Medium/Low list as stem-drained while an Outcomes row is `[ ]`
 - Exceed honesty hard caps or dual-maintain every Acceptance line as a TODO twin
@@ -169,6 +176,7 @@ Caps: new≤5 reopened≤10; hygiene moves uncapped
 - Dual-write a playtest while the outcome is `[ ]`
 - Invent `Team-Roster.md` bot or human-name rows on a handoff (read only; named humans and bots self-ID — [`workflow/team-roster.md`](../workflow/team-roster.md))
 - Leave true `[x]` tasks parked in High/Medium/Low when running hygiene (that **is** the cleanup job)
+- Do not add a Completed row for an incidental fix (review patch, Bugbot finding, copy or typo)
 - Move items you reopened this pass into Completed
 - Commit, push, merge, or spawn subagents
 - Soft-add TODOs “just in case” when the stem is honestly complete for this run’s claims

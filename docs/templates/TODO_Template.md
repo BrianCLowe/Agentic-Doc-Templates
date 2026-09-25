@@ -45,3 +45,5 @@
 
 ## Completed
 - [x] Example completed task (finished 2026-05-04 by Cursor) — brief note if useful
+
+Plotted slices and the exercise note. An incidental fix stays in git.

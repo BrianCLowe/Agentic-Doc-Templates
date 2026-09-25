@@ -17,11 +17,26 @@
 | `optional-todo-operable` | Live TODO operable dual-track (Workflow §5.3). **`auto` / `auto-all`:** all Document Map `*-TODO.md`. **`choose`:** present + ask once. Add exercise-path rows or **library-only** labels; do not invent unrelated backlog |
 | `optional-todo-kit-coverage` | Live TODO kit-coverage pass (Workflow §5.4). **`auto` / `auto-all`:** all Document Map `*-TODO.md`. **`choose`:** present + ask once. Add covering TODOs for spec-named in-scope leftovers on **existing** stems (**open or Completed** counts — do not resurrect); one research item if the spec is thin. No new map rows; no vendor-doc fetch in sync |
 | `optional-todo-outcomes` | Live TODO outcomes pass (Workflow §5.5). **`auto` / `auto-all`:** all Document Map `*-TODO.md`. **`choose`:** present + ask once. Mirror operable Acceptance into unchecked Outcomes rows; label children; one exercise task when an outcome has no path. Do not check outcomes. Do not mint a task per architecture bullet |
+| `optional-todo-completed-cleanout` | Live TODO Completed cleanout. **`auto` / `auto-all`:** all Document Map `*-TODO.md`. **`choose`:** present + ask once. Remove a Completed checkbox that git shows was never an open `[ ]` task and is not an exercise note. Unsure → leave the row |
 | `rules` | Refresh installed agent rules/adapters from local pack (**no ask** unless tool has `customized: true`) |
 | `optional-upstream-check` | Stamp `upstream:` in `docs/ADT-settings.yaml` / offer enable update-check if unset |
 | `process-docs-only` | Pack process/help/agent docs only — no live feature/shared content scan |
 
 ---
+
+## 2.9.10
+
+- **Live impact:** `versions-only`, `rules`, `optional-todo-completed-cleanout`
+- **Summary:** Completed is not a repair log. A Completed row is a plotted slice or the exercise note that proves an Outcome. An incidental fix stays in git. Sync pass `optional-todo-completed-cleanout` removes a Completed checkbox that was never an open task. A passing exercise note names each observable clause on the stem’s exercise path. A unit-test path does not check the outcome. A code change that alters an observable the outcome names, or a human report that the scenario did not hold, unchecks the outcome and adds one Exercise. Work-verifier compares one claimed TODO item to that unit’s diff. Warden honesty reopens a checked item the code does not implement. Declining doc-roles does not skip either compare.
+- **Changes:**
+  - `VERSION` — 2.9.9 → 2.9.10
+  - `agent/workflow/todos.md` §5.5 — Completed rows, passing note, reopen, code versus the checklist
+  - modular rule, `feature-implementer.md`, `todo-warden.md` — do not add a Completed row for an incidental fix; reopen when an observable changes or the scenario did not hold
+  - `work-verifier.md`, `orchestrator.md`, `human-todo.md` — one unit’s diff; thin exercise note fails; parent runs the compare when the adapter is absent
+  - `TODO_Template.md` — one pointer under Completed
+  - `agent/TEMPLATE_SYNC_B.md` — **`optional-todo-completed-cleanout`**
+  - `DECISIONS.md` D30, D31
+- **Step B:** Bump Master Index **Pack version** to 2.9.10 from local `VERSION`. **`rules`:** refresh installed modular-rule copies so an incidental fix does not get a new Completed row, a passing note names each observable clause, a checked outcome reopens when an observable it names changes or a human says the scenario did not hold, and that audit runs even when the outcome is already `[x]`. An incidental fix that changes an observable is that reopen, not a sentence left on a checked row. A claimed TODO item is compared to that unit’s diff before mark-done. **`optional-todo-completed-cleanout`:** present/execute per `sync.mode` — for each Document Map `*-TODO.md`, under `## Completed` only, remove a `- [x]` row whose title never appears as `- [ ]` in `git log -p` for that file and whose text is an incidental fix (review patch, Bugbot finding, copy, typo). Keep a row that ever existed as an open task. Keep an exercise note. Unsure → leave the row. Do not remove open tasks. Do not check Outcomes. Under **`choose`:** ask once (default all stems). Under **`auto` / `auto-all`:** all Document Map `*-TODO.md`.
 
 ## 2.9.9
 

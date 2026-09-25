@@ -24,6 +24,6 @@ Hard rules:
 - Preference corrections that could be “improved away” → same-turn spec **Decisions** (+ fix stale Behavior/Acceptance/Visual refs); do not wait for session wrap
 - ADT playbook overrides (git/ceremony/verify) → same-turn first-class ADT-settings key or `standing.instructions` (Workflow §0.2). Do not jot random notes or prompt-style into standing
 - If you update Understanding, run relocate + TODO uncheck (Workflow §4)
-- Update that feature/shared `-TODO.md` before finishing: `[x]` + date and **move** finished items into **Completed**
+- Update that feature/shared `-TODO.md` before finishing: `[x]` + date and **move** a finished plotted item into **Completed**. Do not add a Completed row for an incidental fix
 - Dual-write `procure` / `decide` / `waiting` to `docs/Human-TODO.md` (Workflow §13). Do **not** create a human-verify playtest. Do **not** check an Outcomes row or Acceptance in this unit — work-verifier fails a unit that checks them. Leave the outcome `[ ]`
 - If the parent brief names a host cwd / worktree path → work only there; do not create or remove worktrees; do not checkout default
