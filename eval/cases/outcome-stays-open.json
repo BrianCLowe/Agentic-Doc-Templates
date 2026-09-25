@@ -43,7 +43,8 @@
           "optional-todo-completed-cleanout",
           "each observable clause",
           "Work-verifier compares one claimed TODO item",
-          "scenario did not hold"
+          "scenario did not hold",
+          "changed an observable a checked outcome names"
         ]
       },
       {
@@ -81,7 +82,8 @@
       {
         "file": "docs/templates/agent/roles/orchestrator.md",
         "patterns": [
-          "Declining doc-roles does not skip the outcome audit"
+          "Declining doc-roles does not skip the outcome audit",
+          "changed an observable a checked outcome names"
         ]
       },
       {
