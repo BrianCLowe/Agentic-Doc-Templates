@@ -17,7 +17,7 @@ Here are the most helpful ways to contribute:
 - **Discussions** — Open-ended ideas and “how do I…?” questions are still welcome.
 - **Pull Requests** — Welcome for small, focused improvements to existing templates. Please keep changes aligned with the current lightweight, modular style.
 
-**Note for people who copy this repo into an app:** pack-only leftovers belong to *this* template project only — `.github/ISSUE_TEMPLATE/`, `.github/FUNDING.yml`, `.github/workflows/release.yml` / `pack-checks.yml`, `.cursor/environment.json`, root `eval/`, `scripts/gen_role_adapters.py`, leftover `docs/templates/agent/scripts/*.py`, maintainer `DECISIONS.md`, and maintainer `VISION.md`. If they appear in your app after a whole-repo copy, delete them (bootstrap Steps 1b–1d). Prefer copying only `docs/templates/`.
+**Note for people who copy this repo into an app:** pack-only leftovers belong to *this* template project only — `.github/ISSUE_TEMPLATE/`, `.github/FUNDING.yml`, `.github/workflows/release.yml` / `pack-checks.yml`, `.cursor/environment.json`, `.cursor/skills/pack-release-tag/`, root `eval/`, `scripts/gen_role_adapters.py`, leftover `docs/templates/agent/scripts/*.py`, maintainer `DECISIONS.md`, and maintainer `VISION.md`. If they appear in your app after a whole-repo copy, delete them (bootstrap Steps 1b–1d). Prefer copying only `docs/templates/`.
 
 ## What I'm Looking For
 
@@ -34,7 +34,7 @@ I'm more cautious about changes that significantly increase complexity, require 
 
 **Pack decisions:** Lasting pack choices live in root [`DECISIONS.md`](DECISIONS.md) (CHANGELOG is the archaeology — use it to backfill). Supersede a row when reversing it; do not silently undo. The ideal whole we are working toward lives in root [`VISION.md`](VISION.md) — correct that picture; do not treat the current tree as the target. Bootstrap Step 1d **deletes** both files from whole-repo user copies.
 
-**Publishing a GitHub Release:** Push the bump to `main` first, then tag (tag must match `pack-version` in `VERSION`). Tag-only pushes can miss the workflow if `main` does not already have it:
+**Publishing a GitHub Release:** Push the bump to `main` first, then tag (tag must match `pack-version` in `VERSION`). Tag-only pushes can miss the workflow if `main` does not already have it. Agents follow [`.cursor/skills/pack-release-tag/SKILL.md`](.cursor/skills/pack-release-tag/SKILL.md) — that check is the procedure; do not search the repo for it.
 
 ```bash
 git push origin main
@@ -89,6 +89,7 @@ Thanks again for helping make these templates better. I genuinely appreciate it.
 | `.github/workflows/release.yml` | **Delete** if pack Release workflow (Step 1b) |
 | `.github/workflows/pack-checks.yml` | **Delete** if pack integrity workflow (Step 1d) |
 | `.cursor/environment.json` | **Delete** if pack Cloud Agent env (Step 1c) |
+| `.cursor/skills/pack-release-tag/` | **Delete** when `name:` is `pack-release-tag` (Step 1c). Leave the user’s other skills |
 | root `eval/` | **Delete** if pack harness (Step 1d) |
 | `scripts/gen_role_adapters.py` | **Delete** (upstream CI helper — Step 1d) |
 | leftover `docs/templates/agent/scripts/*.py` | **Delete** (Step 1d) |
@@ -101,4 +102,4 @@ That keeps your project root for **your** README and metadata. Attribution and u
 
 Do **not** put `CONTRIBUTING.md`, `LICENSE.md`, or the template pack README at `docs/` root — only under `docs/templates/agent/upstream/` when you need them for attribution.
 
-If a whole-repo copy left **`.github/ISSUE_TEMPLATE/`**, **`.github/FUNDING.yml`**, **`.github/workflows/release.yml`** / **`pack-checks.yml`**, pack **`.cursor/environment.json`**, root **`eval/`**, **`scripts/gen_role_adapters.py`**, leftover **`docs/templates/agent/scripts/*.py`**, maintainer **`DECISIONS.md`**, or maintainer **`VISION.md`** in your app, delete them — those are for Agentic Doc Templates upstream, not for your product. Bootstrap Steps 1b–1d remove them automatically.
+If a whole-repo copy left **`.github/ISSUE_TEMPLATE/`**, **`.github/FUNDING.yml`**, **`.github/workflows/release.yml`** / **`pack-checks.yml`**, pack **`.cursor/environment.json`**, **`.cursor/skills/pack-release-tag/`**, root **`eval/`**, **`scripts/gen_role_adapters.py`**, leftover **`docs/templates/agent/scripts/*.py`**, maintainer **`DECISIONS.md`**, or maintainer **`VISION.md`** in your app, delete them — those are for Agentic Doc Templates upstream, not for your product. Bootstrap Steps 1b–1d remove them automatically.

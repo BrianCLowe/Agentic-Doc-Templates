@@ -85,8 +85,9 @@ When the whole template repo was cloned/copied into a project (or “Use this te
 
 1. If `.cursor/environment.json` exists **and** is the upstream pack config (e.g. `"name": "Agentic Doc Templates"`, or its `install` only checks the release-build toolchain / mentions Agentic Doc Templates and installs no real app dependencies) → **delete that file**.
 2. If `.cursor/environment.json` looks like the **user's own** environment (installs their app's dependencies, references their stack, starts their services) → **do not delete**.
-3. Do **not** delete the user's other `.cursor/` config (rules, MCP config, etc.). Remove `.cursor/` only if it is empty afterward.
-4. Prefer copying only `docs/templates/` next time so `.cursor/` never lands in the project.
+3. If `.cursor/skills/pack-release-tag/SKILL.md` exists **and** its `name:` is `pack-release-tag` → **delete that directory**. If `.cursor/skills/` is empty afterward, remove it. Leave every other skill directory.
+4. Do **not** delete the user's other `.cursor/` config (rules, MCP config, their own skills). Remove `.cursor/` only if it is empty afterward.
+5. Prefer copying only `docs/templates/` next time so `.cursor/` never lands in the project.
 
 ## Step 1d — Remove upstream maintainer tooling (user projects)
 
@@ -337,6 +338,7 @@ After 3d: if `docs/Product-Vision.md` exists, fill **How the map fits** from the
 - Create `docs/help/` or `docs/agent/` at docs root — those belong inside `docs/templates/`.
 - Leave Agentic Doc Templates `.github/ISSUE_TEMPLATE/`, `.github/workflows/release.yml`, `.github/workflows/pack-checks.yml`, or `.github/FUNDING.yml` in a user project — delete them (Step 1b / 1d).
 - Leave the pack's own `.cursor/environment.json` (Cloud Agent env config) in a user project on a whole-repo copy — delete it (Step 1c); keep the user's own env/rules.
+- Leave `.cursor/skills/pack-release-tag/` when that skill's `name:` is `pack-release-tag` — delete that directory (Step 1c); keep the user's other skills.
 - Leave upstream root **`eval/`**, root **`scripts/gen_role_adapters.py`**, or leftover **`docs/templates/agent/scripts/*.py`** in a user project on a whole-repo copy — delete them (Step 1d); keep [`GENERATE_ROLE_ADAPTERS.md`](GENERATE_ROLE_ADAPTERS.md).
 - Ask before moving root files that are **clearly** upstream (Agentic Doc Templates / Brian Lowe / BrianCLowe markers) — just move them.
 - Finish bootstrap with a filled Document Map but **no** feature/shared files on disk.

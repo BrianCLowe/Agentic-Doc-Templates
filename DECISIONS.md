@@ -105,7 +105,7 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 
 ## D14 — Pack vs consumer tree
 
-**Decision:** GitHub Release zip is `docs/templates/` only. Root `eval/`, `scripts/`, this file, pack-checks workflow, issue forms, FUNDING, release.yml, and pack `.cursor/environment.json` are upstream-only and must not stay in a user’s app.
+**Decision:** GitHub Release zip is `docs/templates/` only. Root `eval/`, `scripts/`, this file, pack-checks workflow, issue forms, FUNDING, release.yml, pack `.cursor/environment.json`, and `.cursor/skills/pack-release-tag/` are upstream-only and must not stay in a user’s app. Bootstrap Step 1c deletes that skill directory when its `name:` is `pack-release-tag`, and leaves the user’s other skills.
 
 ## D15 — Thin workflow index
 
