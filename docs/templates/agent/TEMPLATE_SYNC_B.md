@@ -353,7 +353,7 @@ Run only when selected catch-up includes **2.7.27** and reshape is executing. Op
 - Equate “no install artifacts for this harness” with “nothing to offer the user”
 - Under **`auto-all`:** flip **`declined`** optionals back to enabled
 - Read **only the top** changelog entry when **from** < **to** and intermediate `##` entries exist — **union** those entries (Catch-up above)
-- Let a newer entry’s `process-docs-only` cancel `content-templates` / reshape / assumption-cleanout / ambition / operable / kit-coverage / outcomes tags from skipped releases in the same jump
+- Let a newer entry’s `process-docs-only` cancel `content-templates` / reshape / assumption-cleanout / ambition / operable / kit-coverage / outcomes / completed-cleanout tags from skipped releases in the same jump
 - Name catalog optional tags that were **not** in the union as “skipped” (they were not this jump’s instructions)
 - Treat `auto-all` as license to run every pass in the Live impact tag table
 - Walk each catch-up version as its own full sync or bump Pack version through intermediate numbers

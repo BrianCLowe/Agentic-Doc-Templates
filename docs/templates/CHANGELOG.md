@@ -24,6 +24,16 @@
 
 ---
 
+## 2.9.11
+
+- **Live impact:** `versions-only`, `process-docs-only`, `rules`
+- **Summary:** `process-docs-only` does not cancel a skipped `optional-todo-completed-cleanout`. The Step B do-not list names that tag with the other live passes. Work-verifier runs before the claimed TODO item moves to Completed. A fail leaves that item open.
+- **Changes:**
+  - `VERSION` — 2.9.10 → 2.9.11
+  - `agent/TEMPLATE_SYNC_B.md` — do-not guard includes completed-cleanout
+  - modular rule twins — After changes: work-verifier, then mark-done
+- **Step B:** Bump Master Index **Pack version** to 2.9.11 from local `VERSION`. **`rules`:** refresh installed modular-rule copies so work-verifier runs before the claimed item is marked `[x]` and moved to Completed; on fail the item stays open. No live feature/shared scan. A `process-docs-only` entry in this jump does not cancel `optional-todo-completed-cleanout` from an earlier selected entry.
+
 ## 2.9.10
 
 - **Live impact:** `versions-only`, `rules`, `optional-todo-completed-cleanout`

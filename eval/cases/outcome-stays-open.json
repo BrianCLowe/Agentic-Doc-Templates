@@ -72,7 +72,8 @@
           "not a human look",
           "do **not** create a human-verify playtest",
           "optional-todo-completed-cleanout",
-          "Live TODO completed cleanout"
+          "Live TODO completed cleanout",
+          "outcomes / completed-cleanout tags from skipped"
         ]
       },
       {
@@ -91,6 +92,13 @@
         "patterns": [
           "Work-verifier fails a unit that checks",
           "Do not add a Completed row for an incidental fix"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/Modular_Documentation_Rule.mdc",
+        "patterns": [
+          "On **fail**, leave the claimed item `[ ]`",
+          "After work-verifier **pass**"
         ]
       },
       {
