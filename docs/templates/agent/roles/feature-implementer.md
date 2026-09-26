@@ -15,7 +15,7 @@
 
 1. **Docs freshness** (Workflow §0.3): `git status --porcelain` + `git worktree list` before treating Master Index / TODOs as current. Sibling `docs/` drift → **stop**. Dirty **this** tree: one line, continue. **Before a new PR:** if an open PR already touches this stem’s TODO/spec/Understanding → add commits there (docs overlap ≠ code overlap). If the brief names a **host cwd / worktree path** → work **only** there. Do **not** create or remove worktrees; do **not** checkout default.
 2. `docs/ADT-settings.yaml` → `docs_profile.mode` if present (unset = prevent); **`standing.instructions`** if non-empty (Workflow §0.2); parent brief may already name these.
-3. `docs/Master_Index.md` Sections 1–3. `docs/Product-Vision.md` if it exists — do **not** implement a fight with a **confirmed** end-state picture (Workflow §4.5)
+3. `docs/Master_Index.md` Sections 1–3. `docs/Product-Vision.md` — do **not** implement a fight with a **confirmed** end-state picture (Workflow §4.5)
 4. Active TODO — read **Current focus** first (§5.1)
 5. That item’s linked spec; `-Understanding.md` **if it exists** (**read-only** for context)
 6. Shared docs **only** when linked from this feature’s Understanding, spec, or TODO dependency notes (or the one shared piece you are integrating now)

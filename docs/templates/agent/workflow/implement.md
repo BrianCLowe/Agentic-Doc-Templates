@@ -15,14 +15,14 @@
 | **`build-first`** | Spec + TODO exist for the stem; no Understanding required. Draft `Product-Vision.md` is **not** a blocker |
 
 1. **Docs freshness** — `git status --porcelain` + `git worktree list` (Workflow §0.3). Sibling `docs/` drift → **stop**. Dirty **this** tree: note it; continue
-2. Read `docs_profile` (if set) + `Master_Index.md` — Sections 1–3. If `docs/Product-Vision.md` exists, read it
+2. Read `docs_profile` (if set) + `Master_Index.md` — Sections 1–3. Read `docs/Product-Vision.md`
 3. Active TODO **Current focus** → that TODO → Understanding *(if present — read-only)* → spec → code. Do **not** implement a fight with a **confirmed** product vision
 4. Skip drafting/graduation unless profile requires shape work, status is `draft` on an existing Understanding, the user changed scope, or Project Profile says game extensions apply
 5. **Preference corrections → same turn:** if the user corrected a lasting UI/interaction preference that could be “improved away,” append 1-line **Decisions** row(s) on that stem’s spec and fix contradicting Behavior / Acceptance / Visual refs (§10). Do **not** wait for a session-wrap ask. Update **Current focus** as usual (§5.1) — it is handoff, not the decision log.
 
 **Full Path A / Path B** when scoping new work, Understanding is required and missing/`draft`, or graduating to spec:
 
-1. Docs freshness first (Workflow §0.3) if not already done this session. Then read `Master_Index.md` — Sections 1–3 (overview, locations, Document Map). If `docs/Product-Vision.md` exists, read it — a feature that fights a **confirmed** vision is not ready
+1. Docs freshness first (Workflow §0.3) if not already done this session. Then read `Master_Index.md` — Sections 1–3 (overview, locations, Document Map). Read `docs/Product-Vision.md` — a feature that fights a **confirmed** vision is not ready
 2. Decide: **shared foundation work** (Path A) or **feature work** (Path B) — §1
 
 ### Path A — Shared foundation work
