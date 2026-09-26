@@ -20,7 +20,7 @@
 | `optional-todo-completed-cleanout` | Live TODO Completed cleanout. **`auto` / `auto-all`:** all Document Map `*-TODO.md`. **`choose`:** present + ask once. Remove a Completed checkbox that git shows was never an open `[ ]` task and is not an exercise note. Unsure → leave the row |
 | `rules` | Refresh installed agent rules/adapters from local pack (**no ask** unless tool has `customized: true`) |
 | `optional-upstream-check` | Stamp `upstream:` in `docs/ADT-settings.yaml` / offer enable update-check if unset |
-| `process-docs-only` | Pack process/help/agent docs only — no live feature/shared content scan |
+| `process-docs-only` | Pack process/help/agent docs only — no live feature/shared content scan **for that release alone**; still honor other unioned live tags |
 
 ---
 
