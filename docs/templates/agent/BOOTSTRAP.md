@@ -310,7 +310,7 @@ Add InEditor/Asset TODOs when Project Profile / game extensions apply.
 
 If the user named **no** features yet, skip Step 3d and say so in Step 4.
 
-After 3d: if `docs/Product-Vision.md` exists, fill **How the map fits** from the map rows you just created (one line each). Do not invent extra stems.
+After 3d: fill **How the map fits** from the map rows you just created (one line each). Do not invent extra stems.
 
 ## Step 4 — Tell the user what's next
 

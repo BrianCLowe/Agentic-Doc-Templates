@@ -38,6 +38,7 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 | D28 | Slash commands are an opt-in menu for sync and orchestrate only | accepted | 2.9.6 |
 | D29 | Repo behavior that is not a pack playbook is asked as a rule or a skill, not filed in standing | accepted | 2.9.6 |
 | D30 | Drained child tasks are not capability-done; an Outcomes row stays open until a passing exercise note | accepted | 2.9.9 |
+| D31 | Completed is not a repair log; incidental fixes stay in git, not a new Completed row | accepted | 2.9.10 |
 
 ---
 
