@@ -186,10 +186,10 @@ If it already exists → do not overwrite; offer to update rows when the stack c
 If `docs/Human-TODO.md` does not exist:
 
 1. Copy from `docs/templates/Human_TODO_Template.md`.
-2. Add Open rows for any human-gated needs implied by the conversation / Document Map — `procure` (keys/portals), `playtest`, `decide`, or `waiting`. If none yet, leave the Open **list** empty (not a table — Workflow §13).
+2. Add Open rows for any human-gated needs implied by the conversation / Document Map — `procure` (keys/portals), `playtest`, `decide`, or `waiting`. Feel/`playtest` as a kind stays. Do **not** mint a please-look / human-verify Open playtest from conversation or the map — after 2.9.9 / D30 only the outcome audit creates that row. If none yet, leave the Open **list** empty (not a table — Workflow §13).
 3. Ensure Master Index §3.3 / §3.4 link to `Human-TODO.md`.
 
-If it already exists → add newly discovered human-gated needs (procure / playtest / decide / waiting); do not wipe user-completed rows.
+If it already exists → add newly discovered human-gated needs (procure / playtest / decide / waiting); do not wipe user-completed rows. Same hedge: no please-look / human-verify playtest from conversation or the map.
 
 ## Step 3r — Project README *(human entry point)*
 
