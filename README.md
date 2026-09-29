@@ -156,7 +156,7 @@ Flat sibling files per feature/shared component. Naming: [`Modular_Docs_Workflow
 
 - **Simplicity** — Short user asks; agents follow one playbook.
 - **Understanding before code** — Agent drafts shape/guardrails; you confirm is / is not (not the full contract).
-- **Product vision** — One end-state picture the feature map must fit (prevent). A complete map is not identity.
+- **Product vision** — One end-state picture the feature map must fit (always created; all profiles; **build-first** is destination-only until you *lock product shape*). A complete map is not identity.
 - **Modular map** — Small files + Document Map; not one giant spec.
 - **Tight scope** — Paved path for the current ask; no “just in case” audits.
 - **One folder to copy** — `docs/templates/` holds setup, workflow, and rules so your `docs/` root stays yours.

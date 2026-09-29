@@ -121,7 +121,7 @@ tools:
   #   path: .clinerules/modular-documentation.md
 
 # Optional pack features. Status: enabled | declined
-# Bootstrap Steps 4b / 4c record these; each tools/<key>.md installs matching artifacts.
+# Bootstrap Step 3p records these; each tools/<key>.md installs matching artifacts.
 
 optional_rules:
   template-update-check:
