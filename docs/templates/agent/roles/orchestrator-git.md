@@ -138,7 +138,7 @@ A **milestone** is the PR unit. Parent **names** it at partition (stem + short s
 
 - Same reviewable cut — same stem, that stem **plus** the shared unblocker for this cut, same Current-focus cluster / one Acceptance line / domain+wire of one operable cut / implementer-split
 - Closing after the first item would leave a half-done cut
-- Non-overlapping stems the parent **named together** at partition (concurrent this cut — one squash tip)
+- Non-overlapping stems the parent **named together** at partition (concurrent this cut — close-out is one PR; squash-before-ready is not the default; the forge squash-merges after ready)
 
 **Do not put on the same milestone:**
 
@@ -157,7 +157,7 @@ A **milestone** is the PR unit. Parent **names** it at partition (stem + short s
 
 Same-stem default is **serial** (same files, including docs). Same-stem parallel only when the items clearly do not share **code or docs** and are not one focus split.
 
-After the last unit in the milestone: mark ready → wait CI/Bugbot → merge. **Do not** squash before ready for Bugbot (it reads the PR until ready). Do **not** stack a second PR on an unmerged first PR.
+After the last unit in the milestone: build-verify → warden → mark ready → wait CI/Bugbot → merge. Squash-before-ready stays skip by default. **Do not** squash before ready for Bugbot (it reads the PR until ready). Do **not** stack a second PR on an unmerged first PR.
 
 ### End of run *(non-PR)*
 

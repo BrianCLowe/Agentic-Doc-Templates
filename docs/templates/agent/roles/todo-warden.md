@@ -11,7 +11,7 @@
 
 ## When to invoke
 
-- Orchestrator **`milestone-pr`** close-out **after each slice’s build verify** and **before** squash / mark ready / merge (stems in that PR) — **honesty, hygiene, and outcome audit**
+- Orchestrator **`milestone-pr`** close-out once the **named milestone** is complete, **after** that build verify and **before** mark ready (squash only if standing or a HEAD-only reviewer; stems in that PR) — **honesty, hygiene, and outcome audit**
 - Orchestrator **`branch-pr*`** close-out **after build verify** and **before** squash / mark ready (when this run cleared code work) — **honesty, hygiene, and outcome audit**
 - User says: *Todo warden*, *reconcile TODOs vs implementation*, *check TODO gaps after orchestration*, *honesty pass on the backlog*, *Outcome audit*
 - User says: *Todo cleanup*, *archive completed TODOs*, *move done items to Completed*, *tidy the TODO completed sections* — **hygiene required**; honesty only if they also asked for gaps / after an implement run (or parent brief includes honesty)
