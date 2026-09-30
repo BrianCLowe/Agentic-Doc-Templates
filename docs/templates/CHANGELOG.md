@@ -24,6 +24,17 @@
 
 ---
 
+## 2.9.12
+
+- **Live impact:** `versions-only`, `process-docs-only`, `rules`
+- **Summary:** A secrets scanner treated the colon after the word pass as a credential assignment. The template-sync outcomes hard rule, the 2.7.10 honesty bullet, and the assumption clean-out heading no longer put a colon there. The instructions are unchanged.
+- **Changes:**
+  - `VERSION` — 2.9.11 → 2.9.12
+  - `roles/adapter-src/bodies/docs-template-sync.md` + cursor|grok|copilot adapters — outcomes hard rule
+  - `CHANGELOG.md` 2.7.10 — honesty bullet
+  - `workflow/understanding.md` §4 — clean-out heading
+- **Step B:** Bump Master Index **Pack version** to 2.9.12 from local `VERSION`. **`rules`:** refresh installed `docs-template-sync` adapters. No live feature/shared scan.
+
 ## 2.9.11
 
 - **Live impact:** `versions-only`, `process-docs-only`, `rules`
@@ -452,7 +463,7 @@
 - **Live impact:** `versions-only`, `rules`, `process-docs-only`
 - **Files:**
   - `VERSION` — 2.7.9 → 2.7.10
-  - `agent/roles/todo-warden.md` + cursor|grok adapters — **docs-only** honesty pass: reopen overclaims, ≤5 cited gap TODOs, ≤10 reopens; no code; no invention
+  - `agent/roles/todo-warden.md` + cursor|grok adapters — **docs-only** honesty pass. Reopen overclaims, ≤5 cited gap TODOs, ≤10 reopens; no code; no invention
   - `agent/roles/orchestrator-git.md` — **extracted** git modes, forge probe, PR close-out (build-verify → warden → squash → ready); `orchestrator.md` slimmed to loop + gates + human verify map
   - `agent/Modular_Docs_Workflow.md` — tighter design intent + **§5.3** (table form; same guardrails)
   - `agent/Modular_Documentation_Rule.*` — shorter operable/after-changes/philosophy; still points at Workflow/rules

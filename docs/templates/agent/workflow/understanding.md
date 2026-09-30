@@ -99,7 +99,7 @@ Agents invent decisions, then either lock the invention as identity or dump it i
 - *Lesser-path ask (only with a real reason):* A hard external constraint, not speed — e.g. “A claimed-passing energy worksheet needs a licensed stamp we do not have. I locked not-stamp-ready flags. Do you actually want a claimed-passing worksheet (legally worse)?”
 - *Do not ask:* “Which jurisdiction should we use?” / “How should Energy Star be handled?” / “Is the reference walkthrough the product?” / “Ship a thinner MVP so we finish faster?” Those quiz the obvious path, promote an example into a target, or apply human-sprint sizing to agent work.
 
-**Clean-out pass:** Existing Understandings (and specs that copied a reference example as a constraint) get the same gate. **Offer** it — all Document Map Understanding stems / named / no; default yes. Sync tag `optional-assumption-cleanout` ([`TEMPLATE_SYNC_B.md`](../TEMPLATE_SYNC_B.md)). Mid-session: if the user is correcting invented decisions or you already see dirty Assumptions on open stems, offer the same pass. Do **not** silent-scan the whole map without that offer or the tagged sync execute.
+**Clean-out pass.** Existing Understandings (and specs that copied a reference example as a constraint) get the same gate. **Offer** it — all Document Map Understanding stems / named / no; default yes. Sync tag `optional-assumption-cleanout` ([`TEMPLATE_SYNC_B.md`](../TEMPLATE_SYNC_B.md)). Mid-session: if the user is correcting invented decisions or you already see dirty Assumptions on open stems, offer the same pass. Do **not** silent-scan the whole map without that offer or the tagged sync execute.
 
 On execute (chosen stems that **have** Understanding):
 

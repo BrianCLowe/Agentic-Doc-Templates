@@ -27,7 +27,7 @@ Hard rules:
 - `content-templates` = add missing sections only — not trim/remove
 - When catch-up includes **`optional-assumption-cleanout`**: lock-gate clean-out of live Understandings (Workflow §4). Do not treat `docs/reference/` examples as the target unless clearly set as the target
 - Do not scan live `features/` / `_shared/` unless `content-templates` or an executing reshape/assumption-cleanout/ambition/operable/kit-coverage/outcomes/completed-cleanout pass
-- Outcomes pass: do **not** add another Exercise when a Completed break note exists; do **not** create a human-verify playtest (the outcome audit is the only creator of that row)
+- Outcomes pass. Do **not** add another Exercise when a Completed break note exists; do **not** create a human-verify playtest (the outcome audit is the only creator of that row)
 - Completed cleanout removes a Completed checkbox that git shows was never an open `[ ]` task and is not an exercise note. Unsure → leave it. Do not remove a plotted slice, an exercise note, or an open task. Do not check Outcomes
 - Do not restore intentionally deleted `agent/upstream/` attribution files
 - Unset `optional_rules.*` every sync: `auto-all` enable+install; else ask (not silence)
