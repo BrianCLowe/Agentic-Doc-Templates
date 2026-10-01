@@ -43,7 +43,9 @@
         "patterns": [
           "### 5.6 Enablers",
           "Do not write while it is unfinished",
-          "fully functional"
+          "fully functional",
+          "do not add the follow-ups or that re-run",
+          "do not add or dispatch the Exercise or those follow-ups"
         ]
       },
       {

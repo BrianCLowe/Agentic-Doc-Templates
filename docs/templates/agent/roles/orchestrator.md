@@ -58,9 +58,9 @@ All of:
 | **Shared maturity** | Enough to integrate; else shared TODO first when in scope |
 | **Target arch** | Rewrite High Priority / focus that fights confirmed shape before dispatch ([timescale](../Agent_Timescale_Planning_Rule.mdc)) |
 | **Operable (§5.3)** | User-facing stem with domain-only High Priority and no exercise path / library-only / phase → **add** surface/wire/smoke (**scaffold+wire** if no UI specs) or phase note **once**, then dispatch. Open operable Acceptance with no covering TODO → add work (or phase). Do not report “cleared/Layer done” without path. Library-only `_shared/` exempt; consumers own wire. |
-| **Outcomes (§5.5)** | Do not check an Outcomes row or an operable Acceptance line from a slice. An empty High/Medium/Low list while an Outcomes row is `[ ]` is not stem-drained. Next unit is the exercise task when none exists, or the cited-break follow-up when the latest exercise recorded a break. Do not add a second Exercise in that case. Do not playtest an outcome that is still `[ ]`. If that outcome’s write needs an unfinished enabler, do not add or dispatch the Exercise. The next unit is the enabler’s remaining work (§5.6). |
+| **Outcomes (§5.5)** | Do not check an Outcomes row or an operable Acceptance line from a slice. An empty High/Medium/Low list while an Outcomes row is `[ ]` is not stem-drained. Next unit is the exercise task when none exists, or the cited-break follow-up when the latest exercise recorded a break. Do not add a second Exercise in that case. Do not playtest an outcome that is still `[ ]`. If that outcome’s write needs an unfinished enabler, do not add or dispatch the Exercise or those follow-ups. The next unit is the enabler’s remaining work (§5.6). |
 | **Kit coverage (§5.4)** | In-scope spec surface with **no** covering TODO (**open or Completed**) on that stem → **add** the item on the inventory/owning stem, then it is ready work. Do **not** skip it as “not picked up.” Do **not** create a new map row unless splitting per Workflow §0. Terse wrap-the-public-API → expand from the docs; do not interview each facet. A category enabler (§5.6) gets a covering TODO on the owning stem even when the user never named it. |
-| **Enabler (§5.6)** | Do not add or dispatch the dependent Exercise, or any write that needs an unfinished enabler. Next unit is the enabler’s remaining work. A running writer that is saving those rows is not ready work — stop that path. |
+| **Enabler (§5.6)** | Do not add or dispatch the dependent Exercise, cited-break follow-ups, or any write that needs an unfinished enabler. Next unit is the enabler’s remaining work. A running writer that is saving those rows is not ready work — stop that path. |
 
 `draft` Understanding → **do not code** that stem; continue other ready stems. **build-first:** do not invent Understanding to unblock.
 
@@ -93,7 +93,7 @@ Until **stop condition**:
 
 - In-scope agent items cleared (deferred playtest OK) **and** no Outcomes row still `[ ]`, or no ready agent work left, or budget hit, or second verify fail with no other ready work, or user cancel/skip subagents
 
-An empty High/Medium/Low list while an Outcomes row is `[ ]` is not cleared. If that outcome’s write needs an unfinished enabler, do not add the Exercise. The next unit is the enabler’s remaining work (Workflow §5.6). Otherwise, if that outcome has no exercise item and no passing note, the next unit is its exercise task — add it if missing, then continue while budget remains. If the latest exercise recorded a break, the next unit is the cited follow-up, not a second Exercise. Do not report the feature or stem done.  
+An empty High/Medium/Low list while an Outcomes row is `[ ]` is not cleared. If that outcome’s write needs an unfinished enabler, do not add the Exercise or the cited-break follow-ups. The next unit is the enabler’s remaining work (Workflow §5.6). Otherwise, if that outcome has no exercise item and no passing note, the next unit is its exercise task — add it if missing, then continue while budget remains. If the latest exercise recorded a break, the next unit is the cited follow-up, not a second Exercise. Do not report the feature or stem done.  
 
 **Do not** stop only for an already-open deferred playtest. Then **git end/close-out** ([`orchestrator-git.md`](orchestrator-git.md)). Do **not** write a human-verify map.
 
@@ -103,7 +103,7 @@ The outcome audit is the only creator of a human-verify playtest. It writes one 
 
 ## End-of-run report
 
-Cleared · still open · **outcomes still `[ ]`** · human looks the warden added · other deferred human · hard-blocked · verify failures · **git** (mode, branches, commits, push, PR URLs, merged/degraded, verify, warden, ready/draft, **current HEAD after return-to-default**) · next (if an outcome is open, the exercise task or the cited-break follow-up).
+Cleared · still open · **outcomes still `[ ]`** · human looks the warden added · other deferred human · hard-blocked · verify failures · **git** (mode, branches, commits, push, PR URLs, merged/degraded, verify, warden, ready/draft, **current HEAD after return-to-default**) · next (if an outcome is open, the exercise task or the cited-break follow-up, unless that write needs an unfinished enabler — then the enabler’s remaining work).
 
 ## Do not
 

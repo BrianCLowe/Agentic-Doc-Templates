@@ -27,7 +27,7 @@
 ## 2.9.14
 
 - **Live impact:** `versions-only`, `rules`, `process-docs-only`
-- **Summary:** Category enablers. Something the product cannot be exercised without — a price source, or another portion of the app — is locked into identity even when the user never said it. That portion is fully functional only when the outcomes this dependent uses have a passing exercise, not when a process is merely running. A dependent must not write data that needs the enabler while it is unfinished, and the dependent Exercise is not added or dispatched while that portion is unfinished. Scores and “this did not complete” are examples, not the boundary. Those writes are bad data. A passing note that used a stub or an unfinished sibling is not passing.
+- **Summary:** Category enablers. Something the product cannot be exercised without — a price source, or another portion of the app — is locked into identity even when the user never said it. That portion is fully functional only when the outcomes this dependent uses have a passing exercise, not when a process is merely running. A dependent must not write data that needs the enabler while it is unfinished, and the dependent Exercise and cited-break follow-ups are not added or dispatched while that portion is unfinished. Scores and “this did not complete” are examples, not the boundary. Those writes are bad data. A passing note that used a stub or an unfinished sibling is not passing.
 - **Changes:**
   - `VERSION` — 2.9.13 → 2.9.14
   - `agent/workflow/todos.md` §5.6 — enablers; §5.4 carve-out; §5.5 stub note is not passing
