@@ -58,9 +58,9 @@ All of:
 | **Shared maturity** | Enough to integrate; else shared TODO first when in scope |
 | **Target arch** | Rewrite High Priority / focus that fights confirmed shape before dispatch ([timescale](../Agent_Timescale_Planning_Rule.mdc)) |
 | **Operable (§5.3)** | User-facing stem with domain-only High Priority and no exercise path / library-only / phase → **add** surface/wire/smoke (**scaffold+wire** if no UI specs) or phase note **once**, then dispatch. Open operable Acceptance with no covering TODO → add work (or phase). Do not report “cleared/Layer done” without path. Library-only `_shared/` exempt; consumers own wire. |
-| **Outcomes (§5.5)** | Do not check an Outcomes row or an operable Acceptance line from a slice. An empty High/Medium/Low list while an Outcomes row is `[ ]` is not stem-drained. Next unit is the exercise task when none exists, or the cited-break follow-up when the latest exercise recorded a break. Do not add a second Exercise in that case. Do not playtest an outcome that is still `[ ]`. |
+| **Outcomes (§5.5)** | Do not check an Outcomes row or an operable Acceptance line from a slice. An empty High/Medium/Low list while an Outcomes row is `[ ]` is not stem-drained. Next unit is the exercise task when none exists, or the cited-break follow-up when the latest exercise recorded a break. Do not add a second Exercise in that case. Do not playtest an outcome that is still `[ ]`. If that outcome’s write needs an unfinished enabler, do not add or dispatch the Exercise. The next unit is the enabler’s remaining work (§5.6). |
 | **Kit coverage (§5.4)** | In-scope spec surface with **no** covering TODO (**open or Completed**) on that stem → **add** the item on the inventory/owning stem, then it is ready work. Do **not** skip it as “not picked up.” Do **not** create a new map row unless splitting per Workflow §0. Terse wrap-the-public-API → expand from the docs; do not interview each facet. A category enabler (§5.6) gets a covering TODO on the owning stem even when the user never named it. |
-| **Enabler (§5.6)** | Do not dispatch a write that needs an unfinished enabler. Next unit is the enabler’s remaining work. A running writer that is saving those rows is not ready work — stop that path. |
+| **Enabler (§5.6)** | Do not add or dispatch the dependent Exercise, or any write that needs an unfinished enabler. Next unit is the enabler’s remaining work. A running writer that is saving those rows is not ready work — stop that path. |
 
 `draft` Understanding → **do not code** that stem; continue other ready stems. **build-first:** do not invent Understanding to unblock.
 
@@ -83,7 +83,7 @@ Until **stop condition**:
 3. **Implementer** — spawn/delegate or in-session playbook; brief each: stem, TODO path, item, profile, Understanding/spec paths, **host cwd/worktree path when isolated**. **One unit per implementer.** Spawn **multiple** only when step 2 says they do not overlap **and** host isolation is available. **Live docs count** (same TODO/spec = overlap). Successive issue on a stem that already has an open PR → add to that PR, do not spawn a second.  
 4. **Work-verifier** — always after each returned unit; **no** mark-done/commit until **pass**. Several returned units → verify each (in parallel if the harness allows). Spawn `work-verifier` when that adapter is installed; otherwise follow [`work-verifier.md`](work-verifier.md) in this session for that unit. Declining doc-roles does not skip it. The compare is the claimed TODO item against that unit’s diff. Older checked rows are the warden honesty reopen, not this step.  
 5. **Verify fail** — one fix pass; second fail → stop item, continue others  
-6. **Bookkeep** — `[x]` + date, Current focus; dual-write `procure` / `decide` / `waiting` only. Do **not** add a human-verify playtest in this step. After verifier **pass**, run the outcome audit in this session when a current passing note exists and that outcome is still `[ ]`, or when this turn’s code changed an observable a checked outcome names. The check sets `[x]` only while the outcome is still `[ ]`. Reopen unchecks that outcome, writes one sentence, and adds one Exercise. An outcome already `[x]` does not get another playtest. A copy or typo fix does not reopen.  
+6. **Bookkeep** — `[x]` + date, Current focus; dual-write `procure` / `decide` / `waiting` only. Do **not** add a human-verify playtest in this step. After verifier **pass**, run the outcome audit in this session when a current passing note exists and that outcome is still `[ ]`, or when this turn’s code changed an observable a checked outcome names. The check sets `[x]` only while the outcome is still `[ ]`. Reopen unchecks that outcome, writes one sentence, and adds one Exercise. If that write needs an unfinished enabler, do not add the Exercise (Workflow §5.6). An outcome already `[x]` does not get another playtest. A copy or typo fix does not reopen.  
 7. **Unit build green** — implementer should have run build-verify for code; re-dispatch if handoff implies runnable but never built  
 8. **Milestone git** — parent commits each verify-pass (mode ≠ `none`); serialize commits if several implementers return together; then push/PR per [`orchestrator-git.md`](orchestrator-git.md). **`milestone-pr`:** stay on this branch while the named milestone still has remaining grouped TODOs or in-flight parallel units. When that milestone is **complete** → that file’s **milestone PR cycle** (build-verify → warden → ready → wait CI/Bugbot → merge → new branch) **before** the next milestone. Do **not** start the cycle after the first TODO if more grouped work remains. Waiting is drain, not a stop. **One open PR at a time.**  
 
@@ -93,7 +93,7 @@ Until **stop condition**:
 
 - In-scope agent items cleared (deferred playtest OK) **and** no Outcomes row still `[ ]`, or no ready agent work left, or budget hit, or second verify fail with no other ready work, or user cancel/skip subagents
 
-An empty High/Medium/Low list while an Outcomes row is `[ ]` is not cleared. If that outcome has no exercise item and no passing note, the next unit is its exercise task — add it if missing, then continue while budget remains. If the latest exercise recorded a break, the next unit is the cited follow-up, not a second Exercise. Do not report the feature or stem done.  
+An empty High/Medium/Low list while an Outcomes row is `[ ]` is not cleared. If that outcome’s write needs an unfinished enabler, do not add the Exercise. The next unit is the enabler’s remaining work (Workflow §5.6). Otherwise, if that outcome has no exercise item and no passing note, the next unit is its exercise task — add it if missing, then continue while budget remains. If the latest exercise recorded a break, the next unit is the cited follow-up, not a second Exercise. Do not report the feature or stem done.  
 
 **Do not** stop only for an already-open deferred playtest. Then **git end/close-out** ([`orchestrator-git.md`](orchestrator-git.md)). Do **not** write a human-verify map.
 
@@ -113,7 +113,7 @@ Cleared · still open · **outcomes still `[ ]`** · human looks the warden adde
 - Create a human-verify playtest, a **Human verify** owner item, or an end-of-run look-list (the outcome audit is the only creator of that row)  
 - Skip work-verifier; mark done on verifier fail  
 - Skip the outcome audit after a code-shipping run / milestone PR (no adapter → follow `todo-warden.md` here); mark PR ready on warden **gaps-found**
-- Report stem drained or feature done while an Outcomes row is `[ ]` (Workflow §5.5). **`Outcomes open` on a `clean` warden report does not block ready** — the exercise task is the next unit  
+- Report stem drained or feature done while an Outcomes row is `[ ]` (Workflow §5.5). **`Outcomes open` on a `clean` warden report does not block ready** — the exercise task is the next unit, unless that write needs an unfinished enabler, in which case the next unit is the enabler’s remaining work (Workflow §5.6)  
 - Mark human playtest/decide done without user confirm  
 - Push/PR/current-push without mode (or this-run) grant; **merge** PRs except **`milestone-pr`** after that file’s merge gate; bare force-push; silent-default **current-push**  
 - Under **`milestone-pr`:** treat one TODO as one PR; force serial-only implementers **when the host can isolate**; spawn concurrent writers on a **shared** checkout; `git worktree add` / write a worktrees settings key; squash before ready **for Bugbot**; dump the whole overnight run into one PR; skip CI/Bugbot wait; merge on red **or pending** required checks; stack a second PR on an unmerged first PR; checkout default / start the next branch on **degrade**  
@@ -122,7 +122,7 @@ Cleared · still open · **outcomes still `[ ]`** · human looks the warden adde
 - Invent `_shared`/map rows/backlog unrelated to shipped work or dual-write  
 - Drain Low when user chose High-only; upgrade single-slice to full orchestrate  
 - Skip inventory Medium/Low because they “haven’t been picked up”; omit covering TODOs for in-scope spec surfaces (Workflow §5.4)
-- Dispatch a write that needs an unfinished enabler, or treat a running writer as done (Workflow §5.6)  
+- Dispatch a write that needs an unfinished enabler, add or dispatch that outcome’s Exercise, or treat a running writer as done (Workflow §5.6)  
 - Re-open Understanding when `confirmed` + scope unchanged  
 - Auto-commit on non-orchestrate asks because “orchestration commits”  
 - Store secrets in docs or commit messages  

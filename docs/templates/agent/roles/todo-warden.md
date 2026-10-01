@@ -101,12 +101,12 @@ A **passing exercise note** is a **Completed** item for that slug. The path is t
 
 **Checks** are not first-match. An outcome already `[x]` with a current passing note stays `[x]`. That is not a new check, and it does not add another human-verify playtest.
 
-- **Reopen** when the outcome is `[x]` and either this turn’s code changes an observable that sentence names (a copy or typo fix does not) or a human playtest report says the scenario did not hold. Uncheck the outcome and the matching Acceptance line. One sentence on the outcome says why. Add one open Exercise if none is open. Do not add a playtest. The old passing note stays in Completed.
+- **Reopen** when the outcome is `[x]` and either this turn’s code changes an observable that sentence names (a copy or typo fix does not) or a human playtest report says the scenario did not hold. Uncheck the outcome and the matching Acceptance line. One sentence on the outcome says why. Add one open Exercise if none is open, unless that write needs an unfinished enabler — then follow the unfinished-enabler check and do not add the Exercise. Do not add a playtest. The old passing note stays in Completed.
 - **Passing note and the outcome is still `[ ]`** → set that outcome `[x]` and check the matching operable Acceptance line, even when open children remain. Those children stay open as their own work. Then the **human look** below.
 - **No passing note** and the outcome or operable Acceptance is `[x]` → uncheck those lines even when an add-branch already matched. Leave the outcome `[ ]`. Do not add a playtest.
-- **Unfinished enabler (Workflow §5.6)** and the outcome is `[x]`, or the latest note used a stub, a constant, an empty feed, or an unfinished sibling → that note is not passing. Uncheck the outcome and the matching Acceptance line. Reopen the write that needed the enabler. Add one Exercise if none is open. Rows written from the unfinished enabler are not evidence the scenario held.
+- **Unfinished enabler (Workflow §5.6)** and the outcome is `[x]`, or the latest note used a stub, a constant, an empty feed, or an unfinished sibling → that note is not passing. Uncheck the outcome and the matching Acceptance line. Reopen the write that needed the enabler. Do **not** add an Exercise. The next unit is the enabler’s remaining work. Rows written from the unfinished enabler are not evidence the scenario held.
 
-**Adds** — first match wins, and only for an outcome still `[ ]` after the checks:
+**Adds** — first match wins, and only for an outcome still `[ ]` after the checks. If that outcome’s write needs an unfinished enabler, skip every add below. Do not add an Exercise or a re-run. Leave the outcome open. Do not point Current focus at that Exercise.
 
 1. **Open non-exercise children** with that `` `outcome:` `` label remain → leave the outcome open. Do **not** add an Exercise or follow-ups.
 2. **Phased** and domain children for that phase are still open → leave the outcome open. Do **not** add the exercise task yet.

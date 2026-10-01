@@ -150,7 +150,7 @@ Do not write the rest of the path from a reading of the code.
 
 **New work.** A new task on a stem that has outcome rows names one existing outcome. A new operable scenario adds the Acceptance line and the unchecked Outcomes row in the same turn. Implementers do not check either.
 
-**Not stem-drained.** An empty High / Medium / Low list while any Outcomes row is `[ ]` is not feature done. The next unit is the exercise task when none exists, or the cited-break follow-up when the latest exercise recorded a break. Milestone PRs of honest child work may still merge. Claiming feature / stem / outcome done while an outcome is open is a gap.
+**Not stem-drained.** An empty High / Medium / Low list while any Outcomes row is `[ ]` is not feature done. The next unit is the exercise task when none exists, or the cited-break follow-up when the latest exercise recorded a break. If that outcome’s write needs an unfinished enabler, do not add or dispatch the Exercise. The next unit is the enabler’s remaining work (§5.6). Milestone PRs of honest child work may still merge. Claiming feature / stem / outcome done while an outcome is open is a gap.
 
 **Do not:** nest children under a parent checkbox; check an outcome because its children are `[x]`; check operable Acceptance from a slice; treat a unit-test path or a skipped observable clause as a passing note; leave an outcome `[x]` after this turn changes an observable it names; leave an outcome `[x]` after a human report that the scenario did not hold; add another Exercise because a break note is not a passing note; mint a task per architecture bullet to map the remaining path without a cited break; reopen Completed items just to relabel them; ask the human to look at an outcome that is still `[ ]`.
 
@@ -179,11 +179,11 @@ Allowed before the enabler is done: types, writes that do not use the enabler’
 
 **After it is fully functional.** Then the dependent’s real path may run. Its exercise must show the observable clause against the real enabler, not a stand-in.
 
-**Passing note.** A note that satisfied a clause with a stub, a constant, an empty feed, or an unfinished sibling is not passing. Work-verifier fails that unit. The outcome audit unchecks the outcome and the matching Acceptance line and adds one Exercise. Saved rows from the unfinished enabler are not evidence the scenario held.
+**Passing note.** A note that satisfied a clause with a stub, a constant, an empty feed, or an unfinished sibling is not passing. Work-verifier fails that unit. The outcome audit unchecks the outcome and the matching Acceptance line. It does not add the Exercise while the enabler is unfinished. Saved rows from the unfinished enabler are not evidence the scenario held.
 
 **Credential.** A missing key for an external enabler is a `procure` row (Workflow §13) and a **Services this app consumes** row when the running app will call it (Workflow §11). That errand is not permission to write the rows that need it against a stub.
 
-**Orchestrate.** The next unit is the enabler’s remaining work. Do not dispatch a write that needs the enabler while the block is in force.
+**Orchestrate.** The next unit is the enabler’s remaining work. Do not add or dispatch the dependent Exercise, or any other write that needs the enabler, while the block is in force.
 
 **Do not:** quiz the existence; treat a running process as finished; mark the dependent done because it ran; keep rows written from an unfinished enabler as the result; call a stubbed exercise passing; add a product the user did not ask for and call it an enabler.
 
