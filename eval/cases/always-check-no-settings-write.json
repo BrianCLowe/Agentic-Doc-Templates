@@ -1,0 +1,105 @@
+{
+  "id": "always-check-no-settings-write",
+  "title": "No check interval — session update check does not write settings or its own PR",
+  "role": "feature-implementer",
+  "user": "Check for Agentic Doc Templates updates, then fix the typo in the spec.",
+  "fixture": "fixtures/build-first-crud",
+  "expect": {},
+  "pack_contract": {
+    "source_must_include": [
+      {
+        "file": "docs/templates/agent/TEMPLATE_UPDATE_CHECK.md",
+        "patterns": [
+          "Save the result only when there is a check interval.",
+          "do **not** edit `docs/ADT-settings.yaml`",
+          "Do **not** open a pull request",
+          "The rule runs again next session",
+          "Under **no interval**, do **not** write `last_checked`",
+          "Do **not** open a pull request for the interval stamp.",
+          "User **does not opt to update**",
+          "same commit** as this session's other changes"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/Template_Update_Check_Rule.mdc",
+        "patterns": [
+          "no check interval",
+          "Do **not** write `docs/ADT-settings.yaml`",
+          "Do **not** commit. Do **not** open a PR.",
+          "The next session runs this check again",
+          "Do **not** open a PR. If the user does not opt to update, include that stamp in the same commit as this session's other changes."
+        ]
+      },
+      {
+        "file": "docs/templates/agent/Template_Update_Check_Rule.instructions.md",
+        "patterns": [
+          "no check interval",
+          "Do **not** write `docs/ADT-settings.yaml`",
+          "Do **not** commit. Do **not** open a PR.",
+          "The next session runs this check again",
+          "If the user does not opt to update, include that stamp in the same commit as this session's other changes."
+        ]
+      },
+      {
+        "file": "docs/templates/agent/TEMPLATE_SYNC_B.md",
+        "patterns": [
+          "**No interval** (`always` or unset): do **not** set `last_checked`",
+          "do **not** open a pull request that only deletes them"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/ADT-settings.example.yaml",
+        "patterns": [
+          "always (no interval): do not write last_checked"
+        ]
+      },
+      {
+        "file": "docs/templates/CHANGELOG.md",
+        "patterns": [
+          "2.9.13",
+          "no check interval",
+          "`rules`"
+        ]
+      },
+      {
+        "file": "DECISIONS.md",
+        "patterns": [
+          "D32",
+          "does not write settings"
+        ]
+      }
+    ],
+    "summaries_must_point": [
+      {
+        "file": "docs/templates/agent/TEMPLATE_UPDATE_CHECK.md",
+        "must_contain": [
+          "Save the result only when there is a check interval."
+        ],
+        "must_not_contain": [
+          "**Always** set `upstream.last_checked`",
+          "still update `last_checked` so you do not retry every turn under `always`",
+          "whose only change is that stamp",
+          "leave the stamp uncommitted unless they ask to commit"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/ADT-settings.example.yaml",
+        "must_contain": [
+          "interval only:"
+        ],
+        "must_not_contain": [
+          "\n  last_checked:"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/Template_Update_Check_Rule.mdc",
+        "must_contain": [
+          "Do **not** write `docs/ADT-settings.yaml`"
+        ],
+        "must_not_contain": [
+          "**`always`** → follow"
+        ]
+      }
+    ]
+  }
+}

@@ -37,7 +37,7 @@ Do not duplicate the section if `agents-md` already installed it.
 
 ## Optional — Template update check
 
-Only if `optional_rules.template-update-check.status` is `enabled` in `docs/ADT-settings.yaml`. Requires `upstream:` stamps in that file.
+Only if `optional_rules.template-update-check.status` is `enabled` in `docs/ADT-settings.yaml`. Requires an `upstream:` block in that file. A session check with no interval does not write it.
 
 | | |
 |--|--|

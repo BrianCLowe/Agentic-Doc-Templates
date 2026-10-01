@@ -39,6 +39,7 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 | D29 | Repo behavior that is not a pack playbook is asked as a rule or a skill, not filed in standing | accepted | 2.9.6 |
 | D30 | Drained child tasks are not capability-done; an Outcomes row stays open until a passing exercise note | accepted | 2.9.9 |
 | D31 | Completed is not a repair log; incidental fixes stay in git, not a new Completed row | accepted | 2.9.10 |
+| D32 | No check interval means the update check does not write settings | accepted | 2.9.13 |
 
 ---
 
@@ -242,6 +243,14 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 **Decision:** `## Completed` records a plotted slice that was finished, and the exercise note that proves an Outcome. An incidental fix — a review patch, a Bugbot finding, a copy or typo change — is already in git. Do not write a new checkbox for it. If that fix changes an observable an Outcome names, the outcome audit unchecks the outcome and adds one Exercise. The sentence on the outcome is why. A copy or typo fix stays checked.
 
 **Do not:** Append a checked row straight into Completed for a fix that was never an open task. Do not delete a plotted slice or an exercise note. Sync pass `optional-todo-completed-cleanout` is the cleanout: it removes a Completed checkbox that git shows was never an open task. A normal warden pass does not purge older rows.
+
+---
+
+## D32 — No interval, no check stamp
+
+**Decision:** `check_mode: always` (and unset `check_mode`) has no check interval. The session fetches upstream `VERSION`, reports in chat, and stops. It does not write `last_checked`, `update_available`, or `upstream_pack_version`, and it does not commit or open a pull request for that check. The rule runs again next session. `check_mode: interval` still writes `last_checked` (and the availability keys) so the next session can skip until `check_interval_days` elapses. That write does not open a pull request. If the user does not opt to update, the stamp goes in the same commit as the session's other changes. If they opt to update, TEMPLATE_SYNC carries settings. Sync still sets `local_pack_version` from local `VERSION`. On sync, no-interval settings drop those three check-log keys inside the pack/stamp commit.
+
+**Do not:** Restore “always set `last_checked`” on a session check. Do not open a pull request for an interval check stamp. Do not commit that stamp by itself when the session has other changes and the user did not opt to update.
 
 ---
 
