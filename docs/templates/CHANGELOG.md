@@ -24,6 +24,18 @@
 
 ---
 
+## 2.9.13
+
+- **Live impact:** `versions-only`, `process-docs-only`, `rules`
+- **Summary:** A session update check with no check interval does not write `docs/ADT-settings.yaml`. `always` (and unset `check_mode`) reports in chat and runs again next session. Writing `last_checked` / `update_available` / `upstream_pack_version` was a two-line commit and its own pull request before the work the user asked for. `interval` still writes `last_checked` so the next session can skip, and that stamp is not its own pull request.
+- **Changes:**
+  - `VERSION` — 2.9.12 → 2.9.13
+  - `agent/TEMPLATE_UPDATE_CHECK.md` — save the result only when there is a check interval
+  - `agent/Template_Update_Check_Rule.mdc` + `.instructions.md` — no settings write, no commit, no PR under no interval
+  - `agent/TEMPLATE_SYNC_B.md` — upstream stamp removes those three keys when there is no interval
+  - `agent/ADT-settings.example.yaml` — `last_checked` is interval-only
+- **Step B:** Bump Master Index **Pack version** to 2.9.13 from local `VERSION`. **`rules`:** refresh the installed template-update-check rule so a session check with no interval does not write `docs/ADT-settings.yaml`. On this sync’s upstream stamp, if `check_mode` is `always` or unset, remove `last_checked`, `update_available`, and `upstream_pack_version` when present (that removal rides in the pack/stamp commit). If `check_mode` is `interval`, keep writing `last_checked`. No live feature/shared scan.
+
 ## 2.9.12
 
 - **Live impact:** `versions-only`, `process-docs-only`, `rules`

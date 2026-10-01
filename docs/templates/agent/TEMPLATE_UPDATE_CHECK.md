@@ -19,9 +19,9 @@ This check is enabled only when `optional_rules.template-update-check.status` is
 
 | Mode | Behavior |
 |------|----------|
-| **`always`** *(default / recommended)* | Fetch upstream `VERSION` when the rule runs (typically once per session start, or when the user asks). Report if newer. |
-| **`interval`** | Fetch only when `last_checked` is older than `check_interval_days` (default **7** if unset under interval mode), or when the user asks. |
-| **missing / unset** | Treat as **`always`** for the fetch this session, but sync/bootstrap should still run the cadence ask ([`TEMPLATE_SYNC_B.md`](TEMPLATE_SYNC_B.md) B0.4) until `check_mode_recorded` is set. |
+| **`always`** *(default / recommended)* | No check interval. Fetch upstream `VERSION` when the rule runs (typically once per session start, or when the user asks). Report if newer. **Do not write settings.** |
+| **`interval`** | Fetch only when `last_checked` is older than `check_interval_days` (default **7** if unset under interval mode), or when the user asks. **Write `last_checked` after a fetch** so the next session can skip. |
+| **missing / unset** | No interval yet. Treat as **`always`** for the fetch this session (**do not write settings**). Sync/bootstrap still runs the cadence ask ([`TEMPLATE_SYNC_B.md`](TEMPLATE_SYNC_B.md) B0.4) until `check_mode_recorded` is set. |
 
 Do **not** invent `check_mode` from legacy `check_interval_days` without asking — leave cadence to B0.4 / bootstrap Step 3p.
 
@@ -30,7 +30,7 @@ Do **not** invent `check_mode` from legacy `check_interval_days` without asking 
 | Trigger | Action |
 |---------|--------|
 | User asks to check / sync templates | Run the check now (ignore interval) |
-| Rule on + `check_mode: always` | Fetch once this session (or when user asks), then continue normal work |
+| Rule on + `check_mode: always` | Fetch once this session (or when user asks). Do **not** write settings. Then continue normal work |
 | Rule on + `check_mode: interval` + `last_checked` older than `check_interval_days` | Fetch once this session, then continue normal work |
 | Rule on + `check_mode: interval` + still within interval | **Stop after reading settings** — do not fetch upstream |
 
@@ -50,12 +50,14 @@ Do **not** invent `check_mode` from legacy `check_interval_days` without asking 
 
    Legacy dual lines (`template-version` / `workflow-version`) → use `template-version` (or either) as `pack-version`.
 
-4. Compare upstream pack version to `upstream.local_pack_version` (or legacy `local_template_version` if not yet migrated).
-5. **Always** set `upstream.last_checked` to today (YYYY-MM-DD), clear or set `update_available` / `upstream_pack_version` as appropriate, and write `ADT-settings.yaml` back.
+4. Compare upstream pack version to `upstream.local_pack_version` when that key is set (or legacy `local_template_version` if not yet migrated). If it is missing, compare to local `docs/templates/VERSION` (`pack-version`). Do **not** write `local_pack_version` during this check.
+5. **Save the result only when there is a check interval.**
+   - **No interval** — `check_mode: always`, or `check_mode` missing/unset: do **not** edit `docs/ADT-settings.yaml`. Do **not** set or update `last_checked`, `update_available`, or `upstream_pack_version`. Do **not** commit. Do **not** open a pull request. Report in chat only. The rule runs again next session, so there is nothing to remember on disk.
+   - **Interval** — `check_mode: interval`: set `upstream.last_checked` to today (YYYY-MM-DD), clear or set `update_available` / `upstream_pack_version` as appropriate, and write `ADT-settings.yaml` back. That stamp is how the next session knows whether `check_interval_days` has elapsed. Do **not** open a pull request whose only change is that stamp. Leave it in the working tree so it rides with this session's real work. If the user only asked to check, report in chat and leave the stamp uncommitted unless they ask to commit.
 6. Tell the user the result briefly:
    - **Newer upstream** → offer [`TEMPLATE_SYNC.md`](TEMPLATE_SYNC.md) (*Update the doc templates from Agentic Doc Templates and sync our live docs.*). Do **not** ZIP-download until they agree (unless they already asked to sync).
    - **Same or older** → say templates look current; do not run TEMPLATE_SYNC.
-7. On failed fetch (offline, 404, etc.) → say so once; still update `last_checked` so you do not retry every turn under `always` (or thrash under interval); user can ask again later.
+7. On failed fetch (offline, 404, etc.) → say so once. Under **interval**, still update `last_checked` so you do not thrash every turn. Under **no interval**, do **not** write `last_checked` — once per session already stops a retry every turn; the next session tries again.
 
 ## Do not
 
@@ -63,6 +65,8 @@ Do **not** invent `check_mode` from legacy `check_interval_days` without asking 
 - Read the whole `docs/templates/` tree for a version check.
 - Under `interval`: re-fetch upstream on every message when `last_checked` is still fresh.
 - Under `always`: fetch more than once per session unless the user asks again.
+- Under no interval (`always` or unset `check_mode`): edit `docs/ADT-settings.yaml`, set `last_checked` / `update_available` / `upstream_pack_version` / `local_pack_version`, or open a commit or PR to record the check.
+- Under `interval`: open a pull request whose only diff is the check stamp.
 - Use git remotes / submodules for this check.
 - Overwrite live docs during a check — sync is a separate, user-confirmed step.
 - Auto-sync because a newer version exists — only report + offer.
@@ -71,11 +75,10 @@ Do **not** invent `check_mode` from legacy `check_interval_days` without asking 
 
 Update `docs/ADT-settings.yaml` → `upstream:`:
 
-- `local_pack_version` from local `docs/templates/VERSION`
-- `last_checked` today
-- `update_available: false` (or remove)
-- Remove stale `upstream_pack_version` if present
+- `local_pack_version` from local `docs/templates/VERSION` (installed pack — not a session check log)
 - Preserve `check_mode` and `check_interval_days`
+- **Interval:** `last_checked` today; `update_available: false` (or remove); remove stale `upstream_pack_version` if present
+- **No interval** (`always` or unset): do **not** set `last_checked`, `update_available`, or `upstream_pack_version`. If those keys are already present, **remove** them in this sync stamp (they are check logs; always mode does not use them). That removal rides in the pack/stamp commit — not its own pull request.
 
 Preserve the settings file itself across pack overwrites (`docs/ADT-settings.yaml` is **not** under `docs/templates/`).
 

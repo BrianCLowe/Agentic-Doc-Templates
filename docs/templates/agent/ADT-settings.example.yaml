@@ -148,18 +148,25 @@ optional_rules:
 # Survives pack overwrite (this whole file lives under docs/, not docs/templates/).
 #
 # check_mode:
-#   always   — default / recommended: fetch upstream VERSION each session when the rule runs
-#   interval — only fetch when last_checked is older than check_interval_days
+#   always   — default / recommended: fetch upstream VERSION each session. Do not
+#              write last_checked, update_available, or upstream_pack_version.
+#   interval — fetch when last_checked is older than check_interval_days, then
+#              write last_checked (and those two availability keys).
 
 upstream:
   check_mode: always
   check_mode_recorded: 2026-08-07   # set when the user chooses cadence (bootstrap / sync B0.4) — missing → ask once
+  # local_pack_version is set on enable / TEMPLATE_SYNC from docs/templates/VERSION.
+  # Do not copy a number from this example. Do not set it on a session check.
+  # local_pack_version: "X.Y.Z"
+  #
+  # always (no interval): do not write last_checked, update_available, or
+  # upstream_pack_version. The rule fetches again next session.
+  #
+  # interval only:
   # check_mode: interval
   # check_interval_days: 7
-  last_checked: 2026-07-16
-  # Stamp from docs/templates/VERSION on bootstrap / TEMPLATE_SYNC — never copy a
-  # number from this example. VERSION is the only pack-version source.
-  # local_pack_version: "X.Y.Z"
+  # last_checked: 2026-07-16
   # upstream_pack_version: "X.Y.Z"
   # update_available: true
 

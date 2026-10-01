@@ -296,7 +296,7 @@ Run only when selected catch-up includes **2.7.27** and reshape is executing. Op
    - If `optional_rules.doc-roles` is `enabled`, refresh that tool’s agents folder (**six** adapters including `todo-warden`; **no** `orchestrator` or `docs-bootstrap` adapter). **Delete leftover** installed `docs-bootstrap.md` / `docs-bootstrap.agent.md` (pack no longer ships that adapter — bootstrap is parent-only).
    - If `optional_rules.slash-commands` is `enabled`, refresh that tool’s command files from `agent/commands/` (only tools whose playbook names a command folder).
    - Remove any stale `.cursor/skills/modular-docs-*` leftovers from older pack drafts (ask first only if deleting user-looking paths outside known leftovers).
-7. **Upstream stamp** *(if `optional-upstream-check` or update-check enabled)* — If `optional_rules.template-update-check.status` is `enabled`: ensure `upstream:` exists; set `local_pack_version` from local `VERSION`, `last_checked` today, clear `update_available` / stale `upstream_pack_version`. Do **not** delete `ADT-settings.yaml`. Refresh optional update-check rules if tagged `rules` / body changed (same customized rule as above).
+7. **Upstream stamp** *(if `optional-upstream-check` or update-check enabled)* — If `optional_rules.template-update-check.status` is `enabled`: ensure `upstream:` exists; set `local_pack_version` from local `VERSION`. **`check_mode: interval`:** set `last_checked` today; clear `update_available` / stale `upstream_pack_version`. **No interval** (`always` or unset): do **not** set `last_checked`, `update_available`, or `upstream_pack_version`. If those keys are present, **remove** them (check logs; the next session fetches again). That removal rides in the pack/stamp commit (B0.3) — do **not** open a pull request that only deletes them. Do **not** delete `ADT-settings.yaml`. Refresh optional update-check rules if tagged `rules` / body changed (same customized rule as above).
 8. **Layout migration** — Run [`BOOTSTRAP.md`](BOOTSTRAP.md) Step 0b **only** if layout markers show older layout (`docs/help/` or `docs/agent/` at docs root, or flat setup files in `templates/`). Skip on a normal modern pack refresh.
 9. **Summarize from the union only:**
    - sync mode used
@@ -348,6 +348,7 @@ Run only when selected catch-up includes **2.7.27** and reshape is executing. Op
 - Keep pulling from GitHub — work from the **local** `docs/templates/` copy
 - Under **`auto` / `choose`:** skip presenting unset `optional_rules.*` because “do not auto-enable” — that means ask, not stay silent
 - Under **`auto-all`:** leave unset `optional_rules.*` unset — enable + install them (except **`declined`**)
+- Under no interval (`always` or unset `check_mode`): write `last_checked`, `update_available`, or `upstream_pack_version` on the upstream stamp — remove those keys if present; do **not** open a pull request that only deletes them
 - Silent-set `check_mode` from legacy `check_interval_days` without B0.4 (except **`auto-all`** defaulting `always` when cadence is missing)
 - Skip B0.4 when update-check is enabled but `check_mode_recorded` is missing under `auto` / `choose` (under `auto-all`, default `always`)
 - Equate “no install artifacts for this harness” with “nothing to offer the user”
