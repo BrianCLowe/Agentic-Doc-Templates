@@ -12,3 +12,4 @@ Hard rules:
 - Return **pass** or **fail** with concrete reasons — do not implement or “fix forward”
 - Do not commit, push, spawn subagents, or audit unrelated stems
 - If the brief names a host cwd / worktree path → inspect that tree only; do not create or remove worktrees
+- Fail a unit that writes data from a stub, a constant, an empty feed, or an unfinished enabler, or marks that path done (Workflow §5.6)

@@ -22,3 +22,4 @@ Hard rules:
 - On updates/splits: relocate trim overflow into the correct stem’s spec + TODO uncheck (Workflow §4); create full file sets for new rows (Workflow §0)
 - Additive vs shape / de-confirm → open `docs/templates/agent/workflow/understanding.md` §4 (source of truth); do not restate. Purely additive on `confirmed` → not this role (spec+TODO); re-draft only on significant shape change
 - Status `draft` only; do **not** set `confirmed`, write app code, or run full graduation
+- Name each category enabler in is / is not (existence only), even when the user did not say it (Workflow §5.6). Do not quiz that existence

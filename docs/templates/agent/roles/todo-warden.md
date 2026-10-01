@@ -7,7 +7,7 @@
 1. **Honesty** — Reopen overclaimed `[x]` items and add **only** tightly cited gap TODOs so Spec/Acceptance/shape claims are not silently “done.” Prefer **fewer** corrections over a flood of backlog. Do **not** invent polish, new features, or Oprah-style “you get a TODO, you get a TODO.”
 2. **Hygiene (cleanup)** — Move **true** finished items out of open priority sections into **Completed** so High/Medium/Low stay “what’s left,” not a graveyard of checked boxes. Projects often mark `[x]` in place and never archive — this pass fixes that.
 
-**Canonical procedure:** This file. Operable done / Acceptance bridge: [`../workflow/todos.md`](../workflow/todos.md) §5 / §5.3. Sticky outcomes: §5.5. Kit coverage: Workflow §5.4 — named leftovers get covering TODOs (not a research stub); thin wrap-the-API research is sync / planning unless this run claimed kit-complete. Unit-level code-vs-claim: [`work-verifier.md`](work-verifier.md) (different job — one unit; this role is **post-loop stem honesty + TODO layout hygiene + outcome audit**).
+**Canonical procedure:** This file. Operable done / Acceptance bridge: [`../workflow/todos.md`](../workflow/todos.md) §5 / §5.3. Sticky outcomes: §5.5. Enablers: §5.6. Kit coverage: Workflow §5.4 — named leftovers get covering TODOs (not a research stub); thin wrap-the-API research is sync / planning unless this run claimed kit-complete. Unit-level code-vs-claim: [`work-verifier.md`](work-verifier.md) (different job — one unit; this role is **post-loop stem honesty + TODO layout hygiene + outcome audit**).
 
 ## When to invoke
 
@@ -49,13 +49,14 @@ If more real **honesty** gaps remain after the cap → list them under **Deferre
 Only **reopen/add** when **at least one** of these is true and you can point to the evidence:
 
 1. **Overclaim** — TODO item is `[x]` but code/docs clearly do not implement it (name the item + what’s missing).
-2. **Operable Acceptance open** — do **not** add a separate honesty TODO for this. The outcome audit adds the one Exercise row and reports **Outcomes open** (not `gaps-found`). A claim this run that the feature, stem, or outcome is done while that outcome is `[ ]` still sets `gaps-found` (no extra TODO required for that).
-3. **Missing exercise path** — same handoff. The outcome audit owns that single Exercise row. Do **not** add a second exercise-path item that forces `gaps-found`.
+2. **Operable Acceptance open** — do **not** add a separate honesty TODO for this. The outcome audit adds the one Exercise row and reports **Outcomes open** (not `gaps-found`), unless that write needs an unfinished enabler — then it does not add the Exercise (Workflow §5.6). The next unit is the enabler’s remaining work. A claim this run that the feature, stem, or outcome is done while that outcome is `[ ]` still sets `gaps-found` (no extra TODO required for that).
+3. **Missing exercise path** — same handoff. The outcome audit owns that single Exercise row, with the same unfinished-enabler skip. Do **not** add a second exercise-path item that forces `gaps-found`.
 4. **Shape fight** — shipped work fights Understanding is / is not when Understanding exists (reopen or add a **targeted** fix TODO — not a redesign epic).
 5. **Master Index / Overview product claim** this stem owns, with **zero** covering open work and code clearly unfinished for that claim (cite the sentence).
 6. **Kit coverage hole (Workflow §5.4)** — covering = open **or Completed** `[x]` on **this** stem’s TODO (do not resurrect shipped methods; do not open other stems).
    - **Named leftovers:** this spec **names** in-scope leftover surfaces with **no** covering item. Add implementable Medium items for those **named** surfaces (High only if Current focus is empty), within honesty caps; defer extras. Do **not** fetch vendor docs; do **not** invent unnamed facets; do **not** substitute the thin-spec research item here.
    - **Thin wrap-the-API:** Overview claims wrap-the-vendor-API but the spec lists **no** leftover surfaces, **and** this run claimed the kit/API fully supported (or parent asked project-wide honesty), **and** there is no open or Completed research item. Add **one** Medium item: *Diff vendor API docs vs this kit; add covering TODOs (Workflow §5.4)*. Ordinary per-slice close-out that did **not** claim kit-complete → do **not** add the research item (that is sync `optional-todo-kit-coverage` or a planning session).
+7. **Unfinished enabler (Workflow §5.6)** — a dependent item is `[x]`, or an outcome is checked, while the enabler is a stub, a constant, an empty feed, or a sibling whose outcomes **this clause relies on** are still open, and the write needed that information. Reopen that write. The outcome audit unchecks the outcome and Acceptance. Do **not** add an Exercise or cited-break follow-ups. The next unit is the enabler’s remaining work. Those rows are not evidence.
 
 **Not allowed as grounds for new work:** “would be nice,” test coverage vibes, refactor wishes, docs polish, second Acceptance twin of every Behavior bullet, stems outside the brief, new product ideas, vague planned-only extras (playground, “maybe later”).
 
@@ -92,7 +93,7 @@ Only **reopen/add** when **at least one** of these is true and you can point to 
 
 Skip when **hygiene-only**. Otherwise, after honesty edits, for each in-scope stem’s `## Outcomes` rows (create the section from operable Acceptance when it is missing — one unchecked row per operable line, slug in bold, scenario sentence). **Library-only** stems: one non-checkbox line `library-only — consumers own the exercise path.` No outcome checkboxes.
 
-A **passing exercise note** is a **Completed** item for that slug. The path is that stem’s exercise path (UI, CLI, product API, or documented smoke), not a unit-test file. The observation states what happened for each observable clause in the outcome sentence. “Looks right,” a skipped clause, or a unit-test path is not passing. A note that records the first break is not passing. The latest exercise record for that slug is the current one: an older “scenario held” note does not stay current once this pass adds a new open Exercise.
+A **passing exercise note** is a **Completed** item for that slug. The path is that stem’s exercise path (UI, CLI, product API, or documented smoke), not a unit-test file. The observation states what happened for each observable clause in the outcome sentence. “Looks right,” a skipped clause, or a unit-test path is not passing. A clause satisfied by a stub, a constant, an empty feed, or an unfinished enabler is not passing (Workflow §5.6). A note that records the first break is not passing. The latest exercise record for that slug is the current one: an older “scenario held” note does not stay current once this pass adds a new open Exercise.
 
 **Who runs this section.** This is the parent-outcome check: did the scenario hold, and what single blank is next. Doc-roles are optional. Declining them does not skip the audit. Orchestration close-out spawns `todo-warden` when that adapter is installed and follows this file in the parent session when it is not. Any other session (one-off change, no orchestrator) runs **this section only** for the stems Workflow §5.5 names. A project-wide honesty sweep stays an explicit *todo warden* ask or orchestration close-out.
 
@@ -100,17 +101,18 @@ A **passing exercise note** is a **Completed** item for that slug. The path is t
 
 **Checks** are not first-match. An outcome already `[x]` with a current passing note stays `[x]`. That is not a new check, and it does not add another human-verify playtest.
 
-- **Reopen** when the outcome is `[x]` and either this turn’s code changes an observable that sentence names (a copy or typo fix does not) or a human playtest report says the scenario did not hold. Uncheck the outcome and the matching Acceptance line. One sentence on the outcome says why. Add one open Exercise if none is open. Do not add a playtest. The old passing note stays in Completed.
+- **Reopen** when the outcome is `[x]` and either this turn’s code changes an observable that sentence names (a copy or typo fix does not) or a human playtest report says the scenario did not hold. Uncheck the outcome and the matching Acceptance line. One sentence on the outcome says why. Add one open Exercise if none is open, unless that write needs an unfinished enabler — then follow the unfinished-enabler check and do not add the Exercise. Do not add a playtest. The old passing note stays in Completed.
 - **Passing note and the outcome is still `[ ]`** → set that outcome `[x]` and check the matching operable Acceptance line, even when open children remain. Those children stay open as their own work. Then the **human look** below.
 - **No passing note** and the outcome or operable Acceptance is `[x]` → uncheck those lines even when an add-branch already matched. Leave the outcome `[ ]`. Do not add a playtest.
+- **Unfinished enabler (Workflow §5.6)** and the outcome is `[x]`, or the latest note used a stub, a constant, an empty feed, or an unfinished sibling → that note is not passing. Uncheck the outcome and the matching Acceptance line. Reopen the write that needed the enabler. Do **not** add an Exercise or cited-break follow-ups. The next unit is the enabler’s remaining work. Rows written from the unfinished enabler are not evidence the scenario held.
 
-**Adds** — first match wins, and only for an outcome still `[ ]` after the checks:
+**Adds** — first match wins, and only for an outcome still `[ ]` after the checks. If that outcome’s write needs an unfinished enabler, skip every add below. Do not add an Exercise, a re-run, or cited-break follow-ups. Leave the outcome open. Do not point Current focus at that Exercise.
 
 1. **Open non-exercise children** with that `` `outcome:` `` label remain → leave the outcome open. Do **not** add an Exercise or follow-ups.
 2. **Phased** and domain children for that phase are still open → leave the outcome open. Do **not** add the exercise task yet.
 3. **Exercise item still open** → leave it. Do **not** add a second Exercise.
-4. **Latest exercise is a Completed break note** and no open or Completed task cites that break → add follow-ups that cite the break (path, date, what failed), still inside the cap. Do **not** add another Exercise. Do **not** write the rest of the path from a reading of the code. Leave the outcome open.
-5. **Latest exercise is a Completed break note** and every task that cites that break is Completed → add **one** new Exercise to re-run. Do not repeat the old follow-ups. This add ranks **first** inside the honesty cap (≤5).
+4. **Latest exercise is a Completed break note** and no open or Completed task cites that break → add follow-ups that cite the break (path, date, what failed), still inside the cap, unless that write needs an unfinished enabler. Do **not** add another Exercise. Do **not** write the rest of the path from a reading of the code. Leave the outcome open.
+5. **Latest exercise is a Completed break note** and every task that cites that break is Completed → add **one** new Exercise to re-run, unless that write needs an unfinished enabler. Do not repeat the old follow-ups. This add ranks **first** inside the honesty cap (≤5).
 6. **No exercise item** (none open, none Completed) and no passing note → add one High item: **Exercise** plus the slug — run the scenario and record the first break (path, date, observed result), labeled `` `outcome: <slug>` ``. Citation: the outcome slug + the Acceptance line. This add ranks **first** inside the honesty cap. Drop a weaker honesty add if needed to keep the cap. Point **Current focus** at it when that stem’s focus is empty or names finished work.
 
 A Completed break note is not “no exercise item.” Do **not** add another Exercise in the same pass as the cited follow-ups.
@@ -173,6 +175,7 @@ Caps: new≤5 reopened≤10; hygiene moves uncapped
 - Audit the whole Document Map when the brief named a few stems (unless user asked project-wide cleanup)
 - Mark Human-TODO / human-gated items done without a confirm report (user, or an allowed assignee bot when `team_inbox.enabled`); invent Human-TODO spam for design-by-default. The human-look withdraw is not a confirm — it records **not a human look**. The one playtest after a passing note is required, not spam
 - Add another Exercise in the same pass as a break note’s cited follow-ups
+- Add cited-break follow-ups when that write needs an unfinished enabler (Workflow §5.6)
 - Dual-write a playtest while the outcome is `[ ]`
 - Invent `Team-Roster.md` bot or human-name rows on a handoff (read only; named humans and bots self-ID — [`workflow/team-roster.md`](../workflow/team-roster.md))
 - Leave true `[x]` tasks parked in High/Medium/Low when running hygiene (that **is** the cleanup job)

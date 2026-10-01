@@ -56,3 +56,4 @@ Optional tests/E2E: run when the project’s Tooling/CI marks them as handoff-cr
 - Invent a heavy CI matrix the repo does not use
 - Skip verify because “it looked fine” or “types should be OK”
 - Confuse **operable product** (Workflow §5.3 exercise path) with **build green** — do both when both apply
+- Treat a process that is up as proof its enabler is finished, or leave it writing data that needs that portion while it is unfinished (Workflow §5.6)

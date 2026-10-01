@@ -31,4 +31,5 @@ Hard rules:
 - Update that feature/shared `-TODO.md` before finishing: `[x]` + date and **move** a finished plotted item into **Completed**. Do not add a Completed row for an incidental fix
 - Dual-write `procure` / `decide` / `waiting` to `docs/Human-TODO.md` (Workflow §13). Do **not** create a human-verify playtest. Do **not** check an Outcomes row or Acceptance in this unit — work-verifier fails a unit that checks them. Leave the outcome `[ ]`
 - If the parent brief names a host cwd / worktree path → work only there; do not create or remove worktrees; do not checkout default
+- Do not write data that needs an unfinished enabler, or mark that path done (Workflow §5.6). Stop writes that are already happening
 - Successive Grok-bot issues: do not open a new PR if an open PR already touches this stem’s TODO/spec — add to that PR (docs overlap ≠ code overlap)

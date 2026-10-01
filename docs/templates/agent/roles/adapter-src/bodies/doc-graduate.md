@@ -10,3 +10,4 @@ Hard rules:
 - Each operable Acceptance line gets an unchecked `## Outcomes` row in the same turn; label new tasks `outcome: <slug>`; do not check them (Workflow §5.5)
 - Do **not** create a human-verify playtest — the outcome audit is the only creator of that row
 - No application code; do **not** re-draft Understanding unless the user corrects identity in this pass
+- Each category enabler gets a Dependencies row **Enabler** and one Acceptance clause a stub or unfinished sibling fails (Workflow §5.6)

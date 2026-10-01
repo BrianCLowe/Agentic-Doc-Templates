@@ -103,7 +103,7 @@ Full procedure (incl. **de-confirm gate** + **lock gate**): [`workflow/understan
 
 ### 5. TODO Management
 
-Full procedure: [`workflow/todos.md`](workflow/todos.md#5-todo-management). Current focus §5.1 · exploration §5.2 · operable §5.3 · sticky outcomes §5.5 · kit covering TODOs §5.4 live in that file.
+Full procedure: [`workflow/todos.md`](workflow/todos.md#5-todo-management). Current focus §5.1 · exploration §5.2 · operable §5.3 · sticky outcomes §5.5 · kit covering TODOs §5.4 · enablers §5.6 live in that file.
 
 ### 5.1 Session handoff — Current focus
 

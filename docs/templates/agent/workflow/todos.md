@@ -1,4 +1,4 @@
-> **Workflow module.** Open from the [workflow index](../Modular_Docs_Workflow.md) for TODO layout, Current focus, exploration vs shipping, operable-done / Acceptance bridge, or sticky outcomes.
+> **Workflow module.** Open from the [workflow index](../Modular_Docs_Workflow.md) for TODO layout, Current focus, exploration vs shipping, operable-done / Acceptance bridge, sticky outcomes, or enablers.
 
 # TODO management
 
@@ -29,10 +29,11 @@ When a feature depends on shared foundation work, the feature TODO gets a **depe
 - **High Priority sizing:** Prefer one item (or a tight cluster) that lands the **confirmed target architecture**. Sub-bullets / Medium Priority = verify slices or follow-ups — not “ship the wrong architecture first.” If Current focus fights confirmed Understanding, rewrite the TODO before coding ([`Agent_Timescale_Planning_Rule.mdc`](../Agent_Timescale_Planning_Rule.mdc)).
 - **Operable done / dual track:** See §5.3 — user-facing stems need domain **and** exercise-path rows; library-only stems must say so.
 - **Sticky outcomes:** See §5.5 — an outcome row stays open until a passing exercise note. Child tasks do not close it or the matching Acceptance line.
+- **Enablers:** See §5.6 — name the input or sibling the real result cannot be true without. Do not write data that needs that portion while it is unfinished.
 - **Exploration vs shipping:** See §5.2.
 - **Session start:** Docs freshness first (Workflow §0.3 — `git status` + worktrees; sibling `docs/` drift → stop). Then read the active TODO's **Current focus** block (§5.1) — then High Priority.
 - While working: Add new items as you discover them (including exercise-path rows when domain work reveals a missing run path — §5.3).
-- After finishing a **plotted** task: Mark `[x]`, add completion date/note, and **move** the item into **## Completed** (do not leave long `[x]` lists under High/Medium/Low). **Completed is not a repair log.** Skip a new row for an incidental fix (review patch, Bugbot finding, copy or typo). Git already has that change. If the fix changes an observable an Outcome names, run the §5.5 reopen: uncheck that outcome and its Acceptance line, one sentence on the outcome, one Exercise. Do not leave the outcome `[x]` with only a sentence. Do not add a checkbox. A copy or typo fix stays checked. Sync pass `optional-todo-completed-cleanout` removes a Completed checkbox that git shows was never an open `[ ]` task and is not an exercise note.
+- After finishing a **plotted** task: Mark `[x]`, add completion date/note, and **move** the item into **## Completed** (do not leave long `[x]` lists under High/Medium/Low). **Completed is not a repair log.** Skip a new row for an incidental fix (review patch, Bugbot finding, copy or typo). Git already has that change. If the fix changes an observable an Outcome names, run the §5.5 reopen: uncheck that outcome and its Acceptance line, one sentence on the outcome, one Exercise — unless that write needs an unfinished enabler, in which case do not add the Exercise (§5.6). Do not leave the outcome `[x]` with only a sentence. Do not add a checkbox. A copy or typo fix stays checked. Sync pass `optional-todo-completed-cleanout` removes a Completed checkbox that git shows was never an open `[ ]` task and is not an exercise note.
 - **Session end:** Update **Current focus** for the next session.
 - **Todo warden** ([`roles/todo-warden.md`](../roles/todo-warden.md)): post-loop honesty **and** hygiene — moves parked `[x]` items into Completed when agents forgot. Outcome audit on that same close-out (§5.5).
 
@@ -84,7 +85,7 @@ When product shape is still unknown, a short **spike** (branch, throwaway protot
 
 **Failure mode:** Agent can write the **finished product** spec (kit contract, remaining APIs, owning stems) but then **omits TODO items** for those in-scope surfaces — citing “do not invent work,” “no planned-only map rows,” “until someone picks one up,” or treating a **terse but actionable** goal as a stub that needs hand-holding through each facet. Overnight **orchestrate** then has nothing to drain except Current focus.
 
-**Rule:** If this stem’s spec (or the confirmed kit contract) names a surface as **in-scope for the product**, that surface needs an **implementable TODO** on an **existing** stem (this inventory TODO, or the owning stem already on the map) — **open or Completed**. Writing missing **open** items is **not** inventing work. **Inventing** is adding APIs, products, or map rows the user never included. Do **not** resurrect surfaces that already have a Completed covering item.
+**Rule:** If this stem’s spec (or the confirmed kit contract) names a surface as **in-scope for the product**, that surface needs an **implementable TODO** on an **existing** stem (this inventory TODO, or the owning stem already on the map) — **open or Completed**. Writing missing **open** items is **not** inventing work. **Inventing** is adding APIs, products, or map rows the user never included. A **category enabler** (§5.6) is not one of those: the product cannot be exercised without it, so its covering TODO on the owning stem is ordinary work even when the user never named it. Do **not** resurrect surfaces that already have a Completed covering item.
 
 **Terse + public contract = expand, don’t interview.** “Fully support this vendor’s API” (or equivalent) is actionable when the vendor docs / OpenAPI / upstream SDK are available: **diff those against current code** and add covering TODOs for gaps. Do **not** wait for the user to name Files, embeddings, batch, … one by one. Do **not** treat that plan as vague or as a Catalog `stub`. Vague = cannot implement without a **product decision the docs don’t answer** (playground UI, private app names, “maybe later”).
 
@@ -105,31 +106,31 @@ When product shape is still unknown, a short **spike** (branch, throwaway protot
 ```markdown
 ## Outcomes
 
-- [ ] **paper-auto-trade** — Operator starts a paper auto-trade and sees simulated orders, fills, and P&L.
+- [ ] **paper-auto-trade** — Operator starts a paper auto-trade and sees orders, fills, and P&L from the price feed. A constant quote is not this scenario.
 ```
 
 **Children stay flat.** High / Medium / Low items are not indented under the outcome. Each child that serves an outcome ends with `` `outcome: paper-auto-trade` ``. Completing every child does not check the outcome or the matching Acceptance line.
 
-**Who runs the audit.** The procedure is the Outcome audit in [`roles/todo-warden.md`](../roles/todo-warden.md). It checks the parent outcome and fills the next blank (one Exercise, or cited follow-ups after a break). Doc-roles are optional. Declining doc-roles does not skip the audit.
+**Who runs the audit.** The procedure is the Outcome audit in [`roles/todo-warden.md`](../roles/todo-warden.md). It checks the parent outcome and fills the next blank (one Exercise, or cited follow-ups after a break). If that write needs an unfinished enabler, the next blank is the enabler’s remaining work — do not fill an Exercise or follow-ups (§5.6). Doc-roles are optional. Declining doc-roles does not skip the audit.
 
 - Orchestration close-out spawns `todo-warden` when that adapter is installed, and follows the playbook in the parent session when it is not.
 - Any other session — a one-off change, doc-roles declined, or staying in this session — runs **that section only** for stems this turn touched when this turn finished the last open non-exercise child of an outcome, finished an exercise item, would claim the feature, stem, or outcome done, or this turn’s code changed an observable a checked outcome names. That is not full orchestration and not a project-wide honesty sweep. The check that sets the outcome `[x]` waits until after work-verifier **pass** when this turn has a verifier. The implementer unit leaves the outcome `[ ]`. Reopen of an already `[x]` outcome runs in that same audit.
 
-**Passing note.** A **Completed** exercise item for that slug. The path is that stem’s exercise path (UI, CLI, product API, or documented smoke), not a unit-test file. The observation states what happened for **each observable clause** in the outcome sentence. “Looks right,” a skipped clause, or a unit-test path is not passing. A break note names the first clause that failed and is not passing.
+**Passing note.** A **Completed** exercise item for that slug. The path is that stem’s exercise path (UI, CLI, product API, or documented smoke), not a unit-test file. The observation states what happened for **each observable clause** in the outcome sentence. “Looks right,” a skipped clause, or a unit-test path is not passing. A clause satisfied by a stub, a constant, an empty feed, or an unfinished enabler is not passing (§5.6). A break note names the first clause that failed and is not passing.
 
 **Who may check.** Only that audit. It may set the outcome `[x]` and check the matching Acceptance line only when a current passing note exists and the outcome is still `[ ]`. A passing note checks the outcome even when other children remain. An outcome already `[x]` stays `[x]` while that note is still current. A later pass does not check it again. A note that records the first break leaves both open. A slice that only looks close does not check either line. Work-verifier fails a unit that checks them, and fails an exercise item marked done when the note is not a passing note.
 
-**Reopen.** Uncheck the outcome and the matching Acceptance line, put one sentence on the outcome, and add one open **Exercise** when one is not already open. Do that when this turn’s code changes an observable the outcome names (a copy or typo fix does not), or when a human playtest report says the scenario did not hold. The old passing note stays in Completed. The new Exercise is the next unit. That reopen does not add a playtest.
+**Reopen.** Uncheck the outcome and the matching Acceptance line, put one sentence on the outcome, and add one open **Exercise** when one is not already open. Do that when this turn’s code changes an observable the outcome names (a copy or typo fix does not), or when a human playtest report says the scenario did not hold. The old passing note stays in Completed. The new Exercise is the next unit. That reopen does not add a playtest. If that write needs an unfinished enabler, do not add the Exercise. The next unit is the enabler’s remaining work (§5.6).
 
 **Code versus the checklist.** Work-verifier compares one claimed TODO item to that unit’s diff. The diff does not implement the item → fail. It does not walk older checked rows. Warden honesty reopens a checked item whose code does not implement it. Declining doc-roles does not skip either compare: the parent runs that unit’s verifier steps before mark-done, and the outcome audit reopens a clear overclaim on the stems it already covers.
 
-**Exercise task.** Add one High item, and point Current focus at it, only when this outcome has **no exercise item yet** (none open, none Completed) and no passing note, and it is not waiting on open children or an intentional phase:
+**Exercise task.** Add one High item, and point Current focus at it, only when this outcome has **no exercise item yet** (none open, none Completed) and no passing note, and it is not waiting on open children or an intentional phase. If that outcome’s write needs an unfinished enabler, do not add it and do not point Current focus there (§5.6).
 
 ```markdown
 - [ ] **Exercise paper-auto-trade** — Run the scenario and record the first break (path, date, observed result). `outcome: paper-auto-trade`
 ```
 
-A Completed exercise that records a first break is not a passing note and is not “no exercise item.” Do **not** add another Exercise in that pass. Add follow-ups that cite the break. After those follow-ups are Completed, the next unit is **one** new Exercise to re-run, not a copy of the old follow-ups.
+A Completed exercise that records a first break is not a passing note and is not “no exercise item.” Do **not** add another Exercise in that pass. Add follow-ups that cite the break. After those follow-ups are Completed, the next unit is **one** new Exercise to re-run, not a copy of the old follow-ups. If that write needs an unfinished enabler, do not add the follow-ups or that re-run. The next unit is the enabler’s remaining work (§5.6).
 
 Do not write the rest of the path from a reading of the code.
 
@@ -138,7 +139,7 @@ Do not write the rest of the path from a reading of the code.
 **Passing note** (on the exercise item, then move it to Completed):
 
 ```markdown
-- [x] **Exercise paper-auto-trade** — (exercised YYYY-MM-DD: `<smoke command or operator path>`; scenario held — orders: …; fills: …; P&L: …). `outcome: paper-auto-trade`
+- [x] **Exercise paper-auto-trade** — (exercised YYYY-MM-DD: `<smoke command or operator path>`; scenario held — orders: …; fills: …; P&L: …; quotes came from the feed). `outcome: paper-auto-trade`
 ```
 
 **Library-only.** `## Outcomes` is one non-checkbox line: `library-only — consumers own the exercise path.` No outcome checkboxes. Children need no `outcome:` label.
@@ -149,8 +150,41 @@ Do not write the rest of the path from a reading of the code.
 
 **New work.** A new task on a stem that has outcome rows names one existing outcome. A new operable scenario adds the Acceptance line and the unchecked Outcomes row in the same turn. Implementers do not check either.
 
-**Not stem-drained.** An empty High / Medium / Low list while any Outcomes row is `[ ]` is not feature done. The next unit is the exercise task when none exists, or the cited-break follow-up when the latest exercise recorded a break. Milestone PRs of honest child work may still merge. Claiming feature / stem / outcome done while an outcome is open is a gap.
+**Not stem-drained.** An empty High / Medium / Low list while any Outcomes row is `[ ]` is not feature done. The next unit is the exercise task when none exists, or the cited-break follow-up when the latest exercise recorded a break. If that outcome’s write needs an unfinished enabler, do not add or dispatch the Exercise or those follow-ups. The next unit is the enabler’s remaining work (§5.6). Milestone PRs of honest child work may still merge. Claiming feature / stem / outcome done while an outcome is open is a gap.
 
-**Do not:** nest children under a parent checkbox; check an outcome because its children are `[x]`; check operable Acceptance from a slice; treat a unit-test path or a skipped observable clause as a passing note; leave an outcome `[x]` after this turn changes an observable it names; leave an outcome `[x]` after a human report that the scenario did not hold; add another Exercise because a break note is not a passing note; mint a task per architecture bullet to map the remaining path without a cited break; reopen Completed items just to relabel them; ask the human to look at an outcome that is still `[ ]`.
+**Do not:** nest children under a parent checkbox; check an outcome because its children are `[x]`; check operable Acceptance from a slice; treat a unit-test path or a skipped observable clause as a passing note; leave an outcome `[x]` after this turn changes an observable it names; leave an outcome `[x]` after a human report that the scenario did not hold; add another Exercise because a break note is not a passing note; add cited-break follow-ups while that write needs an unfinished enabler; mint a task per architecture bullet to map the remaining path without a cited break; reopen Completed items just to relabel them; ask the human to look at an outcome that is still `[ ]`.
+
+### 5.6 Enablers — the other portion must be fully functional
+
+**Source of truth** for enablers. Roles and the modular rule summarize; **this subsection wins on conflict**.
+
+**Failure mode:** Two ways the product looks done and is not. A category cannot run without an input nobody wrote down (a trading product with no prices). Or a dependent is coded and “running” while the portion it needs is unfinished, and it **writes data that needed that portion**. Incomplete upstream work then looks like a real result. Scores, fills, and “this did not complete” are examples, not the boundary.
+
+**Enabler.** Something this stem’s real results cannot be true without.
+
+| Kind | What it is | Fully functional |
+|------|------------|------------------|
+| **Category input** | The product category cannot be exercised without it | The live source named in the lock is actually supplying it. A constant, an empty feed, or a stub is not |
+| **Sibling portion** | Another stem or component of this app | The operable outcomes **this dependent’s clauses rely on** have a current passing exercise (§5.5). Other open work on that stem does not keep the block. “The process is running” is not fully functional. An unfinished sibling that never completes is not evidence the work performed badly |
+
+**Name it.** Existence is a lock (Workflow §4). Write one line into **What this is**. Under **build-first** (no Understanding), write that line into spec Overview. Do not invent Understanding to hold it. Do not ask “does a trading app need prices?” Which source is a real fork only when two live options have no obvious winner. On graduation, add a **Dependencies** row with relationship **Enabler** (the sibling stem, or the external service). Acceptance and the Outcomes sentence include at least one observable clause that is false when the enabler is a stub, a constant, an empty feed, or an unfinished sibling.
+
+**Covering TODO.** The enabler’s remaining work is an ordinary TODO on the **owning** stem (this stem, or the sibling already on the map). Writing that item is not inventing work (§5.4). Inventing is a second product or an out-of-kit API. Omitting the enabler because the user never named it is the failure.
+
+**Do not write while it is unfinished.** If a write needs information from the enabler, that write stays off until the enabler is fully functional. Any stored row whose contents come from the enabler counts: a record, a file, a table, a cache. Scores, fills, and “this performed badly” are examples, not the boundary. A process that is up and writing those rows is the bug. Stop the writes. Do not mark that item done. Leave it open with a dependency note, and do not put it in Current focus:
+
+> Blocked until [PriceFeed](PriceFeed-TODO.md) is fully functional (Workflow §5.6)
+
+Allowed before the enabler is done: types, writes that do not use the enabler’s information, and a smoke that proves the dependent **refuses** to write the rows that need it. That smoke is not a passing note for the real outcome.
+
+**After it is fully functional.** Then the dependent’s real path may run. Its exercise must show the observable clause against the real enabler, not a stand-in.
+
+**Passing note.** A note that satisfied a clause with a stub, a constant, an empty feed, or an unfinished sibling is not passing. Work-verifier fails that unit. The outcome audit unchecks the outcome and the matching Acceptance line. It does not add the Exercise or cited-break follow-ups while the enabler is unfinished. Saved rows from the unfinished enabler are not evidence the scenario held.
+
+**Credential.** A missing key for an external enabler is a `procure` row (Workflow §13) and a **Services this app consumes** row when the running app will call it (Workflow §11). That errand is not permission to write the rows that need it against a stub.
+
+**Orchestrate.** The next unit is the enabler’s remaining work. Do not add or dispatch the dependent Exercise, cited-break follow-ups, or any other write that needs the enabler, while the block is in force.
+
+**Do not:** quiz the existence; treat a running process as finished; mark the dependent done because it ran; keep rows written from an unfinished enabler as the result; call a stubbed exercise passing; add a product the user did not ask for and call it an enabler.
 
 ---
