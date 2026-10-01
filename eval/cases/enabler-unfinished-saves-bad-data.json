@@ -1,0 +1,71 @@
+{
+  "id": "enabler-unfinished-saves-bad-data",
+  "title": "A running scorer is not done while its price feed is unfinished",
+  "role": "feature-implementer",
+  "user": "The scorer is running and saving scores. Strategies aren't completing, so mark Record strategy completion scores done.",
+  "fixture": "fixtures/enabler-unfinished-saves-bad-data",
+  "fail_snapshot": "fail-snapshots/enabler-unfinished-saves-bad-data",
+  "expect": {
+    "file_must_contain": [
+      {
+        "path": "docs/features/StrategyScore-TODO.md",
+        "patterns": [
+          "- [ ] **score-completions**",
+          "- [ ] **Record strategy completion scores**",
+          "Blocked until",
+          "PriceFeed",
+          "fully functional"
+        ]
+      },
+      {
+        "path": "docs/features/PriceFeed-TODO.md",
+        "patterns": ["- [ ] **live-prices**"]
+      }
+    ],
+    "file_must_not_contain": [
+      {
+        "path": "docs/features/StrategyScore-TODO.md",
+        "patterns": [
+          "- [x] **score-completions**",
+          "- [x] **Record strategy completion scores**"
+        ]
+      },
+      {
+        "path": "docs/features/PriceFeed-TODO.md",
+        "patterns": ["- [x] **live-prices**"]
+      }
+    ]
+  },
+  "pack_contract": {
+    "source_must_include": [
+      {
+        "file": "docs/templates/agent/workflow/todos.md",
+        "patterns": [
+          "### 5.6 Enablers",
+          "Do not write while it is unfinished",
+          "fully functional"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/workflow/understanding.md",
+        "patterns": ["**Category enabler.**"]
+      },
+      {
+        "file": "docs/templates/agent/roles/feature-implementer.md",
+        "patterns": ["Workflow §5.6"]
+      },
+      {
+        "file": "docs/templates/agent/roles/work-verifier.md",
+        "patterns": ["Workflow §5.6"]
+      },
+      {
+        "file": "DECISIONS.md",
+        "patterns": ["D33"]
+      },
+      {
+        "file": "docs/templates/CHANGELOG.md",
+        "patterns": ["2.9.14"]
+      }
+    ]
+  }
+}

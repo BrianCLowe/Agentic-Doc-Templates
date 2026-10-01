@@ -59,7 +59,8 @@ All of:
 | **Target arch** | Rewrite High Priority / focus that fights confirmed shape before dispatch ([timescale](../Agent_Timescale_Planning_Rule.mdc)) |
 | **Operable (§5.3)** | User-facing stem with domain-only High Priority and no exercise path / library-only / phase → **add** surface/wire/smoke (**scaffold+wire** if no UI specs) or phase note **once**, then dispatch. Open operable Acceptance with no covering TODO → add work (or phase). Do not report “cleared/Layer done” without path. Library-only `_shared/` exempt; consumers own wire. |
 | **Outcomes (§5.5)** | Do not check an Outcomes row or an operable Acceptance line from a slice. An empty High/Medium/Low list while an Outcomes row is `[ ]` is not stem-drained. Next unit is the exercise task when none exists, or the cited-break follow-up when the latest exercise recorded a break. Do not add a second Exercise in that case. Do not playtest an outcome that is still `[ ]`. |
-| **Kit coverage (§5.4)** | In-scope spec surface with **no** covering TODO (**open or Completed**) on that stem → **add** the item on the inventory/owning stem, then it is ready work. Do **not** skip it as “not picked up.” Do **not** create a new map row unless splitting per Workflow §0. Terse wrap-the-public-API → expand from the docs; do not interview each facet. |
+| **Kit coverage (§5.4)** | In-scope spec surface with **no** covering TODO (**open or Completed**) on that stem → **add** the item on the inventory/owning stem, then it is ready work. Do **not** skip it as “not picked up.” Do **not** create a new map row unless splitting per Workflow §0. Terse wrap-the-public-API → expand from the docs; do not interview each facet. A category enabler (§5.6) gets a covering TODO on the owning stem even when the user never named it. |
+| **Enabler (§5.6)** | Do not dispatch a write that needs an unfinished enabler. Next unit is the enabler’s remaining work. A running writer that is saving those rows is not ready work — stop that path. |
 
 `draft` Understanding → **do not code** that stem; continue other ready stems. **build-first:** do not invent Understanding to unblock.
 
@@ -120,7 +121,8 @@ Cleared · still open · **outcomes still `[ ]`** · human looks the warden adde
 - Checkout default **inside** a host/linked worktree to “go home”
 - Invent `_shared`/map rows/backlog unrelated to shipped work or dual-write  
 - Drain Low when user chose High-only; upgrade single-slice to full orchestrate  
-- Skip inventory Medium/Low because they “haven’t been picked up”; omit covering TODOs for in-scope spec surfaces (Workflow §5.4)  
+- Skip inventory Medium/Low because they “haven’t been picked up”; omit covering TODOs for in-scope spec surfaces (Workflow §5.4)
+- Dispatch a write that needs an unfinished enabler, or treat a running writer as done (Workflow §5.6)  
 - Re-open Understanding when `confirmed` + scope unchanged  
 - Auto-commit on non-orchestrate asks because “orchestration commits”  
 - Store secrets in docs or commit messages  

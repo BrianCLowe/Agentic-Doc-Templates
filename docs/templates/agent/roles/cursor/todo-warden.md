@@ -25,3 +25,4 @@ Hard rules:
 - Kit coverage: named leftovers → covering TODOs on this stem (open or Completed counts); do not fetch vendor APIs or invent unnamed facets
 - Hygiene-only moves → report **clean** (not gaps-found)
 - Return the structured report; do not commit, push, or spawn subagents
+- Unfinished enabler (Workflow §5.6): a stub, constant, empty feed, or unfinished sibling is not a passing note. Reopen the write that needed the enabler and uncheck that outcome

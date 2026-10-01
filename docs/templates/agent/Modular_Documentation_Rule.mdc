@@ -67,10 +67,10 @@ If `docs_profile` is unset at bootstrap / first build-from-reference / sync: sug
 **Shared / files / shape** *(full procedure in the named module; mode gates are the table above)*:
 - **Do not invent `_shared/`.** Only when a project-owned piece is used by two or more features, or the user named it. Empty §3.1 is fine. Workflow §1 · §0.
 - **Document Map = files on disk** the same turn (spec + core TODO; Understanding per §0.1). No map-only planned rows. Kit leftovers stay TODOs on an existing stem (§5.4).
-- Lock obvious defaults; **Assumptions = real forks only**. Do not treat reference-doc examples as the target unless clearly set as the target.
+- Lock obvious defaults; **Assumptions = real forks only**. Do not treat reference-doc examples as the target unless clearly set as the target. Name a category enabler in is / is not even when the user did not say it (§5.6).
 - Do not code while an **existing** Understanding is `draft` unless waived. **`confirmed`** → continue from TODO/spec. Additive vs shape → Workflow §4. Vague ideas → `docs/templates/help/IDEA_CAPTURE_TIPS.md`.
 
-**While working:** Current focus first; rewrite focus that fights confirmed shape; user-facing stems need an exercise path (§5.3); in-scope spec leftovers need covering TODOs on an existing stem (§5.4).
+**While working:** Current focus first; rewrite focus that fights confirmed shape; user-facing stems need an exercise path (§5.3); in-scope spec leftovers need covering TODOs on an existing stem (§5.4). A dependent does not write data that needs an unfinished enabler (§5.6).
 
 **After changes (mandatory):**
 - **Build & verify** on code changes before “you can test” (`docs/Tooling.md` Project verify — `Agent_Build_Verify_Rule`).
@@ -81,4 +81,4 @@ If `docs_profile` is unset at bootstrap / first build-from-reference / sync: sug
 
 **Clarification** (*review spec* / *gaps* / *confidence* for a **named** stem): re-read **that** stem only; ≤5 questions; wait for confirm; no unrelated stems.
 
-**Also:** do not invent interim architecture when shape is clear. A library checklist is not done. Do not ignore open operable Acceptance. An Outcomes row stays open until a passing exercise note (§5.5). Do not create a human-verify playtest outside the outcome audit. That audit creates the row, and only after a passing exercise note. Drain ready work; do not wait for pickup.
+**Also:** do not invent interim architecture when shape is clear. A library checklist is not done. Do not ignore open operable Acceptance. An Outcomes row stays open until a passing exercise note (§5.5). A running dependent is not done while its enabler is unfinished (§5.6). Do not create a human-verify playtest outside the outcome audit. That audit creates the row, and only after a passing exercise note. Drain ready work; do not wait for pickup.

@@ -12,7 +12,7 @@
 
 **Humans:** Confirm **shape** only (is / is not + real-fork Assumptions). How to review: [`help/SCAFFOLDS.md`](../templates/help/SCAFFOLDS.md). Interview prompts: [`help/IDEA_CAPTURE_TIPS.md`](../templates/help/IDEA_CAPTURE_TIPS.md).
 
-**Agents:** This file is fill-in blanks — not a tutorial. If context is thin (new session, compaction, memory loss), re-open [`agent/workflow/understanding.md`](../templates/agent/workflow/understanding.md) before drafting or editing. Index: [`agent/Modular_Docs_Workflow.md`](../templates/agent/Modular_Docs_Workflow.md). Optional role: [`agent/roles/understanding-author.md`](../templates/agent/roles/understanding-author.md).
+**Agents:** This file is fill-in blanks — not a tutorial. If context is thin (new session, compaction, memory loss), re-open [`agent/workflow/understanding.md`](../templates/agent/workflow/understanding.md) before drafting or editing. Category enablers: [`agent/workflow/todos.md`](../templates/agent/workflow/todos.md) §5.6. Index: [`agent/Modular_Docs_Workflow.md`](../templates/agent/Modular_Docs_Workflow.md). Optional role: [`agent/roles/understanding-author.md`](../templates/agent/roles/understanding-author.md).
 
 ---
 

@@ -40,6 +40,7 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 | D30 | Drained child tasks are not capability-done; an Outcomes row stays open until a passing exercise note | accepted | 2.9.9 |
 | D31 | Completed is not a repair log; incidental fixes stay in git, not a new Completed row | accepted | 2.9.10 |
 | D32 | No check interval means the update check does not write settings | accepted | 2.9.13 |
+| D33 | A category enabler is named even when unspoken; a write that needs it waits until that portion is fully functional | accepted | 2.9.14 |
 
 ---
 
@@ -69,7 +70,7 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 
 **Decision:** `python3 eval/run_eval.py` (no model) stays on `.github/workflows/pack-checks.yml`. Cases include **fail-snapshots** a wrong agent output must fail. Grow from integrity; prepare/verify remains the behavioral loop.
 
-**Named fail modes to keep covered:** wrong-engine build; operable-gap marked done; build-first skipping Understanding under **prevent**; inventing Understanding under **build-first**; invented-decision Assumptions / example-as-identity.
+**Named fail modes to keep covered:** wrong-engine build; operable-gap marked done; build-first skipping Understanding under **prevent**; inventing Understanding under **build-first**; invented-decision Assumptions / example-as-identity; always-mode update check writing settings; dependent marked done while its enabler is unfinished.
 
 ## D6 — Standing is not a notes pad
 
@@ -251,6 +252,14 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 **Decision:** `check_mode: always` (and unset `check_mode`) has no check interval. The session fetches upstream `VERSION`, reports in chat, and stops. It does not write `last_checked`, `update_available`, or `upstream_pack_version`, and it does not commit or open a pull request for that check. The rule runs again next session. `check_mode: interval` still writes `last_checked` (and the availability keys) so the next session can skip until `check_interval_days` elapses. That write does not open a pull request. If the user does not opt to update, the stamp goes in the same commit as the session's other changes. If they opt to update, TEMPLATE_SYNC carries settings. Sync still sets `local_pack_version` from local `VERSION`. On sync, no-interval settings drop those three check-log keys inside the pack/stamp commit.
 
 **Do not:** Restore “always set `last_checked`” on a session check. Do not open a pull request for an interval check stamp. Do not commit that stamp by itself when the session has other changes and the user did not opt to update.
+
+---
+
+## D33 — Category enablers
+
+**Decision:** An **enabler** is something a stem’s real results cannot be true without. It is either a category input the user will not think to name (a trading product needs prices) or another portion of this app that must itself be fully functional for the clauses that depend on it. Existence is a lock in **What this is** (spec Overview under build-first). Which source is an Assumption only when two live options have no winner. Fully functional means those sibling outcomes have a current passing exercise, or the live source is actually supplying the input. Other open work on that stem does not keep the block. “The process is running” is not fully functional. While the enabler is unfinished, the dependent must not write any data that needs the enabler’s information. Scores, fills, and “performed badly” are examples, not the boundary. Those rows are bad data: incomplete upstream work looks like a real result. Stop the writes. Leave the TODO open with a blocked-until note. A covering TODO for the enabler on the owning stem is ordinary work, not inventing. A passing note that used a stub, a constant, an empty feed, or an unfinished sibling is not passing. Source of truth: Workflow §5.6. Sync does not scan live stems to invent enablers.
+
+**Do not:** Quiz “does a trading app need prices?” Do not mark the dependent done because it ran. Do not keep rows written from an unfinished enabler as the result. Do not treat kit-coverage’s “user never named it” ban as permission to omit the enabler. Do not limit the write ban to scores or “performed badly.”
 
 ---
 

@@ -38,7 +38,7 @@ The agent drafts this file. You confirm **general feature shape**:
 1. **What this is** — category, metaphor, “feels like,” ownership, product-defining surface.
 2. **What this is NOT** — wrong category / wrong architecture identity. Not a backlog of “not built yet.”
 3. **Relationship** — extends / wraps / reuses vs greenfield.
-4. **Assumptions** — **real forks only.** Empty is correct when obvious defaults were locked in is / is not. Examples in `docs/reference/` are not the target unless you clearly set them as the target. You may be **offered** an Assumptions clean-out pass (agent lock gate: [`workflow/understanding.md`](../agent/workflow/understanding.md) §4).
+4. **Assumptions** — **real forks only.** Empty is correct when obvious defaults were locked in is / is not. Examples in `docs/reference/` are not the target unless you clearly set them as the target. A category enabler (prices; a sibling that must be finished before this stem may write data that needs it) is locked into **is** even when you did not say it ([`workflow/todos.md`](../agent/workflow/todos.md) §5.6). You may be **offered** an Assumptions clean-out pass (agent lock gate: [`workflow/understanding.md`](../agent/workflow/understanding.md) §4).
 
 You are **not** signing off flows, API tables, acceptance, or the TODO. Missing spec detail here is normal.
 
