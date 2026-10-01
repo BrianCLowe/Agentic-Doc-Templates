@@ -151,7 +151,8 @@ optional_rules:
 #   always   — default / recommended: fetch upstream VERSION each session. Do not
 #              write last_checked, update_available, or upstream_pack_version.
 #   interval — fetch when last_checked is older than check_interval_days, then
-#              write last_checked (and those two availability keys).
+#              set last_checked; set or clear update_available /
+#              upstream_pack_version as appropriate.
 
 upstream:
   check_mode: always
