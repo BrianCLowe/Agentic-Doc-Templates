@@ -248,9 +248,9 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 
 ## D32 — No interval, no check stamp
 
-**Decision:** `check_mode: always` (and unset `check_mode`) has no check interval. The session fetches upstream `VERSION`, reports in chat, and stops. It does not write `last_checked`, `update_available`, or `upstream_pack_version`, and it does not commit or open a pull request for that check. The rule runs again next session. `check_mode: interval` still writes `last_checked` (and the availability keys) so the next session can skip until `check_interval_days` elapses. That stamp is not its own pull request. Sync still sets `local_pack_version` from local `VERSION`. On sync, no-interval settings drop those three check-log keys inside the pack/stamp commit.
+**Decision:** `check_mode: always` (and unset `check_mode`) has no check interval. The session fetches upstream `VERSION`, reports in chat, and stops. It does not write `last_checked`, `update_available`, or `upstream_pack_version`, and it does not commit or open a pull request for that check. The rule runs again next session. `check_mode: interval` still writes `last_checked` (and the availability keys) so the next session can skip until `check_interval_days` elapses. That write does not open a pull request. If the user does not opt to update, the stamp goes in the same commit as the session's other changes. If they opt to update, TEMPLATE_SYNC carries settings. Sync still sets `local_pack_version` from local `VERSION`. On sync, no-interval settings drop those three check-log keys inside the pack/stamp commit.
 
-**Do not:** Restore “always set `last_checked`” on a session check. Do not open a pull request whose only change is the check stamp.
+**Do not:** Restore “always set `last_checked`” on a session check. Do not open a pull request for an interval check stamp. Do not commit that stamp by itself when the session has other changes and the user did not opt to update.
 
 ---
 

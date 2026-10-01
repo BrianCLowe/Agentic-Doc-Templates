@@ -15,7 +15,7 @@ If `optional_rules.template-update-check.status` is not `enabled`, ignore this e
 1. Once per session at start of work on this project (or when the user asks to check for template updates): read **`docs/ADT-settings.yaml`** — confirm update-check enabled; read `upstream:`.
 2. Resolve `upstream.check_mode` (default **`always`** if unset):
    - **`always`** or **unset** (no check interval) → follow **`docs/templates/agent/TEMPLATE_UPDATE_CHECK.md`** (fetch tiny upstream `VERSION`; report if newer). At most once per session unless the user asks again. Do **not** write `docs/ADT-settings.yaml`. Do **not** set `last_checked`, `update_available`, or `upstream_pack_version`. Do **not** commit. Do **not** open a PR. The next session runs this check again.
-   - **`interval`** → if `last_checked` is still within `check_interval_days` (default 7) and the user did not ask → stop. Otherwise follow TEMPLATE_UPDATE_CHECK, which writes `last_checked` so the interval can elapse. Do **not** open a PR whose only change is that stamp.
+   - **`interval`** → if `last_checked` is still within `check_interval_days` (default 7) and the user did not ask → stop. Otherwise follow TEMPLATE_UPDATE_CHECK, which writes `last_checked` so the interval can elapse. Do **not** open a PR. If the user does not opt to update, include that stamp in the same commit as this session's other changes.
 3. Run `docs/templates/agent/TEMPLATE_SYNC.md` only if they want the pack refreshed — never auto-sync from a version ping.
 
 **Legacy:** If only `docs/upstream-status.yaml` exists, migrate into `ADT-settings.yaml` per TEMPLATE_SYNC_B B0.1. Legacy `check_interval_days` without `check_mode` → `check_mode: interval`.

@@ -14,7 +14,10 @@
           "do **not** edit `docs/ADT-settings.yaml`",
           "Do **not** open a pull request",
           "The rule runs again next session",
-          "Under **no interval**, do **not** write `last_checked`"
+          "Under **no interval**, do **not** write `last_checked`",
+          "Do **not** open a pull request for the interval stamp.",
+          "User **does not opt to update**",
+          "same commit** as this session's other changes"
         ]
       },
       {
@@ -24,7 +27,7 @@
           "Do **not** write `docs/ADT-settings.yaml`",
           "Do **not** commit. Do **not** open a PR.",
           "The next session runs this check again",
-          "Do **not** open a PR whose only change is that stamp."
+          "Do **not** open a PR. If the user does not opt to update, include that stamp in the same commit as this session's other changes."
         ]
       },
       {
@@ -33,7 +36,8 @@
           "no check interval",
           "Do **not** write `docs/ADT-settings.yaml`",
           "Do **not** commit. Do **not** open a PR.",
-          "The next session runs this check again"
+          "The next session runs this check again",
+          "If the user does not opt to update, include that stamp in the same commit as this session's other changes."
         ]
       },
       {
@@ -73,7 +77,9 @@
         ],
         "must_not_contain": [
           "**Always** set `upstream.last_checked`",
-          "still update `last_checked` so you do not retry every turn under `always`"
+          "still update `last_checked` so you do not retry every turn under `always`",
+          "whose only change is that stamp",
+          "leave the stamp uncommitted unless they ask to commit"
         ]
       },
       {
