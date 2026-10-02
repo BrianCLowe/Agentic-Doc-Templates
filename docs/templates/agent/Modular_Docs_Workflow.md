@@ -51,7 +51,7 @@ Use when the stem is already **ready** under the docs profile and scope is uncha
 | Whole-product vision / end-state picture / product vs feature fight | [`workflow/product-vision.md`](workflow/product-vision.md) (§4.5) |
 | Graduate confirmed shape → durable spec | [`workflow/understanding.md`](workflow/understanding.md) (§2) |
 | Path A vs Path B unclear · readiness table detail | [`workflow/implement.md`](workflow/implement.md) (§3) |
-| TODO layout · Current focus · operable done · sticky outcomes · exploration · kit covering TODOs | [`workflow/todos.md`](workflow/todos.md) (§5) |
+| TODO layout · Current focus · operable done · sticky outcomes · exploration · kit covering TODOs · enablers | [`workflow/todos.md`](workflow/todos.md) (§5) |
 | Spec Decisions (product/UI) | [`workflow/decisions.md`](workflow/decisions.md) (§10) |
 | Install tooling / Project verify handoff | [`workflow/tooling.md`](workflow/tooling.md) (§11) |
 | Human inbox dual-write | [`workflow/human-todo.md`](workflow/human-todo.md) (§13) |
