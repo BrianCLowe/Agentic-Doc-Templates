@@ -76,7 +76,7 @@ Only **reopen/add** when **at least one** of these is true and you can point to 
 - Unchecked `[ ]` items
 - Non-task prose under Cross-Feature (dependency notes, design questions without a done checkbox)
 - Items already under **Completed**
-- A new Completed checkbox for an incidental fix that was never an open plotted task (review patch, Bugbot finding, copy or typo). Git already has that change. If this pass added one, delete that row. Older incidental rows are sync `optional-todo-completed-cleanout`, not this honesty pass. If the fix changes an observable an Outcome names, that is a **Reopen** (one sentence on the outcome, uncheck, one Exercise), not a new checkbox. A copy or typo fix stays checked.
+- A new Completed checkbox for an incidental fix that was never an open plotted task (review patch, Bugbot finding, copy or typo). Git already has that change. If this pass added one, delete that row. Older incidental rows are sync `optional-todo-completed-cleanout`, not this honesty pass. If the fix changes an observable an Outcome names, that is a **Reopen** (one sentence on the outcome, uncheck, one Exercise), not a new checkbox. Do not add the Exercise when the write needs an unfinished enabler (Outcome audit **Reopen**). A copy or typo fix stays checked.
 - Human-gated / Human-TODO items you did **not** verify the user closed — or an allowed `team_inbox` assignee, only when that key is **enabled** (do not invent `[x]` just to archive). Unset `team_inbox` = user confirm only
 
 **After move:**
