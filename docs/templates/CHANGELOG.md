@@ -24,6 +24,19 @@
 
 ---
 
+## 2.9.15
+
+- **Live impact:** `versions-only`, `rules`, `process-docs-only`
+- **Summary:** Current focus is a handoff note. The work is the instructed task. Other open items that task requires are in, including Medium and Low and a linked blocker the task cannot be true without. *Continue from Current focus* stays one item and does not become orchestrate. A broader ask stays the implement session. The note does not hold the rest of the kit back.
+- **Changes:**
+  - `VERSION` — 2.9.14 → 2.9.15
+  - `agent/workflow/todos.md` §5.1 — handoff note; instructed task; one-item ask
+  - §5.4 — kit order no longer treats the note as the only pickup
+  - modular rule twins, paved path, implement path, feature-implementer + adapters
+  - `TODO_Template.md` heading — note, not a work cap
+  - `DECISIONS.md` D34
+- **Step B:** Bump Master Index **Pack version** to 2.9.15 from local `VERSION`. **`rules`:** refresh installed modular-rule copies and, when doc-roles are enabled, the feature-implementer adapter, so a session does the instructed task and does not stop at the focus sentence when other open items are required. **No live feature/shared scan.** Do not rewrite live TODO Current focus blocks in this sync.
+
 ## 2.9.14
 
 - **Live impact:** `versions-only`, `rules`, `process-docs-only`

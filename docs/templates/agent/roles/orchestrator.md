@@ -87,7 +87,7 @@ Until **stop condition**:
 7. **Unit build green** — implementer should have run build-verify for code; re-dispatch if handoff implies runnable but never built  
 8. **Milestone git** — parent commits each verify-pass (mode ≠ `none`); serialize commits if several implementers return together; then push/PR per [`orchestrator-git.md`](orchestrator-git.md). **`milestone-pr`:** stay on this branch while the named milestone still has remaining grouped TODOs or in-flight parallel units. When that milestone is **complete** → that file’s **milestone PR cycle** (build-verify → warden → ready → wait CI/Bugbot → merge → new branch) **before** the next milestone. Do **not** start the cycle after the first TODO if more grouped work remains. Waiting is drain, not a stop. **One open PR at a time.**  
 
-**Current focus** is the next-work pointer — not a stop signal.
+**Current focus** is the next-work pointer — not a stop signal. When the user’s instruction requires several open items, those items are the work (§5.1). Partition them into units. Do not brief an implementer to stop after the focus sentence.
 
 ## Stop when *(any)*
 

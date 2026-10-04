@@ -26,12 +26,12 @@ When a feature depends on shared foundation work, the feature TODO gets a **depe
 
 **Workflow**:
 
-- **High Priority sizing:** Prefer one item (or a tight cluster) that lands the **confirmed target architecture**. Sub-bullets / Medium Priority = verify slices or follow-ups — not “ship the wrong architecture first.” If Current focus fights confirmed Understanding, rewrite the TODO before coding ([`Agent_Timescale_Planning_Rule.mdc`](../Agent_Timescale_Planning_Rule.mdc)).
+- **High Priority sizing:** Prefer one item (or a tight cluster) that lands the **confirmed target architecture**. That sizing is the cut, not a cap on other items the instruction requires (§5.1). Sub-bullets / Medium Priority = verify slices or follow-ups — not “ship the wrong architecture first.” If the Current focus note fights confirmed Understanding, rewrite the TODO before coding ([`Agent_Timescale_Planning_Rule.mdc`](../Agent_Timescale_Planning_Rule.mdc)).
 - **Operable done / dual track:** See §5.3 — user-facing stems need domain **and** exercise-path rows; library-only stems must say so.
 - **Sticky outcomes:** See §5.5 — an outcome row stays open until a passing exercise note. Child tasks do not close it or the matching Acceptance line.
 - **Enablers:** See §5.6 — name the input or sibling the real result cannot be true without. Do not write data that needs that portion while it is unfinished.
 - **Exploration vs shipping:** See §5.2.
-- **Session start:** Docs freshness first (Workflow §0.3 — `git status` + worktrees; sibling `docs/` drift → stop). Then read the active TODO's **Current focus** block (§5.1) — then High Priority.
+- **Session start:** Docs freshness first (Workflow §0.3 — `git status` + worktrees; sibling `docs/` drift → stop). Then read the active TODO's **Current focus** note (§5.1) for orientation. The instructed task is the work, not that sentence.
 - While working: Add new items as you discover them (including exercise-path rows when domain work reveals a missing run path — §5.3).
 - After finishing a **plotted** task: Mark `[x]`, add completion date/note, and **move** the item into **## Completed** (do not leave long `[x]` lists under High/Medium/Low). **Completed is not a repair log.** Skip a new row for an incidental fix (review patch, Bugbot finding, copy or typo). Git already has that change. If the fix changes an observable an Outcome names, run the §5.5 reopen: uncheck that outcome and its Acceptance line, one sentence on the outcome, one Exercise — unless that write needs an unfinished enabler, in which case do not add the Exercise (§5.6). Do not leave the outcome `[x]` with only a sentence. Do not add a checkbox. A copy or typo fix stays checked. Sync pass `optional-todo-completed-cleanout` removes a Completed checkbox that git shows was never an open `[ ]` task and is not an exercise note.
 - **Session end:** Update **Current focus** for the next session.
@@ -39,13 +39,15 @@ When a feature depends on shared foundation work, the feature TODO gets a **depe
 
 ### 5.1 Session handoff — Current focus
 
-Each active `-TODO.md` should keep a short **Current focus** block at the top (see [`TODO_Template.md`](../../TODO_Template.md)):
+**Source of truth** for what Current focus is. Roles and the modular rule summarize; **this subsection wins on conflict**.
 
-- One active task (or "blocked by …")
-- Blockers with links
-- Optional: last session date / agent tool
+**Current focus is a handoff note.** Each active `-TODO.md` keeps a short block at the top (see [`TODO_Template.md`](../../TODO_Template.md)): one sentence for what looks next (or "blocked by …"), blockers with links, optional last session date. It orients the next session. It is not the work limit and not the decision log.
 
-This gives the next agent (or a different tool) a 5-second orientation without re-reading everything.
+**The instructed task is the work.** Do what the user or the parent brief asked. If other open items on that stem are required for the instruction to be true, do those too. A linked blocker counts when the instruction cannot be true without it. Medium and Low count when the instruction requires them. Do not stop because the note names one task.
+
+**A one-item instruction stays one item.** *Continue from Current focus*, *implement Current focus*, or a brief that names one item = that item. Do not turn that ask into a kit drain or into orchestrate.
+
+**Do not:** treat the note as a cap when the instruction needs more items; skip a required item because it is not the focus sentence; drain tiers the instruction does not require; upgrade a one-item ask into orchestrate.
 
 ### 5.2 Exploration vs shipping
 
@@ -89,9 +91,9 @@ When product shape is still unknown, a short **spike** (branch, throwaway protot
 
 **Terse + public contract = expand, don’t interview.** “Fully support this vendor’s API” (or equivalent) is actionable when the vendor docs / OpenAPI / upstream SDK are available: **diff those against current code** and add covering TODOs for gaps. Do **not** wait for the user to name Files, embeddings, batch, … one by one. Do **not** treat that plan as vague or as a Catalog `stub`. Vague = cannot implement without a **product decision the docs don’t answer** (playground UI, private app names, “maybe later”).
 
-**Pickup ≠ backlog:** “Picked up” = Current focus / orchestrator **starts that unit**. It is **not** when the TODO row is first written. Do **not** leave in-scope spec surfaces off the TODO until a human chooses them.
+**Pickup ≠ backlog:** “Picked up” = an instruction or the orchestrator **starts that unit**. It is **not** when the TODO row is first written, and it is **not** only when the Current focus note names it. Do **not** leave in-scope spec surfaces off the TODO until a human chooses them.
 
-**Order on the inventory TODO:** High / Current focus = the next winner (target architecture for **that** cut). Medium / Low = the rest of the finished kit, unordered until promoted. Orchestrate drains High through Low unless the user capped tiers.
+**Order on the inventory TODO:** High is the next cut of the target architecture. Medium / Low hold the rest of the finished kit until a cut promotes them. The Current focus note may name that next cut; it does not hold those items back (§5.1). When the instruction is the kit, or any task those items are required for, those items are the work. *Continue from Current focus* does not drain them. Orchestrate drains High through Low unless the user capped tiers.
 
 **Still do not:** new Document Map rows for leftovers or for vague planned-only ideas ([`naming-layout.md`](naming-layout.md) §0 inventory rule); TODOs for out-of-kit future APIs; one mega-commit for the whole kit (git: `milestone-pr` — many milestones; a milestone may be several related TODOs, then squash that PR).
 

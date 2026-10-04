@@ -15,7 +15,7 @@
 
 ---
 
-## Current focus *(session handoff — update every session)*
+## Current focus *(handoff note — not a work cap; update every session)*
 
 **Active task:** [One sentence — what to do next, or "blocked"]  
 **Blocked by:** [Link to TODO item, shared maturity, `Human-TODO.md` row, or "—"]  

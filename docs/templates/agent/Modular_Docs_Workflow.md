@@ -21,7 +21,7 @@ Use when the stem is already **ready** under the docs profile and scope is uncha
 1. **Docs freshness** (cheap): `git status --porcelain` + `git worktree list`. Clean + one worktree → continue. Two or more worktrees → sibling probe in [`workflow/session-freshness.md`](workflow/session-freshness.md) (drift = uncommitted sibling `docs/` or `docs/` **content** differs — not ancestry-only after squash-merge). Dirty **this** tree: one line, continue (do not auto-commit). **New PR / successive spawn:** if an open PR already touches this stem’s TODO/spec → add there (docs overlap ≠ code overlap)
 2. Read `docs/ADT-settings.yaml` → `docs_profile.mode` (else **prevent**); `orchestrator.git.mode` when relevant; **`standing.instructions` if non-empty**
 3. [`Master_Index.md`](../../Master_Index.md) — Sections 1–3 only. Read [`Product-Vision.md`](../../Product-Vision.md) (especially when `confirmed`)
-4. Active TODO **Current focus** → that item’s Understanding *(if any — read-only)* → spec → code. Do **not** implement a fight with a **confirmed** product vision
+4. Active TODO — **Current focus** is a handoff note, not a work cap ([`workflow/todos.md`](workflow/todos.md) §5.1). Do the instructed task. *Continue from Current focus* is that one item; other open items required for a broader instruction are in. Then Understanding *(if any — read-only)* → spec → code. Do **not** implement a fight with a **confirmed** product vision
 5. **Stop.** Do **not** open workflow modules unless a row in the router below matches.
 
 **Ready when:**

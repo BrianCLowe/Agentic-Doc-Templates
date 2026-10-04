@@ -33,7 +33,7 @@
       }
     },
     "feature-implementer": {
-      "description": "Agentic Doc Templates — Feature implementer. Implements from TODO Current focus when Understanding is confirmed. Use when the user asks to implement, continue, or work Current focus and scope is unchanged. Do not use to draft Understanding or sync templates.",
+      "description": "Agentic Doc Templates — Feature implementer. Implements the instructed task when the stem is ready. Current focus is a handoff note, not a work cap. Use when the user asks to implement or continue and scope is unchanged. Continue from Current focus is one item. Do not use to draft Understanding or sync templates.",
       "body": "bodies/feature-implementer.md",
       "cursor": {
         "model": "inherit"

@@ -16,7 +16,7 @@
 
 1. **Docs freshness** — `git status --porcelain` + `git worktree list` (Workflow §0.3). Sibling `docs/` drift → **stop**. Dirty **this** tree: note it; continue
 2. Read `docs_profile` (if set) + `Master_Index.md` — Sections 1–3. Read `docs/Product-Vision.md`
-3. Active TODO **Current focus** → that TODO → Understanding *(if present — read-only)* → spec → code. Do **not** implement a fight with a **confirmed** product vision
+3. Active TODO — **Current focus** is a handoff note (§5.1), not a work cap. Do the instructed task. *Continue from Current focus* is one item; if the instruction requires other open items, do those too. Then Understanding *(if present — read-only)* → spec → code. Do **not** implement a fight with a **confirmed** product vision
 4. Skip drafting/graduation unless profile requires shape work, status is `draft` on an existing Understanding, the user changed scope, or Project Profile says game extensions apply
 5. **Preference corrections → same turn:** if the user corrected a lasting UI/interaction preference that could be “improved away,” append 1-line **Decisions** row(s) on that stem’s spec and fix contradicting Behavior / Acceptance / Visual refs (§10). Do **not** wait for a session-wrap ask. Update **Current focus** as usual (§5.1) — it is handoff, not the decision log.
 6. **Enabler (Workflow §5.6):** Do not implement a write that needs information from an unfinished enabler. A process that is already saving those rows is the bug — stop the writes. Do not mark that item done.
