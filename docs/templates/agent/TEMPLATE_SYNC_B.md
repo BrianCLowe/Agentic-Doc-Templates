@@ -137,12 +137,7 @@ Read `docs_profile.mode` from `docs/ADT-settings.yaml`.
 
 **Ask** (brief; optional 1-line suggest if `docs/reference/` or live Understandings give a signal):
 
-> Docs profile controls Understanding ceremony (Workflow §0.1):
-> - **`prevent`** — Understanding + shape confirm before code (current default if unset)
-> - **`balanced`** — Understanding only when identity is ambiguous
-> - **`build-first`** — Spec + TODO only; fix-forward
->
-> Keep **prevent**, or switch?
+**Present and explain** the menu by opening [`workflow/profile-standing.md`](workflow/profile-standing.md#01-docs-profile-ceremony-modes) §0.1 (source of truth) and using that table. Do **not** restate the three modes here.
 
 Record `docs_profile.mode` + `recorded` (+ `source: user` or `agent-suggested`). Explicit later: *Set docs profile to …*.
 
