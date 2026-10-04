@@ -6,7 +6,7 @@ Live files under `docs/` are **fill-in blanks**. Teaching, examples, and “how 
 |-----------|------------------|-------------|-------------------------------------|
 | `*-Understanding.md` | Shape blanks: is / is not, Relationship, Assumptions | This page + [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md) | [`workflow/understanding.md`](../agent/workflow/understanding.md) |
 | Feature / shared **spec** | Contract: Architecture, Behavior, Acceptance, Decisions, Visual refs | [`USAGE.md`](USAGE.md) | [`workflow/understanding.md`](../agent/workflow/understanding.md) §2 |
-| `*-TODO.md` | Current focus + work list (operable / kit coverage) | [`USAGE.md`](USAGE.md) | [`workflow/todos.md`](../agent/workflow/todos.md) |
+| `*-TODO.md` | Retired in 2.10.0. Do not create one. An existing file may stay; it is not the work list | [`USAGE.md`](USAGE.md) | — |
 | `Master_Index.md` | Overview + Document Map | [`SETUP.md`](SETUP.md) | [`workflow/naming-layout.md`](../agent/workflow/naming-layout.md) |
 | `Product-Vision.md` | Whole-product is / is not + **end-state picture** + how the map fits | This page | [`workflow/product-vision.md`](../agent/workflow/product-vision.md) |
 | `Human-TODO.md` / `Tooling.md` | Inbox / machine tools | This pack’s help | [`workflow/human-todo.md`](../agent/workflow/human-todo.md) · [`workflow/tooling.md`](../agent/workflow/tooling.md) |
@@ -38,7 +38,7 @@ The agent drafts this file. You confirm **general feature shape**:
 1. **What this is** — category, metaphor, “feels like,” ownership, product-defining surface.
 2. **What this is NOT** — wrong category / wrong architecture identity. Not a backlog of “not built yet.”
 3. **Relationship** — extends / wraps / reuses vs greenfield.
-4. **Assumptions** — **real forks only.** Empty is correct when obvious defaults were locked in is / is not. Examples in `docs/reference/` are not the target unless you clearly set them as the target. A category enabler (prices; a sibling that must be finished before this stem may write data that needs it) is locked into **is** even when you did not say it ([`workflow/todos.md`](../agent/workflow/todos.md) §5.6). You may be **offered** an Assumptions clean-out pass (agent lock gate: [`workflow/understanding.md`](../agent/workflow/understanding.md) §4).
+4. **Assumptions** — **real forks only.** Empty is correct when obvious defaults were locked in is / is not. Examples in `docs/reference/` are not the target unless you clearly set them as the target. A category enabler (prices; a sibling the product cannot be true without) is locked into **is** even when you did not say it ([`workflow/understanding.md`](../agent/workflow/understanding.md) §4). You may be **offered** an Assumptions clean-out pass (same section).
 
 You are **not** signing off flows, API tables, acceptance, or the TODO. Missing spec detail here is normal.
 

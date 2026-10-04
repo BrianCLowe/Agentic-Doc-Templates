@@ -6,11 +6,11 @@
 
 **Design intent:** Short user asks → **one** playbook (`BOOTSTRAP`, `TEMPLATE_SYNC`, `TEMPLATE_UPDATE_CHECK`, `RULE_INSTALL` → `tools/<key>.md`, roles, or this index → **one** workflow module). Do not scan the pack catalog. **Tight scope** = paved path only (not “audit every alternate”). Edge cases live in modules — load them only when the router says so. Live scaffolds are fill-in blanks — teaching lives in [`../help/SCAFFOLDS.md`](../help/SCAFFOLDS.md) and the module you open.
 
-**Compaction / new session / memory loss:** If you cannot recall the paved path, **re-open this index**, then only the matching router module. Do not reconstruct procedure from a live Understanding/spec/TODO or from chat memory.
+**Compaction / new session / memory loss:** If you cannot recall the paved path, **re-open this index**, then only the matching router module. Do not reconstruct procedure from a live Understanding or spec or from chat memory.
 
-**Docs profile:** `docs/ADT-settings.yaml` → `docs_profile.mode` — first-class choice. **`build-first`** = typed APIs / CRUD. **`prevent`** = editors / games / multi-surface (default if unset). **`balanced`** = mixed. Full rules → [`workflow/profile-standing.md`](workflow/profile-standing.md). Never silent-downgrade a project full of Understandings.
+**Docs profile:** `docs/ADT-settings.yaml` → `docs_profile.mode` — which docs to write. **`build-first`** = typed APIs / CRUD. **`prevent`** = editors / games / multi-surface (default if unset). **`balanced`** = mixed. Full rules → [`workflow/profile-standing.md`](workflow/profile-standing.md). Never silent-downgrade a project full of Understandings. Not a coding gate.
 
-**Optional roles:** [`roles/`](roles/README.md) — never always-on; parent spawns when adapters exist, else playbook in-session. **Orchestrator** and **bootstrap** = parent only ([`roles/orchestrator.md`](roles/orchestrator.md) + git [`roles/orchestrator-git.md`](roles/orchestrator-git.md); [`BOOTSTRAP.md`](BOOTSTRAP.md)). Single-slice implement → [`roles/feature-implementer.md`](roles/feature-implementer.md).
+**Optional roles:** [`roles/`](roles/README.md) — never always-on; parent spawns when adapters exist, else playbook in-session. **Bootstrap** = parent only ([`BOOTSTRAP.md`](BOOTSTRAP.md)). Documentation roles only: Understanding author, doc graduate, template sync.
 
 ---
 
@@ -18,21 +18,21 @@
 
 Use when the stem is already **ready** under the docs profile and scope is unchanged:
 
-1. **Docs freshness** (cheap): `git status --porcelain` + `git worktree list`. Clean + one worktree → continue. Two or more worktrees → sibling probe in [`workflow/session-freshness.md`](workflow/session-freshness.md) (drift = uncommitted sibling `docs/` or `docs/` **content** differs — not ancestry-only after squash-merge). Dirty **this** tree: one line, continue (do not auto-commit). **New PR / successive spawn:** if an open PR already touches this stem’s TODO/spec → add there (docs overlap ≠ code overlap)
-2. Read `docs/ADT-settings.yaml` → `docs_profile.mode` (else **prevent**); `orchestrator.git.mode` when relevant; **`standing.instructions` if non-empty**
+1. **Docs freshness** (cheap): `git status --porcelain` + `git worktree list`. Clean + one worktree → continue. Two or more worktrees → sibling probe in [`workflow/session-freshness.md`](workflow/session-freshness.md) (drift = uncommitted sibling `docs/` or `docs/` **content** differs — not ancestry-only after squash-merge). Dirty **this** tree: one line, continue (do not auto-commit). **New PR / successive spawn:** if an open PR already touches this stem’s spec or Understanding → add there (docs overlap ≠ code overlap)
+2. Read `docs/ADT-settings.yaml` → `docs_profile.mode` (else **prevent**); **`standing.instructions` if non-empty**
 3. [`Master_Index.md`](../../Master_Index.md) — Sections 1–3 only. Read [`Product-Vision.md`](../../Product-Vision.md) (especially when `confirmed`)
-4. Active TODO **Current focus** → that item’s Understanding *(if any — read-only)* → spec → code. Do **not** implement a fight with a **confirmed** product vision
+4. That stem’s spec and Understanding *(if any)*. Do the instructed task. A gap those docs already make obvious is part of the instruction. Do **not** create a `*-TODO.md`. There is no Current focus. Do **not** document a fight with a **confirmed** product vision
 5. **Stop.** Do **not** open workflow modules unless a row in the router below matches.
 
-**Ready when:**
+**Docs on a new stem:**
 
-| Profile | Ready to code |
-|---------|----------------|
-| **`prevent`** | Understanding is `confirmed` (or user waived) and scope unchanged |
-| **`balanced`** | If stem has Understanding → same as prevent; if none → thin spec + TODO exist and identity is clear |
-| **`build-first`** | Spec + TODO exist for the stem; no Understanding required. Draft Product-Vision is not a blocker |
+| Profile | Files |
+|---------|--------|
+| **`prevent`** | Spec + Understanding |
+| **`balanced`** | Spec; Understanding when identity is ambiguous |
+| **`build-first`** | Spec. Draft Product-Vision is not a documentation gate |
 
-**Additive vs shape (one line):** On a `confirmed` Understanding, a new research angle / extra behavior / edge case that still fits **is / is not** → **spec + TODO**, keep `confirmed`. De-confirm / re-draft **only** on a significant shape change — full rule in [`workflow/understanding.md`](workflow/understanding.md#4-understanding-features--shared).
+**Additive vs shape (one line):** On a `confirmed` Understanding, a new research angle / extra behavior / edge case that still fits **is / is not** → **spec**, keep `confirmed`. De-confirm / re-draft **only** on a significant shape change — full rule in [`workflow/understanding.md`](workflow/understanding.md#4-understanding-features--shared).
 
 **Same-turn prefs:** Product/UI correction that could be “improved away” → spec **Decisions** ([`workflow/decisions.md`](workflow/decisions.md)). **Override an ADT playbook** (no first-class key) → standing ([`workflow/profile-standing.md`](workflow/profile-standing.md)). How to act in this repo that is **not** a pack playbook → ask once: always-on rule/instruction, or a skill (§0.2). Do not jot that into standing. Do not jot random notes into standing.
 
@@ -50,8 +50,7 @@ Use when the stem is already **ready** under the docs profile and scope is uncha
 | Draft / revise Understanding · de-confirm gate · lock gate · assumption clean-out · relocate | [`workflow/understanding.md`](workflow/understanding.md) (§4) |
 | Whole-product vision / end-state picture / product vs feature fight | [`workflow/product-vision.md`](workflow/product-vision.md) (§4.5) |
 | Graduate confirmed shape → durable spec | [`workflow/understanding.md`](workflow/understanding.md) (§2) |
-| Path A vs Path B unclear · readiness table detail | [`workflow/implement.md`](workflow/implement.md) (§3) |
-| TODO layout · Current focus · operable done · sticky outcomes · exploration · kit covering TODOs · enablers | [`workflow/todos.md`](workflow/todos.md) (§5) |
+| Which docs to open for a stem | [`workflow/implement.md`](workflow/implement.md) (§3) |
 | Spec Decisions (product/UI) | [`workflow/decisions.md`](workflow/decisions.md) (§10) |
 | Install tooling / Project verify handoff | [`workflow/tooling.md`](workflow/tooling.md) (§11) |
 | Human inbox dual-write | [`workflow/human-todo.md`](workflow/human-todo.md) (§13) |
@@ -61,7 +60,7 @@ Use when the stem is already **ready** under the docs profile and scope is uncha
 
 **Do not** open every module. **Do not** re-read this index every turn once you know the paved path. Module list for maintainers: [`workflow/README.md`](workflow/README.md).
 
-**Timescale / build green:** target architecture when shape is clear ([`Agent_Timescale_Planning_Rule.mdc`](Agent_Timescale_Planning_Rule.mdc)). Build green before “you can test” ([`Agent_Build_Verify_Rule.mdc`](Agent_Build_Verify_Rule.mdc)). Operable done → [`workflow/todos.md`](workflow/todos.md) §5.3. Sticky outcomes → §5.5.
+**Not this pack:** work checklists, Current focus, implementation roles, git-delivery settings. The harness owns how code is written, verified, and landed.
 
 ---
 
@@ -101,13 +100,9 @@ Paved path is above. Path A/B detail: [`workflow/implement.md`](workflow/impleme
 
 Full procedure (incl. **de-confirm gate** + **lock gate**): [`workflow/understanding.md`](workflow/understanding.md#4-understanding-features--shared).
 
-### 5. TODO Management
+### 5. TODO Management *(retired)*
 
-Full procedure: [`workflow/todos.md`](workflow/todos.md#5-todo-management). Current focus §5.1 · exploration §5.2 · operable §5.3 · sticky outcomes §5.5 · kit covering TODOs §5.4 · enablers §5.6 live in that file.
-
-### 5.1 Session handoff — Current focus
-
-See [`workflow/todos.md`](workflow/todos.md#51-session-handoff--current-focus).
+Retired in 2.10.0. The pack does not keep a feature TODO or a Current focus. Do not recreate them. Existing `*-TODO.md` files may stay on disk; do not extend them and do not treat them as the work list.
 
 ### 7.1 Catalog companions *(list-heavy content)*
 

@@ -2,7 +2,7 @@
 
 > **Machine-oriented.** Bootstrap / [`../RULE_INSTALL.md`](../RULE_INSTALL.md) / template sync open **only** the tool files for tools in `docs/ADT-settings.yaml` (or the one tool the user just named). Do not open every file here.
 
-Each file is an **install/sync adapter**: where the modular rule goes, optional update-check path, optional doc-roles format, conflicts, verify. It does **not** restate Understanding / TODO / Workflow procedure.
+Each file is an **install/sync adapter**: where the modular rule goes, optional update-check path, optional doc-roles format, conflicts, verify. It does **not** restate Understanding / Workflow procedure.
 
 ## Index *(status key → file)*
 
@@ -22,11 +22,9 @@ Human overview (TOC): [`../../help/USING_WITH_AGENTS.md`](../../help/USING_WITH_
 Shared sources (do not duplicate into tool files):
 
 - Modular rule bodies: [`../Modular_Documentation_Rule.mdc`](../Modular_Documentation_Rule.mdc), [`../Modular_Documentation_Rule.instructions.md`](../Modular_Documentation_Rule.instructions.md)
-- Agent timescale planning *(core with modular rule)*: [`../Agent_Timescale_Planning_Rule.mdc`](../Agent_Timescale_Planning_Rule.mdc), [`../Agent_Timescale_Planning_Rule.instructions.md`](../Agent_Timescale_Planning_Rule.instructions.md)
-- Agent build & verify *(core with modular rule)*: [`../Agent_Build_Verify_Rule.mdc`](../Agent_Build_Verify_Rule.mdc), [`../Agent_Build_Verify_Rule.instructions.md`](../Agent_Build_Verify_Rule.instructions.md)
 - Role playbooks: [`../roles/`](../roles/README.md)
 - Role adapters: [`../roles/cursor/`](../roles/cursor/), [`../roles/grok/`](../roles/grok/), [`../roles/copilot/`](../roles/copilot/)
-- Orchestrator **Host isolation** (when spawning concurrent implementers): the **Host isolation** section in the current tool file — policy in [`../roles/orchestrator-git.md`](../roles/orchestrator-git.md). Do not invent pack worktrees.
+- On refresh, delete installed timescale and build-verify rules, and leftover feature-implementer, work-verifier, todo-warden, and orchestrate command files. The pack does not ship them.
 
 ## Dispatcher rules
 

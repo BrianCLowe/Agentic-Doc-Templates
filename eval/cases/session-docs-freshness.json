@@ -104,17 +104,6 @@
         ]
       },
       {
-        "file": "docs/templates/agent/roles/orchestrator-git.md",
-        "must_contain": [
-          "Stay ≠ current",
-          "session-freshness.md",
-          "live docs count"
-        ],
-        "must_not_contain": [
-          "Sibling probe *(only when"
-        ]
-      },
-      {
         "file": "docs/templates/agent/TEMPLATE_SYNC_A.md",
         "must_contain": [
           "session-freshness.md",
@@ -137,9 +126,11 @@
         "file": "docs/templates/agent/roles/adapter-src/manifest.json",
         "must_contain": [
           "docs-template-sync",
-          "feature-implementer"
+          "understanding-author",
+          "doc-graduate"
         ],
         "must_not_contain": [
+          "feature-implementer",
           "docs-bootstrap"
         ]
       },
@@ -156,7 +147,7 @@
       {
         "file": "docs/templates/agent/tools/cursor.md",
         "must_contain": [
-          "six files",
+          "three files",
           "docs-bootstrap"
         ],
         "must_not_contain": [

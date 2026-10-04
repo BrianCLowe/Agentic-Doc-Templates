@@ -12,13 +12,9 @@
 | **Install to** | `.continue/rules/modular-documentation.md` |
 | **Notes** | Rules apply to Agent/Chat/Edit — not autocomplete. Prefer Markdown over legacy YAML. |
 
-## Agent timescale planning *(core — always install with modular rule)*
+## Retired rules *(delete on refresh)*
 
-Same pattern → `.continue/rules/agent-timescale-planning.md` from `Agent_Timescale_Planning_Rule.mdc` body + Continue frontmatter (`alwaysApply: true`).
-
-## Agent build & verify *(core — always install with modular rule)*
-
-Same pattern → `.continue/rules/agent-build-verify.md` from `Agent_Build_Verify_Rule.mdc` body + Continue frontmatter (`alwaysApply: true`).
+The pack no longer ships timescale or build-verify rules. **Delete** `.continue/rules/agent-timescale-planning.md` and `.continue/rules/agent-build-verify.md` if present.
 
 ## Optional — Template update check
 
@@ -32,13 +28,10 @@ No first-class Continue agents folder in this pack. Follow `docs/templates/agent
 
 No command folder. On enable, record `optional_rules.slash-commands` and do not invent files. The short asks stay the path.
 
-## Host isolation *(orchestrator parallel implementers)*
-
-**No host worktree manager.** Parent stays **serial**. Do **not** `git worktree add` or invent `.adt-worktrees/`. Policy: [`../roles/orchestrator-git.md`](../roles/orchestrator-git.md) **Host worktrees**.
-
 ## Verify
 
-- `modular-documentation.md`, `agent-timescale-planning.md`, and `agent-build-verify.md` exist under `.continue/rules/`
+- `modular-documentation.md` exists under `.continue/rules/`
+- Timescale and build-verify rules are **absent**
 
 ## For humans
 

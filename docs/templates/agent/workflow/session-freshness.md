@@ -6,7 +6,7 @@ The pack’s promise is that **live docs are the source of truth across sessions
 
 TEMPLATE_SYNC [A0](../TEMPLATE_SYNC_A.md) already hard-stops a dirty tree before overwrite. This module is the **same lesson on the session-default path**: one `git status` (and a worktree list) before treating Master Index / TODOs as current.
 
-**Not this module:** host isolation / stay-in-this-tree / do-not-`git worktree add` → [`../roles/orchestrator-git.md`](../roles/orchestrator-git.md) **Host worktrees**. Stay ≠ current.
+**Stay ≠ current.** Already being in a worktree does not mean this tree’s docs are current. The pack does not create worktrees. Git delivery belongs to the harness.
 
 ---
 
@@ -71,7 +71,7 @@ TEMPLATE_SYNC overwrite still uses **A0** (hard stop on dirty **this** tree) —
 
 ## Docs-overlapping PRs *(before a new PR or a successive spawn)*
 
-Live docs (`*-TODO.md` **Current focus**, spec Decisions, Understanding, Human-TODO, Master Index) are rewritten every implement session. Two open PRs that touch the **same stem’s docs** conflict when the first merges — even if their **code** files do not overlap. That is the Grok-bot / successive-issue failure: a new coding agent + new PR per complaint, all rewriting the same TODO.
+Live docs (spec, Understanding, Human-TODO, Master Index) are rewritten every session that changes them. Two open PRs that touch the **same stem’s docs** conflict when the first merges — even if their **code** files do not overlap. That is the Grok-bot / successive-issue failure: a new coding agent + new PR per complaint, all rewriting the same spec.
 
 **Cheap check** (when you would open a new PR, spawn another coding agent, or the user filed another issue/complaint in this parent session):
 
@@ -80,26 +80,26 @@ gh pr list --state open
 # or glab / the inferred forge CLI
 ```
 
-If an open PR already lists this stem’s `*-TODO.md`, spec, or Understanding (or Human-TODO / Master Index you would also edit):
+If an open PR already lists this stem’s spec or Understanding (or Human-TODO / Master Index you would also edit):
 
 | Who | Action |
 |-----|--------|
 | This session | **Add commits to that PR.** Checkout its branch (main checkout) or keep working in this host worktree **on that branch**. Do **not** open a second PR. |
 | Grok / parent that `spawn_subagent`s coding agents | Do **not** spawn a new agent+branch+PR for this successive issue. Re-brief the in-flight agent or add to its PR. Remember **stem → open PR** for the rest of this parent session. |
 
-**Overlap test is docs, not only code** (docs overlap ≠ code overlap). Different `src/` files + same `features/Foo-TODO.md` = overlap. Same-stem default is **one PR**.
+**Overlap test is docs, not only code** (docs overlap ≠ code overlap). Different `src/` files + same `features/Foo.md` = overlap. Same-stem default is **one PR**.
 
-**Not overlap:** different stems, and you will not edit the other PR’s TODO / spec / Understanding / Human-TODO / Master Index.
+**Not overlap:** different stems, and you will not edit the other PR’s spec / Understanding / Human-TODO / Master Index.
 
 Project-wide files (Human-TODO, Master Index, Product-Vision): if an open PR already touches them → add there. If none does → keep the edit on **this** PR. Do **not** open a docs-only second PR.
 
-**Not this section:** orchestrator **milestone** sizing (do not dump the whole night into one PR) → [`../roles/orchestrator-git.md`](../roles/orchestrator-git.md). This gate is **do not stack PRs that will rebase-conflict on `docs/`**.
+This gate is **do not stack PRs that will rebase-conflict on `docs/`**. Git delivery belongs to the harness.
 
 ---
 
 ## Do not
 
-- Skip the cheap check because Master Index / Current focus “looks recent”
+- Skip the cheap check because Master Index “looks recent”
 - Treat **already-in-a-worktree → stay** as “this tree’s docs are current”
 - Hard-stop ordinary implement solely because **this** tree is dirty (that is A0’s overwrite gate, not this one)
 - Hard-stop because the **main** checkout is dirty when **this** linked/host worktree is clean **and** the sibling probe found no `docs/` drift

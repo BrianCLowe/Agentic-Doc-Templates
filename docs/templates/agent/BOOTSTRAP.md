@@ -31,7 +31,7 @@ Reorganize without losing content. Target: **everything meta** lives under `docs
 | `docs/templates/Modular_Documentation_Rule.mdc`, `Modular_Documentation_Rule.instructions.md` (flat in templates) | `docs/templates/agent/` |
 | `docs/USING_WITH_AGENTS.md` (at `docs/` root) | `docs/templates/help/USING_WITH_AGENTS.md` |
 
-Fix internal links after moving (including Master Index links to the workflow). **Keep at `docs/templates/` root:** `VERSION`, `CHANGELOG.md`, `Master_Index_Template.md`, `Feature_*_Template.md`, `TODO_Template.md`, `Decision_Template.md`, Tooling/Human_TODO/Team_Roster/Product_Vision templates. **Keep in `docs/templates/agent/`:** `Modular_Docs_Workflow.md` (index), `workflow/` modules, `roles/` (incl. `adapter-src/`), `GENERATE_ROLE_ADAPTERS.md`, rule templates (`.mdc`, `.instructions.md`), bootstrap, rule install, template sync. (`chat-ui/` may exist as a paused stub — not a live path.)
+Fix internal links after moving (including Master Index links to the workflow). **Keep at `docs/templates/` root:** `VERSION`, `CHANGELOG.md`, `Master_Index_Template.md`, `Feature_*_Template.md`, `Decision_Template.md`, Tooling/Human_TODO/Team_Roster/Product_Vision templates. **Keep in `docs/templates/agent/`:** `Modular_Docs_Workflow.md` (index), `workflow/` modules, `roles/` (incl. `adapter-src/`), `GENERATE_ROLE_ADAPTERS.md`, rule templates (`.mdc`, `.instructions.md`), bootstrap, rule install, template sync. (`chat-ui/` may exist as a paused stub — not a live path.)
 
 ## Step 1 — Relocate upstream README, LICENSE, and CONTRIBUTING *(auto-move when clearly this pack)*
 
@@ -155,9 +155,9 @@ If any of those are missing, expand the inventory below and run Step 0b if layou
 
 **Full inventory** *(only if spot-check fails):*
 
-- **Root:** `README.md` (pack-owned warning), `VERSION`, `CHANGELOG.md`, `Master_Index_Template.md`, `Feature_Spec_Template.md`, `Feature_Understanding_Template.md`, `TODO_Template.md`, `Decision_Template.md`, `Tooling_Template.md`, `Human_TODO_Template.md`, `Team_Roster_Template.md`, `Product_Vision_Template.md`
+- **Root:** `README.md` (pack-owned warning), `VERSION`, `CHANGELOG.md`, `Master_Index_Template.md`, `Feature_Spec_Template.md`, `Feature_Understanding_Template.md`, `Decision_Template.md`, `Tooling_Template.md`, `Human_TODO_Template.md`, `Team_Roster_Template.md`, `Product_Vision_Template.md`
 - **`help/`:** `SETUP.md`, `USAGE.md`, `SCAFFOLDS.md`, `IDEA_CAPTURE_TIPS.md`, `USING_WITH_AGENTS.md`
-- **`agent/`:** `Modular_Docs_Workflow.md`, `workflow/` (modules), `roles/` (+ `adapter-src/`), `GENERATE_ROLE_ADAPTERS.md`, `BOOTSTRAP.md`, `RULE_INSTALL.md`, `TEMPLATE_SYNC.md`, `TEMPLATE_SYNC_A.md`, `TEMPLATE_SYNC_B.md`, `TEMPLATE_UPDATE_CHECK.md`, `Modular_Documentation_Rule.mdc`, `Modular_Documentation_Rule.instructions.md`, `Agent_Timescale_Planning_Rule.mdc`, `Agent_Timescale_Planning_Rule.instructions.md`, `Agent_Build_Verify_Rule.mdc`, `Agent_Build_Verify_Rule.instructions.md`, `Template_Update_Check_Rule.mdc`, `Template_Update_Check_Rule.instructions.md`, `ADT-settings.example.yaml`
+- **`agent/`:** `Modular_Docs_Workflow.md`, `workflow/` (modules), `roles/` (+ `adapter-src/`), `GENERATE_ROLE_ADAPTERS.md`, `BOOTSTRAP.md`, `RULE_INSTALL.md`, `TEMPLATE_SYNC.md`, `TEMPLATE_SYNC_A.md`, `TEMPLATE_SYNC_B.md`, `TEMPLATE_UPDATE_CHECK.md`, `Modular_Documentation_Rule.mdc`, `Modular_Documentation_Rule.instructions.md`, `Template_Update_Check_Rule.mdc`, `Template_Update_Check_Rule.instructions.md`, `ADT-settings.example.yaml`
 
 Run Step 0b if any setup files are still at `docs/` root or flat in `docs/templates/`.
 
@@ -210,16 +210,15 @@ If a project-owned root `README.md` exists → **do not overwrite**. Do not add 
 
 | # | Preference | Key | Why it matters |
 |---|------------|-----|----------------|
-| A | **Docs profile** (ceremony) | `docs_profile.mode` | Controls whether Understanding + shape-confirm block code. **Required before Step 3d** file create. |
+| A | **Docs profile** (which docs to write) | `docs_profile.mode` | Spec, and Understanding when the profile requires it. **Required before Step 3d** file create. Not a coding gate. |
 | B | **Template update checks** | `optional_rules.template-update-check` | Optional upstream VERSION ping |
-| C | **Doc roles** | `optional_rules.doc-roles` | Optional. If installed, heavier moments leave the parent session so it stays slim. Orchestrator stays parent-only. |
+| C | **Doc roles** | `optional_rules.doc-roles` | Optional. Understanding author, doc graduate, template sync. If installed, heavier doc moments leave the parent session so it stays slim. |
 | D | **Pack sync mode** | `sync.mode` | How TEMPLATE_SYNC handles live optionals |
-| E | **Orchestrator git** | `orchestrator.git.mode` | How long unattended runs land in git — **important**; never silent-default |
-| F | **Slash commands** | `optional_rules.slash-commands` | Optional menu for sync and orchestrate. Decline if you would rather just ask. |
+| E | **Slash commands** | `optional_rules.slash-commands` | Optional menu for `/sync`. Decline if you would rather just ask. |
 
 ### How to present *(agent requirements)*
 
-1. Skim conversation + `docs/reference/` if present (do not inventory the whole repo) for docs-profile + git recommendations only.
+1. Skim conversation + `docs/reference/` if present (do not inventory the whole repo) for a docs-profile recommendation only.
 2. Lead with: *“I need a few project preferences once — all in this message. Pick each or say ‘defaults’ / accept suggestions.”*
 3. For **each** unset row: short plain-language **what it does**, the **options**, and your **suggestion** (with 1–3 citations for docs profile when reference exists).
 4. Wait for answers (or “use your suggestions”) → record all chosen keys + `recorded` today + `source` where applicable → continue to Step 3v.
@@ -235,39 +234,25 @@ Explain: optional rule pings upstream `VERSION` only; then they can TEMPLATE_SYN
 
 ### C — Doc roles
 
-Explain: optional Understanding author, implementer, work verifier, etc. as harness adapters. **Why enable:** heavier moments run in a role, so the parent session stays slim instead of holding that work. Short asks still work without install — the same work then stays in the parent. Orchestrator is never a subagent. Options: **enable** / **decline**.
+Explain: optional understanding-author, doc-graduate, and template-sync adapters. **Why enable:** heavier doc moments run in a role, so the parent session stays slim instead of holding that work. Short asks still work without install — the same work then stays in the parent. Bootstrap stays in this session. Options: **enable** / **decline**.
 
 ### D — Pack sync mode
 
 | Mode | Tell the user |
 |------|----------------|
 | **`auto`** | Recommended live updates + hygiene commits without mid-sync quizzes; still asks for brand-new pack optionals |
-| **`auto-all`** | Same + enable/install unset pack optionals (never re-enable declined). **Still asks orchestrator git** (see E / B0.6) |
+| **`auto-all`** | Same + enable/install unset pack optionals (never re-enable declined) |
 | **`choose`** | Ask about live optionals each sync |
 
-### E — Orchestrator git *(always explain fully when unset)*
+### E — Slash commands
 
-**Menu home:** open [`roles/orchestrator-git.md`](roles/orchestrator-git.md) **Modes** and present that table. Do **not** restate the seven modes here. Suggest **`milestone-pr`** when remote + forge CLI (concurrent implementers when they do not overlap; squash-before-ready is not required). Suggest **`branch-push`** when remote and no forge CLI. Suggest **`local`** when there is no remote. **Never** apply **`current-push`** unless they pick it.
-
-**Write-in (not a quiz, not an eighth mode):** include this in the **same** user-facing menu: *If none of these match how you want git to run (merge commit, rebase-merge, always squash before ready for a HEAD-only reviewer, custom close-out), pick the closest and tell me the override — I’ll save it as a standing instruction.* That is `standing.instructions` (Workflow §0.2). Do **not** invent a mode. Do **not** follow with “any standing notes?”
-
-**Cloud Agents:** if they later orchestrate in Cursor Cloud (or similar) while this key stays `local` / `none` / `branch-pr-squash` / etc., the agent uses **`milestone-pr` for that run only** and does **not** rewrite this setting — see [`roles/orchestrator-git.md`](roles/orchestrator-git.md) **Cloud Agent path**.
-
-**Host worktrees** (Cursor `/worktree`, Grok `isolation: worktree`, Copilot New Worktree, Claude `--worktree`) are **not** a settings key. The pack does not create worktrees. Concurrent implementers use the host’s isolation or stay serial — [`roles/orchestrator-git.md`](roles/orchestrator-git.md) **Host worktrees**.
-
-**Never** silent-default **`current-push`**. Git strategy is high-impact — if they shrug, restate the suggestion and get an explicit pick (or “use suggestion”).
-
-### F — Slash commands
-
-Explain: optional `/sync` and `/orchestrate` for people who want a menu instead of remembering the sentence. They run the same playbooks as the short asks. **Decline** is the right answer if you would rather just ask. Options: **enable** / **decline**. Where files land is in each `tools/<key>.md` (Cursor, Claude Code, Copilot). Other tools have no command folder — the short ask stays the path.
-
-**After they pick a git mode** → run **Forge tooling probe** ([`roles/orchestrator-git.md`](roles/orchestrator-git.md)): infer forge from remote; if **`milestone-pr` / `branch-pr` / `branch-pr-squash`** and CLI missing → **ask to install**; if CLI present but not logged in (or just installed) → **ask to start auth** (install ≠ ready for PRs). Fall back to push + human PR / switch mode if they decline. Do not silent-install or silent-login.
+Explain: optional `/sync` for people who want a menu instead of remembering the sentence. It runs the same playbook as the short ask. **Decline** is the right answer if you would rather just ask. Options: **enable** / **decline**. Where the file lands is in each `tools/<key>.md` (Cursor, Claude Code, Copilot). Other tools have no command folder — the short ask stays the path. The pack has no git-delivery setting. Do not ask a git mode. If a copied example still has `orchestrator:`, remove that key.
 
 ### Standing — do not quiz
 
-Do **not** ask “any standing notes?” after A–F. Missing `standing:` is correct. Write `standing.instructions` only if they **already** stated a playbook override this conversation and no first-class key fits (Workflow §0.2). Do **not** invent bullets.
+Do **not** ask “any standing notes?” after A–E. Missing `standing:` is correct. Write `standing.instructions` only if they **already** stated a playbook override this conversation and no first-class key fits (Workflow §0.2). Do **not** invent bullets. **Write-in (not a quiz, not an eighth mode):** a docs or sync override the enums do not cover is one standing bullet. Do not invent a settings enum for it.
 
-Explicit later (any preference): *Set docs profile to …* / *Set sync to …* / *Set orchestrator git to …* / *Add standing note: …* / enable-decline optionals.
+Explicit later (any preference): *Set docs profile to …* / *Set sync to …* / *Add standing note: …* / enable-decline optionals.
 
 ## Step 3v — Create live Product-Vision.md *(whole-product end-state)*
 
@@ -290,15 +275,14 @@ If the file already exists → do not overwrite; offer to update the picture / m
 | File | `prevent` | `balanced` | `build-first` |
 |------|-----------|------------|--------------|
 | `*.md` spec | always (stub OK) | always | always |
-| `*-TODO.md` | always | always | always |
 | `*-Understanding.md` | always (`draft`) | when identity ambiguous / multi-surface / split / user asked; else optional | only if user asked *lock shape* |
 
-Add InEditor/Asset TODOs when Project Profile / game extensions apply.
+Do **not** create `*-TODO.md`.
 
 **Do not:**
 
-- Leave map-only “planned” rows with broken or missing links “until the user picks one”
-- Under **`prevent`**: treat the Understanding `draft` gate as a reason to **skip creating** Understanding files — `draft` blocks **coding**, not **writing docs**
+- Leave map-only “planned” rows with broken or missing links
+- Under **`prevent`**: skip creating Understanding files. `draft` is not a coding gate
 - Under **`build-first`**: invent Understanding files “just in case”
 - Create nine fully graduated specs before the user confirms — stubs (+ draft Understandings when required) are correct
 
@@ -314,11 +298,11 @@ After 3d: fill **How the map fits** from the map rows you just created (one line
 
 ## Step 4 — Tell the user what's next
 
-1. Confirm or correct Section 1 (Project Overview), Document Map, `docs/Tooling.md`, and `docs/Human-TODO.md`. Confirm **preferences** recorded in Step 3p (docs profile, sync, git, optionals). If `docs/Product-Vision.md` is `draft` under **prevent** — user reviews **whole-product** shape (is / is not + end-state picture), not a feature list. Under **build-first**, the file is destination-only — do **not** wait for confirm before coding.
-2. If draft `-Understanding.md` files exist — user reviews / corrects **shape** before implementation (**prevent** / those stems). Under **build-first**, point at specs + TODOs instead.
-3. Point at **Open** items on `Human-TODO.md` — things only the human can close (procure, playtest, decide, waiting).
-4. After they confirm an Understanding (when used), graduate durable content into the spec and continue from TODOs ([`../help/SETUP.md`](../help/SETUP.md)). Under build-first, continue from TODOs and grow the spec as you build.
-5. **Preference catch-up:** if any Step 3p key is still unset, re-present **only** the missing rows (same explanations as 3p) before finishing — do not invent defaults for **orchestrator git** or **current-push**.
+1. Confirm or correct Section 1 (Project Overview), Document Map, `docs/Tooling.md`, and `docs/Human-TODO.md`. Confirm **preferences** recorded in Step 3p (docs profile, sync, optionals). If `docs/Product-Vision.md` is `draft` under **prevent** — user reviews **whole-product** shape (is / is not + end-state picture), not a feature list. Under **build-first**, the file is destination-only — do **not** wait for confirm before coding.
+2. If draft `-Understanding.md` files exist — the user can correct **shape**. Draft is not a coding gate. Under **build-first**, point at the spec.
+3. Point at **Open** items on `Human-TODO.md` — things only the human can close (procure, decide, waiting).
+4. After they confirm an Understanding (when used), graduate durable content into the spec ([`../help/SETUP.md`](../help/SETUP.md)). Under build-first, grow the spec as the harness builds.
+5. **Preference catch-up:** if any Step 3p key is still unset, re-present **only** the missing rows (same explanations as 3p) before finishing. Do not ask a git mode.
 6. Optional: run [`RULE_INSTALL.md`](RULE_INSTALL.md) for agent rules (asks per tool, records in `docs/ADT-settings.yaml`). If doc-roles, slash-commands, or update-check were **enabled** in 3p, RULE_INSTALL also installs those optional artifacts.
 
 ### Preference detail (reference — already covered in Step 3p)
@@ -327,9 +311,9 @@ After 3d: fill **How the map fits** from the map rows you just created (one line
 |-------|--------------------|
 | Template update-check **yes** | Set `optional_rules.template-update-check` enabled; `upstream:` + `local_pack_version`; `check_mode` always or interval + `check_mode_recorded` |
 | Doc roles **yes** | `optional_rules.doc-roles` enabled; install adapters via each `tools/<key>.md` on RULE_INSTALL |
-| Slash commands **yes** | `optional_rules.slash-commands` enabled; copy `commands/sync.md` and `commands/orchestrate.md` via each `tools/<key>.md` on RULE_INSTALL |
+| Slash commands **yes** | `optional_rules.slash-commands` enabled; copy `commands/sync.md` via each `tools/<key>.md` on RULE_INSTALL. Delete a leftover orchestrate command |
 | Update-check / roles / commands **no** | Record `declined` |
-| Explicit later | *Enable template update checks* / *Enable optional doc roles* / *Enable slash commands* / *Set sync to …* / *Set docs profile to …* / *Set orchestrator git to …* |
+| Explicit later | *Enable template update checks* / *Enable optional doc roles* / *Enable slash commands* / *Set sync to …* / *Set docs profile to …* |
 
 ## Do not
 
@@ -342,9 +326,9 @@ After 3d: fill **How the map fits** from the map rows you just created (one line
 - Leave upstream root **`eval/`**, root **`scripts/gen_role_adapters.py`**, or leftover **`docs/templates/agent/scripts/*.py`** in a user project on a whole-repo copy — delete them (Step 1d); keep [`GENERATE_ROLE_ADAPTERS.md`](GENERATE_ROLE_ADAPTERS.md).
 - Ask before moving root files that are **clearly** upstream (Agentic Doc Templates / Brian Lowe / BrianCLowe markers) — just move them.
 - Finish bootstrap with a filled Document Map but **no** feature/shared files on disk.
-- Put human-gated items only in feature TODOs — dual-write `docs/Human-TODO.md` + owner TODO (Workflow §13).
-- Drip-feed preference quizzes (4b/4c/4d/4e-style) when Step 3p already covers them — **one batch**.
-- Silent-default `sync.mode` or **`orchestrator.git.mode: current-push`** without the user picking them.
+- Put a human errand anywhere but `docs/Human-TODO.md` (Workflow §13). Do not also create a `*-TODO.md`.
+- Drip-feed preference quizzes when Step 3p already covers them — **one batch**.
+- Silent-default `sync.mode`. Ask a git mode or write `orchestrator.git`.
 - Skip Step 3p (or stay silent about unset prefs) because the user did not ask — present and explain; record decisions.
 - Keep writing `docs/rule-install-status.yaml` / `docs/upstream-status.yaml` on new projects — use `docs/ADT-settings.yaml` only.
 

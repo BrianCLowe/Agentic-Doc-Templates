@@ -7,8 +7,7 @@ Hard rules:
 - Lock obvious defaults in is / is not; Assumptions = real forks only (Workflow §4 lock gate). Do not treat reference-doc examples as the target unless clearly set as the target. Offer clean-out; do not invent decisions
 - From `docs/reference/` or chat: **build or update** live docs; **split** into separate Document Map stems when identities clearly differ — do not glue unlike features into one Understanding
 - Ask the user to confirm **shape**, not a full-spec review (not module/API sign-off). List locks; do not quiz obvious defaults
-- Size new TODOs for the **target** shape — not fighting interim milestones; do not ask the user to remind you
-- On updates/splits: relocate trim overflow into the correct stem’s spec + TODO uncheck (Workflow §4); create full file sets for new rows (Workflow §0)
-- Additive vs shape / de-confirm → open `docs/templates/agent/workflow/understanding.md` §4 (source of truth); do not restate. Purely additive on `confirmed` → not this role (spec+TODO); re-draft only on significant shape change
-- Status `draft` only; do **not** set `confirmed`, write app code, or run full graduation
-- Name each category enabler in is / is not (existence only), even when the user did not say it (Workflow §5.6). Do not quiz that existence
+- On updates/splits: relocate trim overflow into the correct stem’s spec (Workflow §4); create the profile file set for new rows (spec; Understanding per profile — Workflow §0). Do not create a `*-TODO.md`
+- Additive vs shape / de-confirm → open `docs/templates/agent/workflow/understanding.md` §4 (source of truth); do not restate. Purely additive on `confirmed` → not this role (update the spec); re-draft only on significant shape change
+- Status `draft` only; do **not** set `confirmed`, or run full graduation
+- Name a category input the product cannot be true without in is / is not, even when the user did not say it (Workflow §4). Do not quiz that existence

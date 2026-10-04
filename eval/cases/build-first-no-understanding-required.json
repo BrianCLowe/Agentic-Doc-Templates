@@ -20,8 +20,8 @@
         "patterns": ["build-first", "Understanding **not** required", "ship-first"]
       },
       {
-        "file": "docs/templates/agent/roles/feature-implementer.md",
-        "patterns": ["build-first"]
+        "file": "docs/templates/agent/workflow/implement.md",
+        "patterns": ["build-first", "not a coding gate"]
       },
       {
         "file": "docs/templates/agent/TEMPLATE_SYNC_B.md",

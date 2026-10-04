@@ -12,19 +12,9 @@
 | **Install to** | `.claude/rules/modular-documentation.md` *(preferred for modular rules)* **or** section in `./CLAUDE.md` / `./.claude/CLAUDE.md` |
 | **Notes** | Ask before merging into an existing `CLAUDE.md`. Keep concise (Claude recommends short instruction files). Claude does **not** auto-load root `AGENTS.md` — if using [`agents-md.md`](agents-md.md), put `@AGENTS.md` in `CLAUDE.md`. |
 
-## Agent timescale planning *(core — always install with modular rule)*
+## Retired rules *(delete on refresh)*
 
-| | |
-|--|--|
-| **Source** | Rule body from `docs/templates/agent/Agent_Timescale_Planning_Rule.mdc` (**strip** Cursor YAML frontmatter) |
-| **Install to** | `.claude/rules/agent-timescale-planning.md` or labeled section in `CLAUDE.md` |
-
-## Agent build & verify *(core — always install with modular rule)*
-
-| | |
-|--|--|
-| **Source** | Rule body from `docs/templates/agent/Agent_Build_Verify_Rule.mdc` (**strip** Cursor YAML frontmatter) |
-| **Install to** | `.claude/rules/agent-build-verify.md` or labeled section in `CLAUDE.md` |
+The pack no longer ships timescale or build-verify rules. **Delete** `.claude/rules/agent-timescale-planning.md`, `.claude/rules/agent-build-verify.md`, and those labeled sections in `CLAUDE.md` if present.
 
 ## Optional — Template update check
 
@@ -46,7 +36,7 @@ Only if `optional_rules.doc-roles.status` is `enabled`. Claude project subagents
 | **Parent delegates** | If `.claude/agents/<name>.md` exists → Task/delegate to that subagent with a self-contained prompt; else role playbook fallback |
 | **Note** | User-scope `~/.claude/agents/` is personal — prefer project `.claude/agents/` for this pack |
 
-Copy the six `roles/cursor/*.md` adapters (including `work-verifier.md`, `todo-warden.md`). **Do not** invent an `orchestrator` or `docs-bootstrap` adapter — those are parent-only. Delete leftover `docs-bootstrap.md` if present.
+Copy the three `roles/cursor/*.md` adapters (`understanding-author.md`, `doc-graduate.md`, `docs-template-sync.md`). **Do not** invent a `docs-bootstrap` adapter — bootstrap is parent-only. Delete leftover `docs-bootstrap.md`, `feature-implementer.md`, `work-verifier.md`, `todo-warden.md`, and `orchestrator.md` if present.
 
 ## Optional — Slash commands
 
@@ -54,29 +44,17 @@ Only if `optional_rules.slash-commands.status` is `enabled`.
 
 | | |
 |--|--|
-| **Source** | `docs/templates/agent/commands/sync.md`, `commands/orchestrate.md` |
-| **Install to** | `.claude/commands/` (same filenames) |
-| **Do not** | Paste the sync or orchestrator playbook into the command file |
-
-## Host isolation *(orchestrator parallel implementers)*
-
-Parent opens this only when spawning concurrent implementers ([`../roles/orchestrator-git.md`](../roles/orchestrator-git.md) **Host worktrees**).
-
-| | |
-|--|--|
-| **Can isolate?** | **Yes** — spawn with `isolation: worktree` (or the user asked Claude to isolate agents) |
-| **Cannot** | Isolation unavailable → parent stays **serial** |
-| **Already in one** | cwd under `.claude/worktrees` or `claude --worktree` / `-w` session → **stay**; do not remove Claude trees |
-| **Do not** | `git worktree add`; invent `.adt-worktrees/` |
+| **Source** | `docs/templates/agent/commands/sync.md` |
+| **Install to** | `.claude/commands/sync.md` |
+| **Do not** | Paste the sync playbook into the command file. Delete a leftover `orchestrate.md` |
 
 ## Verify
 
 - Modular rule file or `CLAUDE.md` section exists
-- Agent timescale planning rule or section exists
-- Agent build & verify rule or section exists
+- Timescale and build-verify rules are **absent**
 - Optional: `/memory` shows the modular docs section
-- If doc-roles enabled: six files under `.claude/agents/` (no `orchestrator.md` / `docs-bootstrap.md`; includes `todo-warden.md`)
-- If slash-commands enabled: `.claude/commands/sync.md` and `orchestrate.md`
+- If doc-roles enabled: three files under `.claude/agents/` (`understanding-author.md`, `doc-graduate.md`, `docs-template-sync.md`). No `docs-bootstrap` adapter
+- If slash-commands enabled: `.claude/commands/sync.md` only
 
 ## For humans
 

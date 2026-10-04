@@ -30,7 +30,7 @@
       },
       {
         "file": "docs/templates/agent/workflow/implement.md",
-        "patterns": ["`prevent`", "Understanding is `confirmed`"]
+        "patterns": ["`prevent`", "not a coding gate"]
       },
       {
         "file": "DECISIONS.md",

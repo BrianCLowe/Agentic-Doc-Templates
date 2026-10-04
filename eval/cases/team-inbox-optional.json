@@ -119,7 +119,7 @@
         ]
       },
       {
-        "file": "docs/templates/agent/roles/todo-warden.md",
+        "file": "docs/templates/agent/workflow/human-todo.md",
         "must_contain": [
           "team_inbox.enabled",
           "confirm report",

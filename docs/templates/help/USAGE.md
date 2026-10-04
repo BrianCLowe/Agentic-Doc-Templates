@@ -11,7 +11,7 @@ Depends on **docs profile** in `docs/ADT-settings.yaml` — a first-class choice
 1. You capture ideas (recommended: chat exports in `docs/reference/`, or a mid-build correction in chat).
 2. **`prevent` (default):** agent drafts `Product-Vision.md` (whole-product end-state) **and** `-Understanding.md` (per-feature shape); you confirm both before code. **`build-first`:** agent drafts thin **spec + TODO** plus a lightweight `Product-Vision.md` (destination, **not a gate**). **`balanced`:** always a lightweight Product-Vision; Understanding when identity is ambiguous; deepen the vision when 2+ stems, the whole is fuzzy, or you *lock product shape*.
 3. When Understanding is used: **you confirm shape** — is / is *not* + any remaining **real-fork** Assumptions (empty is fine; not a full-spec review). Under **prevent**, confirm **Product-Vision** as one product (end-state picture), not a feature list. Under **build-first**, confirm vision only after *lock product shape*. Agents should lock obvious defaults and not treat examples in `docs/reference/` as the target unless you clearly set them as the target.
-4. Durable contract lives on the **spec**; work continues from TODOs (**Current focus** for session handoff). Under build-first, grow the spec as you build; use *lock shape for X* if identity fights start. *Lock product shape* only when the whole product needs a confirm gate. A new session starts with **docs freshness** (`git status` + worktrees) before treating those files as current ([Workflow §0.3](../agent/workflow/session-freshness.md)).
+4. Durable contract lives on the **spec**. A gap that spec or Understanding already makes obvious is part of the instructed task. There is no Current focus and no feature TODO. Under build-first, grow the spec as the harness builds; use *lock shape for X* if identity fights start. *Lock product shape* only when the whole product needs a confirm gate. A new session starts with **docs freshness** (`git status` + worktrees) before treating those files as current ([Workflow §0.3](../agent/workflow/session-freshness.md)).
 
 ### Recommended practice — chat exports in `reference/`
 
@@ -67,7 +67,7 @@ That covers first-time build and later drops of new exports. Point at named file
 
 > Build or update live docs from `docs/reference/combat-feel-chat.md` and `docs/reference/inventory-thread.md`.
 
-Agents should split unlike **finished-feature identities** on their own (Workflow / Understanding author) — you should not need to remind them every time. If they still merge two features, correct shape once. Leftover **methods of one kit** should stay as TODOs on the inventory stem (not a stack of empty spec files) — but those TODOs **should exist** so *orchestrate* can drain them. A terse “wrap this public API” is **actionable** (agent diffs docs vs code); vague planned-only extras do **not** get map rows.
+Agents should split unlike **finished-feature identities** on their own (Workflow / Understanding author) — you should not need to remind them every time. If they still merge two features, correct shape once. Leftover **methods of one kit** stay on that stem’s spec (not a stack of empty spec files, and not a TODO). A terse “wrap this public API” is **actionable** (record the surfaces on the spec); vague planned-only extras do **not** get map rows.
 
 Polished PRD-only path still works:
 
@@ -107,7 +107,7 @@ Keep `docs/Tooling.md` accurate. On a new machine:
 
 ## Pattern 7 — Human inbox
 
-Anything only you can close → `docs/Human-TODO.md`: procure, decide/sign-off, external waiting. Agents **dual-write** those (owner feature TODO + inbox row). A human-verify playtest appears only after a passing exercise note. The outcome audit writes that row, including when doc roles are off and when the change was not an orchestrated run. You work the Open list; tell the agent in chat when done or with feedback.
+Anything only you can close → `docs/Human-TODO.md`: procure, decide/sign-off, external waiting. That inbox is the only list. You work the Open list; tell the agent in chat when done or with feedback.
 
 > What’s left on the human TODO?
 
@@ -163,8 +163,7 @@ Anything only you can close → `docs/Human-TODO.md`: procure, decide/sign-off, 
 | Sync mode | *Set sync to auto.* / *Set sync to auto-all.* / *Set sync to choose.* *(recorded in `docs/ADT-settings.yaml`)* |
 | Update-check cadence | *Check for template updates every session.* / *Only check every week.* |
 | Optional role — intent | *Draft Understanding for [Feature] from what I said — I’ll review.* (main agent delegates if subagents installed) |
-| Optional role — build | *Continue from Current focus.* *(single slice)* |
-| Optional role — orchestrate | *Orchestrate — clear ready TODOs until blocked.* *(optional `/orchestrate` if slash commands are enabled. Parent loop; git from `orchestrator.git.mode` — recommend milestone-pr; Cloud Agent this-runs milestone-pr if durable is local-oriented or `branch-pr` / `branch-pr-squash`; per-milestone: several related TODOs + concurrent implementers when they do not overlap **and** the host can isolate → build-verify → warden → ready → wait CI/Bugbot → merge → next branch; already-in-a-host-worktree → stay)* |
+| Docs | *Draft Understanding for X.* / *Update the spec for X.* |
 | Optional role — todo warden | *Todo warden — reconcile TODOs vs what shipped.* / *Todo cleanup — move completed items to Completed.* / *Outcome audit — outcomes stay open until the scenario is exercised.* *(docs-only; honesty caps; hygiene moves finished `[x]`; incidental fixes stay in git, not a new Completed row; a checked item the code does not implement is reopened; named leftovers get covering TODOs — no vendor-doc fetch)* |
 | Set orchestrator git | *Set orchestrator git to milestone-pr* / *branch-pr-squash* / *branch-pr* / *current-push* / *local* |
 | Standing playbook override | *Add standing note: always squash before mark ready.* / *From now on, merge each slice after CI.* *(agent should save without being asked twice — only playbook overrides, not random notes)* |
@@ -187,7 +186,7 @@ Optional roles (opt-in, never always-on): [`../agent/roles/README.md`](../agent/
 | `docs/Product-Vision.md` | Whole-product end-state picture (always created; build-first = destination until *lock product shape*) |
 | `docs/features/FeatureName-Understanding.md` | Shape only — is / is not, Relationship, real-fork Assumptions (not full-spec review) |
 | `docs/features/FeatureName.md` | Durable contract after shape confirm |
-| `docs/features/FeatureName-TODO.md` | Tasks + **Current focus** |
+| `docs/features/FeatureName.md` | Spec — the contract |
 | `docs/_shared/…` | Only for truly shared project pieces (may be empty) |
 | `docs/Tooling.md` / `docs/Human-TODO.md` | Machine tools / human inbox (procure · playtest · decide · waiting) |
 | `docs/Team-Roster.md` | Optional team inbox roster (Name / Jobs / Anti-jobs if defined; only when enabled — named humans and bots self-ID; one initial PR; coding agents do not invent) |
