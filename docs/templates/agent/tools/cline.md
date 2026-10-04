@@ -12,19 +12,9 @@
 | **Install to** | `.clinerules/modular-documentation.md` *(primary — current Cline docs)* |
 | **Notes** | Cline also auto-detects `AGENTS.md` and some other tools’ rule files. Prefer `.clinerules/` for pack-owned installs. |
 
-## Agent timescale planning *(core — always install with modular rule)*
+## Retired rules *(delete on refresh)*
 
-| | |
-|--|--|
-| **Source** | Rule body from `docs/templates/agent/Agent_Timescale_Planning_Rule.mdc` (strip Cursor frontmatter) |
-| **Install to** | `.clinerules/agent-timescale-planning.md` |
-
-## Agent build & verify *(core — always install with modular rule)*
-
-| | |
-|--|--|
-| **Source** | Rule body from `docs/templates/agent/Agent_Build_Verify_Rule.mdc` (strip Cursor frontmatter) |
-| **Install to** | `.clinerules/agent-build-verify.md` |
+The pack no longer ships timescale or build-verify rules. **Delete** `.clinerules/agent-timescale-planning.md` and `.clinerules/agent-build-verify.md` if present.
 
 ## Optional — Template update check
 
@@ -38,13 +28,10 @@ No first-class Cline agents folder in this pack. Follow role playbooks in-sessio
 
 No command folder. On enable, record `optional_rules.slash-commands` and do not invent files. The short asks stay the path.
 
-## Host isolation *(orchestrator parallel implementers)*
-
-**No host worktree manager.** Parent stays **serial**. Do **not** `git worktree add` or invent `.adt-worktrees/`. Policy: [`../roles/orchestrator-git.md`](../roles/orchestrator-git.md) **Host worktrees**.
-
 ## Verify
 
-- `modular-documentation.md`, `agent-timescale-planning.md`, and `agent-build-verify.md` exist under `.clinerules/`
+- `modular-documentation.md` exists under `.clinerules/`
+- Timescale and build-verify rules are **absent**
 - Visible/toggled in Cline’s Rules panel
 
 ## For humans

@@ -18,7 +18,7 @@ Record **why** something was chosen — not every task, only choices with lastin
 2. **Implement / polish** *(confirmed stem)* — user corrects a **preference that could be “improved away”** (e.g. always-on vs proximity chrome, confirm-before-delete, hide type while writing, empty lines aren’t chunks) → **same turn** append 1-line row(s) to that stem’s **Decisions** table. If Behavior / Acceptance / Visual references still state the old contract, fix those sentences in the **same edit**.
 3. **Override an ADT playbook** — user wants this pack to run differently than a playbook (and no first-class key fits) → **standing** or first-class ADT-settings key (**§0.2**), not Decisions. Do **not** jot random notes or prompt-engineering into standing.
 
-**Skip:** pure spacing / pixel tweaks unless the user says “remember this.” Do **not** create `docs/decisions/` ADRs for feature-local polish. Do **not** dump choices into **Current focus** (handoff only — an optional one-line pointer to Decisions is fine). Do **not** put product UI prefs only in standing.
+**Skip:** pure spacing / pixel tweaks unless the user says “remember this.” Do **not** create `docs/decisions/` ADRs for feature-local polish. Product UI prefs for one stem go on that spec’s **Decisions** table. Do **not** put them only in standing. There is no Current focus.
 
 **Pattern:** `date | choice | why (short)`. Prefer several rows on one polish burst over separate ADR files.
 

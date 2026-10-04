@@ -24,23 +24,9 @@ Record the chosen workspace path under `tools.openclaw.path` / `note` in `docs/A
 
 If the project also uses status key `agents-md` for the same `AGENTS.md`, do **not** duplicate the section — one `## Documentation workflow` is enough; mark both tools `installed` with a shared path note if useful.
 
-## Agent timescale planning *(core — always install with modular rule)*
+## Retired rules *(delete on refresh)*
 
-| | |
-|--|--|
-| **Source** | Rule body from `docs/templates/agent/Agent_Timescale_Planning_Rule.mdc` (**strip** Cursor YAML frontmatter) |
-| **Install to** | Same workspace `AGENTS.md` — section titled `## Agent timescale planning` |
-
-Skip duplicating if `agents-md` already installed that section on the same file.
-
-## Agent build & verify *(core — always install with modular rule)*
-
-| | |
-|--|--|
-| **Source** | Rule body from `docs/templates/agent/Agent_Build_Verify_Rule.mdc` (**strip** Cursor YAML frontmatter) |
-| **Install to** | Same workspace `AGENTS.md` — section titled `## Agent build & verify` |
-
-Skip duplicating if `agents-md` already installed that section on the same file.
+The pack no longer ships timescale or build-verify rules. **Delete** `## Agent timescale planning` and `## Agent build & verify` from the workspace `AGENTS.md` if present.
 
 ## Optional — Template update check
 
@@ -68,10 +54,6 @@ OpenClaw has **no** pack-supported `.openclaw/agents/` (or `.cursor/agents/`) in
 
 No command folder. Still present `optional_rules.slash-commands` when unset. On enable, record it and do not invent files. The short asks stay the path.
 
-## Host isolation *(orchestrator parallel implementers)*
-
-**No host worktree manager.** Parent stays **serial**. Do **not** `git worktree add` or invent `.adt-worktrees/`. Policy: [`../roles/orchestrator-git.md`](../roles/orchestrator-git.md) **Host worktrees**.
-
 ## Conflicts / naming traps
 
 | OpenClaw file | Not the same as |
@@ -85,8 +67,7 @@ Do **not** put secrets, API keys, or `~/.openclaw/` state into the project repo.
 ## Verify
 
 - Chosen workspace `AGENTS.md` contains `## Documentation workflow`
-- Same `AGENTS.md` contains `## Agent timescale planning`
-- Same `AGENTS.md` contains `## Agent build & verify`
+- Same `AGENTS.md` does **not** contain `## Agent timescale planning` or `## Agent build & verify`
 - If workspace is the project root: `docs/Master_Index.md` is reachable as a relative path
 - If workspace is `~/.openclaw/workspace`: user confirmed they understand path/cwd limits
 - Status yaml records `openclaw` with `path` = that `AGENTS.md`

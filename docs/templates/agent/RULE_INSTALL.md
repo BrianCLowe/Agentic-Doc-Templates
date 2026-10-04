@@ -41,7 +41,7 @@ Optional fields: `recorded` (YYYY-MM-DD), `path`, `note`, `customized` (true onl
 |-----|---------|
 | `template-update-check` | Ping for newer Agentic Doc Templates — see [`TEMPLATE_UPDATE_CHECK.md`](TEMPLATE_UPDATE_CHECK.md); default `upstream.check_mode: always` (interval optional) |
 | `doc-roles` | Optional playbook roles — see [`roles/README.md`](roles/README.md). **Not always-on.** Installed per tool file (`.cursor/agents/`, `.grok/agents/`, `.github/agents/`, …). |
-| `slash-commands` | Optional `/sync` and `/orchestrate` — see [`commands/README.md`](commands/README.md). Same playbooks as the short asks. Cursor, Claude Code, and Copilot get files; other tools have no command folder. |
+| `slash-commands` | Optional `/sync` — see [`commands/README.md`](commands/README.md). Same playbook as the short ask. Cursor, Claude Code, and Copilot get the file; other tools have no command folder. Delete a leftover orchestrate command. |
 
 | Status | Meaning |
 |--------|---------|
@@ -64,7 +64,7 @@ If `optional_rules.doc-roles` is missing: under **`sync.mode: auto-all`** enable
 
 If `optional_rules.slash-commands` is missing: under **`sync.mode: auto-all`** enable + install for each installed tool that has a command folder; otherwise ask once using bootstrap Step 3p **F**. **Decline** is the right answer if they would rather just ask. Cursor → `.cursor/commands/`; Claude → `.claude/commands/`; Copilot → `.github/prompts/` (`*.prompt.md`). Grok, OpenClaw, Continue, Cline, `AGENTS.md`: no files — the short ask stays the path. Then record `enabled` or `declined`.
 
-If `orchestrator.git.mode` is missing mid-sync: **B0.6 always ask** (even under `auto-all`) — never invent `current-push` or silent-write.
+If `docs/ADT-settings.yaml` still has an `orchestrator:` key: **B0.6 removes that key**. Do not ask a git mode.
 
 ## Before asking
 

@@ -30,6 +30,8 @@ Compare semver `X.Y.Z` numerically (major, minor, patch).
 
 **Union tags** from all selected entries. Then:
 
+- If any selected entry is **≥ 2.10.0**, remove `optional-todo-ambition`, `optional-todo-operable`, `optional-todo-kit-coverage`, `optional-todo-outcomes`, and `optional-todo-completed-cleanout` from the union **before** the checklist. Do not create or edit `*-TODO.md`, including under `content-templates`. Leave existing files. They are not the work list.
+
 - Apply the gated checklist **once** for the union (not once per release).
 - If the union includes any of `content-templates`, `optional-live-reshape`, `optional-assumption-cleanout`, `optional-todo-ambition`, `optional-todo-operable`, `optional-todo-kit-coverage`, `optional-todo-outcomes`, or `optional-todo-completed-cleanout`, run those steps even when newer selected entries also list `process-docs-only` (`process-docs-only` on one release does not cancel live passes from skipped releases).
 - Skim Step B lines from selected entries for tips / one-shots not expressed by tags (e.g. Human-TODO tip refresh). Do **not** invent a broader audit than the unioned tags + those lines.
@@ -70,7 +72,7 @@ Compare semver `X.Y.Z` numerically (major, minor, patch).
 
 ### B0.1b — Docs profile rename *(every sync)*
 
-If `docs/ADT-settings.yaml` → `docs_profile.mode` is **`ship-first`**, rewrite that value to **`build-first`**. Same profile (spec + TODO, no Understanding gate). Do **not** re-ask. Do **not** treat it as unset. Leave `recorded` and `source` as they are. Note the rewrite in the sync summary.
+If `docs/ADT-settings.yaml` → `docs_profile.mode` is **`ship-first`**, rewrite that value to **`build-first`**. Same profile (spec; Understanding not required). Do **not** re-ask. Do **not** treat it as unset. Leave `recorded` and `source` as they are. Note the rewrite in the sync summary.
 
 `prevent` and `balanced` stay as written. This is the only settings value this step changes.
 
@@ -133,7 +135,7 @@ Read `docs_profile.mode` from `docs/ADT-settings.yaml`.
 | State | Behavior |
 |-------|----------|
 | **`prevent` / `balanced` / `build-first`** | Keep; no re-ask |
-| **missing / unset** | **Ask once** before stopping (do not silent-default to invent build-first). Runtime already treats unset as **prevent** for coding gates. |
+| **missing / unset** | **Ask once** before stopping (do not silent-default to invent build-first). Unset means **prevent** for which docs to write. |
 
 **Ask** (brief; optional 1-line suggest if `docs/reference/` or live Understandings give a signal):
 
@@ -143,24 +145,11 @@ Record `docs_profile.mode` + `recorded` (+ `source: user` or `agent-suggested`).
 
 Under **`sync.mode: auto-all`:** if unset, set **`prevent`** + `recorded` today (no quiz) — never invent `build-first` without a user choice.
 
-### B0.6 — Orchestrator git mode *(always ask if unset — including auto-all)*
+### B0.6 — Remove orchestrator git *(2.10.0)*
 
-Read `orchestrator.git.mode` from `docs/ADT-settings.yaml`.
+The pack has no git-delivery setting. If `docs/ADT-settings.yaml` contains an `orchestrator:` key, **remove that key**. Do not ask a mode. Do not write `orchestrator.git.mode`. Do not write `orchestrator.git.worktrees`. Git delivery belongs to the harness, not this pack.
 
-| State | Behavior |
-|-------|----------|
-| **`local` / `milestone-pr` / `branch-pr` / `branch-pr-squash` / `branch-push` / `current-push` / `none`** | **Keep the exact value; no re-ask.** Do **not** rewrite to `milestone-pr` because it is now recommended. **This-turn exception:** user said *Set orchestrator git to …* / asked to change this setting → record the new mode + `recorded` today + **`source: user`**. That is **user-directed**, not a pack migrate. **Reviewers / Bugbot:** do **not** fail or revert a mode change that stamps `source: user`. |
-| **missing / unset** | **Always ask once before stopping** — even under **`sync.mode: auto-all`**. Git strategy is high-impact. **Never** silent-default **`current-push`** or invent a mode without a user answer. |
-
-**Present and explain** the menu by opening [`roles/orchestrator-git.md`](roles/orchestrator-git.md) **Modes** and using that table. Do **not** restate the seven modes here.
-
-**Write-in (not a quiz, not an eighth mode):** same user-facing line as bootstrap Step 3p **E**. Closest mode + *Add standing note: …* for merge commit / rebase-merge / always squash before ready (HEAD-only reviewer) / custom close-out. Do **not** invent a mode. Do **not** quiz for standing.
-
-Recommend: remote + forge CLI → **`milestone-pr`** (overnight drain: per-milestone PR — several related TODOs + concurrent implementers when they do not overlap **and** the host can isolate; CI/Bugbot; merge; next branch); offer **`branch-pr-squash`** for one PR / human merges in the morning; offer **`branch-pr`** to keep history on one PR; remote, no CLI → still offer **`milestone-pr`** (with install ask) or **`branch-push`**; else **`local`**. Record choice + `recorded` (+ `source`). Explicit later: *Set orchestrator git to …*. **Note (do not re-ask):** a later **Cloud Agent** orchestration this-runs **`milestone-pr`** if durable stays `local` / `none` / `branch-pr-squash` / etc. — see [`roles/orchestrator-git.md`](roles/orchestrator-git.md); sync does not need a second key. **Host worktrees** are not a key — do **not** write `orchestrator.git.worktrees`.
-
-**After the mode is recorded** → **Forge tooling probe** ([`roles/orchestrator-git.md`](roles/orchestrator-git.md)): if **`milestone-pr` / `branch-pr` / `branch-pr-squash`** and CLI missing → ask to install; if not authenticated → **ask to start login** (install alone is not enough). Fall back / switch mode if they decline. Do not silent-install or silent-login.
-
-**Do not** under `auto-all` write `local` (or any mode) and move on without an explicit user pick. If they say “defaults,” treat that as accepting the **stated recommendation** and record it **loudly** in the sync summary: *“Recorded orchestrator.git = X (your default). Other options: …”*. Do **not** stamp `source: user` unless they picked the mode this turn.
+**Write-in (not a quiz, not an eighth mode):** standing stays playbook overrides only. Do not quiz for standing on this sync. Do not invent a settings enum for a docs or sync override.
 
 ### Reference — local template → live file *(only when tagged)*
 
@@ -183,8 +172,7 @@ Recommend: remote + forge CLI → **`milestone-pr`** (overnight drain: per-miles
 | `Team_Roster_Template.md` | `docs/Team-Roster.md` — create **only** if live `team_inbox.enabled`; named-human fill-in if user-stated; do not invent bot or human-name rows | `content-templates` **and** team inbox on |
 | `Product_Vision_Template.md` | `docs/Product-Vision.md` — create if missing (**all** profiles). Lightweight draft; **peek `docs/reference/` first**; do **not** rebuild from the map. **`build-first`:** not a gate | `content-templates` |
 | `agent/Modular_Documentation_Rule.*` | Installed rule paths — refresh via each `tools/<key>.md` for `status: installed` tools | `rules` |
-| `agent/Agent_Timescale_Planning_Rule.*` | Core timescale rule — install/refresh with modular rule via each `tools/<key>.md` | `rules` |
-| `agent/Agent_Build_Verify_Rule.*` | Core build/verify rule — install/refresh with modular rule via each `tools/<key>.md` | `rules` |
+| *(retired 2.10.0)* timescale + build-verify rules | **Delete** installed copies via each `tools/<key>.md`. The pack no longer ships them | `rules` |
 | `agent/Template_Update_Check_Rule.*` | Optional update-check — same dispatch | `rules` or `optional-upstream-check` |
 | `agent/tools/*.md` | Install/sync adapters — open only for tools already `installed` | `rules` |
 | `agent/roles/cursor/*.md` / `agent/roles/grok/*.md` / `agent/roles/copilot/*.agent.md` | Optional subagents — via tool playbooks | `rules` when `optional_rules.doc-roles` is `enabled` |
@@ -198,7 +186,7 @@ Versions:
 
 1. **Versions** — Set **Pack version** in live `Master_Index.md` from local `VERSION`. Remove obsolete Template/Workflow version lines when present. Update `<!-- pack-version -->` if present (or replace `<!-- template-version -->`).
 2. **Master Index** *(if `master-index`)* — Required when tagged — not gated on reshape / `optional-live-reshape`. Read local `Master_Index_Template.md` + live `Master_Index.md`. Compare **headings / Key Locations / Document Map columns / At a Glance** only — not project prose. **Preserve** overview, Project Profile, Document Map rows (§3.0–3.4), user §3.0 exceptions, custom sections. **Adopt** new index sections, renumbers, Quick Start pointer, Key Locations row for `docs/ADT-settings.yaml` (remove stale `rule-install-status.yaml` / `upstream-status.yaml` rows if present). If §2.2 At a Glance is still a policy dump (Simplicity / Idea sources / full git-mode list / Understanding essay), replace it with the template’s short pointer table (keep first-class docs profile + host-worktrees one-liner + docs-freshness / stay≠current pointer). Adopt the Key Locations `docs/templates/` “pack-owned; do not edit” wording and the Quick Start freshness first step when missing. Update links from `templates/Modular_Docs_Workflow.md` → `templates/agent/Modular_Docs_Workflow.md` if still on the old path. §3.0: record only **user-stated** exceptions.
-3. **Content templates** *(if `content-templates`)* — Add **missing** sections/structure from local templates into live Understanding / Spec / TODO / Tooling / Human-TODO / Product-Vision. Do **not** remove or reshape existing sections here. If a live `*-TODO.md` has no `## Outcomes` heading, add that heading from `TODO_Template.md` (empty fill-in). The `optional-todo-outcomes` pass fills the rows. Do not check an outcome in this step. Create `Tooling.md` / `Human-TODO.md` from templates when missing and link from Master Index. Create `Team-Roster.md` from the template **only** when live `team_inbox.enabled` (named-human fill-in if user-stated; do **not** invent bot or human-name rows; do **not** create the file on a human-only inbox). Create `Product-Vision.md` from the template if missing (**all** profiles, including `build-first`). **Peek `docs/reference/` first** (list files; open the newest 3–5 idea/identity chat exports / PRDs, or user-pointed files — Workflow §4.5 Draft source). Draft is / is not + end-state picture from **those** + this-turn conversation (lock obvious; examples ≠ target unless clearly set; lightweight). **Then** fill How the map fits from existing map rows only. **Do not** build the picture by summarizing the Document Map / feature Understandings / specs. **Do not** skip `reference/` because the map looks complete. **`build-first`:** create if missing; **not a gate** — do **not** wait for confirm before coding.
+3. **Content templates** *(if `content-templates`)* — Add **missing** sections/structure from local templates into live Understanding / Spec / Tooling / Human-TODO / Product-Vision. Do **not** remove or reshape existing sections here. When the catch-up includes **≥ 2.10.0**, do **not** create or edit `*-TODO.md` in this step. When it does not, and a live `*-TODO.md` has no `## Outcomes` heading, add that heading from the then-current TODO scaffold (empty fill-in). The `optional-todo-outcomes` pass fills the rows. Do not check an outcome in this step. Create `Tooling.md` / `Human-TODO.md` from templates when missing and link from Master Index. Create `Team-Roster.md` from the template **only** when live `team_inbox.enabled` (named-human fill-in if user-stated; do **not** invent bot or human-name rows; do **not** create the file on a human-only inbox). Create `Product-Vision.md` from the template if missing (**all** profiles, including `build-first`). **Peek `docs/reference/` first** (list files; open the newest 3–5 idea/identity chat exports / PRDs, or user-pointed files — Workflow §4.5 Draft source). Draft is / is not + end-state picture from **those** + this-turn conversation (lock obvious; examples ≠ target unless clearly set; lightweight). **Then** fill How the map fits from existing map rows only. **Do not** build the picture by summarizing the Document Map / feature Understandings / specs. **Do not** skip `reference/` because the map looks complete. **`build-first`:** create if missing; **not a gate** — do **not** wait for confirm before coding.
 4. **Live Understanding reshape** *(if `optional-live-reshape`)* —
    - **`sync.mode: auto` or `auto-all`:** execute for **all Document Map Understanding stems** (no ask). After pack/stamp hygiene commit (B0.3) when applicable; reshape gets its own commit after execute (B0.3).
    - **`sync.mode: choose`:** **Present before stopping** (explain + ask once; **do not** report “skipped by design” without asking). **Highly recommended.**
@@ -286,10 +274,10 @@ Run only when selected catch-up includes **2.7.27** and reshape is executing. Op
      4. Unsure (rewritten title, no git history) → leave the row.
      Do not remove open tasks. Do not check or uncheck Outcomes. Do not add rows.
 6. **Rules** *(if `rules`)* — For each tool with `tools.*.status: installed` in `docs/ADT-settings.yaml`, open **only** `docs/templates/agent/tools/<key>.md` and refresh that harness.
-   - **Default:** refresh pack-managed modular + timescale + **build-verify** rules (and enabled optionals) **without asking** — installed means pack-owned.
+   - **Default:** refresh the pack-managed modular rule (and enabled optionals) **without asking** — installed means pack-owned. **Delete** installed timescale and build-verify rules. The pack no longer ships them.
    - **Ask before overwrite only if** that tool entry has `customized: true` (or an explicit note that pack rule bodies were hand-edited).
-   - If `optional_rules.doc-roles` is `enabled`, refresh that tool’s agents folder (**six** adapters including `todo-warden`; **no** `orchestrator` or `docs-bootstrap` adapter). **Delete leftover** installed `docs-bootstrap.md` / `docs-bootstrap.agent.md` (pack no longer ships that adapter — bootstrap is parent-only).
-   - If `optional_rules.slash-commands` is `enabled`, refresh that tool’s command files from `agent/commands/` (only tools whose playbook names a command folder).
+   - If `optional_rules.doc-roles` is `enabled`, refresh that tool’s agents folder (**three** adapters: understanding-author, doc-graduate, docs-template-sync; **no** `docs-bootstrap` adapter). **Delete leftover** installed `docs-bootstrap`, `feature-implementer`, `work-verifier`, `todo-warden`, and `orchestrator` adapter files.
+   - If `optional_rules.slash-commands` is `enabled`, refresh `/sync` only. **Delete** a leftover orchestrate command.
    - Remove any stale `.cursor/skills/modular-docs-*` leftovers from older pack drafts (ask first only if deleting user-looking paths outside known leftovers).
 7. **Upstream stamp** *(if `optional-upstream-check` or update-check enabled)* — If `optional_rules.template-update-check.status` is `enabled`: ensure `upstream:` exists; set `local_pack_version` from local `VERSION`. **`check_mode: interval`:** set `last_checked` today; clear `update_available` / stale `upstream_pack_version`. **No interval** (`always` or unset): do **not** set `last_checked`, `update_available`, or `upstream_pack_version`. If those keys are present, **remove** them (check logs; the next session fetches again). That removal rides in the pack/stamp commit (B0.3) — do **not** open a pull request that only deletes them. Do **not** delete `ADT-settings.yaml`. Refresh optional update-check rules if tagged `rules` / body changed (same customized rule as above).
 8. **Layout migration** — Run [`BOOTSTRAP.md`](BOOTSTRAP.md) Step 0b **only** if layout markers show older layout (`docs/help/` or `docs/agent/` at docs root, or flat setup files in `templates/`). Skip on a normal modern pack refresh.
@@ -298,7 +286,7 @@ Run only when selected catch-up includes **2.7.27** and reshape is executing. Op
    - catch-up **from→to** (or top-entry-only) + the **unioned** Live impact tags (+ skimmed Step B one-shots)
    - of those **unioned** optional live passes: executed / offered / declined (`choose`)
    - settings migration if any
-   - **git** (A0 preflight outcome; hygiene commits made or skipped; push status — default not pushed)
+   - **git** (A0 preflight outcome; hygiene commits made or skipped; push status — default not pushed). If an `orchestrator:` key was removed, say so. Do not report a git mode.
 
    **Do not** name optional tags that were **not** in the union as “skipped.” They were not this jump’s instructions — listing them sounds like missed work. The tag table is a lasting catalog; a tag fires only when selected changelog entries tag it.
 
@@ -309,12 +297,12 @@ Run only when selected catch-up includes **2.7.27** and reshape is executing. Op
    - **`declined`** → do not re-ask or re-enable; a one-line “still off” note is enough.
    - **`enabled`** → already handled by refresh steps above; no re-pitch of the feature — but if update-check is enabled and cadence was never recorded, **B0.4** still applies.
    - **missing / unset** under **`sync.mode: auto-all`:** **enable + install** without asking (record `enabled` + `recorded` today). For `template-update-check`: ensure `upstream:`, set `local_pack_version`, `check_mode: always`, `check_mode_recorded` today. For `doc-roles` (and any optional with install artifacts): run each installed tool’s `tools/<key>.md` optional section. Note auto-enabled items in the summary. Never treat this as license to flip **`declined`** → enabled.
-   - **missing / unset** under **`auto`** or **`choose`:** **briefly explain** + **ask once** (yes / no / later). For **`doc-roles`**, include why: if installed, heavier moments leave the parent session so it stays slim; without them that work stays in the parent (bootstrap Step 3p **C**). For **`slash-commands`**, include why: `/sync` and `/orchestrate` are a menu for those two asks; **decline** if they would rather just ask (Step 3p **F**). On **yes** for `template-update-check`, also run **B0.4** cadence ask in the same turn before stopping. On yes/no, record `enabled` or `declined`. Do **not** enable silently. Do **not** treat unset as silent no.
+   - **missing / unset** under **`auto`** or **`choose`:** **briefly explain** + **ask once** (yes / no / later). For **`doc-roles`**, include why: if installed, heavier doc moments leave the parent session so it stays slim; without them that work stays in the parent (bootstrap Step 3p **C**). For **`slash-commands`**, include why: `/sync` is a menu for that ask; **decline** if they would rather just ask (Step 3p **F**). On **yes** for `template-update-check`, also run **B0.4** cadence ask in the same turn before stopping. On yes/no, record `enabled` or `declined`. Do **not** enable silently. Do **not** treat unset as silent no.
    - Under **`sync.mode: auto`:** changelog-tagged **live passes** (reshape, ambition, …) are already covered by auto — those are not “new optionals.” Cadence (B0.4) is still asked when due.
 11. If `sync.mode` still unset after the above → run **B0.2** before stopping.
 12. If update-check is enabled and `check_mode_recorded` still missing → run **B0.4** before stopping (`auto-all` defaults `always` there).
 13. If `docs_profile.mode` still unset → run **B0.5** before stopping (`auto-all` defaults `prevent` there).
-14. If `orchestrator.git.mode` still unset → run **B0.6** before stopping (**always ask**, including under `auto-all` — never invent `current-push` or silent-write `local`).
+14. If `docs/ADT-settings.yaml` still contains an `orchestrator:` key → run **B0.6** and **remove that key**. Do not ask a mode.
 
 ### Do not (Step B)
 
@@ -353,9 +341,7 @@ Run only when selected catch-up includes **2.7.27** and reshape is executing. Op
 - Name catalog optional tags that were **not** in the union as “skipped” (they were not this jump’s instructions)
 - Treat `auto-all` as license to run every pass in the Live impact tag table
 - Walk each catch-up version as its own full sync or bump Pack version through intermediate numbers
-- Rewrite an already-set `orchestrator.git.mode` because the pack now recommends `milestone-pr`, because At a Glance wording changed, or because a Cloud Agent this-runs `milestone-pr`
-- Fail, revert, or treat as a forbidden migrate a durable `orchestrator.git.mode` change that stamps **`source: user`** (or the user asked to change that setting on this PR) — that is user-directed
-- Write `orchestrator.git.worktrees` — host isolation is playbook-only (orchestrator-git **Host worktrees**)
+- Write `orchestrator.git.mode` or `orchestrator.git.worktrees`. B0.6 **removes** an `orchestrator:` key. Do not ask a mode
 
 ---
 

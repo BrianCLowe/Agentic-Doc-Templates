@@ -156,17 +156,6 @@ SCAFFOLD_CHECKS = (
         "label": "Spec",
     },
     {
-        "path": "docs/templates/TODO_Template.md",
-        "sermons": (
-            "User-facing stems: dual-track",
-            "Use the right pattern",
-            "You are building the shared foundation",
-            "## Instructions for AI Agents",
-        ),
-        "must": ("workflow/todos.md", "help/SCAFFOLDS.md"),
-        "label": "TODO",
-    },
-    {
         "path": "docs/templates/Master_Index_Template.md",
         "sermons": (
             "**Simplicity:** users give",

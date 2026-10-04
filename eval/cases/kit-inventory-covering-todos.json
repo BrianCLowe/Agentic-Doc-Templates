@@ -1,24 +1,15 @@
 {
   "id": "kit-inventory-covering-todos",
-  "title": "Finished-kit spec leftovers stay on the inventory stem as TODOs — no empty map rows, no wait-for-pickup",
+  "title": "Finished-kit leftovers stay on the inventory spec — no empty map rows, no TODO file",
   "role": "doc-graduate",
   "user": "Fully support everything the vendor API offers. Keep leftover methods on KitApi — do not give them their own spec or TODO files.",
   "fixture": "fixtures/kit-inventory",
   "expect": {
-    "files_must_change": [
-      "docs/features/KitApi-TODO.md"
-    ],
     "files_must_not_exist": [
       "docs/features/Files.md",
       "docs/features/Files-TODO.md",
       "docs/features/Embeddings.md",
       "docs/features/Embeddings-TODO.md"
-    ],
-    "file_must_contain": [
-      {
-        "path": "docs/features/KitApi-TODO.md",
-        "patterns": ["Files", "Embeddings"]
-      }
     ]
   },
   "pack_contract": {
@@ -28,55 +19,27 @@
         "patterns": [
           "Inventory / catch-all vs new map rows",
           "Do not add map rows for vague planned-only items",
-          "Terse ≠ vague"
+          "Terse ≠ vague",
+          "Do **not** create a `*-TODO.md`"
         ]
       },
       {
-        "file": "docs/templates/agent/workflow/todos.md",
+        "file": "docs/templates/agent/workflow/understanding.md",
         "patterns": [
-          "Finished-kit contract ⇒ covering TODOs",
-          "Pickup ≠ backlog",
-          "is **not** inventing work",
-          "Terse + public contract"
-        ]
-      },
-      {
-        "file": "docs/templates/CHANGELOG.md",
-        "patterns": [
-          "optional-todo-kit-coverage"
-        ]
-      },
-      {
-        "file": "docs/templates/agent/TEMPLATE_SYNC_B.md",
-        "patterns": [
-          "optional-todo-kit-coverage",
-          "no vendor-doc fetch",
-          "add **one** Medium item"
-        ]
-      },
-      {
-        "file": "docs/templates/agent/roles/todo-warden.md",
-        "patterns": [
-          "Kit coverage hole (Workflow §5.4)",
-          "Named leftovers",
-          "Thin wrap-the-API"
+          "this stem’s spec",
+          "Do **not** create a `*-TODO.md`"
         ]
       }
     ],
     "summaries_must_point": [
       {
-        "file": "docs/templates/agent/roles/orchestrator.md",
-        "must_contain": ["§5.4"],
-        "must_not_contain": ["Pickup ≠ backlog"]
-      },
-      {
         "file": "docs/templates/agent/roles/doc-graduate.md",
-        "must_contain": ["§5.4"],
+        "must_contain": ["Do **not** create a `*-TODO.md`"],
         "must_not_contain": ["Pickup ≠ backlog"]
       },
       {
         "file": "docs/templates/agent/roles/template-sync.md",
-        "must_contain": ["kit-coverage"],
+        "must_contain": ["Do not create or edit `*-TODO.md`"],
         "must_not_contain": ["Pickup ≠ backlog"]
       }
     ]

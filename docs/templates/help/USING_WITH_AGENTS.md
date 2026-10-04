@@ -25,29 +25,24 @@ The modular documentation **workflow is tool-agnostic**. What differs is **where
 
 The modular rule guards itself: *"If `docs/Master_Index.md` does not exist, ignore this entire rule."*
 
-**Core with every modular-rule install:**
-
-- [`../agent/Agent_Timescale_Planning_Rule.mdc`](../agent/Agent_Timescale_Planning_Rule.mdc) — plan/ship at agent speed (target architecture first; exploration ≠ paved path). Always-on; users should not need to remind agents. When Understanding (or a clear contract) locks product-defining surface, TODOs/plans follow that target.
-- [`../agent/Agent_Build_Verify_Rule.mdc`](../agent/Agent_Build_Verify_Rule.mdc) — after code changes, run the project’s build/typecheck/container/engine verify (`docs/Tooling.md` **Project verify** when filled); fix failures before “you can test.” Stack-agnostic (apps, Docker, UE, etc.).
+**Core install:** the modular documentation rule only. Timescale and build-verify rules are retired. On refresh, delete them. The harness owns how code is written and checked.
 
 ## Optional extras
 
 | Extra | What | Where |
 |-------|------|--------|
-| **Project prefs (batch)** | Docs profile, update-check, doc-roles, slash-commands (`/sync`, `/orchestrate`), sync mode, orchestrator git — **one** bootstrap ask. Do **not** quiz for standing | Bootstrap **Step 3p** · live keys in [`docs/ADT-settings.yaml`](../agent/ADT-settings.example.yaml) |
+| **Project prefs (batch)** | Docs profile, update-check, doc-roles, slash-commands (`/sync`), sync mode — **one** bootstrap ask. Do **not** quiz for standing. No git-delivery setting | Bootstrap **Step 3p** · live keys in [`docs/ADT-settings.yaml`](../agent/ADT-settings.example.yaml) |
 | **Docs profile** | First-class choice: `build-first` (typed APIs / CRUD), `prevent` (editors / games / multi-surface; default if unset), `balanced` (Understanding when identity fuzzy) | Workflow [§0.1](../agent/workflow/profile-standing.md#01-docs-profile-ceremony-modes) · `docs_profile` |
 | **Product vision** | Whole-product end-state picture. **Always create** (lightweight on `balanced` / `build-first`). **`build-first`:** not a gate until *lock product shape*. Confirmed vision: features must not fight it | [`Product_Vision_Template.md`](../Product_Vision_Template.md) · [§4.5](../agent/workflow/product-vision.md) |
 | **Standing instructions** | Durable **ADT playbook overrides** when no first-class key exists. Lookout-capture only when they change how a pack playbook runs — **not** a notes pad | Workflow [§0.2](../agent/workflow/profile-standing.md#02-standing-workflow-instructions-user-workflow-not-pack-enums) · `standing.instructions` |
 | Template update check | Upstream `VERSION` ping — default every session, no settings write; interval optional (then `last_checked`) | Step 3p · [`../agent/TEMPLATE_UPDATE_CHECK.md`](../agent/TEMPLATE_UPDATE_CHECK.md) |
-| Doc roles | Understanding author, implementer, work verifier, … | Step 3p · [`../agent/roles/README.md`](../agent/roles/README.md) — Cursor → `.cursor/agents/`; Grok Build → `.grok/agents/`; Copilot → `.github/agents/` |
-| Slash commands | Optional `/sync` and `/orchestrate` — same playbooks as the short asks; decline if you would rather just ask | Step 3p **F** · [`../agent/commands/README.md`](../agent/commands/README.md) |
-| Orchestrator | Parent-only backlog loop (implement → verify → next); readiness follows docs profile | [`../agent/roles/orchestrator.md`](../agent/roles/orchestrator.md) — **not** installed as a harness subagent |
-| **Orchestrator git** | `local` · **`milestone-pr`** *(recommend + forge; several related TODOs + concurrent implementers when they do not overlap **and** the host can isolate; Bugbot reads the PR until ready — squash-before-ready is not required)* · `branch-pr` · `branch-pr-squash` · `branch-push` · `current-push` · `none` — ask if unset; forge probe on pick; **write-in (not a quiz, not an eighth mode):** closest mode + `standing.instructions` for merge commit / rebase-merge / always squash before ready (HEAD-only reviewer) / custom close-out. **Cloud Agent** this-runs milestone-pr if durable is local-oriented or `branch-pr*`. **Host worktrees** are not a key — stay if already in one; pack does not create trees. Stay ≠ current — [§0.3](../agent/workflow/session-freshness.md) | Step 3p / B0.6 · [`orchestrator-git.md`](../agent/roles/orchestrator-git.md) |
-| Sync mode | `auto` / `auto-all` / `choose` — dirty tree before sync still hard-stops; **git mode still asked** under auto-all if unset | Step 3p · `sync.mode` |
+| Doc roles | Understanding author, doc graduate, template sync | Step 3p · [`../agent/roles/README.md`](../agent/roles/README.md) — Cursor → `.cursor/agents/`; Grok Build → `.grok/agents/`; Copilot → `.github/agents/` |
+| Slash commands | Optional `/sync` — same playbook as the short ask; decline if you would rather just ask | Step 3p **E** · [`../agent/commands/README.md`](../agent/commands/README.md) |
+| Sync mode | `auto` / `auto-all` / `choose` — dirty tree before sync still hard-stops. No git-delivery setting | Step 3p · `sync.mode` |
 | **Team inbox** | Optional Human-TODO assignees. **Omit / unset / `enabled: false` = human-only** (no auto-stamp; do not silent-enable). Claim / reassign is override only | `team_inbox` · [`workflow/team-roster.md`](../agent/workflow/team-roster.md) · [`Human_TODO_Template.md`](../Human_TODO_Template.md) |
 | **Team roster** | Name, Jobs, Anti-jobs *(if defined)*, handoff. Create `docs/Team-Roster.md` **only** when team inbox is on. Coding agents on a handoff **read** (do not invent rows). Named humans and bots **self-ID** (humans use their slug, not leftover `human`); report-only bots ask another agent to add them. Full-team stand-up = **one initial PR**. Update the row when jobs change | [`Team_Roster_Template.md`](../Team_Roster_Template.md) · [`workflow/team-roster.md`](../agent/workflow/team-roster.md) |
 
-Parent agents **orchestrate** role delegation when asks match; `/` commands are optional. Role playbooks stay under `roles/*.md` — never paste them into always-on rules. *Orchestrate / drive the backlog* stays in the parent session and dispatches leaf workers. Settings live in **`docs/ADT-settings.yaml`** (docs profile, orchestrator git, **standing.instructions**, tools, optionals, team_inbox, sync mode, upstream stamps).
+Parent agents delegate a doc role when an ask matches; `/sync` is optional. Role playbooks stay under `roles/*.md` — never paste them into always-on rules. Settings live in **`docs/ADT-settings.yaml`** (docs profile, **standing.instructions**, tools, optionals, team_inbox, sync mode, upstream stamps). No git-delivery key.
 
 ## Cursor conflict note
 

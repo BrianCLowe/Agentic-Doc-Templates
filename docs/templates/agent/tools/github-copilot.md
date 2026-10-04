@@ -12,19 +12,12 @@
 | **Install to** | `.github/instructions/modular-documentation.instructions.md` *(preferred)* **or** append a labeled section to `.github/copilot-instructions.md` |
 | **Notes** | Applies to Chat / Agent mode, not inline autocomplete. Ask before overwriting. Enable `.github/instructions` in workspace settings if needed (`chat.instructionsFilesLocations`). |
 
-## Agent timescale planning *(core — always install with modular rule)*
+## Retired rules *(delete on refresh)*
 
-| | |
-|--|--|
-| **Source** | `docs/templates/agent/Agent_Timescale_Planning_Rule.instructions.md` |
-| **Install to** | `.github/instructions/agent-timescale-planning.instructions.md` or labeled section in `copilot-instructions.md` |
+The pack no longer ships timescale or build-verify rules. If these files or labeled sections exist, **delete** them:
 
-## Agent build & verify *(core — always install with modular rule)*
-
-| | |
-|--|--|
-| **Source** | `docs/templates/agent/Agent_Build_Verify_Rule.instructions.md` |
-| **Install to** | `.github/instructions/agent-build-verify.instructions.md` or labeled section in `copilot-instructions.md` |
+- `.github/instructions/agent-timescale-planning.instructions.md`
+- `.github/instructions/agent-build-verify.instructions.md`
 
 ## Optional — Template update check
 
@@ -48,9 +41,9 @@ Copilot does **not** load `.cursor/agents/` / `.grok/agents/` as named subagents
 | **Parent delegates** | If `.github/agents/<name>.agent.md` exists → delegate that custom agent with a self-contained prompt (CLI `/agent` or inference; Agents window / Chat dropdown). Else role playbook fallback |
 | **Do not** | Install under `.cursor/agents/`; copy Cursor `model: inherit` adapters into `.github/agents/`; use user-global `~/.copilot/agents/` as the pack target |
 
-Files: `understanding-author.agent.md`, `doc-graduate.agent.md`, `feature-implementer.agent.md`, `work-verifier.agent.md`, `todo-warden.agent.md`, `docs-template-sync.agent.md`.
+Files: `understanding-author.agent.md`, `doc-graduate.agent.md`, `docs-template-sync.agent.md`.
 
-**Do not** install an `orchestrator` or `docs-bootstrap` adapter — those run in the **parent** session (`roles/orchestrator.md` / `BOOTSTRAP.md`). Delete leftover `docs-bootstrap.agent.md` if present.
+**Do not** install a `docs-bootstrap` adapter — bootstrap runs in the **parent** session (`BOOTSTRAP.md`). Delete leftover `docs-bootstrap.agent.md`, `feature-implementer.agent.md`, `work-verifier.agent.md`, `todo-warden.agent.md`, and `orchestrator.agent.md` if present.
 
 ## Optional — Slash commands
 
@@ -58,28 +51,18 @@ Only if `optional_rules.slash-commands.status` is `enabled`. Copilot prompt file
 
 | | |
 |--|--|
-| **Source** | Body of `docs/templates/agent/commands/sync.md` and `commands/orchestrate.md` (drop the pack frontmatter) |
-| **Install to** | `.github/prompts/sync.prompt.md` and `orchestrate.prompt.md` |
+| **Source** | Body of `docs/templates/agent/commands/sync.md` (drop the pack frontmatter) |
+| **Install to** | `.github/prompts/sync.prompt.md` |
 | **Frontmatter** | `mode: agent` and the same `description` as the source file |
-| **Do not** | Paste the sync or orchestrator playbook into the prompt file |
-
-## Host isolation *(orchestrator parallel implementers)*
-
-Parent opens this only when spawning concurrent implementers ([`../roles/orchestrator-git.md`](../roles/orchestrator-git.md) **Host worktrees**).
-
-| | |
-|--|--|
-| **Can isolate?** | **Yes** only on a surface that can start a worktree (Agents window **New Worktree**, Copilot CLI `/worktree`) |
-| **Cannot** | Chat view / local harness — always the current workspace → parent stays **serial** |
-| **Already in one** | This session is already a Copilot worktree → **stay**; do not delete it |
-| **Do not** | `git worktree add`; invent `.adt-worktrees/`; assume Chat can start a worktree |
+| **Do not** | Paste the sync playbook into the prompt file. Delete a leftover `orchestrate.prompt.md` |
 
 ## Verify
 
-- Modular + agent-timescale + agent-build-verify instructions exist under `.github/instructions/` or `copilot-instructions.md`
+- Modular instructions exist under `.github/instructions/` or `copilot-instructions.md`
+- Timescale and build-verify instructions are **absent**
 - Optional: `/init` then confirm modular docs section present
-- If doc-roles enabled: six files under `.github/agents/` (no `orchestrator` / `docs-bootstrap`; includes `todo-warden.agent.md`)
-- If slash-commands enabled: `.github/prompts/sync.prompt.md` and `orchestrate.prompt.md`
+- If doc-roles enabled: three files under `.github/agents/` (`understanding-author`, `doc-graduate`, `docs-template-sync`). No `docs-bootstrap` adapter
+- If slash-commands enabled: `.github/prompts/sync.prompt.md` only
 - Custom agents appear in Chat **Configure Custom Agents** / CLI `/agent` (custom list) / Agents window Customizations
 
 ## For humans

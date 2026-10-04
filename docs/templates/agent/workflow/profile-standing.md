@@ -8,13 +8,15 @@
 
 **Legacy value:** `ship-first` is `build-first`. When you read it, rewrite the setting to `build-first` the same turn (sync does this in TEMPLATE_SYNC **B0.1b**). Do not re-ask. Do not treat it as unset.
 
-| Mode | Default file set on new map row | Coding gate | When to use |
-|------|----------------------------------|-------------|-------------|
-| **`prevent`** | Spec + **Understanding** (`draft`) + core TODO | **Do not code** while Understanding is `draft` unless user waives | **Editors, games, multi-surface / identity-risky products.** Unset → this mode (do not silent-downgrade those repos). |
-| **`balanced`** | Spec + core TODO; **+ Understanding** when identity is ambiguous / multi-surface / split pressure / user asked | Same draft gate **only for stems that have** an Understanding | Mid-size / mixed; you accept agent judgment on “needs shape file?” |
-| **`build-first`** | Spec + core TODO only (Understanding **not** required) | No Understanding draft gate — implement from TODO + thin spec | **Typed APIs, CRUD, clear contracts.** First-class default for those products — not a concession or “ceremony off.” Also prototypes / fix-forward teams. |
+| Mode | Default file set on new map row | When to use |
+|------|----------------------------------|-------------|
+| **`prevent`** | Spec + **Understanding** (`draft`) | **Editors, games, multi-surface / identity-risky products.** Unset → this mode (do not silent-downgrade those repos). |
+| **`balanced`** | Spec; **+ Understanding** when identity is ambiguous / multi-surface / split pressure / user asked | Mid-size / mixed; you accept agent judgment on “needs shape file?” |
+| **`build-first`** | Spec only (Understanding **not** required) | **Typed APIs, CRUD, clear contracts.** First-class default for those products — not a concession or “ceremony off.” Also prototypes / fix-forward teams. |
 
-**Always required (all modes):** Master Index + Document Map, **spec**, **core TODO**, Human-TODO dual-write rules (§13). Catalog / decisions remain optional per their own sections.
+The profile chooses **which docs to write**. It is not a coding gate. A `draft` Understanding is not confirmed identity; it does not forbid the harness from writing code.
+
+**Always required (all modes):** Master Index + Document Map, **spec**. Human inbox rules (§13) when a human must act. Catalog / decisions remain optional per their own sections. Do **not** create a `*-TODO.md`.
 
 **Product vision** (`docs/Product-Vision.md` — whole-product end-state): **always create** (all profiles; unset → prevent). **`prevent`** → `draft` + user confirms product shape. **`balanced`** → lightweight; deepen when 2+ stems / fuzzy whole / *lock product shape*. **`build-first`** → lightweight destination; **not a gate** until *lock product shape* + confirm. Confirmed → feature work must not fight it. [`product-vision.md`](product-vision.md) §4.5.
 
@@ -24,8 +26,8 @@
 
 1. Skim `docs/reference/` (if any) + conversation — do not inventory the whole repo.
 2. Recommend a mode with **2–3 short citations** (export path + quote or paraphrase). **Explain each option in plain language** so the user is not guessing labels:
-   - **prevent** — “You confirm is/is-not before code” — competing product identities; “not X”; **editors, games, multi-surface**
-   - **build-first** — “Spec+TODO only; no shape gate” — **typed API / CRUD / clear contract** (the right default there); also prototype/spike; tiny map
+   - **prevent** — “Write Understanding and confirm is/is-not” — competing product identities; “not X”; **editors, games, multi-surface**
+   - **build-first** — “Spec only; no Understanding file required” — **typed API / CRUD / clear contract** (the right default there); also prototype/spike; tiny map
    - **balanced** — “Understanding only when identity is fuzzy (multi-surface, not-X, split, or you say lock shape)” — mid-size / mixed signals
 3. **Ask once** (bootstrap: inside Step 3p preference batch). Record `docs_profile.mode`, `recorded`, and `source: agent-suggested` or `user`.
 4. Re-ask only on explicit *Set docs profile to prevent|balanced|build-first*.
@@ -34,12 +36,10 @@
 
 | Change | Behavior |
 |--------|----------|
-| → **prevent** | Create missing Understandings as `draft` for map rows that lack them; do not wipe specs/TODOs |
+| → **prevent** | Create missing Understandings as `draft` for map rows that lack them; do not wipe specs |
 | → **balanced** | Keep existing Understandings; stop requiring new ones when identity is clear |
 | → **build-first** | Stop requiring Understanding / confirm; **do not delete** existing `-Understanding.md` files |
-| *Lock shape for [Stem]* (any mode) | Draft/update that stem’s Understanding and use the draft gate for **that stem** |
-
-**Orchestrator / implementer readiness** — see [`roles/orchestrator.md`](../roles/orchestrator.md) and §3. Work-verifier always checks **spec + TODO**; Understanding only when the file exists or mode is prevent/balanced with a shape file.
+| *Lock shape for [Stem]* (any mode) | Draft/update that stem’s Understanding for **that stem** |
 
 ---
 
@@ -47,12 +47,12 @@
 
 **Live setting:** `docs/ADT-settings.yaml` → `standing.instructions` (YAML multi-line string). Example: [`ADT-settings.example.yaml`](../ADT-settings.example.yaml).
 
-**Why:** Pack enums (`docs_profile`, `orchestrator.git.mode`, `sync.mode`, …) cover known forks. Standing is the escape hatch when the user wants to **override an ADT playbook** (how *this pack* would otherwise run) and no first-class key exists yet — e.g. always squash before ready for a HEAD-only reviewer, or merge commit / rebase-merge / custom close-out that the seven git modes do not express. It is **not a scratch pad** for random notes. **Git-mode ask** (bootstrap 3p **E** / B0.6 / orchestrator resolve): **Write-in (not a quiz, not an eighth mode)** — mention it **on that menu**. Still do **not** quiz for standing. Do **not** invent an eighth mode.
+**Why:** Pack enums (`docs_profile`, `sync.mode`, …) cover known forks. Standing is the escape hatch when the user wants to **override an ADT playbook** (documentation or sync) and no first-class key exists yet. It is **not a scratch pad** for random notes, and **not** a git-delivery policy. The pack has no git mode. Do **not** quiz for standing. **Write-in (not a quiz, not an eighth mode):** a docs or sync override the enums do not cover is one standing bullet. Do not invent a new settings enum for it.
 
 | Prefer | Use for |
 |--------|---------|
-| **First-class ADT-settings key** | When an enum/key already exists — set `docs_profile` / `orchestrator.git.mode` / `sync.mode` / `team_inbox` / optionals (do **not** only put it in standing). **Not a key:** `orchestrator.git.worktrees` — host isolation is playbook-only ([`../roles/orchestrator-git.md`](../roles/orchestrator-git.md) **Host worktrees**) |
-| **`standing.instructions`** | Lasting **overrides of this pack’s playbooks** (docs ceremony, git delivery, orchestrate / verify / re-ask, file-create) that no key expresses |
+| **First-class ADT-settings key** | When an enum/key already exists — set `docs_profile` / `sync.mode` / `team_inbox` / optionals (do **not** only put it in standing). **Not a key:** `orchestrator.git` — removed in 2.10.0. Delete it if present (TEMPLATE_SYNC B0.6) |
+| **`standing.instructions`** | Lasting **overrides of this pack’s playbooks** (docs ceremony, sync, re-ask, file-create) that no key expresses |
 | **Spec Decisions (§10)** | Product/UI/interaction prefs for **one stem** (could be “improved away”) |
 | **Ask: rule or skill** | User told you **how to act in this repo**, and it does **not** change an ADT playbook. Do **not** write standing. Ask once (below). |
 | **This-turn only** | One-off overrides the user does **not** want durable — apply now; **do not** write standing |
@@ -60,23 +60,23 @@
 
 **Precedence (highest wins):**
 
-1. Hard pack **safety** (dirty-tree hard stop before sync; session-start docs freshness / sibling `docs/` drift — Workflow §0.3; no silent `current-push`; no force-push / protected-main surprises; no secrets in docs)
+1. Hard pack **safety** (dirty-tree hard stop before sync; session-start docs freshness / sibling `docs/` drift — Workflow §0.3; no secrets in docs)
 2. **This-turn** explicit user instruction
 3. **`standing.instructions`** (when non-empty)
 4. Structured ADT-settings enums + pack defaults
 
-**Read:** On feature / implement / orchestrate paths, if `standing.instructions` is present and non-empty (ignore comment-only example lines), treat bullets as durable **playbook overrides**. Empty / missing = no ceremony — do not invent content.
+**Read:** On documentation and sync paths, if `standing.instructions` is present and non-empty (ignore comment-only example lines), treat bullets as durable **playbook overrides**. Empty / missing = no ceremony — do not invent content.
 
 ### LOOKOUT — same-turn capture *(mandatory, playbook overrides only)*
 
-Be on the lookout every turn. Capture **only** when the user is **overriding an ADT playbook** for future sessions — how *this pack* should run git, docs ceremony, orchestrate, verify handoff, re-ask, or file-create. Same turn:
+Be on the lookout every turn. Capture **only** when the user is **overriding an ADT playbook** for future sessions — how *this pack* should run docs ceremony, sync, re-ask, or file-create. Same turn:
 
 1. If a **first-class key** fits → update that key in `docs/ADT-settings.yaml` (`recorded` today, `source: user`).
 2. Else → **append** one short bullet under `standing.instructions` (create `standing:` if missing). Keep bullets imperative and durable. Do **not** create the key just to have a block.
 3. Tell the user in one line that you saved it (path + paraphrase). Do **not** wait for session wrap or “remember that?”
 4. Apply it for the rest of the session (and future sessions via the file).
 
-**Also capture** when they correct **pack playbook behavior** mid-run without the word “always” if the intent is durable (“I don’t want draft PRs — ready only after squash” → standing or `branch-pr-squash`; “merge each slice after CI” → `milestone-pr`).
+**Also capture** when they correct **pack playbook behavior** mid-run without the word “always” if the intent is durable (“stop asking the docs profile every sync” → the key is already set; do not re-ask). Do not record a git-delivery policy here.
 
 **Skip** *(do not write standing)*:
 
@@ -115,8 +115,8 @@ Run only when the selected changelog catch-up includes **2.7.25** (TEMPLATE_SYNC
 
 For **each** standing bullet:
 
-1. **Keep** if it **overrides an ADT playbook** (git / ceremony / orchestrate / verify / re-ask / file-create) and no first-class key fits.
-2. **Promote** if a first-class key fits **and that key is unset or already matches** → **unset:** set that key (`recorded` today, `source: user`) and **delete** the standing bullet. **Already matches:** **delete** the standing bullet (do **not** restamp). If the key is already set to a **different** value → **keep** the standing bullet; do **not** overwrite `docs_profile` / `orchestrator.git.mode` / `sync.mode` or stamp `source: user` (B0.6: that stamp blocks revert; user is not speaking this turn).
+1. **Keep** if it **overrides an ADT playbook** (docs ceremony / sync / re-ask / file-create) and no first-class key fits. A git-delivery bullet is not a pack playbook — remove it (B0.6 removes `orchestrator:`).
+2. **Promote** if a first-class key fits **and that key is unset or already matches** → **unset:** set that key (`recorded` today, `source: user`) and **delete** the standing bullet. **Already matches:** **delete** the standing bullet (do **not** restamp). If the key is already set to a **different** value → **keep** the standing bullet; do **not** overwrite `docs_profile` / `sync.mode` or stamp `source: user`. Do **not** write `orchestrator.git.mode`.
 3. **Move then delete** anything else — do not leave a copy in standing:
 
 | Misplaced bullet | Destination *(create the section/row if missing; do not invent a stem)* |
@@ -139,7 +139,7 @@ Run only when the selected changelog catch-up includes **2.9.6**. Skip if `stand
 
 For **each** bullet:
 
-1. **Keep** if it **overrides an ADT playbook** (git / ceremony / orchestrate / verify / re-ask / file-create) and no first-class key fits.
+1. **Keep** if it **overrides an ADT playbook** (docs ceremony / sync / re-ask / file-create) and no first-class key fits. A git-delivery bullet is not a pack playbook.
 2. **Remove** if it is **how to act in this repo** and it does **not** change an ADT playbook. Take it out of standing in this edit so it stops overriding the pack. Hold the text for the ask. Do **not** write a rule or skill yet.
 3. Product/UI for a **named** stem, a tool command, or a decision that already has a file → leave those to **Sync relocate (2.7.25)** when that one-shot is also in catch-up. If 2.7.25 is **not** in catch-up, remove them from standing and include them in the same ask (do not invent a spec row during this cleanout).
 

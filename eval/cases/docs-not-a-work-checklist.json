@@ -1,0 +1,49 @@
+{
+  "id": "docs-not-a-work-checklist",
+  "title": "The always-on rule documents and syncs — no checklist, Current focus, or git setting",
+  "role": "parent",
+  "user": "Update the spec for the items API.",
+  "fixture": "fixtures/build-first-crud",
+  "expect": {},
+  "pack_contract": {
+    "source_must_include": [
+      {
+        "file": "docs/templates/agent/Modular_Documentation_Rule.mdc",
+        "patterns": [
+          "creates and updates documentation",
+          "syncs the pack",
+          "no Current focus",
+          "Do **not** create or extend a `*-TODO.md`",
+          "not a coding gate"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/TEMPLATE_SYNC_B.md",
+        "patterns": [
+          "B0.6 — Remove orchestrator git",
+          "remove that key",
+          "Do not create or edit `*-TODO.md`"
+        ]
+      },
+      {
+        "file": "DECISIONS.md",
+        "patterns": [
+          "D35",
+          "superseded"
+        ]
+      }
+    ],
+    "summaries_must_point": [
+      {
+        "file": "docs/templates/agent/Modular_Documentation_Rule.mdc",
+        "must_contain": [
+          "There is no Current focus"
+        ],
+        "must_not_contain": [
+          "implement that item only",
+          "orchestrator.git.mode"
+        ]
+      }
+    ]
+  }
+}

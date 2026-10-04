@@ -16,19 +16,9 @@ Many harnesses read [`AGENTS.md`](https://agents.md/) (Grok Build, Codex, Cline,
 | **Install to** | Root `AGENTS.md` — section titled `## Documentation workflow` |
 | **Notes** | Append if the file already has content; do not delete unrelated sections. Include the **Optional subagents** orchestration table so parents that only load `AGENTS.md` still know to delegate/spawn. |
 
-## Agent timescale planning *(core — always install with modular rule)*
+## Retired rules *(delete on refresh)*
 
-| | |
-|--|--|
-| **Source** | Rule body from `docs/templates/agent/Agent_Timescale_Planning_Rule.mdc` (**strip** Cursor YAML frontmatter) |
-| **Install to** | Root `AGENTS.md` — section titled `## Agent timescale planning` |
-
-## Agent build & verify *(core — always install with modular rule)*
-
-| | |
-|--|--|
-| **Source** | Rule body from `docs/templates/agent/Agent_Build_Verify_Rule.mdc` (**strip** Cursor YAML frontmatter) |
-| **Install to** | Root `AGENTS.md` — section titled `## Agent build & verify` |
+The pack no longer ships timescale or build-verify rules. **Delete** `## Agent timescale planning` and `## Agent build & verify` from `AGENTS.md` if present.
 
 ## Optional — Template update check
 
@@ -53,15 +43,10 @@ Only if `optional_rules.template-update-check.status` is `enabled`.
 
 No command folder in `AGENTS.md`. On enable, record `optional_rules.slash-commands` and do not invent files. The short asks stay the path.
 
-## Host isolation *(orchestrator parallel implementers)*
-
-`AGENTS.md` is **not** a worktree manager. Isolation follows the **running** harness’s `tools/<key>.md` **Host isolation**. If this session has no other installed harness with a manager → parent stays **serial**. Do **not** `git worktree add`. Policy: [`../roles/orchestrator-git.md`](../roles/orchestrator-git.md) **Host worktrees**.
-
 ## Verify
 
 - `AGENTS.md` contains `## Documentation workflow`
-- `AGENTS.md` contains `## Agent timescale planning`
-- `AGENTS.md` contains `## Agent build & verify`
+- `AGENTS.md` does **not** contain `## Agent timescale planning` or `## Agent build & verify`
 - Section still points at `docs/Master_Index.md` + Workflow / roles paths
 
 ## For humans

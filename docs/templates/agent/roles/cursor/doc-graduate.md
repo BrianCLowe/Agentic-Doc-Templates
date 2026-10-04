@@ -16,8 +16,6 @@ Hard rules:
 - Graduate only when Understanding is `confirmed` (unless the user explicitly waives) — Workflow §2
 - Spec is the **contract home** — synthesize Understanding + conversation/decisions; do not copy thin Understanding and stop
 - Do **not** compress Architecture/Behavior to match Understanding’s length
-- Product Acceptance + domain-only TODOs → dual-track, phased bridge, or **library-only** (Workflow §5.3) — same turn
-- Each operable Acceptance line gets an unchecked `## Outcomes` row in the same turn; label new tasks `outcome: <slug>`; do not check them (Workflow §5.5)
-- Do **not** create a human-verify playtest — the outcome audit is the only creator of that row
-- No application code; do **not** re-draft Understanding unless the user corrects identity in this pass
-- Each category enabler gets a Dependencies row **Enabler** and one Acceptance clause a stub or unfinished sibling fails (Workflow §5.6)
+- Acceptance states the observable contract. Do not create a `*-TODO.md` or an Outcomes checklist
+- Do **not** re-draft Understanding unless the user corrects identity in this pass
+- A category input named in Understanding gets a Dependencies row and one Acceptance clause that is false when that input is missing (Workflow §4)

@@ -20,7 +20,8 @@ sync:
 # Docs ceremony profile — first-class choice, not a concession.
 # prevent    = editors / games / multi-surface / identity-risky. Understanding + shape confirm.
 #              Unset → prevent (do not silent-downgrade those repos).
-# build-first = typed APIs / CRUD / clear contracts. Spec + TODO only. The right default there.
+# build-first = typed APIs / CRUD / clear contracts. Spec only. The right default there.
+# The profile chooses which docs to write. It is not a coding gate.
 # balanced   = Understanding only when identity is ambiguous / multi-surface / split / user asked.
 # Bootstrap / first “build from reference” may suggest a mode from docs/reference/ (cite 2–3
 # snippets) then ask once. Re-ask only on explicit *Set docs profile to …* / *Change docs ceremony*.
@@ -29,40 +30,13 @@ docs_profile:
   recorded: 2026-08-08
   # source: user | agent-suggested
 
-# Orchestrator git delivery — how unattended backlog runs land in git.
-# milestone-pr     = recommend when remote + forge — each milestone (several related TODOs OK; concurrent implementers when they do not overlap): branch → PR → build-verify → warden → ready → wait CI/Bugbot → merge → next branch
-#                    Bugbot reads the PR until ready — squash-before-ready is not required (standing if a reviewer only ever reads HEAD)
-# local            = milestone commits only; no push / PR
-# branch-pr-squash = one run branch → milestone commits → push → draft PR mid-run → end: build-verify → warden → squash whole run → mark ready (no merge)
-# branch-pr        = same without squash (keeps milestone history on the PR; no merge)
-# branch-push      = same without PR (remote but no gh/glab, or no PR culture)
-# current-push     = milestone commits on the branch you are already on → push (solo opt-in; often main). Never silent-default
-# none             = no commits
-# milestone-pr cycle: per milestone — final push → build verify → warden → mark ready → wait CI/Bugbot → merge → default → next branch
-# branch-pr / branch-pr-squash close-out: final push → build verify → warden → squash? (only branch-pr-squash / standing) → mark ready (no merge)
-# Unset → always ask (bootstrap Step 3p / sync B0.6 / orchestrator pre-run) — even under sync.mode auto-all; never invent current-push
-# Write-in (not a quiz, not an eighth mode): closest mode + standing.instructions for
-#   merge commit / rebase-merge / always squash before ready (HEAD-only reviewer) / custom close-out.
-#   Do not invent a mode.
-# Cloud Agent path: if a remote Cloud Agent orchestrates while this key is local/none/branch-push/current-push/branch-pr/branch-pr-squash,
-#   it uses milestone-pr for that run only (does not rewrite this file) — see agent/roles/orchestrator-git.md
-# After choose/change: forge tooling probe — see agent/roles/orchestrator-git.md
-# Re-ask only on *Set orchestrator git to …* / change this key.
-# Reviewers / Bugbot: a mode change in this file with source: user is an explicit
-#   user ask (same PR is fine) — not a forbidden pack migrate. Do not fail or revert it.
-# Sync must not rewrite a set mode just because the pack recommend flipped.
-# Cloud Agent this-run uses milestone-pr without writing this file.
-# Worktrees are not a key (do not add orchestrator.git.worktrees). Host isolation
-# for concurrent implementers lives in agent/roles/orchestrator-git.md + tools/<host>.md.
-orchestrator:
-  git:
-    mode: milestone-pr
-    recorded: 2026-08-12
-    # source: user | agent-suggested
+# No orchestrator.git key. Removed in 2.10.0. Git delivery belongs to the harness.
+# If a live file still has orchestrator:, TEMPLATE_SYNC B0.6 removes that key.
 
 # standing: — omit this entire key unless the user has actually overridden an
-# ADT playbook and no first-class key fits (docs_profile, orchestrator.git.mode,
+# ADT documentation or sync playbook and no first-class key fits (docs_profile,
 # sync.mode, team_inbox, optionals). Missing / empty is the correct default. Do not invent
+# Write-in (not a quiz, not an eighth mode): a docs/sync override with no key is one bullet.
 # bullets. Do not copy an empty standing block into live ADT-settings.yaml
 # "to have something." Not a notes pad — prompt style, other-product API,
 # Tooling verify commands, and restating a git mode do not belong here
@@ -70,8 +44,7 @@ orchestrator:
 # a live standing block if one exists.
 # LOOKOUT (Workflow §0.2): create standing.instructions only in that override
 # case, then say you saved it. This-turn user instructions always win.
-# Hard pack safety still wins (dirty-tree hard stop, no silent current-push,
-# no force-push / protected-main surprises).
+# Hard pack safety still wins (dirty-tree hard stop, no secrets in docs).
 
 # One entry per tool. Status: installed | declined
 # Do not ask again for a tool when status is installed or declined
@@ -138,8 +111,8 @@ optional_rules:
 
   # slash-commands: omit until the user answers (bootstrap Step 3p F / sync step 10).
   # Do not copy this block into a live file as enabled. Missing is correct.
-  # Decline if they would rather just ask. Enable installs /sync and /orchestrate
-  # only where the tool playbook names a command folder.
+  # Decline if they would rather just ask. Enable installs /sync
+  # only where the tool playbook names a command folder. Delete a leftover orchestrate command.
   # slash-commands:
   #   status: declined
   #   recorded: 2026-09-23

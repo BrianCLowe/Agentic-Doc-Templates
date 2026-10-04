@@ -17,11 +17,11 @@
 | Field | Value |
 |-------|--------|
 | **Project type** | e.g. game (Unreal) \| web app \| API \| mixed |
-| **TODO labels** | Default: Gameplay / InEditor / Asset — or rename in Document Map (e.g. Core / Infra / Content) |
+| **Stack notes** | e.g. game (Unreal) \| web app \| API — labels for the map, not a work checklist |
 | **Engine / stack** | e.g. UE 5.4, Next.js, … |
 | **Game extensions** | Use Workflow §7 \| Skip — use Project Profile labels only |
 
-Rename TODO suffixes in the Document Map when not using game terminology.
+The Document Map lists specs. Do not add a TODO column.
 
 ## 2. Key Locations & At a Glance
 
@@ -33,7 +33,7 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 | `docs/`           | All specs, architecture, and tracking |
 | `docs/_shared/`   | Reusable **project** components used by multiple features (may be empty — do not invent filler) |
 | `docs/_shared/assets/` | Screenshots for shared components (linked from the shared **spec** **Visual references**) |
-| `docs/features/`  | Feature-specific specs + TODOs (+ optional sub-indexes) |
+| `docs/features/`  | Feature-specific specs (+ Understanding when the profile requires it; optional sub-indexes) |
 | `docs/features/assets/` | Screenshots for features (linked from the feature **spec** **Visual references**) |
 | `docs/reference/` | **Recommended:** chat exports (md) of idea threads — also design docs / PRDs / legacy specs. Not living modular docs ([Workflow](templates/agent/Modular_Docs_Workflow.md); tips: [`help/IDEA_CAPTURE_TIPS.md`](templates/help/IDEA_CAPTURE_TIPS.md)) |
 | `docs/reference/visuals/` | Optional inspiration screenshots before a feature exists |
@@ -43,7 +43,7 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 | `docs/Team-Roster.md` | Optional team inbox roster — Name, Jobs, Anti-jobs *(if defined)*, handoff. **Create only when `team_inbox` is enabled.** Handoff agents read; named humans and bots self-ID; one initial PR for a full team ([`Team_Roster_Template.md`](templates/Team_Roster_Template.md)) |
 | `docs/decisions/` | Optional cross-cutting decisions ([`Decision_Template.md`](templates/Decision_Template.md)) |
 | `docs/templates/` | Upstream template pack — **pack-owned; do not edit; full overwrite on sync** ([`README.md`](templates/README.md)). Scaffolds, `help/`, `agent/` (incl. [`Modular_Docs_Workflow.md`](templates/agent/Modular_Docs_Workflow.md) index + [`workflow/`](templates/agent/workflow/README.md) modules, optional [`roles/`](templates/agent/roles/README.md), per-tool [`tools/`](templates/agent/tools/README.md)); also [`VERSION`](templates/VERSION) and [`CHANGELOG.md`](templates/CHANGELOG.md) (Step B scope after sync) |
-| `docs/ADT-settings.yaml` | Pack preferences — **docs profile**, **orchestrator git**, **standing.instructions** (playbook overrides, not a notes pad), sync mode, tools, optionals, upstream stamps ([`ADT-settings.example.yaml`](templates/agent/ADT-settings.example.yaml); Workflow [§0.1](templates/agent/workflow/profile-standing.md#01-docs-profile-ceremony-modes) · [§0.2](templates/agent/workflow/profile-standing.md#02-standing-workflow-instructions-user-workflow-not-pack-enums); [orchestrator Git](templates/agent/roles/orchestrator.md)) |
+| `docs/ADT-settings.yaml` | Pack preferences — **docs profile**, **standing.instructions** (playbook overrides, not a notes pad), sync mode, tools, optionals, upstream stamps ([`ADT-settings.example.yaml`](templates/agent/ADT-settings.example.yaml); Workflow [§0.1](templates/agent/workflow/profile-standing.md#01-docs-profile-ceremony-modes) · [§0.2](templates/agent/workflow/profile-standing.md#02-standing-workflow-instructions-user-workflow-not-pack-enums)). No git-delivery key |
 | `src/` / `backend/` / `frontend/` | Actual code (reference only) |
 
 ### 2.2 At a Glance *(pointers — full rules in the workflow)*
@@ -51,9 +51,8 @@ Rename TODO suffixes in the Document Map when not using game terminology.
 | Topic | Where the rule lives |
 |-------|----------------------|
 | **Docs profile** | `docs/ADT-settings.yaml` → `docs_profile.mode`. **`prevent`** = editors / games / multi-surface (default if unset). **`build-first`** = typed APIs / CRUD. **`balanced`** = mixed. [§0.1](templates/agent/workflow/profile-standing.md#01-docs-profile-ceremony-modes) |
-| **Orchestrator git** | `orchestrator.git.mode` — ask if unset. Host worktrees: already-in-a-worktree → stay; pack does not `git worktree add`. Stay ≠ current — session-start docs freshness: `git status` + worktrees. [orchestrator-git](templates/agent/roles/orchestrator-git.md) · [§0.3](templates/agent/workflow/session-freshness.md) |
-| **Docs freshness** | Once per session: `git status` + `git worktree list` before treating Master Index / TODOs as current. Sibling `docs/` drift = content (`git diff`), not ancestry after squash-merge. Same-stem live docs on an open PR → add there (do not stack PRs). [§0.3](templates/agent/workflow/session-freshness.md) |
-| **File layout / kit leftovers** | Flat sibling files; no map-only planned rows; leftovers stay as TODOs on an existing stem. [§0](templates/agent/workflow/naming-layout.md#0-naming--file-layout-read-before-creating-files) · [§5.4](templates/agent/workflow/todos.md#54-finished-kit-contract--covering-todos-not-wait-for-pickup) |
+| **Docs freshness** | Once per session: `git status` + `git worktree list` before treating Master Index as current. Sibling `docs/` drift = content (`git diff`), not ancestry after squash-merge. Same-stem live docs on an open PR → add there (do not stack PRs). [§0.3](templates/agent/workflow/session-freshness.md) |
+| **File layout / kit leftovers** | Flat sibling files; no map-only planned rows; leftovers stay on the existing spec. Do not create `*-TODO.md`. [§0](templates/agent/workflow/naming-layout.md#0-naming--file-layout-read-before-creating-files) |
 | **Understanding / Spec** | Shape vs contract. [§4](templates/agent/workflow/understanding.md#4-understanding-features--shared) · [§2](templates/agent/workflow/understanding.md#2-understanding--spec-graduation) |
 | **Shared** | Only when actually shared. Same note types as features unless the user excepted them in §3.0. [§1](templates/agent/workflow/shared-components.md#1-shared-components--foundation-vs-consumption) |
 | **Product vision** | [`Product-Vision.md`](Product-Vision.md) — whole-product end-state; feature Understandings must fit a **confirmed** vision. [§4.5](templates/agent/workflow/product-vision.md) |
@@ -70,38 +69,35 @@ Record **only** omissions the **user explicitly requested**. Agents must **not**
 
 | Component / Feature | Omitted note types | Recorded |
 |---------------------|-------------------|----------|
-| *(example)* BlockEditor | InEditor-TODO, Asset-TODO | 2026-06-15 — **user said** “no asset or in-editor work for BlockEditor” |
+| *(example)* BlockEditor | Understanding | 2026-06-15 — **user said** “no Understanding file for BlockEditor” |
 | [Add rows only after user excepts] | | |
 
-**Default file set** when adding a row (same turn, on disk — no map-only “planned” rows): Spec + core TODO; **Understanding** per `docs_profile`; InEditor / Asset / Catalog when that work applies. [§0](templates/agent/workflow/naming-layout.md#0-naming--file-layout-read-before-creating-files) · [§0.1](templates/agent/workflow/profile-standing.md#01-docs-profile-ceremony-modes).
+**Default file set** when adding a row (same turn, on disk — no map-only “planned” rows): Spec; **Understanding** per `docs_profile`; Catalog when that work applies. Do not create `*-TODO.md`. [§0](templates/agent/workflow/naming-layout.md#0-naming--file-layout-read-before-creating-files) · [§0.1](templates/agent/workflow/profile-standing.md#01-docs-profile-ceremony-modes).
 
 ### 3.1 Shared / Core Components
 
 Leave this table **empty** (or with a single “*(none yet)*” note) unless a piece is truly shared across features. Do not invent rows or park engine/framework overviews here.
 
-| Component | Maturity | Spec | Understanding | Catalog | Gameplay TODO | InEditor TODO | Asset TODO |
-|-----------|----------|------|---------------|---------|---------------|---------------|------------|
-| *(example — only if actually shared)* BlockEditor | draft | [_shared/BlockEditor.md](_shared/BlockEditor.md) | [_shared/BlockEditor-Understanding.md](_shared/BlockEditor-Understanding.md) | — | [_shared/BlockEditor-TODO.md](_shared/BlockEditor-TODO.md) | … | … |
-| *(optional)* | — | [_shared/_Foundation-TODO.md](_shared/_Foundation-TODO.md) | — | — | *(this file)* | — | — |
+| Component | Maturity | Spec | Understanding | Catalog |
+|-----------|----------|------|---------------|---------|
+| *(example — only if actually shared)* BlockEditor | draft | [_shared/BlockEditor.md](_shared/BlockEditor.md) | [_shared/BlockEditor-Understanding.md](_shared/BlockEditor-Understanding.md) | — |
 
-**Maturity** (shared only): `draft` · `usable` · `stable`. Omit TODO columns only when recorded in §3.0. Use **Catalog** when a shared piece has a row registry; otherwise `—`.
+**Maturity** (shared only): `draft` · `usable` · `stable`. Use **Catalog** when a shared piece has a row registry; otherwise `—`.
 
 ### 3.2 Features & Modules
 
-| Feature          | Spec / Index                                      | Understanding | Catalog | Gameplay TODO | InEditor TODO | Asset TODO |
-|------------------|---------------------------------------------------|---------------|---------|---------------|---------------|------------|
-| Main Workspace   | [features/MainWorkspace.md](features/MainWorkspace.md) | [features/MainWorkspace-Understanding.md](features/MainWorkspace-Understanding.md) | — | [features/MainWorkspace-TODO.md](features/MainWorkspace-TODO.md) | [features/MainWorkspace-InEditor-TODO.md](features/MainWorkspace-InEditor-TODO.md) | [features/MainWorkspace-Asset-TODO.md](features/MainWorkspace-Asset-TODO.md) |
-| Diff Workflow    | [features/DiffWorkflow.md](features/DiffWorkflow.md)     | [features/DiffWorkflow-Understanding.md](features/DiffWorkflow-Understanding.md) | — | [features/DiffWorkflow-TODO.md](features/DiffWorkflow-TODO.md) | [features/DiffWorkflow-InEditor-TODO.md](features/DiffWorkflow-InEditor-TODO.md) | [features/DiffWorkflow-Asset-TODO.md](features/DiffWorkflow-Asset-TODO.md) |
-| World Building   | [features/WorldBuilding-Index.md](...) *(sub-index)* | [features/WorldBuilding-Understanding.md](...) | — | [features/WorldBuilding-TODO.md](...) | [features/WorldBuilding-InEditor-TODO.md](...) | [features/WorldBuilding-Asset-TODO.md](...) |
-| [Add more rows as needed] | | | | | | |
+| Feature          | Spec / Index                                      | Understanding | Catalog |
+|------------------|---------------------------------------------------|---------------|---------|
+| Main Workspace   | [features/MainWorkspace.md](features/MainWorkspace.md) | [features/MainWorkspace-Understanding.md](features/MainWorkspace-Understanding.md) | — |
+| Diff Workflow    | [features/DiffWorkflow.md](features/DiffWorkflow.md)     | [features/DiffWorkflow-Understanding.md](features/DiffWorkflow-Understanding.md) | — |
+| World Building   | [features/WorldBuilding-Index.md](...) *(sub-index)* | [features/WorldBuilding-Understanding.md](...) | — |
+| [Add more rows as needed] | | | |
 
 ### 3.3 Project-Level Work
 
-| Area          | TODO File |
-|---------------|-----------|
-| **Human inbox** (procure, playtest, decide, waiting) | [Human-TODO.md](Human-TODO.md) |
-| Project-wide In-Editor work (DataAssets, Blueprints, custom inspectors, etc.) | [Project-InEditor-TODO.md](Project-InEditor-TODO.md) |
-| Project-wide Assets & Content | [Project-Asset-TODO.md](Project-Asset-TODO.md) |
+| Area          | File |
+|---------------|------|
+| **Human inbox** (procure, decide, waiting) | [Human-TODO.md](Human-TODO.md) |
 
 ### 3.4 Reference, Decisions, Tooling & Legacy
 
@@ -118,6 +114,6 @@ Leave this table **empty** (or with a single “*(none yet)*” note) unless a p
 
 1. Docs freshness first ([Workflow §0.3](templates/agent/workflow/session-freshness.md)) — then read this file; find the feature or shared component in **§3 Document Map**.
 2. Follow **[`templates/agent/Modular_Docs_Workflow.md`](templates/agent/Modular_Docs_Workflow.md)** (paved path) — Path A/B detail in [`workflow/implement.md`](templates/agent/workflow/implement.md) when needed.
-3. End the session by updating the active TODO **Current focus** ([Workflow §5.1](templates/agent/workflow/todos.md#51-session-handoff--current-focus)).
+3. If this session changed shape or contract, update the Understanding and/or spec. There is no Current focus.
 
 **Agents:** The installed modular documentation rule is a short checklist; procedure is the workflow **index** then **one** module under `templates/agent/workflow/`.

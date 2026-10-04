@@ -12,21 +12,12 @@
 | **Install to** | `.cursor/rules/modular-documentation.mdc` |
 | **Notes** | Keep `alwaysApply: true` for this workflow (applies before a doc file is open). Never overwrite a customized file without showing the diff and asking. |
 
-## Agent timescale planning *(core — always install with modular rule)*
+## Retired rules *(delete on refresh)*
 
-| | |
-|--|--|
-| **Source** | `docs/templates/agent/Agent_Timescale_Planning_Rule.mdc` |
-| **Install to** | `.cursor/rules/agent-timescale-planning.mdc` |
-| **Notes** | `alwaysApply: true`. Target architecture at agent speed; users should not need to remind. |
+The pack no longer ships timescale or build-verify rules. If these files exist, **delete** them:
 
-## Agent build & verify *(core — always install with modular rule)*
-
-| | |
-|--|--|
-| **Source** | `docs/templates/agent/Agent_Build_Verify_Rule.mdc` |
-| **Install to** | `.cursor/rules/agent-build-verify.mdc` |
-| **Notes** | `alwaysApply: true`. Run project build/typecheck/container/engine verify before “you can test”; fix failures. |
+- `.cursor/rules/agent-timescale-planning.mdc`
+- `.cursor/rules/agent-build-verify.mdc`
 
 ## Optional — Template update check
 
@@ -48,9 +39,9 @@ Only if `optional_rules.doc-roles.status` is `enabled`. These are [Cursor subage
 | **Parent delegates** | If `.cursor/agents/<name>.md` exists → launch that subagent with a self-contained prompt |
 | **Do not** | Install under `.cursor/skills/`; add “use proactively” / “always use for” to descriptions |
 
-Files: `understanding-author.md`, `doc-graduate.md`, `feature-implementer.md`, `work-verifier.md`, `todo-warden.md`, `docs-template-sync.md`.
+Files: `understanding-author.md`, `doc-graduate.md`, `docs-template-sync.md`.
 
-**Do not** install an `orchestrator` or `docs-bootstrap` adapter — those run in the **parent** session (`roles/orchestrator.md` / `BOOTSTRAP.md`). Bootstrap *installs* adapters, so a bootstrap adapter cannot exist until after the job it was meant to do. Delete leftover `docs-bootstrap.md` if present.
+**Do not** install a `docs-bootstrap` adapter — bootstrap runs in the **parent** session (`BOOTSTRAP.md`). Bootstrap *installs* adapters, so a bootstrap adapter cannot exist until after the job it was meant to do. Delete leftover `docs-bootstrap.md`, `feature-implementer.md`, `work-verifier.md`, `todo-warden.md`, and `orchestrator.md` if present.
 
 ## Optional — Slash commands
 
@@ -58,23 +49,11 @@ Only if `optional_rules.slash-commands.status` is `enabled`. These are Cursor sl
 
 | | |
 |--|--|
-| **Source** | `docs/templates/agent/commands/sync.md`, `commands/orchestrate.md` |
-| **Install to** | `.cursor/commands/` (same filenames) |
-| **Do not** | Paste the sync or orchestrator playbook into the command file |
+| **Source** | `docs/templates/agent/commands/sync.md` |
+| **Install to** | `.cursor/commands/sync.md` |
+| **Do not** | Paste the sync playbook into the command file. Delete a leftover `orchestrate.md` |
 
-`/sync` and `/orchestrate` run the same playbooks as the short asks.
-
-## Host isolation *(orchestrator parallel implementers)*
-
-Parent opens this only when spawning concurrent implementers ([`../roles/orchestrator-git.md`](../roles/orchestrator-git.md) **Host worktrees**).
-
-| | |
-|--|--|
-| **Can isolate?** | **Yes** when this session can spawn/move a child into a Cursor worktree or an isolated subagent (Agents Window worktree, `/worktree`, isolated project copy). Cursor **creates** the tree. |
-| **Cannot** | Classic IDE Chat with no `/worktree` and no Agents Window isolation → parent stays **serial** |
-| **Already in one** | cwd under `~/.cursor/worktrees` or a linked worktree → **stay**; do not `/delete-worktree` or checkout default here |
-| **Cloud Agent** | VM + branch — not a git worktree; see orchestrator-git **Cloud Agent path** |
-| **Do not** | `git worktree add`; invent `.adt-worktrees/`; write `.cursor/worktrees.json` unless the user asked |
+`/sync` runs the same playbook as the short ask.
 
 ## Conflicts
 
@@ -83,10 +62,9 @@ Parent opens this only when spawning concurrent implementers ([`../roles/orchest
 ## Verify
 
 - `.cursor/rules/modular-documentation.mdc` exists
-- `.cursor/rules/agent-timescale-planning.mdc` exists
-- `.cursor/rules/agent-build-verify.mdc` exists
-- If doc-roles enabled: six files under `.cursor/agents/` (no `orchestrator.md` / `docs-bootstrap.md`; includes `todo-warden.md`)
-- If slash-commands enabled: `.cursor/commands/sync.md` and `orchestrate.md`
+- Timescale and build-verify rules are **absent**
+- If doc-roles enabled: three files under `.cursor/agents/` (`understanding-author.md`, `doc-graduate.md`, `docs-template-sync.md`). No `docs-bootstrap` adapter
+- If slash-commands enabled: `.cursor/commands/sync.md` only. No orchestrate command
 - Remind user: short asks are enough; parent rule delegates; `/name` optional
 
 ## For humans

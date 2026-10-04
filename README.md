@@ -5,7 +5,7 @@
 </p>
 
 > **Stop coding agents from losing intent or building the wrong product shape.**  
-> Modular Understanding / spec / TODO docs plus tool-agnostic agent playbooks — so Cursor, Grok Build, Claude Code, Copilot, OpenClaw, and friends stay aligned across chats, not just one clever session.
+> Modular Understanding and spec docs plus tool-agnostic agent playbooks — so Cursor, Grok Build, Claude Code, Copilot, OpenClaw, and friends stay aligned across chats, not just one clever session.
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 ![Built for](https://img.shields.io/badge/Built%20for-Cursor%20%7C%20Grok%20Build%20%7C%20Copilot%20%7C%20Claude%20Code%20%7C%20OpenClaw-5865F2)
@@ -20,7 +20,7 @@ Use this pack when any of these keep happening:
 - It **builds a different product** than you meant (wrong architecture, wrong surfaces, “helpful” scope creep)  
 - Intent lives only in **Grok.com / ChatGPT / Discord threads** and never becomes durable project docs  
 - **`AGENTS.md` or always-on rules** grew into a second codebase and still don’t fix drift  
-- TODOs say done but nothing is **operable** (library checklist ≠ product you can run)  
+- The spec says the product is done, but a person still cannot exercise it  
 - You jump between **Cursor, Grok Build, Claude, OpenClaw** and want the **same** docs workflow  
 
 ---
@@ -30,9 +30,9 @@ Use this pack when any of these keep happening:
 | This **is** | This is **not** |
 |-------------|-----------------|
 | Repo-owned **modular docs** + short **agent playbooks** agents open on demand | Another **coding agent runtime** (not a Cursor/Claude/Prime-Agent replacement) |
-| A small `docs/` map: Master Index, features, Understandings, specs, TODOs, Human-TODO | Notion / Linear / a hosted PM product |
+| A small `docs/` map: Master Index, features, Understandings, specs, Human-TODO | Notion / Linear / a hosted PM product |
 | Tool-agnostic install (Cursor rules, Grok agents, Claude, Copilot, `AGENTS.md`, …) | One mega always-on rule file that tries to be the whole process |
-| **Docs profiles** (`prevent` · `build-first` · `balanced`) and **orchestrate** loops | A memory OS, vector DB, or self-improving harness product |
+| **Docs profiles** (`prevent` · `build-first` · `balanced`) — which docs to write | A memory OS, vector DB, or self-improving harness product |
 
 You still pick your agent. This pack is what that agent **reads and updates** so intent survives the next session.
 
@@ -40,12 +40,12 @@ You still pick your agent. This pack is what that agent **reads and updates** so
 
 ## Pick a docs profile — first-class, not a concession
 
-**`build-first` is a real default for the right products.** `prevent` is the right default when identity is expensive to get wrong. Unset still treats as `prevent` so existing identity-risky repos do not silently drop the gate. Bootstrap suggests a mode from your `docs/reference/` and asks once.
+**`build-first` is a real default for the right products.** `prevent` is the right default when identity is expensive to get wrong. Unset still treats as `prevent` for which docs to write. Bootstrap suggests a mode from your `docs/reference/` and asks once. The profile is not a coding gate.
 
 | Your product | Profile | Why |
 |--------------|---------|-----|
-| **Typed APIs, CRUD services, clear contracts** | **`build-first`** | Spec + TODO from day one, plus a lightweight Product-Vision (destination, not a gate). Shape is already the types / routes. This is the *correct* default here — not “ceremony off for people in a hurry.” |
-| **Editors, games, multi-surface apps** | **`prevent`** | Understanding + you confirm is / is *not* before code. A “helpful” agent will otherwise build the wrong engine, the wrong surface, or a second product. |
+| **Typed APIs, CRUD services, clear contracts** | **`build-first`** | Spec from day one, plus a lightweight Product-Vision (destination, not a gate). Shape is already the types / routes. This is the *correct* default here — not “ceremony off for people in a hurry.” |
+| **Editors, games, multi-surface apps** | **`prevent`** | Understanding + you confirm is / is *not*. A “helpful” agent will otherwise document the wrong engine, the wrong surface, or a second product. |
 | Mid-size / mixed signals | **`balanced`** | Understanding only when identity is fuzzy (competing surfaces, “not X”, split pressure, or you say *lock shape*). |
 
 Public example of this pack on a typed API: **[xAIkit](https://github.com/BrianCLowe/xAIkit)**.
@@ -57,11 +57,11 @@ Public example of this pack on a typed API: **[xAIkit](https://github.com/BrianC
 AI coding agents drift when intent lives only in chat. This pack gives them a small, consistent `docs/` layout. You pick a **docs profile** at bootstrap (table above) — that choice is the product, not an afterthought.
 
 1. You capture ideas — **recommended:** export chat threads (Grok.com, ChatGPT, …) to markdown and drop them in `docs/reference/` (often many files; they keep whys that polished design docs lose). Or talk the idea through with your **coding agent** in the IDE and have it **build or update live docs as you go**.
-2. At bootstrap the agent asks **project preferences in one batch** (docs profile, sync mode, orchestrator git, optionals) — not a drip of five separate quizzes.
-3. Under **prevent**, **you confirm shape** (is / is *not* + Assumptions) before code. Under **build-first**, implement from TODOs and grow the spec; *lock shape* anytime identity gets sharp.
-4. Work continues from TODOs and specs. For a single slice: *Continue from Current focus.* For a long run: **orchestrate** — *Orchestrate — clear ready TODOs until blocked.* The parent session loops implement → verify → next milestone (git via **`orchestrator.git.mode`**: recommend **milestone-pr** so overnight work lands as reviewable PRs — several related TODOs and concurrent implementers when they do not overlap **and** the host can isolate them, CI/Bugbot, then merge — or **branch-pr-squash** for one morning PR, or **current-push** if you set “push the branch I’m on”). The pack does not create git worktrees; already-in-a-host-worktree stays put.
+2. At bootstrap the agent asks **project preferences in one batch** (docs profile, sync mode, optionals) — not a drip of separate quizzes. Git delivery belongs to the harness.
+3. Under **prevent**, the agent writes Understanding and you confirm shape (is / is *not* + Assumptions). Under **build-first**, the spec is the contract; *lock shape* anytime identity gets sharp. Draft Understanding is not a coding gate.
+4. The instructed task is the work. A gap the confirmed spec or Understanding already makes obvious is part of that instruction. A second product or a checklist of future ideas is not. There is no Current focus and no feature TODO.
 
-Short asks are enough: *bootstrap*, *draft Understanding for X*, *orchestrate*, *update the doc templates*. The agent routes to the matching playbook inside `docs/templates/`. Tips: [`docs/templates/help/IDEA_CAPTURE_TIPS.md`](docs/templates/help/IDEA_CAPTURE_TIPS.md). Scaffolds vs teaching: [`docs/templates/help/SCAFFOLDS.md`](docs/templates/help/SCAFFOLDS.md). Orchestrator: [`docs/templates/agent/roles/orchestrator.md`](docs/templates/agent/roles/orchestrator.md).
+Short asks are enough: *bootstrap*, *draft Understanding for X*, *update the doc templates*. The agent routes to the matching playbook inside `docs/templates/`. Tips: [`docs/templates/help/IDEA_CAPTURE_TIPS.md`](docs/templates/help/IDEA_CAPTURE_TIPS.md). Scaffolds vs teaching: [`docs/templates/help/SCAFFOLDS.md`](docs/templates/help/SCAFFOLDS.md).
 
 ---
 
@@ -155,7 +155,7 @@ Flat sibling files per feature/shared component. Naming: [`Modular_Docs_Workflow
 ## Ideas that guide the pack
 
 - **Simplicity** — Short user asks; agents follow one playbook.
-- **Understanding before code** — Agent drafts shape/guardrails; you confirm is / is not (not the full contract).
+- **Understanding when identity is expensive** — Agent drafts shape/guardrails; you confirm is / is not (not the full contract). That file is not a coding gate.
 - **Product vision** — One end-state picture the feature map must fit (always created; all profiles; **build-first** is destination-only until you *lock product shape*). A complete map is not identity.
 - **Modular map** — Small files + Document Map; not one giant spec.
 - **Tight scope** — Paved path for the current ask; no “just in case” audits.
@@ -170,7 +170,6 @@ Deeper day-to-day patterns: [`docs/templates/help/USAGE.md`](docs/templates/help
 
 - *Bootstrap modular docs.*
 - *Draft (or update) docs from what we just discussed.* *(main agent delegates to Understanding author subagent if installed)*
-- *Orchestrate to drain unblocked TODOs, or orchestrate implementation of [feature].*
 - *Update (or sync) ADT.*
 - *Check for ADT updates.*
 - *Build (or update) the live docs from the reference files.*

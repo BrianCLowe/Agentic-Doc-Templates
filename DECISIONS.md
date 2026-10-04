@@ -14,12 +14,12 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 | D4 | This root `DECISIONS.md` is the pack’s own decision log | accepted | 2.7.27 |
 | D5 | Integrity eval (incl. fail-snapshots) stays in pack-checks | accepted | 2.7.27 |
 | D6 | Standing is playbook overrides only; omit the key when empty | accepted | 2.7.25 |
-| D7 | Host worktrees are not a settings key; pack does not create trees | accepted | 2.7.24 |
-| D8 | `milestone-pr` is a multi-TODO cut, not one-TODO serial PRs | accepted | 2.7.21 |
-| D9 | Do not migrate an already-set `orchestrator.git.mode` | accepted | 2.7.20 |
+| D7 | Host worktrees are not a settings key; pack does not create trees | superseded | 2.7.24 |
+| D8 | `milestone-pr` is a multi-TODO cut, not one-TODO serial PRs | superseded | 2.7.21 |
+| D9 | Do not migrate an already-set `orchestrator.git.mode` | superseded | 2.7.20 |
 | D10 | Additive request ≠ shape change; de-confirm SoT is `workflow/understanding.md` | accepted | 2.7.14 |
-| D11 | User-facing “done” needs an exercise path (operable) | accepted | 2.7.8 |
-| D12 | Kit leftovers stay as covering TODOs on an existing stem | accepted | 2.7.19 |
+| D11 | User-facing “done” needs an exercise path (operable) | superseded | 2.7.8 |
+| D12 | Kit leftovers stay as covering TODOs on an existing stem | superseded | 2.7.19 |
 | D13 | Unset `docs_profile` → `prevent` (no silent downgrade) | accepted | 2.7.7 |
 | D14 | Release zip is pack-only `docs/templates/`; maintainer dirs stay upstream | accepted | 2.7.17 |
 | D15 | Workflow is an index + one module; not a monolith | accepted | 2.7.15 |
@@ -32,16 +32,17 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 | D22 | Named humans self-ID onto the roster with their own slug; generic `human` is leftover bucket, not a teammate | accepted | 2.9.1 |
 | D23 | Destination file always; implementation gate only after *lock product shape* + confirm (or prevent’s confirm) | accepted | 2.9.3 |
 | D24 | Session-default docs freshness; pack lessons live on the routed path, not only the discovery playbook | accepted | 2.9.4 |
-| D25 | Bugbot reads the PR until ready; squash-before-ready is not required (HEAD-only reviewers use standing) | accepted | 2.9.4 |
+| D25 | Bugbot reads the PR until ready; squash-before-ready is not required (HEAD-only reviewers use standing) | superseded | 2.9.4 |
 | D26 | Sibling `docs/` drift is content (`git diff`), not ancestry (`git log` after squash-merge) | accepted | 2.9.5 |
 | D27 | Docs profile value `ship-first` is renamed `build-first`; sync rewrites the setting | accepted | 2.9.6 |
-| D28 | Slash commands are an opt-in menu for sync and orchestrate only | accepted | 2.9.6 |
+| D28 | Slash commands are an opt-in menu for sync and orchestrate only | superseded | 2.9.6 |
 | D29 | Repo behavior that is not a pack playbook is asked as a rule or a skill, not filed in standing | accepted | 2.9.6 |
-| D30 | Drained child tasks are not capability-done; an Outcomes row stays open until a passing exercise note | accepted | 2.9.9 |
-| D31 | Completed is not a repair log; incidental fixes stay in git, not a new Completed row | accepted | 2.9.10 |
+| D30 | Drained child tasks are not capability-done; an Outcomes row stays open until a passing exercise note | superseded | 2.9.9 |
+| D31 | Completed is not a repair log; incidental fixes stay in git, not a new Completed row | superseded | 2.9.10 |
 | D32 | No check interval means the update check does not write settings | accepted | 2.9.13 |
-| D33 | A category enabler is named even when unspoken; a write that needs it waits until that portion is fully functional | accepted | 2.9.14 |
-| D34 | Current focus is a handoff note; the instructed task is the work | accepted | 2.9.15 |
+| D33 | A category enabler is named even when unspoken; a write that needs it waits until that portion is fully functional | superseded | 2.9.14 |
+| D34 | Current focus is a handoff note; the instructed task is the work | superseded | 2.9.15 |
+| D35 | The pack documents and syncs; no checklist, Current focus, implementation role, or git setting | accepted | 2.10.0 |
 
 ---
 
@@ -71,7 +72,7 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 
 **Decision:** `python3 eval/run_eval.py` (no model) stays on `.github/workflows/pack-checks.yml`. Cases include **fail-snapshots** a wrong agent output must fail. Grow from integrity; prepare/verify remains the behavioral loop.
 
-**Named fail modes to keep covered:** wrong-engine build; operable-gap marked done; build-first skipping Understanding under **prevent**; inventing Understanding under **build-first**; invented-decision Assumptions / example-as-identity; always-mode update check writing settings; dependent marked done while its enabler is unfinished; Current focus treated as a work cap.
+**Named fail modes to keep covered:** wrong-engine build (identity, not a second surface); inventing Understanding under **build-first**; prevent still writes Understanding and is not a coding gate; invented-decision Assumptions / example-as-identity; always-mode update check writing settings; kit leftovers stay on the existing spec; the always-on rule does not restore a work checklist, Current focus, or a git-delivery setting.
 
 ## D6 — Standing is not a notes pad
 
@@ -266,9 +267,19 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 
 ## D34 — Current focus is a note
 
+**Superseded by D35.** The note is gone. Do not restore it as a softer cap.
+
 **Decision:** Current focus is a handoff sentence so the next session can orient. It is not the work limit. The work is whatever the user or parent brief instructed. If other open items are required for that instruction to be true, those items are in — including Medium and Low, and a linked blocker the instruction cannot be true without. *Continue from Current focus* (and a brief that names one item) stays one item and does not become orchestrate. A broader ask (*finish the kit*, *make this feature work*) stays the implement session and does those required items; it does not start the drain-until-blocked loop unless they said orchestrate. Source of truth: Workflow §5.1. The always-loaded rule, the paved path, and the feature-implementer hard rule say the same thing, because a lesson that lives only in §5.1 is skipped when the session does not open that module.
 
 **Do not:** Bring back “that item only” as the implementer default. Do not treat the note as permission to drain tiers the instruction does not require. Do not upgrade a one-item ask into orchestrate. Do not hold kit leftovers back because the note names a different cut (D12).
+
+---
+
+## D35 — Documentation and sync
+
+**Decision:** This pack creates and updates documentation and syncs the pack. It does not sit on the harness. There is no feature TODO, no Current focus, no implementation role, and no git-delivery setting. The instructed task is the work. A gap the confirmed spec or Understanding already makes obvious is part of that instruction — record it on the spec when it is contract. A second product, a surface nobody asked for, or a checklist of future ideas is not. Do not create `*-TODO.md`. Existing files may stay; do not extend them. Human errands stay on `Human-TODO.md`. Docs profile chooses which docs to write (`prevent` / `balanced` / `build-first`). A draft Understanding is not a coding gate. Category inputs stay in **What this is** and on the spec (Dependencies + an Acceptance clause that is false when the input is missing). Kit leftovers stay on the existing spec (D12’s “no empty map rows” stands; the covering-TODO list does not). Slash command is `/sync` only. Standing is still ADT playbook overrides only (D6, D29). Supersedes D7, D8, D9, D11, D12’s TODO list, D25, D28’s `/orchestrate`, D30, D31, D33’s write-ban and TODO follow-ups, and D34.
+
+**Do not:** Recreate Current focus, `TODO_Template.md`, `workflow/todos.md`, feature-implementer, work-verifier, todo-warden, orchestrator, `orchestrator.git`, the timescale rule, or the build-verify rule. Do not turn “obvious gap” into a new checklist. Do not delete a consumer `*-TODO.md` on sync.
 
 ---
 
