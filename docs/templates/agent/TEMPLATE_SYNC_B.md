@@ -30,7 +30,7 @@ Compare semver `X.Y.Z` numerically (major, minor, patch).
 
 **Union tags** from all selected entries. Then:
 
-- If any selected entry is **≥ 2.10.0**, remove `optional-todo-ambition`, `optional-todo-operable`, `optional-todo-kit-coverage`, `optional-todo-outcomes`, and `optional-todo-completed-cleanout` from the union **before** the checklist. Do not create or edit `*-TODO.md`, including under `content-templates`. Leave existing files. They are not the work list.
+- If any selected entry is **≥ 2.10.0**, remove `optional-todo-ambition`, `optional-todo-operable`, `optional-todo-kit-coverage`, `optional-todo-outcomes`, and `optional-todo-completed-cleanout` from the union **before** the checklist. Do not create or edit `*-TODO.md`, including under `content-templates`. Leave existing files. They are not the work list. When **from** < 2.10.1 and **to** ≥ 2.10.1, **B0.7** offers to delete feature and shared `*-TODO.md` files. The offer is that step. Do not delete them in the offer. `auto` and `auto-all` are not a yes.
 
 - Apply the gated checklist **once** for the union (not once per release).
 - If the union includes any of `content-templates`, `optional-live-reshape`, `optional-assumption-cleanout`, `optional-todo-ambition`, `optional-todo-operable`, `optional-todo-kit-coverage`, `optional-todo-outcomes`, or `optional-todo-completed-cleanout`, run those steps even when newer selected entries also list `process-docs-only` (`process-docs-only` on one release does not cancel live passes from skipped releases).
@@ -52,9 +52,9 @@ Compare semver `X.Y.Z` numerically (major, minor, patch).
 | `optional-todo-completed-cleanout` | Live TODO Completed cleanout — **`auto` / `auto-all`:** all Document Map TODO stems; **`choose`:** present + ask once. Remove a Completed checkbox that git shows was never an open `[ ]` task and is not an exercise note. Unsure → leave the row |
 | `rules` | Refresh installed rules/adapters from local `agent/` (see Rules step — **no ask** unless `customized: true`) |
 | `optional-upstream-check` | Stamp `upstream:` in `docs/ADT-settings.yaml` if update-check enabled; offer enable if unset |
-| `process-docs-only` | No live feature/shared content scan **for that release alone** — still honor live-content tags from other selected catch-up entries |
+| `process-docs-only` | No live feature/shared content scan **for that release alone** — still honor live-content tags from other selected catch-up entries. B0.7 may list feature/shared `*-TODO.md` paths when **from** < 2.10.1 (do not open them) |
 
-**Default when `content-templates`, `optional-live-reshape`, `optional-assumption-cleanout`, `optional-todo-ambition`, `optional-todo-operable`, `optional-todo-kit-coverage`, `optional-todo-outcomes`, and `optional-todo-completed-cleanout` are absent from the union:** bump versions + Master Index structure if tagged → rules if tagged → summarize → **present unset options** (below). **Do not** open live `features/` or `_shared/` docs.
+**Default when `content-templates`, `optional-live-reshape`, `optional-assumption-cleanout`, `optional-todo-ambition`, `optional-todo-operable`, `optional-todo-kit-coverage`, `optional-todo-outcomes`, and `optional-todo-completed-cleanout` are absent from the union:** bump versions + Master Index structure if tagged → rules if tagged → summarize → **present unset options** (below). **Do not** open live `features/` or `_shared/` docs. **B0.7** may list `*-TODO.md` filenames under those two folders without opening them, and only when **from** < 2.10.1 and **to** ≥ 2.10.1.
 
 ### B0.1 — Settings file *(migrate once, then use forever)*
 
@@ -150,6 +150,42 @@ Under **`sync.mode: auto-all`:** if unset, set **`prevent`** + `recorded` today 
 The pack has no git-delivery setting. If `docs/ADT-settings.yaml` contains an `orchestrator:` key, **remove that key**. Do not ask a mode. Do not write `orchestrator.git.mode`. Do not write `orchestrator.git.worktrees`. Git delivery belongs to the harness, not this pack.
 
 **Write-in (not a quiz, not an eighth mode):** standing stays playbook overrides only. Do not quiz for standing on this sync. Do not invent a settings enum for a docs or sync override.
+
+### B0.7 — Offer leftover feature TODOs *(when crossing 2.10.1)*
+
+**When this step runs:** **from** < 2.10.1 and **to** ≥ 2.10.1.
+
+**When it does not run:** **from** ≥ 2.10.1, including a same-version re-sync. Do not offer again.
+
+This step is the same under `auto`, `auto-all`, `choose`, and an unset mode. The mode does not answer it. It is not a Live impact tag. Do not execute it because `auto-all` executes unioned passes.
+
+**List (do not open):** files named `*-TODO.md` directly in `docs/features/` and `docs/_shared/`. If a subdirectory of those two folders contains a `*-TODO.md`, include that path. Do not look anywhere else. Do not list `docs/Human-TODO.md`. Do not open the files. Do not read their boxes. If the list is empty, skip this step.
+
+**The step is the offer.** If this turn’s user message already says to clean them out or to delete the leftover feature TODOs, that is the yes: do **Cleanout** below and do not also ask. `sync.mode` is not that message.
+
+Otherwise send one message that names every path in the list and says why:
+
+> These files are leftover feature TODOs: [paths]. The pack removed feature TODOs. It writes documentation and syncs itself. It does not keep a feature checklist or a Current focus. The harness owns the code. An agent that opens one of these files still sees the old boxes and can treat that list as the work. The pack will not add to them. Clean them out?
+
+Sending that message finishes this step. The cleanout is not this step. Continue the rest of Step B. Do not delete, edit, or move the files in this step.
+
+Send the offer in its own sentences. Do not attach it to the sync-mode question. A choice of `auto-all` does not answer the offer.
+
+**Not a yes:** `sync.mode: auto` and `sync.mode: auto-all` do not answer the offer. A missing reply, silence, or “finish the sync” does not. Do not delete the files because the mode is `auto-all`.
+
+#### Cleanout
+
+Run only after an explicit yes to **this** offer. A bare yes answers this offer only when the previous assistant message was the offer. “Clean them out” or “delete the leftover feature TODOs” answers it whenever the user says that. A yes to the sync-mode question does not. `auto` and `auto-all` do not.
+
+A later session that only has that yes opens this section and does the cleanout. It does not start a template sync.
+
+1. Delete each path from the list. No other file.
+2. In `docs/Master_Index.md`, delete link text that points at a deleted file. Keep the stem’s row and its other cells.
+3. In that stem’s spec, `-Understanding.md`, and Catalog file, delete a line that only links the deleted TODO (`Related TODO`). Leave every other line. Skip a file that is not there.
+4. Leave `docs/Human-TODO.md` in place.
+5. Stop. Do not create a replacement list. Do not open other docs.
+
+Do not commit the deletion unless they asked, or B0.3 is already committing this sync — then the deletion rides in the pack/stamp commit.
 
 ### Reference — local template → live file *(only when tagged)*
 
@@ -292,6 +328,8 @@ Run only when selected catch-up includes **2.7.27** and reshape is executing. Op
 
    **“Skipped”** is reserved for: a **unioned** tagged pass that was in scope but not executed (`choose`: user declined); or a path check that did not apply (B8 modern layout — no old `docs/help/` / `docs/agent/` leftovers).
 
+   If B0.7 applied, the same end message includes the offer (paths + why). That offer is not a union tag. Do not report it as executed. The files are still on disk unless they had already said yes.
+
    `auto-all` does **not** mean “run every optional pass every sync.” It means: when a tagged pass is **in the union**, execute it on all Document Map stems without asking.
 10. **Present / apply unset options** *(every sync — before stopping)* — Users cannot ask for what they were never told exists. Read `docs/ADT-settings.yaml`. For each known pack optional (`optional_rules.template-update-check`, `optional_rules.doc-roles`, `optional_rules.slash-commands`, plus any **new** optional named in selected catch-up entries / Step B):
    - **`declined`** → do not re-ask or re-enable; a one-line “still off” note is enough.
@@ -303,13 +341,14 @@ Run only when selected catch-up includes **2.7.27** and reshape is executing. Op
 12. If update-check is enabled and `check_mode_recorded` still missing → run **B0.4** before stopping (`auto-all` defaults `always` there).
 13. If `docs_profile.mode` still unset → run **B0.5** before stopping (`auto-all` defaults `prevent` there).
 14. If `docs/ADT-settings.yaml` still contains an `orchestrator:` key → run **B0.6** and **remove that key**. Do not ask a mode.
+15. If **from** < 2.10.1 and **to** ≥ 2.10.1 → run **B0.7**. The step is the offer. Do not delete feature `*-TODO.md` files in this step unless this turn’s user message already accepted that offer. `auto` and `auto-all` are not a yes. If **from** ≥ 2.10.1, do not run B0.7.
 
 ### Do not (Step B)
 
 - Open or follow this file before Step A / pack refresh completes
 - Run Step B from a pre–Step A in-memory copy of any sync playbook
 - Capture versions before Step A overwrite
-- Scan every live Understanding / Spec / TODO unless `content-templates` or (`optional-live-reshape` and executing) or (`optional-assumption-cleanout` and executing) or (`optional-todo-ambition` and executing) or (`optional-todo-operable` and executing) or (`optional-todo-kit-coverage` and executing) or (`optional-todo-outcomes` and executing) or (`optional-todo-completed-cleanout` and executing) or the **2.7.25 standing relocate** one-shot (then only the **one** destination a misplaced standing bullet names — Workflow §0.2 Sync relocate) or the **2.9.6 standing cleanout** one-shot (then only `standing.instructions` — Workflow §0.2 Sync cleanout) or the **2.7.27 instruction-footer strip** (then every in-scope stem’s spec / core TODO, and Understanding when present — including stems with no Understanding)
+- Scan every live Understanding / Spec / TODO unless `content-templates` or (`optional-live-reshape` and executing) or (`optional-assumption-cleanout` and executing) or (`optional-todo-ambition` and executing) or (`optional-todo-operable` and executing) or (`optional-todo-kit-coverage` and executing) or (`optional-todo-outcomes` and executing) or (`optional-todo-completed-cleanout` and executing) or the **2.7.25 standing relocate** one-shot (then only the **one** destination a misplaced standing bullet names — Workflow §0.2 Sync relocate) or the **2.9.6 standing cleanout** one-shot (then only `standing.instructions` — Workflow §0.2 Sync cleanout) or the **2.7.27 instruction-footer strip** (then every in-scope stem’s spec / core TODO, and Understanding when present — including stems with no Understanding) or **B0.7** (list `*-TODO.md` paths under `docs/features/` and `docs/_shared/` only — do not open them — and only when **from** < 2.10.1 and **to** ≥ 2.10.1)
 - Treat `content-templates` as permission to trim/remove Understanding sections — that requires `optional-live-reshape` + execute
 - Under **`choose`:** omit the reshape / assumption clean-out / TODO ambition / TODO operable / TODO kit-coverage / TODO outcomes / TODO completed cleanout ask when those tags are present
 - Under **`auto` / `auto-all`:** re-ask for reshape / assumption clean-out / ambition / operable / kit-coverage / outcomes / completed cleanout / rules refresh when tags say to run them
@@ -342,6 +381,7 @@ Run only when selected catch-up includes **2.7.27** and reshape is executing. Op
 - Treat `auto-all` as license to run every pass in the Live impact tag table
 - Walk each catch-up version as its own full sync or bump Pack version through intermediate numbers
 - Write `orchestrator.git.mode` or `orchestrator.git.worktrees`. B0.6 **removes** an `orchestrator:` key. Do not ask a mode
+- Treat `sync.mode: auto` or `sync.mode: auto-all` as a yes to the B0.7 offer. Delete or edit leftover feature `*-TODO.md` files in the offer step. Include `docs/Human-TODO.md` in that offer. Turn B0.7 into a Live impact tag. Offer again when **from** ≥ 2.10.1
 
 ---
 

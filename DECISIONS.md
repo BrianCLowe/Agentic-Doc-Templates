@@ -43,6 +43,7 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 | D33 | A category enabler is named even when unspoken; a write that needs it waits until that portion is fully functional | superseded | 2.9.14 |
 | D34 | Current focus is a handoff note; the instructed task is the work | superseded | 2.9.15 |
 | D35 | The pack documents and syncs; no checklist, Current focus, implementation role, or git setting | accepted | 2.10.0 |
+| D36 | Leftover feature TODOs are an offer; `auto-all` is not a yes | accepted | 2.10.1 |
 
 ---
 
@@ -279,7 +280,15 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 
 **Decision:** This pack creates and updates documentation and syncs the pack. It does not sit on the harness. There is no feature TODO, no Current focus, no implementation role, and no git-delivery setting. The instructed task is the work. A gap the confirmed spec or Understanding already makes obvious is part of that instruction — record it on the spec when it is contract. A second product, a surface nobody asked for, or a checklist of future ideas is not. Do not create `*-TODO.md`. Existing files may stay; do not extend them. Human errands stay on `Human-TODO.md`. Docs profile chooses which docs to write (`prevent` / `balanced` / `build-first`). A draft Understanding is not a coding gate. Category inputs stay in **What this is** and on the spec (Dependencies + an Acceptance clause that is false when the input is missing). Kit leftovers stay on the existing spec (D12’s “no empty map rows” stands; the covering-TODO list does not). Slash command is `/sync` only. Standing is still ADT playbook overrides only (D6, D29). Supersedes D7, D8, D9, D11, D12’s TODO list, D25, D28’s `/orchestrate`, D30, D31, D33’s write-ban and TODO follow-ups, and D34.
 
-**Do not:** Recreate Current focus, `TODO_Template.md`, `workflow/todos.md`, feature-implementer, work-verifier, todo-warden, orchestrator, `orchestrator.git`, the timescale rule, or the build-verify rule. Do not turn “obvious gap” into a new checklist. Do not delete a consumer `*-TODO.md` on sync.
+**Do not:** Recreate Current focus, `TODO_Template.md`, `workflow/todos.md`, feature-implementer, work-verifier, todo-warden, orchestrator, `orchestrator.git`, the timescale rule, or the build-verify rule. Do not turn “obvious gap” into a new checklist. Do not delete a consumer `*-TODO.md` on sync unless the user explicitly accepts the B0.7 offer (D36). `auto` and `auto-all` are not that acceptance.
+
+---
+
+## D36 — Leftover feature TODOs are an offer
+
+**Decision:** A consumer repo can still have feature `*-TODO.md` files after 2.10.0. Those files are not the work list. The pack does not extend them. When a sync crosses 2.10.1, the step is to offer to delete `*-TODO.md` files under `docs/features/` and `docs/_shared/`, and to say why the pack removed them: the pack writes documentation and syncs itself; it does not keep a feature checklist or a Current focus; the harness owns the code; an agent that opens a leftover file still sees the old boxes. Sending that offer finishes the step. `sync.mode: auto` and `sync.mode: auto-all` do not answer the offer. Silence does not. The files stay until the user says yes. `docs/Human-TODO.md` is not part of the offer. Source of truth: TEMPLATE_SYNC B0.7.
+
+**Do not:** Delete those files because the mode is `auto-all`. Do not turn the offer into a Live impact tag that auto-executes. Do not treat the cleanout as the step. Do not edit the files while offering. Do not include Human-TODO. Do not offer again after **from** is already ≥ 2.10.1.
 
 ---
 
