@@ -72,6 +72,6 @@ python3 eval/run_eval.py verify additive-keeps-confirmed --workdir /tmp/adt-eval
 3. For a trap the model must lose: add `fail_snapshot` pointing at a known-bad `fail-snapshots/<id>/docs/` tree. Integrity overlays it after `prepare` and **requires VERIFY FAIL**.
 4. Run `python3 eval/run_eval.py` (integrity) and a prepare→agent→verify loop once.
 
-Named fail modes to keep covered: wrong-engine identity · prevent still writes Understanding and is not a coding gate · build-first inventing Understanding · live instruction-footer left in place after sync · invented-decision Assumptions / example-as-identity · sync summary listing catalog optional tags as skipped · always-mode update check writing settings · kit leftovers stay on the existing spec · the always-on rule does not restore a work checklist, Current focus, or a git-delivery setting.
+Named fail modes to keep covered: wrong-engine identity · prevent still writes Understanding and is not a coding gate · build-first inventing Understanding · live instruction-footer left in place after sync · invented-decision Assumptions / example-as-identity · sync summary listing catalog optional tags as skipped · always-mode update check writing settings · kit leftovers stay on the existing spec · the always-on rule does not restore a work checklist, Current focus, or a git-delivery setting · leftover feature TODOs are an offer, and `auto-all` is not a yes.
 
 Correctness for this pack ≈ case coverage. Prefer a new golden case over another paragraph of prose when a field bug shows up.

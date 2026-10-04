@@ -102,7 +102,7 @@ Full procedure (incl. **de-confirm gate** + **lock gate**): [`workflow/understan
 
 ### 5. TODO Management *(retired)*
 
-Retired in 2.10.0. The pack does not keep a feature TODO or a Current focus. Do not recreate them. Existing `*-TODO.md` files may stay on disk; do not extend them and do not treat them as the work list.
+Retired in 2.10.0. The pack does not keep a feature TODO or a Current focus. Do not recreate them. Existing `*-TODO.md` files may stay on disk; do not extend them and do not treat them as the work list. A sync that crosses 2.10.1 offers to delete feature and shared `*-TODO.md` files and says why ([`TEMPLATE_SYNC_B.md`](../TEMPLATE_SYNC_B.md) B0.7). That offer is the step. `auto-all` is not a yes. `Human-TODO.md` stays.
 
 ### 7.1 Catalog companions *(list-heavy content)*
 
