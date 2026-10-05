@@ -43,7 +43,7 @@ Live file: **`docs/Team-Roster.md`** (from [`Team_Roster_Template.md`](../../Tea
 1. Open `docs/Team-Roster.md` if it exists. If `team_inbox` is on and the file is missing → create it from the template (named-human / leftover-`human` fill-in **only** if user-stated this turn; Active otherwise empty). **Stop.** Do **not** add bot or invented-name rows.
 2. Assign follow-ups / stamp Assignee **only** to **Active** `role_id`s (`human` only if that leftover bucket is Active). Use that row’s **Handoff**.
 3. If the job has no Active row, or `kind_defaults` names a `role_id` that is not Active → write `unassigned`. Do **not** fallback-stamp `human` for human-gated kinds — that locks the row and blocks later *apply defaults to Open* after a bot or named human self-IDs. **Do not invent** a roster entry to match the default.
-4. Pack adapters (`understanding-author`, `feature-implementer`, …) are **not** roster bots. Installed harness agents are **not** a license to fill the table.
+4. Pack adapters (`understanding-author`, …) are **not** roster bots. Installed harness agents are **not** a license to fill the table.
 
 **Do not (handoff / coding agent):** add a bot because you “know we need QA”; invent a human name; copy example / another project’s rows; backfill Active from `kind_defaults` or `team_inbox.roles`; spawn a bot that is not listed.
 

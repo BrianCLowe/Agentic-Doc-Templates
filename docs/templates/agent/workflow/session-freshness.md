@@ -4,7 +4,7 @@
 
 The pack’s promise is that **live docs are the source of truth across sessions**. That promise holds only when this checkout’s `docs/` is the work the user means — **committed, or the WIP in this tree**, not eight commits behind a sibling worktree.
 
-TEMPLATE_SYNC [A0](../TEMPLATE_SYNC_A.md) already hard-stops a dirty tree before overwrite. This module is the **same lesson on the session-default path**: one `git status` (and a worktree list) before treating Master Index / TODOs as current.
+TEMPLATE_SYNC [A0](../TEMPLATE_SYNC_A.md) already hard-stops a dirty tree before overwrite. This module is the **same lesson on the session-default path**: one `git status` (and a worktree list) before treating Master Index / specs and Understandings as current.
 
 **Stay ≠ current.** Already being in a worktree does not mean this tree’s docs are current. The pack does not create worktrees. Git delivery belongs to the harness.
 
@@ -25,9 +25,9 @@ git worktree list
 |-------|--------|
 | Clean + **one** worktree | Continue. Optional one line: *docs freshness: ok*. |
 | Dirty **this** tree | One line: *this tree has uncommitted work* (list `docs/` paths if any). Treat on-disk docs as possibly **newer** than `HEAD`. **Continue** — this may be the user’s WIP. Do **not** auto-commit. |
-| **Two or more** worktrees (or linked/host worktree) | Do the **sibling probe** below before trusting Master Index / TODOs. |
+| **Two or more** worktrees (or linked/host worktree) | Do the **sibling probe** below before trusting Master Index / specs and Understandings. |
 
-**Linked/host detect** (same cheap signals as orchestrator-git): `git rev-parse --git-common-dir` differs from `--git-dir`; cwd under `~/.cursor/worktrees`, `~/.grok/worktrees`, or `.claude/worktrees`; session started via `/worktree` / `grok -w` / Copilot New Worktree / `claude --worktree`. Cloud Agent VM + branch is **not** a git worktree — still run `git status`; skip sibling probe unless `git worktree list` shows more than one.
+**Linked/host detect**: `git rev-parse --git-common-dir` differs from `--git-dir`; cwd under `~/.cursor/worktrees`, `~/.grok/worktrees`, or `.claude/worktrees`; session started via `/worktree` / `grok -w` / Copilot New Worktree / `claude --worktree`. Cloud Agent VM + branch is **not** a git worktree — still run `git status`; skip sibling probe unless `git worktree list` shows more than one.
 
 ---
 
@@ -51,7 +51,7 @@ git log --oneline HEAD..<other-HEAD> -- docs
 On **hard stop**:
 
 1. Name the other path, its branch, and what is newer (uncommitted `docs/` and/or commit subjects).
-2. Explain: Master Index / TODOs in **this** tree may be stale; implementing or merging from here can **regress** the user’s other tree (the A0 reason — mix or overwrite real work).
+2. Explain: Master Index / specs and Understandings in **this** tree may be stale; implementing or merging from here can **regress** the user’s other tree (the A0 reason — mix or overwrite real work).
 3. **Ask** which tree is current. Do **not** auto-commit, stash, merge, rebase, or checkout default in a host worktree.
 4. **Stop** until they choose: switch/continue in the current tree · they will commit/merge · explicit waive (warn that you may regress sibling `docs/`).
 
@@ -109,6 +109,6 @@ This gate is **do not stack PRs that will rebase-conflict on `docs/`**. Git deli
 - Scan every file under every worktree — porcelain + `git diff --quiet HEAD <other-HEAD> -- docs` is enough; `git log -- docs` only names commits on a real stop
 - Hard-stop because `git log HEAD..<other> -- docs` lists a squash-merge (or rebase) when `git diff --quiet HEAD <other-HEAD> -- docs` is clean
 - Open this module when the cheap freshness check is clean **and** you are not opening a new PR
-- Open a second PR because the **code** files differ while the same `*-TODO.md` / spec / Understanding would change
+- Open a second PR because the **code** files differ while the same spec / Understanding would change
 - Spawn a new Grok/coding agent + new PR for a successive complaint on a stem that already has an open PR
 - Treat “items do not share code files” as permission to parallelize same-stem **docs**
