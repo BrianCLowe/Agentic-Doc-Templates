@@ -35,7 +35,7 @@ description: >-
 
 Rules:
 
-- `name` is the role key (e.g. `feature-implementer`).
+- `name` is the role key (e.g. `understanding-author`).
 - `description: >-` then indented continuation lines (same style as existing adapters).
 - Emit every key in `roles.<role>.cursor` after the description (typical: `model: inherit`). Booleans as `true` / `false`.
 - Body = full text of `adapter-src/bodies/<body>` from the manifest `body` field — **no edits**.

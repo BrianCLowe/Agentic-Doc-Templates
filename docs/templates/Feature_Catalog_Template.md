@@ -4,8 +4,7 @@
 
 **Last Updated**: [YYYY-MM-DD]  
 **Related Spec**: [FeatureName.md](FeatureName.md)  
-**Related Understanding**: [FeatureName-Understanding.md](FeatureName-Understanding.md)  
-**Related TODO**: [FeatureName-TODO.md](FeatureName-TODO.md)
+**Related Understanding**: [FeatureName-Understanding.md](FeatureName-Understanding.md)
 
 ---
 
