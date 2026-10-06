@@ -57,7 +57,7 @@ docs/
 ├── Product-Vision.md            ← whole-product end-state (all profiles; build-first = destination, not a gate)
 ├── Human-TODO.md                ← human inbox (procure, playtest, decide, waiting)
 ├── Team-Roster.md               ← optional — only when team inbox is on (named humans and bots self-ID; do not invent)
-├── ADT-settings.yaml            ← pack prefs (profile, git, standing playbook overrides, tools, optionals, sync, upstream)
+├── ADT-settings.yaml            ← pack prefs (profile, standing playbook overrides, tools, optionals, sync, upstream)
 ├── reference/                   ← design docs, chat exports, PRDs, legacy specs
 │   └── visuals/                 ← optional inspiration screenshots
 ├── _shared/ + assets/
@@ -70,7 +70,7 @@ docs/
     └── … scaffolds + agent/Modular_Docs_Workflow.md (index) + agent/workflow/
 ```
 
-Naming: [`../agent/workflow/naming-layout.md`](../agent/workflow/naming-layout.md) §0. Path A/B: [`../agent/workflow/implement.md`](../agent/workflow/implement.md) §3. Index: [`../agent/Modular_Docs_Workflow.md`](../agent/Modular_Docs_Workflow.md).
+Naming: [`../agent/workflow/naming-layout.md`](../agent/workflow/naming-layout.md) §0. Which docs: [`../agent/workflow/implement.md`](../agent/workflow/implement.md) §3. Index: [`../agent/Modular_Docs_Workflow.md`](../agent/Modular_Docs_Workflow.md).
 
 ---
 
@@ -79,8 +79,8 @@ Naming: [`../agent/workflow/naming-layout.md`](../agent/workflow/naming-layout.m
 | Goal | Go here |
 |------|---------|
 | Day-to-day (chat → docs, mid-build ideas, design docs) | [`USAGE.md`](USAGE.md) |
-| What to put in Understanding / spec / TODO / Product-Vision / Team-Roster (fill-in blanks) | [`SCAFFOLDS.md`](SCAFFOLDS.md) |
-| Optional roles (intent-first Understanding, implement, sync) | [`../agent/roles/README.md`](../agent/roles/README.md) |
+| What to put in Understanding / spec / Product-Vision / Team-Roster (fill-in blanks) | [`SCAFFOLDS.md`](SCAFFOLDS.md) |
+| Optional roles (intent-first Understanding, sync) | [`../agent/roles/README.md`](../agent/roles/README.md) |
 | Describing UI / scope (esp. if new to software) | [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md) |
 | Rule / harness install (Cursor, Grok Build, …) | [`../agent/tools/README.md`](../agent/tools/README.md) · human TOC: [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md) |
 | Brainstorm in Grok/ChatGPT before a repo | Export chats → `docs/reference/` — [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md#recommended-export-idea-chats-into-docsreference) |

@@ -289,7 +289,7 @@ Do **not** create `*-TODO.md`.
 **When many features were named** (e.g. 5+):
 
 1. Create the profile default file set for **every** map row.
-2. If Understandings were created: tell the user which to review first (Path A foundation or the feature they care about most).
+2. If Understandings were created: tell the user which to review first (the shared foundation or the feature they care about most).
 3. Optionally ask once: “Review all draft Understandings, or start with [X]?” — do **not** wait for that ask before creating the files.
 
 If the user named **no** features yet, skip Step 3d and say so in Step 4.

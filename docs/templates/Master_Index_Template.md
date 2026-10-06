@@ -113,7 +113,7 @@ Leave this table **empty** (or with a single “*(none yet)*” note) unless a p
 ## 4. Quick Start
 
 1. Docs freshness first ([Workflow §0.3](templates/agent/workflow/session-freshness.md)) — then read this file; find the feature or shared component in **§3 Document Map**.
-2. Follow **[`templates/agent/Modular_Docs_Workflow.md`](templates/agent/Modular_Docs_Workflow.md)** (paved path) — Path A/B detail in [`workflow/implement.md`](templates/agent/workflow/implement.md) when needed.
+2. Follow **[`templates/agent/Modular_Docs_Workflow.md`](templates/agent/Modular_Docs_Workflow.md)** (paved path) — Which docs in [`workflow/implement.md`](templates/agent/workflow/implement.md) when needed.
 3. If this session changed shape or contract, update the Understanding and/or spec. There is no Current focus.
 
 **Agents:** The installed modular documentation rule is a short checklist; procedure is the workflow **index** then **one** module under `templates/agent/workflow/`.

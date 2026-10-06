@@ -9,7 +9,7 @@ Day-to-day workflows after setup. First-time install: [`SETUP.md`](SETUP.md). Wh
 Depends on **docs profile** in `docs/ADT-settings.yaml` — a first-class choice ([Workflow §0.1](../agent/workflow/profile-standing.md#01-docs-profile-ceremony-modes)). **`build-first`** is the right default for typed APIs / CRUD. **`prevent`** is the right default for editors / games / multi-surface (and the fallback if unset):
 
 1. You capture ideas (recommended: chat exports in `docs/reference/`, or a mid-build correction in chat).
-2. **`prevent` (default):** agent drafts `Product-Vision.md` (whole-product end-state) **and** `-Understanding.md` (per-feature shape); you confirm both before code. **`build-first`:** agent drafts thin **spec + TODO** plus a lightweight `Product-Vision.md` (destination, **not a gate**). **`balanced`:** always a lightweight Product-Vision; Understanding when identity is ambiguous; deepen the vision when 2+ stems, the whole is fuzzy, or you *lock product shape*.
+2. **`prevent` (default):** agent drafts `Product-Vision.md` (whole-product end-state) **and** `-Understanding.md` (per-feature shape); you confirm both before code. **`build-first`:** agent drafts thin **spec** plus a lightweight `Product-Vision.md` (destination, **not a gate**). **`balanced`:** always a lightweight Product-Vision; Understanding when identity is ambiguous; deepen the vision when 2+ stems, the whole is fuzzy, or you *lock product shape*.
 3. When Understanding is used: **you confirm shape** — is / is *not* + any remaining **real-fork** Assumptions (empty is fine; not a full-spec review). Under **prevent**, confirm **Product-Vision** as one product (end-state picture), not a feature list. Under **build-first**, confirm vision only after *lock product shape*. Agents should lock obvious defaults and not treat examples in `docs/reference/` as the target unless you clearly set them as the target.
 4. Durable contract lives on the **spec**. A gap that spec or Understanding already makes obvious is part of the instructed task. There is no Current focus and no feature TODO. Under build-first, grow the spec as the harness builds; use *lock shape for X* if identity fights start. *Lock product shape* only when the whole product needs a confirm gate. A new session starts with **docs freshness** (`git status` + worktrees) before treating those files as current ([Workflow §0.3](../agent/workflow/session-freshness.md)).
 
@@ -47,7 +47,7 @@ Your job is to correct wrong **identity** assumptions — not to write Understan
 
 > New idea: [brief]. Add it to the docs — draft Understanding + TODO; I'll review.
 
-*(Under **build-first**, say *spec + TODO* instead of Understanding, or *lock shape* if you want the prevent gate for that stem.)*
+*(Under **build-first**, say *spec* instead of Understanding, or *lock shape* if you want the prevent gate for that stem.)*
 
 > Update `RoleEditor-Understanding.md` — fix What this is NOT: separate UI on the existing editor, not a new editor engine.
 
@@ -150,7 +150,7 @@ Anything only you can close → `docs/Human-TODO.md`: procure, decide/sign-off, 
 | Goal | Say something like |
 |------|-------------------|
 | Chat → docs | *Build or update the live docs from `docs/reference/`.* *(export threads there first)* |
-| New idea | *Add [idea] to the docs — draft Understanding + TODO; I'll review.* *(build-first: spec + TODO; or *lock shape for X*)* |
+| New idea | *Add [idea] to the docs — draft Understanding; I'll review.* *(build-first: spec; or *lock shape for X*)* |
 | Product vision | *Lock product shape.* / *Draft the end-state picture.* / *What’s the product vision?* |
 | Fix misunderstanding | *Update [Feature]-Understanding.md — especially What this is NOT.* |
 | UI screenshot | *Save to `docs/features/assets/`, add Visual references on the **spec** (similar vs different).* |
@@ -186,7 +186,6 @@ Optional roles (opt-in, never always-on): [`../agent/roles/README.md`](../agent/
 | `docs/Product-Vision.md` | Whole-product end-state picture (always created; build-first = destination until *lock product shape*) |
 | `docs/features/FeatureName-Understanding.md` | Shape only — is / is not, Relationship, real-fork Assumptions (not full-spec review) |
 | `docs/features/FeatureName.md` | Durable contract after shape confirm |
-| `docs/features/FeatureName.md` | Spec — the contract |
 | `docs/_shared/…` | Only for truly shared project pieces (may be empty) |
 | `docs/Tooling.md` / `docs/Human-TODO.md` | Machine tools / human inbox (procure · playtest · decide · waiting) |
 | `docs/Team-Roster.md` | Optional team inbox roster (Name / Jobs / Anti-jobs if defined; only when enabled — named humans and bots self-ID; one initial PR; coding agents do not invent) |
