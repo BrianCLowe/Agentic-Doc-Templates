@@ -123,7 +123,7 @@
         "must_contain": [
           "team_inbox.enabled",
           "confirm report",
-          "Invent `Team-Roster.md` bot or human-name rows"
+          "invent `Team-Roster.md` bot or human-name rows"
         ],
         "must_not_contain": [
           "Mark human-only items done; invent Human-TODO spam"

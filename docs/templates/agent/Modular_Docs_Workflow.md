@@ -94,7 +94,7 @@ Full procedure: [`workflow/understanding.md`](workflow/understanding.md#2-unders
 
 ### 3. Quick Start — Working on Any Task
 
-Paved path is above. Path A/B detail: [`workflow/implement.md`](workflow/implement.md#3-quick-start--working-on-any-task).
+Paved path is above. Which docs: [`workflow/implement.md`](workflow/implement.md#3-quick-start--working-on-any-task).
 
 ### 4. Understanding (Features & Shared)
 
@@ -102,7 +102,7 @@ Full procedure (incl. **de-confirm gate** + **lock gate**): [`workflow/understan
 
 ### 5. TODO Management *(retired)*
 
-Retired in 2.10.0. The pack does not keep a feature TODO or a Current focus. Do not recreate them. Existing `*-TODO.md` files may stay on disk; do not extend them and do not treat them as the work list. A sync that crosses 2.10.1 offers to delete feature and shared `*-TODO.md` files and says why ([`TEMPLATE_SYNC_B.md`](../TEMPLATE_SYNC_B.md) B0.7). That offer is the step. `auto-all` is not a yes. `Human-TODO.md` stays.
+Retired in 2.10.0. The pack does not keep a feature TODO or a Current focus. Do not recreate them. Existing `*-TODO.md` files may stay on disk; do not extend them and do not treat them as the work list. A sync that crosses 2.10.1 offers to delete feature and shared `*-TODO.md` files and says why ([`TEMPLATE_SYNC_B.md`](TEMPLATE_SYNC_B.md) B0.7). That offer is the step. `auto-all` is not a yes. `Human-TODO.md` stays.
 
 ### 7.1 Catalog companions *(list-heavy content)*
 
@@ -138,4 +138,4 @@ See [`workflow/human-todo.md`](workflow/human-todo.md#13-human-todo-inbox--needs
 - **This file** = *how to work* — paved path first; then **one** module from the router.
 - **Tooling.md** = *what to install on a new machine* (not package deps) — [`workflow/tooling.md`](workflow/tooling.md).
 - **Human-TODO.md** = *what only a human can close* — [`workflow/human-todo.md`](workflow/human-todo.md). Optional `team_inbox` (unset = human-only) → [`workflow/team-roster.md`](workflow/team-roster.md). **Team-Roster.md** = who exists + handoff (create only when enabled; do not invent teammates).
-- The installed agent rule ([`Modular_Documentation_Rule.mdc`](Modular_Documentation_Rule.mdc)) is a short checklist — open this index when creating files, Path A/B, graduation, profile/standing questions, or the user asks about procedure; then open only the named module.
+- The installed agent rule ([`Modular_Documentation_Rule.mdc`](Modular_Documentation_Rule.mdc)) is a short checklist — open this index when creating files, which docs to open, graduation, profile/standing questions, or the user asks about procedure; then open only the named module.

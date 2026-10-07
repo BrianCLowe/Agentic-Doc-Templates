@@ -119,7 +119,7 @@ Everything ships under **`docs/templates/`**. Live project docs stay at `docs/` 
 
 | Area | Role |
 |------|------|
-| **Scaffolds** | Master Index, Product vision, Understanding, Spec, TODO, Tooling, Human-TODO, optional Team-Roster, Decision templates |
+| **Scaffolds** | Master Index, Product vision, Understanding, Spec, Tooling, Human-TODO, optional Team-Roster, Decision templates |
 | **[`help/`](docs/templates/help/)** | Human guides — [SETUP](docs/templates/help/SETUP.md), [USAGE](docs/templates/help/USAGE.md), [SCAFFOLDS](docs/templates/help/SCAFFOLDS.md), [IDEA_CAPTURE_TIPS](docs/templates/help/IDEA_CAPTURE_TIPS.md), [USING_WITH_AGENTS](docs/templates/help/USING_WITH_AGENTS.md) |
 | **[`agent/`](docs/templates/agent/)** | [`Modular_Docs_Workflow.md`](docs/templates/agent/Modular_Docs_Workflow.md), bootstrap, [`RULE_INSTALL`](docs/templates/agent/RULE_INSTALL.md) → per-tool [`tools/`](docs/templates/agent/tools/README.md), template sync; optional [`roles/`](docs/templates/agent/roles/README.md) (Cursor/Grok/Copilot adapters shipped 2.7.23+ — never always-on) |
 | **[`VERSION`](docs/templates/VERSION)** / **[`CHANGELOG.md`](docs/templates/CHANGELOG.md)** | Cheap upstream compare + sync scope after a pack refresh |
@@ -137,13 +137,13 @@ docs/
 ├── Tooling.md                   ← machine tools (not package deps)
 ├── Human-TODO.md                ← human inbox (procure, playtest, decide, waiting)
 ├── Team-Roster.md               ← optional — only when team inbox is on (named humans and bots self-ID; do not invent)
-├── ADT-settings.yaml            ← pack prefs (profile, git, standing playbook overrides, tools, optionals, sync, upstream)
+├── ADT-settings.yaml            ← pack prefs (profile, standing playbook overrides, tools, optionals, sync, upstream)
 ├── reference/                   ← design docs, chat exports, PRDs, legacy specs
 │   └── visuals/                 ← optional inspiration screenshots
 ├── _shared/                     ← reusable components (same note types as features)
-│   └── ComponentName.md (+ Understanding, TODO)
+│   └── ComponentName.md (+ Understanding)
 ├── features/
-│   └── FeatureName.md (+ Understanding, TODO)
+│   └── FeatureName.md (+ Understanding)
 ├── decisions/                   ← optional cross-cutting decisions
 └── templates/                   ← this pack (overwrite on sync; not live content)
 ```
