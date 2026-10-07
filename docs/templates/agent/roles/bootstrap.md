@@ -21,8 +21,8 @@
 ## Steps
 
 1. Open `docs/templates/agent/BOOTSTRAP.md`.
-2. Execute its steps in order — **Step 3p** (one-batch project preferences: profile, optionals, sync, orchestrator git) **before** Step 3d file create; Step 4 only catch-up missing prefs.
-3. Doc-roles / update-check / sync / git are part of **Step 3p** (or a later RULE_INSTALL / explicit ask) — do not enable silently.
+2. Execute its steps in order — **Step 3p** (one-batch project preferences: profile, optionals, sync) **before** Step 3d file create; Step 4 only catch-up missing prefs.
+3. Doc-roles / update-check / sync are part of **Step 3p** (or a later RULE_INSTALL / explicit ask) — do not enable silently.
 4. Stop when BOOTSTRAP’s “Tell the user what's next” is done.
 
 ## Stop when

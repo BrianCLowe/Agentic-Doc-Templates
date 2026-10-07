@@ -62,7 +62,7 @@ If `optional_rules.template-update-check` is missing: under **`sync.mode: auto-a
 
 If `optional_rules.doc-roles` is missing: under **`sync.mode: auto-all`** enable + install adapters for each `tools.*.status: installed` tool that supports them; otherwise ask once using bootstrap Step 3p **C** (include the slim-parent reason) for **any** rule-install or template-sync pass — not only when installing Cursor/Grok/Claude/Copilot. Explain what “yes” means for each installed tool (Cursor → `.cursor/agents/`; Grok → `.grok/agents/`; Claude → `.claude/agents/`; Copilot → `.github/agents/*.agent.md`; OpenClaw/Continue/Cline: no adapter files — parent follows `roles/*.md` in-session). Then record `enabled` or `declined`. Do **not** skip the ask because the current tool’s Install row is None.
 
-If `optional_rules.slash-commands` is missing: under **`sync.mode: auto-all`** enable + install for each installed tool that has a command folder; otherwise ask once using bootstrap Step 3p **F**. **Decline** is the right answer if they would rather just ask. Cursor → `.cursor/commands/`; Claude → `.claude/commands/`; Copilot → `.github/prompts/` (`*.prompt.md`). Grok, OpenClaw, Continue, Cline, `AGENTS.md`: no files — the short ask stays the path. Then record `enabled` or `declined`.
+If `optional_rules.slash-commands` is missing: under **`sync.mode: auto-all`** enable + install for each installed tool that has a command folder; otherwise ask once using bootstrap Step 3p **E**. **Decline** is the right answer if they would rather just ask. Cursor → `.cursor/commands/`; Claude → `.claude/commands/`; Copilot → `.github/prompts/` (`*.prompt.md`). Grok, OpenClaw, Continue, Cline, `AGENTS.md`: no files — the short ask stays the path. Then record `enabled` or `declined`.
 
 If `docs/ADT-settings.yaml` still has an `orchestrator:` key: **B0.6 removes that key**. Do not ask a git mode.
 
@@ -121,8 +121,8 @@ Installing for one tool **does not remove or replace** another tool's files. Rec
 
 ## Shared install rules
 
-- **Never overwrite** an existing instructions file without showing what will change and getting confirmation — **except** template-sync refresh of pack-managed modular / timescale / build-verify rule bodies for `installed` tools that are not `customized: true`.
-- If merging into `copilot-instructions.md`, `CLAUDE.md`, or `AGENTS.md`, **append** a clearly labeled section; do not delete existing sections. On refresh, replace only the pack-owned Documentation workflow / timescale / build-verify sections.
+- **Never overwrite** an existing instructions file without showing what will change and getting confirmation — **except** template-sync refresh of pack-managed modular rule bodies for `installed` tools that are not `customized: true`.
+- If merging into `copilot-instructions.md`, `CLAUDE.md`, or `AGENTS.md`, **append** a clearly labeled section; do not delete existing sections. On refresh, replace only the pack-owned Documentation workflow section, and delete leftover timescale and build-verify sections.
 - If the modular rule is **already present** at the target path, set status to `installed` if missing from yaml — do not re-install blindly.
 - Do not edit files under `docs/templates/` except when copying **from** them. The warning also lives at [`../README.md`](../README.md) (pack-owned; full overwrite on sync).
 - After install, tell the user which file(s) were created or updated.
@@ -137,8 +137,7 @@ Installing for one tool **does not remove or replace** another tool's files. Rec
 > Sync mode: [auto | auto-all | choose | not asked — see bootstrap Step 3p].  
 > Template update checks: [enabled | declined | not asked — see bootstrap Step 3p].  
 > Optional doc roles: [enabled | declined | not asked — see bootstrap Step 3p].  
-> Slash commands: [enabled | declined | not asked — see bootstrap Step 3p F].  
-> Orchestrator git: [milestone-pr | branch-pr-squash | branch-pr | … | not asked — see bootstrap Step 3p / B0.6].
+> Slash commands: [enabled | declined | not asked — see bootstrap Step 3p E].  
 >
 > Install the modular docs rule for **[tool]**? (I won't ask again for that tool after you answer.)  
 > If you also use other agents on this repo, say which — each gets its own `tools/<key>.md` pass.

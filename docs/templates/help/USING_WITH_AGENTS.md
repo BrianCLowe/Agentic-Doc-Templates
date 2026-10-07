@@ -67,8 +67,6 @@ OpenClaw loads workspace bootstrap files (especially `AGENTS.md`), not `.cursor/
 | Agent always reads Master_Index first | Usually, if the rule is loaded — not guaranteed. **Docs freshness** (`git status` + worktrees) first; sibling `docs/` drift = content, not ancestry after squash-merge |
 | Agent treats this worktree’s docs as current | After §0.3 freshness. Stay-in-worktree ≠ current — a sibling tree may have newer uncommitted `docs/` |
 | Grok / successive issues each get their own PR | Same-stem live docs (TODO/spec) on an open PR → add there. Docs overlap ≠ code overlap |
-| Agent always updates TODOs | Best when the rule is active *and* you remind at session end |
-| Agent plans at human sprint size | Core timescale rule pushes **target architecture** cuts; still not guaranteed every session |
 | Agent says “you can test” but build is red | Core **build-verify** rule — fill Tooling **Project verify**; agent must run/fix before handoff |
 | Preference polish sticks across sessions | Rule captures lasting UI choices into spec **Decisions** same turn (no wrap-up ask needed) |
 | Playbook overrides stick | Agents lookout-capture into `standing.instructions` (or first-class keys) same turn — only when they **override an ADT playbook**, not random notes — Workflow §0.2 |

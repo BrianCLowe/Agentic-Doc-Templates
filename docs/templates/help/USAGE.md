@@ -164,10 +164,7 @@ Anything only you can close → `docs/Human-TODO.md`: procure, decide/sign-off, 
 | Update-check cadence | *Check for template updates every session.* / *Only check every week.* |
 | Optional role — intent | *Draft Understanding for [Feature] from what I said — I’ll review.* (main agent delegates if subagents installed) |
 | Docs | *Draft Understanding for X.* / *Update the spec for X.* |
-| Optional role — todo warden | *Todo warden — reconcile TODOs vs what shipped.* / *Todo cleanup — move completed items to Completed.* / *Outcome audit — outcomes stay open until the scenario is exercised.* *(docs-only; honesty caps; hygiene moves finished `[x]`; incidental fixes stay in git, not a new Completed row; a checked item the code does not implement is reopened; named leftovers get covering TODOs — no vendor-doc fetch)* |
-| Set orchestrator git | *Set orchestrator git to milestone-pr* / *branch-pr-squash* / *branch-pr* / *current-push* / *local* |
 | Standing playbook override | *Add standing note: always squash before mark ready.* / *From now on, merge each slice after CI.* *(agent should save without being asked twice — only playbook overrides, not random notes)* |
-| Optional role — verify | *Verify that unit against Understanding and the spec.* |
 | Optional role — graduate | *Understanding confirmed — graduate to the spec.* |
 | Force a subagent | `/understanding-author` … *(optional; usually unnecessary)* |
 | Tooling | *Install the project tooling for this machine.* |
