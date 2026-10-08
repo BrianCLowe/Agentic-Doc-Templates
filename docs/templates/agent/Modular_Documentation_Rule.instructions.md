@@ -8,7 +8,7 @@ applyTo: "**"
 
 First, check if `docs/Master_Index.md` exists. If it does not exist, ignore this entire rule and work normally.
 
-This project uses a lean modular documentation system. `docs/Master_Index.md` is the single entry point for **project context and the Document Map**. Procedure index: **`docs/templates/agent/Modular_Docs_Workflow.md`** (paved path + router) — open it only when the gates below say so, then open **one** named module under `docs/templates/agent/workflow/`. Do **not** edit `docs/templates/` (pack-owned; overwritten on sync — [`docs/templates/README.md`](docs/templates/README.md)).
+This project uses a lean modular documentation system. `docs/Master_Index.md` is the single entry point for **project context and the Document Map**. Procedure index: **`docs/templates/agent/Modular_Docs_Workflow.md`** (paved path + router) — open it only when the gates below say so, then open **one** named module under `docs/templates/agent/workflow/`. Do **not** edit `docs/templates/` (pack-owned; overwritten on sync — `docs/templates/README.md`).
 
 This pack **creates and updates documentation**, and **syncs the pack**. It does not run the harness. No work checklist, no Current focus, no implementation role, no git-delivery setting.
 
