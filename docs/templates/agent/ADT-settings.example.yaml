@@ -109,7 +109,7 @@ optional_rules:
     #   grok-build: .grok/agents/
     #   github-copilot: .github/agents/
 
-  # slash-commands: omit until the user answers (bootstrap Step 3p F / sync step 10).
+  # slash-commands: omit until the user answers (bootstrap Step 3p E / sync step 10).
   # Do not copy this block into a live file as enabled. Missing is correct.
   # Decline if they would rather just ask. Enable installs /sync
   # only where the tool playbook names a command folder. Delete a leftover orchestrate command.
@@ -188,7 +188,6 @@ upstream:
 #   playtest → qa; placement / YTF feel notes → ux (if they have one);
 #   procure / decide / secrets → a named human slug if they self-IDed,
 #   or leftover human if that row is Active, or leave unassigned;
-#   code implement → implementer (usually feature *-TODO.md, not Human-TODO);
 #   Understanding drain → understanding-author;
 #   nightly audit → report-only unless green-lit.
 #
