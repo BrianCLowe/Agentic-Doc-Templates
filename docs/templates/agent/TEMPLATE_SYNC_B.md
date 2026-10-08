@@ -16,7 +16,7 @@ Source of truth is **on disk** under `docs/templates/`. Do **not** re-fetch from
    - Else **from** is unset (first sync)
 4. **Select changelog entries** — see **Catch-up** below. Union their **Live impact** tags. Skim each selected entry’s **Step B** line only for one-shots not already covered by tags.
 5. Do **only** the actions implied by the **unioned tags** + those skimmed Step B one-shots. Run the gated checklist **once** (do not walk each version as its own sync). Bump **Pack version** once to **to**.
-6. If `CHANGELOG.md` is missing: fall back to comparing **content-template paths only** (`Feature_*_Template.md`, `TODO_Template.md`, `Tooling_Template.md`, `Human_TODO_Template.md`, `Team_Roster_Template.md`, `Product_Vision_Template.md`, `Decision_Template.md`) via `git diff` against HEAD or a prior pack copy. Never open all live feature docs “just in case.”
+6. If `CHANGELOG.md` is missing: fall back to comparing **content-template paths only** (`Feature_*_Template.md`, `Tooling_Template.md`, `Human_TODO_Template.md`, `Team_Roster_Template.md`, `Product_Vision_Template.md`, `Decision_Template.md`) via `git diff` against HEAD or a prior pack copy. Never open all live feature docs “just in case.”
 
 ### Catch-up *(version jumps)*
 
@@ -272,7 +272,7 @@ Run only when selected catch-up includes **2.7.27** and reshape is executing. Op
 
 **Keep:** Current focus, High/Medium/Low lists, user dependency notes, Completed. Do **not** delete a loud phased-bridge note (`library foundation first · exercise path: …`) — that is Workflow §5.3, not the italic sermon.
 
-**Then** if the TODO has no short pointer to `help/SCAFFOLDS.md` and `workflow/todos.md`, add the two-line banner from current [`TODO_Template.md`](../TODO_Template.md).
+**Then** do not add a banner to a core TODO. `TODO_Template.md` and `workflow/todos.md` are gone. Leave the TODO.
 
 **Master Index** is **not** this strip — adopt slimmer At a Glance under the `master-index` tag (step 2). That tag is **required when present**, even if reshape is declined.
 
@@ -335,7 +335,7 @@ Run only when selected catch-up includes **2.7.27** and reshape is executing. Op
    - **`declined`** → do not re-ask or re-enable; a one-line “still off” note is enough.
    - **`enabled`** → already handled by refresh steps above; no re-pitch of the feature — but if update-check is enabled and cadence was never recorded, **B0.4** still applies.
    - **missing / unset** under **`sync.mode: auto-all`:** **enable + install** without asking (record `enabled` + `recorded` today). For `template-update-check`: ensure `upstream:`, set `local_pack_version`, `check_mode: always`, `check_mode_recorded` today. For `doc-roles` (and any optional with install artifacts): run each installed tool’s `tools/<key>.md` optional section. Note auto-enabled items in the summary. Never treat this as license to flip **`declined`** → enabled.
-   - **missing / unset** under **`auto`** or **`choose`:** **briefly explain** + **ask once** (yes / no / later). For **`doc-roles`**, include why: if installed, heavier doc moments leave the parent session so it stays slim; without them that work stays in the parent (bootstrap Step 3p **C**). For **`slash-commands`**, include why: `/sync` is a menu for that ask; **decline** if they would rather just ask (Step 3p **F**). On **yes** for `template-update-check`, also run **B0.4** cadence ask in the same turn before stopping. On yes/no, record `enabled` or `declined`. Do **not** enable silently. Do **not** treat unset as silent no.
+   - **missing / unset** under **`auto`** or **`choose`:** **briefly explain** + **ask once** (yes / no / later). For **`doc-roles`**, include why: if installed, heavier doc moments leave the parent session so it stays slim; without them that work stays in the parent (bootstrap Step 3p **C**). For **`slash-commands`**, include why: `/sync` is a menu for that ask; **decline** if they would rather just ask (Step 3p **E**). On **yes** for `template-update-check`, also run **B0.4** cadence ask in the same turn before stopping. On yes/no, record `enabled` or `declined`. Do **not** enable silently. Do **not** treat unset as silent no.
    - Under **`sync.mode: auto`:** changelog-tagged **live passes** (reshape, ambition, …) are already covered by auto — those are not “new optionals.” Cadence (B0.4) is still asked when due.
 11. If `sync.mode` still unset after the above → run **B0.2** before stopping.
 12. If update-check is enabled and `check_mode_recorded` still missing → run **B0.4** before stopping (`auto-all` defaults `always` there).

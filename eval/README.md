@@ -56,8 +56,8 @@ python3 eval/run_eval.py verify additive-keeps-confirmed --workdir /tmp/adt-eval
     ],
     "summaries_must_point": [
       {
-        "file": "docs/templates/agent/roles/feature-implementer.md",
-        "must_contain": ["workflow/understanding.md"],
+        "file": "docs/templates/agent/workflow/implement.md",
+        "must_contain": ["not a coding gate"],
         "must_not_contain": ["An **additive** request that fits the confirmed"]
       }
     ]
