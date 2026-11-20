@@ -21,47 +21,44 @@
 
 ## Steps
 
-1. Open entry [`TEMPLATE_SYNC.md`](../TEMPLATE_SYNC.md) → follow **A** only ([`TEMPLATE_SYNC_A.md`](../TEMPLATE_SYNC_A.md)). **A0 first:** a dirty tree stops sync until the user chooses; the user commits their own work-in-progress.
+1. Open entry [`TEMPLATE_SYNC.md`](../TEMPLATE_SYNC.md) -> follow **A** only ([`TEMPLATE_SYNC_A.md`](../TEMPLATE_SYNC_A.md)).
 2. When A’s handoff says so: open **local** [`TEMPLATE_SYNC_B.md`](../TEMPLATE_SYNC_B.md) from disk — discard any pre-overwrite sync procedure.
-3. Run Step B from B + **unioned** catch-up changelog tags (including B0 settings migrate + sync.mode + B0.3 hygiene commits under `auto` / `auto-all` + **B0.4** cadence when due + **B0.5** docs_profile when unset + **B0.6** remove `orchestrator:` when that key exists — do not ask a git mode + **B0.7** when **from** < 2.10.1 and **to** ≥ 2.10.1). If any selected entry is **≥ 2.10.0**, drop `optional-todo-*` from the union before executing. Do not create or edit `*-TODO.md`. B0.7’s step is the offer. Do not delete those files in that step. `auto` and `auto-all` are not a yes.
+3. Run Step B from B + **unioned** catch-up changelog tags (including B0 settings migrate + sync.mode + **B0.3** cadence when due + **B0.4** docs_profile when unset + **B0.5** remove `orchestrator:` when that key exists + **B0.6** when **from** < 2.10.1 and **to** >= 2.10.1). If any selected entry is **>= 2.10.0**, drop `optional-todo-*` from the union before executing. Do not create or edit `*-TODO.md`. B0.6's step is the offer. Do not delete those files in that step. `auto` and `auto-all` are not a yes.
 4. **Rules** when tagged: refresh installed tools via each `tools/<key>.md` — **no ask** unless `customized: true`. Delete installed timescale and build-verify rules, and leftover feature-implementer, work-verifier, todo-warden, and orchestrate command files.
-5. **Reshape / assumption clean-out** when tagged in the union (and pre-2.10.0 TODO passes only when those tags remain after the 2.10.0 drop): if `sync.mode: auto` or `auto-all` → execute all Document Map stems + hygiene commits; if `choose` → explain + ask once; if mode unset → B0.2 ask once then continue. Shape trim and assumption clean-out (Workflow §4) only apply to stems that **have** Understanding files. **2.7.27 in catch-up:** reshape includes the **instruction-footer strip** on **every** Document Map spec (including stems with no Understanding — delete copied sermons and inline section essays; keep fill-in). **`master-index` when tagged** adopts slimmer At a Glance even if reshape is declined. Assumption clean-out = lock-gate (obvious defaults; real forks only; reference examples are not the target unless clearly set). Kit leftovers stay on the existing spec. Do not create map rows for them.
-6. Summarize **from the union only**: mode, from→to, unioned tags, executed / offered / declined **of those tags**, settings migration, git / commits. Do **not** name catalog optional tags that were not in the union as skipped. `auto-all` = execute unioned tagged passes on all stems — not “run every tag in the table.” If B0.7 applied, the same end message includes the offer (paths + why). That offer is not a union tag and not an executed pass.
+5. **Reshape / assumption clean-out** when tagged in the union (and pre-2.10.0 TODO passes only when those tags remain after the 2.10.0 drop): if `sync.mode: auto` or `auto-all` -> execute all Document Map stems; if `choose` -> explain + ask once; if mode unset -> B0.2 ask once then continue. Shape trim and assumption clean-out (Workflow Section 4) only apply to stems that **have** Understanding files. **2.7.27 in catch-up:** reshape includes the **instruction-footer strip** on **every** Document Map spec (including stems with no Understanding - delete copied sermons and inline section essays; keep fill-in). **`master-index` when tagged** adopts slimmer At a Glance even if reshape is declined. Assumption clean-out = lock-gate (obvious defaults; real forks only; reference examples are not the target unless clearly set). Kit leftovers stay on the existing spec. Do not create map rows for them.
+6. Summarize **from the union only**: mode, from->to, unioned tags, executed / offered / declined **of those tags**, settings migration. Do **not** name catalog optional tags that were not in the union as skipped. `auto-all` = execute unioned tagged passes on all stems - not "run every tag in the table." If B0.6 applied, the same end message includes the offer (paths + why). That offer is not a union tag and not an executed pass.
 7. Run B’s **Present / apply unset options** for missing `optional_rules.*` (`auto-all` enables + installs; `auto`/`choose` ask once).
 8. **Stop.**
 
 ## Stop when
 
-- A0 cleared (clean tree or explicit waive) and Step A handoff completed and Step B for the **unioned** catch-up tags is done,
+- Step A handoff completed and Step B for the **unioned** catch-up tags is done,
 - Tagged optional live passes were executed (`auto` / `auto-all`) or presented (`choose`),
 - Unset optionals were presented (`auto`/`choose`), auto-enabled (`auto-all`), or already `enabled` / `declined`,
-- `docs_profile` was set or left intentionally unset only if B0.5 was not yet due,
-- an `orchestrator:` key was removed when present (B0.6), and
-- You have not scanned live `features/` / `_shared/` unless `content-templates` or an executing reshape/assumption-cleanout pass required it, or B0.7 listed `*-TODO.md` paths without opening them, and you did not create or edit `*-TODO.md` when the catch-up includes ≥ 2.10.0, and you did not delete them unless the user had already said yes to B0.7
+- `docs_profile` was set or left intentionally unset only if B0.4 was not yet due,
+- `docs/ADT-settings.yaml` has no `orchestrator:` key after B0.5, and
+- You have not scanned live `features/` / `_shared/` unless `content-templates` or an executing reshape/assumption-cleanout pass required it, or B0.6 listed `*-TODO.md` paths without opening them, and you did not create or edit `*-TODO.md` when the catch-up includes >= 2.10.0, and you did not delete them unless the user had already said yes to B0.6
 
 ## Do not
 
 - Open `TEMPLATE_SYNC_B.md` before Step A finishes
-- Skip the A0 dirty-tree stop (including under `auto` / `auto-all`)
-- Auto-commit pre-sync WIP without an explicit commit ask from the user
 - Run Step B from a pre–Step A in-memory playbook
 - Invent a broader audit than the unioned catch-up tags + skimmed Step B one-shots
 - Read **only the top** changelog entry when jumping versions — union all entries with **from** < version ≤ **to**
 - Re-download / restore intentionally deleted `agent/upstream/` attribution files
 - Treat `content-templates` as reshape permission — add missing structure only
 - Under **`choose`:** silently skip reshape / assumption clean-out / TODO ambition / operable / kit-coverage / outcomes / completed cleanout asks when tagged
-- Under **`auto` / `auto-all`:** re-ask for reshape / assumption clean-out / ambition / operable / kit-coverage / outcomes / completed cleanout / rules refresh / B0.3 hygiene commits
+- Under **`auto` / `auto-all`:** re-ask for reshape / assumption clean-out / ambition / operable / kit-coverage / outcomes / completed cleanout / rules refresh
 - Under **`auto-all`:** leave unset `optional_rules.*` unset, or flip **`declined`** back to enabled
 - Ask before refreshing installed rules unless `customized: true`
 - On reshape execute: only add template headings and leave obsolete Understanding sections **or** copied instruction sermons (2.7.27 strip)
 - On TODO ambition execute: invent work or collapse real human/shared blockers
 - On TODO outcomes execute: check an Outcomes row, or create a human-verify playtest (the outcome audit is the only creator of that row)
-- On TODO completed-cleanout execute: remove a plotted slice or an exercise note; remove a row whose title ever appeared as `- [ ]`; remove when unsure; remove open tasks; check Outcomes
+- On TODO completed-cleanout execute: remove a plotted slice or an exercise note; remove when unsure; remove open tasks; check Outcomes
 - Under **`auto` / `choose`:** skip presenting unset optionals (“do not auto-enable” means ask — not silence)
 - Bootstrap a new project (use [`bootstrap.md`](bootstrap.md))
 - Implement application features
-- Write `orchestrator.git.mode` or ask a git mode. Remove an `orchestrator:` key (B0.6)
 - Create or extend `*-TODO.md` when the catch-up includes ≥ 2.10.0
-- Treat `sync.mode: auto` or `sync.mode: auto-all` as a yes to the B0.7 offer, or delete leftover feature `*-TODO.md` files in the offer step. `docs/Human-TODO.md` is not part of that offer
+- Treat `sync.mode: auto` or `sync.mode: auto-all` as a yes to the B0.6 offer, or delete leftover feature `*-TODO.md` files in the offer step. `docs/Human-TODO.md` is not part of that offer
 - Name optional live tags that were not in the union as “skipped” (they were not this jump’s instructions)
 - Treat `auto-all` as license to run every pass in the Live impact tag table

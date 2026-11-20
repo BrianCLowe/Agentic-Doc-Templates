@@ -45,8 +45,8 @@
           "self-ID",
           "report-only",
           "Anti-jobs",
-          "One initial PR",
-          "competing",
+          "### Full-team stand-up",
+          "Other bots wait while the scribe writes the roster",
           "Human self-ID",
           "fallback-stamp `human`",
           "Put me on the roster as Alex",
@@ -63,7 +63,7 @@
           "not a live bot",
           "Anti-jobs",
           "Stale row",
-          "One initial PR",
+          "Standing up a full team: one file writer at a time.",
           "your** slug",
           "leftover `human`"
         ]

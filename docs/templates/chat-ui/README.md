@@ -1,6 +1,6 @@
 # Chat UI path — paused
 
-Attaching `AGENT.md` in Grok.com / ChatGPT (no repo) is **not recommended right now** — that flow has not been working as intended.
+Attaching `AGENT.md` in Grok.com / ChatGPT (no project) is **not recommended right now** - that flow has not been working as intended.
 
 **Use this instead:** export idea chats to markdown and drop them in **`docs/reference/`**, then ask your coding agent:
 

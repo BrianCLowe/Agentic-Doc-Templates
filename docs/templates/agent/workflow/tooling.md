@@ -21,6 +21,6 @@ When the user asks to install tooling / set up this machine / get the project wo
 
 Do not invent tools; update the file when the stack changes.
 
-**Project verify (handoff):** Fill **`docs/Tooling.md` → Project verify (agent handoff)** with this repo’s real build/typecheck/container/engine commands when known. After code changes, agents follow [`Agent_Build_Verify_Rule.mdc`](../Agent_Build_Verify_Rule.mdc) (core install with modular rules): run those commands (or proportional stack defaults), **fix failures**, and only then tell the user they can test. Build green ≠ operable product (see §5.3); both apply when both apply.
+**Project verify (handoff):** Fill **`docs/Tooling.md` -> Project verify (agent handoff)** with this project's real build/typecheck/container/engine commands when known. After code changes, agents follow [`Agent_Build_Verify_Rule.mdc`](../Agent_Build_Verify_Rule.mdc) (core install with modular rules): run those commands (or proportional stack defaults), **fix failures**, and only then tell the user they can test. Build green is not operable product (see Section 5.3); both apply when both apply.
 
 ---

@@ -73,7 +73,7 @@ Move finished items here (as `- [x]`) so **Open** stays short.
   - *I’ll take the Score Target playtest.*
   - *Assign playtest to QA.*
   - *Apply defaults to Open.*
-  - *Add the team — you open the roster PR.*
+  - *Add the team.*
   - *Put me on the roster as Alex.*
   - *I'm Sam — I take decide and procure.*
   - *Update [bot]’s jobs / anti-jobs.*
@@ -82,7 +82,7 @@ Move finished items here (as `- [x]`) so **Open** stays short.
 - Use `.env.example` for variable *names* only.
 - Optional: check the box in **Open** yourself; still tell the agent so they sync the owner TODO and archive the row.
 - You can **claim** or **reassign** any Open item (*I’ll take the Score Target playtest.* / *Assign playtest to QA.*). That is an **override** — first fill is stamp-on-create (or one-shot *apply defaults to Open*, Active `role_id` only). Put yourself on the roster with your name if you want assignments to you. You are not forced into a bot team.
-- If this project enabled optional team inbox routing, new Open rows stamp Assignee from the project’s kind defaults **when that role is Active on [`Team-Roster.md`](Team-Roster.md)**; else `unassigned`. Named humans put themselves on the roster with **their own name / slug** — this inbox is the work list, not a person. Bots add themselves (Name, Jobs, Anti-jobs if defined). Report-only bots ask someone to add them. Standing up a full team: **one** agent opens the roster PR — do not race competing PRs. Unset settings = this inbox waits on you, same as always; no auto-stamp; no Team-Roster file.
+- If this project enabled optional team inbox routing, new Open rows stamp Assignee from the project's kind defaults **when that role is Active on [`Team-Roster.md`](Team-Roster.md)**; else `unassigned`. Named humans put themselves on the roster with **their own name / slug** - this inbox is the work list, not a person. Bots add themselves (Name, Jobs, Anti-jobs if defined). Report-only bots ask someone to add them. Standing up a full team: **one** file writer at a time. Unset settings = this inbox waits on you, same as always; no auto-stamp; no Team-Roster file.
 
 **Kinds:**
 
@@ -91,7 +91,7 @@ Move finished items here (as `- [x]`) so **Open** stays short.
 | `procure` | Account, key, portal, purchase, org approval | Azure Bot, API key, App Store listing |
 | `playtest` | Human must run / feel / smoke-test | Score target timing. |
 | `decide` | Human judgment or sign-off | Theme pick, piece colors, “ship this default” |
-| `waiting` | Blocked on someone/something outside the repo | Steam Partner App ID, vendor reply |
+| `waiting` | Blocked on someone/something outside the project | Steam Partner App ID, vendor reply |
 
 ---
 

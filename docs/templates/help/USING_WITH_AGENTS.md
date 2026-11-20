@@ -19,7 +19,7 @@ The modular documentation **workflow is tool-agnostic**. What differs is **where
 | [Continue](https://continue.dev) | `continue` | [`../agent/tools/continue.md`](../agent/tools/continue.md) | `.continue/rules/` |
 | [Cline](https://cline.bot) | `cline` | [`../agent/tools/cline.md`](../agent/tools/cline.md) | `.clinerules/` |
 
-**No-repo brainstorms:** export chat threads to markdown → `docs/reference/` (do not attach a chat-only AGENT.md — that path is paused). See [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md#recommended-export-idea-chats-into-docsreference).
+**No-project brainstorms:** export chat threads to markdown -> `docs/reference/` (do not attach a chat-only AGENT.md - that path is paused). See [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md#recommended-export-idea-chats-into-docsreference).
 
 **Recommended:** `agents-md` (shared baseline) **plus** the tool-specific playbook for your daily harness.
 
@@ -38,9 +38,9 @@ The modular rule guards itself: *"If `docs/Master_Index.md` does not exist, igno
 | Template update check | Upstream `VERSION` ping — default every session, no settings write; interval optional (then `last_checked`) | Step 3p · [`../agent/TEMPLATE_UPDATE_CHECK.md`](../agent/TEMPLATE_UPDATE_CHECK.md) |
 | Doc roles | Understanding author, doc graduate, template sync | Step 3p · [`../agent/roles/README.md`](../agent/roles/README.md) — Cursor → `.cursor/agents/`; Grok Build → `.grok/agents/`; Copilot → `.github/agents/` |
 | Slash commands | Optional `/sync` — same playbook as the short ask; decline if you would rather just ask | Step 3p **E** · [`../agent/commands/README.md`](../agent/commands/README.md) |
-| Sync mode | `auto` / `auto-all` / `choose` — a dirty tree stops sync and the agent asks first (A0) | Step 3p · `sync.mode` |
+| Sync mode | `auto` applies tagged docs updates; `auto-all` also enables unset pack optionals; `choose` asks once per tagged pass | Step 3p - `sync.mode` |
 | **Team inbox** | Optional Human-TODO assignees. **Omit / unset / `enabled: false` = human-only** (no auto-stamp; do not silent-enable). Claim / reassign is override only | `team_inbox` · [`workflow/team-roster.md`](../agent/workflow/team-roster.md) · [`Human_TODO_Template.md`](../Human_TODO_Template.md) |
-| **Team roster** | Name, Jobs, Anti-jobs *(if defined)*, handoff. Create `docs/Team-Roster.md` **only** when team inbox is on. Coding agents on a handoff **read** (do not invent rows). Named humans and bots **self-ID** (humans use their slug, not leftover `human`); report-only bots ask another agent to add them. Full-team stand-up = **one initial PR**. Update the row when jobs change | [`Team_Roster_Template.md`](../Team_Roster_Template.md) · [`workflow/team-roster.md`](../agent/workflow/team-roster.md) |
+| **Team roster** | Name, Jobs, Anti-jobs *(if defined)*, handoff. Create `docs/Team-Roster.md` **only** when team inbox is on. Coding agents on a handoff **read** (do not invent rows). Named humans and bots **self-ID** (humans use their slug, not leftover `human`); report-only bots ask another agent to add them. Full-team stand-up = **one file writer at a time**. Update the row when jobs change | [`Team_Roster_Template.md`](../Team_Roster_Template.md) / [`workflow/team-roster.md`](../agent/workflow/team-roster.md) |
 
 Parent agents delegate a doc role when an ask matches; `/sync` is optional. Role playbooks stay under `roles/*.md` — never paste them into always-on rules. Settings live in **`docs/ADT-settings.yaml`** (docs profile, **standing.instructions**, tools, optionals, team_inbox, sync mode, upstream stamps).
 
@@ -64,16 +64,14 @@ OpenClaw loads workspace bootstrap files (especially `AGENTS.md`), not `.cursor/
 
 | Expectation | Reality |
 |-------------|---------|
-| Agent always reads Master_Index first | Usually, if the rule is loaded — not guaranteed. **Docs freshness** (`git status` + worktrees) first; sibling `docs/` drift = content, not ancestry after squash-merge |
-| Agent treats this worktree’s docs as current | After §0.3 freshness. Stay-in-worktree ≠ current — a sibling tree may have newer uncommitted `docs/` |
-| Grok / successive issues each get their own PR | Same-stem live docs (TODO/spec) on an open PR → add there. Docs overlap ≠ code overlap |
-| Agent says "you can test" but build is red | Fill Tooling **Project verify** with this repo's real build and test commands; the agent runs them and fixes failures before saying you can test (Workflow Section 11) |
+| Agent always reads Master_Index first | Usually, if the rule is loaded - not guaranteed. |
+| Agent says "you can test" but build is red | Fill Tooling **Project verify** with this project's real build and test commands; the agent runs them and fixes failures before saying you can test (Workflow Section 11) |
 | Preference polish sticks across sessions | Rule captures lasting UI choices into spec **Decisions** same turn (no wrap-up ask needed) |
 | Playbook overrides stick | Agents lookout-capture into `standing.instructions` (or first-class keys) same turn — only when they **override an ADT playbook**, not random notes — Workflow §0.2 |
 | Same behavior across tools | Similar, not identical |
 | Rules affect inline autocomplete | Generally **no** — chat/agent sessions only |
 
-## Updating from this repo
+## Updating upstream
 
 Ask: *Update the doc templates from Agentic Doc Templates and sync our live docs.* — [`../agent/TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md).
 

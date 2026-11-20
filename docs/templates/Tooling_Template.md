@@ -9,7 +9,7 @@
 
 Machine / workflow tools needed to **develop this project** — not package dependencies (`package.json`, `Cargo.toml`, NuGet, etc.). Those stay in the usual lockfiles and install via the project’s normal package manager.
 
-**Why this exists:** Clone the repo on a new machine and ask the agent to install tooling so you can keep working. Keep the list short and accurate.
+**Why this exists:** Set up the project on a new machine and ask the agent to install tooling so you can keep working. Keep the list short and accurate.
 
 **Table style:** **Why** = one line. **Install hint** = one command or a link to official docs — not a tutorial.
 
@@ -21,7 +21,7 @@ Machine / workflow tools needed to **develop this project** — not package depe
 |---------|----------------|
 | CLIs, SDKs, runtimes, editors/engines required to build or run | Libraries listed in package manifests |
 | Optional helpers the team actually uses (formatters, DB clients) | One-off personal preferences unless the project depends on them |
-| Agent skills / packs installed outside the repo (when the project depends on them) | Full install manuals — link to official docs instead |
+| Agent skills / packs installed outside the project (when the project depends on them) | Full install manuals - link to official docs instead |
 | Verify commands that prove the tool is present | |
 
 ---
@@ -41,7 +41,7 @@ Machine / workflow tools needed to **develop this project** — not package depe
 | Tool | Why | Install hint | Verify |
 |------|-----|--------------|--------|
 | [e.g. Node.js 20+] | Run app / scripts | [winget / brew / nvm] | `node -v` |
-| [e.g. Git] | Version control | [OS package manager] | `git --version` |
+| [e.g. Python] | Runtime and tooling | [OS package manager] | `python --version` |
 | [Add rows] | | | |
 
 ---
@@ -70,7 +70,7 @@ Credential **name** only (`.env` variable or vault entry).
 
 ## Agent skills *(omit section if unused)*
 
-Skills and packs that live in the **user profile** (not in git), e.g. `~/.grok/skills/`, `~/.codex/skills/`. Same idea as editor extensions — install per machine.
+Skills and packs that live in the **user profile** (outside the project), e.g. `~/.grok/skills/`, `~/.codex/skills/`. Same idea as editor extensions - install per machine.
 
 | Skill / pack | Host | Install location | Notes |
 |--------------|------|------------------|--------|
@@ -99,10 +99,10 @@ Package installs are **not** listed as tools above — run them after required t
 
 | Scope | When | Command(s) | Notes |
 |-------|------|------------|--------|
-| **Cheap / default** | Most code changes | [e.g. `npm run build` · `docker compose exec frontend bun run build` · `dotnet build` · UE editor compile target] | Must be runnable by the agent in this repo’s normal env |
+| **Cheap / default** | Most code changes | [e.g. `npm run build` / `docker compose exec frontend bun run build` / `dotnet build` / UE editor compile target] | Must be runnable by the agent in this project's normal env |
 | **Touched package** | Monorepo / multi-target | [e.g. build only backend or one game module] | Optional — use when faster and sufficient |
 | **Full handoff** | “You can run the app/game” | [e.g. compose up + smoke · packaged build · Play-In-Editor load] | Optional if Cheap already equals full for this project |
-| **Tests** *(optional)* | When CI/TODO requires | [e.g. `pytest` · Playwright profile] | Not a substitute for compile/typecheck when those exist |
+| **Tests** *(optional)* | When the project requires | [e.g. `pytest` / Playwright profile] | Not a substitute for compile/typecheck when those exist |
 
 **Examples by stack** *(replace with this project’s real commands — delete unused rows):*
 
@@ -110,7 +110,7 @@ Package installs are **not** listed as tools above — run them after required t
 |-------|----------------------|
 | Node / web | `npm run build` or `pnpm typecheck && pnpm build` |
 | Dockerized app | `docker compose build <svc>` and/or `docker compose exec <svc> <build>` |
-| Python | `ruff` / `mypy` / `pytest` as the repo already uses |
+| Python | `ruff` / `mypy` / `pytest` as the project already uses |
 | .NET | `dotnet build` |
 | Unreal | Project’s Build.bat / editor compile / documented UAT target |
 | Unity / Godot | Project’s batch/CLI compile or documented play check |
@@ -139,4 +139,4 @@ Install from Required / Optional / Agent skills only. Skip **Services this app c
 - Keep this lean — only what a new machine needs.
 - When you adopt a new tool or agent skill the project depends on, add a row (or tell the agent to).
 - When the app will call an external API, add a **Services this app consumes** row (or tell the agent). That list stays after the key is procured.
-- Simple ask on a fresh clone: *Install the project tooling for this machine.*
+- Simple ask when you set up the project on a new machine: *Install the project tooling for this machine.*

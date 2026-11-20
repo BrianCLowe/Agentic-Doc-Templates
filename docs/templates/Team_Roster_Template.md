@@ -11,7 +11,7 @@
 
 **Humans:** put yourself on Active with **your** slug (`alex`, not `human`) so assignments go to you. Human-TODO is the inbox of work, not a person. Optional leftover `human` bucket only if the project wants unsigned human work on that id. Help: [`help/SCAFFOLDS.md`](templates/help/SCAFFOLDS.md). Inbox: [`Human-TODO.md`](Human-TODO.md).
 
-**Agents:** Fill-in blanks. Two-stage roster (read vs self-ID / report-only proxy · one initial PR · update when jobs change): [`agent/workflow/team-roster.md`](templates/agent/workflow/team-roster.md). Bots **write their own row**.
+**Agents:** Fill-in blanks. Two-stage roster (read vs self-ID / report-only proxy / one file writer at a time / update when jobs change): [`agent/workflow/team-roster.md`](templates/agent/workflow/team-roster.md). Bots **write their own row**.
 
 ---
 
@@ -45,4 +45,4 @@ Named-human example *(not a live person — do not copy as a teammate)*:
 
 ---
 
-*One initial PR when standing up a full team — do not open competing roster PRs.*
+*Standing up a full team: one file writer at a time.*

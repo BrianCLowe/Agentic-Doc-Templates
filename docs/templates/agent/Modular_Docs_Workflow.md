@@ -18,10 +18,9 @@
 
 Use when the stem is already **ready** under the docs profile and scope is unchanged:
 
-1. **Docs freshness** (cheap): `git status --porcelain` + `git worktree list`. Clean + one worktree → continue. Two or more worktrees → sibling probe in [`workflow/session-freshness.md`](workflow/session-freshness.md) (drift = uncommitted sibling `docs/` or `docs/` **content** differs — not ancestry-only after squash-merge). Dirty **this** tree: one line, continue (do not auto-commit). **New PR / successive spawn:** if an open PR already touches this stem’s spec or Understanding → add there (docs overlap ≠ code overlap)
-2. Read `docs/ADT-settings.yaml` → `docs_profile.mode` (else **prevent**); **`standing.instructions` if non-empty**
-3. [`Master_Index.md`](../../Master_Index.md): start with Sections 1-3 (map and overview), then open the stem you are changing. Read later sections if they are relevant. Read [`Product-Vision.md`](../../Product-Vision.md) (especially when `confirmed`)
-4. That stem’s spec and Understanding *(if any)*. Record a gap those docs already make obvious on the spec when it is contract. Document only features that fit a **confirmed** product vision
+1. Read `docs/ADT-settings.yaml` -> `docs_profile.mode` (else **prevent**); **`standing.instructions` if non-empty**
+2. [`Master_Index.md`](../../Master_Index.md): start with Sections 1-3 (map and overview), then open the stem you are changing. Read later sections if they are relevant. Read [`Product-Vision.md`](../../Product-Vision.md) (especially when `confirmed`)
+3. That stem's spec and Understanding *(if any)*. Record a gap those docs already make obvious on the spec when it is contract. Document only features that fit a **confirmed** product vision
 
 **Docs on a new stem:**
 
@@ -33,7 +32,7 @@ Use when the stem is already **ready** under the docs profile and scope is uncha
 
 **Additive vs shape (one line):** On a `confirmed` Understanding, a new research angle / extra behavior / edge case that still fits **is / is not** → **spec**, keep `confirmed`. De-confirm / re-draft **only** on a significant shape change — full rule in [`workflow/understanding.md`](workflow/understanding.md#4-understanding-features--shared).
 
-**Same-turn prefs:** Product/UI correction that could be “improved away” → spec **Decisions** ([`workflow/decisions.md`](workflow/decisions.md)). **Override an ADT playbook** (no first-class key) → standing ([`workflow/profile-standing.md`](workflow/profile-standing.md)). How to act in this repo that is **not** a pack playbook → ask once: always-on rule/instruction, or a skill (§0.2). Do not jot that into standing. Do not jot random notes into standing.
+**Same-turn prefs:** Product/UI correction that could be "improved away" -> spec **Decisions** ([`workflow/decisions.md`](workflow/decisions.md)). **Override an ADT playbook** (no first-class key) -> standing ([`workflow/profile-standing.md`](workflow/profile-standing.md)). How to act in this project that is **not** a pack playbook -> ask once: always-on rule/instruction, or a skill (Section 0.2). Do not jot that into standing. Do not jot random notes into standing.
 
 ---
 
@@ -43,7 +42,6 @@ Use when the stem is already **ready** under the docs profile and scope is uncha
 |-----------|-----------|
 | Docs profile unset / suggest / upgrade | [`workflow/profile-standing.md`](workflow/profile-standing.md) (§0.1) |
 | Standing / playbook-override LOOKOUT | [`workflow/profile-standing.md`](workflow/profile-standing.md) (§0.2) |
-| Session start / dirty sibling worktree / docs may be stale / about to merge live docs / new PR or successive spawn on same-stem docs | [`workflow/session-freshness.md`](workflow/session-freshness.md) (§0.3) |
 | Creating files / new Document Map row / split stem / inventory vs new row | [`workflow/naming-layout.md`](workflow/naming-layout.md) (§0) |
 | `_shared/` vs feature / foundation task placement | [`workflow/shared-components.md`](workflow/shared-components.md) (§1) |
 | Draft / revise Understanding · de-confirm gate · lock gate · assumption clean-out · relocate | [`workflow/understanding.md`](workflow/understanding.md) (§4) |
@@ -74,10 +72,6 @@ Full procedure: [`workflow/profile-standing.md`](workflow/profile-standing.md#01
 
 Full procedure: [`workflow/profile-standing.md`](workflow/profile-standing.md#02-standing-workflow-instructions-user-workflow-not-pack-enums).
 
-### 0.3 Session freshness *(docs as source of truth)*
-
-Full procedure: [`workflow/session-freshness.md`](workflow/session-freshness.md). Cheap `git status` + worktree list on the paved path; open-PR check before a new PR / successive spawn. Open the module only when sibling `docs/` drift or docs-overlapping PRs flag.
-
 ### 0. Naming & file layout *(read before creating files)*
 
 Full procedure: [`workflow/naming-layout.md`](workflow/naming-layout.md#0-naming--file-layout-read-before-creating-files).
@@ -100,7 +94,7 @@ Full procedure (incl. **de-confirm gate** + **lock gate**): [`workflow/understan
 
 ### 5. Feature TODO files on sync
 
-A sync that crosses 2.10.1 offers to delete feature and shared `*-TODO.md` files and says why ([`TEMPLATE_SYNC_B.md`](TEMPLATE_SYNC_B.md) B0.7). That offer is the step: the files are deleted only after the user says yes, and `auto-all` is not a yes. `Human-TODO.md` stays.
+A sync that crosses 2.10.1 offers to delete feature and shared `*-TODO.md` files and says why ([`TEMPLATE_SYNC_B.md`](TEMPLATE_SYNC_B.md) B0.6). That offer is the step: the files are deleted only after the user says yes, and `auto-all` is not a yes. `Human-TODO.md` stays.
 
 ### 7.1 Catalog companions *(list-heavy content)*
 
@@ -130,7 +124,6 @@ See [`workflow/human-todo.md`](workflow/human-todo.md#13-human-todo-inbox--needs
 
 ## Instructions for AI Agents
 
-- **Docs freshness** = *are this tree’s docs the ones the user means?* — [`workflow/session-freshness.md`](workflow/session-freshness.md). Run before treating Master Index as current.
 - **Master_Index.md** = *what this project is* and *where files live*.
 - **Product-Vision.md** = *the whole-product end-state* — [`workflow/product-vision.md`](workflow/product-vision.md). Feature map alone is not identity. **`build-first`:** destination, not a gate.
 - **This file** = *how to work*: paved path first; then the matching module from the router.

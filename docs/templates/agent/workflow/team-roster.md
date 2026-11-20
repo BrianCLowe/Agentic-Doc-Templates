@@ -14,7 +14,7 @@ When `docs/ADT-settings.yaml` → `team_inbox.enabled: true` (opts into assign-a
   2. **One-shot backfill** — after the project enables `team_inbox` + roster / `kind_defaults`, agents (or a human) may run *apply defaults to Open* **once**: fill **unassigned** Open rows from `kind_defaults` **only if that `role_id` is Active on the roster**. If the default id is not Active → leave `unassigned`. Do **not** repeatedly re-stamp rows that already have an explicit assignee (claimed / reassigned).
 - **`kind_defaults` are the stamp map**, still project-owned — not a pack-required org chart. Stamp only when the `role_id` is **Active** on the team roster (below). Example defaults *some* teams use (not required): `playtest` → `qa`; `procure` / `decide` / secrets → a **named human slug** if they self-IDed, or leftover `human` if that row is Active.
 - **Claim / reassign is override only** (human or allowed bot) — not the bulk path. A human in chat (*assign playtest to QA* / *I’ll take it*) may always override. A bot may claim only kinds listed in its role’s `may_claim` (and only when `claim_mode` allows: `open` or `kind_defaults_only`).
-- **Bot discovery:** bots watch “my open rows” / one digest ping — **not** one PR per claim.
+- **Bot discovery:** bots watch "my open rows" / one digest ping.
 - Feature `*-TODO.md` human-gated rows may optionally carry the same Assignee line (same stamp / backfill / override rules). **Do not** replace feature TODO ownership of code work.
 - Dual-write stays mandatory. Done-only-on-confirm still applies ([`human-todo.md`](human-todo.md) step 4). Prefer: the assignee may mark playtest checked via a chat report. Still **no silent agent close** without that report.
 
@@ -60,19 +60,19 @@ You may write the roster **only** when **one** of these is true:
 
 **Report-only bots:** do **not** edit the roster (and do not invent a coding-agent row for yourself). Ask another bot/agent or the human: *add me to Team-Roster as `role_id` … Name … Jobs … Anti-jobs (or —) … follow-ups … handoff … (`report-only`)*. One digest ping is enough. The helper writes **only** the requested row, sets `Roster write: report-only`, and stops.
 
-### One initial PR *(full-team stand-up — no competing roster PRs)*
+### Full-team stand-up *(one file writer at a time)*
 
 When **`team_inbox` is first enabled** or a **full team** is added in one go (several teammates named, *add the team*, *stand up the roster*):
 
-1. **One scribe** opens **one** PR that creates `docs/Team-Roster.md` (+ `team_inbox` settings if not already recorded). The scribe is the agent that received *Enable team inbox* / *add the team*, or the first bot asked to stand up the roster — not every bot at once.
-2. That PR may include **user-stated** rows from this turn (named humans and bots — Name / Jobs / Anti-jobs if the human defined them).
-3. **Other bots do not open a second PR** that creates or rebases `Team-Roster.md`. If an open PR already touches the roster or `team_inbox` → add your self-ID on **that** PR if asked, or **wait for merge**, then self-ID. Do not race two “create Team-Roster” branches.
-4. After the file exists on the default branch, later one-bot self-ID / stale-row updates may be their own small PR — still **one file writer at a time**. Check for an open roster PR first.
+1. **One scribe** creates `docs/Team-Roster.md` (+ `team_inbox` settings if not already recorded). The scribe is the agent that received *Enable team inbox* / *add the team*, or the first bot asked to stand up the roster - not every bot at once.
+2. The initial fill may include **user-stated** rows from this turn (named humans and bots - Name / Jobs / Anti-jobs if the human defined them).
+3. Other bots wait while the scribe writes the roster, then self-ID when asked. Coordinate changes to the roster and `team_inbox` with that writer.
+4. Once the file exists, self-ID and stale-row updates still use **one file writer at a time**.
 
-**Do not:** N bots × N PRs for the first roster. Do not treat “I must self-ID now” as a license to fork a conflicting Team-Roster branch.
+Coordinate the first fill and later updates with the current writer.
 
 **After a new Active row:** optional one-shot *apply defaults to Open* for leftover `unassigned` rows whose `kind_defaults` now match that **Active** `role_id`. Skip kinds whose default id is still missing from Active. Do not re-stamp explicit assignees.
 
-**Phrases:** *Enable team inbox* (one PR: settings + empty roster; no invented bots or names) · *Add the team — you open the roster PR* (one scribe) · *Put me on the roster as Alex* / *I'm Sam — I take decide and procure* (named-human self-ID) · *You are the QA bot* (bot self-ID; join the open roster PR if one exists) · *Add the nightly auditor as report-only* (proxy) · *Update the QA bot’s jobs* (stale-row) · *What’s on the team roster?*
+**Phrases:** *Enable team inbox* (settings + empty roster) / *Add the team* (one scribe) / *Put me on the roster as Alex* / *I'm Sam - I take decide and procure* (named-human self-ID) / *You are the QA bot* (bot self-ID) / *Add the nightly auditor as report-only* (proxy) / *Update the QA bot's jobs* (stale-row) / *What's on the team roster?*
 
 ---

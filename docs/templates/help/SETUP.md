@@ -14,11 +14,8 @@ You need **`docs/templates/`** in your project (scaffolds, [`help/`](.), [`agent
 |--------|--------|
 | **Download release ZIP** | [Releases](https://github.com/BrianCLowe/Agentic-Doc-Templates/releases) → `agentic-doc-templates-X.Y.Z.zip` (not “Source code”) → extract into project root |
 | **Copy `docs/templates/` only** | **Recommended** for existing apps — no pack root README/LICENSE/CONTRIBUTING collision |
-| **Use this template** | New GitHub repo from the green button |
-| **Clone → rename → change remote** | New local app from a full clone; point `origin` at your empty repo |
-| Git submodule | Awkward path; still prefer copying or sparse-checkout of `docs/templates/` |
 
-Whole-repo / template installs: bootstrap auto-moves clearly upstream root files into `docs/templates/agent/upstream/` and deletes Agentic-only `.github/ISSUE_TEMPLATE/`, `.github/FUNDING.yml`, `.github/workflows/release.yml` / `pack-checks.yml`, pack `.cursor/environment.json`, `.cursor/skills/pack-release-tag/`, root `eval/`, root `scripts/gen_role_adapters.py`, leftover `docs/templates/agent/scripts/*.py`, and maintainer root **`DECISIONS.md`** / **`VISION.md`** (Steps 1b–1d). Short acquisition table also on the [upstream README — Get started](https://github.com/BrianCLowe/Agentic-Doc-Templates#get-started).
+Whole-project copies: bootstrap relocates clearly upstream root files and removes pack-only maintainer files (Steps 1b-1d). Short acquisition table also on the [upstream README - Get started](https://github.com/BrianCLowe/Agentic-Doc-Templates#get-started).
 
 **Inside the pack:** `README.md` (do not edit — overwritten on sync), `help/` (this guide), `agent/` (bootstrap, rules, sync), plus `VERSION`, `CHANGELOG.md`, and the scaffold templates at the pack root. Pack version number lives **only** in `VERSION`.
 
@@ -83,7 +80,7 @@ Naming: [`../agent/workflow/naming-layout.md`](../agent/workflow/naming-layout.m
 | Optional roles (intent-first Understanding, sync) | [`../agent/roles/README.md`](../agent/roles/README.md) |
 | Describing UI / scope (esp. if new to software) | [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md) |
 | Rule / harness install (Cursor, Grok Build, …) | [`../agent/tools/README.md`](../agent/tools/README.md) · human TOC: [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md) |
-| Brainstorm in Grok/ChatGPT before a repo | Export chats → `docs/reference/` — [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md#recommended-export-idea-chats-into-docsreference) |
+| Brainstorm in Grok/ChatGPT before a project | Export chats -> `docs/reference/` - [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md#recommended-export-idea-chats-into-docsreference) |
 | Later: refresh the pack | *Update the doc templates…* — [`TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md) / [`CHANGELOG.md`](../CHANGELOG.md). If your pack is pre-**1.2** (no sync file), copy `docs/templates/` once first. |
 | Version-only ping | *Check for template updates* — [`TEMPLATE_UPDATE_CHECK.md`](../agent/TEMPLATE_UPDATE_CHECK.md) |
 
@@ -93,6 +90,6 @@ After bootstrap, skim `docs/Human-TODO.md` — your inbox for keys, playtests, d
 
 ## License
 
-[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Full text: [LICENSE.md on GitHub](https://github.com/BrianCLowe/Agentic-Doc-Templates/blob/main/LICENSE.md) (or under `docs/templates/agent/upstream/` if you kept a copy).
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Full text: [LICENSE.md](https://github.com/BrianCLowe/Agentic-Doc-Templates/blob/main/LICENSE.md) (or under `docs/templates/agent/upstream/` if you kept a copy).
 
 > Based on [Agentic Doc Templates](https://github.com/BrianCLowe/Agentic-Doc-Templates) by Brian Lowe, licensed under CC BY 4.0.

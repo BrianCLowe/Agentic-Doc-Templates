@@ -35,7 +35,7 @@
         "must_contain": [
           "from the union only",
           "not in the union as skipped",
-          "not “run every tag in the table.”"
+          "not \"run every tag in the table.\""
         ]
       },
       {

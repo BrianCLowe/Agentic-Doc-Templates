@@ -53,9 +53,9 @@ Optional fields: `recorded` (YYYY-MM-DD), `path`, `note`, `customized` (true onl
 
 | Mode | Meaning |
 |------|---------|
-| `auto` | Pack sync applies recommended live updates + local post-sync hygiene commits without mid-sync quizzes — see [`TEMPLATE_SYNC_B.md`](TEMPLATE_SYNC_B.md). Still asks once for brand-new unset `optional_rules.*`. Pre-sync dirty tree still hard-stops ([`TEMPLATE_SYNC_A.md`](TEMPLATE_SYNC_A.md) A0) |
+| `auto` | Pack sync applies recommended live updates without mid-sync quizzes - see [`TEMPLATE_SYNC_B.md`](TEMPLATE_SYNC_B.md). Still asks once for brand-new unset `optional_rules.*`. |
 | `auto-all` | Same as `auto`, and also enable + install unset `optional_rules.*` without asking (never re-enable `declined`) |
-| `choose` | Present optionals each sync; suggest commits, ask before committing |
+| `choose` | Present optionals each sync |
 | *(missing / unset)* | Ask once (bootstrap Step 3p or first sync) — do not silent-default |
 
 If `optional_rules.template-update-check` is missing: under **`sync.mode: auto-all`** enable + install (default `check_mode: always`); otherwise bootstrap should have asked — if you are mid–rule-install (or finishing a template sync) and it is still unset, ask once using the Step 3p **B** wording, then record `enabled` or `declined`.
@@ -64,7 +64,7 @@ If `optional_rules.doc-roles` is missing: under **`sync.mode: auto-all`** enable
 
 If `optional_rules.slash-commands` is missing: under **`sync.mode: auto-all`** enable + install for each installed tool that has a command folder; otherwise ask once using bootstrap Step 3p **E**. **Decline** is the right answer if they would rather just ask. Cursor → `.cursor/commands/`; Claude → `.claude/commands/`; Copilot → `.github/prompts/` (`*.prompt.md`). Grok, OpenClaw, Continue, Cline, `AGENTS.md`: no files — the short ask stays the path. Then record `enabled` or `declined`.
 
-If `docs/ADT-settings.yaml` still has an `orchestrator:` key: **B0.6 removes that key**. Do not ask a git mode.
+If `docs/ADT-settings.yaml` still has an `orchestrator:` key: **B0.5 removes that key**.
 
 ## Before asking
 
@@ -75,11 +75,11 @@ If `docs/ADT-settings.yaml` still has an `orchestrator:` key: **B0.6 removes tha
    - `installed` but file missing → tell the user and offer reinstall (do not skip silently).
    - `declined` → skip unless the user explicitly requested install for that tool.
    - No entry → eligible to ask.
-4. Check **only** destinations named in the relevant `tools/<key>.md` for unsettled tools (plus `AGENTS.md` / `CLAUDE.md` if present). Do **not** glob the repo for rule-like files.
+4. Check **only** destinations named in the relevant `tools/<key>.md` for unsettled tools (plus `AGENTS.md` / `CLAUDE.md` if present). Do **not** glob the project for rule-like files.
 5. State which tool you **think** the user is on and why — only if evidence is clear. If uncertain, say so.
 6. **Ask the user** only for tools without a settled status:
    - Install the modular documentation rule for **[tool]**?
-   - Other tools they use on this repo? (each gets its own entry and playbook)
+   - Other tools they use on this project? (each gets its own entry and playbook)
    - If target file already has content: merge, append a section, or skip?
 
 Do not proceed until they confirm for each tool you are installing.
@@ -87,7 +87,7 @@ Do not proceed until they confirm for each tool you are installing.
 ## Why ask first
 
 - You may **misidentify the current tool** (Cursor vs Copilot vs Grok Build, etc.).
-- The user may **use multiple tools** on the same repo. Each tool uses a **different path** — they coexist without conflict.
+- The user may **use multiple tools** on the same project. Each tool uses a **different path** - they coexist without conflict.
 - Existing instruction files may already contain **custom content** you must not overwrite.
 
 ## Install / refresh (dispatch)
@@ -140,7 +140,7 @@ Installing for one tool **does not remove or replace** another tool's files. Rec
 > Slash commands: [enabled | declined | not asked — see bootstrap Step 3p E].  
 >
 > Install the modular docs rule for **[tool]**? (I won't ask again for that tool after you answer.)  
-> If you also use other agents on this repo, say which — each gets its own `tools/<key>.md` pass.
+> If you also use other agents on this project, say which - each gets its own `tools/<key>.md` pass.
 
 ## Example user prompts
 

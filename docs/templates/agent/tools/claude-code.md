@@ -1,7 +1,7 @@
 # Tool install — Claude Code
 
 > **Status key:** `claude-code`  
-> Open only when installing or refreshing Claude Code for this repo.  
+> Open only when installing or refreshing Claude Code for this project.  
 > Docs: [Memory](https://code.claude.com/docs/en/memory) · [Subagents](https://code.claude.com/docs/en/sub-agents)
 
 ## Modular rule

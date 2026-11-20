@@ -1,7 +1,7 @@
 # Tool install — Grok Build
 
 > **Status key:** `grok-build`  
-> Open only when installing or refreshing Grok Build for this repo.  
+> Open only when installing or refreshing Grok Build for this project.  
 > Public docs: [Overview](https://docs.x.ai/build/overview) · [AGENTS.md / project rules](https://docs.x.ai/build/features/project-rules) · [Skills & compat](https://docs.x.ai/build/features/skills-plugins-marketplaces)  
 > **Local CLI docs** (`~/.grok/README.md`, `~/.grok/docs/…`) can be ahead of docs.x.ai — prefer local + `grok inspect` when they disagree.
 
@@ -52,18 +52,6 @@ Files: `understanding-author.md`, `doc-graduate.md`, `docs-template-sync.md`.
 
 No pack command folder for Grok. Still present `optional_rules.slash-commands` when unset (bootstrap Step 3p **E**). On enable, record it and do not invent files. `/sync` is not installed here — the short ask stays the path. Cursor, Claude Code, and Copilot installs own the file.
 
-## Successive issues *(parent — do not fan out PRs)*
-
-Grok parents often `spawn_subagent` a new coding agent per complaint. Live docs (spec, Understanding) are rewritten every session — **docs overlap ≠ code overlap**.
-
-When the user files another issue / complaint in this parent session:
-
-1. `gh pr list --state open` (or forge equivalent).
-2. Open PR already touches this stem’s spec/Understanding → **do not spawn** a new agent+branch+PR. Re-brief the in-flight agent or add commits to that PR. Remember stem → PR for the rest of this session.
-3. Different stem **and** you will not edit the other PR’s live docs → a new PR is OK.
-
-Policy: [`../workflow/session-freshness.md`](../workflow/session-freshness.md) **Docs-overlapping PRs**. The always-loaded modular rule (installed into `AGENTS.md`) is what the parent sees at spawn time — do not leave this only in this install file.
-
 Compat (secondary, when enabled): **Claude** `.claude/agents/` can load as spawnable types. **Cursor** `compat.cursor.agents` is for named instruction files under Cursor paths — **not** “load `.cursor/agents/*.md` as Grok spawn types.” Always install this pack’s roles under `.grok/agents/`.
 
 ## Verify
@@ -75,7 +63,7 @@ Compat (secondary, when enabled): **Claude** `.claude/agents/` can load as spawn
 
 ## For humans
 
-No-repo brainstorms: export chats → `docs/reference/` — [`../../help/IDEA_CAPTURE_TIPS.md`](../../help/IDEA_CAPTURE_TIPS.md#recommended-export-idea-chats-into-docsreference) (chat-only AGENT.md path is paused).
+No-project brainstorms: export chats -> `docs/reference/` - [`../../help/IDEA_CAPTURE_TIPS.md`](../../help/IDEA_CAPTURE_TIPS.md#recommended-export-idea-chats-into-docsreference) (chat-only AGENT.md path is paused).
 
 ## Do not
 

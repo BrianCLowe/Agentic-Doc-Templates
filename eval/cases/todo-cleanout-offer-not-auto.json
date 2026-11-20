@@ -10,7 +10,7 @@
       {
         "file": "docs/templates/agent/TEMPLATE_SYNC_B.md",
         "patterns": [
-          "B0.7 — Offer leftover feature TODOs",
+          "B0.6 - Offer leftover feature TODOs",
           "The step is the offer.",
           "The cleanout is not this step.",
           "`sync.mode: auto-all` do not answer the offer",
@@ -40,7 +40,7 @@
       {
         "file": "docs/templates/agent/roles/template-sync.md",
         "must_contain": [
-          "B0.7’s step is the offer",
+          "B0.6's step is the offer",
           "`auto` and `auto-all` are not a yes"
         ],
         "must_not_contain": [

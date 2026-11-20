@@ -17,12 +17,23 @@
 | `optional-todo-operable` | Live TODO operable dual-track (Workflow §5.3). **`auto` / `auto-all`:** all Document Map `*-TODO.md`. **`choose`:** present + ask once. Add exercise-path rows or **library-only** labels; do not invent unrelated backlog |
 | `optional-todo-kit-coverage` | Live TODO kit-coverage pass (Workflow §5.4). **`auto` / `auto-all`:** all Document Map `*-TODO.md`. **`choose`:** present + ask once. Add covering TODOs for spec-named in-scope leftovers on **existing** stems (**open or Completed** counts — do not resurrect); one research item if the spec is thin. No new map rows; no vendor-doc fetch in sync |
 | `optional-todo-outcomes` | Live TODO outcomes pass (Workflow §5.5). **`auto` / `auto-all`:** all Document Map `*-TODO.md`. **`choose`:** present + ask once. Mirror operable Acceptance into unchecked Outcomes rows; label children; one exercise task when an outcome has no path. Do not check outcomes. Do not mint a task per architecture bullet |
-| `optional-todo-completed-cleanout` | Live TODO Completed cleanout. **`auto` / `auto-all`:** all Document Map `*-TODO.md`. **`choose`:** present + ask once. Remove a Completed checkbox that git shows was never an open `[ ]` task and is not an exercise note. Unsure → leave the row |
+| `optional-todo-completed-cleanout` | Live TODO Completed cleanout. **`auto` / `auto-all`:** all Document Map `*-TODO.md`. **`choose`:** present + ask once. Decide from the TODO text only: remove a Completed checkbox only when its text reads as an incidental fix (review patch, finding, copy, typo) and it is not an exercise note. Unsure -> leave the row |
 | `rules` | Refresh installed agent rules/adapters from local pack (**no ask** unless tool has `customized: true`) |
 | `optional-upstream-check` | Stamp `upstream:` in `docs/ADT-settings.yaml` / offer enable update-check if unset |
-| `process-docs-only` | Pack process/help/agent docs only — no live feature/shared content scan **for that release alone**; still honor other unioned live tags. When any selected entry is **≥ 2.10.0**, drop every `optional-todo-*` tag before the checklist and do not create or edit `*-TODO.md`. B0.7 still lists feature/shared `*-TODO.md` paths when **from** < 2.10.1 (do not open them). The offer is that step; `auto-all` is not a yes |
+| `process-docs-only` | Pack process/help/agent docs only - no live feature/shared content scan **for that release alone**; still honor other unioned live tags. When any selected entry is **>= 2.10.0**, drop every `optional-todo-*` tag before the checklist and do not create or edit `*-TODO.md`. B0.6 still lists feature/shared `*-TODO.md` paths when **from** < 2.10.1 (do not open them). The offer is that step; `auto-all` is not a yes |
 
 ---
+
+## 2.12.0
+
+- **Live impact:** `versions-only`, `rules`, `process-docs-only`
+- **Summary:** Removed version control from the shipped pack. Sync and the update check need no git, gh or forge: no dirty-tree stop, no git-history step, no commits, branches or PRs, no clone path, no git line in the sync summary. The docs freshness module (Workflow Section 0.3, `session-freshness.md`) and its mirrors are gone. Roster stand-up is one file writer at a time. Upstream stays an HTTPS download (ZIP or raw files). Sync steps B0.4-B0.7 are now B0.3-B0.6.
+- **Changes:**
+  - `VERSION` - 2.11.0 -> 2.12.0
+  - `agent/workflow/session-freshness.md` deleted; modular rule, workflow index and playbooks, Master Index template, help, tools, roles and adapters drop its pointers
+  - `TEMPLATE_SYNC_A.md`, `TEMPLATE_SYNC_B.md`, `TEMPLATE_UPDATE_CHECK.md`, `BOOTSTRAP.md`, `RULE_INSTALL.md`, settings example, roster and tooling templates, `upstream/README.md`, `SETUP.md`
+  - eval: `session-docs-freshness` replaced by `templates-readme-pack-owned`; four cases updated for renumbered steps and removed wording
+- **Step B:** Bump Master Index Pack version. `rules`: refresh the installed modular rule (and role adapters when doc-roles is enabled) for each installed tool via its `tools/<key>.md` (no ask unless `customized: true`). If the live Master Index has a Docs freshness row or a freshness Quick Start step pointing at `session-freshness.md`, remove them. No live feature or shared doc edits.
 
 ## 2.11.0
 
