@@ -12,12 +12,8 @@
         "patterns": [
           "Save the result only when there is a check interval.",
           "do **not** edit `docs/ADT-settings.yaml`",
-          "Do **not** open a pull request",
           "The rule runs again next session",
-          "Under **no interval**, do **not** write `last_checked`",
-          "Do **not** open a pull request for the interval stamp.",
-          "User **does not opt to update**",
-          "same commit** as this session's other changes"
+          "Under **no interval**, do **not** write `last_checked`"
         ]
       },
       {
@@ -25,9 +21,7 @@
         "patterns": [
           "no check interval",
           "Do **not** write `docs/ADT-settings.yaml`",
-          "Do **not** commit. Do **not** open a PR.",
-          "The next session runs this check again",
-          "Do **not** open a PR. If the user does not opt to update, include that stamp in the same commit as this session's other changes."
+          "The next session runs this check again"
         ]
       },
       {
@@ -35,16 +29,13 @@
         "patterns": [
           "no check interval",
           "Do **not** write `docs/ADT-settings.yaml`",
-          "Do **not** commit. Do **not** open a PR.",
-          "The next session runs this check again",
-          "If the user does not opt to update, include that stamp in the same commit as this session's other changes."
+          "The next session runs this check again"
         ]
       },
       {
         "file": "docs/templates/agent/TEMPLATE_SYNC_B.md",
         "patterns": [
-          "**No interval** (`always` or unset): do **not** set `last_checked`",
-          "do **not** open a pull request that only deletes them"
+          "**No interval** (`always` or unset): do **not** set `last_checked`"
         ]
       },
       {
@@ -76,6 +67,7 @@
           "Save the result only when there is a check interval."
         ],
         "must_not_contain": [
+          "pull request",
           "**Always** set `upstream.last_checked`",
           "still update `last_checked` so you do not retry every turn under `always`",
           "whose only change is that stamp",
@@ -97,6 +89,7 @@
           "Do **not** write `docs/ADT-settings.yaml`"
         ],
         "must_not_contain": [
+          "open a PR",
           "**`always`** → follow"
         ]
       }

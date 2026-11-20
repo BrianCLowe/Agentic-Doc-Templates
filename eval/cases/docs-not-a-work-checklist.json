@@ -18,7 +18,7 @@
       {
         "file": "docs/templates/agent/TEMPLATE_SYNC_B.md",
         "patterns": [
-          "B0.6 — Remove orchestrator git",
+          "B0.5 - Remove orchestrator key",
           "remove that key",
           "Do not create or edit `*-TODO.md`"
         ]
@@ -37,8 +37,7 @@
         "must_contain": [
         ],
         "must_not_contain": [
-          "implement that item only",
-          "orchestrator.git.mode"
+          "implement that item only"
         ]
       }
     ]

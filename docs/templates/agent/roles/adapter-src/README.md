@@ -15,7 +15,7 @@ Ask your agent (or follow yourself):
 
 > Regenerate role adapters using `docs/templates/agent/GENERATE_ROLE_ADAPTERS.md`.
 
-**No Python in the pack.** Upstream CI may use a root `scripts/` helper; consumers never need it.
+**No Python in the pack.** Upstream maintenance may use a root `scripts/` helper; consumers never need it.
 
 ## Rules
 

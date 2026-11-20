@@ -103,7 +103,7 @@ Agents invent decisions, then either lock the invention as identity or dump it i
 - Lock the obvious **full** target. PDF-first as the consumer handoff is a **lock**; IFC stays named on the spec.
 - *Do not ask:* “Which jurisdiction should we use?” / “How should Energy Star be handled?” / “Is the reference walkthrough the product?” Those quiz the obvious path or promote an example into a target.
 
-**Clean-out pass.** Existing Understandings (and specs that copied a reference example as a constraint) get the same gate. **Offer** it — all Document Map Understanding stems / named / no; default yes. Sync tag `optional-assumption-cleanout` ([`TEMPLATE_SYNC_B.md`](../TEMPLATE_SYNC_B.md)). Mid-session: if the user is correcting invented decisions or you already see dirty Assumptions on open stems, offer the same pass. Do **not** silent-scan the whole map without that offer or the tagged sync execute.
+**Clean-out pass.** Existing Understandings (and specs that copied a reference example as a constraint) get the same gate. **Offer** it - all Document Map Understanding stems / named / no; default yes. Sync tag `optional-assumption-cleanout` ([`TEMPLATE_SYNC_B.md`](../TEMPLATE_SYNC_B.md)). Mid-session: if the user is correcting invented decisions or you already see unresolved Assumptions on open stems, offer the same pass. Do **not** silent-scan the whole map without that offer or the tagged sync execute.
 
 On execute (chosen stems that **have** Understanding):
 
@@ -140,7 +140,7 @@ On execute (chosen stems that **have** Understanding):
 
 **De-confirm gate (`confirmed` → `draft` / `superseded`):** Flip status **only** when a **significant shape change** is outlined — the **is / is not** identity, product surface, ownership, or a stated guardrail actually changes (a genuinely new identity → §0 **split**, not a de-confirm). An **additive** request is **not** a shape change: a new research angle, an extra behavior, an edge case, or added detail that still fits the confirmed **is / is not** → record it in the **spec** (Behavior / Acceptance / Decisions) and **keep `confirmed`**. Do **not** revert a confirmed Understanding, rewrite **is / is not**, or re-open shape review just to capture an addition. If genuinely unsure, ask one question — *does this change what the feature is, or just add to it?* — and **default to additive**.
 
-**Reconciliation:** If code diverges from confirmed **shape**, update the spec + **Last reconciled with code**, or set `superseded` and draft a new Understanding. Run **only when** the user reports a mismatch, implementation contradicts Understanding, this session changes that feature’s shape/behavior, **or** you are updating that Understanding — **not** as a session-start repo-wide audit.
+**Reconciliation:** If code diverges from confirmed **shape**, update the spec + **Last reconciled with code**, or set `superseded` and draft a new Understanding. Run **only when** the user reports a mismatch, implementation contradicts Understanding, this session changes that feature's shape/behavior, **or** you are updating that Understanding - **not** as a session-start project-wide audit.
 
 **On Understanding update — relocate** *(same turn, this stem only)*:
 

@@ -4,17 +4,16 @@
 
 ## Goal
 
-Create the live `docs/` layout (Master_Index, feature folders, template pack in place) without leaving **this repo's** root `README.md`, `LICENSE.md`, or `CONTRIBUTING.md` in the project root when the user copied the whole template repository.
+Create the live `docs/` layout (Master_Index, feature folders, template pack in place) without leaving **this pack's** root `README.md`, `LICENSE.md`, or `CONTRIBUTING.md` in the project root when the user copied the whole template project.
 
 ## Step 0 — How templates arrived (pick a path)
 
 | Situation | Action |
 |-----------|--------|
-| `docs/templates/` copied (full pack with `help/`, `agent/`, scaffolds) | Skip Step 1 (relocate) unless whole repo. **Spot-check** pack (below) — do not walk the whole tree. |
+| `docs/templates/` copied (full pack with `help/`, `agent/`, scaffolds) | Skip Step 1 (relocate) unless whole project. **Spot-check** pack (below) - do not walk the whole tree. |
 | `docs/help/` and/or `docs/agent/` at `docs/` root (older layout) | Run **Step 0b — migrate layout**, then continue. |
 | Flat files only in `docs/templates/` (oldest layout) | Run **Step 0b — migrate layout**, then continue. |
-| Whole repo cloned/copied into the project | Do Step 1 (auto-move clearly upstream root files; ask only if ambiguous). |
-| Submodule of [Agentic-Doc-Templates](https://github.com/BrianCLowe/Agentic-Doc-Templates) | Prefer copy of `docs/templates/`; optional Step 1 for root files if submodule is at repo root. |
+| Whole project copied into the project | Do Step 1 (auto-move clearly upstream root files; ask only if ambiguous). |
 
 ## Step 0b — Migrate older layouts (if needed)
 
@@ -62,26 +61,26 @@ Fix internal links after moving (including Master Index links to the workflow). 
 
 Do **not** overwrite a project-owned root `README.md`. If an upstream README is already under `agent/upstream/`, leave the user’s root README alone.
 
-## Step 1b — Remove upstream GitHub config (user projects)
+## Step 1b - Remove pack-only files
 
-**This pack’s** `.github/` files are for [Agentic-Doc-Templates](https://github.com/BrianCLowe/Agentic-Doc-Templates) only (issue forms, Release workflow, **FUNDING.yml**). They must **not** stay in a user’s app repo. Bootstrap does **not** wipe all of `.github/` — only the gated files below.
+**This pack's** `.github/` files are for [Agentic-Doc-Templates](https://github.com/BrianCLowe/Agentic-Doc-Templates) only (issue forms, Release workflow, **FUNDING.yml**). They must **not** stay in a user's app project. Bootstrap does **not** wipe all of `.github/` - only the gated files below.
 
-When the whole template repo was cloned/copied into a project (or “Use this template” left `.github/` behind):
+When the whole template project was copied into a project:
 
 1. If `.github/ISSUE_TEMPLATE/` exists **and** contains Agentic Doc Templates forms (e.g. `agent-tool-problem.yml`, `template-improvement.yml`, `docs-confusion.yml`, `feedback.yml`, or bodies that mention Agentic Doc Templates / modular docs templates) → **delete that directory**.
 2. If `.github/ISSUE_TEMPLATE/` looks like the **user’s own** issue forms → **do not delete**.
 3. If `.github/workflows/release.yml` exists **and** is the upstream pack Release workflow (e.g. workflow `name: Release`, builds `agentic-doc-templates-*.zip`, or comments/body mention Agentic Doc Templates pack releases) → **delete that file**. Remove `.github/workflows/` if it is empty afterward.
 4. If `.github/FUNDING.yml` exists **and** is this pack’s (e.g. `github: BrianCLowe`, comments mention Agentic Doc Templates / `sponsors/BrianCLowe`) → **delete that file**. If it is the **user’s own** funding file → **do not delete**.
-5. Pack-checks workflow cleanup is **Step 1d** (same whole-repo gate).
-6. Do **not** delete the user’s other workflows, Copilot instructions, or other project GitHub config.
+5. Pack-checks workflow cleanup is **Step 1d** (same whole-project gate).
+6. Do **not** delete the user's other workflows, Copilot instructions, or other project config.
 7. Remove `.github/` if it is empty afterward.
 8. Prefer copying only `docs/templates/` next time so `.github/` never lands in the project.
 
 ## Step 1c — Remove upstream Cloud Agent config (user projects)
 
-**This pack's** `.cursor/environment.json` configures the Cloud Agent dev environment for [Agentic-Doc-Templates](https://github.com/BrianCLowe/Agentic-Doc-Templates) itself — it only verifies the pack's release-build toolchain (`git`, `zip`, `awk`) and installs no app dependencies. It is **not** meant for a user's app and must **not** stay in their repo.
+**This pack's** `.cursor/environment.json` configures the Cloud Agent development environment for [Agentic-Doc-Templates](https://github.com/BrianCLowe/Agentic-Doc-Templates) itself. It verifies the pack's release-build toolchain and installs no app dependencies. It is **not** meant for a user's app and must **not** stay in their project.
 
-When the whole template repo was cloned/copied into a project (or “Use this template” left `.cursor/` behind):
+When the whole template project was copied into a project:
 
 1. If `.cursor/environment.json` exists **and** is the upstream pack config (e.g. `"name": "Agentic Doc Templates"`, or its `install` only checks the release-build toolchain / mentions Agentic Doc Templates and installs no real app dependencies) → **delete that file**.
 2. If `.cursor/environment.json` looks like the **user's own** environment (installs their app's dependencies, references their stack, starts their services) → **do not delete**.
@@ -91,12 +90,12 @@ When the whole template repo was cloned/copied into a project (or “Use this te
 
 ## Step 1d — Remove upstream maintainer tooling (user projects)
 
-**This pack's** root `eval/`, root `scripts/` (CI helper), root **`DECISIONS.md`**, root **`VISION.md`**, and any leftover `docs/templates/agent/scripts/*.py` are for maintaining [Agentic-Doc-Templates](https://github.com/BrianCLowe/Agentic-Doc-Templates) itself. They must **not** stay in a user’s app repo. Adapter regeneration for pack editors is the markdown playbook [`GENERATE_ROLE_ADAPTERS.md`](GENERATE_ROLE_ADAPTERS.md) — **no Python**.
+**This pack's** root `eval/`, root `scripts/` (maintainer helper), root **`DECISIONS.md`**, root **`VISION.md`**, and any leftover `docs/templates/agent/scripts/*.py` are for maintaining [Agentic-Doc-Templates](https://github.com/BrianCLowe/Agentic-Doc-Templates) itself. They must **not** stay in a user's app project. Adapter regeneration for pack editors is the markdown playbook [`GENERATE_ROLE_ADAPTERS.md`](GENERATE_ROLE_ADAPTERS.md) - **no Python**.
 
-When the whole template repo was cloned/copied into a project (or “Use this template” left these behind):
+When the whole template project was copied into a project:
 
 1. If project-root **`eval/`** exists **and** is this pack’s harness (e.g. `eval/run_eval.py`, `eval/cases/additive-keeps-confirmed.json`, or `eval/README.md` names Agentic Doc Templates / modular-docs behavioral eval) → **delete the entire `eval/` directory**.
-2. If project-root **`scripts/gen_role_adapters.py`** exists (upstream CI helper) → **delete that file**. Remove root `scripts/` if it is empty afterward.
+2. If project-root **`scripts/gen_role_adapters.py`** exists (upstream maintainer helper) -> **delete that file**. Remove root `scripts/` if it is empty afterward.
 3. If **`docs/templates/agent/scripts/`** exists with pack Python helpers (e.g. `gen_role_adapters.py`) from an older pack zip → **delete that directory** (the playbook replaced it).
 4. If `.github/workflows/pack-checks.yml` exists **and** is this pack’s integrity workflow (e.g. workflow `name: Pack checks`, runs `gen_role_adapters.py --check` and/or `eval/run_eval.py`) → **delete that file**. Remove `.github/workflows/` / `.github/` if empty afterward (same care as Step 1b — do not delete the user’s other workflows).
 5. If project-root **`DECISIONS.md`** exists **and** is this pack’s decision log (e.g. heading **Agentic Doc Templates — Pack decisions**, or it says bootstrap Step 1d deletes it) → **delete that file**. Do **not** delete the user’s own `docs/decisions/` or a project `DECISIONS.md` that is about *their* app.
@@ -218,7 +217,7 @@ Unset `team_inbox` = human-only inbox, no roster file. If they **already** enabl
 
 ### How to present *(agent requirements)*
 
-1. Skim conversation + `docs/reference/` if present (do not inventory the whole repo) for a docs-profile recommendation only.
+1. Skim conversation + `docs/reference/` if present (do not inventory the whole project) for a docs-profile recommendation only.
 2. Lead with: *“I need a few project preferences once — all in this message. Pick each or say ‘defaults’ / accept suggestions.”*
 3. For **each** unset row: short plain-language **what it does**, the **options**, and your **suggestion** (with 1–3 citations for docs profile when reference exists).
 4. Wait for answers (or “use your suggestions”) → record all chosen keys + `recorded` today + `source` where applicable → continue to Step 3v.
@@ -240,7 +239,7 @@ Explain: optional understanding-author, doc-graduate, and template-sync adapters
 
 | Mode | Tell the user |
 |------|----------------|
-| **`auto`** | Recommended live updates + hygiene commits without mid-sync quizzes; still asks for brand-new pack optionals |
+| **`auto`** | Recommended live updates without mid-sync quizzes; still asks for brand-new pack optionals |
 | **`auto-all`** | Same + enable/install unset pack optionals (never re-enable declined) |
 | **`choose`** | Ask about live optionals each sync |
 
@@ -302,7 +301,7 @@ After 3d: fill **How the map fits** from the map rows you just created (one line
 2. If draft `-Understanding.md` files exist — the user can correct **shape**. Draft is not a coding gate. Under **build-first**, point at the spec.
 3. Point at **Open** items on `Human-TODO.md` — things only the human can close (procure, decide, waiting).
 4. After they confirm an Understanding (when used), graduate durable content into the spec ([`../help/SETUP.md`](../help/SETUP.md)). Under build-first, grow the spec as the harness builds.
-5. **Preference catch-up:** if any Step 3p key is still unset, re-present **only** the missing rows (same explanations as 3p) before finishing. Do not ask a git mode.
+5. **Preference catch-up:** if any Step 3p key is still unset, re-present **only** the missing rows (same explanations as 3p) before finishing.
 6. Optional: run [`RULE_INSTALL.md`](RULE_INSTALL.md) for agent rules (asks per tool, records in `docs/ADT-settings.yaml`). If doc-roles, slash-commands, or update-check were **enabled** in 3p, RULE_INSTALL also installs those optional artifacts.
 
 ### Preference detail (reference — already covered in Step 3p)
@@ -321,14 +320,14 @@ After 3d: fill **How the map fits** from the map rows you just created (one line
 - Put project feature content into `docs/templates/` (templates stay canonical reference only).
 - Create `docs/help/` or `docs/agent/` at docs root — those belong inside `docs/templates/`.
 - Leave Agentic Doc Templates `.github/ISSUE_TEMPLATE/`, `.github/workflows/release.yml`, `.github/workflows/pack-checks.yml`, or `.github/FUNDING.yml` in a user project — delete them (Step 1b / 1d).
-- Leave the pack's own `.cursor/environment.json` (Cloud Agent env config) in a user project on a whole-repo copy — delete it (Step 1c); keep the user's own env/rules.
+- Leave the pack's own `.cursor/environment.json` (Cloud Agent env config) in a user project on a whole-project copy - delete it (Step 1c); keep the user's own env/rules.
 - Leave `.cursor/skills/pack-release-tag/` when that skill's `name:` is `pack-release-tag` — delete that directory (Step 1c); keep the user's other skills.
-- Leave upstream root **`eval/`**, root **`scripts/gen_role_adapters.py`**, or leftover **`docs/templates/agent/scripts/*.py`** in a user project on a whole-repo copy — delete them (Step 1d); keep [`GENERATE_ROLE_ADAPTERS.md`](GENERATE_ROLE_ADAPTERS.md).
+- Leave upstream root **`eval/`**, root **`scripts/gen_role_adapters.py`**, or leftover **`docs/templates/agent/scripts/*.py`** in a user project on a whole-project copy - delete them (Step 1d); keep [`GENERATE_ROLE_ADAPTERS.md`](GENERATE_ROLE_ADAPTERS.md).
 - Ask before moving root files that are **clearly** upstream (Agentic Doc Templates / Brian Lowe / BrianCLowe markers) — just move them.
 - Finish bootstrap with a filled Document Map but **no** feature/shared files on disk.
 - Put a human errand anywhere but `docs/Human-TODO.md` (Workflow §13).
 - Drip-feed preference quizzes when Step 3p already covers them — **one batch**.
-- Silent-default `sync.mode`. Ask a git mode or write `orchestrator.git`.
+- Silent-default `sync.mode`.
 - Skip Step 3p (or stay silent about unset prefs) because the user did not ask — present and explain; record decisions.
 - Keep writing `docs/rule-install-status.yaml` / `docs/upstream-status.yaml` on new projects — use `docs/ADT-settings.yaml` only.
 
@@ -336,7 +335,7 @@ After 3d: fill **How the map fits** from the map rows you just created (one line
 
 - "Bootstrap modular docs in this project."
 - "Set up the Agentic Doc Templates documentation structure."
-- "I copied the whole templates repo — clean up and initialize docs."
+- "I copied the whole template pack - clean up and initialize docs."
 
 ## Related
 

@@ -1,7 +1,7 @@
 # Tool install — OpenClaw
 
 > **Status key:** `openclaw`  
-> Open only when installing or refreshing OpenClaw for this repo.
+> Open only when installing or refreshing OpenClaw for this project.
 >
 > OpenClaw is a **personal agent gateway** (channels, cron, workspace bootstrap files) — not a drop-in `.cursor/rules/` IDE harness. Config/credentials live under `~/.openclaw/`; the **workspace** is separate (default `~/.openclaw/workspace`). Docs: [Agent workspace](https://docs.openclaw.ai/concepts/agent-workspace).
 
@@ -9,8 +9,8 @@
 
 **Ask which workspace** will run against this project (do not guess-write into `~/.openclaw/`):
 
-1. **Preferred for coding this repo:** set that agent’s workspace to **this project root** (`agents.defaults.workspace` or `agents.list[].workspace` in `~/.openclaw/openclaw.json` — ask before editing config). Then install into the project’s `AGENTS.md`.
-2. **Alternate:** keep the default OpenClaw workspace and append the modular-docs section there — only if the user wants OpenClaw’s home workspace (not the repo) to carry the rule. Remind them `docs/Master_Index.md` paths only resolve when the workspace/cwd is the project (or they open files by absolute path).
+1. **Preferred for coding this project:** set that agent's workspace to **this project root** (`agents.defaults.workspace` or `agents.list[].workspace` in `~/.openclaw/openclaw.json` - ask before editing config). Then install into the project's `AGENTS.md`.
+2. **Alternate:** keep the default OpenClaw workspace and append the modular-docs section there - only if the user wants OpenClaw's home workspace (not the project) to carry the rule. Remind them `docs/Master_Index.md` paths only resolve when the workspace/cwd is the project (or they open files by absolute path).
 
 Record the chosen workspace path under `tools.openclaw.path` / `note` in `docs/ADT-settings.yaml`.
 
@@ -73,8 +73,8 @@ No command folder. Still present `optional_rules.slash-commands` when unset. On 
 ## For humans
 
 - Setup: `openclaw setup` / `openclaw onboard` seeds missing workspace bootstrap files without overwriting existing ones
-- Treat the OpenClaw workspace as private memory if it is not the project repo
-- No-repo brainstorms: export chats → `docs/reference/` — [`../../help/IDEA_CAPTURE_TIPS.md`](../../help/IDEA_CAPTURE_TIPS.md#recommended-export-idea-chats-into-docsreference) (chat-only AGENT.md path is paused)
+- Treat the OpenClaw workspace as private memory if it is not the project folder
+- No-project brainstorms: export chats -> `docs/reference/` - [`../../help/IDEA_CAPTURE_TIPS.md`](../../help/IDEA_CAPTURE_TIPS.md#recommended-export-idea-chats-into-docsreference) (chat-only AGENT.md path is paused)
 
 ## Do not
 

@@ -11,7 +11,7 @@ Depends on **docs profile** in `docs/ADT-settings.yaml` — a first-class choice
 1. You capture ideas (recommended: chat exports in `docs/reference/`, or a mid-build correction in chat).
 2. **`prevent` (default):** agent drafts `Product-Vision.md` (whole-product end-state) **and** `-Understanding.md` (per-feature shape); you confirm both before code. **`build-first`:** agent drafts thin **spec** plus a `Product-Vision.md` that starts lightweight (destination, **not a gate**; deepen when identity is fuzzy, there are multiple stems, or you *lock product shape*). **`balanced`:** always a lightweight Product-Vision; Understanding when identity is ambiguous; deepen the vision when 2+ stems, the whole is fuzzy, or you *lock product shape*.
 3. When Understanding is used: **you confirm shape** — is / is *not* + any remaining **real-fork** Assumptions (empty is fine; not a full-spec review). Under **prevent**, confirm **Product-Vision** as one product (end-state picture), not a feature list. Under **build-first**, confirm vision only after *lock product shape*. Agents should lock obvious defaults and not treat examples in `docs/reference/` as the target unless you clearly set them as the target.
-4. Durable contract lives on the **spec**. Record a gap that spec or Understanding already makes obvious on the spec when it is contract. Under build-first, grow the spec as the harness builds; use *lock shape for X* if identity fights start. *Lock product shape* only when the whole product needs a confirm gate. A new session starts with **docs freshness** (`git status` + worktrees) before treating those files as current ([Workflow §0.3](../agent/workflow/session-freshness.md)).
+4. Durable contract lives on the **spec**. Record a gap that spec or Understanding already makes obvious on the spec when it is contract. Under build-first, grow the spec as the harness builds; use *lock shape for X* if identity fights start. *Lock product shape* only when the whole product needs a confirm gate.
 
 ### Recommended practice — chat exports in `reference/`
 
@@ -33,7 +33,7 @@ Short asks are enough. Prefer full messy exports over a cleaned summary when you
 
 Do **not** attach a chat-only `AGENT.md` in the web UI for this pack right now — that path is paused; export is the supported route ([`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md#recommended-export-idea-chats-into-docsreference)).
 
-With an IDE already open on the repo, you can also say:
+With an IDE already open on the project, you can also say:
 
 > Using `docs/templates/`, create project documentation from our conversation so far. Do not invent features we did not talk about.
 
@@ -75,13 +75,13 @@ Polished PRD-only path still works:
 
 ---
 
-## Pattern 4 — Bootstrap (first time in a repo)
+## Pattern 4 - Bootstrap (first time in a project)
 
 Copy `docs/templates/`, then:
 
 > Bootstrap modular docs using `docs/templates/agent/BOOTSTRAP.md`.
 
-Full copy-vs-whole-repo notes and layout: [`SETUP.md`](SETUP.md). Optional rules: [`RULE_INSTALL.md`](../agent/RULE_INSTALL.md).
+Full copy-vs-whole-project notes and layout: [`SETUP.md`](SETUP.md). Optional rules: [`RULE_INSTALL.md`](../agent/RULE_INSTALL.md).
 
 ---
 
@@ -91,7 +91,7 @@ Full copy-vs-whole-repo notes and layout: [`SETUP.md`](SETUP.md). Optional rules
 
 Agent overwrites `docs/templates/` ([`TEMPLATE_SYNC_A.md`](../agent/TEMPLATE_SYNC_A.md)), then runs catch-up **from→to** via [`TEMPLATE_SYNC_B.md`](../agent/TEMPLATE_SYNC_B.md) — union Live impact tags across the jump (D18), not the top [`CHANGELOG.md`](../CHANGELOG.md) entry only. The sync summary lists **from→to** and the **unioned** tags that ran. Optional passes that sit in the tag table but were not tagged in this jump are not “skipped instructions.” `auto-all` means execute unioned tagged passes on all stems — not run every catalog row. Procedure and tagged optional passes: [`TEMPLATE_SYNC_B.md`](../agent/TEMPLATE_SYNC_B.md). Entry: [`TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md) (in the pack since **1.2**; A/B split in **2.6.8**).
 
-**Before 1.2:** If `docs/templates/agent/TEMPLATE_SYNC.md` is missing, copy/replace `docs/templates/` from this repo once (or ask the agent to), then use the sync ask for later updates.
+**Before 1.2:** If `docs/templates/agent/TEMPLATE_SYNC.md` is missing, copy/replace `docs/templates/` from the upstream pack once (or ask the agent to), then use the sync ask for later updates.
 
 Version check only: *Check for template updates.* — [`TEMPLATE_UPDATE_CHECK.md`](../agent/TEMPLATE_UPDATE_CHECK.md).
 
@@ -129,7 +129,7 @@ Anything only you can close → `docs/Human-TODO.md`: procure, decide/sign-off, 
 
 > Enable team inbox.
 
-> Add the team — you open the roster PR.
+> Add the team.
 
 > Put me on the roster as Alex.
 
@@ -164,12 +164,12 @@ Anything only you can close → `docs/Human-TODO.md`: procure, decide/sign-off, 
 | Update-check cadence | *Check for template updates every session.* / *Only check every week.* |
 | Optional role — intent | *Draft Understanding for [Feature] from what I said — I’ll review.* (main agent delegates if subagents installed) |
 | Docs | *Draft Understanding for X.* / *Update the spec for X.* |
-| Standing playbook override | *Add standing note: always squash before mark ready.* / *From now on, merge each slice after CI.* *(agent should save without being asked twice — only playbook overrides, not random notes)* |
+| Standing playbook override | *Add standing note: ask each sync before reshaping live docs.* / *From now on, present the docs-profile menu before recording my choice.* *(agent should save without being asked twice - only playbook overrides, not random notes)* |
 | Optional role — graduate | *Understanding confirmed — graduate to the spec.* |
 | Force a subagent | `/understanding-author` … *(optional; usually unnecessary)* |
 | Tooling | *Install the project tooling for this machine.* |
 | Human TODO | *What’s left on the human TODO?* / *Checked [item] — [feedback].* / *I’ll take [item].* / *Assign playtest to QA.* / *Apply defaults to Open.* |
-| Team roster | *Enable team inbox.* / *Add the team — you open the roster PR.* / *Put me on the roster as Alex.* / *I'm Sam — I take decide and procure.* / *You are the QA bot.* / *Add [bot] as report-only.* / *Update [bot]’s jobs / anti-jobs.* / *What’s on the team roster?* |
+| Team roster | *Enable team inbox.* / *Add the team.* / *Put me on the roster as Alex.* / *I'm Sam - I take decide and procure.* / *You are the QA bot.* / *Add [bot] as report-only.* / *Update [bot]'s jobs / anti-jobs.* / *What's on the team roster?* |
 
 Optional roles (opt-in, never always-on): [`../agent/roles/README.md`](../agent/roles/README.md). Tool install paths: [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md).
 
@@ -185,7 +185,7 @@ Optional roles (opt-in, never always-on): [`../agent/roles/README.md`](../agent/
 | `docs/features/FeatureName.md` | Durable contract after shape confirm |
 | `docs/_shared/…` | Only for truly shared project pieces (may be empty) |
 | `docs/Tooling.md` / `docs/Human-TODO.md` | Machine tools / human inbox (procure · playtest · decide · waiting) |
-| `docs/Team-Roster.md` | Optional team inbox roster (Name / Jobs / Anti-jobs if defined; only when enabled — named humans and bots self-ID; one initial PR; coding agents do not invent) |
+| `docs/Team-Roster.md` | Optional team inbox roster (Name / Jobs / Anti-jobs if defined; only when enabled - named humans and bots self-ID; one file writer at a time; coding agents do not invent) |
 | `docs/reference/` | Source materials (not the living map) |
 | `docs/templates/` | Upstream pack — not live feature content |
 

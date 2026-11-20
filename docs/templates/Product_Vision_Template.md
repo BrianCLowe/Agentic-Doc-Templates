@@ -22,7 +22,7 @@
 
 - NOT [wrong product category]
 - NOT [wrong whole-product surface / architecture identity]
-- NOT [a pile of disconnected features that happen to share a repo]
+- NOT [a pile of disconnected features that happen to share a project]
 
 ## End-state picture
 

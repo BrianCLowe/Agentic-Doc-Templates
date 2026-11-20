@@ -100,11 +100,11 @@ If your agent supports **images** (Cursor, ChatGPT, Claude, Grok, etc.), screens
 2. Tell the agent **two lists** (in chat is fine — the agent puts them on the **spec**):
    - **Similar:** what you want to borrow (layout, density, where the button lives, …)
    - **Different:** what your idea must not copy or must change
-3. Get the image **into the repo** under `docs/features/assets/` and link it from your feature’s **spec** (`FeatureName.md` **Visual references**) so future sessions can open the same file. Understanding stays shape-only (is / is not) — no screenshot table there.
+3. Get the image **into the project** under `docs/features/assets/` and link it from your feature's **spec** (`FeatureName.md` **Visual references**) so future sessions can open the same file. Understanding stays shape-only (is / is not) - no screenshot table there.
 
-#### Saving chat attachments to the repo
+#### Saving chat attachments to the project
 
-**Yes, when the agent can write files** — the goal is a real file in the repo, not a one-off chat image.
+**Yes, when the agent can write files** - the goal is a real file in the project, not a one-off chat image.
 
 | How you provide the image | Can the agent save it? |
 |---------------------------|-------------------------|
@@ -112,7 +112,7 @@ If your agent supports **images** (Cursor, ChatGPT, Claude, Grok, etc.), screens
 | **Attach a file** from disk (or `@`-mention a path in the workspace) | Usually works. Agent copies or moves to `docs/features/assets/` with shell or file tools. |
 | **Paste screenshot in chat** (no file on disk) | Agent **sees** the image (vision) but often **does not** get the original bytes. It may not be able to reproduce an identical PNG. Ask it to try; if it cannot, save the screenshot into `docs/features/assets/` yourself, then ask it to link + describe similar/different on the **spec**. |
 
-In Cursor and similar IDE agents, the workspace **is** your repo — there is no separate “workspace copy” to pull from unless the tool exposes an attachment path. Prefer **file on disk in the project** over paste-only when you need a permanent reference.
+In Cursor and similar IDE agents, the workspace **is** your project - there is no separate "workspace copy" to pull from unless the tool exposes an attachment path. Prefer **file on disk in the project** over paste-only when you need a permanent reference.
 
 **Agent should:** copy or move into `docs/features/assets/FeatureName-label.ext` when a source path exists; update the **spec** **Visual references**; never leave the only copy in chat. If save is not possible, say so and ask the user to drop the file in `assets/`.
 
@@ -130,7 +130,7 @@ In Cursor and similar IDE agents, the workspace **is** your repo — there is no
 
 > Here’s a screenshot of Notion’s focus view. Save it under `docs/features/assets/RoleEditor-notion-focus.png`. In `RoleEditor.md` **Visual references**, add: **similar** = full-width text, minimal chrome; **different** = we keep our app’s Save button top-left, no floating slash menu.
 
-**Why store in docs:** Chat attachments disappear. Files in the repo stay linked from the **spec** and stay available to any agent with file or vision access later.
+**Why store in docs:** Chat attachments disappear. Files in the project stay linked from the **spec** and stay available to any agent with file or vision access later.
 
 **Your own app:** Screenshots of *your* existing UI also belong here — “make the new screen look like this panel, not like the whole app.”
 
@@ -251,7 +251,7 @@ When the user describes a feature vaguely:
 2. Ask **short, plain-language questions** from the buckets above — not a twenty-question form. Prioritize: identity (is / is not *as a finished feature*), product surface when relevant, and relationship to existing work. Do not put phased or deferred work under **What this is NOT**. Do **not** interview obvious defaults. Do **not** treat examples in `docs/reference/` as the target unless clearly set as the target (Workflow §4 lock gate).
 3. Write or update `-Understanding.md` with status `draft` — **only** What this is / is NOT, Relationship, Assumptions, Confirmed notes. Keep identity-defining user detail **including product-defining surface/architecture**; do not pad into a mini-spec. No How it should work, UI/UX, Visual references, or Done when on Understanding. **Lock obvious defaults** in is / is not. Name each **category enabler** there too, even when the user did not say it (Workflow §4). **Assumptions = real forks only** (empty is success). If the design is already clear, **zero Assumption asks is correct**. Do not invent quizzes or treat reference examples as the target unless clearly set. Relocate trim overflow into the spec.
 4. Tell the user confirmation is for **shape / guardrails**, not a full spec review. After they confirm, **graduate** durable contract content to the spec (`Feature_Spec_Template.md`) — Decisions, module/API architecture, Acceptance, shared Maturity. Spec may hold detail that was never in Understanding. Do not ask them to remind you to plan ambitiously.
-5. If the user provides screenshots, persist under `docs/features/assets/` or `docs/_shared/assets/` (or `docs/reference/visuals/`): **copy/move from a workspace path** when the file is attached or `@`-mentioned; if only a pasted chat image (vision-only), ask the user to save into `assets/` or document similar/different from what you saw and note that a file copy was not available. Link in the **spec** **Visual references** — see [Saving chat attachments](#saving-chat-attachments-to-the-repo).
+5. If the user provides screenshots, persist under `docs/features/assets/` or `docs/_shared/assets/` (or `docs/reference/visuals/`): **copy/move from a workspace path** when the file is attached or `@`-mentioned; if only a pasted chat image (vision-only), ask the user to save into `assets/` or document similar/different from what you saw and note that a file copy was not available. Link in the **spec** **Visual references** - see [Saving chat attachments](#saving-chat-attachments-to-the-project).
 6. If the user does not know stack or architecture, propose options **after** Understanding shape sections are drafted, with a one-line rationale each — durable choices land in the **spec**.
 7. Under **`prevent`**, or when an Understanding exists: do not start implementation until the user confirms Understanding **shape** or explicitly waives review.
 8. If this session changed shape or contract, update the Understanding and/or spec. Preference corrections during polish → same-turn spec **Decisions** ([`workflow/decisions.md`](../agent/workflow/decisions.md)), not deferred to wrap-up.

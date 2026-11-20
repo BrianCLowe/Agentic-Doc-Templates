@@ -28,7 +28,7 @@ The feature map is **what exists**, not **what the product is**. Building the en
 
 **When drafting or filling a missing `Product-Vision.md` (TEMPLATE_SYNC Step B, bootstrap Step 3v, first live-docs, *lock product shape*):**
 
-1. **Peek `docs/reference/` first** if that folder has files. List names. Open **idea / identity** sources - chat exports, PRDs, "what this is" notes. If there are many files, prefer the newest identity / idea sources (or ones the user pointed at); skip vendor and API dumps unless they define the product. Do **not** skip the folder because the map looks complete. Do **not** inventory the whole repo.
+1. **Peek `docs/reference/` first** if that folder has files. List names. Open **idea / identity** sources - chat exports, PRDs, "what this is" notes. If there are many files, prefer the newest identity / idea sources (or ones the user pointed at); skip vendor and API dumps unless they define the product. Do **not** skip the folder because the map looks complete. Do **not** inventory the whole project.
 2. Draft **What this product is / is NOT** + **End-state picture** from those files + this-turn conversation. Lock obvious defaults. Examples in `reference/` are **not** the target unless the user clearly set them as the target (Workflow §4). Empty Assumptions is success.
 3. **Then** fill **How the map fits** from **existing** Document Map rows only (one line each). The map is the **fit** table, not the source of the picture. Do not invent stems.
 

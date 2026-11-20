@@ -7,19 +7,17 @@ version: 1
 
 # Pack sync behavior — bootstrap / first sync asks once; do not re-ask every update.
 # auto     = apply all changelog-gated live work + refresh installed rules (no mid-sync optionals quiz)
-#            + local post-sync hygiene commits (pack/stamps, then reshape, then TODO ambition when those ran)
 #            Still asks once for brand-new unset optional_rules.* (doc-roles, update-check, …)
-#            Pre-sync dirty tree is still a hard stop (commit YOUR work first) — see TEMPLATE_SYNC_A A0
 # auto-all = same as auto, and also enable + install any unset optional_rules.* (never re-enable declined)
 #            New update-check defaults to check_mode: always (no cadence quiz)
-# choose   = present optionals (reshape, TODO ambition, …) each sync; suggest commits, ask before committing
+# choose   = present optionals (reshape, TODO ambition, ...) each sync
 sync:
   mode: auto
   recorded: 2026-08-06
 
 # Docs ceremony profile — first-class choice, not a concession.
 # prevent    = editors / games / multi-surface / identity-risky. Understanding + shape confirm.
-#              Unset → prevent (do not silent-downgrade those repos).
+#              Unset -> prevent (do not silent-downgrade those projects).
 # build-first = typed APIs / CRUD / clear contracts. Spec only. The right default there.
 # The profile chooses which docs to write. It is not a coding gate.
 # balanced   = Understanding only when identity is ambiguous / multi-surface / split / user asked.
@@ -30,7 +28,7 @@ docs_profile:
   recorded: 2026-08-08
   # source: user | agent-suggested
 
-# If a live file still has orchestrator:, TEMPLATE_SYNC B0.6 removes that key.
+# If a live file still has orchestrator:, TEMPLATE_SYNC B0.5 removes that key.
 
 # standing: — omit this entire key unless the user has actually overridden an
 # ADT documentation or sync playbook and no first-class key fits (docs_profile,
@@ -38,12 +36,11 @@ docs_profile:
 # Write-in (not a quiz, not an eighth mode): a docs/sync override with no key is one bullet.
 # bullets. Do not copy an empty standing block into live ADT-settings.yaml
 # "to have something." Not a notes pad — prompt style, other-product API,
-# Tooling verify commands, and restating a git mode do not belong here
+# Tooling verify commands do not belong here
 # (use the key / Tooling.md / spec Decisions). TEMPLATE_SYNC never overwrites
 # a live standing block if one exists.
 # LOOKOUT (Workflow §0.2): create standing.instructions only in that override
 # case, then say you saved it. This-turn user instructions always win.
-# Pack stop steps still win (dirty-tree stop before sync).
 
 # One entry per tool. Status: installed | declined
 # Do not ask again for a tool when status is installed or declined
@@ -128,7 +125,7 @@ optional_rules:
 
 upstream:
   check_mode: always
-  check_mode_recorded: 2026-08-07   # set when the user chooses cadence (bootstrap / sync B0.4) — missing → ask once
+  check_mode_recorded: 2026-08-07   # set when the user chooses cadence (bootstrap / sync B0.3) - missing -> ask once
   # local_pack_version is set on enable / TEMPLATE_SYNC from docs/templates/VERSION.
   # Do not copy a number from this example. Do not set it on a session check.
   # local_pack_version: "X.Y.Z"
@@ -155,7 +152,7 @@ upstream:
 #   1. Stamp-on-dual-write — new Open rows get Assignee from kind_defaults in
 #      the same edit only when that role_id is Active on Team-Roster.md
 #      (e.g. playtest → qa after QA self-IDed). Else unassigned. No claim
-#      PR / no per-row human click for the first fill.
+#      step / no per-row human click for the first fill.
 #   2. One-shot backfill — after enable + kind_defaults, run
 #      “apply defaults to Open” once: fill unassigned Open rows from
 #      kind_defaults only if that role_id is Active on Team-Roster.md.
@@ -170,13 +167,12 @@ upstream:
 #   and assign only to Active ids. Named humans and bots
 #   SELF-ID their own row (humans use their slug, not leftover human).
 #   Report-only bots ask another agent or the human to add them.
-#   Full-team stand-up = one scribe / one initial PR (do not open
-#   competing Team-Roster PRs). Update the row when Name / Jobs /
-#   Anti-jobs change.
+#   Full-team stand-up = one scribe / one file writer at a time.
+#   Update the row when Name / Jobs / Anti-jobs change.
 #   3. Claim / reassign is override only (human or allowed bot) — not the
 #      bulk path.
 #   4. Bot discovery — bots watch “my open rows” / one digest ping. Not one
-#      PR per claim.
+#      ping per claim.
 # kind_defaults are the stamp map when enabled — still project-owned, not a
 # pack-required org chart.
 #

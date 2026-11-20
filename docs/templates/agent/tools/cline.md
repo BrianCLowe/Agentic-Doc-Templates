@@ -1,7 +1,7 @@
 # Tool install — Cline *(thin)*
 
 > **Status key:** `cline`  
-> Open only when installing or refreshing Cline for this repo.  
+> Open only when installing or refreshing Cline for this project.  
 > Docs: [Rules](https://docs.cline.bot/customization/cline-rules)
 
 ## Modular rule

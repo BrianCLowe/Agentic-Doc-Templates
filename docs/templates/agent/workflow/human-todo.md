@@ -15,7 +15,7 @@ Live file: **`docs/Human-TODO.md`** (from [`Human_TODO_Template.md`](../../Human
 | `procure` — portal / account / key / purchase / approval | Installable CLIs/SDKs → [`Tooling.md`](../../../Tooling.md) Required / Optional. An API or service the **running app** will call → also **Services this app consumes** on that file (same turn; Workflow §11). The Human-TODO row stays the errand |
 | `playtest` — human must run, feel, or smoke-test | Agent-only code work is not a Human-TODO row |
 | `decide` — human judgment or sign-off | |
-| `waiting` — blocked on someone/something outside the repo | |
+| `waiting` - blocked on someone/something outside the project | |
 
 **The inbox is the only list.** A human errand is an Open row here. Do not also write a feature `*-TODO.md`.
 

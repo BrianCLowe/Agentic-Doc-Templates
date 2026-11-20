@@ -1,7 +1,7 @@
 # Tool install — GitHub Copilot (VS Code Chat, Agents window, CLI)
 
 > **Status key:** `github-copilot`  
-> Open only when installing or refreshing Copilot for this repo.  
+> Open only when installing or refreshing Copilot for this project.  
 > Docs: [Custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions) · [Custom agents](https://code.visualstudio.com/docs/copilot/customization/custom-agents) · [CLI custom agents](https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-custom-agents) · [Agents window](https://code.visualstudio.com/docs/copilot/agents/agents-window)
 
 ## Modular rule
@@ -67,7 +67,7 @@ Only if `optional_rules.slash-commands.status` is `enabled`. Copilot prompt file
 
 ## For humans
 
-Chat view and the Agents window share `.github/agents/` and `.github/instructions/`, but **not** the same chat history (Agents window / CLI are Agent Host sessions). Monorepo: enable `chat.useCustomizationsInParentRepositories` when opening a subfolder. Docs: [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions) · [Agents window](https://code.visualstudio.com/docs/copilot/agents/agents-window).
+Chat view and the Agents window share `.github/agents/` and `.github/instructions/`, but **not** the same chat history (Agents window / CLI are Agent Host sessions). When you open a subfolder of a larger project, turn on the VS Code setting that loads customizations from parent folders. Docs: [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions) / [Agents window](https://code.visualstudio.com/docs/copilot/agents/agents-window).
 
 ## Do not
 

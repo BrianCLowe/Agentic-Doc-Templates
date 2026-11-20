@@ -1,7 +1,7 @@
 # Tool install — Continue.dev *(thin)*
 
 > **Status key:** `continue`  
-> Open only when installing or refreshing Continue for this repo.  
+> Open only when installing or refreshing Continue for this project.  
 > Docs: [Rules](https://docs.continue.dev/customize/deep-dives/rules)
 
 ## Modular rule
