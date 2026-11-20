@@ -69,7 +69,7 @@ If `docs_profile` is unset at bootstrap / first build-from-reference / sync: sug
 **While working:** Update the spec or Understanding when this session changed the contract or the shape.
 
 **After changes:**
-- Update Understanding/spec **only if this session** changed shape/contract. Preference corrections → same-turn Decisions + fix stale Behavior/Acceptance/Visual (§10). **ADT playbook overrides** → same-turn standing or first-class ADT-settings key (§0.2). Understanding update → relocate overflow into the spec (§4). Don't start a session by reconciling every doc. Update the files this task actually changed. Do a wider pass only when the user asked for a docs audit or you found a real inconsistency in scope.
+- Update Understanding/spec **only if this session** changed shape/contract. Preference corrections -> same-turn Decisions + fix stale Behavior/Acceptance/Visual (Section 10). **ADT playbook overrides** -> same-turn standing or first-class ADT-settings key (Section 0.2). Understanding update -> relocate overflow into the spec (Section 4). Don't start a session by reconciling every doc. Update the files this task actually changed. Do a wider pass only when the user asked for a docs audit or you found a real inconsistency in scope.
 
 **Clarification** (*review spec* / *gaps* / *confidence* for a **named** stem): re-read that stem; stay on the named stem unless you find a documented dependency or the user widens the ask; wait for confirm.
 

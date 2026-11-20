@@ -44,7 +44,7 @@ You still pick your agent. This pack is what that agent **reads and updates** so
 
 | Your product | Profile | Why |
 |--------------|---------|-----|
-| **Typed APIs, CRUD services, clear contracts** | **`build-first`** | Spec from day one, plus a Product-Vision that starts lightweight (destination, not a gate; deepen when identity is fuzzy, there are multiple stems, or you ask to *lock product shape*). Shape is already the types / routes. This is the *correct* default here — not “ceremony off for people in a hurry.” |
+| **Typed APIs, CRUD services, clear contracts** | **`build-first`** | Spec from day one, plus a Product-Vision that starts lightweight (destination, not a gate; deepen when identity is fuzzy, there are multiple stems, or you ask to *lock product shape*). Shape is already the types / routes. This is the *correct* default here - not "ceremony off for people in a hurry." |
 | **Editors, games, multi-surface apps** | **`prevent`** | Understanding + you confirm is / is *not*. A “helpful” agent will otherwise document the wrong engine, the wrong surface, or a second product. |
 | Mid-size / mixed signals | **`balanced`** | Understanding only when identity is fuzzy (competing surfaces, “not X”, split pressure, or you say *lock shape*). |
 

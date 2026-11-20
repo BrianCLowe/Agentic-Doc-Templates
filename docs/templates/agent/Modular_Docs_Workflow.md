@@ -136,4 +136,4 @@ See [`workflow/human-todo.md`](workflow/human-todo.md#13-human-todo-inbox--needs
 - **This file** = *how to work*: paved path first; then the matching module from the router.
 - **Tooling.md** = *what to install on a new machine* (not package deps) — [`workflow/tooling.md`](workflow/tooling.md).
 - **Human-TODO.md** = *what only a human can close* — [`workflow/human-todo.md`](workflow/human-todo.md). Optional `team_inbox` (unset = human-only) → [`workflow/team-roster.md`](workflow/team-roster.md). **Team-Roster.md** = who exists + handoff (create only when `team_inbox` is enabled).
-- The installed agent rule ([`Modular_Documentation_Rule.mdc`](Modular_Documentation_Rule.mdc)) is a short checklist — open this index when creating files, which docs to open, graduation, profile/standing questions, or the user asks about procedure; then start with the named module.
+- The installed agent rule ([`Modular_Documentation_Rule.mdc`](Modular_Documentation_Rule.mdc)) is a short checklist - open this index when creating files, which docs to open, graduation, profile/standing questions, or the user asks about procedure; then start with the named module.

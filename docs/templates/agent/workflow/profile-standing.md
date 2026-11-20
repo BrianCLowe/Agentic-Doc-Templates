@@ -18,7 +18,7 @@ The profile chooses **which docs to write**. It is not a coding gate. A `draft` 
 
 **Always required (all modes):** Master Index + Document Map, **spec**. Human inbox rules (§13) when a human must act. Catalog / decisions remain optional per their own sections.
 
-**Product vision** (`docs/Product-Vision.md` — whole-product end-state): **always create** (all profiles; unset → prevent). **`prevent`** → `draft` + user confirms product shape. **`balanced`** → lightweight; deepen when 2+ stems / fuzzy whole / *lock product shape*. **`build-first`** -> lightweight destination to start; deepen when identity is fuzzy, there are multiple stems, or the user asks to *lock product shape*; **not a gate** until *lock product shape* + confirm. Confirmed → feature work must not fight it. [`product-vision.md`](product-vision.md) §4.5.
+**Product vision** (`docs/Product-Vision.md` - whole-product end-state): **always create** (all profiles; unset -> prevent). **`prevent`** -> `draft` + user confirms product shape. **`balanced`** -> lightweight; deepen when 2+ stems / fuzzy whole / *lock product shape*. **`build-first`** -> lightweight destination to start; deepen when identity is fuzzy, there are multiple stems, or the user asks to *lock product shape*; **not a gate** until *lock product shape* + confirm. Confirmed -> feature work must not fight it. [`product-vision.md`](product-vision.md) Section 4.5.
 
 **Unset `docs_profile`:** treat as **`prevent`**. Do **not** invent `build-first` because files are missing.
 
