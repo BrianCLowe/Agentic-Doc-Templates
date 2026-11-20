@@ -22,7 +22,7 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 | D12 | Kit leftovers stay as covering TODOs on an existing stem | superseded | 2.7.19 |
 | D13 | Unset `docs_profile` → `prevent` (no silent downgrade) | accepted | 2.7.7 |
 | D14 | Release zip is pack-only `docs/templates/`; maintainer dirs stay upstream | accepted | 2.7.17 |
-| D15 | Workflow is an index + one module; not a monolith | accepted | 2.7.15 |
+| D15 | Workflow is an index + modules; not a monolith | accepted | 2.7.15 |
 | D16 | Roles never always-on; orchestrator (and bootstrap) are parent-session only | accepted | 2.7.7 |
 | D17 | Assumptions = real forks only; lock obvious defaults; examples are not identity | accepted | 2.7.28 |
 | D18 | Sync summaries report the catch-up union only; `auto-all` ≠ every catalog tag | accepted | 2.7.29 |
@@ -41,8 +41,7 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 | D31 | Completed is not a repair log; incidental fixes stay in git, not a new Completed row | superseded | 2.9.10 |
 | D32 | No check interval means the update check does not write settings | accepted | 2.9.13 |
 | D33 | A category enabler is named even when unspoken; a write that needs it waits until that portion is fully functional | superseded | 2.9.14 |
-| D34 | Current focus is a handoff note; the instructed task is the work | superseded | 2.9.15 |
-| D35 | The pack documents and syncs; no checklist, Current focus, implementation role, or git setting | accepted | 2.10.0 |
+| D35 | The pack documents and syncs | accepted | 2.10.0 |
 | D36 | Leftover feature TODOs are an offer; `auto-all` is not a yes | accepted | 2.10.1 |
 
 ---
@@ -73,17 +72,16 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 
 **Decision:** `python3 eval/run_eval.py` (no model) stays on `.github/workflows/pack-checks.yml`. Cases include **fail-snapshots** a wrong agent output must fail. Grow from integrity; prepare/verify remains the behavioral loop.
 
-**Named fail modes to keep covered:** wrong-engine build (identity, not a second surface); inventing Understanding under **build-first**; prevent still writes Understanding and is not a coding gate; invented-decision Assumptions / example-as-identity; always-mode update check writing settings; kit leftovers stay on the existing spec; the always-on rule does not restore a work checklist, Current focus, or a git-delivery setting.
+**Named fail modes to keep covered:** wrong-engine build (identity, not a second surface); inventing Understanding under **build-first**; prevent still writes Understanding and is not a coding gate; invented-decision Assumptions / example-as-identity; always-mode update check writing settings; kit leftovers stay on the existing spec.
 
 ## D6 — Standing is not a notes pad
 
 **Decision:** `standing.instructions` holds lasting **ADT playbook overrides** only. Missing / empty is correct. Do not quiz for standing. Do not copy example bullets into live settings. The seven `orchestrator.git.mode` values stay the menu; custom handling (merge commit, rebase-merge, always squash before ready for a HEAD-only reviewer, custom close-out) is a **write-in on that ask**, not an eighth mode.
 
-**Do not:** Add an eighth git mode for merge-commit / rebase-merge / HEAD-only squash. Do not quiz for standing on the git-mode ask — mention the write-in on that menu only.
 
 ## D7 — Host worktrees are playbook-only
 
-**Decision:** No `orchestrator.git.worktrees` key. Detect a host worktree and stay. Pack does not `git worktree add`. No host isolation → serial implementers.
+**Decision:** No `orchestrator.git.worktrees` key. Detect a host worktree and stay. No host isolation → serial implementers.
 
 ## D8 — Milestone ≠ one TODO
 
@@ -107,7 +105,7 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 
 ## D13 — Unset profile is prevent
 
-**Decision:** Missing `docs_profile.mode` → treat as `prevent`. Do not invent `build-first` because Understanding files are missing.
+**Decision:** Missing `docs_profile.mode` → treat as `prevent`. Missing Understanding files are not a reason to pick `build-first`.
 
 ## D14 — Pack vs consumer tree
 
@@ -115,17 +113,17 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 
 ## D15 — Thin workflow index
 
-**Decision:** `Modular_Docs_Workflow.md` is paved path + router. Full procedure lives in one `workflow/` module. Do not re-inflate the monolith.
+**Decision:** `Modular_Docs_Workflow.md` is paved path + router. Full procedure lives in one `workflow/` module per topic. Agents start at the index and the matching module and read another module when they need it. Do not re-inflate the monolith.
 
 ## D16 — Roles are opt-in; orchestrator stays parent
 
-**Decision:** Doc-role adapters are never always-on. Orchestrate **and bootstrap** run in the parent session only — never install/spawn an `orchestrator` or `docs-bootstrap` subagent type. Bootstrap is what *installs* the adapters.
+**Decision:** Doc-role adapters are opt-in, not always-on. Orchestrate **and bootstrap** run in the parent session only, not as an installed or spawned `orchestrator` or `docs-bootstrap` subagent type. Bootstrap is what *installs* the adapters.
 
 ## D17 — Lock obvious; Assumptions are real forks
 
-**Decision:** Full lock-gate prose lives only in `workflow/understanding.md` §4. Agents lock the obvious best default into **is / is not** without asking. **Assumptions** hold only real forks (no obvious winner). Empty Assumptions is success. If the design is already clear, **zero Assumption asks is correct** — do not invent a quiz. Do **not** treat examples in `docs/reference/` / chat as the target unless the user **clearly set them as the target**. Ask about a **lesser path** only when a **real non-timescale reason** exists (hard blocker, legal, missing credential) — not to offer an MVP / half-measure that lands 10 minutes faster (agent timescale). Offer an **`optional-assumption-cleanout`** pass on existing Understandings. Elsewhere: one-line pointers.
+**Decision:** Full lock-gate prose lives only in `workflow/understanding.md` §4. Agents lock the obvious best default into **is / is not** and list it in one line on review. **Assumptions** hold only real forks (no obvious winner). Empty Assumptions is success. If the design is already clear, **zero Assumption asks is correct** — do not invent a quiz. Examples in `docs/reference/` / chat are not the target unless the user **clearly set them as the target**. If unsure whether a choice is a real fork, ask once, clearly. Offer an **`optional-assumption-cleanout`** pass on existing Understandings. Elsewhere: one-line pointers.
 
-**Do not:** Treat “needs user confirmation” as a license to invent quizzes. Do not promote a reference example into identity or a spec constraint. Do not offer a lesser path to save sprint time.
+**Do not:** Treat “needs user confirmation” as a license to invent quizzes. Do not promote a reference example into identity or a spec constraint.
 
 ## D18 — Sync summary is the union, not the catalog
 
@@ -137,17 +135,17 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 
 **Decision:** `team_inbox` is an optional ADT-settings key for projects that want a human *or* a designated team-bot assignee on Human-TODO (and optionally human-gated feature TODO rows). Omit / unset / `enabled: false` = today’s human-only inbox (**no auto-stamp**). Enabling opts into **assign-all-at-once**: stamp Assignee from `kind_defaults` on dual-write; one-shot *apply defaults to Open* backfill for leftover unassigned rows — **both** only when that `role_id` is Active on the roster (else leave `unassigned`). Do not re-stamp an explicit (claimed / reassigned) assignee. Claim / reassign is **override only**, not the bulk path. Bots discover work via “my open rows” / one digest ping — not one PR per claim. `kind_defaults` are the stamp map, still project-owned — not a mandatory org chart. Do not silent-enable, do not copy Brian’s (or any team’s) bot roster as pack-required defaults, do not auto-close without the assignee’s confirm report.
 
-**Do not:** Treat team routing as the new default. Do not paste secrets or bot credentials into docs. Do not replace feature `*-TODO.md` ownership of code work. Do not require a per-row claim to fill Assignee when `team_inbox` is enabled. Do not backfill an id that is not Active on the roster.
+**Do not:** Treat team routing as the new default. Do not replace feature `*-TODO.md` ownership of code work. Do not require a per-row claim to fill Assignee when `team_inbox` is enabled. Do not backfill an id that is not Active on the roster.
 
 ## D20 — Team roster is two-stage (read vs self-ID)
 
 **Decision:** When `team_inbox` is enabled, live **`docs/Team-Roster.md`** (from `Team_Roster_Template.md`) is the project-owned directory of **who exists** (**Name**), their **Jobs**, **Anti-jobs** *(only if defined — empty / `—` is correct)*, and **how to hand off**. `kind_defaults` stay the stamp map — stamp a `role_id` only when that id is **Active** on the roster. **Unset `team_inbox` → do not create the file.** When Name / Jobs / Anti-jobs / Follow-ups / Handoff **change**, the owning teammate updates **their** row the same turn (report-only asks the proxy). Do not leave a stale job on the roster.
 
-**Two stages:** (1) A coding agent that received a **handoff** **reads** the roster and assigns only to Active ids. It must **not** invent bot rows or human names, copy example/other-project rosters, or backfill Active from `kind_defaults` / pack doc-roles / installed harness agents. Empty Active is correct. Missing default → `unassigned` (do not fallback-stamp leftover `human` for human-gated kinds). (2) **Teammates identify themselves** — named humans and bots write or refresh **their own** row only. **Report-only** bots do not edit the roster; they ask another bot/agent or the human to add **one** requested row. A human naming a teammate *this turn* may be written as that one row. That is user fill-in, not invention.
+**Two stages:** (1) A coding agent that received a **handoff** **reads** the roster and assigns only to Active ids. Empty Active is correct. Missing default → `unassigned` (do not fallback-stamp leftover `human` for human-gated kinds). (2) **Teammates identify themselves** — named humans and bots write or refresh **their own** row only. **Report-only** bots do not edit the roster; they ask another bot/agent or the human to add **one** requested row. A human naming a teammate *this turn* may be written as that one row.
 
 **One initial PR:** standing up `team_inbox` or adding a **full team** is **one scribe / one PR** that creates the roster (plus settings if needed). Other bots do **not** open competing `Team-Roster.md` PRs — join the open roster PR or wait for merge, then self-ID. Later one-bot updates may be their own PR, one writer at a time.
 
-**Do not:** Silent-create `Team-Roster.md` on a human-only inbox. Do not treat pack adapters as roster bots. Do not paste secrets or bot credentials. Do not copy Brian’s (or any team’s) roster into the template as live defaults. Do not invent anti-jobs. Do not race N roster-create PRs.
+**Create `Team-Roster.md` only when `team_inbox` is enabled** (a human-only inbox has no roster file). **Do not:** Treat pack adapters as roster bots. Do not race N roster-create PRs.
 
 ---
 
@@ -167,13 +165,13 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 
 **Decision:** When `team_inbox` is enabled, human teammates put **themselves** on `docs/Team-Roster.md` with **their own** `role_id` / Name (slug of their name — `alex`, not leftover `human`). Human-TODO stays the inbox of *work*. Assignee is the named person’s slug so follow-ups go to that person. Generic `human` is an **optional leftover bucket** for unsigned human work, and only stamps when that id is Active. Missing Active default → `unassigned` so later *apply defaults to Open* can move the row after a bot or named human self-IDs.
 
-**Do not:** Dump every human onto leftover `human` / treat Human-TODO as the people directory. Do not invent human names. Do not fallback-stamp `human` for human-gated kinds when no Active row matches. Do not silent-enable `team_inbox` so people can “have a roster.”
+**Do not:** Dump every human onto leftover `human` / treat Human-TODO as the people directory. Do not fallback-stamp `human` for human-gated kinds when no Active row matches. Do not silent-enable `team_inbox` so people can “have a roster.”
 
 ---
 
 ## D23 — Destination file always; gate only after lock + confirm
 
-**Decision:** Documenting the destination and gating implementation are **two jobs**. **Always create** a lightweight `docs/Product-Vision.md` (bootstrap / first live-docs / TEMPLATE_SYNC if missing) on **every** profile, including `build-first`. **`prevent`:** status `draft`; user confirms product shape; Understanding confirm still gates that stem. **`balanced`:** always the file; deepen when 2+ stems / fuzzy whole / *lock product shape*; Understanding rules unchanged. **`build-first`:** file is informative and evolving — **not a gate**. Agents read it for destination; they do **not** wait for confirm before spec/TODO work. *Lock product shape* is the only build-first path that starts a confirm gate (identity fight / whole-product fork). After lock + confirm, do not implement a fighting feature. Unset profile still treats as prevent. Draft source unchanged (D21): peek `docs/reference/` first; do not rebuild from the map. Empty Assumptions is success.
+**Decision:** Documenting the destination and gating implementation are **two jobs**. **Always create** a lightweight `docs/Product-Vision.md` to start (bootstrap / first live-docs / TEMPLATE_SYNC if missing) on **every** profile, including `build-first`; deepen it when identity is fuzzy, there are multiple stems, or the user asks to *lock product shape*. **`prevent`:** status `draft`; user confirms product shape; Understanding confirm still gates that stem. **`balanced`:** always the file; deepen when 2+ stems / fuzzy whole / *lock product shape*; Understanding rules unchanged. **`build-first`:** file is informative and evolving — **not a gate**. Agents read it for destination; they do **not** wait for confirm before spec/TODO work. *Lock product shape* is the only build-first path that starts a confirm gate (identity fight / whole-product fork). After lock + confirm, do not implement a fighting feature. Unset profile still treats as prevent. Draft source unchanged (D21): peek `docs/reference/` first; do not rebuild from the map. Empty Assumptions is success.
 
 **Do not:** Omit the file on `build-first`. Treat `draft` vision as a coding blocker on `build-first`. Invent Understandings under `build-first`. Invent anti-product quizzes. Rebuild the picture from the Document Map. Turn Master Index §1 into the vision essay. Paste the vision into every Understanding. De-confirm on an additive feature that still fits.
 
@@ -181,7 +179,7 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 
 ## D24 — Route the lesson where it is needed
 
-**Decision:** A pack lesson that lives only in the playbook where it was discovered is invisible under “open only the one module the router names.” Two field misses (dirty-tree / worktree stale-docs only in TEMPLATE_SYNC A0 + orchestrator-git; do-not-edit-templates only in RULE_INSTALL + TEMPLATE_SYNC) are the same shape: the knowledge existed, the routing did not.
+**Decision:** A pack lesson that lives only in the playbook where it was discovered is invisible to an agent working from a different playbook. Two field misses (dirty-tree / worktree stale-docs only in TEMPLATE_SYNC A0 + orchestrator-git; do-not-edit-templates only in RULE_INSTALL + TEMPLATE_SYNC) are the same shape: the knowledge existed, the routing did not.
 
 **Where it must live:**
 
@@ -190,7 +188,7 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 - **Bootstrap is parent-only** — same as orchestrator. A `docs-bootstrap` harness adapter is installed *by* bootstrap / rule-install, so it cannot exist for the first (and usual) bootstrap ask. Keep `roles/bootstrap.md` as an in-session wrapper; never generate or install `docs-bootstrap` adapters. Sync B deletes leftovers.
 - **Docs-overlapping PRs** — live TODO/spec/Understanding are rewritten every session. Two PRs on the same stem conflict even when `src/` files differ. Session default + Grok parent spawn path: list open PRs; add to the PR that already owns that stem’s docs. Do not leave this only in `tools/grok-build.md` (install-only). Orchestrator “do not share files” includes docs.
 
-**Do not:** File the next field lesson only in the playbook that first hit it. Do not skip session freshness because Current focus “looks recent.” Do not treat already-in-a-worktree as proof the docs are current. Do not omit `rules` on a bump that changes the always-loaded session default (installed copies would not get the gate). Do not re-add a `docs-bootstrap` adapter “for completeness.” Do not spawn a new Grok coding agent + PR per successive complaint on a stem that already has an open PR.
+**Do not:** File the next field lesson only in the playbook that first hit it. Do not treat already-in-a-worktree as proof the docs are current. Do not omit `rules` on a bump that changes the always-loaded session default (installed copies would not get the gate). Do not re-add a `docs-bootstrap` adapter “for completeness.” Do not spawn a new Grok coding agent + PR per successive complaint on a stem that already has an open PR.
 
 ---
 
@@ -198,13 +196,13 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 
 **Decision:** Squash-before-ready is **not** required for Bugbot. Bugbot reviews the **PR** (all commits) until the PR is marked ready. Commits that follow ready are tip-only. `milestone-pr` marks ready on the milestone’s existing commits, waits CI/Bugbot, then squash-merges at the forge. **`branch-pr-squash`** stays the one-morning-PR option. A reviewer that **only ever reads HEAD** (another product, or a standing preference) is a write-in: *always squash before mark ready*.
 
-**Do not:** Restore mandatory squash-before-ready “so tip-only bots see the whole cut.” Do not add an eighth git mode for HEAD-only reviewers. Do not treat forge squash-merge (how the slice lands on default) as the same as rewriting the PR branch before ready.
+**Do not:** Restore mandatory squash-before-ready “so tip-only bots see the whole cut.” Do not treat forge squash-merge (how the slice lands on default) as the same as rewriting the PR branch before ready.
 
 ---
 
 ## D26 — Sibling docs drift is content, not ancestry
 
-**Decision:** The session-freshness sibling probe hard-stops on **uncommitted sibling `docs/`** or **`git diff --quiet HEAD <other-HEAD> -- docs` failing**. `git log HEAD..<other-HEAD> -- docs` only **names** commits in a real stop message. Squash-merge (GitHub default; `branch-pr-squash`; standing squash-before-ready) severs ancestry: the worktree is “behind” on the graph and **identical** on `docs/` content. That is not drift. A pre-merge re-check does not catch the state the squash **creates**; the content verdict does.
+**Decision:** The session-freshness sibling probe stops and asks on **uncommitted sibling `docs/`** or **`git diff --quiet HEAD <other-HEAD> -- docs` failing**. `git log HEAD..<other-HEAD> -- docs` only **names** commits in a real stop message. Squash-merge (GitHub default; `branch-pr-squash`; standing squash-before-ready) severs ancestry: the worktree is “behind” on the graph and **identical** on `docs/` content. That is not drift. A pre-merge re-check does not catch the state the squash **creates**; the content verdict does.
 
 **Do not:** Verdict sibling drift from `git log HEAD..<other> -- docs` alone. Do not restore “this HEAD lacks `docs/` commits the other tree has” as a hard stop.
 
@@ -266,27 +264,17 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 
 ---
 
-## D34 — Current focus is a note
-
-**Superseded by D35.** The note is gone. Do not restore it as a softer cap.
-
-**Decision:** Current focus is a handoff sentence so the next session can orient. It is not the work limit. The work is whatever the user or parent brief instructed. If other open items are required for that instruction to be true, those items are in — including Medium and Low, and a linked blocker the instruction cannot be true without. *Continue from Current focus* (and a brief that names one item) stays one item and does not become orchestrate. A broader ask (*finish the kit*, *make this feature work*) stays the implement session and does those required items; it does not start the drain-until-blocked loop unless they said orchestrate. Source of truth: Workflow §5.1. The always-loaded rule, the paved path, and the feature-implementer hard rule say the same thing, because a lesson that lives only in §5.1 is skipped when the session does not open that module.
-
-**Do not:** Bring back “that item only” as the implementer default. Do not treat the note as permission to drain tiers the instruction does not require. Do not upgrade a one-item ask into orchestrate. Do not hold kit leftovers back because the note names a different cut (D12).
-
----
-
 ## D35 — Documentation and sync
 
-**Decision:** This pack creates and updates documentation and syncs the pack. It does not sit on the harness. There is no feature TODO, no Current focus, no implementation role, and no git-delivery setting. The instructed task is the work. A gap the confirmed spec or Understanding already makes obvious is part of that instruction — record it on the spec when it is contract. A second product, a surface nobody asked for, or a checklist of future ideas is not. Do not create `*-TODO.md`. Existing files may stay; do not extend them. Human errands stay on `Human-TODO.md`. Docs profile chooses which docs to write (`prevent` / `balanced` / `build-first`). A draft Understanding is not a coding gate. Category inputs stay in **What this is** and on the spec (Dependencies + an Acceptance clause that is false when the input is missing). Kit leftovers stay on the existing spec (D12’s “no empty map rows” stands; the covering-TODO list does not). Slash command is `/sync` only. Standing is still ADT playbook overrides only (D6, D29). Supersedes D7, D8, D9, D11, D12’s TODO list, D25, D28’s `/orchestrate`, D30, D31, D33’s write-ban and TODO follow-ups, and D34.
+**Decision:** This pack creates and updates documentation and syncs the pack. A gap the confirmed spec or Understanding already makes obvious is recorded on the spec when it is contract. Human errands stay on `Human-TODO.md`. Docs profile chooses which docs to write (`prevent` / `balanced` / `build-first`). A draft Understanding is not a coding gate. Category inputs stay in **What this is** and on the spec (Dependencies + an Acceptance clause that is false when the input is missing). Kit leftovers stay on the existing spec (D12’s “no empty map rows” stands; the covering-TODO list does not). Slash command is `/sync` only. Standing is still ADT playbook overrides only (D6, D29). Supersedes D7, D8, D9, D11, D12’s TODO list, D25, D28’s `/orchestrate`, D30, D31, and D33’s write-ban and TODO follow-ups.
 
-**Do not:** Recreate Current focus, `TODO_Template.md`, `workflow/todos.md`, feature-implementer, work-verifier, todo-warden, orchestrator, `orchestrator.git`, the timescale rule, or the build-verify rule. Do not turn “obvious gap” into a new checklist. Do not delete a consumer `*-TODO.md` on sync unless the user explicitly accepts the B0.7 offer (D36). `auto` and `auto-all` are not that acceptance.
+**Do not:** Delete a consumer `*-TODO.md` on sync unless the user explicitly accepts the B0.7 offer (D36). `auto` and `auto-all` are not that acceptance.
 
 ---
 
 ## D36 — Leftover feature TODOs are an offer
 
-**Decision:** A consumer repo can still have feature `*-TODO.md` files after 2.10.0. Those files are not the work list. The pack does not extend them. When a sync crosses 2.10.1, the step is to offer to delete `*-TODO.md` files under `docs/features/` and `docs/_shared/`, and to say why the pack removed them: the pack writes documentation and syncs itself; it does not keep a feature checklist or a Current focus; the harness owns the code; an agent that opens a leftover file still sees the old boxes. Sending that offer finishes the step. `sync.mode: auto` and `sync.mode: auto-all` do not answer the offer. Silence does not. The files stay until the user says yes. `docs/Human-TODO.md` is not part of the offer. Source of truth: TEMPLATE_SYNC B0.7.
+**Decision:** A consumer repo can still have feature `*-TODO.md` files after 2.10.0. When a sync crosses 2.10.1, the step is to offer to delete `*-TODO.md` files under `docs/features/` and `docs/_shared/`, and to say why the pack removed them: an agent that opens a leftover file still sees the old boxes. Sending that offer finishes the step. `sync.mode: auto` and `sync.mode: auto-all` do not answer the offer. Silence does not. The files stay until the user says yes. `docs/Human-TODO.md` is not part of the offer. Source of truth: TEMPLATE_SYNC B0.7.
 
 **Do not:** Delete those files because the mode is `auto-all`. Do not turn the offer into a Live impact tag that auto-executes. Do not treat the cleanout as the step. Do not edit the files while offering. Do not include Human-TODO. Do not offer again after **from** is already ≥ 2.10.1.
 

@@ -11,7 +11,7 @@
 - User asks to update / sync doc templates from Agentic Doc Templates
 - User says: *Template sync role*, *follow roles/template-sync.md*
 
-## Inputs *(open only these)*
+## Inputs
 
 1. [`../TEMPLATE_SYNC.md`](../TEMPLATE_SYNC.md) (entry) then **only** [`../TEMPLATE_SYNC_A.md`](../TEMPLATE_SYNC_A.md) — do **not** open B yet
 2. After A finishes: **only** [`../TEMPLATE_SYNC_B.md`](../TEMPLATE_SYNC_B.md) from disk + selected catch-up [`../../CHANGELOG.md`](../../CHANGELOG.md) entries (B0 Catch-up — not top-only on version jumps)
@@ -21,7 +21,7 @@
 
 ## Steps
 
-1. Open entry [`TEMPLATE_SYNC.md`](../TEMPLATE_SYNC.md) → follow **A** only ([`TEMPLATE_SYNC_A.md`](../TEMPLATE_SYNC_A.md)). **A0 first:** dirty tree → hard stop; do not auto-commit their WIP.
+1. Open entry [`TEMPLATE_SYNC.md`](../TEMPLATE_SYNC.md) → follow **A** only ([`TEMPLATE_SYNC_A.md`](../TEMPLATE_SYNC_A.md)). **A0 first:** a dirty tree stops sync until the user chooses; the user commits their own work-in-progress.
 2. When A’s handoff says so: open **local** [`TEMPLATE_SYNC_B.md`](../TEMPLATE_SYNC_B.md) from disk — discard any pre-overwrite sync procedure.
 3. Run Step B from B + **unioned** catch-up changelog tags (including B0 settings migrate + sync.mode + B0.3 hygiene commits under `auto` / `auto-all` + **B0.4** cadence when due + **B0.5** docs_profile when unset + **B0.6** remove `orchestrator:` when that key exists — do not ask a git mode + **B0.7** when **from** < 2.10.1 and **to** ≥ 2.10.1). If any selected entry is **≥ 2.10.0**, drop `optional-todo-*` from the union before executing. Do not create or edit `*-TODO.md`. B0.7’s step is the offer. Do not delete those files in that step. `auto` and `auto-all` are not a yes.
 4. **Rules** when tagged: refresh installed tools via each `tools/<key>.md` — **no ask** unless `customized: true`. Delete installed timescale and build-verify rules, and leftover feature-implementer, work-verifier, todo-warden, and orchestrate command files.
@@ -41,8 +41,8 @@
 
 ## Do not
 
-- Open `TEMPLATE_SYNC_B.md` before Step A finishes (wastes tokens on a playbook that will be replaced)
-- Skip A0 dirty-tree hard stop (including under `auto` / `auto-all`)
+- Open `TEMPLATE_SYNC_B.md` before Step A finishes
+- Skip the A0 dirty-tree stop (including under `auto` / `auto-all`)
 - Auto-commit pre-sync WIP without an explicit commit ask from the user
 - Run Step B from a pre–Step A in-memory playbook
 - Invent a broader audit than the unioned catch-up tags + skimmed Step B one-shots
@@ -53,7 +53,6 @@
 - Under **`auto` / `auto-all`:** re-ask for reshape / assumption clean-out / ambition / operable / kit-coverage / outcomes / completed cleanout / rules refresh / B0.3 hygiene commits
 - Under **`auto-all`:** leave unset `optional_rules.*` unset, or flip **`declined`** back to enabled
 - Ask before refreshing installed rules unless `customized: true`
-- Push unless the user explicitly granted push
 - On reshape execute: only add template headings and leave obsolete Understanding sections **or** copied instruction sermons (2.7.27 strip)
 - On TODO ambition execute: invent work or collapse real human/shared blockers
 - On TODO outcomes execute: check an Outcomes row, or create a human-verify playtest (the outcome audit is the only creator of that row)

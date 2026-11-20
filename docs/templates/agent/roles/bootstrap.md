@@ -11,7 +11,7 @@
 - User asks to bootstrap / init modular docs
 - User says: *Bootstrap role*, *follow roles/bootstrap.md*
 
-## Inputs *(open only these)*
+## Inputs
 
 1. [`../BOOTSTRAP.md`](../BOOTSTRAP.md) — follow it end-to-end
 2. Files that playbook names (Master Index template, scaffolds, conversation / reference sources it tells you to use)

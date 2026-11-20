@@ -7,19 +7,19 @@ alwaysApply: true
 
 First, check if `docs/Master_Index.md` exists. If it does not exist, ignore this entire rule and work normally.
 
-This project uses a lean modular documentation system. `docs/Master_Index.md` is the single entry point for **project context and the Document Map**. Procedure index: **`docs/templates/agent/Modular_Docs_Workflow.md`** (paved path + router) — open it only when the gates below say so, then open **one** named module under `docs/templates/agent/workflow/`. Do **not** edit `docs/templates/` (pack-owned; overwritten on sync — `docs/templates/README.md`).
+This project uses a lean modular documentation system. `docs/Master_Index.md` is the single entry point for **project context and the Document Map**. Procedure lives in **`docs/templates/agent/Modular_Docs_Workflow.md`** (paved path plus router) and the named module under `docs/templates/agent/workflow/`. Start there for the current ask. Read another module if you need it. Do **not** edit `docs/templates/` (pack-owned; overwritten on sync; see `docs/templates/README.md`).
 
-This pack **creates and updates documentation**, and **syncs the pack**. It does not run the harness. No work checklist, no Current focus, no implementation role, no git-delivery setting.
+This pack **creates and updates documentation**, and **syncs the pack**.
 
-**Route by ask** *(open only that playbook — do not scan the pack catalog. Adapter “—” means no spawn)*:
+**Route by ask** *(open the playbook for the ask; an Adapter cell with a dash means no spawn)*:
 
 | User ask | Open | Adapter |
 |----------|------|---------|
 | bootstrap / init modular docs / “Bootstrap the doc templates” / “Bootstrap modular docs” | **parent only** → `docs/templates/agent/BOOTSTRAP.md` (do **not** spawn a bootstrap subagent) | — |
 | update / sync doc templates / “Please update ADT” / “update ADT” / “sync ADT” / “sync the doc templates” | `docs/templates/agent/TEMPLATE_SYNC.md` | `docs-template-sync.md` |
-| yes to cleaning out leftover feature TODOs / “clean them out” / “delete the leftover feature TODOs” | `docs/templates/agent/TEMPLATE_SYNC_B.md` **B0.7 Cleanout** only. Do not start a template sync | — |
+| yes to cleaning out leftover feature TODOs / “clean them out” / “delete the leftover feature TODOs” | `docs/templates/agent/TEMPLATE_SYNC_B.md` **B0.7 Cleanout** only, without starting a template sync | — |
 | check for template updates / “check for ADT updates” | `docs/templates/agent/TEMPLATE_UPDATE_CHECK.md` | — |
-| install agent rules | `docs/templates/agent/RULE_INSTALL.md` → then only `docs/templates/agent/tools/<key>.md` for each tool | — |
+| install agent rules | `docs/templates/agent/RULE_INSTALL.md` -> the playbook `docs/templates/agent/tools/<key>.md` for each declared tool | - |
 | regenerate role adapters / sync cursor\|grok agents from adapter-src | `docs/templates/agent/GENERATE_ROLE_ADAPTERS.md` | — |
 | draft / revise Understanding, new idea, capture intent, correct What this is / is NOT, build/update live docs from `docs/reference/` or reference files | `docs/templates/agent/roles/understanding-author.md` | `understanding-author.md` |
 | graduate confirmed Understanding → spec | `docs/templates/agent/roles/doc-graduate.md` | `doc-graduate.md` |
@@ -31,7 +31,7 @@ Look for `<name>.md` under `.cursor/agents/`, `.grok/agents/`, `.claude/agents/`
 
 - If found → **delegate / spawn** that type with a self-contained prompt (feature/component name, paths, user’s ask). On Grok Build: `spawn_subagent` with `subagent_type: <name>` when `.grok/agents/<name>.md` exists. Do **not** treat `.cursor/agents/` as Grok types. On Copilot: delegate `.github/agents/<name>.agent.md` (CLI `/agent` or inference). Do **not** treat `.cursor/agents/` as Copilot types. User-global `~/.copilot/agents/` is personal — prefer project `.github/agents/`.
 - If missing → follow the **Open** playbook **in this session** (or spawn a generic child with that playbook path).
-- **Parent-only** rows have no adapter. Follow that Open path in this session. Never install or spawn `docs-bootstrap` as a harness subagent type — bootstrap **installs** the adapters, so a bootstrap adapter cannot exist until after the job it was meant to do.
+- **Parent-only** rows have no adapter. Follow that Open path in this session. Run bootstrap in this session, not as an installed or spawned `docs-bootstrap` harness subagent type — bootstrap **installs** the adapters, so a bootstrap adapter cannot exist until after the job it was meant to do.
 
 **Do not** delegate every message — only when a row above matches. Stay in this session for tiny follow-ups, clarifying questions only, or when the user says to stay here / skip subagents. **Successive issues / Grok parent:** do **not** spawn another coding agent + new PR if an open PR already touches this stem’s live docs (spec / Understanding) — add to that PR (Workflow §0.3). Code in different files does not make a second PR safe. These must not replace this rule or compete like always-on skill packs. Roles: `docs/templates/agent/roles/README.md`. Tool install paths: `docs/templates/agent/tools/README.md`.
 
@@ -41,36 +41,36 @@ Look for `<name>.md` under `.cursor/agents/`, `.grok/agents/`, `.claude/agents/`
 | **`prevent`** | Spec + Understanding (`draft`) |
 | **`balanced`** | Spec; + Understanding when identity ambiguous / multi-surface / split / user asked |
 | **`build-first`** | Spec. Right default for typed APIs / CRUD. |
-If `docs_profile` is unset at bootstrap / first build-from-reference / sync: suggest once from `docs/reference/` (cite 2–3 snippets) → ask → record. Never silent-downgrade a project full of Understandings.
+If `docs_profile` is unset at bootstrap / first build-from-reference / sync: suggest once from `docs/reference/` (briefly cite the files you used), ask, record. Keep a project full of Understandings on its profile unless the user changes it.
 
 **Standing workflow** *(read `docs/ADT-settings.yaml` → `standing.instructions` when present — Workflow §0.2)*:
 - Non-empty bullets = durable **ADT playbook overrides** for documentation and sync. Apply after hard safety + this-turn user ask; before pack defaults.
-- **LOOKOUT (every turn):** user wants to **override an ADT playbook** going forward (docs ceremony / sync / re-ask) → **same turn** set the first-class ADT-settings key if one fits, else **append** a short bullet under `standing.instructions` and say you saved it. Do not wait for wrap-up. **Do not jot random notes**, prompt-engineering, git delivery, or other-product API style into standing. If they told you **how to act in this repo** and it is **not** a pack playbook override → do **not** write standing. **Ask once:** always-on **rule/instruction**, or a **skill** loaded when that work comes up? Do not create either before they answer. Full split: Workflow §0.2.
-- Product/UI prefs for one stem → spec **Decisions** (§10), not standing. One-off “just this run” → do not write standing. Never invent standing notes.
+- **LOOKOUT (every turn):** user wants to **override an ADT playbook** going forward (docs ceremony / sync / re-ask) → **same turn** set the first-class ADT-settings key if one fits, else **append** a short bullet under `standing.instructions` and say you saved it. Do not wait for wrap-up. **Do not jot random notes**, prompt-engineering, or other-product API style into standing. If they told you **how to act in this repo** and it is **not** a pack playbook override → do **not** write standing. **Ask once:** always-on **rule/instruction**, or a **skill** loaded when that work comes up? Do not create either before they answer. Full split: Workflow §0.2.
+- Product/UI prefs for one stem → spec **Decisions** (§10), not standing. One-off “just this run” → stays out of standing. Standing holds only overrides the user stated.
 
 **Session default** *(the user asked to change the product or its docs)*:
-0. **Docs freshness** *(once per session, before treating docs as current)*: if a git repo, run `git status --porcelain` and `git worktree list`. Clean + one worktree → continue. **Two or more worktrees** → sibling probe in `docs/templates/agent/workflow/session-freshness.md`. Drift = uncommitted sibling `docs/` **or** `git diff --quiet HEAD <other-HEAD> -- docs` fails. Ancestry-only (`git log HEAD..<other> -- docs` after squash-merge) is **not** drift. Dirty **this** tree: one line, continue (do not auto-commit). Re-check before merge/overwrite that touches live docs. **Before a new PR or successive spawn:** `gh pr list --state open` (or forge equivalent). Open PR already touches this stem’s spec/Understanding → **add to that PR**; do not open a second (docs overlap ≠ code overlap — Workflow §0.3).
-1. Read `docs_profile` if present; read non-empty `standing.instructions`; read `docs/Master_Index.md` Sections 1–3. Read `docs/Product-Vision.md`.
+0. **Docs freshness** *(once per session, before treating docs as current)*: if a git repo, run `git status --porcelain` and `git worktree list`. Clean + one worktree → continue. **Two or more worktrees** → sibling probe in `docs/templates/agent/workflow/session-freshness.md`. Drift = uncommitted sibling `docs/` **or** `git diff --quiet HEAD <other-HEAD> -- docs` fails. Ancestry-only (`git log HEAD..<other> -- docs` after squash-merge) is **not** drift. Dirty **this** tree: one line, continue. Re-check before merge/overwrite that touches live docs. **Before a new PR or successive spawn:** `gh pr list --state open` (or forge equivalent). Open PR already touches this stem’s spec/Understanding → **add to that PR**, so the stem stays on one PR (docs overlap ≠ code overlap — Workflow §0.3).
+1. Read `docs_profile` if present; read non-empty `standing.instructions`; start with `docs/Master_Index.md` Sections 1-3 (map and overview), then the stem you are changing; read later sections if they are relevant. Read `docs/Product-Vision.md`.
 2. Read that stem’s spec and `-Understanding.md` **if it exists**. Do not re-ask for shape review unless scope changes (Workflow §4).
-3. Do the instructed task. A gap the confirmed spec or Understanding already makes obvious is part of that instruction — record it on the spec when it is contract. A second product, a surface nobody asked for, or a checklist of future ideas is not. Do **not** create or extend a `*-TODO.md`. There is no Current focus. A leftover feature `*-TODO.md` stays until the user accepts the offer in TEMPLATE_SYNC B0.7. `auto-all` is not that acceptance.
+3. Record a gap the confirmed spec or Understanding already makes obvious on the spec when it is contract. A leftover feature `*-TODO.md` stays until the user accepts the offer in TEMPLATE_SYNC B0.7. `auto-all` is not that acceptance.
 4. Before integrating a **shared** piece, check its **Maturity** on the spec or Document Map (`draft` | `usable` | `stable`).
 5. If the user asks to install tooling: follow **`docs/Tooling.md`** (Workflow §11).
-6. If a **human** must act (`procure` / `decide` / `waiting`): write an Open row on **`docs/Human-TODO.md`** only (Workflow §13). Unset `team_inbox` → human confirm only. **`team_inbox.enabled`:** open `docs/templates/agent/workflow/team-roster.md` for Assignee stamp and close. Do not invent roster rows. Never store secrets in docs. A `procure` for an API the running app will call → also a **Services this app consumes** row on `docs/Tooling.md` (name, why, credential name; Workflow §11). Not a Required/Optional install row.
-7. If `docs/Product-Vision.md` is missing at bootstrap / first live-docs / sync → create a lightweight file (all profiles). **Confirmed** vision: do not document a fighting feature (Workflow §4.5). Under **`build-first`**, `draft` is **not a documentation gate**.
+6. If a **human** must act (`procure` / `decide` / `waiting`): write an Open row on **`docs/Human-TODO.md`** only (Workflow §13). Unset `team_inbox` → human confirm only. **`team_inbox.enabled`:** open `docs/templates/agent/workflow/team-roster.md` for Assignee stamp and close. A `procure` for an API the running app will call → also a **Services this app consumes** row on `docs/Tooling.md` (name, why, credential name; Workflow §11). Not a Required/Optional install row.
+7. If `docs/Product-Vision.md` is missing at bootstrap / first live-docs / sync -> create a lightweight file to start (all profiles; deepen when identity is fuzzy, there are multiple stems, or the user asks to *lock product shape*). **Confirmed** vision: document only features that fit it (Workflow Section 4.5). Under **`build-first`**, `draft` is **not a documentation gate**.
 
-**Open `Modular_Docs_Workflow.md` (index) only when:** creating files, choosing shared vs feature, graduating Understanding → spec, docs-profile or standing-capture questions, **docs freshness flagged** (sibling drift / stale `docs/` / docs-overlapping PR), the user asks about procedure, **or context is thin** (new session, compaction, memory loss). Then open **only the one module** the index router names. Live scaffolds are fill-in blanks. Do **not** load the whole `workflow/` folder or re-read the index every turn.
+**Open `Modular_Docs_Workflow.md` (index) when:** creating files, choosing shared vs feature, graduating Understanding -> spec, docs-profile or standing-capture questions, **docs freshness flagged** (sibling drift / stale `docs/` / docs-overlapping PR), the user asks about procedure, **or context is thin** (new session, compaction, memory loss). Start with the module the index router names; read another module if you need it. Live scaffolds are fill-in blanks.
 
 **Shared / files / shape** *(full procedure in the named module; mode gates are the table above)*:
-- **Do not invent `_shared/`.** Only when a project-owned piece is used by two or more features, or the user named it. Empty §3.1 is fine. Workflow §1 · §0.
-- **Document Map = files on disk** the same turn (spec; Understanding per §0.1). No map-only planned rows. No `*-TODO.md`.
-- Lock obvious defaults; **Assumptions = real forks only**. Do not treat reference-doc examples as the target unless clearly set as the target. Name a category input the product cannot be true without in **What this is**, even when the user did not say it (Workflow §4).
+- **`_shared/`** holds a project-owned piece only when two or more features use it, or the user named it. Empty §3.1 is fine. Workflow §1 · §0.
+- **Document Map = files on disk** the same turn (spec; Understanding per §0.1). Add a map row only for files written that turn.
+- Lock obvious defaults; **Assumptions = real forks only**. Reference-doc examples are not the target unless clearly set as the target. Name a category input the product cannot be true without in **What this is**, even when the user did not say it (Workflow §4).
 - A `draft` Understanding is not confirmed identity. **`confirmed`** → read it as guardrails. Additive vs shape → Workflow §4. Vague ideas → `docs/templates/help/IDEA_CAPTURE_TIPS.md`.
 
-**While working:** Do the instructed task. Update the spec or Understanding when this session changed the contract or the shape. Do not open a checklist to decide the work.
+**While working:** Update the spec or Understanding when this session changed the contract or the shape.
 
 **After changes:**
-- Update Understanding/spec **only if this session** changed shape/contract. Preference corrections → same-turn Decisions + fix stale Behavior/Acceptance/Visual (§10). **ADT playbook overrides** → same-turn standing or first-class ADT-settings key (§0.2). Understanding update → relocate overflow into the spec (§4). No session-start full reconcile.
+- Update Understanding/spec **only if this session** changed shape/contract. Preference corrections → same-turn Decisions + fix stale Behavior/Acceptance/Visual (§10). **ADT playbook overrides** → same-turn standing or first-class ADT-settings key (§0.2). Understanding update → relocate overflow into the spec (§4). Don't start a session by reconciling every doc. Update the files this task actually changed. Do a wider pass only when the user asked for a docs audit or you found a real inconsistency in scope.
 
-**Clarification** (*review spec* / *gaps* / *confidence* for a **named** stem): re-read **that** stem only; ≤5 questions; wait for confirm; no unrelated stems.
+**Clarification** (*review spec* / *gaps* / *confidence* for a **named** stem): re-read that stem; stay on the named stem unless you find a documented dependency or the user widens the ask; wait for confirm.
 
-**Also:** do not invent a second product beside the one the docs confirm. Do not invent interim architecture in the docs when shape is clear.
+**Also:** document only the product the docs confirm, and write the target architecture once shape is clear.

@@ -36,9 +36,7 @@
           "optional-assumption-cleanout",
           "Keep status",
           "do **not** de-confirm",
-          "lesser path",
-          "real non-timescale reason",
-          "half-measure",
+          "ask once, clearly",
           "Lock the obvious"
         ]
       },
@@ -90,12 +88,15 @@
         "file": "docs/templates/help/IDEA_CAPTURE_TIPS.md",
         "must_contain": [
           "real forks only",
-          "lesser path",
           "clearly set as the target"
         ],
         "must_not_contain": [
           "List gaps in **Assumptions**"
         ]
+      },
+      {
+        "file": "DECISIONS.md",
+        "must_contain": ["ask once, clearly", "real forks"]
       },
       {
         "file": "docs/templates/agent/Modular_Documentation_Rule.mdc",

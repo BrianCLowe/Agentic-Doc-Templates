@@ -68,7 +68,7 @@ Think in these buckets. You do not need every answer on day one — fill gaps ov
 
 ### 2. Scope — what it is and is **not** *(when complete)*
 
-This prevents the “brand-new feature” mistake when you meant a **variant** or **add-on**. Describe the **finished** feature’s identity — not what you are skipping in the current sprint.
+This prevents the “brand-new feature” mistake when you meant a **variant** or **add-on**. Describe the **finished** feature’s identity.
 
 - Is this **new from scratch**, or a **new screen/mode** on something that already exists?
 - What **kind of thing** is it *not* (wrong category), even after it is fully built?
@@ -254,11 +254,11 @@ When the user describes a feature vaguely:
 5. If the user provides screenshots, persist under `docs/features/assets/` or `docs/_shared/assets/` (or `docs/reference/visuals/`): **copy/move from a workspace path** when the file is attached or `@`-mentioned; if only a pasted chat image (vision-only), ask the user to save into `assets/` or document similar/different from what you saw and note that a file copy was not available. Link in the **spec** **Visual references** — see [Saving chat attachments](#saving-chat-attachments-to-the-repo).
 6. If the user does not know stack or architecture, propose options **after** Understanding shape sections are drafted, with a one-line rationale each — durable choices land in the **spec**.
 7. Under **`prevent`**, or when an Understanding exists: do not start implementation until the user confirms Understanding **shape** or explicitly waives review.
-8. If this session changed shape or contract, update the Understanding and/or spec. There is no Current focus. Preference corrections during polish → same-turn spec **Decisions** ([`workflow/decisions.md`](../agent/workflow/decisions.md)), not deferred to wrap-up.
+8. If this session changed shape or contract, update the Understanding and/or spec. Preference corrections during polish → same-turn spec **Decisions** ([`workflow/decisions.md`](../agent/workflow/decisions.md)), not deferred to wrap-up.
 
-**Terse + documented contract is not vague.** “Fully support this vendor’s public API” (library wrap, match the SDK/docs) is **actionable without further information** — record in-scope surfaces on **this stem’s spec**. Do **not** interview through each uncovered method. Do **not** add Document Map rows for vague planned-only extras (playground, “maybe later”) — Workflow §0 inventory. Do **not** create a `*-TODO.md`.
+**Terse + documented contract is not vague.** “Fully support this vendor’s public API” (library wrap, match the SDK/docs) is **actionable without further information** — record in-scope surfaces on **this stem’s spec**, without an interview through each uncovered method. Keep vague planned-only extras out of the Document Map (playground, “maybe later”) — Workflow §0 inventory.
 
-When the user **is** experienced, do not over-interview — still fill **What this is NOT** and **Relationship to existing work**; skip obvious questions. Do **not** treat examples in `docs/reference/` as the target unless clearly set as the target. Do **not** offer an MVP / half-measure to go faster. Ask about a lesser path only when a **real non-timescale reason** exists (Workflow §4).
+When the user **is** experienced, do not over-interview — still fill **What this is NOT** and **Relationship to existing work**; skip obvious questions. Examples in `docs/reference/` are not the target unless clearly set as the target.
 
 ---
 

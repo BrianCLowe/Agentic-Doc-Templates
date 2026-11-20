@@ -25,7 +25,6 @@
           "Sibling probe",
           "Hard stop",
           "Stay ≠ current",
-          "Do **not** auto-commit",
           "Docs-overlapping PRs",
           "docs overlap ≠ code overlap",
           "gh pr list --state open",

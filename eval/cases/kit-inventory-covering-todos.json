@@ -19,22 +19,20 @@
         "patterns": [
           "Inventory / catch-all vs new map rows",
           "Do not add map rows for vague planned-only items",
-          "Terse ≠ vague",
-          "Do **not** create a `*-TODO.md`"
+          "Terse ≠ vague"
         ]
       },
       {
         "file": "docs/templates/agent/workflow/understanding.md",
         "patterns": [
-          "this stem’s spec",
-          "Do **not** create a `*-TODO.md`"
+          "this stem’s spec"
         ]
       }
     ],
     "summaries_must_point": [
       {
         "file": "docs/templates/agent/roles/doc-graduate.md",
-        "must_contain": ["Do **not** create a `*-TODO.md`"],
+        "must_contain": [],
         "must_not_contain": ["Pickup ≠ backlog"]
       },
       {

@@ -115,7 +115,7 @@ docs/
 ├── Tooling.md               ← from Tooling_Template.md (Step 3b — machine tools)
 ├── Product-Vision.md        ← from Product_Vision_Template.md (Step 3v — all profiles; build-first = destination, not a gate)
 ├── Human-TODO.md            ← from Human_TODO_Template.md (Step 3c — human inbox)
-├── Team-Roster.md           ← from Team_Roster_Template.md **only if** team_inbox is already enabled (do not invent teammates)
+├── Team-Roster.md           ← from Team_Roster_Template.md **only if** team_inbox is already enabled
 ├── ADT-settings.yaml        ← pack prefs (tools, optionals, sync mode, upstream) when first recorded
 ├── _shared/
 │   └── assets/
@@ -200,7 +200,7 @@ If root `README.md` does **not** exist (Step 1 already moved a pack README aside
 
 If a project-owned root `README.md` exists → **do not overwrite**. Do not add a second readme.
 
-**Do not** create `docs/Team-Roster.md` here. Unset `team_inbox` = human-only inbox, no roster file. If they **already** enabled team routing this turn, create the roster from [`Team_Roster_Template.md`](../Team_Roster_Template.md) (named-human fill-in **only** if they self-IDed this turn; do not invent bot or human-name rows). Named humans and bots self-ID later — [`workflow/team-roster.md`](workflow/team-roster.md).
+Unset `team_inbox` = human-only inbox, no roster file. If they **already** enabled team routing this turn, create `docs/Team-Roster.md` here from [`Team_Roster_Template.md`](../Team_Roster_Template.md) (named-human fill-in **only** if they self-IDed this turn). Named humans and bots self-ID later — [`workflow/team-roster.md`](workflow/team-roster.md).
 
 ## Step 3p — Project preferences *(one batch ask — before Step 3v / 3d)*
 
@@ -246,7 +246,7 @@ Explain: optional understanding-author, doc-graduate, and template-sync adapters
 
 ### E — Slash commands
 
-Explain: optional `/sync` for people who want a menu instead of remembering the sentence. It runs the same playbook as the short ask. **Decline** is the right answer if you would rather just ask. Options: **enable** / **decline**. Where the file lands is in each `tools/<key>.md` (Cursor, Claude Code, Copilot). Other tools have no command folder — the short ask stays the path. The pack has no git-delivery setting. Do not ask a git mode. If a copied example still has `orchestrator:`, remove that key.
+Explain: optional `/sync` for people who want a menu instead of remembering the sentence. It runs the same playbook as the short ask. **Decline** is the right answer if you would rather just ask. Options: **enable** / **decline**. Where the file lands is in each `tools/<key>.md` (Cursor, Claude Code, Copilot). Other tools have no command folder — the short ask stays the path.
 
 ### Standing — do not quiz
 
@@ -260,9 +260,9 @@ Read `docs_profile.mode` (unset → **prevent**). See [`workflow/product-vision.
 
 | Profile | Action |
 |---------|--------|
-| **`prevent`** | If `docs/Product-Vision.md` is missing → copy [`Product_Vision_Template.md`](../Product_Vision_Template.md). **Peek `docs/reference/` first** if it has files (newest 3–5 idea/identity exports, or user-pointed). Draft **What this product is / is NOT** + **End-state picture** from those + this conversation (lock obvious; empty Assumptions OK). Status `draft`; user confirms product shape. **Do not** build the picture from the Document Map / feature files. **How the map fits** stays empty until Step 3d, then fill from **existing** map rows only (one line each). Link from Master Index Key Locations / §3.4. |
+| **`prevent`** | If `docs/Product-Vision.md` is missing → copy [`Product_Vision_Template.md`](../Product_Vision_Template.md). **Peek `docs/reference/` first** if it has files (prefer the newest idea/identity sources, or user-pointed files; skip vendor and API dumps unless they define the product). Draft **What this product is / is NOT** + **End-state picture** from those + this conversation (lock obvious; empty Assumptions OK). Status `draft`; user confirms product shape. **Do not** build the picture from the Document Map / feature files. **How the map fits** stays empty until Step 3d, then fill from **existing** map rows only (one line each). Link from Master Index Key Locations / §3.4. |
 | **`balanced`** | **Always create** a lightweight file if missing (same peek + draft). Deepen when they named **2+ features**, whole-product identity is fuzzy, or they asked *lock product shape*. |
-| **`build-first`** | **Always create** a lightweight file if missing (same peek + draft). **Not a gate** — do not wait for confirm before coding. Leave **Confirmed with user** empty until *lock product shape*. |
+| **`build-first`** | **Always create** a lightweight file if missing (same peek + draft). Deepen when identity is fuzzy, there are multiple stems, or the user asks to *lock product shape*. **Not a gate** — do not wait for confirm before coding. Leave **Confirmed with user** empty until *lock product shape*. |
 
 Do **not** invent a feature checklist as the end-state picture. Do **not** invent stems. After Step 3d, return here once to fill **How the map fits**.
 
@@ -326,7 +326,7 @@ After 3d: fill **How the map fits** from the map rows you just created (one line
 - Leave upstream root **`eval/`**, root **`scripts/gen_role_adapters.py`**, or leftover **`docs/templates/agent/scripts/*.py`** in a user project on a whole-repo copy — delete them (Step 1d); keep [`GENERATE_ROLE_ADAPTERS.md`](GENERATE_ROLE_ADAPTERS.md).
 - Ask before moving root files that are **clearly** upstream (Agentic Doc Templates / Brian Lowe / BrianCLowe markers) — just move them.
 - Finish bootstrap with a filled Document Map but **no** feature/shared files on disk.
-- Put a human errand anywhere but `docs/Human-TODO.md` (Workflow §13). Do not also create a `*-TODO.md`.
+- Put a human errand anywhere but `docs/Human-TODO.md` (Workflow §13).
 - Drip-feed preference quizzes when Step 3p already covers them — **one batch**.
 - Silent-default `sync.mode`. Ask a git mode or write `orchestrator.git`.
 - Skip Step 3p (or stay silent about unset prefs) because the user did not ask — present and explain; record decisions.

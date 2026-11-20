@@ -29,5 +29,4 @@ Shared sources (do not duplicate into tool files):
 ## Dispatcher rules
 
 1. Read `docs/ADT-settings.yaml` (migrate legacy status files first if needed — TEMPLATE_SYNC_B B0.1).
-2. For each tool to install or refresh → open **`tools/<key>.md` only** → execute that file → stop.
-3. Never scan the pack catalog for “other tools that might help.”
+2. For each tool to install or refresh, open `tools/<key>.md` and execute that file.

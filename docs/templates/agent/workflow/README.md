@@ -1,6 +1,6 @@
 # Workflow modules
 
-> **Agents:** Start at [`../Modular_Docs_Workflow.md`](../Modular_Docs_Workflow.md) (index + paved path). Open **one** module from that routing table — do not scan this folder.
+> **Agents:** Start at [`../Modular_Docs_Workflow.md`](../Modular_Docs_Workflow.md) (index + paved path). Start with the module from that routing table; read another if you need it.
 
 | Module | Covers | Open when |
 |--------|--------|-----------|
@@ -19,4 +19,3 @@
 
 **Maintainers:** Edit the module that owns the rule. Keep the index paved path + routing table in sync. Roles and always-on rules **summarize and link** here — do not restate full procedure.
 
-There is no TODO module and no Current focus. Do not recreate them.

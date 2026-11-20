@@ -1,4 +1,4 @@
-> **Workflow module.** Open from the [workflow index](../Modular_Docs_Workflow.md) when session-start **docs freshness** flags a dirty sibling worktree, stale `docs/`, you are about to merge/overwrite live docs, or you would open a **new PR / spawn another coding agent** for a successive issue. Cheap checks live on the **session-default** path — do not open this file when `git status` + one worktree are clean **and** you are not opening a new PR.
+> **Workflow module.** Open from the [workflow index](../Modular_Docs_Workflow.md) when session-start **docs freshness** flags a dirty sibling worktree, stale `docs/`, you are about to merge/overwrite live docs, or you would open a **new PR / spawn another coding agent** for a successive issue. The cheap check itself lives on the session-default path.
 
 # 0.3 Session freshness — docs as source of truth
 
@@ -6,7 +6,7 @@ The pack’s promise is that **live docs are the source of truth across sessions
 
 TEMPLATE_SYNC [A0](../TEMPLATE_SYNC_A.md) already hard-stops a dirty tree before overwrite. This module is the **same lesson on the session-default path**: one `git status` (and a worktree list) before treating Master Index / specs and Understandings as current.
 
-**Stay ≠ current.** Already being in a worktree does not mean this tree’s docs are current. The pack does not create worktrees. Git delivery belongs to the harness.
+**Stay ≠ current.** Already being in a worktree does not mean this tree’s docs are current.
 
 ---
 
@@ -24,7 +24,7 @@ git worktree list
 | State | Action |
 |-------|--------|
 | Clean + **one** worktree | Continue. Optional one line: *docs freshness: ok*. |
-| Dirty **this** tree | One line: *this tree has uncommitted work* (list `docs/` paths if any). Treat on-disk docs as possibly **newer** than `HEAD`. **Continue** — this may be the user’s WIP. Do **not** auto-commit. |
+| Dirty **this** tree | One line: *this tree has uncommitted work* (list `docs/` paths if any). Treat on-disk docs as possibly **newer** than `HEAD`. **Continue** — this may be the user’s WIP. |
 | **Two or more** worktrees (or linked/host worktree) | Do the **sibling probe** below before trusting Master Index / specs and Understandings. |
 
 **Linked/host detect**: `git rev-parse --git-common-dir` differs from `--git-dir`; cwd under `~/.cursor/worktrees`, `~/.grok/worktrees`, or `.claude/worktrees`; session started via `/worktree` / `grok -w` / Copilot New Worktree / `claude --worktree`. Cloud Agent VM + branch is **not** a git worktree — still run `git status`; skip sibling probe unless `git worktree list` shows more than one.
@@ -52,7 +52,7 @@ On **hard stop**:
 
 1. Name the other path, its branch, and what is newer (uncommitted `docs/` and/or commit subjects).
 2. Explain: Master Index / specs and Understandings in **this** tree may be stale; implementing or merging from here can **regress** the user’s other tree (the A0 reason — mix or overwrite real work).
-3. **Ask** which tree is current. Do **not** auto-commit, stash, merge, rebase, or checkout default in a host worktree.
+3. **Ask** which tree is current.
 4. **Stop** until they choose: switch/continue in the current tree · they will commit/merge · explicit waive (warn that you may regress sibling `docs/`).
 
 Re-run the cheap check after they say continue.
@@ -84,16 +84,16 @@ If an open PR already lists this stem’s spec or Understanding (or Human-TODO /
 
 | Who | Action |
 |-----|--------|
-| This session | **Add commits to that PR.** Checkout its branch (main checkout) or keep working in this host worktree **on that branch**. Do **not** open a second PR. |
-| Grok / parent that `spawn_subagent`s coding agents | Do **not** spawn a new agent+branch+PR for this successive issue. Re-brief the in-flight agent or add to its PR. Remember **stem → open PR** for the rest of this parent session. |
+| This session | **Add commits to that PR.** Checkout its branch (main checkout) or keep working in this host worktree **on that branch**, so this stem stays on one PR. |
+| Grok / parent that `spawn_subagent`s coding agents | Re-brief the in-flight agent or add to its PR instead of spawning a new agent+branch+PR for this successive issue. Remember **stem → open PR** for the rest of this parent session. |
 
 **Overlap test is docs, not only code** (docs overlap ≠ code overlap). Different `src/` files + same `features/Foo.md` = overlap. Same-stem default is **one PR**.
 
 **Not overlap:** different stems, and you will not edit the other PR’s spec / Understanding / Human-TODO / Master Index.
 
-Project-wide files (Human-TODO, Master Index, Product-Vision): if an open PR already touches them → add there. If none does → keep the edit on **this** PR. Do **not** open a docs-only second PR.
+Project-wide files (Human-TODO, Master Index, Product-Vision): if an open PR already touches them → add there. If none does → keep the edit on **this** PR.
 
-This gate is **do not stack PRs that will rebase-conflict on `docs/`**. Git delivery belongs to the harness.
+This gate keeps PRs from stacking into rebase conflicts on `docs/`.
 
 ---
 
@@ -103,12 +103,8 @@ This gate is **do not stack PRs that will rebase-conflict on `docs/`**. Git deli
 - Treat **already-in-a-worktree → stay** as “this tree’s docs are current”
 - Hard-stop ordinary implement solely because **this** tree is dirty (that is A0’s overwrite gate, not this one)
 - Hard-stop because the **main** checkout is dirty when **this** linked/host worktree is clean **and** the sibling probe found no `docs/` drift
-- Auto-commit / stash / merge to “fix” freshness
-- `git worktree add` / remove a host worktree
-- Checkout default in a host/linked worktree
-- Scan every file under every worktree — porcelain + `git diff --quiet HEAD <other-HEAD> -- docs` is enough; `git log -- docs` only names commits on a real stop
+- Decide drift from anything other than the verdict: `git status` plus `git diff --quiet HEAD <other-HEAD> -- docs` on `docs/`. Use `git log` only to name commits after a real stop
 - Hard-stop because `git log HEAD..<other> -- docs` lists a squash-merge (or rebase) when `git diff --quiet HEAD <other-HEAD> -- docs` is clean
-- Open this module when the cheap freshness check is clean **and** you are not opening a new PR
 - Open a second PR because the **code** files differ while the same spec / Understanding would change
 - Spawn a new Grok/coding agent + new PR for a successive complaint on a stem that already has an open PR
 - Treat “items do not share code files” as permission to parallelize same-stem **docs**

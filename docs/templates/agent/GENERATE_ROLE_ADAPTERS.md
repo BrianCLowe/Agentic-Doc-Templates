@@ -6,13 +6,12 @@
 
 Regenerate every harness adapter under `roles/cursor/`, `roles/grok/`, and `roles/copilot/` from the single source in `roles/adapter-src/`, then stop.
 
-## Inputs *(open only these)*
+## Inputs
 
 1. [`roles/adapter-src/manifest.json`](roles/adapter-src/manifest.json) — role list, descriptions, per-harness frontmatter, optional `grok_extra_hard_rules`
 2. [`roles/adapter-src/bodies/<role>.md`](roles/adapter-src/bodies/) — shared body (intro + Hard rules) for each role in the manifest
 3. Existing `roles/cursor/*.md`, `roles/grok/*.md`, and `roles/copilot/*.agent.md` only to overwrite
 
-**Do not** open unrelated playbooks or scan the pack catalog.
 
 ## Steps
 
@@ -65,7 +64,7 @@ Same as Cursor, but:
 
 - Write **all three** harnesses for every role in the manifest.
 - Delete `roles/cursor/<name>.md`, `roles/grok/<name>.md`, or `roles/copilot/<name>.agent.md` only if that role was **removed** from the manifest (ask before deleting if unsure).
-- **Never** create an `orchestrator` or `docs-bootstrap` adapter (parent-only).
+- `orchestrator` and `docs-bootstrap` are parent-only and get no adapter.
 
 ## Stop when
 

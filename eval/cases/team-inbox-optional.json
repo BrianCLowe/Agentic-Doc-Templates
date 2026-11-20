@@ -23,7 +23,6 @@
           "Stamp-on-dual-write",
           "apply defaults to Open",
           "Claim / reassign is override only",
-          "Never paste secrets or bot credentials",
           "Team-Roster.md",
           "coding agents on a handoff READ",
           "named humans",
@@ -45,7 +44,6 @@
           "two-stage",
           "self-ID",
           "report-only",
-          "Do not invent",
           "Anti-jobs",
           "One initial PR",
           "competing",
@@ -79,7 +77,6 @@
           "Apply defaults to Open",
           "not forced into a bot team",
           "Assign playtest to QA",
-          "must **not** invent roster bots",
           "Active on [`Team-Roster.md`]",
           "Put me on the roster as Alex",
           "do not fallback-stamp `human`",
@@ -122,8 +119,7 @@
         "file": "docs/templates/agent/workflow/human-todo.md",
         "must_contain": [
           "team_inbox.enabled",
-          "confirm report",
-          "invent `Team-Roster.md` bot or human-name rows"
+          "confirm report"
         ],
         "must_not_contain": [
           "Mark human-only items done; invent Human-TODO spam"

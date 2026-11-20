@@ -31,18 +31,18 @@ The modular rule guards itself: *"If `docs/Master_Index.md` does not exist, igno
 
 | Extra | What | Where |
 |-------|------|--------|
-| **Project prefs (batch)** | Docs profile, update-check, doc-roles, slash-commands (`/sync`), sync mode — **one** bootstrap ask. Do **not** quiz for standing. No git-delivery setting | Bootstrap **Step 3p** · live keys in [`docs/ADT-settings.yaml`](../agent/ADT-settings.example.yaml) |
+| **Project prefs (batch)** | Docs profile, update-check, doc-roles, slash-commands (`/sync`), sync mode — **one** bootstrap ask. Standing is set only when the user states an override | Bootstrap **Step 3p** · live keys in [`docs/ADT-settings.yaml`](../agent/ADT-settings.example.yaml) |
 | **Docs profile** | First-class choice: `build-first` (typed APIs / CRUD), `prevent` (editors / games / multi-surface; default if unset), `balanced` (Understanding when identity fuzzy) | Workflow [§0.1](../agent/workflow/profile-standing.md#01-docs-profile-ceremony-modes) · `docs_profile` |
-| **Product vision** | Whole-product end-state picture. **Always create** (lightweight on `balanced` / `build-first`). **`build-first`:** not a gate until *lock product shape*. Confirmed vision: features must not fight it | [`Product_Vision_Template.md`](../Product_Vision_Template.md) · [§4.5](../agent/workflow/product-vision.md) |
+| **Product vision** | Whole-product end-state picture. **Always create** (lightweight to start on `balanced` / `build-first`; deepen when identity is fuzzy, there are multiple stems, or you ask to *lock product shape*). **`build-first`:** not a gate until *lock product shape*. Confirmed vision: features must not fight it | [`Product_Vision_Template.md`](../Product_Vision_Template.md) · [§4.5](../agent/workflow/product-vision.md) |
 | **Standing instructions** | Durable **ADT playbook overrides** when no first-class key exists. Lookout-capture only when they change how a pack playbook runs — **not** a notes pad | Workflow [§0.2](../agent/workflow/profile-standing.md#02-standing-workflow-instructions-user-workflow-not-pack-enums) · `standing.instructions` |
 | Template update check | Upstream `VERSION` ping — default every session, no settings write; interval optional (then `last_checked`) | Step 3p · [`../agent/TEMPLATE_UPDATE_CHECK.md`](../agent/TEMPLATE_UPDATE_CHECK.md) |
 | Doc roles | Understanding author, doc graduate, template sync | Step 3p · [`../agent/roles/README.md`](../agent/roles/README.md) — Cursor → `.cursor/agents/`; Grok Build → `.grok/agents/`; Copilot → `.github/agents/` |
 | Slash commands | Optional `/sync` — same playbook as the short ask; decline if you would rather just ask | Step 3p **E** · [`../agent/commands/README.md`](../agent/commands/README.md) |
-| Sync mode | `auto` / `auto-all` / `choose` — dirty tree before sync still hard-stops. No git-delivery setting | Step 3p · `sync.mode` |
+| Sync mode | `auto` / `auto-all` / `choose` — a dirty tree stops sync and the agent asks first (A0) | Step 3p · `sync.mode` |
 | **Team inbox** | Optional Human-TODO assignees. **Omit / unset / `enabled: false` = human-only** (no auto-stamp; do not silent-enable). Claim / reassign is override only | `team_inbox` · [`workflow/team-roster.md`](../agent/workflow/team-roster.md) · [`Human_TODO_Template.md`](../Human_TODO_Template.md) |
 | **Team roster** | Name, Jobs, Anti-jobs *(if defined)*, handoff. Create `docs/Team-Roster.md` **only** when team inbox is on. Coding agents on a handoff **read** (do not invent rows). Named humans and bots **self-ID** (humans use their slug, not leftover `human`); report-only bots ask another agent to add them. Full-team stand-up = **one initial PR**. Update the row when jobs change | [`Team_Roster_Template.md`](../Team_Roster_Template.md) · [`workflow/team-roster.md`](../agent/workflow/team-roster.md) |
 
-Parent agents delegate a doc role when an ask matches; `/sync` is optional. Role playbooks stay under `roles/*.md` — never paste them into always-on rules. Settings live in **`docs/ADT-settings.yaml`** (docs profile, **standing.instructions**, tools, optionals, team_inbox, sync mode, upstream stamps). No git-delivery key.
+Parent agents delegate a doc role when an ask matches; `/sync` is optional. Role playbooks stay under `roles/*.md` — never paste them into always-on rules. Settings live in **`docs/ADT-settings.yaml`** (docs profile, **standing.instructions**, tools, optionals, team_inbox, sync mode, upstream stamps).
 
 ## Cursor conflict note
 
@@ -67,7 +67,7 @@ OpenClaw loads workspace bootstrap files (especially `AGENTS.md`), not `.cursor/
 | Agent always reads Master_Index first | Usually, if the rule is loaded — not guaranteed. **Docs freshness** (`git status` + worktrees) first; sibling `docs/` drift = content, not ancestry after squash-merge |
 | Agent treats this worktree’s docs as current | After §0.3 freshness. Stay-in-worktree ≠ current — a sibling tree may have newer uncommitted `docs/` |
 | Grok / successive issues each get their own PR | Same-stem live docs (TODO/spec) on an open PR → add there. Docs overlap ≠ code overlap |
-| Agent says “you can test” but build is red | Core **build-verify** rule — fill Tooling **Project verify**; agent must run/fix before handoff |
+| Agent says "you can test" but build is red | Fill Tooling **Project verify** with this repo's real build and test commands; the agent runs them and fixes failures before saying you can test (Workflow Section 11) |
 | Preference polish sticks across sessions | Rule captures lasting UI choices into spec **Decisions** same turn (no wrap-up ask needed) |
 | Playbook overrides stick | Agents lookout-capture into `standing.instructions` (or first-class keys) same turn — only when they **override an ADT playbook**, not random notes — Workflow §0.2 |
 | Same behavior across tools | Similar, not identical |

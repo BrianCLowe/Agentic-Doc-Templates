@@ -60,9 +60,7 @@ No command folder. Still present `optional_rules.slash-commands` when unset. On 
 |---------------|-----------------|
 | Workspace `TOOLS.md` | Project `docs/Tooling.md` (machine/CLI install list for *this* app) |
 | Workspace `BOOTSTRAP.md` | Pack [`../BOOTSTRAP.md`](../BOOTSTRAP.md) (modular docs first-time layout) |
-| `~/.openclaw/` config & credentials | Must **not** be committed into the project or workspace git |
 
-Do **not** put secrets, API keys, or `~/.openclaw/` state into the project repo.
 
 ## Verify
 

@@ -44,7 +44,7 @@ You still pick your agent. This pack is what that agent **reads and updates** so
 
 | Your product | Profile | Why |
 |--------------|---------|-----|
-| **Typed APIs, CRUD services, clear contracts** | **`build-first`** | Spec from day one, plus a lightweight Product-Vision (destination, not a gate). Shape is already the types / routes. This is the *correct* default here — not “ceremony off for people in a hurry.” |
+| **Typed APIs, CRUD services, clear contracts** | **`build-first`** | Spec from day one, plus a Product-Vision that starts lightweight (destination, not a gate; deepen when identity is fuzzy, there are multiple stems, or you ask to *lock product shape*). Shape is already the types / routes. This is the *correct* default here — not “ceremony off for people in a hurry.” |
 | **Editors, games, multi-surface apps** | **`prevent`** | Understanding + you confirm is / is *not*. A “helpful” agent will otherwise document the wrong engine, the wrong surface, or a second product. |
 | Mid-size / mixed signals | **`balanced`** | Understanding only when identity is fuzzy (competing surfaces, “not X”, split pressure, or you say *lock shape*). |
 
@@ -57,9 +57,9 @@ Public example of this pack on a typed API: **[xAIkit](https://github.com/BrianC
 AI coding agents drift when intent lives only in chat. This pack gives them a small, consistent `docs/` layout. You pick a **docs profile** at bootstrap (table above) — that choice is the product, not an afterthought.
 
 1. You capture ideas — **recommended:** export chat threads (Grok.com, ChatGPT, …) to markdown and drop them in `docs/reference/` (often many files; they keep whys that polished design docs lose). Or talk the idea through with your **coding agent** in the IDE and have it **build or update live docs as you go**.
-2. At bootstrap the agent asks **project preferences in one batch** (docs profile, sync mode, optionals) — not a drip of separate quizzes. Git delivery belongs to the harness.
+2. At bootstrap the agent asks **project preferences in one batch** (docs profile, sync mode, optionals) — not a drip of separate quizzes.
 3. Under **prevent**, the agent writes Understanding and you confirm shape (is / is *not* + Assumptions). Under **build-first**, the spec is the contract; *lock shape* anytime identity gets sharp. Draft Understanding is not a coding gate.
-4. The instructed task is the work. A gap the confirmed spec or Understanding already makes obvious is part of that instruction. A second product or a checklist of future ideas is not. There is no Current focus and no feature TODO.
+4. Record a gap the confirmed spec or Understanding already makes obvious on the spec when it is contract.
 
 Short asks are enough: *bootstrap*, *draft Understanding for X*, *update the doc templates*. The agent routes to the matching playbook inside `docs/templates/`. Tips: [`docs/templates/help/IDEA_CAPTURE_TIPS.md`](docs/templates/help/IDEA_CAPTURE_TIPS.md). Scaffolds vs teaching: [`docs/templates/help/SCAFFOLDS.md`](docs/templates/help/SCAFFOLDS.md).
 
@@ -158,7 +158,7 @@ Flat sibling files per feature/shared component. Naming: [`Modular_Docs_Workflow
 - **Understanding when identity is expensive** — Agent drafts shape/guardrails; you confirm is / is not (not the full contract). That file is not a coding gate.
 - **Product vision** — One end-state picture the feature map must fit (always created; all profiles; **build-first** is destination-only until you *lock product shape*). A complete map is not identity.
 - **Modular map** — Small files + Document Map; not one giant spec.
-- **Tight scope** — Paved path for the current ask; no “just in case” audits.
+- **Focused** - Start from the named stem and the matching playbook.
 - **One folder to copy** — `docs/templates/` holds setup, workflow, and rules so your `docs/` root stays yours.
 - **User workflow wins where safe** — first-class settings where the pack has enums; **standing** when you override a playbook and no key exists (not a notes pad).
 

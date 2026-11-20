@@ -2,7 +2,7 @@
 
 > **Agents:** After [`agent/TEMPLATE_SYNC_A.md`](agent/TEMPLATE_SYNC_A.md), open [`agent/TEMPLATE_SYNC_B.md`](agent/TEMPLATE_SYNC_B.md). Select catch-up entries from **from** → **to** (B0 Catch-up) — not top-only on version jumps. **Union** Live impact tags; skim Step B lines for one-shots; do not invent a broader audit. **Summarize the union only** — do not name catalog optional tags that were not selected as “skipped.” `auto-all` executes unioned tagged passes on all stems; it is not “run every row in this table.”
 >
-> **Maintainers:** Every `VERSION` bump must update this file in the same commit (newest entry on top). Keep bullets brief. When editing agent playbooks, write for thorough “off-road” models — explicit scope gates and Do-not lists, not open “as needed” language (see root [`CONTRIBUTING.md`](../../CONTRIBUTING.md)).
+> **Maintainers:** Every `VERSION` bump must update this file in the same commit (newest entry on top). Keep bullets brief.
 
 **Live impact tags** (use only these — lasting catalog; a tag fires only when a selected catch-up entry lists it):
 
@@ -23,6 +23,15 @@
 | `process-docs-only` | Pack process/help/agent docs only — no live feature/shared content scan **for that release alone**; still honor other unioned live tags. When any selected entry is **≥ 2.10.0**, drop every `optional-todo-*` tag before the checklist and do not create or edit `*-TODO.md`. B0.7 still lists feature/shared `*-TODO.md` paths when **from** < 2.10.1 (do not open them). The offer is that step; `auto-all` is not a yes |
 
 ---
+
+## 2.11.0
+
+- **Live impact:** `versions-only`, `rules`, `process-docs-only`
+- **Summary:** Removed the anti-overthinking scope caps (one-module stop, catalog scan, thinking-traces premise) and the ADT-6 rails (secrets-in-docs guidance sentences, auto-commit and push gates, work-checklist / Current focus / git-delivery wording, timescale and lesser-path wording). Agents start at the matching module and read another when the ask needs it.
+- **Changes:**
+  - `VERSION` - 2.10.1 -> 2.11.0
+  - Modular rule and workflow index, CONTRIBUTING, VISION, DECISIONS, sync and install playbooks, role inputs, help tables, and the lock-obvious eval pin
+- **Step B:** Bump Master Index Pack version. `rules`: refresh the installed modular rule for each installed tool via its `tools/<key>.md` (no ask unless `customized: true`). No live feature or shared doc edits.
 
 ## 2.10.1
 
