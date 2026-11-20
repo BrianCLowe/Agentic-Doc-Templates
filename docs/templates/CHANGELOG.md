@@ -24,6 +24,17 @@
 
 ---
 
+## 2.13.0
+
+- **Live impact:** `rules`
+- **Summary:** Self-contained playbooks are now Agent Skills under `agent/skills/<name>/SKILL.md` (9 skills, index `agent/skills/README.md`). The old playbook paths are short pointers to their skill. The update prompt is the `adt-template-sync` skill (`/adt-template-sync` where a tool lists project skills); the optional slash command, `agent/commands/` and the `slash-commands` option are gone.
+- **Changes:**
+  - `VERSION` - 2.12.0 -> 2.13.0
+  - New `agent/skills/` (adt-bootstrap, adt-template-sync, adt-template-update-check, adt-rule-install, adt-generate-role-adapters, adt-understanding, adt-doc-graduate, adt-product-vision, adt-docs-profile); 14 playbooks become pointers
+  - Tool playbooks install the skills (Copilot `.github/skills/`, Claude Code `.claude/skills/`, Cursor `.cursor/skills/`, Grok Build `.grok/skills/`); AGENTS.md, Cline, Continue and OpenClaw get a skills pointer table
+  - Role adapters point at the skills; eval pins follow the moved text
+- **Step B:** Bump Master Index Pack version. `rules`: for each installed tool, run its `tools/<key>.md` refresh, which now installs the pack skills into that tool's skills folder (Copilot `.github/skills/<name>/`, Claude Code `.claude/skills/<name>/`, Cursor `.cursor/skills/<name>/`, Grok Build `.grok/skills/<name>/`); AGENTS.md-only tools get the skills table. A user's own folders and files in those skills, prompts or commands folders are left alone. One-time cleanup: delete `.github/prompts/sync.prompt.md`, `.cursor/commands/sync.md` and `.claude/commands/sync.md` only when the file is the pack's 2.12.0 sync command, identified by its text "Refresh the doc templates, then catch live docs up" or "Follow `docs/templates/agent/TEMPLATE_SYNC.md` on disk"; leave any other file at those paths. Remove the `slash-commands` key from `optional_rules` in `docs/ADT-settings.yaml`.
+
 ## 2.12.0
 
 - **Live impact:** `versions-only`, `rules`, `process-docs-only`

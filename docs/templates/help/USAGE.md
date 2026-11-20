@@ -159,7 +159,7 @@ Anything only you can close → `docs/Human-TODO.md`: procure, decide/sign-off, 
 | Design doc | *Convert `docs/reference/[file]` to modular docs; keep original (and any chat export) in reference/.* |
 | Bootstrap | *Bootstrap modular docs using `docs/templates/agent/BOOTSTRAP.md`.* |
 | Install rule | *Follow `docs/templates/agent/RULE_INSTALL.md` for [tool].* |
-| Sync pack | *Update the doc templates from Agentic Doc Templates and sync our live docs.* *(optional `/sync` if slash commands are enabled)* |
+| Sync pack | *Update the doc templates from Agentic Doc Templates and sync our live docs.* *(or run the `adt-template-sync` skill)* |
 | Sync mode | *Set sync to auto.* / *Set sync to auto-all.* / *Set sync to choose.* *(recorded in `docs/ADT-settings.yaml`)* |
 | Update-check cadence | *Check for template updates every session.* / *Only check every week.* |
 | Optional role — intent | *Draft Understanding for [Feature] from what I said — I’ll review.* (main agent delegates if subagents installed) |

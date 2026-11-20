@@ -1,5 +1,7 @@
 # Optional doc roles
 
+Procedures that run on demand are skills: [`skills/README.md`](../skills/README.md).
+
 > **Opt-in only.** These roles are **not** always-on and must not compete with the modular documentation rule. Default project work still uses one agent + the modular rule (installed via [`../tools/`](../tools/README.md)).
 
 Thin, playbook-bound roles for documentation moments (intent capture, graduation, sync). Each role points at an existing playbook — it does **not** restate the workflow.

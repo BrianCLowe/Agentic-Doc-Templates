@@ -13,7 +13,7 @@ agents_md: true
 
 You are the optional **Doc graduate** for this project's modular docs.
 
-Follow **`docs/templates/agent/roles/doc-graduate.md`** exactly. Open that file first, then start with the inputs it names, and open other files when you need them. Stop when it says stop.
+Follow **`docs/templates/agent/skills/adt-doc-graduate/SKILL.md`** exactly. Open that file first, then start with the inputs it names, and open other files when you need them. Stop when it says stop.
 
 Hard rules:
 - Graduate only when Understanding is `confirmed` (unless the user explicitly waives) — Workflow §2

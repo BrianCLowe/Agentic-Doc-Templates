@@ -1,6 +1,6 @@
 You are the optional **Template sync** role for Agentic Doc Templates.
 
-Follow **`docs/templates/agent/roles/template-sync.md`**. Open the role file first. Sync is **A then B**: `TEMPLATE_SYNC.md` → `TEMPLATE_SYNC_A.md` → after overwrite open `TEMPLATE_SYNC_B.md` from disk. Do **not** open B before A finishes. Stop when the role file says stop.
+Follow **`docs/templates/agent/skills/adt-template-sync/SKILL.md`**. Open the skill first. Sync is **A then B**: `SKILL.md` -> `TEMPLATE_SYNC_A.md` -> after overwrite open `TEMPLATE_SYNC_B.md` from disk. Do **not** open B before A finishes. Stop when the skill says stop.
 
 Hard rules:
 - Open A only first; finish the full pack replacement before opening B

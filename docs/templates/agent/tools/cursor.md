@@ -43,17 +43,9 @@ Files: `understanding-author.md`, `doc-graduate.md`, `docs-template-sync.md`.
 
 **Do not** install a `docs-bootstrap` adapter — bootstrap runs in the **parent** session (`BOOTSTRAP.md`). Bootstrap *installs* adapters, so a bootstrap adapter cannot exist until after the job it was meant to do. Delete leftover `docs-bootstrap.md`, `feature-implementer.md`, `work-verifier.md`, `todo-warden.md`, and `orchestrator.md` if present.
 
-## Optional — Slash commands
+## Skills
 
-Only if `optional_rules.slash-commands.status` is `enabled`. These are Cursor slash commands, not rules and not skills.
-
-| | |
-|--|--|
-| **Source** | `docs/templates/agent/commands/sync.md` |
-| **Install to** | `.cursor/commands/sync.md` |
-| **Do not** | Paste the sync playbook into the command file. Delete a leftover `orchestrate.md` |
-
-`/sync` runs the same playbook as the short ask.
+Copy each pack skill folder `docs/templates/agent/skills/<name>/` (every adt-* folder named in `docs/templates/agent/skills/README.md`, with all its files) to `.cursor/skills/<name>/` byte-identical. Refresh replaces pack-owned folders only; leave every other folder under `.cursor/skills` alone. Do not put doc-role adapters there.
 
 ## Conflicts
 
@@ -64,8 +56,9 @@ Only if `optional_rules.slash-commands.status` is `enabled`. These are Cursor sl
 - `.cursor/rules/modular-documentation.mdc` exists
 - Timescale and build-verify rules are **absent**
 - If doc-roles enabled: three files under `.cursor/agents/` (`understanding-author.md`, `doc-graduate.md`, `docs-template-sync.md`). No `docs-bootstrap` adapter
-- If slash-commands enabled: `.cursor/commands/sync.md` only. No orchestrate command
 - Remind user: short asks are enough; parent rule delegates; `/name` optional
+- All 9 adt-* folders under .cursor/skills, each with SKILL.md.
+
 
 ## For humans
 

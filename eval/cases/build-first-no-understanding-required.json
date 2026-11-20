@@ -16,7 +16,7 @@
   "pack_contract": {
     "source_must_include": [
       {
-        "file": "docs/templates/agent/workflow/profile-standing.md",
+        "file": "docs/templates/agent/skills/adt-docs-profile/SKILL.md",
         "patterns": ["build-first", "Understanding **not** required", "ship-first"]
       },
       {
@@ -24,7 +24,7 @@
         "patterns": ["build-first", "not a coding gate"]
       },
       {
-        "file": "docs/templates/agent/TEMPLATE_SYNC_B.md",
+        "file": "docs/templates/agent/skills/adt-template-sync/TEMPLATE_SYNC_B.md",
         "patterns": ["B0.1b", "ship-first", "build-first"]
       }
     ]

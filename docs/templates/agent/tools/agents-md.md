@@ -39,9 +39,21 @@ Only if `optional_rules.template-update-check.status` is `enabled`.
 | **Runtime** | Orchestration text in the modular rule section tells the parent to look for harness agent folders (`.cursor/agents/`, `.grok/agents/`, `.github/agents/`, …) or fall back to role playbooks |
 | **Adapters** | Install via [`cursor.md`](cursor.md), [`grok-build.md`](grok-build.md), [`claude-code.md`](claude-code.md), or [`github-copilot.md`](github-copilot.md) when those tools are `installed` |
 
-## Optional — Slash commands
+## Skills
 
-No command folder in `AGENTS.md`. On enable, record `optional_rules.slash-commands` and do not invent files. The short asks stay the path.
+Do not paste skill bodies into AGENTS.md.
+
+| Skill | Path | Use when |
+| --- | --- | --- |
+| adt-bootstrap | `docs/templates/agent/skills/adt-bootstrap/SKILL.md` | Use when the user says bootstrap, init modular docs, or Bootstrap the doc templates. Parent session only. |
+| adt-template-sync | `docs/templates/agent/skills/adt-template-sync/SKILL.md` | Use when the user says update or sync the doc templates, update the doc templates, update ADT, or sync ADT. |
+| adt-template-update-check | `docs/templates/agent/skills/adt-template-update-check/SKILL.md` | Use when the user says check for template updates or check for ADT updates. |
+| adt-rule-install | `docs/templates/agent/skills/adt-rule-install/SKILL.md` | Use when the user says install agent rules, or install Cursor, Claude, or Grok rules. |
+| adt-generate-role-adapters | `docs/templates/agent/skills/adt-generate-role-adapters/SKILL.md` | Use when the user says regenerate role adapters, or sync cursor or grok agents from adapter-src. |
+| adt-understanding | `docs/templates/agent/skills/adt-understanding/SKILL.md` | Use when the user says draft or revise Understanding, new idea, capture intent, correct What this is / is not, or build live docs from docs/reference/. |
+| adt-doc-graduate | `docs/templates/agent/skills/adt-doc-graduate/SKILL.md` | Use when the user says graduate a confirmed Understanding to a spec. |
+| adt-product-vision | `docs/templates/agent/skills/adt-product-vision/SKILL.md` | Use when the user says lock product shape, draft Product-Vision, or the product vision is missing or fights a feature. |
+| adt-docs-profile | `docs/templates/agent/skills/adt-docs-profile/SKILL.md` | Use when docs_profile is unset, the user says set docs profile, or standing instructions need a cleanout or an upgrade. |
 
 ## Verify
 

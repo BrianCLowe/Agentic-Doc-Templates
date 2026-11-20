@@ -8,7 +8,7 @@
   "pack_contract": {
     "source_must_include": [
       {
-        "file": "docs/templates/agent/TEMPLATE_SYNC_B.md",
+        "file": "docs/templates/agent/skills/adt-template-sync/TEMPLATE_SYNC_B.md",
         "patterns": [
           "Summarize from the union only",
           "Do not** name optional tags that were **not** in the union as “skipped.”",
@@ -31,7 +31,7 @@
     ],
     "summaries_must_point": [
       {
-        "file": "docs/templates/agent/roles/template-sync.md",
+        "file": "docs/templates/agent/skills/adt-template-sync/SKILL.md",
         "must_contain": [
           "from the union only",
           "not in the union as skipped",

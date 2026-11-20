@@ -12,7 +12,7 @@
   "pack_contract": {
     "source_must_include": [
       {
-        "file": "docs/templates/agent/workflow/profile-standing.md",
+        "file": "docs/templates/agent/skills/adt-docs-profile/SKILL.md",
         "patterns": [
           "override an ADT playbook",
           "not a scratch pad",
@@ -41,14 +41,14 @@
         ]
       },
       {
-        "file": "docs/templates/agent/BOOTSTRAP.md",
+        "file": "docs/templates/agent/skills/adt-bootstrap/SKILL.md",
         "patterns": [
           "Write-in (not a quiz, not an eighth mode)",
           "do not quiz"
         ]
       },
       {
-        "file": "docs/templates/agent/TEMPLATE_SYNC_B.md",
+        "file": "docs/templates/agent/skills/adt-template-sync/TEMPLATE_SYNC_B.md",
         "patterns": [
           "Write-in (not a quiz, not an eighth mode)"
         ]
@@ -85,7 +85,7 @@
         ]
       },
       {
-        "file": "docs/templates/agent/workflow/profile-standing.md",
+        "file": "docs/templates/agent/skills/adt-docs-profile/SKILL.md",
         "must_contain": [
           "override an ADT playbook"
         ],
@@ -123,7 +123,7 @@
         ]
       },
       {
-        "file": "docs/templates/agent/BOOTSTRAP.md",
+        "file": "docs/templates/agent/skills/adt-bootstrap/SKILL.md",
         "must_contain": [
           "do not quiz",
           "Write-in (not a quiz, not an eighth mode)"
@@ -133,7 +133,7 @@
         ]
       },
       {
-        "file": "docs/templates/agent/TEMPLATE_SYNC_B.md",
+        "file": "docs/templates/agent/skills/adt-template-sync/TEMPLATE_SYNC_B.md",
         "must_contain": [
           "Write-in (not a quiz, not an eighth mode)"
         ],

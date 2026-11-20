@@ -38,15 +38,9 @@ Only if `optional_rules.doc-roles.status` is `enabled`. Claude project subagents
 
 Copy the three `roles/cursor/*.md` adapters (`understanding-author.md`, `doc-graduate.md`, `docs-template-sync.md`). **Do not** invent a `docs-bootstrap` adapter — bootstrap is parent-only. Delete leftover `docs-bootstrap.md`, `feature-implementer.md`, `work-verifier.md`, `todo-warden.md`, and `orchestrator.md` if present.
 
-## Optional — Slash commands
+## Skills
 
-Only if `optional_rules.slash-commands.status` is `enabled`.
-
-| | |
-|--|--|
-| **Source** | `docs/templates/agent/commands/sync.md` |
-| **Install to** | `.claude/commands/sync.md` |
-| **Do not** | Paste the sync playbook into the command file. Delete a leftover `orchestrate.md` |
+Copy each pack skill folder `docs/templates/agent/skills/<name>/` (every adt-* folder named in `docs/templates/agent/skills/README.md`, with all its files) to `.claude/skills/<name>/` byte-identical. Refresh replaces pack-owned folders only; leave every other folder under `.claude/skills` alone. Do not put doc-role adapters there.
 
 ## Verify
 
@@ -54,7 +48,8 @@ Only if `optional_rules.slash-commands.status` is `enabled`.
 - Timescale and build-verify rules are **absent**
 - Optional: `/memory` shows the modular docs section
 - If doc-roles enabled: three files under `.claude/agents/` (`understanding-author.md`, `doc-graduate.md`, `docs-template-sync.md`). No `docs-bootstrap` adapter
-- If slash-commands enabled: `.claude/commands/sync.md` only
+- All 9 adt-* folders under .claude/skills, each with SKILL.md.
+
 
 ## For humans
 

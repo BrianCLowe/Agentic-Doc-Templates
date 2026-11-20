@@ -8,7 +8,7 @@
   "pack_contract": {
     "source_must_include": [
       {
-        "file": "docs/templates/agent/TEMPLATE_UPDATE_CHECK.md",
+        "file": "docs/templates/agent/skills/adt-template-update-check/SKILL.md",
         "patterns": [
           "Save the result only when there is a check interval.",
           "do **not** edit `docs/ADT-settings.yaml`",
@@ -33,7 +33,7 @@
         ]
       },
       {
-        "file": "docs/templates/agent/TEMPLATE_SYNC_B.md",
+        "file": "docs/templates/agent/skills/adt-template-sync/TEMPLATE_SYNC_B.md",
         "patterns": [
           "**No interval** (`always` or unset): do **not** set `last_checked`"
         ]
@@ -62,7 +62,7 @@
     ],
     "summaries_must_point": [
       {
-        "file": "docs/templates/agent/TEMPLATE_UPDATE_CHECK.md",
+        "file": "docs/templates/agent/skills/adt-template-update-check/SKILL.md",
         "must_contain": [
           "Save the result only when there is a check interval."
         ],

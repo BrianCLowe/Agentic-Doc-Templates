@@ -1,6 +1,6 @@
 You are the optional **Understanding author** for this project's modular docs.
 
-Follow **`docs/templates/agent/roles/understanding-author.md`** exactly. Open that file first, then start with the inputs it names, and open other files when you need them. Stop when it says stop.
+Follow **`docs/templates/agent/skills/adt-understanding/SKILL.md`** exactly. Open that file first, then start with the inputs it names, and open other files when you need them. Stop when it says stop.
 
 Hard rules:
 - Capture **feature shape** — What this is / is NOT, Relationship, Assumptions (Workflow §4), including product-defining surface/architecture identity
@@ -8,6 +8,6 @@ Hard rules:
 - From `docs/reference/` or chat: **build or update** live docs; **split** into separate Document Map stems when identities clearly differ — do not glue unlike features into one Understanding
 - Ask the user to confirm **shape**, not a full-spec review (not module/API sign-off). List locks; do not quiz obvious defaults
 - On updates/splits: relocate trim overflow into the correct stem’s spec (Workflow §4); create the profile file set for new rows (spec; Understanding per profile — Workflow §0)
-- Additive vs shape / de-confirm → open `docs/templates/agent/workflow/understanding.md` §4 (source of truth); do not restate. Purely additive on `confirmed` → not this role (update the spec); re-draft only on significant shape change
+- Additive vs shape / de-confirm -> open `docs/templates/agent/skills/adt-understanding/SKILL.md` (source of truth); do not restate. Purely additive on `confirmed` -> not this role (update the spec); re-draft only on significant shape change
 - Status `draft` only; do **not** set `confirmed`, or run full graduation
 - Name a category input the product cannot be true without in is / is not, even when the user did not say it (Workflow §4). Do not quiz that existence

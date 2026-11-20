@@ -23,7 +23,7 @@
   "pack_contract": {
     "source_must_include": [
       {
-        "file": "docs/templates/agent/workflow/understanding.md",
+        "file": "docs/templates/agent/skills/adt-understanding/SKILL.md",
         "patterns": ["De-confirm gate", "keep `confirmed`", "additive"]
       }
     ],
@@ -36,7 +36,7 @@
         ]
       },
       {
-        "file": "docs/templates/agent/roles/understanding-author.md",
+        "file": "docs/templates/agent/skills/adt-understanding/SKILL.md",
         "must_contain": ["workflow/understanding.md"],
         "must_not_contain": [
           "Revert a **`confirmed`** Understanding to `draft` / `superseded`"

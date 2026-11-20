@@ -48,11 +48,9 @@ Files: `understanding-author.md`, `doc-graduate.md`, `docs-template-sync.md`.
 
 **Do not** install a `docs-bootstrap` adapter — bootstrap runs in the **parent** session (`BOOTSTRAP.md`). Delete leftover `docs-bootstrap.md`, `feature-implementer.md`, `work-verifier.md`, `todo-warden.md`, and `orchestrator.md` if present.
 
-## Optional — Slash commands
+## Skills
 
-No pack command folder for Grok. Still present `optional_rules.slash-commands` when unset (bootstrap Step 3p **E**). On enable, record it and do not invent files. `/sync` is not installed here — the short ask stays the path. Cursor, Claude Code, and Copilot installs own the file.
-
-Compat (secondary, when enabled): **Claude** `.claude/agents/` can load as spawnable types. **Cursor** `compat.cursor.agents` is for named instruction files under Cursor paths — **not** “load `.cursor/agents/*.md` as Grok spawn types.” Always install this pack’s roles under `.grok/agents/`.
+Copy each pack skill folder `docs/templates/agent/skills/<name>/` (every adt-* folder named in `docs/templates/agent/skills/README.md`, with all its files) to `.grok/skills/<name>/` byte-identical. Refresh replaces pack-owned folders only; leave every other folder under `.grok/skills` alone. Do not put doc-role adapters there.
 
 ## Verify
 
@@ -60,6 +58,8 @@ Compat (secondary, when enabled): **Claude** `.claude/agents/` can load as spawn
 - Timescale and build-verify sections are **absent**
 - If doc-roles enabled: three files under `.grok/agents/` (`understanding-author.md`, `doc-graduate.md`, `docs-template-sync.md`). No `docs-bootstrap` adapter. Confirm names appear under **agents** in `grok inspect --json` or `/config-agents` (non-builtin source). If missing → playbook fallback above
 - Remind: short asks are enough. Subagents are **enabled by default**; only check `GROK_SUBAGENTS=0` / `[subagents] enabled = false` if spawning fails or the user disabled them
+- All 9 adt-* folders under .grok/skills, each with SKILL.md.
+
 
 ## For humans
 

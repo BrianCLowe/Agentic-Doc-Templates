@@ -1,40 +1,4 @@
 # Role — Bootstrap *(optional, parent-only)*
 
-> **Not a harness subagent.** Parent follows this (or [`../BOOTSTRAP.md`](../BOOTSTRAP.md)) **in this session**. Bootstrap **installs** doc-role adapters — a `docs-bootstrap` adapter cannot exist until after the job it was meant to do. Do **not** install or spawn `docs-bootstrap`.
+Follow the `adt-bootstrap` skill: [`docs/templates/agent/skills/adt-bootstrap/SKILL.md`](../skills/adt-bootstrap/SKILL.md). Do not reconstruct the procedure from memory.
 
-**Job:** First-time modular docs layout for a project. Thin wrapper — do not invent a second bootstrap procedure.
-
-**Canonical procedure:** [`../BOOTSTRAP.md`](../BOOTSTRAP.md) only.
-
-## When to invoke
-
-- User asks to bootstrap / init modular docs
-- User says: *Bootstrap role*, *follow roles/bootstrap.md*
-
-## Inputs
-
-1. [`../BOOTSTRAP.md`](../BOOTSTRAP.md) — follow it end-to-end
-2. Files that playbook names (Master Index template, scaffolds, conversation / reference sources it tells you to use)
-
-**Do not** open TEMPLATE_SYNC, the roles catalog beyond this file, or unrelated features.
-
-## Steps
-
-1. Open `docs/templates/agent/BOOTSTRAP.md`.
-2. Execute its steps in order — **Step 3p** (one-batch project preferences: profile, optionals, sync) **before** Step 3d file create; Step 4 only catch-up missing prefs.
-3. Doc-roles / update-check / sync are part of **Step 3p** (or a later RULE_INSTALL / explicit ask) — do not enable silently.
-4. Stop when BOOTSTRAP’s “Tell the user what's next” is done.
-
-## Stop when
-
-- Live `docs/Master_Index.md` and the layout BOOTSTRAP requires exist, and
-- You have reported next steps to the user
-
-## Do not
-
-- Implement application features during bootstrap
-- Fill §3.1 `_shared/` with filler rows
-- Overwrite a real project README that is not the upstream template readme
-- Install always-on competing skill packs
-- Run template sync unless the user asked for sync instead of bootstrap
-- Install or spawn a `docs-bootstrap` harness adapter (parent-only — same reason as `orchestrator`)

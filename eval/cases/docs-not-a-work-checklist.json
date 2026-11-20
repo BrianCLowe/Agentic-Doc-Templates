@@ -16,12 +16,12 @@
         ]
       },
       {
+        "file": "docs/templates/agent/skills/adt-template-sync/TEMPLATE_SYNC_B.md",
+        "patterns": ["B0.5 - Remove orchestrator key", "remove that key"]
+      },
+      {
         "file": "docs/templates/agent/TEMPLATE_SYNC_B.md",
-        "patterns": [
-          "B0.5 - Remove orchestrator key",
-          "remove that key",
-          "Do not create or edit `*-TODO.md`"
-        ]
+        "patterns": ["Do not create or edit `*-TODO.md`"]
       },
       {
         "file": "DECISIONS.md",
