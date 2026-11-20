@@ -32,7 +32,7 @@
 
 ## Stop when
 
-- A0 cleared (clean tree or explicit waive) and Step A handoff completed and Step B for the **unioned** catch-up tags is done,
+- Step A handoff completed and Step B for the **unioned** catch-up tags is done,
 - Tagged optional live passes were executed (`auto` / `auto-all`) or presented (`choose`),
 - Unset optionals were presented (`auto`/`choose`), auto-enabled (`auto-all`), or already `enabled` / `declined`,
 - `docs_profile` was set or left intentionally unset only if B0.4 was not yet due,
@@ -54,7 +54,7 @@
 - On reshape execute: only add template headings and leave obsolete Understanding sections **or** copied instruction sermons (2.7.27 strip)
 - On TODO ambition execute: invent work or collapse real human/shared blockers
 - On TODO outcomes execute: check an Outcomes row, or create a human-verify playtest (the outcome audit is the only creator of that row)
-- On TODO completed-cleanout execute: remove a plotted slice or an exercise note; remove a row whose title ever appeared as `- [ ]`; remove when unsure; remove open tasks; check Outcomes
+- On TODO completed-cleanout execute: remove a plotted slice or an exercise note; remove when unsure; remove open tasks; check Outcomes
 - Under **`auto` / `choose`:** skip presenting unset optionals (“do not auto-enable” means ask — not silence)
 - Bootstrap a new project (use [`bootstrap.md`](bootstrap.md))
 - Implement application features
