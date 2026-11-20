@@ -1,10 +1,10 @@
-> **Agent workflow index.** Paved path + router into thin modules under [`workflow/`](workflow/README.md). Sync from upstream; do **not** copy wholesale into `docs/Master_Index.md`. The live index links here; agent rules summarize and point here — then open **one** module when needed.
+> **Agent workflow index.** Paved path + router into thin modules under [`workflow/`](workflow/README.md). Sync from upstream; do **not** copy wholesale into `docs/Master_Index.md`. The live index links here; agent rules summarize and point here. Start with the matching module; read another if you need it.
 
 # Modular Documentation — Agent Workflow
 
 **Pack version:** read [`VERSION`](../VERSION) (`pack-version`). Do not copy the number into this file. Live Master Index is stamped on bootstrap / TEMPLATE_SYNC.
 
-**Design intent:** Short user asks → **one** playbook (`BOOTSTRAP`, `TEMPLATE_SYNC`, `TEMPLATE_UPDATE_CHECK`, `RULE_INSTALL` → `tools/<key>.md`, roles, or this index → **one** workflow module). Do not scan the pack catalog. **Tight scope** = paved path only (not “audit every alternate”). Edge cases live in modules — load them only when the router says so. Live scaffolds are fill-in blanks — teaching lives in [`../help/SCAFFOLDS.md`](../help/SCAFFOLDS.md) and the module you open.
+**Design intent:** Short user asks go to the matching playbook (`BOOTSTRAP`, `TEMPLATE_SYNC`, `TEMPLATE_UPDATE_CHECK`, `RULE_INSTALL` -> `tools/<key>.md`, roles, or this index -> the matching workflow module). Start there; read another module if the ask needs it. Live scaffolds are fill-in blanks; teaching lives in [`../help/SCAFFOLDS.md`](../help/SCAFFOLDS.md) and the module you open.
 
 **Compaction / new session / memory loss:** If you cannot recall the paved path, **re-open this index**, then only the matching router module. Do not reconstruct procedure from a live Understanding or spec or from chat memory.
 
@@ -20,9 +20,8 @@ Use when the stem is already **ready** under the docs profile and scope is uncha
 
 1. **Docs freshness** (cheap): `git status --porcelain` + `git worktree list`. Clean + one worktree → continue. Two or more worktrees → sibling probe in [`workflow/session-freshness.md`](workflow/session-freshness.md) (drift = uncommitted sibling `docs/` or `docs/` **content** differs — not ancestry-only after squash-merge). Dirty **this** tree: one line, continue (do not auto-commit). **New PR / successive spawn:** if an open PR already touches this stem’s spec or Understanding → add there (docs overlap ≠ code overlap)
 2. Read `docs/ADT-settings.yaml` → `docs_profile.mode` (else **prevent**); **`standing.instructions` if non-empty**
-3. [`Master_Index.md`](../../Master_Index.md) — Sections 1–3 only. Read [`Product-Vision.md`](../../Product-Vision.md) (especially when `confirmed`)
-4. That stem’s spec and Understanding *(if any)*. Do the instructed task. A gap those docs already make obvious is part of the instruction. Do **not** create a `*-TODO.md`. There is no Current focus. Do **not** document a fight with a **confirmed** product vision
-5. **Stop.** Do **not** open workflow modules unless a row in the router below matches.
+3. [`Master_Index.md`](../../Master_Index.md): start with Sections 1-3 (map and overview), then open the stem you are changing. Read later sections if they are relevant. Read [`Product-Vision.md`](../../Product-Vision.md) (especially when `confirmed`)
+4. That stem’s spec and Understanding *(if any)*. Record a gap those docs already make obvious on the spec when it is contract. Document only features that fit a **confirmed** product vision
 
 **Docs on a new stem:**
 
@@ -38,7 +37,7 @@ Use when the stem is already **ready** under the docs profile and scope is uncha
 
 ---
 
-## Router — open only the matching module
+## Router - matching module per ask
 
 | Situation | Open only |
 |-----------|-----------|
@@ -56,11 +55,10 @@ Use when the stem is already **ready** under the docs profile and scope is uncha
 | Human inbox dual-write | [`workflow/human-todo.md`](workflow/human-todo.md) (§13) |
 | Team inbox · roster (read vs self-ID) | [`workflow/team-roster.md`](workflow/team-roster.md) — only when `team_inbox` is enabled |
 | Game extensions · Catalog · sub-index · split large doc · Mermaid | [`workflow/extensions.md`](workflow/extensions.md) (§6–9 · §12) |
-| User asks “how does the workflow work?” | This index — then one module if they need depth |
+| User asks "how does the workflow work?" | This index, then the matching module; read another if they need depth |
 
-**Do not** open every module. **Do not** re-read this index every turn once you know the paved path. Module list for maintainers: [`workflow/README.md`](workflow/README.md).
+Module list for maintainers: [`workflow/README.md`](workflow/README.md).
 
-**Not this pack:** work checklists, Current focus, implementation roles, git-delivery settings. The harness owns how code is written, verified, and landed.
 
 ---
 
@@ -100,9 +98,9 @@ Paved path is above. Which docs: [`workflow/implement.md`](workflow/implement.md
 
 Full procedure (incl. **de-confirm gate** + **lock gate**): [`workflow/understanding.md`](workflow/understanding.md#4-understanding-features--shared).
 
-### 5. TODO Management *(retired)*
+### 5. Feature TODO files on sync
 
-Retired in 2.10.0. The pack does not keep a feature TODO or a Current focus. Do not recreate them. Existing `*-TODO.md` files may stay on disk; do not extend them and do not treat them as the work list. A sync that crosses 2.10.1 offers to delete feature and shared `*-TODO.md` files and says why ([`TEMPLATE_SYNC_B.md`](TEMPLATE_SYNC_B.md) B0.7). That offer is the step. `auto-all` is not a yes. `Human-TODO.md` stays.
+A sync that crosses 2.10.1 offers to delete feature and shared `*-TODO.md` files and says why ([`TEMPLATE_SYNC_B.md`](TEMPLATE_SYNC_B.md) B0.7). That offer is the step: the files are deleted only after the user says yes, and `auto-all` is not a yes. `Human-TODO.md` stays.
 
 ### 7.1 Catalog companions *(list-heavy content)*
 
@@ -122,7 +120,7 @@ See [`workflow/tooling.md`](workflow/tooling.md#11-tooling-new-machine-setup).
 
 ### 4.5 Product vision *(whole-product end-state)*
 
-See [`workflow/product-vision.md`](workflow/product-vision.md#45-product-vision). Create on **all** profiles (lightweight on `balanced` / `build-first`). **`build-first`:** not a gate until *lock product shape*.
+See [`workflow/product-vision.md`](workflow/product-vision.md#45-product-vision). Create on **all** profiles (lightweight to start on `balanced` / `build-first`; deepen when identity is fuzzy, there are multiple stems, or the user asks to *lock product shape*). **`build-first`:** not a gate until *lock product shape*.
 
 ### 13. Human TODO *(inbox — needs a human)*
 
@@ -135,7 +133,7 @@ See [`workflow/human-todo.md`](workflow/human-todo.md#13-human-todo-inbox--needs
 - **Docs freshness** = *are this tree’s docs the ones the user means?* — [`workflow/session-freshness.md`](workflow/session-freshness.md). Run before treating Master Index as current.
 - **Master_Index.md** = *what this project is* and *where files live*.
 - **Product-Vision.md** = *the whole-product end-state* — [`workflow/product-vision.md`](workflow/product-vision.md). Feature map alone is not identity. **`build-first`:** destination, not a gate.
-- **This file** = *how to work* — paved path first; then **one** module from the router.
+- **This file** = *how to work*: paved path first; then the matching module from the router.
 - **Tooling.md** = *what to install on a new machine* (not package deps) — [`workflow/tooling.md`](workflow/tooling.md).
-- **Human-TODO.md** = *what only a human can close* — [`workflow/human-todo.md`](workflow/human-todo.md). Optional `team_inbox` (unset = human-only) → [`workflow/team-roster.md`](workflow/team-roster.md). **Team-Roster.md** = who exists + handoff (create only when enabled; do not invent teammates).
-- The installed agent rule ([`Modular_Documentation_Rule.mdc`](Modular_Documentation_Rule.mdc)) is a short checklist — open this index when creating files, which docs to open, graduation, profile/standing questions, or the user asks about procedure; then open only the named module.
+- **Human-TODO.md** = *what only a human can close* — [`workflow/human-todo.md`](workflow/human-todo.md). Optional `team_inbox` (unset = human-only) → [`workflow/team-roster.md`](workflow/team-roster.md). **Team-Roster.md** = who exists + handoff (create only when `team_inbox` is enabled).
+- The installed agent rule ([`Modular_Documentation_Rule.mdc`](Modular_Documentation_Rule.mdc)) is a short checklist - open this index when creating files, which docs to open, graduation, profile/standing questions, or the user asks about procedure; then start with the named module.

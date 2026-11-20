@@ -2,7 +2,7 @@
 
 > **Opt-in only.** These roles are **not** always-on and must not compete with the modular documentation rule. Default project work still uses one agent + the modular rule (installed via [`../tools/`](../tools/README.md)).
 
-Thin, playbook-bound roles for documentation moments (intent capture, graduation, sync). Each role points at an existing playbook — it does **not** restate the workflow. The pack does not ship an implementation role or a git-delivery role.
+Thin, playbook-bound roles for documentation moments (intent capture, graduation, sync). Each role points at an existing playbook — it does **not** restate the workflow.
 
 ## Roles
 

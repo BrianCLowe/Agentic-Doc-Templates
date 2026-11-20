@@ -14,8 +14,8 @@
 **Workflow *(when Understanding is in play)*:**
 
 1. Agent drafts `-Understanding.md` → user confirms **shape** (`confirmed`) — is / is not + any remaining **real-fork** Assumptions (empty is fine). **Not** a full spec sign-off. Lock obvious defaults; do not invent quizzes (lock gate in §4).
-2. Agent **graduates** durable contract into the spec: overview, architecture/contract, Behavior, **Acceptance**, **Visual references**, **Decisions**, dependencies, maturity (shared). Synthesize from Understanding **plus** conversation / decisions — do **not** only copy thin Understanding. A short Understanding is **not** permission to write a short spec. Do **not** omit confirmed Behavior / Acceptance / Visuals to “keep the pack lean” — lean is Understanding shape + no padding, not dropping contract callers need. Acceptance is usually **3–7** coarse outcomes. User-facing stems: Acceptance includes ≥1 **operable** outcome (something a person can exercise). Name each **category enabler**: one lock in identity, a Dependencies row **Enabler**, and one Acceptance clause that is false on a stub or an unfinished sibling.
-3. After graduation, Understanding keeps only shape sections (§4). Spec = contract truth. **In-scope spec surfaces** (kit leftovers on this stem) stay on **this stem’s spec** — a complete overview is **not** permission to omit them, and is **not** a reason to add empty map rows (§0 inventory). Do **not** create a `*-TODO.md`.
+2. Agent **graduates** durable contract into the spec: overview, architecture/contract, Behavior, **Acceptance**, **Visual references**, **Decisions**, dependencies, maturity (shared). Synthesize from Understanding **plus** conversation / decisions - do **not** only copy thin Understanding. A short Understanding is **not** permission to write a short spec. Do **not** omit confirmed Behavior / Acceptance / Visuals to "keep the pack lean" - lean is Understanding shape + no padding, not dropping contract callers need. For Acceptance, prefer a short list of coarse, exercisable outcomes, not a padded checklist. User-facing stems: Acceptance includes >=1 **operable** outcome (something a person can exercise). Name each **category enabler**: one lock in identity, a Dependencies row **Enabler**, and one Acceptance clause that is false on a stub or an unfinished sibling.
+3. After graduation, Understanding keeps only shape sections (§4). Spec = contract truth. **In-scope spec surfaces** (kit leftovers on this stem) stay on **this stem’s spec** — a complete overview is **not** permission to omit them, and is **not** a reason to add empty map rows (§0 inventory).
 4. If implementation diverges, update the spec **or** set Understanding to `superseded` and revise (§4) — do not leave both stale.
 
 **Workflow *(build-first / no Understanding on stem)*:** Keep a thin-but-real spec; capture lasting preferences on the spec **Decisions** table same turn (§10). Offer *lock shape* (Understanding) when identity fights start.
@@ -49,7 +49,7 @@ Under **`prevent`**, each **feature** and substantial **shared component** gets 
 | **Assumptions** | **Real forks only** — two live alternatives with no obvious winner | Invented decisions, obvious defaults, examples-as-picks, full-spec open questions |
 | **Confirmed with user** | Short correction notes + date | Relocated contract prose |
 
-Durable contract (Behavior, **Acceptance**, Visual references, architecture) → **spec** (§2). Do **not** create a `*-TODO.md`.
+Durable contract (Behavior, **Acceptance**, Visual references, architecture) → **spec** (§2).
 
 **Drafting size — What this is**
 
@@ -73,6 +73,8 @@ Identity boundaries for the **finished** feature. Do **not** list work that is s
 
 **Source of truth** for this gate — rules and roles summarize; **this subsection wins on conflict**. Compaction / thin context: re-open this module; do not reconstruct from the scaffold.
 
+Lock obvious category defaults into is / is not and list them in one line on review. Assumptions hold only real forks (no obvious winner). Do not invent a quiz or promote a reference example into identity. If you are unsure whether a choice is a real fork, ask once, clearly.
+
 Agents invent decisions, then either lock the invention as identity or dump it into **Assumptions** so the user has boxes to check. That is the failure. **Empty Assumptions is success** when every default was the obvious best.
 
 **No-ask proviso:** If the design is already clear (conversation / `docs/reference/` already gives category, is / is not, and the obvious defaults), **zero Assumption asks is correct.** Do not invent a quiz so the user has something to confirm. Shape review may be is / is not only.
@@ -82,15 +84,14 @@ Agents invent decisions, then either lock the invention as identity or dump it i
 | **Lock the obvious** into **What this is / is NOT** (identity) or a one-line lock on review | Put an obvious best default under **Assumptions** and ask “how should this be handled?” |
 | Leave **Assumptions** for **real forks only** | Invent a vendor, jurisdiction, schema, comparison row, or label set the user did not pick — then quiz it |
 | Treat chat / `docs/reference/` walkthroughs as **examples**, not the target, unless the user **clearly set them as the target** | Encode a reference example as identity, a vendor pick, a jurisdiction, or a spec constraint |
-| Ask about a **lesser path** only when a **real non-timescale reason** exists (hard blocker, legal, missing credential, named constraint) | Propose an MVP / half-measure / interim cut “to land 10 minutes faster,” or silently take a lesser path |
 
-**Lock the obvious.** A default is obvious when it is the standard for the product category, an already-stated constraint, or the cheaper/simpler path that still hits the target — and the user did not contradict it. Write it into **is / is not**. Do **not** ask. On shape review, list what you locked in **one line** so they can override.
+**Lock the obvious.** A default is obvious when it is the standard for the product category, an already-stated constraint, or the cheaper/simpler path that still hits the target — and the user did not contradict it. Write it into **is / is not**. On shape review, list what you locked in **one line** so they can override. If you are unsure whether it is a real fork, ask once, clearly.
 
-**Category enabler.** An input or a sibling portion the product cannot be exercised truthfully without (prices for a trading product). The user will not think to say it. Write the **existence** into **is / is not**. Do **not** ask. Which source is a real fork only when two live options have no obvious winner. On the spec: a Dependencies row **Enabler**, and one Acceptance clause that is false when that input is missing.
+**Category enabler.** An input or a sibling portion the product cannot be exercised truthfully without (prices for a trading product). The user will not think to say it. Write the **existence** into **is / is not** without asking. Which source is a real fork only when two live options have no obvious winner. On the spec: a Dependencies row **Enabler**, and one Acceptance clause that is false when that input is missing.
 
 **Real fork.** Two (or more) live alternatives with **no** obvious winner from the conversation, the category, or the constraints (paid data vs free tables; which third-party API family; journey order when both placements are plausible). Those stay unchecked **Assumptions**. Spec-level open questions still do **not** belong here.
 
-**Examples are not the target** unless the user **clearly set them as the target**. A walkthrough, sample project, named vendor, or place in chat / `docs/reference/` is how they explained the idea — not product identity, not a pick, not a jurisdiction. Do **not** write it into **is / is not** or the spec. Do **not** offer it back as a fork. Only lock it if they said this *is* the product, the pick, or the scope.
+**Examples are not the target** unless the user **clearly set them as the target**. A walkthrough, sample project, named vendor, or place in chat / `docs/reference/` is how they explained the idea — not product identity, not a pick, not a jurisdiction. Keep it out of **is / is not**, the spec, and the fork list. Only lock it if they said this *is* the product, the pick, or the scope.
 
 - *Bad (example → target):* Reference docs walk a timber-frame lot in VA/WV to explain home design. Agent writes a timber-frame / Virginia product, or asks whether that sample is the flagship.
 - *Good:* “A home-design app for anywhere in the US first. User location sets jurisdiction.” The timber-frame VA/WV lot stays an example. No named 3D vendor unless they clearly picked one.
@@ -99,9 +100,8 @@ Agents invent decisions, then either lock the invention as identity or dump it i
 - *Bad (unstated enabler):* A paper-trade stem whose **is** never mentions a price source, because “everyone knows.” The scorer then runs against an unfinished feed and saves “strategies are not completing.”
 - *Good (enabler lock):* “Fills use a price source. The scorer does not persist until that source is fully functional.” Paid feed vs free tables stays an Assumption only when both are live and neither wins.
 - *Good (real fork):* “Cost tables: free/manual vs paid RSMeans-class.” “Utility tables vs live APIs.” Those have no obvious winner without a budget or integration choice.
-- *Lesser path ≠ faster MVP.* Do **not** offer a thinner cut, interim architecture, or half-measure to save a human sprint or “land something in 10 minutes.” Lock the obvious **full** target. PDF-first as the consumer handoff is a **lock**; IFC stays named on the spec. Do not ask “PDF-only MVP first?”
-- *Lesser-path ask (only with a real reason):* A hard external constraint, not speed — e.g. “A claimed-passing energy worksheet needs a licensed stamp we do not have. I locked not-stamp-ready flags. Do you actually want a claimed-passing worksheet (legally worse)?”
-- *Do not ask:* “Which jurisdiction should we use?” / “How should Energy Star be handled?” / “Is the reference walkthrough the product?” / “Ship a thinner MVP so we finish faster?” Those quiz the obvious path, promote an example into a target, or apply human-sprint sizing to agent work.
+- Lock the obvious **full** target. PDF-first as the consumer handoff is a **lock**; IFC stays named on the spec.
+- *Do not ask:* “Which jurisdiction should we use?” / “How should Energy Star be handled?” / “Is the reference walkthrough the product?” Those quiz the obvious path or promote an example into a target.
 
 **Clean-out pass.** Existing Understandings (and specs that copied a reference example as a constraint) get the same gate. **Offer** it — all Document Map Understanding stems / named / no; default yes. Sync tag `optional-assumption-cleanout` ([`TEMPLATE_SYNC_B.md`](../TEMPLATE_SYNC_B.md)). Mid-session: if the user is correcting invented decisions or you already see dirty Assumptions on open stems, offer the same pass. Do **not** silent-scan the whole map without that offer or the tagged sync execute.
 
@@ -112,7 +112,7 @@ On execute (chosen stems that **have** Understanding):
 3. If **is / is not** (or the spec) treated a reference example as the target and it was **not** clearly set as the target → restore category-level identity. **Keep status** — do **not** de-confirm (`confirmed` → `draft`) and do **not** inject a mid-sync shape quiz. Record the correction under **Confirmed with user** and in the sync / review summary.
 4. Leave **real forks** unchecked. Empty Assumptions is success. One-line lock list under **Confirmed with user**.
 5. Heading → `Assumptions (real forks only)` if it still says “needs user confirmation.”
-6. Do **not** invent new Assumptions, new stems, Understanding on `build-first`, lesser-path asks that re-offer a reference example, or flip status.
+6. Do **not** invent new Assumptions, new stems, Understanding on `build-first`, or flip status.
 
 **Do not:**
 
@@ -122,7 +122,6 @@ On execute (chosen stems that **have** Understanding):
 - Treat a reference-doc example as the target unless it was clearly set as the target
 - Ask about the obvious path
 - Leave a category enabler unstated because the user did not say it
-- Silently take a lesser path, or **offer** a lesser path to go faster (no real reason)
 - Invent a later-phase vendor/GIS/API as a shape fork — that is the spec, not Understanding
 - De-confirm a `confirmed` Understanding as part of clean-out (sync or role) — keep status; list corrections
 
@@ -145,7 +144,7 @@ On execute (chosen stems that **have** Understanding):
 
 **On Understanding update — relocate** *(same turn, this stem only)*:
 
-1. Trim to shape. Contract content removed from Understanding → **move into that stem’s spec** if missing, then delete from Understanding: legacy **Done when** → **Acceptance**; How-it-should-work / flows → **Behavior**; UI / screenshot tables → **Visual references** / Behavior. Do not discard; do not invent; do not park prose under **Confirmed with user**. Do **not** create a `*-TODO.md`.
+1. Trim to shape. Contract content removed from Understanding → **move into that stem’s spec** if missing, then delete from Understanding: legacy **Done when** → **Acceptance**; How-it-should-work / flows → **Behavior**; UI / screenshot tables → **Visual references** / Behavior. Do not discard; do not invent; do not park prose under **Confirmed with user**.
 
 **When to create or update:**
 
@@ -158,8 +157,8 @@ On execute (chosen stems that **have** Understanding):
 - User corrects you → update immediately (including split/move when they clarify separate features)
 - After any update → run relocate for that stem
 
-**When planning:** Include the Understanding path; state confirmation is for **shape / guardrails**, not the full spec. Once shape implies a product surface/architecture, **lock it in is / is not** and default the spec to that **target** (not MVP → interim → rewrite). Obvious defaults lock the same way (lock gate above). **Assumptions** only for real forks. Do not ask the user to remind you.
+**When planning:** Include the Understanding path; state confirmation is for **shape / guardrails**, not the full spec. Once shape implies a product surface/architecture, **lock it in is / is not** and default the spec to that **target**. Obvious defaults lock the same way (lock gate above). **Assumptions** only for real forks. Do not ask the user to remind you.
 
-**Acceptance** lives on the **spec** (usually 3–7 coarse outcomes) — not on Understanding. **Visual references:** save under `docs/features/assets/`, `docs/_shared/assets/`, or `docs/reference/visuals/`; link from the **spec** with similar vs different — not from `-Understanding.md`. See [`../../help/IDEA_CAPTURE_TIPS.md`](../../help/IDEA_CAPTURE_TIPS.md#visual-references-screenshots).
+**Acceptance** lives on the **spec** (a short list of coarse, exercisable outcomes, not a padded checklist) - not on Understanding. **Visual references:** save under `docs/features/assets/`, `docs/_shared/assets/`, or `docs/reference/visuals/`; link from the **spec** with similar vs different - not from `-Understanding.md`. See [`../../help/IDEA_CAPTURE_TIPS.md`](../../help/IDEA_CAPTURE_TIPS.md#visual-references-screenshots).
 
 ---

@@ -11,7 +11,7 @@ Machine / workflow tools needed to **develop this project** — not package depe
 
 **Why this exists:** Clone the repo on a new machine and ask the agent to install tooling so you can keep working. Keep the list short and accurate.
 
-**Table style:** **Why** = one line. **Install hint** = one command or a link to official docs — not a tutorial. Never put secrets, tokens, or license keys in this file.
+**Table style:** **Why** = one line. **Install hint** = one command or a link to official docs — not a tutorial.
 
 ---
 
@@ -22,7 +22,7 @@ Machine / workflow tools needed to **develop this project** — not package depe
 | CLIs, SDKs, runtimes, editors/engines required to build or run | Libraries listed in package manifests |
 | Optional helpers the team actually uses (formatters, DB clients) | One-off personal preferences unless the project depends on them |
 | Agent skills / packs installed outside the repo (when the project depends on them) | Full install manuals — link to official docs instead |
-| Verify commands that prove the tool is present | Secrets, API keys, license files |
+| Verify commands that prove the tool is present | |
 
 ---
 
@@ -59,7 +59,7 @@ Machine / workflow tools needed to **develop this project** — not package depe
 
 External APIs and services the **running app** calls. Not CLIs or SDKs — those stay in Required / Optional. Not package dependencies. A successor should see this list without reading code.
 
-No secrets, tokens, or key values. Credential **name** only (`.env` variable or vault entry).
+Credential **name** only (`.env` variable or vault entry).
 
 | Service | Why the app calls it | Credential name | Docs |
 |---------|----------------------|-----------------|------|
@@ -83,7 +83,7 @@ Skills and packs that live in the **user profile** (not in git), e.g. `~/.grok/s
 
 ## After tools are installed
 
-1. [e.g. Copy `.env.example` → `.env` — do not commit secrets]
+1. [e.g. Copy `.env.example` → `.env`]
 2. [e.g. `npm install` / `pnpm install` / restore packages]
 3. [e.g. How to start the app or open the editor]
 

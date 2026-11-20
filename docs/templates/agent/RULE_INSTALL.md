@@ -2,7 +2,7 @@
 
 > Use when the user asks to bootstrap modular docs, install the rule, or set up agent instructions. **Ask before writing rule files** — unless `docs/ADT-settings.yaml` already records a decision for that tool (see below).
 >
-> **Dispatcher:** After the user confirms a tool, open **only** [`tools/<key>.md`](tools/README.md) and execute that playbook. Do not keep a second copy of install paths in this file.
+> **Dispatcher:** After the user confirms a tool, open the playbook for that tool ([`tools/<key>.md`](tools/README.md)) and execute it. Do not keep a second copy of install paths in this file.
 
 ## Settings file — remember answers
 
@@ -94,10 +94,10 @@ Do not proceed until they confirm for each tool you are installing.
 
 For **each** confirmed tool (or each `tools.*.status: installed` when refreshing on sync):
 
-1. Open **`docs/templates/agent/tools/<key>.md` only**.
+1. Open the playbook for each declared installed tool: `docs/templates/agent/tools/<key>.md`.
 2. Execute that playbook end-to-end (modular rule → optional update-check if enabled → optional doc-roles if enabled and that tool supports them → optional slash-commands if enabled and that tool has a command folder).
 3. Update `docs/ADT-settings.yaml` immediately (`status: installed`, `path`, `recorded`).
-4. Stop for that tool — do not open other `tools/*.md`.
+4. Done for that tool. Do not treat install as a live-docs rewrite.
 
 On **template sync** `rules` refresh: overwrite pack-managed installs **without asking** unless that tool has `customized: true`.
 

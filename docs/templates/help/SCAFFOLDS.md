@@ -6,7 +6,6 @@ Live files under `docs/` are **fill-in blanks**. Teaching, examples, and “how 
 |-----------|------------------|-------------|-------------------------------------|
 | `*-Understanding.md` | Shape blanks: is / is not, Relationship, Assumptions | This page + [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md) | [`workflow/understanding.md`](../agent/workflow/understanding.md) |
 | Feature / shared **spec** | Contract: Architecture, Behavior, Acceptance, Decisions, Visual refs | [`USAGE.md`](USAGE.md) | [`workflow/understanding.md`](../agent/workflow/understanding.md) §2 |
-| `*-TODO.md` | Retired in 2.10.0. Do not create one. An existing file may stay; it is not the work list | [`USAGE.md`](USAGE.md) | — |
 | `Master_Index.md` | Overview + Document Map | [`SETUP.md`](SETUP.md) | [`workflow/naming-layout.md`](../agent/workflow/naming-layout.md) |
 | `Product-Vision.md` | Whole-product is / is not + **end-state picture** + how the map fits | This page | [`workflow/product-vision.md`](../agent/workflow/product-vision.md) |
 | `Human-TODO.md` / `Tooling.md` | Inbox / machine tools | This pack’s help | [`workflow/human-todo.md`](../agent/workflow/human-todo.md) · [`workflow/tooling.md`](../agent/workflow/tooling.md) |
@@ -19,7 +18,7 @@ Live files under `docs/` are **fill-in blanks**. Teaching, examples, and “how 
 
 ## Reviewing Product vision *(the whole, not the map)*
 
-The agent always drafts `docs/Product-Vision.md` (lightweight under **balanced** / **build-first**). Under **prevent**, you confirm **one product**:
+The agent always drafts `docs/Product-Vision.md` (lightweight to start under **balanced** / **build-first**; deeper when identity is fuzzy, there are multiple stems, or you ask to *lock product shape*). Under **prevent**, you confirm **one product**:
 
 1. **What this product is / is NOT** — category and whole-product identity. Not each feature’s is-not.
 2. **End-state picture** — when it is whole, what is it? One sitting, one product feel. A feature list is the wrong confirm.

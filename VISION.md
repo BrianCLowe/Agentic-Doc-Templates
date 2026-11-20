@@ -35,7 +35,7 @@ From then on, a sitting looks the same no matter which agent you opened. You say
 
 Anything the pack can function without stays optional. You turn those pieces on when you want them. When you need the agent to run this pack differently and there is no setting for it, a standing directive records that override. When you tell it how to act in the repo and that is not a pack playbook, it asks whether that should be an always-on rule or a skill it opens when the work comes up. It does not file that in standing. The pack does not quiz you into its own habits. A menu of slash commands is one of those optionals: `/sync` for people who want to pick the ask instead of remembering the sentence. Declining it leaves the short ask as the only path.
 
-The main session stays thin on purpose. Each instruction lives in one place. The agent is guided there when the ask needs it, and does not carry the rest of the pack in memory. When doc roles are installed, heavier moments go to a role so the parent session does not swell to hold them. Without that install, the same work stays in the parent.
+Each instruction lives in one place, and the agent is guided there when the ask needs it. When doc roles are installed, heavier moments go to a role so the parent session does not swell to hold them. Without that install, the same work stays in the parent.
 
 When this pack itself gets better, one ask refreshes the playbooks and catches your live docs up, and your product’s intent stays yours. That refresh is two steps: first the templates are replaced, then catch-up runs from the instructions that just arrived. Catch-up is not an old procedure sitting in the same file the agent already decided was stale — that is what happened when sync was one file, and the split exists so it does not happen again.
 
@@ -52,7 +52,7 @@ These are the pieces that already exist in the pack, and the role each one plays
 | Optional settings | Pieces the pack can run without. Off until you want them, so one process is not forced on you. Slash command `/sync` is one of these. |
 | Standing directives | Your lasting override of a pack playbook when no setting exists. Repo behavior that is not a pack playbook is asked as a rule or a skill. |
 | `help/` | How a human uses the notebook. |
-| `agent/` workflow modules + installable rules | The paved path, one module at a time. Instructions stay in that one place; the session loads them when the ask needs them. |
+| `agent/` workflow modules + installable rules | The paved path, starting with the module that matches the ask; read another when it is needed. Instructions stay in that one place; the session loads them when the ask needs them. |
 | Optional doc roles | If installed, heavier doc moments leave the parent session. That is a reason to turn them on. Opt-in, never always-on. Bootstrap stays in the parent. |
 | Template sync A, then B | A replaces the pack. B is the catch-up in the pack you just installed, so those instructions are current and are not discarded as stale. |
 | `VERSION` + `CHANGELOG` | How a later pack reaches a project that already has live docs, without a second bootstrap. |
@@ -64,6 +64,5 @@ These are the pieces that already exist in the pack, and the role each one plays
 ## Confirmed with user
 
 - 2026-09-23 — Drafted for review from the pack (no reference threads).
-- 2026-09-23 — Corrected: do not force a process past what the pack needs (optionals + standing); sync is A then B so catch-up is the new instructions, not a stale single file; token efficiency — one home for each instruction, loaded when needed; roles slim the main session **if installed**.
+- 2026-09-23 - Corrected: do not force a process past what the pack needs (optionals + standing); sync is A then B so catch-up is the new instructions, not a stale single file; one home for each instruction, loaded when needed; roles slim the main session **if installed**.
 - 2026-09-23 — Confirmed the whole picture, including build-first, optional `/sync`, and repo behavior that is not a pack playbook asked as a rule or a skill.
-- 2026-10-04 — The pack documents and syncs. It does not keep a work checklist, a Current focus, an implementation role, or a git-delivery setting.

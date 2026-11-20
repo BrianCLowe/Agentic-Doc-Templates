@@ -15,8 +15,8 @@ The Document Map + per-feature Understandings can be complete and still miss **w
 | Profile | Create `Product-Vision.md` | Implementation gate |
 |---------|----------------------------|---------------------|
 | **`prevent`** | **Always** at bootstrap / first live-docs (even one stem). Status starts `draft`; user confirms product shape. | Feature Understanding confirm still gates that stem. **Confirmed** vision: do not implement a fighting feature. |
-| **`balanced`** | **Always** create a **lightweight** file. Deepen when **2+ feature stems**, whole-product identity is fuzzy, or the user asked *lock product shape*. | Unchanged: Understanding only when identity is fuzzy / user locks a stem. Draft vision is **not** a coding gate. |
-| **`build-first`** | **Always** create a **lightweight** file at bootstrap / first live-docs (and on TEMPLATE_SYNC if missing). | **Not a gate.** File is informative and evolving. Read it for destination; do **not** wait for confirm before coding. The spec is the contract. *Lock product shape* only when a change needs explicit confirmation (identity fight, whole-product fork). After lock + confirm, do not implement a fighting feature. |
+| **`balanced`** | **Always** create a **lightweight** file to start. Deepen when identity is fuzzy, there are multiple stems, or the user asks to *lock product shape*. | Unchanged: Understanding only when identity is fuzzy / user locks a stem. Draft vision is **not** a coding gate. |
+| **`build-first`** | **Always** create a **lightweight** file to start at bootstrap / first live-docs (and on TEMPLATE_SYNC if missing). Deepen when identity is fuzzy, there are multiple stems, or the user asks to *lock product shape*. | **Not a gate.** File is informative and evolving. Read it for destination; do **not** wait for confirm before coding. The spec is the contract. *Lock product shape* only when a change needs explicit confirmation (identity fight, whole-product fork). After lock + confirm, do not implement a fighting feature. |
 
 **Unset profile → prevent** → create + confirm gate. Destination file is created **without** *lock product shape*.
 
@@ -28,7 +28,7 @@ The feature map is **what exists**, not **what the product is**. Building the en
 
 **When drafting or filling a missing `Product-Vision.md` (TEMPLATE_SYNC Step B, bootstrap Step 3v, first live-docs, *lock product shape*):**
 
-1. **Peek `docs/reference/` first** if that folder has files. List names. Open **idea / identity** sources — chat exports, PRDs, “what this is” notes. If there are many files, open the **newest 3–5** identity-ish files (or ones the user pointed at). Do **not** skip the folder because the map looks complete. Do **not** open every vendor/API dump as vision source. Do **not** inventory the whole repo.
+1. **Peek `docs/reference/` first** if that folder has files. List names. Open **idea / identity** sources - chat exports, PRDs, "what this is" notes. If there are many files, prefer the newest identity / idea sources (or ones the user pointed at); skip vendor and API dumps unless they define the product. Do **not** skip the folder because the map looks complete. Do **not** inventory the whole repo.
 2. Draft **What this product is / is NOT** + **End-state picture** from those files + this-turn conversation. Lock obvious defaults. Examples in `reference/` are **not** the target unless the user clearly set them as the target (Workflow §4). Empty Assumptions is success.
 3. **Then** fill **How the map fits** from **existing** Document Map rows only (one line each). The map is the **fit** table, not the source of the picture. Do not invent stems.
 

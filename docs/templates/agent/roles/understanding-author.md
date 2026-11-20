@@ -14,9 +14,9 @@
 - Under **build-first** / clear **balanced** stems: only when the user asks to lock shape or identity fights require it — do not invent Understandings for every map row
 - **Not** for a purely **additive** ask on a `confirmed` stem — update the **spec**; keep `confirmed`. Invoke only on a **significant shape change**. Full gate: [`../workflow/understanding.md`](../workflow/understanding.md) §4.
 
-## Inputs *(open only these)*
+## Inputs
 
-1. `docs/Master_Index.md` Sections 1–3 (Document Map + overview). `docs/Product-Vision.md` if it exists — if missing, draft a lightweight file (Workflow §4.5). Under **build-first**, do not wait for confirm. Do not invent a second product.
+1. `docs/Master_Index.md` Sections 1-3 (Document Map + overview). `docs/Product-Vision.md` if it exists - if missing, draft a lightweight file to start (Workflow Section 4.5); deepen when identity is fuzzy, there are multiple stems, or the user asks to *lock product shape*. Under **build-first**, do not wait for confirm. Document only the product the docs confirm.
 2. Named feature/shared row paths — or create the default file set per Workflow §0 for each **new** stem you identify
 3. Source the user pointed at: this conversation, and/or files under `docs/reference/` (all named exports, or the folder when they said “from reference”)
 4. Existing `-Understanding.md` for each stem you touch (if any)
@@ -30,7 +30,7 @@
 1. From the sources, identify **stem(s)** — one Document Map identity each. If material clearly describes **two+ finished-feature identities** (different jobs / category / surface / ownership), plan a **split** (Workflow §0) — do not force one Understanding because they appeared in one chat or one vague sentence.
 2. If identity count is ambiguous, ask brief questions from `IDEA_CAPTURE_TIPS.md` (cap **5**), then draft — prioritize identity (is / is not), including **product-defining surface** when relevant. Prefer one clarifying split question over silently merging. **Skip the facet interview** when the goal is terse but actionable (wrap a documented public API / match the upstream SDK) — record those in-scope surfaces on this stem’s **spec**. Do not add map rows for vague planned-only extras (Workflow §0 inventory). Do **not** interview obvious defaults (Workflow §4 lock gate).
 3. For **each** stem: write or update `-Understanding.md` from the Understanding template + **Workflow §4** (shape sections only; human review banner; no How-it-should-work / UI / Visual references / Done when). Put product-defining surface/architecture identity **and obvious defaults** in is / is not — not module diagrams. **Assumptions = real forks only** (empty is success). Name a category input the product cannot be true without in is / is not, even when the user did not say it (Workflow §4). Do **not** treat examples in `docs/reference/` / chat as the target unless clearly set as the target. Screenshots → spec **Visual references**. Full lock gate: [`../workflow/understanding.md`](../workflow/understanding.md) §4. If the user asked to clean Assumptions, or you already see invented quizzes on open stems, **offer** the clean-out pass (all / named / no; default yes) — execute Workflow §4 Clean-out (**keep status**; do not de-confirm). Do not silent-scan the map.
-4. **New row:** add Document Map row **and** create the **profile default file set** in the **same turn** (Workflow §0 / §0.1 — spec; Understanding per profile). Do **not** create a `*-TODO.md`. When this role runs, you are locking shape → create/update Understanding even under build-first for **named** stems. **Split:** create the new stem’s file set; move misplaced shape/contract content out of the old stem; relocate overflow into the spec (Workflow §4).
+4. **New row:** add Document Map row **and** create the **profile default file set** in the **same turn** (Workflow §0 / §0.1 — spec; Understanding per profile). When this role runs, you are locking shape → create/update Understanding even under build-first for **named** stems. **Split:** create the new stem’s file set; move misplaced shape/contract content out of the old stem; relocate overflow into the spec (Workflow §4).
 5. **On update (no split):** relocate overflow into the spec for that stem (Workflow §4).
 6. Status **`draft`** on **new** Understandings and on updates that change **is / is not** or a guardrail because the user changed shape. After a §4 clean-out → **keep status** (do **not** de-confirm). Show the user the path(s). Ask them to correct **shape** when status is `draft` — say this is **not** a full spec review. List **locks** in one line; leave only real forks in Assumptions. If the design was already clear, **zero Assumption asks is correct** — do not invent a quiz. If you split or relocated, say so in one line. **Stop.**
 
@@ -50,14 +50,12 @@
 - Delete durable contract detail without putting it in the spec when missing
 - Add or keep How it should work, UI/UX, Visual references, or Done when on Understanding
 - Ask the user to approve module/API architecture, flows, or a full behavior contract here — **do** capture product-defining surface/identity as shape when they stated it
-- Encode a known-wrong interim architecture in **is / is not** because the honest shape “looks big”
+- Encode a known-wrong interim architecture in **is / is not**
 - Pad Understanding into a mini-spec; park relocated prose under **Confirmed with user**
 - Invent Assumption checkboxes or treat a reference-doc example as the target unless it was clearly set as the target (Workflow §4 lock gate)
 - Invent Assumption asks when the design is already clear (zero asks is correct)
 - Leave a category input unstated because the user did not say it (Workflow §4)
-- Ask how to handle an obvious best default, or offer a half-measure “to finish faster”
-- Create a `*-TODO.md` or a Current focus block
+- Ask how to handle an obvious best default
 - Glue two unlike identities into one Understanding to avoid new files, “stay tight,” or because the user mentioned them together
 - Wait for the user to invent paths after they said two things are different features — split and propose names
 - Invent `_shared/` rows or §3.0 exceptions; audit unrelated stems
-- Turn this pass into an implementation loop or a git-delivery plan

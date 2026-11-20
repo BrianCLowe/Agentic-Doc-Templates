@@ -16,7 +16,7 @@
 | Shared Catalog *(optional)* | `docs/_shared/ComponentName-Catalog.md` |
 | Sub-index *(large feature only)* | `docs/features/FeatureName-Index.md` |
 | Screenshots | `docs/features/assets/…` or `docs/_shared/assets/…` |
-| Product vision *(whole-product end-state)* | `docs/Product-Vision.md` — **always create** (lightweight on `balanced` / `build-first`). **`build-first`:** not a gate until *lock product shape*. [`product-vision.md`](product-vision.md) §4.5 |
+| Product vision *(whole-product end-state)* | `docs/Product-Vision.md` - **always create** (lightweight to start on `balanced` / `build-first`; deepen when identity is fuzzy, there are multiple stems, or the user asks to *lock product shape*). **`build-first`:** not a gate until *lock product shape*. [`product-vision.md`](product-vision.md) Section 4.5 |
 | Team roster *(optional — team inbox)* | `docs/Team-Roster.md` — create **only** when `team_inbox` is enabled. Named humans and bots self-ID; do not invent. [`team-roster.md`](team-roster.md) |
 
 **Use the same name stem** across the set (`MainWorkspace`, `BlockEditor`, …). Copy spelling from the Document Map when adding to an existing project.
@@ -27,12 +27,12 @@
 
 1. Add a row to Master Index §3.1 or §3.2 with the exact paths (**working markdown links** — not “planned” placeholders with nowhere to click).
 2. Create the **default file set for the active docs profile** (§0.1) at those paths **in the same turn**:
-   - **Always:** [`Feature_Spec_Template.md`](../../Feature_Spec_Template.md). Do **not** create a `*-TODO.md`
+   - **Always:** [`Feature_Spec_Template.md`](../../Feature_Spec_Template.md)
    - **+ Understanding** ([`Feature_Understanding_Template.md`](../../Feature_Understanding_Template.md)): required under **`prevent`**; under **`balanced`** when identity is ambiguous / multi-surface / split / user asked; under **`build-first`** only if user asked *lock shape* or an Understanding already exists for that stem
    - Add [`Feature_Catalog_Template.md`](../../Feature_Catalog_Template.md) only when §7 / list-heavy rules apply
 3. All files for one feature live **directly** in `features/` (or `_shared/`), not in a subfolder named after the feature.
 
-**Map without files = incomplete documentation.** Do not add Document Map rows and defer file creation “until the user picks where to start.” Bootstrap Step 3d and this section require the profile’s default file set on disk. Under **`prevent`**, create `-Understanding.md` even while status is `draft`. Draft is not confirmed identity. It is not a coding gate.
+**Map without files = incomplete documentation.** Add a Document Map row and its files in the same turn; file creation does not wait “until the user picks where to start.” Bootstrap Step 3d and this section require the profile’s default file set on disk. Under **`prevent`**, create `-Understanding.md` even while status is `draft`. Draft is not confirmed identity. It is not a coding gate.
 
 **`docs/reference/`:** Drop zone for **source** materials. **Recommended habit:** markdown **chat exports** of idea threads (often many files) — they preserve user whys/motives better than polished-only design docs ([`../../help/IDEA_CAPTURE_TIPS.md`](../../help/IDEA_CAPTURE_TIPS.md)). Also fine: PRDs, legacy specs. Not Document Map rows. Read when the user points at a file or asks to convert / **build or update** live docs from them. Optional `docs/reference/visuals/` for inspiration screenshots. Do **not** send users to a chat-only `AGENT.md` attach flow — that path is paused; export → `reference/` is the supported route.
 
@@ -42,7 +42,7 @@
 
 **Do not add map rows for vague planned-only items.** “Maybe a playground later,” “billing someday,” “whatever else we think of” — no identity, no implementable contract, needs a product decision the docs do not answer. Those stay off the map until they become a real slice. **Map row = files on disk the same turn** still holds: never add a planned-only placeholder row with nowhere to click.
 
-**Terse ≠ vague.** If the idea is **actionable without further information** — e.g. a **library** whose job is to fully wrap a **documented public API** / upstream SDK — do **not** treat it as a stub idea and do **not** interview the user through each uncovered facet. Record the in-scope surfaces on **this stem’s spec**. A gap those docs already make obvious is part of the instruction. A second product or a checklist of future ideas is not. Do **not** create a `*-TODO.md`.
+**Terse ≠ vague.** If the idea is **actionable without further information** — e.g. a **library** whose job is to fully wrap a **documented public API** / upstream SDK — do **not** treat it as a stub idea and do **not** interview the user through each uncovered facet. Record the in-scope surfaces on **this stem’s spec**. Record a gap those docs already make obvious on the spec when it is contract.
 
 **Do not** split each leftover into its own map row “for completeness” — that is empty spec files. **Split** when the user names it as its own finished-feature identity. Methods of one kit stay one identity until a surface becomes its own product.
 

@@ -1,6 +1,6 @@
 # [Project Name] — Team roster
 
-> Copy to `docs/Team-Roster.md` **only** when this project enabled `team_inbox`. Do not create this live file for a human-only inbox. Never edit this template unless the user asks.
+> Copy to `docs/Team-Roster.md` when this project enabled `team_inbox`; a human-only inbox has no roster file. Edit this template only when the user asks.
 
 **Last Updated**: [YYYY-MM-DD]  
 **Related**: [Human-TODO.md](Human-TODO.md) · [ADT-settings.yaml](ADT-settings.yaml) · [workflow/team-roster.md](templates/agent/workflow/team-roster.md)
@@ -45,4 +45,4 @@ Named-human example *(not a live person — do not copy as a teammate)*:
 
 ---
 
-*Keep Active honest — missing teammates stay missing. Do not invent a team or human names. One initial PR when standing up a full team — do not open competing roster PRs.*
+*One initial PR when standing up a full team — do not open competing roster PRs.*

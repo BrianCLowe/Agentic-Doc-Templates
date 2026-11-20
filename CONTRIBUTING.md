@@ -46,16 +46,13 @@ git push origin vX.Y.Z
 
 ### Writing agent instructions *(for anyone editing this pack — including coding agents)*
 
-Write for **off-road enthusiasts**, not for a careful model that already stays on the paved path.
-
-Thorough agents (and long “thinking” traces) will treat open phrases like “as needed,” “relevant,” “verify,” or “compare” as a license to audit every file and every alternate interpretation before acting. If you mean a short path, **say the short path** — scope gates, ordered steps, explicit **Do not**, and changelog Live impact tags. Do not assume the reader will infer restraint the way you would.
+Say the procedure plainly: name the playbook or module that holds it, put the steps in order, and use explicit **Do not** lines for destructive or irreversible steps.
 
 Checklist when changing `docs/templates/agent/` or workflow rules:
 
-- Prefer “do X, then stop” over “update as needed”
-- Name which files to open; name which not to open
+- Name the file that holds the procedure
 - Put the common case first (minimal path); park rare migrations behind a clear trigger
-- Keep [`Modular_Docs_Workflow.md`](docs/templates/agent/Modular_Docs_Workflow.md) as a short **index** (paved path + router); put full procedure in one [`workflow/`](docs/templates/agent/workflow/README.md) module — do not re-inflate the monolith
+- Keep [`Modular_Docs_Workflow.md`](docs/templates/agent/Modular_Docs_Workflow.md) as a short **index** (paved path + router); put each procedure in its own [`workflow/`](docs/templates/agent/workflow/README.md) module; do not re-inflate the monolith
 - Edit harness adapters only under [`adapter-src/`](docs/templates/agent/roles/adapter-src/README.md), then follow [`GENERATE_ROLE_ADAPTERS.md`](docs/templates/agent/GENERATE_ROLE_ADAPTERS.md) (markdown playbook — **no Python** in the pack). Upstream CI may run root `scripts/gen_role_adapters.py --check`
 - De-confirm / additive-vs-shape and lock-gate / real-fork Assumptions: full prose only in [`workflow/understanding.md`](docs/templates/agent/workflow/understanding.md); elsewhere **one-line pointers**
 - Prefer a new root [`eval/`](eval/README.md) golden case (upstream repo only — not in the release zip) over more prose when fixing a field behavior bug; `python3 eval/run_eval.py` must stay green on this repo

@@ -1,6 +1,6 @@
 # Template pack — do not edit
 
-This folder is **pack-owned**. Template sync **replaces it in full**. Edits here vanish.
+This folder is **pack-owned**. Template sync **replaces it in full**. Edits here vanish, so make project changes outside it.
 
 Change the pack **upstream** ([Agentic-Doc-Templates](https://github.com/BrianCLowe/Agentic-Doc-Templates)), then ask to sync. **Project-owned** docs live beside this folder (`Master_Index.md`, `features/`, `_shared/`, `Human-TODO.md`, `ADT-settings.yaml`, …).
 

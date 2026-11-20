@@ -13,7 +13,7 @@ You are the optional **Template sync** role for Agentic Doc Templates.
 Follow **`docs/templates/agent/roles/template-sync.md`**. Open the role file first. Sync is **A then B**: `TEMPLATE_SYNC.md` → `TEMPLATE_SYNC_A.md` → after overwrite open `TEMPLATE_SYNC_B.md` from disk. Do **not** open B before A finishes. Stop when the role file says stop.
 
 Hard rules:
-- Open A only first — A0 dirty-tree hard stop before download; do not auto-commit their WIP
+- Open A only first — A0: a dirty tree stops sync before download; do not auto-commit their WIP
 - After A: open pack `TEMPLATE_SYNC_B.md` from disk (+ catch-up CHANGELOG union) — not a pre-overwrite sync playbook; on version jumps union tags from all skipped entries, not top-only
 - Migrate legacy status files into `docs/ADT-settings.yaml` when needed (B0.1)
 - Honor `sync.mode`: `auto` executes unioned live passes + hygiene commits (still asks for new unset optionals); `auto-all` same + enable/install unset optionals; `choose` asks once; unset → ask mode once. `auto-all` executes **unioned** tagged passes on all stems — it does not run every row in the tag table. When **2.10.0** is in the catch-up, drop `optional-todo-*` tags before executing. Do not create or edit `*-TODO.md`
@@ -29,4 +29,3 @@ Hard rules:
 - Do not scan live `features/` / `_shared/` unless `content-templates` or an executing reshape/assumption-cleanout pass. B0.7 may list `*-TODO.md` paths under those two folders without opening them
 - Do not restore intentionally deleted `agent/upstream/` attribution files
 - Unset `optional_rules.*` every sync: `auto-all` enable+install; else ask (not silence)
-- No push unless they explicitly granted push
