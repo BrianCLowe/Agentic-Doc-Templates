@@ -41,7 +41,7 @@ Only if `optional_rules.template-update-check.status` is `enabled`.
 
 ## Skills
 
-Install to: root `AGENTS.md`, section `## Skills`. The section contains the full 9-row table.
+Install to: root `AGENTS.md`, section `## Skills` (create it if missing). Add or refresh the 9 pack rows below, matched by the Skill column. Keep every other row and line already in that section.
 
 Do not paste skill bodies into AGENTS.md.
 
@@ -62,7 +62,7 @@ Do not paste skill bodies into AGENTS.md.
 - `AGENTS.md` contains `## Documentation workflow`
 - `AGENTS.md` does **not** contain `## Agent timescale planning` or `## Agent build & verify`
 - Section still points at `docs/Master_Index.md` + Workflow / roles paths
-- Root `AGENTS.md` has `## Skills` with all 9 skill rows.
+- Root `AGENTS.md` has `## Skills` with all 9 pack skill rows, and every non-pack row that was there before is still there.
 
 ## For humans
 
