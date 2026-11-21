@@ -35,7 +35,7 @@ See [`Feature_Spec_Template.md`](/docs/templates/Feature_Spec_Template.md) and [
 
 Under **`prevent`**, each **feature** and substantial **shared component** gets a `-Understanding.md` — the agent’s model of **feature shape** (guardrails). **Not** a second durable spec. Under **`balanced`**, create when identity is ambiguous / multi-surface / split pressure / user asked. Under **`build-first`**, only when user asks *lock shape* or the file already exists.
 
-**Whole product:** Feature is / is not is **one stem**. The cohesive end-state lives in `docs/Product-Vision.md` — [`product-vision.md`](/docs/templates/agent/workflow/product-vision.md) §4.5. A feature that fights a **confirmed** product vision is a shape fight — do not implement it. Do not paste the product vision into every Understanding.
+**Whole product:** Feature is / is not is **one stem**. The cohesive end-state lives in `docs/Product-Vision.md` - [`product-vision.md`](/docs/templates/agent/workflow/product-vision.md) Section 4.5. A feature that fights a **confirmed** product vision is a shape fight to resolve in the docs. Do not paste the product vision into every Understanding.
 
 - Features: `features/FeatureName-Understanding.md`
 - Shared: `_shared/ComponentName-Understanding.md`
@@ -138,10 +138,10 @@ On execute (chosen stems that **have** Understanding):
 |--------|---------|
 | `draft` | Agent wrote/updated; shape not approved. File **must exist** under prevent — `draft` ≠ skip creating Understanding. Draft is not a coding gate |
 | `reviewed` | User skimmed; minor edits may remain |
-| `confirmed` | User approved **shape** — safe to implement without re-asking Understanding review; **graduate** contract to spec (§2). Not sign-off on every spec detail |
+| `confirmed` | User approved **shape** - the shape is settled and needs no re-review; **graduate** contract to spec (Section 2). Not sign-off on every spec detail |
 | `superseded` | No longer accurate — revise or reconcile |
 
-**When `confirmed`:** Read for guardrails; proceed from the spec. **Do not** re-surface for review unless shape/scope changes, conflict with code, or status returns to `draft` / `superseded`. Unchecked **Assumptions** after confirm → ask those **real forks** only — do not invent new quizzes.
+**When `confirmed`:** Read for guardrails; the spec carries the contract. **Do not** re-surface for review unless shape/scope changes, conflict with code, or status returns to `draft` / `superseded`. Unchecked **Assumptions** after confirm -> ask those **real forks** only - do not invent new quizzes.
 
 **De-confirm gate (`confirmed` → `draft` / `superseded`):** Flip status **only** when a **significant shape change** is outlined — the **is / is not** identity, product surface, ownership, or a stated guardrail actually changes (a genuinely new identity → §0 **split**, not a de-confirm). An **additive** request is **not** a shape change: a new research angle, an extra behavior, an edge case, or added detail that still fits the confirmed **is / is not** → record it in the **spec** (Behavior / Acceptance / Decisions) and **keep `confirmed`**. Do **not** revert a confirmed Understanding, rewrite **is / is not**, or re-open shape review just to capture an addition. If genuinely unsure, ask one question — *does this change what the feature is, or just add to it?* — and **default to additive**.
 
@@ -172,7 +172,7 @@ On execute (chosen stems that **have** Understanding):
 
 > **Opt-in.** Use only when the user asks for this role or names this file. Not always-on.
 
-**Job:** Capture **feature shape** first (is / is not). Draft or revise `-Understanding.md` so the user can confirm **guardrails** before implementation — **not** a full spec review.
+**Job:** Capture **feature shape** first (is / is not). Draft or revise `-Understanding.md` so the user can confirm **guardrails** while the shape is still `draft` - **not** a full spec review.
 
 **Canonical procedure:** [`../workflow/naming-layout.md`](/docs/templates/agent/workflow/naming-layout.md) (§0) · [`../workflow/profile-standing.md`](/docs/templates/agent/workflow/profile-standing.md) (§0.1) · [`../workflow/understanding.md`](/docs/templates/agent/workflow/understanding.md) (§4 — **source of truth**, incl. de-confirm gate). Index: [`../Modular_Docs_Workflow.md`](/docs/templates/agent/Modular_Docs_Workflow.md). Template: [`../../Feature_Understanding_Template.md`](/docs/templates/Feature_Understanding_Template.md). Interview help: [`../../help/IDEA_CAPTURE_TIPS.md`](/docs/templates/help/IDEA_CAPTURE_TIPS.md). Graduation is **not** this role (§2 / [`doc-graduate.md`](/docs/templates/agent/roles/doc-graduate.md)) — except relocating trim overflow into the spec while shaping.
 

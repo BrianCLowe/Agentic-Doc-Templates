@@ -17,10 +17,6 @@
 
 Also consider status key `agents-md` for the same `AGENTS.md` — do not duplicate the section twice.
 
-## Retired rules *(delete on refresh)*
-
-The pack no longer ships timescale or build-verify rules. **Delete** an `## Agent timescale planning` or `## Agent build & verify` section in `AGENTS.md`, and delete `.grok/rules/agent-timescale-planning.md` and `.grok/rules/agent-build-verify.md` if present.
-
 ## Optional — Template update check
 
 Only if `optional_rules.template-update-check.status` is `enabled` in `docs/ADT-settings.yaml`. Requires an `upstream:` block in that file. A session check with no interval does not write it.
@@ -46,7 +42,7 @@ Only if `optional_rules.doc-roles.status` is `enabled`.
 
 Files: `understanding-author.md`, `doc-graduate.md`, `docs-template-sync.md`.
 
-**Do not** install a `docs-bootstrap` adapter — bootstrap runs in the **parent** session (`BOOTSTRAP.md`). Delete leftover `docs-bootstrap.md`, `feature-implementer.md`, `work-verifier.md`, `todo-warden.md`, and `orchestrator.md` if present.
+**Do not** install a `docs-bootstrap` adapter - bootstrap runs in the **parent** session (`BOOTSTRAP.md`).
 
 ## Skills
 
@@ -55,7 +51,6 @@ Copy each pack skill folder `docs/templates/agent/skills/<name>/` (every adt-* f
 ## Verify
 
 - Modular rule listed by `grok inspect` from `AGENTS.md` and/or `.grok/rules/`
-- Timescale and build-verify sections are **absent**
 - If doc-roles enabled: three files under `.grok/agents/` (`understanding-author.md`, `doc-graduate.md`, `docs-template-sync.md`). No `docs-bootstrap` adapter. Confirm names appear under **agents** in `grok inspect --json` or `/config-agents` (non-builtin source). If missing → playbook fallback above
 - Remind: short asks are enough. Subagents are **enabled by default**; only check `GROK_SUBAGENTS=0` / `[subagents] enabled = false` if spawning fails or the user disabled them
 - All 9 adt-* folders under .grok/skills, each with SKILL.md.

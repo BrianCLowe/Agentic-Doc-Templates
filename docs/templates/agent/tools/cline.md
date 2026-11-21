@@ -12,10 +12,6 @@
 | **Install to** | `.clinerules/modular-documentation.md` *(primary — current Cline docs)* |
 | **Notes** | Cline also auto-detects `AGENTS.md` and some other tools’ rule files. Prefer `.clinerules/` for pack-owned installs. |
 
-## Retired rules *(delete on refresh)*
-
-The pack no longer ships timescale or build-verify rules. **Delete** `.clinerules/agent-timescale-planning.md` and `.clinerules/agent-build-verify.md` if present.
-
 ## Optional — Template update check
 
 If enabled: `.clinerules/template-update-check.md`.
@@ -29,7 +25,6 @@ No skills loader. Route skill asks through the AGENTS.md skills table ([`agents-
 ## Verify
 
 - `modular-documentation.md` exists under `.clinerules/`
-- Timescale and build-verify rules are **absent**
 - Visible/toggled in Cline’s Rules panel
 
 ## For humans

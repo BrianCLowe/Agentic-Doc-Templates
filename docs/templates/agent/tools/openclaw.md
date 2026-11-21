@@ -24,10 +24,6 @@ Record the chosen workspace path under `tools.openclaw.path` / `note` in `docs/A
 
 If the project also uses status key `agents-md` for the same `AGENTS.md`, do **not** duplicate the section — one `## Documentation workflow` is enough; mark both tools `installed` with a shared path note if useful.
 
-## Retired rules *(delete on refresh)*
-
-The pack no longer ships timescale or build-verify rules. **Delete** `## Agent timescale planning` and `## Agent build & verify` from the workspace `AGENTS.md` if present.
-
 ## Optional — Template update check
 
 Only if `optional_rules.template-update-check.status` is `enabled`.
@@ -63,7 +59,6 @@ No skills loader. Route skill asks through the AGENTS.md skills table ([`agents-
 ## Verify
 
 - Chosen workspace `AGENTS.md` contains `## Documentation workflow`
-- Same `AGENTS.md` does **not** contain `## Agent timescale planning` or `## Agent build & verify`
 - If workspace is the project root: `docs/Master_Index.md` is reachable as a relative path
 - If workspace is `~/.openclaw/workspace`: user confirmed they understand path/cwd limits
 - Status yaml records `openclaw` with `path` = that `AGENTS.md`

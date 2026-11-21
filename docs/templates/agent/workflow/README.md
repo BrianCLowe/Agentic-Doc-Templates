@@ -15,7 +15,6 @@ Procedures that run on demand are skills: [`skills/README.md`](../skills/README.
 | [`decisions.md`](decisions.md) | §10 Decisions | Product/UI preference capture |
 | [`tooling.md`](tooling.md) | §11 Tooling | Machine setup |
 | [`human-todo.md`](human-todo.md) | §13 Human-TODO | Human inbox |
-| [`team-roster.md`](team-roster.md) | Team inbox · roster | Only when `team_inbox` is enabled |
 | [`extensions.md`](extensions.md) | §6–9 · §12 | Game / catalog / split / Mermaid |
 
 **Maintainers:** Edit the module that owns the rule. Keep the index paved path + routing table in sync. Roles and always-on rules **summarize and link** here — do not restate full procedure.

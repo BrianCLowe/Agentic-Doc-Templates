@@ -34,7 +34,7 @@ Use when the stem is already **ready** under the docs profile and scope is uncha
 
 **Additive vs shape (one line):** On a `confirmed` Understanding, a new research angle / extra behavior / edge case that still fits **is / is not** → **spec**, keep `confirmed`. De-confirm / re-draft **only** on a significant shape change — full rule in [`workflow/understanding.md`](workflow/understanding.md#4-understanding-features--shared).
 
-**Same-turn prefs:** Product/UI correction that could be "improved away" -> spec **Decisions** ([`workflow/decisions.md`](workflow/decisions.md)). **Override an ADT playbook** (no first-class key) -> standing ([`workflow/profile-standing.md`](workflow/profile-standing.md)). How to act in this project that is **not** a pack playbook -> ask once: always-on rule/instruction, or a skill (Section 0.2). Do not jot that into standing. Do not jot random notes into standing.
+**Same-turn prefs:** Product/UI correction that could be "improved away" -> spec **Decisions** ([`workflow/decisions.md`](workflow/decisions.md)). **Override an ADT playbook** (no first-class key) -> standing ([`workflow/profile-standing.md`](workflow/profile-standing.md)). How to act in this project that is **not** a pack playbook does not go into standing. Do not jot random notes into standing.
 
 ---
 
@@ -45,15 +45,14 @@ Use when the stem is already **ready** under the docs profile and scope is uncha
 | Docs profile unset / suggest / upgrade | [`workflow/profile-standing.md`](workflow/profile-standing.md) (§0.1) |
 | Standing / playbook-override LOOKOUT | [`workflow/profile-standing.md`](workflow/profile-standing.md) (§0.2) |
 | Creating files / new Document Map row / split stem / inventory vs new row | [`workflow/naming-layout.md`](workflow/naming-layout.md) (§0) |
-| `_shared/` vs feature / foundation task placement | [`workflow/shared-components.md`](workflow/shared-components.md) (§1) |
+| `_shared/` vs feature | [`workflow/shared-components.md`](workflow/shared-components.md) (Section 1) |
 | Draft / revise Understanding · de-confirm gate · lock gate · assumption clean-out · relocate | [`workflow/understanding.md`](workflow/understanding.md) (§4) |
 | Whole-product vision / end-state picture / product vs feature fight | [`workflow/product-vision.md`](workflow/product-vision.md) (§4.5) |
 | Graduate confirmed shape → durable spec | [`workflow/understanding.md`](workflow/understanding.md) (§2) |
 | Which docs to open for a stem | [`workflow/implement.md`](workflow/implement.md) (§3) |
 | Spec Decisions (product/UI) | [`workflow/decisions.md`](workflow/decisions.md) (§10) |
-| Install tooling / Project verify handoff | [`workflow/tooling.md`](workflow/tooling.md) (§11) |
-| Human inbox dual-write | [`workflow/human-todo.md`](workflow/human-todo.md) (§13) |
-| Team inbox · roster (read vs self-ID) | [`workflow/team-roster.md`](workflow/team-roster.md) — only when `team_inbox` is enabled |
+| Keep the tooling and services doc accurate | [`workflow/tooling.md`](workflow/tooling.md) (Section 11) |
+| Human inbox | [`workflow/human-todo.md`](workflow/human-todo.md) (Section 13) |
 | Game extensions · Catalog · sub-index · split large doc · Mermaid | [`workflow/extensions.md`](workflow/extensions.md) (§6–9 · §12) |
 | User asks "how does the workflow work?" | This index, then the matching module; read another if they need depth |
 
@@ -110,9 +109,9 @@ See [`workflow/extensions.md`](workflow/extensions.md#8-how-to-split-a-large-doc
 
 See [`workflow/decisions.md`](workflow/decisions.md#10-decisions-lightweight).
 
-### 11. Tooling *(new machine setup)*
+### 11. Tooling *(project tools and services)*
 
-See [`workflow/tooling.md`](workflow/tooling.md#11-tooling-new-machine-setup).
+See [`workflow/tooling.md`](workflow/tooling.md#11-tooling-project-tools-and-services).
 
 ### 4.5 Product vision *(whole-product end-state)*
 
@@ -120,7 +119,7 @@ See [`workflow/product-vision.md`](workflow/product-vision.md#45-product-vision)
 
 ### 13. Human TODO *(inbox — needs a human)*
 
-See [`workflow/human-todo.md`](workflow/human-todo.md#13-human-todo-inbox--needs-a-human). Optional `team_inbox` in `ADT-settings.yaml` (omit / unset = human-only). When it is enabled, open [`workflow/team-roster.md`](workflow/team-roster.md) (read vs self-ID).
+See [`workflow/human-todo.md`](workflow/human-todo.md#13-human-todo-inbox--needs-a-human).
 
 ---
 
@@ -129,6 +128,6 @@ See [`workflow/human-todo.md`](workflow/human-todo.md#13-human-todo-inbox--needs
 - **Master_Index.md** = *what this project is* and *where files live*.
 - **Product-Vision.md** = *the whole-product end-state* — [`workflow/product-vision.md`](workflow/product-vision.md). Feature map alone is not identity. **`build-first`:** destination, not a gate.
 - **This file** = *how to work*: paved path first; then the matching module from the router.
-- **Tooling.md** = *what to install on a new machine* (not package deps) — [`workflow/tooling.md`](workflow/tooling.md).
-- **Human-TODO.md** = *what only a human can close* — [`workflow/human-todo.md`](workflow/human-todo.md). Optional `team_inbox` (unset = human-only) → [`workflow/team-roster.md`](workflow/team-roster.md). **Team-Roster.md** = who exists + handoff (create only when `team_inbox` is enabled).
+- **Tooling.md** = *the project's tools and the services the app consumes* (not package deps) - [`workflow/tooling.md`](workflow/tooling.md).
+- **`Human-TODO.md`** = *what only a human can close* - [`workflow/human-todo.md`](workflow/human-todo.md).
 - The installed agent rule ([`Modular_Documentation_Rule.mdc`](Modular_Documentation_Rule.mdc)) is a short checklist - open this index when creating files, which docs to open, graduation, profile/standing questions, or the user asks about procedure; then start with the named module.

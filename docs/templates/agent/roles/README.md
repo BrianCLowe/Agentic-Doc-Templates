@@ -35,4 +35,4 @@ Bootstrap Step 3p (doc-roles enable) / [`../RULE_INSTALL.md`](../RULE_INSTALL.md
 | Copilot (CLI / Agents window / Chat) | [`copilot/`](copilot/) (`*.agent.md`) | `.github/agents/` |
 | OpenClaw / Continue / Cline | — | No agents folder; parent follows playbooks in-session — still **ask** when `optional_rules.doc-roles` is unset (record enabled/declined); “no adapters” ≠ “nothing to offer” |
 
-Installed adapters: `understanding-author`, `doc-graduate`, `docs-template-sync`. Delete leftover `feature-implementer`, `work-verifier`, `todo-warden`, `orchestrator`, and `docs-bootstrap` if a previous pack left them.
+Installed adapters: `understanding-author`, `doc-graduate`, `docs-template-sync`.

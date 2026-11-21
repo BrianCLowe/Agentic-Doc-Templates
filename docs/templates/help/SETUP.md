@@ -37,7 +37,7 @@ Then you:
 
 1. Drop / add `reference/` exports if you have them, then ask the agent to build or update live docs from that folder.
 2. Correct overview, Document Map, Tooling, Human-TODO, and **docs profile** if you want a different ceremony level.
-3. Review draft `-Understanding.md` files before implementation when your profile uses them (**prevent** default).
+3. Review draft `-Understanding.md` files when your profile uses them (**prevent** default). `draft` means the shape is not confirmed yet; `confirmed` means it is settled.
 4. Optionally install the modular doc rule — *Follow `docs/templates/agent/RULE_INSTALL.md`* (dispatches to [`../agent/tools/`](../agent/tools/README.md)).
 5. Optionally enable **doc roles** (Understanding author, etc.) — bootstrap asks; details: [`../agent/roles/README.md`](../agent/roles/README.md).
 
@@ -52,8 +52,7 @@ docs/
 ├── Master_Index.md              ← project map (you maintain)
 ├── Tooling.md                   ← machine tools (not package deps)
 ├── Product-Vision.md            ← whole-product end-state (all profiles; build-first = destination, not a gate)
-├── Human-TODO.md                ← human inbox (procure, playtest, decide, waiting)
-├── Team-Roster.md               ← optional — only when team inbox is on (named humans and bots self-ID; do not invent)
+|-- Human-TODO.md                <- human inbox (procure, decide, waiting)
 ├── ADT-settings.yaml            ← pack prefs (profile, standing playbook overrides, tools, optionals, sync, upstream)
 ├── reference/                   ← design docs, chat exports, PRDs, legacy specs
 │   └── visuals/                 ← optional inspiration screenshots
@@ -76,7 +75,7 @@ Naming: [`../agent/workflow/naming-layout.md`](../agent/workflow/naming-layout.m
 | Goal | Go here |
 |------|---------|
 | Day-to-day (chat → docs, mid-build ideas, design docs) | [`USAGE.md`](USAGE.md) |
-| What to put in Understanding / spec / Product-Vision / Team-Roster (fill-in blanks) | [`SCAFFOLDS.md`](SCAFFOLDS.md) |
+| What to put in Understanding / spec / Product-Vision (fill-in blanks) | [`SCAFFOLDS.md`](SCAFFOLDS.md) |
 | Optional roles (intent-first Understanding, sync) | [`../agent/roles/README.md`](../agent/roles/README.md) |
 | Describing UI / scope (esp. if new to software) | [`IDEA_CAPTURE_TIPS.md`](IDEA_CAPTURE_TIPS.md) |
 | Rule / harness install (Cursor, Grok Build, …) | [`../agent/tools/README.md`](../agent/tools/README.md) · human TOC: [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md) |
@@ -84,7 +83,7 @@ Naming: [`../agent/workflow/naming-layout.md`](../agent/workflow/naming-layout.m
 | Later: refresh the pack | *Update the doc templates…* — [`TEMPLATE_SYNC.md`](../agent/TEMPLATE_SYNC.md) / [`CHANGELOG.md`](../CHANGELOG.md). If your pack is pre-**1.2** (no sync file), copy `docs/templates/` once first. |
 | Version-only ping | *Check for template updates* — [`TEMPLATE_UPDATE_CHECK.md`](../agent/TEMPLATE_UPDATE_CHECK.md) |
 
-After bootstrap, skim `docs/Human-TODO.md` — your inbox for keys, playtests, decisions, and external waiting. Also skim `docs/Product-Vision.md` — one end-state picture the feature map must fit. Under **prevent**, confirm product shape. Under **build-first**, it is destination-only until you *lock product shape*.
+After bootstrap, skim `docs/Human-TODO.md` - your inbox for keys, decisions, and external waiting. Also skim `docs/Product-Vision.md` - one end-state picture the feature map must fit. Under **prevent**, confirm product shape. Under **build-first**, it is destination-only until you *lock product shape*.
 
 ---
 

@@ -16,10 +16,6 @@ Many harnesses read [`AGENTS.md`](https://agents.md/) (Grok Build, Codex, Cline,
 | **Install to** | Root `AGENTS.md` — section titled `## Documentation workflow` |
 | **Notes** | Append if the file already has content; do not delete unrelated sections. Include the **Optional subagents** orchestration table so parents that only load `AGENTS.md` still know to delegate/spawn. |
 
-## Retired rules *(delete on refresh)*
-
-The pack no longer ships timescale or build-verify rules. **Delete** `## Agent timescale planning` and `## Agent build & verify` from `AGENTS.md` if present.
-
 ## Optional — Template update check
 
 Only if `optional_rules.template-update-check.status` is `enabled`.
@@ -60,7 +56,6 @@ Do not paste skill bodies into AGENTS.md.
 ## Verify
 
 - `AGENTS.md` contains `## Documentation workflow`
-- `AGENTS.md` does **not** contain `## Agent timescale planning` or `## Agent build & verify`
 - Section still points at `docs/Master_Index.md` + Workflow / roles paths
 - Root `AGENTS.md` has `## Skills` with all 9 pack skill rows, and every non-pack row that was there before is still there.
 

@@ -1,6 +1,6 @@
 {
   "id": "team-inbox-optional",
-  "title": "team_inbox is optional — unset stays human-only; roster is two-stage (read vs self-ID), not a forced bot org chart",
+  "title": "Human-TODO is the one human inbox: what's left summarizes Open only, close needs the human's confirm, no roster file",
   "role": "feature-implementer",
   "user": "What’s left on the human TODO?",
   "fixture": "fixtures/build-first-crud",
@@ -15,72 +15,23 @@
   "pack_contract": {
     "source_must_include": [
       {
-        "file": "docs/templates/agent/ADT-settings.example.yaml",
-        "patterns": [
-          "team_inbox",
-          "omit this entire key = human-only inbox",
-          "Do not force a project into",
-          "Stamp-on-dual-write",
-          "apply defaults to Open",
-          "Claim / reassign is override only",
-          "Team-Roster.md",
-          "coding agents on a handoff READ",
-          "named humans",
-          "only if that role_id is Active on Team-Roster.md"
-        ]
-      },
-      {
-        "file": "docs/templates/agent/workflow/team-roster.md",
-        "patterns": [
-          "team_inbox",
-          "Claim / reassign is override only",
-          "do not force",
-          "human-only inbox (legacy)",
-          "stamp Assignee from `kind_defaults`",
-          "apply defaults to Open",
-          "one digest ping",
-          "no silent agent close",
-          "assign playtest to QA",
-          "two-stage",
-          "self-ID",
-          "report-only",
-          "Anti-jobs",
-          "### Full-team stand-up",
-          "Other bots wait while the scribe writes the roster",
-          "Human self-ID",
-          "fallback-stamp `human`",
-          "Put me on the roster as Alex",
-          "only if that `role_id` is Active on the roster"
-        ]
-      },
-      {
-        "file": "docs/templates/Team_Roster_Template.md",
-        "patterns": [
-          "Team roster",
-          "when this project enabled `team_inbox`",
-          "Empty Active is correct",
-          "Bots **write their own row**",
-          "not a live bot",
-          "Anti-jobs",
-          "Stale row",
-          "Standing up a full team: one file writer at a time.",
-          "your** slug",
-          "leftover `human`"
-        ]
-      },
-      {
         "file": "docs/templates/Human_TODO_Template.md",
         "patterns": [
-          "Assignee:",
-          "claim",
-          "reassign",
-          "Apply defaults to Open",
-          "not forced into a bot team",
-          "Assign playtest to QA",
-          "Active on [`Team-Roster.md`]",
-          "Put me on the roster as Alex",
-          "do not fallback-stamp `human`",
-          "only if that `role_id` is Active on [`Team-Roster.md`]"
+          "## Open",
+          "## Done",
+          "`procure` - `decide` - `waiting`",
+          "Move finished items here",
+          "Done-only-on-confirm"
+        ]
+      },
+      {
+        "file": "docs/templates/agent/workflow/human-todo.md",
+        "patterns": [
+          "**One project inbox for humans**",
+          "**The inbox is the only list.**",
+          "summarize **Open** from `Human-TODO.md` only",
+          "Only the human's confirm counts",
+          "**No silent agent close.**"
         ]
       },
       {
@@ -90,6 +41,7 @@
           "2.8.1",
           "2.9.1",
           "2.9.2",
+          "2.14.0",
           "team_inbox",
           "claim / reassign",
           "assign-all-at-once",
@@ -107,31 +59,38 @@
       {
         "file": "docs/templates/agent/Modular_Docs_Workflow.md",
         "must_contain": [
-          "team_inbox",
-          "human-only",
-          "self-ID"
+          "`Human-TODO.md`** = *what only a human can close*",
+          "workflow/human-todo.md"
         ],
         "must_not_contain": [
+          "team_inbox",
+          "Team-Roster",
           "enabled: true"
         ]
       },
       {
         "file": "docs/templates/agent/workflow/human-todo.md",
         "must_contain": [
-          "team_inbox.enabled",
-          "confirm report"
+          "confirm report",
+          "Do not create `*-TODO.md`."
         ],
         "must_not_contain": [
+          "team_inbox",
+          "Assignee",
           "Mark human-only items done; invent Human-TODO spam"
         ]
       },
       {
         "file": "docs/templates/agent/TEMPLATE_SYNC_B.md",
-        "must_contain": ["Do **not** copy a `team_inbox:` key", "do not silent-enable", "Create `Team-Roster.md` from the template **only**"]
+        "must_not_contain": ["team_inbox", "Team-Roster.md"]
       },
       {
         "file": "docs/templates/agent/skills/adt-template-sync/TEMPLATE_SYNC_B.md",
-        "must_not_contain": ["team_inbox.enabled: true"]
+        "must_not_contain": ["team_inbox"]
+      },
+      {
+        "file": "docs/templates/agent/ADT-settings.example.yaml",
+        "must_not_contain": ["team_inbox"]
       },
       {
         "file": "DECISIONS.md",
@@ -156,7 +115,8 @@
       },
       {
         "file": "docs/templates/agent/BOOTSTRAP.md",
-        "must_contain": ["named-human fill-in"]
+        "must_contain": ["Do not create `*-TODO.md`."],
+        "must_not_contain": ["team_inbox", "Team_Roster"]
       }
     ]
   }

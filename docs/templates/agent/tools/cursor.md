@@ -12,13 +12,6 @@
 | **Install to** | `.cursor/rules/modular-documentation.mdc` |
 | **Notes** | Keep `alwaysApply: true` for this workflow (applies before a doc file is open). Never overwrite a customized file without showing the diff and asking. |
 
-## Retired rules *(delete on refresh)*
-
-The pack no longer ships timescale or build-verify rules. If these files exist, **delete** them:
-
-- `.cursor/rules/agent-timescale-planning.mdc`
-- `.cursor/rules/agent-build-verify.mdc`
-
 ## Optional — Template update check
 
 Only if `optional_rules.template-update-check.status` is `enabled` in `docs/ADT-settings.yaml`. Requires an `upstream:` block in that file. A session check with no interval does not write it.
@@ -41,7 +34,7 @@ Only if `optional_rules.doc-roles.status` is `enabled`. These are [Cursor subage
 
 Files: `understanding-author.md`, `doc-graduate.md`, `docs-template-sync.md`.
 
-**Do not** install a `docs-bootstrap` adapter — bootstrap runs in the **parent** session (`BOOTSTRAP.md`). Bootstrap *installs* adapters, so a bootstrap adapter cannot exist until after the job it was meant to do. Delete leftover `docs-bootstrap.md`, `feature-implementer.md`, `work-verifier.md`, `todo-warden.md`, and `orchestrator.md` if present.
+**Do not** install a `docs-bootstrap` adapter - bootstrap runs in the **parent** session (`BOOTSTRAP.md`). Bootstrap *installs* adapters, so a bootstrap adapter cannot exist until after the job it was meant to do.
 
 ## Skills
 
@@ -54,7 +47,6 @@ Copy each pack skill folder `docs/templates/agent/skills/<name>/` (every adt-* f
 ## Verify
 
 - `.cursor/rules/modular-documentation.mdc` exists
-- Timescale and build-verify rules are **absent**
 - If doc-roles enabled: three files under `.cursor/agents/` (`understanding-author.md`, `doc-graduate.md`, `docs-template-sync.md`). No `docs-bootstrap` adapter
 - Remind user: short asks are enough; parent rule delegates; `/name` optional
 - All 9 adt-* folders under .cursor/skills, each with SKILL.md.

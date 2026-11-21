@@ -26,7 +26,6 @@ Shared sources (do not duplicate into tool files):
 - Modular rule bodies: [`../Modular_Documentation_Rule.mdc`](../Modular_Documentation_Rule.mdc), [`../Modular_Documentation_Rule.instructions.md`](../Modular_Documentation_Rule.instructions.md)
 - Role playbooks: [`../roles/`](../roles/README.md)
 - Role adapters: [`../roles/cursor/`](../roles/cursor/), [`../roles/grok/`](../roles/grok/), [`../roles/copilot/`](../roles/copilot/)
-- On refresh, delete installed timescale and build-verify rules, and leftover feature-implementer, work-verifier, todo-warden, and orchestrate command files. The pack does not ship them.
 
 ## Dispatcher rules
 

@@ -19,9 +19,9 @@ The Document Map + per-feature Understandings can be complete and still miss **w
 
 | Profile | Create `Product-Vision.md` | Implementation gate |
 |---------|----------------------------|---------------------|
-| **`prevent`** | **Always** at bootstrap / first live-docs (even one stem). Status starts `draft`; user confirms product shape. | Feature Understanding confirm still gates that stem. **Confirmed** vision: do not implement a fighting feature. |
+| **`prevent`** | **Always** at bootstrap / first live-docs (even one stem). Status starts `draft`; user confirms product shape. | Feature Understanding confirm still settles that stem's shape. A feature that fights a **confirmed** vision is a shape fight to resolve in the docs. |
 | **`balanced`** | **Always** create a **lightweight** file to start. Deepen when identity is fuzzy, there are multiple stems, or the user asks to *lock product shape*. | Unchanged: Understanding only when identity is fuzzy / user locks a stem. Draft vision is **not** a coding gate. |
-| **`build-first`** | **Always** create a **lightweight** file to start at bootstrap / first live-docs (and on TEMPLATE_SYNC if missing). Deepen when identity is fuzzy, there are multiple stems, or the user asks to *lock product shape*. | **Not a gate.** File is informative and evolving. Read it for destination; do **not** wait for confirm before coding. The spec is the contract. *Lock product shape* only when a change needs explicit confirmation (identity fight, whole-product fork). After lock + confirm, do not implement a fighting feature. |
+| **`build-first`** | **Always** create a **lightweight** file to start at bootstrap / first live-docs (and on TEMPLATE_SYNC if missing). Deepen when identity is fuzzy, there are multiple stems, or the user asks to *lock product shape*. | **Not a gate.** File is informative and evolving. A `draft` vision is the destination, not a pending confirm. The spec is the contract. *Lock product shape* only when a change needs explicit confirmation (identity fight, whole-product fork). After lock + confirm, a feature that fights it is a shape fight to resolve in the docs. |
 
 **Unset profile → prevent** → create + confirm gate. Destination file is created **without** *lock product shape*.
 
@@ -55,8 +55,8 @@ The feature map is **what exists**, not **what the product is**. Building the en
 ### Coding vs confirm
 
 - A `draft` Understanding is not a coding gate (Workflow §0.1). Product vision `draft` does **not** add a second hard coding gate.
-- **`build-first`:** `draft` vision is destination-only — do **not** wait for confirm before the harness builds from the spec.
-- **`confirmed` product vision** (after *lock product shape* + user confirm, or prevent’s confirm): do **not** implement a feature (or draft a feature Understanding) that **fights** it. Fix the fight first — update the feature, or de-confirm the vision if the **whole product** changed.
+- **`build-first`:** a `draft` vision is destination-only; the spec is the contract and no confirm is pending.
+- **`confirmed` product vision** (after *lock product shape* + user confirm, or prevent's confirm): the whole-product shape is settled. A feature (or a feature Understanding) that **fights** it is a shape fight to resolve in the docs first: update the feature, or de-confirm the vision if the **whole product** changed.
 - **`prevent` `draft` / missing:** draft the same turn you bootstrap / first live-docs. Ask the user to confirm **product** shape (is / is not + end-state picture). Do not invent Assumption quizzes.
 - **`balanced` `draft`:** deepen when 2+ stems / fuzzy whole / *lock product shape*. Do not invent quizzes.
 - De-confirm product vision **only** on a significant **whole-product** identity change. Adding a feature that still fits the picture is **not** a de-confirm.

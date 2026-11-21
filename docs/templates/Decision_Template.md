@@ -23,7 +23,6 @@
 ## Consequences
 
 - [What this enables or rules out]
-- [Follow-up work, if any — link to TODO]
 
 ---
 

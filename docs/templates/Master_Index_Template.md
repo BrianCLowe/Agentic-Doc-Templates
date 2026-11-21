@@ -37,10 +37,9 @@ The Document Map lists specs. Do not add a TODO column.
 | `docs/features/assets/` | Screenshots for features (linked from the feature **spec** **Visual references**) |
 | `docs/reference/` | **Recommended:** chat exports (md) of idea threads — also design docs / PRDs / legacy specs. Not living modular docs ([Workflow](templates/agent/Modular_Docs_Workflow.md); tips: [`help/IDEA_CAPTURE_TIPS.md`](templates/help/IDEA_CAPTURE_TIPS.md)) |
 | `docs/reference/visuals/` | Optional inspiration screenshots before a feature exists |
-| `docs/Tooling.md` | Machine / workflow tools (not package deps) — install on a new machine ([`Tooling_Template.md`](templates/Tooling_Template.md)) |
+| `docs/Tooling.md` | Project tools and services (not package deps) ([`Tooling_Template.md`](templates/Tooling_Template.md)) |
 | `docs/Product-Vision.md` | Whole-product end-state picture - is / is not + how the map fits. **Always create** (lightweight to start on `balanced` / `build-first`; deepen when identity is fuzzy, there are multiple stems, or the user asks to *lock product shape*). **`build-first`:** destination, not a gate until *lock product shape* ([`Product_Vision_Template.md`](templates/Product_Vision_Template.md)) |
-| `docs/Human-TODO.md` | Human inbox — procure, playtest, decide, waiting (agent cannot close from assumptions) ([`Human_TODO_Template.md`](templates/Human_TODO_Template.md)) |
-| `docs/Team-Roster.md` | Optional team inbox roster - Name, Jobs, Anti-jobs *(if defined)*, handoff. **Create only when `team_inbox` is enabled.** Handoff agents read; named humans and bots self-ID; one file writer at a time ([`Team_Roster_Template.md`](templates/Team_Roster_Template.md)) |
+| `docs/Human-TODO.md` | Human inbox - procure, decide, waiting (agent cannot close from assumptions) ([`Human_TODO_Template.md`](templates/Human_TODO_Template.md)) |
 | `docs/decisions/` | Optional cross-cutting decisions ([`Decision_Template.md`](templates/Decision_Template.md)) |
 | `docs/templates/` | Upstream template pack — **pack-owned; do not edit; full overwrite on sync** ([`README.md`](templates/README.md)). Scaffolds, `help/`, `agent/` (incl. [`Modular_Docs_Workflow.md`](templates/agent/Modular_Docs_Workflow.md) index + [`workflow/`](templates/agent/workflow/README.md) modules, optional [`roles/`](templates/agent/roles/README.md), per-tool [`tools/`](templates/agent/tools/README.md)); also [`VERSION`](templates/VERSION) and [`CHANGELOG.md`](templates/CHANGELOG.md) (Step B scope after sync) |
 | `docs/ADT-settings.yaml` | Pack preferences — **docs profile**, **standing.instructions** (playbook overrides, not a notes pad), sync mode, tools, optionals, upstream stamps ([`ADT-settings.example.yaml`](templates/agent/ADT-settings.example.yaml); Workflow [§0.1](templates/agent/workflow/profile-standing.md#01-docs-profile-ceremony-modes) · [§0.2](templates/agent/workflow/profile-standing.md#02-standing-workflow-instructions-user-workflow-not-pack-enums)) |
@@ -55,7 +54,7 @@ The Document Map lists specs. Do not add a TODO column.
 | **Understanding / Spec** | Shape vs contract. [§4](templates/agent/workflow/understanding.md#4-understanding-features--shared) · [§2](templates/agent/workflow/understanding.md#2-understanding--spec-graduation) |
 | **Shared** | Only when actually shared. Same note types as features unless the user excepted them in §3.0. [§1](templates/agent/workflow/shared-components.md#1-shared-components--foundation-vs-consumption) |
 | **Product vision** | [`Product-Vision.md`](Product-Vision.md) — whole-product end-state; feature Understandings must fit a **confirmed** vision. [§4.5](templates/agent/workflow/product-vision.md) |
-| **Human inbox / Tooling** | [`Human-TODO.md`](Human-TODO.md) · [`Tooling.md`](Tooling.md). Optional [`Team-Roster.md`](Team-Roster.md) when `team_inbox` is on |
+| **Human inbox / Tooling** | [`Human-TODO.md`](Human-TODO.md) - [`Tooling.md`](Tooling.md) |
 | **Size / split** | Split when a file is bloated. [§8](templates/agent/workflow/extensions.md#8-how-to-split-a-large-document) |
 
 Do **not** paste playbook procedure into this table. Compaction: re-open the [workflow index](templates/agent/Modular_Docs_Workflow.md), then the matching module; read another if the ask needs it.
@@ -103,9 +102,8 @@ Leave this table **empty** (or with a single “*(none yet)*” note) unless a p
 | Document | Description |
 |----------|-------------|
 | [Product-Vision.md](Product-Vision.md) | Whole-product end-state — is / is not + one picture the map must fit ([`Product_Vision_Template.md`](templates/Product_Vision_Template.md)) |
-| [Human-TODO.md](Human-TODO.md) | Human inbox — agent dual-writes rows; you complete / give feedback in chat ([`Human_TODO_Template.md`](templates/Human_TODO_Template.md)) |
-| [Team-Roster.md](Team-Roster.md) | Optional — who can take follow-ups when `team_inbox` is on (named humans and bots) ([`Team_Roster_Template.md`](templates/Team_Roster_Template.md)) |
-| [Tooling.md](Tooling.md) | Machine / workflow tools — install on a new machine ([`Tooling_Template.md`](templates/Tooling_Template.md)) |
+| [Human-TODO.md](Human-TODO.md) | Human inbox - agent writes rows; you complete / give feedback in chat ([`Human_TODO_Template.md`](templates/Human_TODO_Template.md)) |
+| [Tooling.md](Tooling.md) | Project tools and services ([`Tooling_Template.md`](templates/Tooling_Template.md)) |
 | [decisions/](decisions/) | Optional cross-cutting decision files ([`Decision_Template.md`](templates/Decision_Template.md)) |
 | [reference/LegacySpec.md](reference/LegacySpec.md) | Older detailed spec (read only when needed) |
 

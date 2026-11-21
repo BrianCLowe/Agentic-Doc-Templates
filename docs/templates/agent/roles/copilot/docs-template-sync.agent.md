@@ -22,7 +22,7 @@ Hard rules:
 - When `master-index` is in the union: adopt slimmer At a Glance (required when tagged — not gated on reshape / `optional-live-reshape`)
 - If `docs_profile.mode` unset -> B0.4 ask once (`auto-all` -> record `prevent`)
 - If `orchestrator:` is present in `docs/ADT-settings.yaml` -> remove that key (B0.5)
-- Refresh installed rules without asking unless `customized: true`. Delete installed timescale and build-verify rules, and installed feature-implementer, work-verifier, todo-warden, and orchestrate command files
+- Refresh installed rules without asking unless `customized: true`
 - `content-templates` = add missing sections only — not trim/remove
 - When catch-up includes **`optional-assumption-cleanout`**: lock-gate clean-out of live Understandings (Workflow §4). Do not treat `docs/reference/` examples as the target unless clearly set as the target
 - Do not scan live `features/` / `_shared/` unless `content-templates` or an executing reshape/assumption-cleanout pass. B0.6 may list `*-TODO.md` paths under those two folders without opening them
