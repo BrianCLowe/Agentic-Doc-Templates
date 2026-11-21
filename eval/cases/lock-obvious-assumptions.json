@@ -23,7 +23,7 @@
   "pack_contract": {
     "source_must_include": [
       {
-        "file": "docs/templates/agent/workflow/understanding.md",
+        "file": "docs/templates/agent/skills/adt-understanding/SKILL.md",
         "patterns": [
           "Lock gate",
           "real forks only",
@@ -41,7 +41,7 @@
         ]
       },
       {
-        "file": "docs/templates/agent/TEMPLATE_SYNC_B.md",
+        "file": "docs/templates/agent/skills/adt-template-sync/TEMPLATE_SYNC_B.md",
         "patterns": [
           "optional-assumption-cleanout",
           "Live Assumption clean-out",
@@ -53,7 +53,7 @@
     ],
     "summaries_must_point": [
       {
-        "file": "docs/templates/agent/roles/understanding-author.md",
+        "file": "docs/templates/agent/skills/adt-understanding/SKILL.md",
         "must_contain": [
           "workflow/understanding.md",
           "real forks only",

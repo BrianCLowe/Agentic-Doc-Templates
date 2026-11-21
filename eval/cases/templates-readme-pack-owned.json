@@ -25,7 +25,7 @@
     ],
     "summaries_must_point": [
       {
-        "file": "docs/templates/agent/RULE_INSTALL.md",
+        "file": "docs/templates/agent/skills/adt-rule-install/SKILL.md",
         "must_contain": [
           "../README.md"
         ],

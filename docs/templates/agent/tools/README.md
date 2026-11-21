@@ -1,5 +1,7 @@
 # Tool install playbooks
 
+Procedures that run on demand are skills: [`skills/README.md`](../skills/README.md).
+
 > **Machine-oriented.** Bootstrap / [`../RULE_INSTALL.md`](../RULE_INSTALL.md) / template sync open **only** the tool files for tools in `docs/ADT-settings.yaml` (or the one tool the user just named). Do not open every file here.
 
 Each file is an **install/sync adapter**: where the modular rule goes, optional update-check path, optional doc-roles format, conflicts, verify. It does **not** restate Understanding / Workflow procedure.

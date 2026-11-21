@@ -1,5 +1,7 @@
 # Workflow modules
 
+Procedures that run on demand are skills: [`skills/README.md`](../skills/README.md).
+
 > **Agents:** Start at [`../Modular_Docs_Workflow.md`](../Modular_Docs_Workflow.md) (index + paved path). Start with the module from that routing table; read another if you need it.
 
 | Module | Covers | Open when |

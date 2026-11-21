@@ -35,7 +35,7 @@
         ]
       },
       {
-        "file": "docs/templates/agent/workflow/product-vision.md",
+        "file": "docs/templates/agent/skills/adt-product-vision/SKILL.md",
         "patterns": [
           "4.5",
           "end-state picture",
@@ -63,7 +63,7 @@
     ],
     "summaries_must_point": [
       {
-        "file": "docs/templates/agent/BOOTSTRAP.md",
+        "file": "docs/templates/agent/skills/adt-bootstrap/SKILL.md",
         "must_contain": [
           "Step 3v",
           "Product-Vision.md",
@@ -76,17 +76,13 @@
         ]
       },
       {
+        "file": "docs/templates/agent/skills/adt-template-sync/TEMPLATE_SYNC_B.md",
+        "must_contain": ["Product-Vision.md", "create if missing (**all** profiles"],
+        "must_not_contain": ["**`build-first`:** do **not** create `Product-Vision.md`"]
+      },
+      {
         "file": "docs/templates/agent/TEMPLATE_SYNC_B.md",
-        "must_contain": [
-          "Product-Vision.md",
-          "create if missing (**all** profiles",
-          "**not a gate**",
-          "Peek `docs/reference/` first",
-          "Do not** build the picture by summarizing"
-        ],
-        "must_not_contain": [
-          "**`build-first`:** do **not** create `Product-Vision.md`"
-        ]
+        "must_contain": ["**not a gate**", "Peek `docs/reference/` first", "Do not** build the picture by summarizing"]
       },
       {
         "file": "DECISIONS.md",

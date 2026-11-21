@@ -35,7 +35,6 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 | D25 | Bugbot reads the PR until ready; squash-before-ready is not required (HEAD-only reviewers use standing) | superseded | 2.9.4 |
 | D26 | Sibling `docs/` drift is content (`git diff`), not ancestry (`git log` after squash-merge) | accepted | 2.9.5 |
 | D27 | Docs profile value `ship-first` is renamed `build-first`; sync rewrites the setting | accepted | 2.9.6 |
-| D28 | Slash commands are an opt-in menu for sync and orchestrate only | superseded | 2.9.6 |
 | D29 | Repo behavior that is not a pack playbook is asked as a rule or a skill, not filed in standing | accepted | 2.9.6 |
 | D30 | Drained child tasks are not capability-done; an Outcomes row stays open until a passing exercise note | superseded | 2.9.9 |
 | D31 | Completed is not a repair log; incidental fixes stay in git, not a new Completed row | superseded | 2.9.10 |
@@ -216,14 +215,6 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 
 ---
 
-## D28 — Slash commands are opt-in
-
-**Decision:** `optional_rules.slash-commands` is an optional menu for two asks: `/sync` and `/orchestrate`. They point at the same playbooks as the short asks. Missing / unset means ask once (bootstrap Step 3p **F**, sync step 10, rule install). **Decline** is correct when the user would rather just ask. Do not silent-enable except under `sync.mode: auto-all` (same as other unset optionals). Do not add more commands. Cursor, Claude Code, and Copilot get the files. Other tools record the choice and install nothing.
-
-**Do not:** Make slash commands the paved path. Do not install them when the key is missing or declined. Do not paste playbook bodies into the command files.
-
----
-
 ## D29 — Repo behavior that is not pack behavior
 
 **Decision:** `standing.instructions` stays ADT playbook overrides only (D6). When the user tells the agent **how to act in this repo** and that guideline does **not** change an ADT playbook, the agent **asks once**: an always-on **rule / instruction**, or a **skill** opened when that kind of work comes up. It does not write standing. It does not create the rule or skill before the answer. Product/UI for one stem stays on spec Decisions. **Sync cleanout (2.9.6):** when that version is in catch-up, remove non-pack behavior from standing and ask once per removed bullet: rule, skill, or dropped. Do not leave it in standing until they answer. Do not silent-create under `auto` or `auto-all`.
@@ -266,7 +257,7 @@ Maintainer-only record of **why** this pack is the way it is. Whole-repo / “Us
 
 ## D35 — Documentation and sync
 
-**Decision:** This pack creates and updates documentation and syncs the pack. A gap the confirmed spec or Understanding already makes obvious is recorded on the spec when it is contract. Human errands stay on `Human-TODO.md`. Docs profile chooses which docs to write (`prevent` / `balanced` / `build-first`). A draft Understanding is not a coding gate. Category inputs stay in **What this is** and on the spec (Dependencies + an Acceptance clause that is false when the input is missing). Kit leftovers stay on the existing spec (D12’s “no empty map rows” stands; the covering-TODO list does not). Slash command is `/sync` only. Standing is still ADT playbook overrides only (D6, D29). Supersedes D7, D8, D9, D11, D12’s TODO list, D25, D28’s `/orchestrate`, D30, D31, and D33’s write-ban and TODO follow-ups.
+**Decision:** This pack creates and updates documentation and syncs the pack. A gap the confirmed spec or Understanding already makes obvious is recorded on the spec when it is contract. Human errands stay on `Human-TODO.md`. Docs profile chooses which docs to write (`prevent` / `balanced` / `build-first`). A draft Understanding is not a coding gate. Category inputs stay in **What this is** and on the spec (Dependencies + an Acceptance clause that is false when the input is missing). Kit leftovers stay on the existing spec (D12's "no empty map rows" stands; the covering-TODO list does not). Standing is still ADT playbook overrides only (D6, D29). Supersedes D7, D8, D9, D11, D12's TODO list, D25, D30, D31, and D33's write-ban and TODO follow-ups.
 
 **Do not:** Delete a consumer `*-TODO.md` on sync unless the user explicitly accepts the B0.7 offer (D36). `auto` and `auto-all` are not that acceptance.
 

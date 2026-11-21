@@ -8,7 +8,7 @@
   "pack_contract": {
     "source_must_include": [
       {
-        "file": "docs/templates/agent/TEMPLATE_SYNC_B.md",
+        "file": "docs/templates/agent/skills/adt-template-sync/TEMPLATE_SYNC_B.md",
         "patterns": [
           "B0.6 - Offer leftover feature TODOs",
           "The step is the offer.",
@@ -39,13 +39,11 @@
     "summaries_must_point": [
       {
         "file": "docs/templates/agent/roles/template-sync.md",
-        "must_contain": [
-          "B0.6's step is the offer",
-          "`auto` and `auto-all` are not a yes"
-        ],
-        "must_not_contain": [
-          "auto-all` deletes leftover"
-        ]
+        "must_contain": ["B0.6's step is the offer", "`auto` and `auto-all` are not a yes"]
+      },
+      {
+        "file": "docs/templates/agent/skills/adt-template-sync/SKILL.md",
+        "must_not_contain": ["auto-all` deletes leftover"]
       },
       {
         "file": "docs/templates/agent/roles/adapter-src/bodies/docs-template-sync.md",

@@ -26,7 +26,7 @@ CASES = EVAL / "cases"
 GEN = ROOT / "scripts" / "gen_role_adapters.py"
 
 # Full de-confirm prose must live only here (pointer-only elsewhere).
-DECONFIRM_SOT = ROOT / "docs/templates/agent/workflow/understanding.md"
+DECONFIRM_SOT = ROOT / "docs/templates/agent/skills/adt-understanding/SKILL.md"
 DECONFIRM_MARKERS = [
     "De-confirm gate (`confirmed` → `draft` / `superseded`)",
     "An **additive** request is **not** a shape change",
@@ -108,7 +108,7 @@ def check_deconfirm_sot() -> list[str]:
         if needle in text:
             errors.append(
                 f"de-confirm prose duplicated in {path.relative_to(ROOT)} "
-                f"(keep full gate only in workflow/understanding.md)"
+                f"(keep full gate only in skills/adt-understanding/SKILL.md)"
             )
     for path in (ROOT / "docs/templates").rglob("*.mdc"):
         text = path.read_text()
@@ -310,9 +310,9 @@ def check_pack_decisions() -> list[str]:
     ):
         if needle not in text:
             errors.append(f"DECISIONS.md missing {needle!r}")
-    boot = (ROOT / "docs/templates/agent/BOOTSTRAP.md").read_text()
+    boot = (ROOT / "docs/templates/agent/skills/adt-bootstrap/SKILL.md").read_text()
     if "DECISIONS.md" not in boot:
-        errors.append("BOOTSTRAP.md must delete root DECISIONS.md on whole-repo copies")
+        errors.append("skills/adt-bootstrap/SKILL.md must delete root DECISIONS.md on whole-repo copies")
     return errors
 
 

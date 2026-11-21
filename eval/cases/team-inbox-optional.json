@@ -127,14 +127,11 @@
       },
       {
         "file": "docs/templates/agent/TEMPLATE_SYNC_B.md",
-        "must_contain": [
-          "Do **not** copy a `team_inbox:` key",
-          "do not silent-enable",
-          "Create `Team-Roster.md` from the template **only**"
-        ],
-        "must_not_contain": [
-          "team_inbox.enabled: true"
-        ]
+        "must_contain": ["Do **not** copy a `team_inbox:` key", "do not silent-enable", "Create `Team-Roster.md` from the template **only**"]
+      },
+      {
+        "file": "docs/templates/agent/skills/adt-template-sync/TEMPLATE_SYNC_B.md",
+        "must_not_contain": ["team_inbox.enabled: true"]
       },
       {
         "file": "DECISIONS.md",
@@ -154,11 +151,12 @@
         ]
       },
       {
+        "file": "docs/templates/agent/skills/adt-bootstrap/SKILL.md",
+        "must_contain": ["continue to Step 3v"]
+      },
+      {
         "file": "docs/templates/agent/BOOTSTRAP.md",
-        "must_contain": [
-          "continue to Step 3v",
-          "named-human fill-in"
-        ]
+        "must_contain": ["named-human fill-in"]
       }
     ]
   }

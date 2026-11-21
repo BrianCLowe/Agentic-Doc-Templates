@@ -24,9 +24,7 @@ If enabled: same pattern → `.continue/rules/template-update-check.md` from `Te
 
 No first-class Continue agents folder in this pack. Follow `docs/templates/agent/roles/<role>.md` in-session when asks match.
 
-## Optional — Slash commands
-
-No command folder. On enable, record `optional_rules.slash-commands` and do not invent files. The short asks stay the path.
+No skills loader. Route skill asks through the AGENTS.md skills table ([`agents-md.md`](agents-md.md)) or open `docs/templates/agent/skills/<name>/SKILL.md` directly.
 
 ## Verify
 

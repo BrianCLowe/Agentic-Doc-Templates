@@ -91,18 +91,15 @@
         ]
       },
       {
-        "file": "docs/templates/agent/TEMPLATE_SYNC_B.md",
-        "patterns": [
-          "2.7.27 Instruction-footer strip",
-          "help/SCAFFOLDS.md",
-          "do **not** relocate into the spec",
-          "including stems with no Understanding",
-          "Do **not** delete a loud phased-bridge",
-          "not gated on reshape"
-        ]
+        "file": "docs/templates/agent/skills/adt-template-sync/TEMPLATE_SYNC_B.md",
+        "patterns": ["2.7.27 Instruction-footer strip", "help/SCAFFOLDS.md", "do **not** relocate into the spec", "including stems with no Understanding", "not gated on reshape"]
       },
       {
-        "file": "docs/templates/agent/roles/template-sync.md",
+        "file": "docs/templates/agent/TEMPLATE_SYNC_B.md",
+        "patterns": ["Do **not** delete a loud phased-bridge"]
+      },
+      {
+        "file": "docs/templates/agent/skills/adt-template-sync/SKILL.md",
         "patterns": [
           "instruction-footer strip",
           "including stems with no Understanding",

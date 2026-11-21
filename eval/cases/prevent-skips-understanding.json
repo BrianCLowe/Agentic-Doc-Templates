@@ -21,7 +21,7 @@
   "pack_contract": {
     "source_must_include": [
       {
-        "file": "docs/templates/agent/workflow/profile-standing.md",
+        "file": "docs/templates/agent/skills/adt-docs-profile/SKILL.md",
         "patterns": [
           "Unset `docs_profile`",
           "treat as **`prevent`**",

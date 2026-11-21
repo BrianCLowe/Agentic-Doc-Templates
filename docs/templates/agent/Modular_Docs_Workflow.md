@@ -1,5 +1,7 @@
 > **Agent workflow index.** Paved path + router into thin modules under [`workflow/`](workflow/README.md). Sync from upstream; do **not** copy wholesale into `docs/Master_Index.md`. The live index links here; agent rules summarize and point here. Start with the matching module; read another if you need it.
 
+Procedures that run on demand are skills: [`skills/README.md`](skills/README.md).
+
 # Modular Documentation — Agent Workflow
 
 **Pack version:** read [`VERSION`](../VERSION) (`pack-version`). Do not copy the number into this file. Live Master Index is stamped on bootstrap / TEMPLATE_SYNC.

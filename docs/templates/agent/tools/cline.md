@@ -24,9 +24,7 @@ If enabled: `.clinerules/template-update-check.md`.
 
 No first-class Cline agents folder in this pack. Follow role playbooks in-session. Consider [`agents-md.md`](agents-md.md) for a shared baseline.
 
-## Optional — Slash commands
-
-No command folder. On enable, record `optional_rules.slash-commands` and do not invent files. The short asks stay the path.
+No skills loader. Route skill asks through the AGENTS.md skills table ([`agents-md.md`](agents-md.md)) or open `docs/templates/agent/skills/<name>/SKILL.md` directly.
 
 ## Verify
 

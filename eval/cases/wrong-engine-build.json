@@ -31,7 +31,7 @@
   "pack_contract": {
     "source_must_include": [
       {
-        "file": "docs/templates/agent/workflow/understanding.md",
+        "file": "docs/templates/agent/skills/adt-understanding/SKILL.md",
         "patterns": [
           "same editing core",
           "wrong product surface",

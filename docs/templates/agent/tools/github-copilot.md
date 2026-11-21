@@ -45,16 +45,11 @@ Files: `understanding-author.agent.md`, `doc-graduate.agent.md`, `docs-template-
 
 **Do not** install a `docs-bootstrap` adapter — bootstrap runs in the **parent** session (`BOOTSTRAP.md`). Delete leftover `docs-bootstrap.agent.md`, `feature-implementer.agent.md`, `work-verifier.agent.md`, `todo-warden.agent.md`, and `orchestrator.agent.md` if present.
 
-## Optional — Slash commands
+## Skills
 
-Only if `optional_rules.slash-commands.status` is `enabled`. Copilot prompt files are invoked with `/` in Chat.
+Copy each pack skill folder `docs/templates/agent/skills/<name>/` (every adt-* folder named in `docs/templates/agent/skills/README.md`, with all its files) to `.github/skills/<name>/` byte-identical. Refresh replaces pack-owned folders only; leave every other folder under `.github/skills` alone. Do not put doc-role adapters there.
 
-| | |
-|--|--|
-| **Source** | Body of `docs/templates/agent/commands/sync.md` (drop the pack frontmatter) |
-| **Install to** | `.github/prompts/sync.prompt.md` |
-| **Frontmatter** | `mode: agent` and the same `description` as the source file |
-| **Do not** | Paste the sync playbook into the prompt file. Delete a leftover `orchestrate.prompt.md` |
+The update skill runs as `/adt-template-sync`; Copilot reads `name` and `description` from SKILL.md.
 
 ## Verify
 
@@ -62,8 +57,9 @@ Only if `optional_rules.slash-commands.status` is `enabled`. Copilot prompt file
 - Timescale and build-verify instructions are **absent**
 - Optional: `/init` then confirm modular docs section present
 - If doc-roles enabled: three files under `.github/agents/` (`understanding-author`, `doc-graduate`, `docs-template-sync`). No `docs-bootstrap` adapter
-- If slash-commands enabled: `.github/prompts/sync.prompt.md` only
 - Custom agents appear in Chat **Configure Custom Agents** / CLI `/agent` (custom list) / Agents window Customizations
+- All 9 adt-* folders under .github/skills, each with SKILL.md.
+
 
 ## For humans
 

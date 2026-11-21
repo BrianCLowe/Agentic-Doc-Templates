@@ -23,7 +23,7 @@
         ]
       },
       {
-        "file": "docs/templates/agent/workflow/understanding.md",
+        "file": "docs/templates/agent/skills/adt-understanding/SKILL.md",
         "patterns": [
           "this stem’s spec"
         ]
@@ -31,13 +31,16 @@
     ],
     "summaries_must_point": [
       {
-        "file": "docs/templates/agent/roles/doc-graduate.md",
+        "file": "docs/templates/agent/skills/adt-doc-graduate/SKILL.md",
         "must_contain": [],
         "must_not_contain": ["Pickup ≠ backlog"]
       },
       {
         "file": "docs/templates/agent/roles/template-sync.md",
-        "must_contain": ["Do not create or edit `*-TODO.md`"],
+        "must_contain": ["Do not create or edit `*-TODO.md`"]
+      },
+      {
+        "file": "docs/templates/agent/skills/adt-template-sync/SKILL.md",
         "must_not_contain": ["Pickup ≠ backlog"]
       }
     ]
