@@ -24,6 +24,20 @@
 
 ---
 
+## 2.14.0
+
+- **Live impact:** `rules`
+- **Summary:** The pack now only tells agents how to use and manage the doc system. Removed: the optional team inbox and roster (`team_inbox`, `workflow/team-roster.md`, `Team_Roster_Template.md`); the dead `optional-todo-*` sync passes and their tags; leftover feature-TODO task instructions; tooling install, PATH, machines and Project verify procedure (`Tooling.md` is a description of tools and services); the integration Maturity step; the rule-or-skill offer in the always-on rule, the workflow index and profile-standing (Section 0.2), with the 2.9.6 standing cleanout one-shot; the `playtest` Human-TODO kind; `.env` / vault advice; and the timescale / build-verify / retired-adapter delete lines in tool playbooks, roles and skills. Status lines in the vision, Understanding and help docs now say what a doc status means.
+- **Changes:**
+  - `VERSION` - 2.13.0 -> 2.14.0
+  - Deleted `agent/workflow/team-roster.md` and `Team_Roster_Template.md`; links and layout lists follow
+  - `Tooling_Template.md` keeps Host platforms, Required, Optional and Services this app consumes; `workflow/tooling.md` only says how to keep that doc accurate
+  - `Human_TODO_Template.md` and `workflow/human-todo.md`: one human inbox (Open, Done; kinds `procure`, `decide`, `waiting`; close on the human's confirm)
+  - `TEMPLATE_SYNC_B` (pointer and skill), `roles/template-sync.md`, `ADT-settings.example.yaml`: optional-todo passes, tags and the `team_inbox` block removed; the B0.6 leftover feature-TODO cleanout offer is unchanged
+  - Tool playbooks, `roles/README.md`, the docs-template-sync adapter body (3 adapters regenerated) and skills: retired-file delete lines removed (the one-time delete stays in 2.10.0 Step B)
+  - eval: `team-inbox-optional` retargeted to the human-only inbox; `live-instruction-footer-strip` pins the kept TODO guard; `eval/run_eval.py` drops the Team-Roster scaffold check
+- **Step B:** Bump Master Index Pack version. `rules`: refresh the installed modular rule and enabled role adapters from the local pack via each `tools/<key>.md`. The pack no longer reads `team_inbox`: if `docs/ADT-settings.yaml` has a `team_inbox:` block that is the example's unedited placeholder (it still has `recorded: YYYY-MM-DD` and `decide: alex`), delete that block; leave any other `team_inbox:` key, since the user wrote or edited it. Do **not** delete or rewrite the user's `docs/Team-Roster.md`, `docs/Tooling.md`, `docs/Human-TODO.md` or feature `*-TODO.md` files; they are the user's docs (the B0.6 offer still applies when **from** < 2.10.1). A catch-up that includes 2.9.6 skips its standing cleanout one-shot. The one-time delete of installed timescale / build-verify rules and retired adapters stays in 2.10.0 Step B. Do not invent other live edits.
+
 ## 2.13.0
 
 - **Live impact:** `rules`

@@ -29,7 +29,7 @@ Compare semver `X.Y.Z` numerically (major, minor, patch).
 | **from** < **to** | Every `## X.Y.Z` heading where **from** < version ≤ **to**. If that set is empty → top entry only |
 
 **Union tags** from all selected entries. Then:
-
+- Leave existing feature `*-TODO.md` files. They are not the work list. When **from** < 2.10.1 and **to** >= 2.10.1, the B0.6 offer step is separate. Do not delete those files inside the offer. `auto` and `auto-all` are not acceptance of that offer.
 - If any selected entry is **>= 2.10.0**, drop the non-doc passes from the union **before** the checklist. Leave existing files. They are not the work list. When **from** < 2.10.1 and **to** >= 2.10.1, the offer step is separate. Do not delete those files inside the offer. Those two sync modes are not acceptance of that offer.
 
 - Apply the gated checklist **once** for the union (not once per release).
@@ -123,7 +123,7 @@ Under **`sync.mode: auto-all`:** if unset, set **`prevent`** + `recorded` today 
 
 ### B0.5 - Remove orchestrator key *(2.10.0)*
 
-If `docs/ADT-settings.yaml` contains an `orchestrator:` key, **remove that key**.
+If `docs/ADT-settings.yaml` contains an `orchestrator:` key, **remove that key** (B0.5).
 
 **Write-in (not a quiz, not an eighth mode):** standing stays playbook overrides only. Do not quiz for standing on this sync. Do not invent a settings enum for a docs or sync override.
 
@@ -135,7 +135,7 @@ If `docs/ADT-settings.yaml` contains an `orchestrator:` key, **remove that key**
 
 This step is the same under `auto`, `auto-all`, `choose`, and an unset mode. The mode does not answer it. It is not a Live impact tag. Do not execute it because `auto-all` executes unioned passes.
 
-**List (do not open):** files named `*-TODO.md` directly in `docs/features/` and `docs/_shared/`. If a subdirectory of those two folders contains a `*-TODO.md`, include that path. Do not look anywhere else. Do not list `docs/Human-TODO.md`. Do not open the files. Do not read their boxes. If the list is empty, skip this step.
+**B0.6 list (do not open):** files named `*-TODO.md` directly in `docs/features/` and `docs/_shared/`. If a subdirectory of those two folders contains a `*-TODO.md`, include that path. Do not look anywhere else. Do not list `docs/Human-TODO.md`. Do not open the files. Do not read their boxes. If the list is empty, skip this step.
 
 **The step is the offer.** If this turn’s user message already says to clean them out or to delete the leftover feature TODOs, that is the yes: do **Cleanout** below and do not also ask. `sync.mode` is not that message.
 
@@ -175,7 +175,6 @@ A later session that only has that yes opens this section and does the cleanout.
 | `Human_TODO_Template.md` | `docs/Human-TODO.md` — create if missing; add columns/sections only | `content-templates` |
 | `Product_Vision_Template.md` | `docs/Product-Vision.md` — create if missing (**all** profiles). Lightweight draft; **peek `docs/reference/` first**; do **not** rebuild from the map. **`build-first`:** not a gate | `content-templates` |
 | `agent/Modular_Documentation_Rule.*` | Installed rule paths — refresh via each `tools/<key>.md` for `status: installed` tools | `rules` |
-| *(retired 2.10.0)* timescale + build-verify rules | **Delete** installed copies via each `tools/<key>.md`. The pack no longer ships them | `rules` |
 | `agent/Template_Update_Check_Rule.*` | Optional update-check — same dispatch | `rules` or `optional-upstream-check` |
 | `agent/tools/*.md` | Install/sync adapters — open only for tools already `installed` | `rules` |
 | `agent/roles/cursor/*.md` / `agent/roles/grok/*.md` / `agent/roles/copilot/*.agent.md` | Optional subagents — via tool playbooks | `rules` when `optional_rules.doc-roles` is `enabled` |
@@ -193,9 +192,9 @@ Versions:
 4. **Live Understanding reshape** *(if `optional-live-reshape`)* —
    - **`sync.mode: auto` or `auto-all`:** execute for **all Document Map Understanding stems** (no ask).
    - **`sync.mode: choose`:** **Present before stopping** (explain + ask once; **do not** report “skipped by design” without asking). **Highly recommended.**
-     1. **Explain briefly:** Older live Understandings may still hold contract sections **and** copied pack sermons / long Instructions footers. Spec / TODO sermons also sit on stems with **no** Understanding (`build-first` / excepted / balanced skip). **Yes (recommended)** = trim Understanding to shape (Workflow Section 4), relocate overflow into that stem's spec, **and** run the **2.7.27 instruction-footer strip** (below) on **every** Document Map spec / core TODO (Understanding too when present). **No** = leave bodies.
-     2. **Ask once - default toward yes:** all Document Map stems (reshape Understanding where present; strip spec/TODO on every stem, even without Understanding) / named / no.
-   - **On execute** (`auto` / `auto-all` or yes): **(a)** If 2.7.27 is in catch-up → run **Instruction-footer strip** first on **every** chosen stem that has a spec and/or core TODO — **including stems with no Understanding**. **(b)** For chosen stems that **have** Understanding: if How-it-should-work / Done when / other non-shape sections remain → **relocate, then remove** (Workflow §4). Do not invent contract detail; do not invent Understanding on `build-first` stems; stop after chosen stems.
+     1. **Explain briefly:** Older live Understandings may still hold contract sections **and** copied pack sermons / long Instructions footers. Spec sermons also sit on stems with **no** Understanding (`build-first` / excepted / balanced skip). **Yes (recommended)** = trim Understanding to shape (Workflow Section 4), relocate overflow into that stem's spec, **and** run the **2.7.27 instruction-footer strip** (below) on **every** Document Map spec (Understanding too when present). **No** = leave bodies.
+     2. **Ask once - default toward yes:** all Document Map stems (reshape Understanding where present; strip the spec on every stem, even without Understanding) / named / no.
+   - **On execute** (`auto` / `auto-all` or yes): **(a)** If 2.7.27 is in catch-up -> run **Instruction-footer strip** first on **every** chosen stem that has a spec - **including stems with no Understanding**. **(b)** For chosen stems that **have** Understanding: if How-it-should-work / Done when / other non-shape sections remain -> **relocate, then remove** (Workflow Section 4). Do not invent contract detail; do not invent Understanding on `build-first` stems; stop after chosen stems.
 
 4b. **Live Assumption clean-out** *(if `optional-assumption-cleanout`)* —
    - **`sync.mode: auto` or `auto-all`:** execute for **all Document Map Understanding stems** (no ask).
@@ -206,7 +205,7 @@ Versions:
 
 ### 2.7.27 Instruction-footer strip *(optional-live-reshape one-shot)*
 
-Run only when selected catch-up includes **2.7.27** and reshape is executing. Open Document Map spec + core TODO for **every** stem in scope (Understanding too when it exists). **Do not skip a stem because Understanding is absent.** Not Human-TODO, not Tooling, not `docs/decisions/`.
+Run only when selected catch-up includes **2.7.27** and reshape is executing. Open Document Map spec for **every** stem in scope (Understanding too when it exists). **Do not skip a stem because Understanding is absent.** Not Human-TODO, not Tooling, not `docs/decisions/`.
 
 **Goal:** Live files are fill-in blanks. Pack sermons and long instruction footers copied from older templates go away. User content stays. Teaching lives in [`help/SCAFFOLDS.md`](/docs/templates/help/SCAFFOLDS.md) + the matching workflow module.
 
@@ -237,10 +236,10 @@ Run only when selected catch-up includes **2.7.27** and reshape is executing. Op
 
 **Do not:** rewrite What this is / user Behavior / Acceptance items; invent stems; strip Human-TODO human kinds / chat phrases or Tooling tables (those stay human-facing); treat `content-templates` as this strip (that tag only **adds** missing sections).
 6. **Rules** *(if `rules`)* — For each tool with `tools.*.status: installed` in `docs/ADT-settings.yaml`, open **only** `docs/templates/agent/tools/<key>.md` and refresh that harness.
-   - **Default:** refresh the pack-managed modular rule (and enabled optionals) **without asking** — installed means pack-owned. **Delete** installed timescale and build-verify rules. The pack no longer ships them.
+   - **Default:** refresh the pack-managed modular rule (and enabled optionals) **without asking** - installed means pack-owned.
    - Refresh the pack skills for each installed tool via its `tools/<key>.md` Skills section.
    - **Ask before overwrite only if** that tool entry has `customized: true` (or an explicit note that pack rule bodies were hand-edited).
-   - If `optional_rules.doc-roles` is `enabled`, refresh that tool’s agents folder (**three** adapters: understanding-author, doc-graduate, docs-template-sync; **no** `docs-bootstrap` adapter). **Delete leftover** installed `docs-bootstrap`, `feature-implementer`, `work-verifier`, `todo-warden`, and `orchestrator` adapter files.
+   - If `optional_rules.doc-roles` is `enabled`, refresh that tool's agents folder (**three** adapters: understanding-author, doc-graduate, docs-template-sync; **no** `docs-bootstrap` adapter).
    - Remove any stale `.cursor/skills/modular-docs-*` leftovers from older pack drafts (ask first only if deleting user-looking paths outside known leftovers).
 7. **Upstream stamp** *(if `optional-upstream-check` or update-check enabled)* - If `optional_rules.template-update-check.status` is `enabled`: ensure `upstream:` exists; set `local_pack_version` from local `VERSION`. **`check_mode: interval`:** set `last_checked` today; clear `update_available` / stale `upstream_pack_version`. **No interval** (`always` or unset): do **not** set `last_checked`, `update_available`, or `upstream_pack_version`. If those keys are present, **remove** them (check logs; the next session fetches again). Do **not** delete `ADT-settings.yaml`. Refresh optional update-check rules if tagged `rules` / body changed (same customized rule as above).
 8. **Layout migration** — Run [`BOOTSTRAP.md`](/docs/templates/agent/BOOTSTRAP.md) Step 0b **only** if layout markers show older layout (`docs/help/` or `docs/agent/` at docs root, or flat setup files in `templates/`). Skip on a normal modern pack refresh.
@@ -249,7 +248,7 @@ Run only when selected catch-up includes **2.7.27** and reshape is executing. Op
    - catch-up **from→to** (or top-entry-only) + the **unioned** Live impact tags (+ skimmed Step B one-shots)
    - of those **unioned** optional live passes: executed / offered / declined (`choose`)
    - settings migration if any
-   - any `orchestrator:` key removed
+   - any `orchestrator:` key removed (B0.5)
 
    **Do not** name optional tags that were **not** in the union as “skipped.” They were not this jump’s instructions — listing them sounds like missed work. The tag table is a lasting catalog; a tag fires only when selected changelog entries tag it.
 
@@ -275,17 +274,17 @@ Run only when selected catch-up includes **2.7.27** and reshape is executing. Op
 - Open or follow this file before Step A / pack refresh completes
 - Run Step B from a pre–Step A in-memory copy of any sync playbook
 - Capture versions before Step A overwrite
-- Scan every live Understanding / Spec unless `content-templates` or (`optional-live-reshape` and executing) or (the assumption-tidy tag and executing) or the **2.7.25 standing relocate** one-shot (then only the **one** destination a misplaced standing bullet names - Workflow Section 0.2 standing relocate) or the **2.9.6 standing cleanout** one-shot (then only `standing.instructions` - Workflow Section 0.2 standing cleanout) or the **2.7.27 footer pass** (then every in-scope stem's spec, and Understanding when present).
+- Scan every live Understanding / Spec unless `content-templates` or (`optional-live-reshape` and executing) or (the assumption-tidy tag and executing) or the **2.7.25 standing relocate** one-shot (then only the **one** destination a misplaced standing bullet names - Workflow Section 0.2 standing relocate) or the **2.7.27 footer pass** (then every in-scope stem's spec, and Understanding when present).
 - Treat `content-templates` as permission to trim/remove Understanding sections — that requires `optional-live-reshape` + execute
 - Under **`choose`:** omit the reshape / assumption tidy ask when those tags are present
 - Under **`auto` / `auto-all`:** re-ask for reshape / assumption tidy / rules refresh when tags say to run them
 - Ask before refreshing installed rules unless `customized: true`
 - On reshape execute: add template headings only and leave obsolete Understanding sections **or** copied instruction sermons in place
-- On 2.7.27 instruction-footer strip: relocate sermons into the spec; delete user What this is / Assumptions; skip spec/TODO-only stems; skip spec/TODO footers or inline section sermons when those files still have the long playbook restatement; delete a loud phased-bridge note; leave a dumped At a Glance when `master-index` is tagged
+- On 2.7.27 instruction-footer strip: relocate sermons into the spec; delete user What this is / Assumptions; skip spec-only stems; skip spec footers or inline section sermons when those files still have the long playbook restatement; leave a dumped At a Glance when `master-index` is tagged
 - Keep writing `docs/rule-install-status.yaml` or `docs/upstream-status.yaml` after migration
 - Reconstruct whether a missing section is “new in this version” vs “never adopted” when content templates are unchanged — the changelog already answered
 - Treat a missing or empty `docs/templates/agent/upstream/` as an error or reason to re-download attribution files
-- Open Workflow, help guides, or the whole pack catalog during sync (open Workflow Section 4 only while executing reshape or assumption tidy; Workflow Section 0.2 standing relocate only when the 2.7.25 standing-relocate one-shot is in catch-up; Workflow Section 0.2 standing cleanout only when the 2.9.6 standing-cleanout one-shot is in catch-up)
+- Open Workflow, help guides, or the whole pack catalog during sync (open Workflow Section 4 only while executing reshape or assumption tidy; Workflow Section 0.2 standing relocate only when the 2.7.25 standing-relocate one-shot is in catch-up)
 - On assumption clean-out execute: invent new Assumption quizzes; treat a `docs/reference/` example as the target unless it was clearly set as the target; invent Understanding on `build-first`; rewrite user fill-in that is already category-correct; **de-confirm** a `confirmed` Understanding or inject a mid-sync shape quiz
 - Re-fetch from upstream for each live file - work from the **local** `docs/templates/` copy
 - Under **`auto` / `choose`:** skip presenting unset `optional_rules.*` because “do not auto-enable” — that means ask, not stay silent

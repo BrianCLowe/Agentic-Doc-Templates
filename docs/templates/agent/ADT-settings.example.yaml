@@ -10,7 +10,7 @@ version: 1
 #            Still asks once for brand-new unset optional_rules.* (doc-roles, update-check, …)
 # auto-all = same as auto, and also enable + install any unset optional_rules.* (never re-enable declined)
 #            New update-check defaults to check_mode: always (no cadence quiz)
-# choose   = present optionals (reshape, TODO ambition, ...) each sync
+# choose   = present optionals (reshape, assumption clean-out, ...) each sync
 sync:
   mode: auto
   recorded: 2026-08-06
@@ -32,11 +32,11 @@ docs_profile:
 
 # standing: — omit this entire key unless the user has actually overridden an
 # ADT documentation or sync playbook and no first-class key fits (docs_profile,
-# sync.mode, team_inbox, optionals). Missing / empty is the correct default. Do not invent
+# sync.mode, optionals). Missing / empty is the correct default. Do not invent
 # Write-in (not a quiz, not an eighth mode): a docs/sync override with no key is one bullet.
 # bullets. Do not copy an empty standing block into live ADT-settings.yaml
 # "to have something." Not a notes pad — prompt style, other-product API,
-# Tooling verify commands do not belong here
+# Tool commands do not belong here
 # (use the key / Tooling.md / spec Decisions). TEMPLATE_SYNC never overwrites
 # a live standing block if one exists.
 # LOOKOUT (Workflow §0.2): create standing.instructions only in that override
@@ -131,70 +131,3 @@ upstream:
   # last_checked: 2026-07-16
   # upstream_pack_version: "X.Y.Z"
   # update_available: true
-
-# Optional team inbox routing — omit this entire key = human-only inbox (legacy).
-# Do not copy this block into live ADT-settings.yaml "to have something."
-# Unset / missing / enabled: false = today's behavior: everything waits on the
-# human. No auto-stamp. Not a mandatory multi-bot org chart. Do not force a project into
-# Brian's (or any other team's) workflow — each user/team works out who gets what.
-# Role ids are free-form strings the project defines — named-human slugs
-# (alex) or bot ids (qa). Leftover "human" is a catch-all bucket, not a person.
-#
-# Enabling team_inbox opts into assign-all-at-once:
-#   1. Stamp-on-dual-write — new Open rows get Assignee from kind_defaults in
-#      the same edit only when that role_id is Active on Team-Roster.md
-#      (e.g. playtest → qa after QA self-IDed). Else unassigned. No claim
-#      step / no per-row human click for the first fill.
-#   2. One-shot backfill — after enable + kind_defaults, run
-#      “apply defaults to Open” once: fill unassigned Open rows from
-#      kind_defaults only if that role_id is Active on Team-Roster.md.
-#      Else leave unassigned. Do not re-stamp rows that already have
-#      an explicit assignee (claimed / reassigned). Do not stamp an
-#      id that is not Active — that locks the row against a later
-#      self-ID.
-#   Team roster (docs/Team-Roster.md) is who exists (Name) + Jobs +
-#   Anti-jobs (if defined) + handoff — named humans and bots. Create
-#   the live file only when team_inbox is enabled (empty Active until
-#   someone self-IDs). Two-stage: coding agents on a handoff READ only
-#   and assign only to Active ids. Named humans and bots
-#   SELF-ID their own row (humans use their slug, not leftover human).
-#   Report-only bots ask another agent or the human to add them.
-#   Full-team stand-up = one scribe / one file writer at a time.
-#   Update the row when Name / Jobs / Anti-jobs change.
-#   3. Claim / reassign is override only (human or allowed bot) — not the
-#      bulk path.
-#   4. Bot discovery — bots watch “my open rows” / one digest ping. Not one
-#      ping per claim.
-# kind_defaults are the stamp map when enabled — still project-owned, not a
-# pack-required org chart.
-#
-# Example stamp map some teams use (not pack-required defaults):
-#   playtest → qa; placement / YTF feel notes → ux (if they have one);
-#   procure / decide / secrets → a named human slug if they self-IDed,
-#   or leftover human if that row is Active, or leave unassigned;
-#   Understanding drain → understanding-author;
-#   nightly audit → report-only unless green-lit.
-#
-# team_inbox:
-#   enabled: false   # set true only when this project uses bot assignees (opts into stamp-on-dual-write)
-#   # source: user
-#   recorded: YYYY-MM-DD
-#   # Stamp map by Human-TODO kind — project overrides freely.
-#   kind_defaults:
-#     playtest: qa
-#     decide: alex          # named-human slug if Active; leftover human otherwise
-#     procure: alex
-#     waiting: human        # leftover bucket only if that id is Active
-#   # claim_mode: open | kind_defaults_only
-#   #   open = any listed role may claim kinds in its may_claim; human always may assign/claim
-#   #   kind_defaults_only = stamp + override only via explicit claim/reassign
-#   # assignee_closes: false   # default: bot reports; human or assignee confirms. true = assignee confirm report may close that kind
-#   # roles: free-form map role_id → { label, may_claim: [kinds...], may_assign: true|false }
-#   #   qa:
-#   #     label: QA
-#   #     may_claim: [playtest]
-#   #     may_assign: false
-#   #   ux:
-#   #     label: UX
-#   #     may_claim: [playtest]
-#   #     may_assign: false

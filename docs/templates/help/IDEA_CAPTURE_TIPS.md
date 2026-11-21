@@ -25,7 +25,7 @@ Agents are instructed to keep reference files and to **split** unlike feature id
 
 You do **not** need to rewrite chats into a design doc first. Polished design docs / PRDs are still welcome in `docs/reference/` — when both exist, keep the **chat exports too** and point the agent at both.
 
-**Save lasting copies under `docs/reference/`** (e.g. `docs/reference/combat-feel-chat.md`, `docs/reference/inventory-thread.md`). That folder is for source material — not living Understanding/spec/TODO files.
+**Save lasting copies under `docs/reference/`** (e.g. `docs/reference/combat-feel-chat.md`, `docs/reference/inventory-thread.md`). That folder is for source material - not living Understanding/spec files.
 
 ### Optional: browser chat exporter
 
@@ -73,11 +73,11 @@ This prevents the “brand-new feature” mistake when you meant a **variant** o
 - Is this **new from scratch**, or a **new screen/mode** on something that already exists?
 - What **kind of thing** is it *not* (wrong category), even after it is fully built?
 - How should it **feel as a surface** when done? (e.g. one continuous document vs separate panes; same engine vs a second system)
-- Phased / later work for the *same* feature → tell the agent for the **TODO** or **spec**, not for **What this is NOT**.
+- Phased / later work for the *same* feature -> tell the agent for the **spec**, not for **What this is NOT**.
 
 *Example:* “A separate UI layout for the existing text editor — **not** a second editor engine.”  
 *Example (surface):* “Feels like one manuscript; scene breaks are visual seams — **not** jumping between separate editor windows.”  
-*Not for Understanding NOT:* “Desktop Mode comes later” — that is a TODO / roadmap item if it is still part of this feature’s destination.
+*Not for Understanding NOT:* "Desktop Mode comes later" - that belongs in the **spec** if it is still part of this feature's destination.
 
 ### 3. UI appearance
 
@@ -219,10 +219,9 @@ The **agent** drafts `FeatureName-Understanding.md` (or `_shared/ComponentName-U
 | Rough happy path / flows | **spec** **Behavior** *(not on Understanding)* |
 | Module/API architecture, durable contract | **spec** *(not on Understanding)* |
 | Screenshots + similar/different | **spec** **Visual references** |
-| A few coarse “done” outcomes | **spec** **Acceptance** *(not a TODO twin)* |
-| Work breakdown (target architecture — not interim staging) | **TODO** |
+| A few coarse "done" outcomes | **spec** **Acceptance** |
 
-Product-defining surface (“feels like one document”) is **shape**. Module diagrams, APIs, full behavior, and the work backlog belong in the **spec** and **TODO** after you confirm shape. Agents should plan the confirmed target without you reminding them.
+Product-defining surface ("feels like one document") is **shape**. Module diagrams, APIs, full behavior, and the work backlog belong in the **spec** after you confirm shape. Agents should plan the confirmed target without you reminding them.
 
 Prompt the agent:
 
@@ -253,7 +252,7 @@ When the user describes a feature vaguely:
 4. Tell the user confirmation is for **shape / guardrails**, not a full spec review. After they confirm, **graduate** durable contract content to the spec (`Feature_Spec_Template.md`) — Decisions, module/API architecture, Acceptance, shared Maturity. Spec may hold detail that was never in Understanding. Do not ask them to remind you to plan ambitiously.
 5. If the user provides screenshots, persist under `docs/features/assets/` or `docs/_shared/assets/` (or `docs/reference/visuals/`): **copy/move from a workspace path** when the file is attached or `@`-mentioned; if only a pasted chat image (vision-only), ask the user to save into `assets/` or document similar/different from what you saw and note that a file copy was not available. Link in the **spec** **Visual references** - see [Saving chat attachments](#saving-chat-attachments-to-the-project).
 6. If the user does not know stack or architecture, propose options **after** Understanding shape sections are drafted, with a one-line rationale each — durable choices land in the **spec**.
-7. Under **`prevent`**, or when an Understanding exists: do not start implementation until the user confirms Understanding **shape** or explicitly waives review.
+7. Under **`prevent`**, or when an Understanding exists: a `draft` Understanding is unconfirmed shape until the user confirms its **shape** or explicitly waives review.
 8. If this session changed shape or contract, update the Understanding and/or spec. Preference corrections during polish → same-turn spec **Decisions** ([`workflow/decisions.md`](../agent/workflow/decisions.md)), not deferred to wrap-up.
 
 **Terse + documented contract is not vague.** “Fully support this vendor’s public API” (library wrap, match the SDK/docs) is **actionable without further information** — record in-scope surfaces on **this stem’s spec**, without an interview through each uncovered method. Keep vague planned-only extras out of the Document Map (playground, “maybe later”) — Workflow §0 inventory.

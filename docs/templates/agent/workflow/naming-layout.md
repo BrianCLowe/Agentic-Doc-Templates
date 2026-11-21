@@ -17,7 +17,6 @@
 | Sub-index *(large feature only)* | `docs/features/FeatureName-Index.md` |
 | Screenshots | `docs/features/assets/…` or `docs/_shared/assets/…` |
 | Product vision *(whole-product end-state)* | `docs/Product-Vision.md` - **always create** (lightweight to start on `balanced` / `build-first`; deepen when identity is fuzzy, there are multiple stems, or the user asks to *lock product shape*). **`build-first`:** not a gate until *lock product shape*. [`product-vision.md`](product-vision.md) Section 4.5 |
-| Team roster *(optional — team inbox)* | `docs/Team-Roster.md` — create **only** when `team_inbox` is enabled. Named humans and bots self-ID; do not invent. [`team-roster.md`](team-roster.md) |
 
 **Use the same name stem** across the set (`MainWorkspace`, `BlockEditor`, …). Copy spelling from the Document Map when adding to an existing project.
 

@@ -9,7 +9,7 @@ Day-to-day workflows after setup. First-time install: [`SETUP.md`](SETUP.md). Wh
 Depends on **docs profile** in `docs/ADT-settings.yaml` — a first-class choice ([Workflow §0.1](../agent/workflow/profile-standing.md#01-docs-profile-ceremony-modes)). **`build-first`** is the right default for typed APIs / CRUD. **`prevent`** is the right default for editors / games / multi-surface (and the fallback if unset):
 
 1. You capture ideas (recommended: chat exports in `docs/reference/`, or a mid-build correction in chat).
-2. **`prevent` (default):** agent drafts `Product-Vision.md` (whole-product end-state) **and** `-Understanding.md` (per-feature shape); you confirm both before code. **`build-first`:** agent drafts thin **spec** plus a `Product-Vision.md` that starts lightweight (destination, **not a gate**; deepen when identity is fuzzy, there are multiple stems, or you *lock product shape*). **`balanced`:** always a lightweight Product-Vision; Understanding when identity is ambiguous; deepen the vision when 2+ stems, the whole is fuzzy, or you *lock product shape*.
+2. **`prevent` (default):** agent drafts `Product-Vision.md` (whole-product end-state) **and** `-Understanding.md` (per-feature shape); you confirm both; `confirmed` means the shape is settled. **`build-first`:** agent drafts thin **spec** plus a `Product-Vision.md` that starts lightweight (destination, **not a gate**; deepen when identity is fuzzy, there are multiple stems, or you *lock product shape*). **`balanced`:** always a lightweight Product-Vision; Understanding when identity is ambiguous; deepen the vision when 2+ stems, the whole is fuzzy, or you *lock product shape*.
 3. When Understanding is used: **you confirm shape** — is / is *not* + any remaining **real-fork** Assumptions (empty is fine; not a full-spec review). Under **prevent**, confirm **Product-Vision** as one product (end-state picture), not a feature list. Under **build-first**, confirm vision only after *lock product shape*. Agents should lock obvious defaults and not treat examples in `docs/reference/` as the target unless you clearly set them as the target.
 4. Durable contract lives on the **spec**. Record a gap that spec or Understanding already makes obvious on the spec when it is contract. Under build-first, grow the spec as the harness builds; use *lock shape for X* if identity fights start. *Lock product shape* only when the whole product needs a confirm gate.
 
@@ -45,7 +45,7 @@ Your job is to correct wrong **identity** assumptions — not to write Understan
 
 **When:** Already building; a new idea or scope change appears.
 
-> New idea: [brief]. Add it to the docs — draft Understanding + TODO; I'll review.
+> New idea: [brief]. Add it to the docs - draft Understanding; I'll review.
 
 *(Under **build-first**, say *spec* instead of Understanding, or *lock shape* if you want the prevent gate for that stem.)*
 
@@ -97,52 +97,17 @@ Version check only: *Check for template updates.* — [`TEMPLATE_UPDATE_CHECK.md
 
 ---
 
-## Pattern 6 — New machine / tooling
-
-Keep `docs/Tooling.md` accurate. On a new machine:
-
-> Install the project tooling for this machine.
-
----
-
-## Pattern 7 — Human inbox
+## Pattern 6 - Human inbox
 
 Anything only you can close → `docs/Human-TODO.md`: procure, decide/sign-off, external waiting. That inbox is the only list. You work the Open list; tell the agent in chat when done or with feedback.
 
 > What’s left on the human TODO?
-
-> Checked Score Target — 10k feels a bit short.
-
-> Human TODO: done Tutorial walkthrough.
 
 > Decided Default theme — keep Dev for boot.
 
 > Still waiting on Steam; leave it open.
 
 > Add Azure Bot registration to Human-TODO — we’re blocked.
-
-> I’ll take the Score Target playtest.
-
-> Assign playtest to QA.
-
-> Apply defaults to Open.
-
-> Enable team inbox.
-
-> Add the team.
-
-> Put me on the roster as Alex.
-
-> I'm Sam — I take decide and procure.
-
-> You are the QA bot — add yourself to the team roster.
-
-> Add the nightly auditor as report-only.
-
-> Update the QA bot’s jobs — they don’t close playtest.
-
-> What’s on the team roster?
-
 ---
 
 ## Prompt cheat sheet
@@ -167,9 +132,7 @@ Anything only you can close → `docs/Human-TODO.md`: procure, decide/sign-off, 
 | Standing playbook override | *Add standing note: ask each sync before reshaping live docs.* / *From now on, present the docs-profile menu before recording my choice.* *(agent should save without being asked twice - only playbook overrides, not random notes)* |
 | Optional role — graduate | *Understanding confirmed — graduate to the spec.* |
 | Force a subagent | `/understanding-author` … *(optional; usually unnecessary)* |
-| Tooling | *Install the project tooling for this machine.* |
-| Human TODO | *What’s left on the human TODO?* / *Checked [item] — [feedback].* / *I’ll take [item].* / *Assign playtest to QA.* / *Apply defaults to Open.* |
-| Team roster | *Enable team inbox.* / *Add the team.* / *Put me on the roster as Alex.* / *I'm Sam - I take decide and procure.* / *You are the QA bot.* / *Add [bot] as report-only.* / *Update [bot]'s jobs / anti-jobs.* / *What's on the team roster?* |
+| Human TODO | *What's left on the human TODO?* / *Done [item].* / *Decided [item] - [choice].* |
 
 Optional roles (opt-in, never always-on): [`../agent/roles/README.md`](../agent/roles/README.md). Tool install paths: [`USING_WITH_AGENTS.md`](USING_WITH_AGENTS.md).
 
@@ -184,8 +147,7 @@ Optional roles (opt-in, never always-on): [`../agent/roles/README.md`](../agent/
 | `docs/features/FeatureName-Understanding.md` | Shape only — is / is not, Relationship, real-fork Assumptions (not full-spec review) |
 | `docs/features/FeatureName.md` | Durable contract after shape confirm |
 | `docs/_shared/…` | Only for truly shared project pieces (may be empty) |
-| `docs/Tooling.md` / `docs/Human-TODO.md` | Machine tools / human inbox (procure · playtest · decide · waiting) |
-| `docs/Team-Roster.md` | Optional team inbox roster (Name / Jobs / Anti-jobs if defined; only when enabled - named humans and bots self-ID; one file writer at a time; coding agents do not invent) |
+| `docs/Tooling.md` / `docs/Human-TODO.md` | Project tools and services / human inbox (procure - decide - waiting) |
 | `docs/reference/` | Source materials (not the living map) |
 | `docs/templates/` | Upstream pack — not live feature content |
 

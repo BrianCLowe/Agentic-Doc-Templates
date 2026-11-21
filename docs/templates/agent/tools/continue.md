@@ -12,10 +12,6 @@
 | **Install to** | `.continue/rules/modular-documentation.md` |
 | **Notes** | Rules apply to Agent/Chat/Edit — not autocomplete. Prefer Markdown over legacy YAML. |
 
-## Retired rules *(delete on refresh)*
-
-The pack no longer ships timescale or build-verify rules. **Delete** `.continue/rules/agent-timescale-planning.md` and `.continue/rules/agent-build-verify.md` if present.
-
 ## Optional — Template update check
 
 If enabled: same pattern → `.continue/rules/template-update-check.md` from `Template_Update_Check_Rule.mdc` body + frontmatter.
@@ -29,7 +25,6 @@ No skills loader. Route skill asks through the AGENTS.md skills table ([`agents-
 ## Verify
 
 - `modular-documentation.md` exists under `.continue/rules/`
-- Timescale and build-verify rules are **absent**
 
 ## For humans
 

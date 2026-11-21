@@ -12,10 +12,6 @@
 | **Install to** | `.claude/rules/modular-documentation.md` *(preferred for modular rules)* **or** section in `./CLAUDE.md` / `./.claude/CLAUDE.md` |
 | **Notes** | Ask before merging into an existing `CLAUDE.md`. Keep concise (Claude recommends short instruction files). Claude does **not** auto-load root `AGENTS.md` — if using [`agents-md.md`](agents-md.md), put `@AGENTS.md` in `CLAUDE.md`. |
 
-## Retired rules *(delete on refresh)*
-
-The pack no longer ships timescale or build-verify rules. **Delete** `.claude/rules/agent-timescale-planning.md`, `.claude/rules/agent-build-verify.md`, and those labeled sections in `CLAUDE.md` if present.
-
 ## Optional — Template update check
 
 Only if `optional_rules.template-update-check.status` is `enabled`.
@@ -36,7 +32,7 @@ Only if `optional_rules.doc-roles.status` is `enabled`. Claude project subagents
 | **Parent delegates** | If `.claude/agents/<name>.md` exists → Task/delegate to that subagent with a self-contained prompt; else role playbook fallback |
 | **Note** | User-scope `~/.claude/agents/` is personal — prefer project `.claude/agents/` for this pack |
 
-Copy the three `roles/cursor/*.md` adapters (`understanding-author.md`, `doc-graduate.md`, `docs-template-sync.md`). **Do not** invent a `docs-bootstrap` adapter — bootstrap is parent-only. Delete leftover `docs-bootstrap.md`, `feature-implementer.md`, `work-verifier.md`, `todo-warden.md`, and `orchestrator.md` if present.
+Copy the three `roles/cursor/*.md` adapters (`understanding-author.md`, `doc-graduate.md`, `docs-template-sync.md`). **Do not** invent a `docs-bootstrap` adapter - bootstrap is parent-only.
 
 ## Skills
 
@@ -45,7 +41,6 @@ Copy each pack skill folder `docs/templates/agent/skills/<name>/` (every adt-* f
 ## Verify
 
 - Modular rule file or `CLAUDE.md` section exists
-- Timescale and build-verify rules are **absent**
 - Optional: `/memory` shows the modular docs section
 - If doc-roles enabled: three files under `.claude/agents/` (`understanding-author.md`, `doc-graduate.md`, `docs-template-sync.md`). No `docs-bootstrap` adapter
 - All 9 adt-* folders under .claude/skills, each with SKILL.md.

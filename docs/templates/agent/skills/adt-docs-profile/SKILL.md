@@ -118,7 +118,7 @@ For **each** standing bullet:
 | Machine / host tool command that is not pack ceremony | `docs/Tooling.md` |
 | Cross-cutting product choice and `docs/decisions/` already exists for it | That decision file (do **not** create a new ADR for a prompt-style aside) |
 
-4. **No named home** (bullet names nothing on the Document Map / Tooling / an existing decision) -> if this catch-up also includes **2.9.6**, leave **how to act in this project** bullets for **Sync cleanout (2.9.6)** below. Do **not** drop those here. Any other no-home bullet -> **delete from standing** and list the dropped text in the sync summary. Do **not** invent a map row, Understanding, spec, or `docs/decisions/` file.
+4. **No named home** (bullet names nothing on the Document Map / Tooling / an existing decision) -> **delete from standing** and list the dropped text in the sync summary. Do **not** invent a map row, Understanding, spec, or `docs/decisions/` file.
 5. Tell the user one line per relocated or dropped bullet (old paraphrase → new path, or “dropped, no home”).
 
 **Do not:** invent standing; rewrite playbook-override bullets that already belong; open every spec “just in case”; treat `process-docs-only` as a ban on this one-shot (it bans a live scan, not the named destination).

@@ -7,8 +7,8 @@
 When a single feature grows large or has many distinct sub-components, you **may** create `FeatureName-Index.md`:
 
 - Acts as a mini Master_Index for that feature
-- Lists sub-components and links to their spec and TODO files
-- Only when the main feature file + TODO would become hard to navigate
+- Lists sub-components and links to their spec and Understanding files
+- Only when the main feature file would become hard to navigate
 
 **Document Map entry** — link to the sub-index in Master Index §3.2.
 
@@ -20,9 +20,9 @@ When a single feature grows large or has many distinct sub-components, you **may
 **Parent Feature**: [WorldBuilding.md](WorldBuilding.md)
 
 ## Sub-Components
-| Component   | Spec                          | Gameplay TODO                  | InEditor TODO                     | Asset TODO                     |
-|-------------|-------------------------------|--------------------------------|-----------------------------------|--------------------------------|
-| Characters  | [Characters.md](Characters.md) | [Characters-TODO.md](...)     | [Characters-InEditor-TODO.md](...) | [Characters-Asset-TODO.md](...) |
+| Component   | Spec                          | Understanding                             |
+|-------------|-------------------------------|-------------------------------------------|
+| Characters  | [Characters.md](Characters.md) | [Characters-Understanding.md](...)        |
 ```
 
 ---
@@ -30,20 +30,6 @@ When a single feature grows large or has many distinct sub-components, you **may
 ## 7. Game Development Extensions (Unreal / Godot / Unity)
 
 Skip this section if Project Profile says so (Master Index §1.1).
-
-Most game features use three TODO areas:
-
-- `FeatureName-TODO.md` — Core gameplay, systems logic, rules, simulation
-- `FeatureName-InEditor-TODO.md` — Engine editor work (DataAssets, Blueprints, inspectors, etc.)
-- `FeatureName-Asset-TODO.md` — Assets, import pipelines, materials, animations
-
-Project-level: `Project-InEditor-TODO.md`, `Project-Asset-TODO.md`
-
-Rename In-Editor TODO files to engine-specific versions and update all links:
-
-- Unreal Engine → `FeatureName-UE-TODO.md`
-- Godot → `FeatureName-Godot-TODO.md`
-- Unity → `FeatureName-Unity-TODO.md`
 
 ### 7.1 Catalog companions *(list-heavy content)*
 
@@ -70,18 +56,12 @@ When a file starts feeling unwieldy:
 2. Create a new focused file in the correct folder (`_shared/`, `features/`, etc.).
 3. In the original file, replace the section with a short link to the new file.
 4. Add the new file to the Document Map in `Master_Index.md`.
-5. Create matching files as needed (spec, Understanding, TODOs) unless the **user** recorded an omission in Master Index §3.0 — do not invent a §3.0 row to skip them.
+5. Create matching files as needed (spec, Understanding) unless the **user** recorded an omission in Master Index Section 3.0 - do not invent a Section 3.0 row to skip them.
 6. Update cross-references in other files.
 
 ---
 
 ## 9. Status Tracking (Lean Approach)
-
-**Primary mechanism**: Each feature's and shared component's `-TODO.md` (and InEditor/Asset TODOs).
-
-- High Priority = in progress / planned
-- Completed section = done
-
 Optional: add a small "Current Status" block at the top of the main feature `.md` spec.
 
 Do not add a central `STATUS.md` unless the project truly needs a dashboard.

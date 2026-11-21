@@ -124,7 +124,7 @@ Installing for one tool **does not remove or replace** another tool's files. Rec
 ## Shared install rules
 
 - **Never overwrite** an existing instructions file without showing what will change and getting confirmation — **except** template-sync refresh of pack-managed modular rule bodies for `installed` tools that are not `customized: true`.
-- If merging into `copilot-instructions.md`, `CLAUDE.md`, or `AGENTS.md`, **append** a clearly labeled section; do not delete existing sections. On refresh, replace only the pack-owned Documentation workflow section, and delete leftover timescale and build-verify sections.
+- If merging into `copilot-instructions.md`, `CLAUDE.md`, or `AGENTS.md`, **append** a clearly labeled section; do not delete existing sections. On refresh, replace only the pack-owned Documentation workflow section.
 - If the modular rule is **already present** at the target path, set status to `installed` if missing from yaml — do not re-install blindly.
 - Do not edit files under `docs/templates/` except when copying **from** them. The warning also lives at [`../README.md`](/docs/templates/README.md) (pack-owned; full overwrite on sync).
 - After install, tell the user which file(s) were created or updated.

@@ -6,7 +6,7 @@
 
 ## Run
 
-Setup and verify commands: [`docs/Tooling.md`](docs/Tooling.md).
+Tools and services: [`docs/Tooling.md`](docs/Tooling.md).
 
 ## Docs
 

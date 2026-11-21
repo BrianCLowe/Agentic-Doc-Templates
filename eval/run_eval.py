@@ -193,15 +193,7 @@ SCAFFOLD_CHECKS = (
         "must": ("workflow/human-todo.md", "Instructions for Humans"),
         "label": "Human-TODO",
     },
-    {
-        "path": "docs/templates/Team_Roster_Template.md",
-        "sermons": (
-            "Dual-write (mandatory)",
-            "Stamp-on-dual-write",
-        ),
-        "must": ("workflow/team-roster.md", "Empty Active is correct"),
-        "label": "Team-Roster",
-    },
+
     {
         "path": "docs/templates/Product_Vision_Template.md",
         "sermons": (
