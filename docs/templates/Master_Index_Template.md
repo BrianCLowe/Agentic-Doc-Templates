@@ -42,16 +42,16 @@ The Document Map lists specs. Do not add a TODO column.
 | `docs/Human-TODO.md` | Human inbox - procure, decide, waiting (agent cannot close from assumptions) ([`Human_TODO_Template.md`](templates/Human_TODO_Template.md)) |
 | `docs/decisions/` | Optional cross-cutting decisions ([`Decision_Template.md`](templates/Decision_Template.md)) |
 | `docs/templates/` | Upstream template pack — **pack-owned; do not edit; full overwrite on sync** ([`README.md`](templates/README.md)). Scaffolds, `help/`, `agent/` (incl. [`Modular_Docs_Workflow.md`](templates/agent/Modular_Docs_Workflow.md) index + [`workflow/`](templates/agent/workflow/README.md) modules, optional [`roles/`](templates/agent/roles/README.md), per-tool [`tools/`](templates/agent/tools/README.md)); also [`VERSION`](templates/VERSION) and [`CHANGELOG.md`](templates/CHANGELOG.md) (Step B scope after sync) |
-| `docs/ADT-settings.yaml` | Pack preferences — **docs profile**, **standing.instructions** (playbook overrides, not a notes pad), sync mode, tools, optionals, upstream stamps ([`ADT-settings.example.yaml`](templates/agent/ADT-settings.example.yaml); Workflow [§0.1](templates/agent/workflow/profile-standing.md#01-docs-profile-ceremony-modes) · [§0.2](templates/agent/workflow/profile-standing.md#02-standing-workflow-instructions-user-workflow-not-pack-enums)) |
+| `docs/ADT-settings.yaml` | Pack preferences — **docs profile**, **standing.instructions** (playbook overrides, not a notes pad), sync mode, tools, optionals, upstream stamps ([`ADT-settings.example.yaml`](templates/agent/ADT-settings.example.yaml); Workflow [§0.1](templates/agent/skills/adt-docs-profile/SKILL.md#01-docs-profile-ceremony-modes) · [§0.2](templates/agent/skills/adt-docs-profile/SKILL.md#02-standing-workflow-instructions-user-workflow-not-pack-enums)) |
 | `src/` / `backend/` / `frontend/` | Actual code (reference only) |
 
 ### 2.2 At a Glance *(pointers — full rules in the workflow)*
 
 | Topic | Where the rule lives |
 |-------|----------------------|
-| **Docs profile** | `docs/ADT-settings.yaml` → `docs_profile.mode`. **`prevent`** = editors / games / multi-surface (default if unset). **`build-first`** = typed APIs / CRUD. **`balanced`** = mixed. [§0.1](templates/agent/workflow/profile-standing.md#01-docs-profile-ceremony-modes) |
+| **Docs profile** | `docs/ADT-settings.yaml` → `docs_profile.mode`. **`prevent`** = editors / games / multi-surface (default if unset). **`build-first`** = typed APIs / CRUD. **`balanced`** = mixed. [§0.1](templates/agent/skills/adt-docs-profile/SKILL.md#01-docs-profile-ceremony-modes) |
 | **File layout / kit leftovers** | Flat sibling files; no map-only planned rows; leftovers stay on the existing spec. Do not create `*-TODO.md`. [§0](templates/agent/workflow/naming-layout.md#0-naming--file-layout-read-before-creating-files) |
-| **Understanding / Spec** | Shape vs contract. [§4](templates/agent/workflow/understanding.md#4-understanding-features--shared) · [§2](templates/agent/workflow/understanding.md#2-understanding--spec-graduation) |
+| **Understanding / Spec** | Shape vs contract. [§4](templates/agent/skills/adt-understanding/SKILL.md#4-understanding-features--shared) · [§2](templates/agent/skills/adt-understanding/SKILL.md#2-understanding--spec-graduation) |
 | **Shared** | Only when actually shared. Same note types as features unless the user excepted them in §3.0. [§1](templates/agent/workflow/shared-components.md#1-shared-components--foundation-vs-consumption) |
 | **Product vision** | [`Product-Vision.md`](Product-Vision.md) — whole-product end-state; feature Understandings must fit a **confirmed** vision. [§4.5](templates/agent/workflow/product-vision.md) |
 | **Human inbox / Tooling** | [`Human-TODO.md`](Human-TODO.md) - [`Tooling.md`](Tooling.md) |
@@ -70,7 +70,7 @@ Record **only** omissions the **user explicitly requested**. Agents must **not**
 | *(example)* BlockEditor | Understanding | 2026-06-15 — **user said** “no Understanding file for BlockEditor” |
 | [Add rows only after user excepts] | | |
 
-**Default file set** when adding a row (same turn, on disk — no map-only “planned” rows): Spec; **Understanding** per `docs_profile`; Catalog when that work applies. Do not create `*-TODO.md`. [§0](templates/agent/workflow/naming-layout.md#0-naming--file-layout-read-before-creating-files) · [§0.1](templates/agent/workflow/profile-standing.md#01-docs-profile-ceremony-modes).
+**Default file set** when adding a row (same turn, on disk — no map-only “planned” rows): Spec; **Understanding** per `docs_profile`; Catalog when that work applies. Do not create `*-TODO.md`. [§0](templates/agent/workflow/naming-layout.md#0-naming--file-layout-read-before-creating-files) · [§0.1](templates/agent/skills/adt-docs-profile/SKILL.md#01-docs-profile-ceremony-modes).
 
 ### 3.1 Shared / Core Components
 

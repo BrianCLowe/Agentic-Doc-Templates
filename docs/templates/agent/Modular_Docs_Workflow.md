@@ -32,7 +32,7 @@ Use when the stem is already **ready** under the docs profile and scope is uncha
 | **`balanced`** | Spec; Understanding when identity is ambiguous |
 | **`build-first`** | Spec. Draft Product-Vision is not a documentation gate |
 
-**Additive vs shape (one line):** On a `confirmed` Understanding, a new research angle / extra behavior / edge case that still fits **is / is not** → **spec**, keep `confirmed`. De-confirm / re-draft **only** on a significant shape change — full rule in [`workflow/understanding.md`](workflow/understanding.md#4-understanding-features--shared).
+**Additive vs shape (one line):** On a `confirmed` Understanding, a new research angle / extra behavior / edge case that still fits **is / is not** → **spec**, keep `confirmed`. De-confirm / re-draft **only** on a significant shape change — full rule in [`workflow/understanding.md`](skills/adt-understanding/SKILL.md#4-understanding-features--shared).
 
 **Same-turn prefs:** Product/UI correction that could be "improved away" -> spec **Decisions** ([`workflow/decisions.md`](workflow/decisions.md)). **Override an ADT playbook** (no first-class key) -> standing ([`workflow/profile-standing.md`](workflow/profile-standing.md)). How to act in this project that is **not** a pack playbook does not go into standing. Do not jot random notes into standing.
 
@@ -67,11 +67,11 @@ Older Master Index / help links land on these headings. Prefer the router table 
 
 ### 0.1 Docs profile *(ceremony modes)*
 
-Full procedure: [`workflow/profile-standing.md`](workflow/profile-standing.md#01-docs-profile-ceremony-modes).
+Full procedure: [`workflow/profile-standing.md`](skills/adt-docs-profile/SKILL.md#01-docs-profile-ceremony-modes).
 
 ### 0.2 Standing workflow instructions *(user workflow, not pack enums)*
 
-Full procedure: [`workflow/profile-standing.md`](workflow/profile-standing.md#02-standing-workflow-instructions-user-workflow-not-pack-enums).
+Full procedure: [`workflow/profile-standing.md`](skills/adt-docs-profile/SKILL.md#02-standing-workflow-instructions-user-workflow-not-pack-enums).
 
 ### 0. Naming & file layout *(read before creating files)*
 
@@ -83,7 +83,7 @@ Full procedure: [`workflow/shared-components.md`](workflow/shared-components.md#
 
 ### 2. Understanding → Spec graduation
 
-Full procedure: [`workflow/understanding.md`](workflow/understanding.md#2-understanding--spec-graduation).
+Full procedure: [`workflow/understanding.md`](skills/adt-understanding/SKILL.md#2-understanding--spec-graduation).
 
 ### 3. Quick Start — Working on Any Task
 
@@ -91,7 +91,7 @@ Paved path is above. Which docs: [`workflow/implement.md`](workflow/implement.md
 
 ### 4. Understanding (Features & Shared)
 
-Full procedure (incl. **de-confirm gate** + **lock gate**): [`workflow/understanding.md`](workflow/understanding.md#4-understanding-features--shared).
+Full procedure (incl. **de-confirm gate** + **lock gate**): [`workflow/understanding.md`](skills/adt-understanding/SKILL.md#4-understanding-features--shared).
 
 ### 5. Feature TODO files on sync
 
@@ -115,7 +115,7 @@ See [`workflow/tooling.md`](workflow/tooling.md#11-tooling-project-tools-and-ser
 
 ### 4.5 Product vision *(whole-product end-state)*
 
-See [`workflow/product-vision.md`](workflow/product-vision.md#45-product-vision). Create on **all** profiles (lightweight to start on `balanced` / `build-first`; deepen when identity is fuzzy, there are multiple stems, or the user asks to *lock product shape*). **`build-first`:** not a gate until *lock product shape*.
+See [`workflow/product-vision.md`](skills/adt-product-vision/SKILL.md#45-product-vision). Create on **all** profiles (lightweight to start on `balanced` / `build-first`; deepen when identity is fuzzy, there are multiple stems, or the user asks to *lock product shape*). **`build-first`:** not a gate until *lock product shape*.
 
 ### 13. Human TODO *(inbox — needs a human)*
 

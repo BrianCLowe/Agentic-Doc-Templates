@@ -6,7 +6,7 @@ Day-to-day workflows after setup. First-time install: [`SETUP.md`](SETUP.md). Wh
 
 ## The loop
 
-Depends on **docs profile** in `docs/ADT-settings.yaml` — a first-class choice ([Workflow §0.1](../agent/workflow/profile-standing.md#01-docs-profile-ceremony-modes)). **`build-first`** is the right default for typed APIs / CRUD. **`prevent`** is the right default for editors / games / multi-surface (and the fallback if unset):
+Depends on **docs profile** in `docs/ADT-settings.yaml` — a first-class choice ([Workflow §0.1](../agent/skills/adt-docs-profile/SKILL.md#01-docs-profile-ceremony-modes)). **`build-first`** is the right default for typed APIs / CRUD. **`prevent`** is the right default for editors / games / multi-surface (and the fallback if unset):
 
 1. You capture ideas (recommended: chat exports in `docs/reference/`, or a mid-build correction in chat).
 2. **`prevent` (default):** agent drafts `Product-Vision.md` (whole-product end-state) **and** `-Understanding.md` (per-feature shape); you confirm both; `confirmed` means the shape is settled. **`build-first`:** agent drafts thin **spec** plus a `Product-Vision.md` that starts lightweight (destination, **not a gate**; deepen when identity is fuzzy, there are multiple stems, or you *lock product shape*). **`balanced`:** always a lightweight Product-Vision; Understanding when identity is ambiguous; deepen the vision when 2+ stems, the whole is fuzzy, or you *lock product shape*.

@@ -115,7 +115,7 @@ Read `docs_profile.mode` from `docs/ADT-settings.yaml`.
 
 **Ask** (brief; optional 1-line suggest if `docs/reference/` or live Understandings give a signal):
 
-**Present and explain** the menu by opening [`workflow/profile-standing.md`](/docs/templates/agent/workflow/profile-standing.md#01-docs-profile-ceremony-modes) §0.1 (source of truth) and using that table. Do **not** restate the three modes here.
+**Present and explain** the menu by opening [`workflow/profile-standing.md`](/docs/templates/agent/skills/adt-docs-profile/SKILL.md#01-docs-profile-ceremony-modes) §0.1 (source of truth) and using that table. Do **not** restate the three modes here.
 
 Record `docs_profile.mode` + `recorded` (+ `source: user` or `agent-suggested`). Explicit later: *Set docs profile to …*.
 
